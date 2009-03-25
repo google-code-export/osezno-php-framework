@@ -1,0 +1,109 @@
+
+
+
+#xjxExtUpWin {
+		padding:4px;
+		border:1px solid #666;
+		width:204px;	
+		font-size:11px;
+		background:#f0f0f0;
+}
+
+#xjxExtUpBar {
+	width:1px;
+	overflow:hidden;
+	background:#666;
+	height:15px;
+}
+
+.xjxExtUpBox {
+  width:192px;
+  margin:4px auto;
+	border:1px solid #666;
+	  padding:2px;
+  display:block;
+  background:#fff;
+}
+
+#xjxExtUpBarTxt {
+	padding: 1px 1px 1px 2px;
+	align:right;
+	font-size:10px;
+	color:#fff;
+}
+
+.xjxExtUpLabel {
+	float:left;
+	line-height:18px;
+}
+
+.xjxExtUpValue {
+	float:right;
+}
+
+
+.xjxExtUpRow {
+	border-bottom:1px solid #e0e0e0;
+}
+
+.xjxExtUpLabelFile {
+	float:left;
+	line-height:18px;
+	width:160px;
+	font-weight:bold;
+	font-size:11px;
+}
+
+.xjxExtUpClear {
+ clear:both;
+}
+
+.xjxExtUpDelete {
+	border:0px;
+	background:#fff;
+	color:#000;
+	margin:2px auto;
+	background:url(stop.png) top left;
+	width:16px;
+	height:16px;
+	float:right;
+}
+
+
+div.fileinputs {
+	position: relative;
+	height: 30px;
+	width: 300px;
+}
+
+input.file.hidden {
+	left:-210px;
+	position: relative;
+	text-align: right;
+	-moz-opacity:.0 ;
+	filter:alpha(opacity:00);
+	opacity: 0.0;
+	z-index: 2;
+	float:right;
+}
+
+#xjxExtUpFiles {
+}
+
+
+div.xjxExtUpfakefile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 350px;
+	padding: 0;
+	margin: 0;
+	z-index: 1;
+	line-height: 90%;
+}
+
+div.xjxExtUpfakefile input {
+	margin-bottom: 5px;
+	margin-left: 0;
+}
+
