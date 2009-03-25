@@ -1,0 +1,11 @@
+- Dar permisos a el usuario de postgresql con el que se conecta a la base 
+	de datos sobre las tablas 
+		key_column_usage
+		table_constraints
+		tables
+		columns
+	de information_schema para 'SELECT'
+	
+- Problemas encontrados
+  Una consulta llamando dos veces a la misma tabla en el metodo order by genera
+  problema ya que dice que ese campo es ambiguo
