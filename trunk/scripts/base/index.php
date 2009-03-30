@@ -40,6 +40,6 @@
  $base_sedes->save();
 
  echo $base_sedes->getSqlLog();
- echo '';
+
  
 ?>
