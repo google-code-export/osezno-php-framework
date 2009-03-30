@@ -40,4 +40,18 @@
 
  }
  
+ 
+ class base_sedes extends myActiveRecord {
+ 	
+ 	public $id; 
+ 	
+ 	public $sede;
+ 	
+ 	public $estado;
+ 	
+ 	public $user_id;
+ 	
+ 	public $registro;
+ }
+ 
 ?>

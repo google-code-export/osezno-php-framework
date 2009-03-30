@@ -14,3 +14,6 @@
   Incompatibilidad en php 5.2.9-1, este error debe ser cacheado para asegurar la conpatibilidad
   Php 5.2 solo funciona sobre Apache 2.2
   Error
+  Normalmente seria algo como 
+  Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 747
+  Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 755
