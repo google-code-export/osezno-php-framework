@@ -14,27 +14,29 @@
   /**
    * Carpeta de projecto ubicada dentro de la caperta publica www [*]
    */
-  $baseFolder = 'osezno-framework';  // <- Cambiar este nombre de carpeta por el nombre de la carpeta donde se va a guardar el Proyecto
+  $baseFolder = 'osezno-framework/trunk';  // <- Cambiar este nombre de carpeta por el nombre de la carpeta donde se va a guardar el Proyecto
   
   /**
    * Parametros de conexion a base de datos por defecto [*]
    */
   global $MYACTIVERECORD_PARAMS;
-/*  
+  
+  
   $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = 'siacolweb'; # Nombre de base de datos
   $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= 'mysql'; # Motor de base de datos; postgre ó mysql
   $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= 'localhost'; # Direccion Ip o nombre de maquina del motor de base de datos
   $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= 'root'; # Nombre de usuario para conexion 
   $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = ''; # Contraseña de usuario para conexión
   $GLOBALS['MYACTIVERECORD_PARAMS']['port'] 	= 3306; # Puerto para la conexión, Mysql 3306, Postgre 5432
-*/
+
+/*  
   $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = 'osezno'; # Nombre de base de datos
   $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= 'postgre'; # Motor de base de datos; postgre ó mysql
   $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= 'localhost'; # Direccion Ip o nombre de maquina del motor de base de datos
   $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= 'postgres'; # Nombre de usuario para conexion 
   $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = 'postgresql'; # Contraseña de usuario para conexión
   $GLOBALS['MYACTIVERECORD_PARAMS']['port'] 	= 5432; # Puerto para la conexión, Mysql 3306, Postgre 5432
-  
+*/  
   
   /**
    * Nombre de la carpeta donde se llaman todas las plantillas [*]
