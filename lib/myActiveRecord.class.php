@@ -741,7 +741,9 @@ class myActiveRecord {
 
 				// Para no tocar la llave primaria
 				if (strcmp($field,$this->tableStruct[$this->table]['pk'])){
-
+					
+					echo $value;
+					
 					if (!is_null($this->$field)){
 						
 						if (strlen(trim($this->$field))){
