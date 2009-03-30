@@ -2905,4 +2905,3 @@ class myActiveRecord {
 	}
 
 }
-?>>>>>>>> .r2
