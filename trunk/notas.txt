@@ -1,3 +1,5 @@
+Notas sobre version de Osezno-Framework
+
 - Dar permisos a el usuario de postgresql con el que se conecta a la base 
 	de datos sobre las tablas 
 		key_column_usage
@@ -18,3 +20,4 @@
   Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 747
   Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 755
   Oscar aldana participa activamente en svn
+  
