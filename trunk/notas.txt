@@ -17,3 +17,4 @@
   Normalmente seria algo como 
   Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 747
   Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 755
+  Oscar aldana participa activamente en svn
