@@ -1242,11 +1242,11 @@ class myForm {
 					 
 					$countMoreParams = count ($mixedMoreParams);$k=0;
 					foreach($mixedMoreParams as $valParam){
-						if (!is_numeric($valParam))
-						$valParam = "'".$valParam."'";
+						if (!is_numeric($valParam) && !$this->exists_JavascriptFormat_InParamEvent($valParam))
+							$valParam = "'".$valParam."'";
 						$this->objEventxJ[$strElementIdORelemlentName] .= $valParam;
 						if ($k<($countMoreParams-1))
-						$this->objEventxJ[$strElementIdORelemlentName] .= ', ';
+							$this->objEventxJ[$strElementIdORelemlentName] .= ', ';
 						$k++;
 					}
 					$this->objEventxJ[$strElementIdORelemlentName] .=')';
@@ -1264,16 +1264,37 @@ class myForm {
 			 $this->objEventxJ[$strElementIdORelemlentName] .= ', ';
 			 $countMoreParams = count ($mixedMoreParams);$i=0;
 			 foreach($mixedMoreParams as $valParam){
-			 	if (!is_numeric($valParam))
-			 	$valParam = "'".$valParam."'";
+			 	if (!is_numeric($valParam) && !$this->exists_JavascriptFormat_InParamEvent($valParam))
+			 	    $valParam = "'".$valParam."'";
 			 	$this->objEventxJ[$strElementIdORelemlentName] .= $valParam;
 			 	if ($i<($countMoreParams-1))
-			 	$this->objEventxJ[$strElementIdORelemlentName] .= ', ';
+			 		$this->objEventxJ[$strElementIdORelemlentName] .= ', ';
 			 	$i++;
 			 }
 			 $this->objEventxJ[$strElementIdORelemlentName] .=')'.'" ';
 			}
 		}
+	}
+	
+	/**
+	 * Trata de averiguar si el parametro pasado a un evento creado
+	 * es una cadena normal de texto o es una cadena formada por javascript
+	 * @param $stringParam Parametro a evaluar
+	 * @return boolean
+	 */
+	private function exists_JavascriptFormat_InParamEvent ($stringParam){
+		$return = false;
+		
+		$arrayPosibleCadJavascript = array ('[','document','\'');
+		
+		foreach ($arrayPosibleCadJavascript as $char){
+			if (strpos($stringParam,$char)){
+				$return = true;
+				break;
+			}
+		}
+		
+		return $return;
 	}
 
 
