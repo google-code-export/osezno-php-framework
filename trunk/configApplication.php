@@ -14,7 +14,7 @@
   /**
    * Carpeta de projecto ubicada dentro de la caperta publica www [*]
    */
-  $baseFolder = 'osezno-framework/trunk';  // <- Cambiar este nombre de carpeta por el nombre de la carpeta donde se va a guardar el Proyecto
+  $baseFolder = 'osezno-framework';  // <- Cambiar este nombre de carpeta por el nombre de la carpeta donde se va a guardar el Proyecto
   
   /**
    * Parametros de conexion a base de datos por defecto [*]
