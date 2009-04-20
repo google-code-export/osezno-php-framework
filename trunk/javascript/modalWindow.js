@@ -151,7 +151,7 @@
 	 * Function mw:aw add a new modal window
 	 */
 	xajax.commands['mw:aw'] = function( args )
-	{
+	{	
 		lb_widgets++;
 
 		xjxmW.hideSelects( 'hidden' );

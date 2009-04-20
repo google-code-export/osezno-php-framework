@@ -122,6 +122,7 @@ class myController {
 		$methods = get_class_methods( get_class($this) );
 		
 		foreach ( $methods as $method ){
+			
 			if (!in_array($method,$this->arrayInvalidMethods)){
 		       $this->xajaxObject->registerFunction(array($method, $this, $method));
 			}
@@ -626,7 +627,7 @@ class myController {
 	 * @param string $title			Titulo de la cventana modal
 	 */
 	public function modalWindow($htmlContent, $title, $windth, $height, $effect = ''){
-
+		/*
 		$nameFuntionEffect = '';
 		$divName = 'mw_'.date("His");
 		
@@ -706,12 +707,15 @@ class myController {
 		$html = '<div id="father_'.$divName.'" style="'.$tablaOpacity.$tablaHeight.$tablaWidth.'margin:inherit;color:#999999;border:0px solid #000000;padding:0px">'."\n".
 				$tabla.
    				'</div>';
-				
-		$this->response->plugin('clsmodalWindow', 'addWindow',$html,'#000000',10, NULL);
-		
+		*/		
+		//$this->response->plugin('clsmodalWindow', 'addWindow',$html,'#000000',10, NULL);
+		//$this->response->plugin('clsmodalWindow', 'addWindow','Holaaaaaaa','#000000',10);
+		$this->response->plugin('clsmodalWindow','addWindow');
+		/*
 		if ($nameFuntionEffect){
 			$this->response->script($nameFuntionEffect.'(\''.$posF.$divName.'\','.$windth.','.$height.','.$ini_height.');');
 		}
+		*/
 	}
 
 	
