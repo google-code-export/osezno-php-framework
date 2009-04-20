@@ -17,7 +17,7 @@
   */ 
  $objOsezno->assign('form_title','Cambiar este titulo');
  
- $objOsezno->assign('work_area','Cambiar este contenido');
+ $objOsezno->assign('work_area',$modelo->formulario());
  
  $objOsezno->assign('other_area','Cambiar este contenido');
 

@@ -14,14 +14,21 @@
 
  include 'dataModel.php';
  
- 
- 
 /**
  * Manejador de eventos de usuario
  *
  */	
  class eventos extends myController {
-		
+
+ 	public function onSubmitAccept(){
+ 		
+ 		$machine = 'Hola Como Estoy?';
+ 		
+ 		$this->modalWindow($machine,'Machine',200,200);
+ 		
+ 		return $this->response;
+ 	}
+ 	
 	
  }
 
