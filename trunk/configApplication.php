@@ -144,6 +144,12 @@
   define ('URL_JS_FCN',      $http.$httpHost.'/javascript/MyFunctions.js',true);
 
   /**
+   * 
+   */
+  define ('URL_JS_MW',      $http.$httpHost.'/javascript/myModalWindow.js',true);
+  
+  
+  /**
    * Ruta tipo url donde se descarga el js de wz tooltip
    */
   define ('URL_JS_TT',       $http.$httpHost.'/javascript/wz_tooltip.js',true);
