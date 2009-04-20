@@ -105,7 +105,7 @@
   /**
    * Setear el nivel de errores que desea mostrar dentro de la aplicacion
    */
-  error_reporting(E_ERROR);//E_ERROR | E_WARNING | E_PARSE | E_NOTICE  // E_ALL
+  error_reporting(E_ALL);//E_ERROR | E_WARNING | E_PARSE | E_NOTICE  // E_ALL
 
   require_once $GLOBALS['folderProject'].'lib/plugin/packages/xajax/xajax_core/xajax.inc.php';
   
