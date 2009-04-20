@@ -627,13 +627,8 @@ class myController {
 	 * @param string $title			Titulo de la cventana modal
 	 */
 	public function modalWindow($htmlContent, $title, $windth, $height, $effect = ''){
-<<<<<<< .mine
-		
 		$tabla = '';/*
 		/*
-=======
-		/*
->>>>>>> .r29
 		$nameFuntionEffect = '';
 		$divName = 'mw_'.date("His");
 		
@@ -713,18 +708,10 @@ class myController {
 		$html = '<div id="father_'.$divName.'" style="'.$tablaOpacity.$tablaHeight.$tablaWidth.'margin:inherit;color:#999999;border:0px solid #000000;padding:0px">'."\n".
 				$tabla.
    				'</div>';
-<<<<<<< .mine
    		*/
 		$tabla .= $htmlContent.'</td></tr></table>';
 		$this->response->plugin('myModalWindow', 'addWindow','<table border="0"><tr><td>'.$htmlContent.'</td></tr></table>','#000000',10, 'none');
 		/*
-=======
-		*/		
-		//$this->response->plugin('clsmodalWindow', 'addWindow',$html,'#000000',10, NULL);
-		//$this->response->plugin('clsmodalWindow', 'addWindow','Holaaaaaaa','#000000',10);
-		$this->response->plugin('clsmodalWindow','addWindow');
-		/*
->>>>>>> .r29
 		if ($nameFuntionEffect){
 			$this->response->script($nameFuntionEffect.'(\''.$posF.$divName.'\','.$windth.','.$height.','.$ini_height.');');
 		}
