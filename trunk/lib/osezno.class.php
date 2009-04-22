@@ -70,11 +70,7 @@ class osezno {
   		$this->urlProject = $GLOBALS['urlProject']; 
 		$this->objxAjax = $objxAjax;
   		
-<<<<<<< .mine
   		require $this->folderProject.'lib/plugin/packages/xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
-=======
-  		require $this->folderProject.'lib/plugin/packages/xajax/xajax_plugins/response/myModalWindow/myModalWindow.php';
->>>>>>> .r29
   		
 		$this->arrayAssignAreasHead['xajax_scripts']         
 		= $this->objxAjax->getJavascript(URL_JS_XJX);
