@@ -38,7 +38,7 @@ function markRow (o, color, colorDefault, idSon, colorSelDefault){
  *  xajax callbacks
  */
   xajax.callback.global.onRequest = function() {
-     
+     /*
      var arrayPageSize	= xjxmW.getPageSize();
      
      var miCapa = document.createElement('DIV');
@@ -76,19 +76,22 @@ function markRow (o, color, colorDefault, idSon, colorSelDefault){
 	
 	 //Preguntar si existe el objeto 
 	 vanecerCallBack(miCapa.id,0);
+	 */
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {
-    
+    /*
     desvanecerCallBack ('notification','imagen_notificacion',11);
 
     var el = document.getElementById('notification');
     var padre = el.parentNode;
 	padre.removeChild(el);
+	*/
   }
 
 
 function desvanecerCallBack (idMw, idGif, cont){
+	/*
 	temp = 30;
 	cont -= 1;
 	
@@ -109,10 +112,12 @@ function desvanecerCallBack (idMw, idGif, cont){
     	var padre = el.parentNode;
 		padre.removeChild(el);	
 	}	
+	*/
 }
 
 
 function vanecerCallBack (idMw, cont){
+	/*
 	temp = 30;
 	cont += 1;
 	
@@ -124,6 +129,7 @@ function vanecerCallBack (idMw, cont){
 		}
 		setTimeout("vanecerCallBack('"+idMw+"',"+cont+")",temp);
 	}
+	*/
 }
 
 
@@ -205,7 +211,7 @@ function destructNotificationWindow (idElement){
  * Efectos para modalwindows
  */
 function curtain (idMw, intWidth, intHeight, cont){
-	
+	/*
 	if (cont==0){
    		document.getElementById(idMw).style.display ="";
 	}
@@ -232,12 +238,13 @@ function curtain (idMw, intWidth, intHeight, cont){
       }  	   	
       
 	   setTimeout("curtain('"+idMw+"',"+intWidth+","+intHeight+","+cont+")",temp)
-	} 
+	}
+	*/ 
 }   
 
 
 function desvanecer (idMw, intWidth, intHeight, cont){
-	
+	/*
 	temp = 25;
 	
 	cont += 5;
@@ -250,7 +257,7 @@ function desvanecer (idMw, intWidth, intHeight, cont){
 		}
 		setTimeout("desvanecer('"+idMw+"',"+intWidth+","+intHeight+","+cont+")",temp);
 	}
-	
+	*/
 }
 
 /**

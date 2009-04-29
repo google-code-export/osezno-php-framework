@@ -17,7 +17,7 @@
   * Encender o Apagar el Debug. 
   * El debug permite cuando se trabaja con ajax que podamos ver errores se sintaxis
   */ 
- $objxAjax->setFlag("debug", true); 
+ $objxAjax->setFlag("debug", false); 
  
  
  /**

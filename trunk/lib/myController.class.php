@@ -709,7 +709,7 @@ class myController {
 				$tabla.
    				'</div>';
    		*/
-		$tabla .= $htmlContent.'</td></tr></table>';
+		//$tabla .= $htmlContent.'</td></tr></table>';
 		$this->response->plugin('myModalWindow', 'addWindow','<table border="0"><tr><td>'.$htmlContent.'</td></tr></table>','#000000',10, 'none');
 		/*
 		if ($nameFuntionEffect){

@@ -30,12 +30,6 @@
  		
  	}
  	
- 	public function formulario (){
- 		$objMyForm = new myForm('formulario',NULL,'onSubmitAccept');
- 		
- 		return $objMyForm->getForm();
- 	}
- 	
  	/**
  	 * Destructor de la clase
  	 *
