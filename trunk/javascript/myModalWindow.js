@@ -30,9 +30,9 @@ window.onresize = function() {
   
 };
 
-function addWindow (strContent, colorBg, intOpacity, className){
+function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight){
 	
-	var opacity = 10;
+	var opacity = intOpacity;
 	
 	if (!countId)
 		countId = 0;
@@ -46,11 +46,11 @@ function addWindow (strContent, colorBg, intOpacity, className){
 	
 	document.body.appendChild(capaBase);
 	
-	capaBase.style.background = '#000000';
+	capaBase.style.background = colorBg;
 	
 	capaBase.style.position = 'absolute';
 	
-	capaBase.style.zIndex = countId;
+	capaBase.style.zIndex = countId+1;
 	capaBase.style.top  = 0;
 	capaBase.style.left = 0;
 	
@@ -63,5 +63,20 @@ function addWindow (strContent, colorBg, intOpacity, className){
 		capaBase.style.opacity = ( opacity / 100 );
 	}	
 	
-	// alert(capaBase.id);
+	var capaModalWindow = document.createElement('DIV');
+	capaModalWindow.id = 'modalWindow'+countId;
+	
+	document.body.appendChild(capaModalWindow);
+	
+	capaModalWindow.style.zIndex = countId+2;
+	
+	capaModalWindow.style.height = windowHeight + 'px';
+	capaModalWindow.style.width  = windowWindth + 'px';
+
+	capaModalWindow.style.position = 'absolute';
+	
+	capaModalWindow.style.top  = Math.max(((Tam[1] - windowWindth) / 2),0) + 'px';
+	capaModalWindow.style.left = Math.max(((Tam[0] - windowHeight) / 2),0) + 'px';
+	
+	capaModalWindow.innerHTML = strContent;
 }

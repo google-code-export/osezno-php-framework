@@ -269,7 +269,7 @@ var is_ie = navigator.appName == 'Microsoft Internet Explorer';
 	
 	function js_drag(e)
 	{
-		var sufijo = 'lb_content';
+		var sufijo = 'modalWindow';
 		var capas;
 		var idcapa;
 		var lb_widgets = 0;

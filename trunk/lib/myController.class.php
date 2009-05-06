@@ -626,10 +626,11 @@ class myController {
 	 * @param string $htmlContent	Contenido html de la ventana modal
 	 * @param string $title			Titulo de la cventana modal
 	 */
-	public function modalWindow($htmlContent, $title, $windth, $height, $effect = ''){
-		$tabla = '';/*
-		/*
+	public function modalWindow($htmlContent, $title, $windth = 400, $height = 400, $effect = ''){
+		$tabla = '';
+		
 		$nameFuntionEffect = '';
+		/*
 		$divName = 'mw_'.date("His");
 		
 		$arrayEffects = array (
@@ -638,18 +639,20 @@ class myController {
 			'ghost' => 'ghost',
 			2 => 'ghost'
 		);
+		*/
 		
 		$tablaDisplay = '';
 		$tablaOpacity = '';
 		
-		
+		/*
 		if ($windth){
 			$tablaWidth = 'WIDTH: '.$windth.'px;';
 			$tablaScroll = 'overflow:auto;';
 		}
-		
+		*/
 		if ($height){
 			
+			/*
 			if ($effect){
 				switch ($arrayEffects[$effect]){
 					case 'curtain':
@@ -675,18 +678,20 @@ class myController {
 			}else{
 				$ini_height = $height;
 			}
-			
+			*/
+			/*
 			$tablaHeight = 'HEIGHT: '.$height.'px;';
 			$tablaScroll = 'overflow:auto;';
+			*/
 			
 		}
-		
+		/*
 		$tabla.= '<table border="0" cellpadign="0" cellspacing="0">'."\n";
 		$tabla.= '<tr><td background="../../img/modal_window/top-left.png"></td><td background="../../img/modal_window/top-middle.png">'."\n";
 		
 		$tabla.= '<table border="0" cellpadign="0" cellspacing="0" width="100%"><tr>'."\n";
 		$tabla.= '<td width="5%"><img src="../../img/modal_window/huella.gif"></td>'."\n";
-		$tabla.= '<td width="90%" valign="middle" align="left" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'" class="'.$this->class_name_msg_ttl.'">'.$title.'</td>'."\n";
+		$tabla.= '<td width="5%" valign="middle" align="left" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'" class="'.$this->class_name_msg_ttl.'">'.$title.'</td>'."\n";
 		$tabla.= '<td width="5%" align="right"><a href="javascript:;" onclick="xajax.closeWindow(\'son_'.$divName.'\')"><img border="0" src="../../img/modal_window/button-close.png"></a></td>'."\n";
 		$tabla.= '</tr></table>'."\n";
 		
@@ -697,7 +702,8 @@ class myController {
 		$tabla.= '<table border="0" cellpadign="0" cellspacing="0" background="../../img/modal_window/gradient-bg.png">'."\n";
 		$tabla.= '<tr>'."\n";
 		$tabla.= '<td>'."\n";
-		$tabla .= '<div id="son_'.$divName.'" style="'.$tablaWidth.$tablaHeight.$tablaScroll.$tablaDisplay.'">'.$htmlContent.'</div>';
+		//$tabla .= '<div id="son_'.$divName.'" style="'.$tablaWidth.$tablaHeight.$tablaScroll.$tablaDisplay.'">'.$htmlContent.'</div>';
+		$tabla .= '<div style="'.$tablaWidth.$tablaHeight.$tablaScroll.$tablaDisplay.'">'.$htmlContent.'</div>';
 		$tabla.= '</td>'."\n";
 		$tabla.= '</tr>'."\n";
 				
@@ -705,12 +711,47 @@ class myController {
 		
 		$tabla.= '<tr><td background="../../img/modal_window/bottom-left.png" height="15"></td><td background="../../img/modal_window/bottom-middle.png"></td><td background="../../img/modal_window/bottom-right.png"></td></tr></table>'."\n";
 		
-		$html = '<div id="father_'.$divName.'" style="'.$tablaOpacity.$tablaHeight.$tablaWidth.'margin:inherit;color:#999999;border:0px solid #000000;padding:0px">'."\n".
+		//$html = '<div id="father_'.$divName.'" style="'.$tablaOpacity.$tablaHeight.$tablaWidth.'margin:inherit;color:#999999;border:0px solid #000000;padding:0px">'."\n".
+		$html = '<div style="'.$tablaOpacity.$tablaHeight.$tablaWidth.'margin:inherit;color:#999999;border:0px solid #000000;padding:0px">'."\n".
 				$tabla.
    				'</div>';
-   		*/
-		//$tabla .= $htmlContent.'</td></tr></table>';
-		$this->response->plugin('myModalWindow', 'addWindow','<table border="0"><tr><td>'.$htmlContent.'</td></tr></table>','#000000',10, 'none');
+   		
+		$tabla .= $htmlContent.'</td></tr></table>';
+		*/
+		$bgTl = 'background="../../img/modal_window/top-left.png"';
+		$bgTc = 'background="../../img/modal_window/top-middle.png"';
+		$bgTr = 'background="../../img/modal_window/top-right.png"';
+		
+		$bgMl = 'background="../../img/modal_window/left.png"';
+		$bgMc = 'background="../../img/modal_window/gradient-bg.png';
+		$bgMr = 'background="../../img/modal_window/right.png"';
+		
+		$bgDl = '';
+		$bgDc = '';
+		$bgDr = '';
+		
+		$html = '';
+		
+		$html .= '<table border="0" width="100%" cellpadign="0" cellspacing="0">';
+		
+		$html .= '<tr><td '.$bgTl.' width="5%">&nbsp;</td>';
+		$html .= '<td '.$bgTc.' width="90%" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">'.$title.'</td>';
+		$html .= '<td '.$bgTr.' width="5%"></td>&nbsp;</tr>';
+
+		$html .= '<tr><td '.$bgMl.'>&nbsp;</td>';
+		$html .= '<td '.$bgMc.'>'.$htmlContent.'</td>';
+		$html .= '<td '.$bgMr.'>&nbsp;</td></tr>';
+		
+//		$html .= '<tr><td '.$bgDl.'></td>';
+//		$html .= '<td '.$bgDc.'></td>';
+//		$html .= '<td '.$bgDr.'></td></tr>';
+		
+		$html .= '</table>';
+		
+		$this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $windth, $height);
+		
+		
+		
 		/*
 		if ($nameFuntionEffect){
 			$this->response->script($nameFuntionEffect.'(\''.$posF.$divName.'\','.$windth.','.$height.','.$ini_height.');');

@@ -2,9 +2,9 @@
  
  class myModalWindow extends xajaxResponsePlugin {
 
- 	public function addWindow($htmlContent, $colorBackground, $intOpacity, $className) {
+ 	public function addWindow($htmlContent, $colorBackground, $intOpacity, $windth, $height) {
  		
-        $this->objResponse->script("addWindow('".addslashes($htmlContent)."', '".$colorBackground."', ".$intOpacity.", '".$className."')");
+        $this->objResponse->script("addWindow('".addslashes($htmlContent)."', '".$colorBackground."', ".$intOpacity.", ".$windth.", ".$height.")");
         
     }
  	
