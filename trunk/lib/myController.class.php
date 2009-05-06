@@ -629,6 +629,8 @@ class myController {
 	public function modalWindow($htmlContent, $title, $windth = 400, $height = 400, $effect = ''){
 		$tabla = '';
 		
+		$windthC = ($windth-9);
+		
 		$nameFuntionEffect = '';
 		/*
 		$divName = 'mw_'.date("His");
@@ -723,28 +725,38 @@ class myController {
 		$bgTr = 'background="../../img/modal_window/top-right.png"';
 		
 		$bgMl = 'background="../../img/modal_window/left.png"';
-		$bgMc = 'background="../../img/modal_window/gradient-bg.png';
+		$bgMc = 'background="../../img/modal_window/gradient-bg.png"';
 		$bgMr = 'background="../../img/modal_window/right.png"';
 		
-		$bgDl = '';
-		$bgDc = '';
-		$bgDr = '';
+		$bgDl = 'background="../../img/modal_window/bottom-left.png"';
+		$bgDc = 'background="../../img/modal_window/bottom-middle.png"';
+		$bgDr = 'background="../../img/modal_window/bottom-right.png"';
+		
+		$srcCw = '<img border="0" src="../../img/modal_window/button-close.png">';
+		$srcOz = '<img border="0" src="../../img/modal_window/huella.gif">';
 		
 		$html = '';
+
+		$htmlTitle = '';
+		
+		$htmlTitle .= '<table border="0" width="100%" cellpadign="0" cellspacing="0">';
+		$htmlTitle .= '<tr><td width="5%" align="left">'.$srcOz.'</td><td width="90%">'.$title.'</td><td width="5%" align="rigth">'.$srcCw.'</td></tr>';
+		$htmlTitle .= '</table>';
+		
 		
 		$html .= '<table border="0" width="100%" cellpadign="0" cellspacing="0">';
 		
-		$html .= '<tr><td '.$bgTl.' width="5%">&nbsp;</td>';
-		$html .= '<td '.$bgTc.' width="90%" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">'.$title.'</td>';
-		$html .= '<td '.$bgTr.' width="5%"></td>&nbsp;</tr>';
+		$html .= '<tr><td '.$bgTl.' width="7">&nbsp;</td>';
+		$html .= '<td '.$bgTc.' width="'.$windthC.'" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">'.$htmlTitle.'</td>';
+		$html .= '<td '.$bgTr.' width="12">&nbsp;</td></tr>';
 
 		$html .= '<tr><td '.$bgMl.'>&nbsp;</td>';
 		$html .= '<td '.$bgMc.'>'.$htmlContent.'</td>';
 		$html .= '<td '.$bgMr.'>&nbsp;</td></tr>';
 		
-//		$html .= '<tr><td '.$bgDl.'></td>';
-//		$html .= '<td '.$bgDc.'></td>';
-//		$html .= '<td '.$bgDr.'></td></tr>';
+		$html .= '<tr><td '.$bgDl.' height="15"></td>';
+		$html .= '<td '.$bgDc.' height="15"></td>';
+		$html .= '<td '.$bgDr.' height="15"></td></tr>';
 		
 		$html .= '</table>';
 		

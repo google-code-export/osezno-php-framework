@@ -80,3 +80,8 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 	
 	capaModalWindow.innerHTML = strContent;
 }
+
+function closeModalWindow (){
+	
+	
+}
