@@ -1953,7 +1953,7 @@ class myForm {
 	 * @return string Id del radio button, se usa para poder agrupar mas adelante
 	 */
 	public function addRadioButton($etq = '', $value = '', $name_group = '', $is_checked = 'N'){
-		$name = 'radio_'.$this->counterRediosForThisForm+=1;
+		$name = '_'.$this->counterRediosForThisForm+=1;
 
 		//$name = $this->getColspanRowspan($name);
 		$Cadena = 'radiobutton'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value.$this->Separador.$name_group.$this->Separador.$is_checked;
@@ -2556,7 +2556,7 @@ class myForm {
 					if ($campos_f[5] == 'S')
 					$cheked = 'checked';
 
-					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[4]).' class="'.$this->styleClass.'" type="radio" name="'.$campos_f[4].'" id="'.$campos_f[4].'" value="'.$campos_f[3].'" '.$this->checkExistEventJs($campos_f[4]).' '.$this->checkIfIsDisabled($campos_f[4]).' '.$cheked.'></td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[4]).' class="'.$this->styleClass.'" type="radio" name="'.$campos_f[4].'" id="'.$campos_f[4].'_'.$campos_f[3].$campos_f[2].'" value="'.$campos_f[3].'" '.$this->checkExistEventJs($campos_f[4]).' '.$this->checkIfIsDisabled($campos_f[4]).' '.$cheked.'></td>'."\n";
 					break;
 			}
 		}
