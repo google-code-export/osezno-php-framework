@@ -1978,7 +1978,7 @@ class myForm {
 		if ($is_checked=='S')
 		$checked = 'checked="checked"';
 
-		$buf .= '<input '.$this->checkExistEventJs($name_group).' '.$this->checkIsHelping($name_group).' '.$this->checkIfIsDisabled($name_group).' type="radio" name="'.$name_group.'" id="'.$name_group.'" value="'.$value.'" class="'.$this->styleClass.'" '.$checked.'>';
+		$buf .= '<input '.$this->checkExistEventJs($name_group).' '.$this->checkIsHelping($name_group).' '.$this->checkIfIsDisabled($name_group).' type="radio" name="'.$name_group.'" id="'.$name_group.'_'.$value.'" value="'.$value.'" class="'.$this->styleClass.'" '.$checked.'>';
 		unset($this->objEventxJ[$name_group]);
 		$this->arrayFormElementType[$name_group] = 'radiobutton';
 
@@ -2556,7 +2556,7 @@ class myForm {
 					if ($campos_f[5] == 'S')
 					$cheked = 'checked';
 
-					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[4]).' class="'.$this->styleClass.'" type="radio" name="'.$campos_f[4].'" id="'.$campos_f[4].'_'.$campos_f[3].$campos_f[2].'" value="'.$campos_f[3].'" '.$this->checkExistEventJs($campos_f[4]).' '.$this->checkIfIsDisabled($campos_f[4]).' '.$cheked.'></td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[4]).' class="'.$this->styleClass.'" type="radio" name="'.$campos_f[4].'" id="'.$campos_f[4].'_'.$campos_f[3].'" value="'.$campos_f[3].'" '.$this->checkExistEventJs($campos_f[4]).' '.$this->checkIfIsDisabled($campos_f[4]).' '.$cheked.'></td>'."\n";
 					break;
 			}
 		}
