@@ -82,6 +82,15 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 }
 
 function closeModalWindow (){
-	
-	
+	var idElementBase = 'capaBase'+countId;
+    var vcp = document.getElementById(idElementBase);
+
+    var padreVcp = vcp.parentNode;
+	padreVcp.removeChild(vcp);
+    
+	var idElementWindow = 'modalWindow'+countId;
+    var vmw = document.getElementById(idElementBase);
+
+    var padreVcp = vcp.parentNode;
+	padreVmwp.removeChild(vcp);
 }
