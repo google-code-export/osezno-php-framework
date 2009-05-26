@@ -732,7 +732,7 @@ class myController {
 		$bgDc = 'background="../../img/modal_window/bottom-middle.png"';
 		$bgDr = 'background="../../img/modal_window/bottom-right.png"';
 		
-		$srcCw = '<img border="0" src="../../img/modal_window/button-close.png">';
+		$srcCw = '<a href="javascript:;" onclick="closeModalWindow()"><img border="0" src="../../img/modal_window/button-close.png"></a>';
 		$srcOz = '<img border="0" src="../../img/modal_window/huella.gif">';
 		
 		$html = '';
