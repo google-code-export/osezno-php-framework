@@ -158,7 +158,15 @@ class myActiveRecord {
 	 */
 	private $lastInserId;
 
+	
+	/**
+	 * Indica si la ultima conexion
+	 * fue exitosa.
+	 * @var boolean
+	 */
+	private $goalConnect = true;
 
+	
 	/**
 	 * Posfijo del nombre de las
 	 * secuencias que se unas en postgres
@@ -741,7 +749,7 @@ class myActiveRecord {
 
 				// Para no tocar la llave primaria
 				if (strcmp($field,$this->tableStruct[$this->table]['pk'])){
-					
+
 					if (!is_null($this->$field)){
 						
 						if (strlen(trim($this->$field))){
@@ -1397,6 +1405,7 @@ class myActiveRecord {
 	 * @return resorce
 	 */
 	public function openConecction (){
+		
 		switch ($this->engine){
 			case 'mysql':
 				$this->link = new mysqli(
@@ -1406,9 +1415,10 @@ class myActiveRecord {
 				   $this->database
 				);
 				if (mysqli_connect_errno()) {
-
-					printf("MySQL: Connect failed: %s\n", mysqli_connect_error());
-					exit();
+					$GLOBALS['OF_SQL_LOG_ERROR'] .= "MySQL: Connect failed: ".mysqli_connect_error()."\n";
+					$this->goalConnect = false;
+				}else{
+					$this->link = $mysqli;
 				}
 				
 				break;
@@ -1420,20 +1430,31 @@ class myActiveRecord {
 				." password=".$this->password."";
 					
 				if (!$this->link = pg_Connect($cmdConnectPostgreSQL)){
-
-					printf('PostgreSQL: Connect failed');
-					exit();
+					$GLOBALS['OF_SQL_LOG_ERROR'] .= 'PostgreSQL: Connect failed'."\n";
+					$this->goalConnect = false;
 				}
 				
 				break;
 			default:
-				die('ERROR: Usted debe definir un motor de base de datos valido a usar');
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= 'ERROR: Usted debe definir un motor de base de datos valido a usar';
 				break;
 		}
 			
-		return $this->link;
+		return $this->goalConnect;
 	}
 
+	
+	/**
+	 * Devuelve un valor boleano
+	 * que determina si la conexion fue exitosa o no
+	 * Se puede usar despues de iniciar el objeto.
+	 * @return boolean
+	 */
+	public function isSuccessfulConnect (){
+		return $this->goalConnect;
+	}
+	
+	
 	/**
 	 * Cierra la conexion a la base de datos
 	 *
@@ -1441,10 +1462,10 @@ class myActiveRecord {
 	public function closeConecction (){
 			
 		switch($this->engine){
-			case '':
+			case 'mysql':
 				mysqli_close($this->link);
 				break;
-			case '':
+			case 'postgre':
 				pg_close ($this->link);
 				break;
 		}
