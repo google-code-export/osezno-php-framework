@@ -1002,7 +1002,7 @@ class myForm {
 	 * @param boolean $boolUseCache Usar o no cache en el formulario
 	 * @param integer $intSeconds   Numero de segundos en que la cache del formulario dura activa 
 	 */
-	public function __construct($nomForm, $Action = '', $jsScript = '', $enctype = '',  $target = '', $boolUseCache, $intSeconds){
+	public function __construct($nomForm, $Action = '', $jsScript = '', $enctype = '',  $target = '', $boolUseCache = '', $intSeconds = ''){
 		$this->NomForm = $nomForm;
 
 		if ($Action)

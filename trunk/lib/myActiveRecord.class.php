@@ -89,7 +89,7 @@ class myActiveRecord {
 	 *
 	 * @var resourse
 	 */
-	public $link;
+	private $link;
 
 	
 	/*********************/
