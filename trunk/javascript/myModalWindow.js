@@ -89,8 +89,10 @@ function closeModalWindow (){
 	padreVcp.removeChild(vcp);
     
 	var idElementWindow = 'modalWindow'+countId;
-    var vmw = document.getElementById(idElementBase);
+    var vmw = document.getElementById(idElementWindow);
 
-    var padreVcp = vcp.parentNode;
-	padreVmwp.removeChild(vcp);
+    var hijoVmw = vmw.parentNode;
+    hijoVmw.removeChild(vmw);
+    
+    countId -= 1;
 }
