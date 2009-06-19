@@ -75,10 +75,10 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 
 	capaModalWindow.style.position = 'absolute';
 	
-	capaModalWindow.style.top  = Math.max(((Tam[1] - windowWindth) / 2),0) + 'px';
-	capaModalWindow.style.left = Math.max(((Tam[0] - windowHeight) / 2),0) + 'px';
+	capaModalWindow.style.top  = Math.max(((Tam[1] - windowHeight) / 2),0) + 'px';
+	capaModalWindow.style.left = Math.max(((Tam[0] - windowWindth) / 2),0) + 'px';
 	
-	capaModalWindow.innerHTML = strContent;
+	capaModalWindow.innerHTML = strContent+Tam[1]+"  "+Tam[0];
 }
 
 function closeModalWindow (){
