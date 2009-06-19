@@ -91,6 +91,13 @@ class myActiveRecord {
 	 */
 	private $link;
 
+	/**
+	 * Comprueba el estado boleano de si
+	 * la actual conexion esta abierta o
+	 * cerrada.
+	 * @var boolean
+	 */
+	private $successfulConnect = false;
 	
 	/*********************/
 	/* Variables comunes */
@@ -158,15 +165,7 @@ class myActiveRecord {
 	 */
 	private $lastInserId;
 
-	
-	/**
-	 * Indica si la ultima conexion
-	 * fue exitosa.
-	 * @var boolean
-	 */
-	private $goalConnect = true;
 
-	
 	/**
 	 * Posfijo del nombre de las
 	 * secuencias que se unas en postgres
@@ -210,6 +209,7 @@ class myActiveRecord {
 		}
 			
 		$this->classVars = get_class_vars($this->table);
+			
 	}
 
 	/**
@@ -548,8 +548,9 @@ class myActiveRecord {
 	 *
 	 * @param string $sql
 	 */
-	public function query ($sql){
-		$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
+	public function query ($sql, $saveInLog = true){
+		if ($saveInLog)
+			$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
 			
 		$array = array();
 		
@@ -1115,7 +1116,7 @@ class myActiveRecord {
 	}
 
 	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0){
-			
+		$results = array();	
 		$sql = '';
 		
 		$subSqlF = $this->getStringSqlFields($this->table);
@@ -1135,10 +1136,11 @@ class myActiveRecord {
 			foreach ($strCond as $cnd){
 				
 				# TODO: Evaluar si viene una sentencia booleana
-				list ($fCnd, $vCnd) = explode(
-				$smblRel = $this->evalSimbolInSubQuery(
-				$cnd,true),$cnd);
-					
+				$smblRel = $this->evalSimbolInSubQuery($cnd,true);
+				
+				if ($smblRel)
+					list ($fCnd, $vCnd) = explode($smblRel,$cnd);
+				
 				if (trim($fCnd) && $vCnd){
 						
 					if (is_numeric(trim($vCnd))){
@@ -1192,7 +1194,6 @@ class myActiveRecord {
 				}
 				
 			}else{
-				$results = array();
 
 				foreach ($rF as $row){
 					
@@ -1270,9 +1271,7 @@ class myActiveRecord {
 		$true = false;
 			
 		foreach ($this->arrayStringRelation as $Relation){
-
 			if (strpos($strCond,$Relation)!==false){
-					
 				if (!$returnSimbol)
 				   $true = true;
 				else
@@ -1355,7 +1354,7 @@ class myActiveRecord {
 						information_schema.tables.table_name = \''.$tableName.'\'
 					ORDER BY col.ordinal_position';
 					
-				$fields = $this->query($sqlStruct);
+				$fields = $this->query($sqlStruct,false);
 
 				foreach ($fields as $field){
 
@@ -1405,7 +1404,6 @@ class myActiveRecord {
 	 * @return resorce
 	 */
 	public function openConecction (){
-		
 		switch ($this->engine){
 			case 'mysql':
 				$this->link = new mysqli(
@@ -1415,10 +1413,11 @@ class myActiveRecord {
 				   $this->database
 				);
 				if (mysqli_connect_errno()) {
-					$GLOBALS['OF_SQL_LOG_ERROR'] .= "MySQL: Connect failed: ".mysqli_connect_error()."\n";
-					$this->goalConnect = false;
+
+					$GLOBALS['OF_SQL_LOG'].="MySQL: Connect failed: ".mysqli_connect_error();
+					
 				}else{
-					$this->link = $mysqli;
+					$this->successfulConnect = true;
 				}
 				
 				break;
@@ -1430,31 +1429,22 @@ class myActiveRecord {
 				." password=".$this->password."";
 					
 				if (!$this->link = pg_Connect($cmdConnectPostgreSQL)){
-					$GLOBALS['OF_SQL_LOG_ERROR'] .= 'PostgreSQL: Connect failed'."\n";
-					$this->goalConnect = false;
+
+					$GLOBALS['OF_SQL_LOG'].='PostgreSQL: Connect failed';
+					
+				}else{
+					$this->successfulConnect = true;
 				}
 				
 				break;
 			default:
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= 'ERROR: Usted debe definir un motor de base de datos valido a usar';
+				$GLOBALS['OF_SQL_LOG'].='ERROR: Usted debe definir un motor de base de datos valido a usar'."\n";
 				break;
 		}
 			
-		return $this->goalConnect;
+		return $this->link;
 	}
 
-	
-	/**
-	 * Devuelve un valor boleano
-	 * que determina si la conexion fue exitosa o no
-	 * Se puede usar despues de iniciar el objeto.
-	 * @return boolean
-	 */
-	public function isSuccessfulConnect (){
-		return $this->goalConnect;
-	}
-	
-	
 	/**
 	 * Cierra la conexion a la base de datos
 	 *
@@ -1465,11 +1455,20 @@ class myActiveRecord {
 			case 'mysql':
 				mysqli_close($this->link);
 				break;
-			case 'postgre':
+			case 'postgres':
 				pg_close ($this->link);
 				break;
 		}
 	}
 
+	/**
+	 * Despues de intentar abrir una conexion en el constructor
+	 * verifica si esta se pudo abrir o no.
+	 * @return boolean
+	 */
+	public function isSuccessfulConnect (){
+		return $this->successfulConnect;
+	}
+	
 }
 ?>
