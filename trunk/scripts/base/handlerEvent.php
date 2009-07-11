@@ -20,6 +20,57 @@
  */	
  class eventos extends myController {
 
+
+ 	public function onSubmitAccept(){
+ 		
+ 		$objMyForm = new myForm('formulario',NULL,'procesarFormulario');
+ 		
+ 		$objMyForm->addText('Nombre:','nombre');
+ 		$objMyForm->addText('Apellido:','apellido');
+ 		
+ 		$objMyForm->addText('Nombre:','nombre1');
+ 		$objMyForm->addText('Nombre:','nombre2');
+ 		$objMyForm->addText('Nombre:','nombre3');
+ 		$objMyForm->addText('Nombre:','nombre4');
+ 		$objMyForm->addText('Nombre:','nombre5');
+ 		$objMyForm->addText('Nombre:','nombre6');
+ 		$objMyForm->addText('Nombre:','nombre7');
+ 		$objMyForm->addText('Nombre:','nombre8');
+ 		$objMyForm->addText('Nombre:','nombre9');
+ 		//$objMyForm->addText('Nombre:','nombre10');
+ 		//$objMyForm->addText('Nombre:','nombre11');
+ 		//$objMyForm->addText('Nombre:','nombre12');
+ 		//$objMyForm->addText('Nombre:','nombre12');
+ 		//$objMyForm->addText('Nombre:','nombre13');
+ 		
+ 		$objMyForm->addHelp('nombre','Saludos a The Code Machine');
+ 		
+ 		$objMyForm->formHeight = 0;
+ 		
+ 		//$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,400,1);
+ 		$this->modalWindow('hola','The Code Machine',400,400,1);
+ 		
+ 		return $this->response;
+ 	}
+ 	
+
+ 	
+ 	public function procesarFormulario (){
+ 		
+ 		$objMyForm = new myForm('formulario',NULL,'procesarFormulario');
+ 		
+ 		$objMyForm->addText('Nombre:','nombre');
+ 		$objMyForm->addText('Apellido:','apellido');
+ 		
+ 		$objMyForm->addHelp('nombre','Saludos a The Code Machine');
+ 		
+ 		$objMyForm->formHeight = 0;
+ 		
+ 		$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,400);
+ 		
+ 		
+ 		return $this->response;
+ 	}
 	
  }
 
