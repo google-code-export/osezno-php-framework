@@ -1,4 +1,8 @@
 var countId=null;
+var nc = (document.layers) ? true:false
+var ie = (document.all) ? true:false
+var n6 = (document.getElementById) ? true:false
+
 
 function TamVentana() {
   var Tamanyo = [0, 0];
@@ -78,7 +82,7 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 	capaModalWindow.style.top  = Math.max(((Tam[1] - windowHeight) / 2),0) + 'px';
 	capaModalWindow.style.left = Math.max(((Tam[0] - windowWindth) / 2),0) + 'px';
 	
-	capaModalWindow.innerHTML = strContent+Tam[1]+"  "+Tam[0];
+	capaModalWindow.innerHTML = strContent;
 }
 
 function closeModalWindow (){
@@ -96,3 +100,53 @@ function closeModalWindow (){
     
     countId -= 1;
 }
+
+function desvanecer (idMw, intWidth, intHeight, cont){
+	
+	temp = 25;
+	cont += 5;
+	
+	if(cont<101){
+		if (navigator.appVersion.indexOf("MSIE")!=-1){
+	   		document.getElementById(idMw).style.filter = "alpha(opacity="+(cont)+")";
+		}else{
+	   	    document.getElementById(idMw).style.opacity = cont/100;
+		}
+		setTimeout("desvanecer('"+idMw+"',"+intWidth+","+intHeight+","+cont+")",temp);
+	}
+	
+}
+
+/**
+ * Efectos para modalwindows
+ */
+function curtain (idMw, intWidth, intHeight, cont){
+	
+	if (cont==0){
+  		document.getElementById(idMw).style.display ="";
+	}
+	
+	if(ie){ 
+	  temp = 15;
+	  cont += 15;
+	}else if(nc){  
+	  temp = 5;
+	  cont += 10;
+	}else if(n6){  
+	  temp = 5;
+	  cont += 5;
+	}
+	
+	if (cont<intHeight){
+		 
+		if(ie){
+			document.all[idMw].style.height=cont;
+		}else if(nc){
+			document.layers[idMw].height=cont;
+		}else if(n6){
+			document.getElementById(idMw).style.height=cont;
+		}  	   	
+     
+	   setTimeout("curtain('"+idMw+"',"+intWidth+","+intHeight+","+cont+")",temp);
+	}
+}   

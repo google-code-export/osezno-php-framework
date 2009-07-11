@@ -626,13 +626,13 @@ class myController {
 	 * @param string $htmlContent	Contenido html de la ventana modal
 	 * @param string $title			Titulo de la cventana modal
 	 */
-	public function modalWindow($htmlContent, $title, $windth = 400, $height = 400, $effect = ''){
+	public function modalWindow($htmlContent = '', $title = '', $windth = 200, $height = 200, $effect = ''){
 		$tabla = '';
 		
 		$windthC = ($windth-9);
 		
 		$nameFuntionEffect = '';
-		/*
+		
 		$divName = 'mw_'.date("His");
 		
 		$arrayEffects = array (
@@ -641,52 +641,52 @@ class myController {
 			'ghost' => 'ghost',
 			2 => 'ghost'
 		);
-		*/
 		
 		$tablaDisplay = '';
 		$tablaOpacity = '';
 		
-		/*
 		if ($windth){
 			$tablaWidth = 'WIDTH: '.$windth.'px;';
-			$tablaScroll = 'overflow:auto;';
-		}
-		*/
-		if ($height){
-			
-			/*
-			if ($effect){
-				switch ($arrayEffects[$effect]){
-					case 'curtain':
-						$posF = 'son_';
-						
-						$tablaDisplay = 'display: none;';
-						$nameFuntionEffect = 'curtain'; 
-						$ini_height = 0;
+			//$tablaScroll = 'overflow:hidden;';
+		
+			if ($height){
+
+				$tablaHeight = 'HEIGHT: '.$height.'px;';
+				//$tablaScroll = 'overflow:hidden;';
+				
+				if ($effect){
+					switch ($arrayEffects[$effect]){
+						case 'curtain':
+					
+							//$tablaDisplay = 'display: none;';
+							$nameFuntionEffect = 'curtain'; 
+							$ini_height = 0;
+					
+							$tablaHeight = 'HEIGHT: 40px;';
 						break;
-					case 'ghost':
-						$posF = 'father_';
+						case 'ghost':
+							/*
+							$posF = 'father_';
 						
-						if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
-							$tablaOpacity = 'filter: alpha(opacity=100);';
-						}else{
-							$tablaOpacity = 'opacity: 0;';
-						}
+							if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
+								$tablaOpacity = 'filter: alpha(opacity=100);';
+							}else{
+								$tablaOpacity = 'opacity: 0;';
+							}
 						
-						$nameFuntionEffect = 'desvanecer';
-						$ini_height = 0;
+							$nameFuntionEffect = 'desvanecer';
+							$ini_height = 0;
+							*/
 						break;	
-				}
-			}else{
-				$ini_height = $height;
+					}
+				}//else{
+					
+					//$ini_height = $height;
+				//}
+		
 			}
-			*/
-			/*
-			$tablaHeight = 'HEIGHT: '.$height.'px;';
-			$tablaScroll = 'overflow:auto;';
-			*/
-			
 		}
+		
 		/*
 		$tabla.= '<table border="0" cellpadign="0" cellspacing="0">'."\n";
 		$tabla.= '<tr><td background="../../img/modal_window/top-left.png"></td><td background="../../img/modal_window/top-middle.png">'."\n";
@@ -740,18 +740,18 @@ class myController {
 		$htmlTitle = '';
 		
 		$htmlTitle .= '<table border="0" width="100%" cellpadign="0" cellspacing="0">';
-		$htmlTitle .= '<tr><td width="5%" align="left">'.$srcOz.'</td><td width="90%">'.$title.'</td><td width="5%" align="rigth">'.$srcCw.'</td></tr>';
+		$htmlTitle .= '<tr><td width="5%" align="left">'.$srcOz.'</td><td width="90%" class="'.$this->class_name_msg_ttl.'">'.$title.'</td><td width="5%" align="rigth">'.$srcCw.'</td></tr>';
 		$htmlTitle .= '</table>';
 		
+		$html .= '<div id="'.$divName.'" style="overflow: hidden;'.$tablaWidth.$tablaHeight.$tablaDisplay.'">';
+		$html .= '<table border="0" width="100%" height="100%" cellpadign="0" cellspacing="0">';
 		
-		$html .= '<table border="0" width="100%" cellpadign="0" cellspacing="0">';
-		
-		$html .= '<tr><td '.$bgTl.' width="7">&nbsp;</td>';
+		$html .= '<tr><td '.$bgTl.' width="7" height="10">&nbsp;</td>';
 		$html .= '<td '.$bgTc.' width="'.$windthC.'" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">'.$htmlTitle.'</td>';
-		$html .= '<td '.$bgTr.' width="12">&nbsp;</td></tr>';
+		$html .= '<td '.$bgTr.' width="13">&nbsp;</td></tr>';
 
 		$html .= '<tr><td '.$bgMl.'>&nbsp;</td>';
-		$html .= '<td '.$bgMc.'>'.$htmlContent.'</td>';
+		$html .= '<td '.$bgMc.' valign="top" align="left"><div style="WIDTH: '.($windth-50).'px;HEIGHT: '.($height-70).'px;overflow: auto;">'.$htmlContent.'</div></td>';
 		$html .= '<td '.$bgMr.'>&nbsp;</td></tr>';
 		
 		$html .= '<tr><td '.$bgDl.' height="15"></td>';
@@ -759,16 +759,14 @@ class myController {
 		$html .= '<td '.$bgDr.' height="15"></td></tr>';
 		
 		$html .= '</table>';
+		$html .= '</div>';
 		
 		$this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $windth, $height);
 		
-		
-		
-		/*
 		if ($nameFuntionEffect){
-			$this->response->script($nameFuntionEffect.'(\''.$posF.$divName.'\','.$windth.','.$height.','.$ini_height.');');
+			$this->response->script($nameFuntionEffect.'(\''.$divName.'\','.$windth.','.$height.','.$ini_height.');');
 		}
-		*/
+		
 	}
 
 	

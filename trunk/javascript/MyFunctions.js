@@ -207,58 +207,7 @@ function destructNotificationWindow (idElement){
 	padre.removeChild(el);
 }
 
-/**
- * Efectos para modalwindows
- */
-function curtain (idMw, intWidth, intHeight, cont){
-	/*
-	if (cont==0){
-   		document.getElementById(idMw).style.display ="";
-	}
-	
-	if(ie){ 
-	 temp = 15;
-	 cont += 10;
-	}else if(nc){  
-	  temp = 5;
-	  cont += 10;
-	}else if(n6){  
-	  temp = 5;
-	  cont += 20;
-	}
-	
-	if (cont<intHeight){
-      
-      if(ie){
-        document.all[idMw].style.height=cont;
-      }else if(nc){
-        document.layers[idMw].height=cont;
-      }else if(n6){
-        document.getElementById(idMw).style.height=cont;
-      }  	   	
-      
-	   setTimeout("curtain('"+idMw+"',"+intWidth+","+intHeight+","+cont+")",temp)
-	}
-	*/ 
-}   
 
-
-function desvanecer (idMw, intWidth, intHeight, cont){
-	/*
-	temp = 25;
-	
-	cont += 5;
-	
-	if(cont<101){
-		if (navigator.appVersion.indexOf("MSIE")!=-1){
-	   		document.getElementById(idMw).style.filter = "alpha(opacity="+(cont)+")";
-		}else{
-	   	    document.getElementById(idMw).style.opacity = cont/100;
-		}
-		setTimeout("desvanecer('"+idMw+"',"+intWidth+","+intHeight+","+cont+")",temp);
-	}
-	*/
-}
 
 /**
  * Drag and drop para modalWindow y messageBox
