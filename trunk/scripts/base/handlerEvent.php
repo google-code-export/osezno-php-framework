@@ -47,8 +47,10 @@
  		
  		$objMyForm->formHeight = 0;
  		
- 		//$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,400,1);
- 		$this->modalWindow('hola','The Code Machine',400,400,1);
+ 		//$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,400);
+ 		//$this->modalWindow('hola','The Code Machine',400,400);
+ 		
+ 		$this->messageBox(NULL,'Hola',array('Acpetar'=>NULL),'ERROR');
  		
  		return $this->response;
  	}

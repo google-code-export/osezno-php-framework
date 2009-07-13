@@ -647,27 +647,23 @@ class myController {
 		
 		if ($windth){
 			$tablaWidth = 'WIDTH: '.$windth.'px;';
-			//$tablaScroll = 'overflow:hidden;';
 		
 			if ($height){
 
 				$tablaHeight = 'HEIGHT: '.$height.'px;';
-				//$tablaScroll = 'overflow:hidden;';
 				
 				if ($effect){
 					switch ($arrayEffects[$effect]){
 						case 'curtain':
 					
-							//$tablaDisplay = 'display: none;';
+
 							$nameFuntionEffect = 'curtain'; 
 							$ini_height = 0;
 					
 							$tablaHeight = 'HEIGHT: 40px;';
 						break;
 						case 'ghost':
-							/*
-							$posF = 'father_';
-						
+							
 							if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
 								$tablaOpacity = 'filter: alpha(opacity=100);';
 							}else{
@@ -676,50 +672,13 @@ class myController {
 						
 							$nameFuntionEffect = 'desvanecer';
 							$ini_height = 0;
-							*/
+							
 						break;	
 					}
-				}//else{
-					
-					//$ini_height = $height;
-				//}
-		
+				}
 			}
 		}
 		
-		/*
-		$tabla.= '<table border="0" cellpadign="0" cellspacing="0">'."\n";
-		$tabla.= '<tr><td background="../../img/modal_window/top-left.png"></td><td background="../../img/modal_window/top-middle.png">'."\n";
-		
-		$tabla.= '<table border="0" cellpadign="0" cellspacing="0" width="100%"><tr>'."\n";
-		$tabla.= '<td width="5%"><img src="../../img/modal_window/huella.gif"></td>'."\n";
-		$tabla.= '<td width="5%" valign="middle" align="left" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'" class="'.$this->class_name_msg_ttl.'">'.$title.'</td>'."\n";
-		$tabla.= '<td width="5%" align="right"><a href="javascript:;" onclick="xajax.closeWindow(\'son_'.$divName.'\')"><img border="0" src="../../img/modal_window/button-close.png"></a></td>'."\n";
-		$tabla.= '</tr></table>'."\n";
-		
-		$tabla.= '</td><td background="../../img/modal_window/top-right.png">&nbsp;&nbsp;&nbsp;</td></tr>'."\n";
-		
-		$tabla.= '<tr><td background="../../img/modal_window/left.png">&nbsp;</td><td background="../../img/modal_window/gradient-bg.png">'."\n";
-		
-		$tabla.= '<table border="0" cellpadign="0" cellspacing="0" background="../../img/modal_window/gradient-bg.png">'."\n";
-		$tabla.= '<tr>'."\n";
-		$tabla.= '<td>'."\n";
-		//$tabla .= '<div id="son_'.$divName.'" style="'.$tablaWidth.$tablaHeight.$tablaScroll.$tablaDisplay.'">'.$htmlContent.'</div>';
-		$tabla .= '<div style="'.$tablaWidth.$tablaHeight.$tablaScroll.$tablaDisplay.'">'.$htmlContent.'</div>';
-		$tabla.= '</td>'."\n";
-		$tabla.= '</tr>'."\n";
-				
-		$tabla.= '</table></td><td background="../../img/modal_window/right.png">&nbsp;</td></tr>'."\n";
-		
-		$tabla.= '<tr><td background="../../img/modal_window/bottom-left.png" height="15"></td><td background="../../img/modal_window/bottom-middle.png"></td><td background="../../img/modal_window/bottom-right.png"></td></tr></table>'."\n";
-		
-		//$html = '<div id="father_'.$divName.'" style="'.$tablaOpacity.$tablaHeight.$tablaWidth.'margin:inherit;color:#999999;border:0px solid #000000;padding:0px">'."\n".
-		$html = '<div style="'.$tablaOpacity.$tablaHeight.$tablaWidth.'margin:inherit;color:#999999;border:0px solid #000000;padding:0px">'."\n".
-				$tabla.
-   				'</div>';
-   		
-		$tabla .= $htmlContent.'</td></tr></table>';
-		*/
 		$bgTl = 'background="../../img/modal_window/top-left.png"';
 		$bgTc = 'background="../../img/modal_window/top-middle.png"';
 		$bgTr = 'background="../../img/modal_window/top-right.png"';
@@ -743,7 +702,7 @@ class myController {
 		$htmlTitle .= '<tr><td width="5%" align="left">'.$srcOz.'</td><td width="90%" class="'.$this->class_name_msg_ttl.'">'.$title.'</td><td width="5%" align="rigth">'.$srcCw.'</td></tr>';
 		$htmlTitle .= '</table>';
 		
-		$html .= '<div id="'.$divName.'" style="overflow: hidden;'.$tablaWidth.$tablaHeight.$tablaDisplay.'">';
+		$html .= '<div id="'.$divName.'" style="overflow: hidden;'.$tablaWidth.$tablaHeight.$tablaDisplay.$tablaOpacity.'">';
 		$html .= '<table border="0" width="100%" height="100%" cellpadign="0" cellspacing="0">';
 		
 		$html .= '<tr><td '.$bgTl.' width="7" height="10">&nbsp;</td>';
@@ -790,7 +749,7 @@ class myController {
 	 * @param  array:  Arreglo de los botones que pueda tener la caja de mensaje 
 	 * @param  string: Icono que se va a mostra; INFO, WARNING, ERROR, QUESTION 
 	 */	
-	public function messageBox($strNomForm, $msg, $mixedButtons, $iconMsg){
+	public function messageBox($strNomForm = '', $msg = '', $mixedButtons = array(), $iconMsg = ''){
 		$objMyForm = new myForm;
 		$objMyForm->NomForm = $strNomForm;
 
@@ -823,38 +782,38 @@ class myController {
                   
 		$tabla = '';
 
-		$tabla.= '<span><table border="0" cellpadign="0" cellspacing="0">'."\n";
+		$tabla.= '<span><table border="0" cellpadign="0" cellspacing="0">';
 
-		$tabla.='<tr><td background="../../img/message_box/top-left.png"></td>'."\n";
-		$tabla.='<td background="../../img/message_box/top-middle.png" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">'."\n";
-		$tabla.='<table border="0" cellpadign="0" cellspacing="0"><tr><td width="5%"><img src="../../img/message_box/huella.gif"></td><td width="95%" class="'.$this->class_name_msg_ttl.'">'.$arrayTiposTitulos[$iconMsg].'</td>'."\n";
-		$tabla.='<td width="10%"><a href="javascript:;" onclick="xajax.closeWindow()"><img border="0" src="../../img/message_box/button-close.png"></a></td></tr></table></td>'."\n";
-		$tabla.='<td width="12" background="../../img/message_box/top-right.png"></td></tr>'."\n";
-		$tabla.='<tr><td background="../../img/message_box/left.png">&nbsp;</td><td background="../../img/message_box/gradient-bg.png">'."\n";
-		$tabla.='<table height="'.$height.'" width="'.($width).'" border="0" cellpadign="0" cellspacing="0" background="../../img/message_box/gradient-bg.png">'."\n";//
-		$tabla.= '<tr>'."\n";
-		$tabla.= '<td>&nbsp;</td>'."\n";
+		$tabla.='<tr><td background="../../img/message_box/top-left.png"></td>';
+		$tabla.='<td background="../../img/message_box/top-middle.png" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">';
+		$tabla.='<table border="0" cellpadign="0" cellspacing="0"><tr><td width="5%"><img src="../../img/message_box/huella.gif"></td><td width="95%" class="'.$this->class_name_msg_ttl.'">'.$arrayTiposTitulos[$iconMsg].'</td>';
+		$tabla.='<td width="10%"><a href="javascript:;" onclick="xajax.closeWindow()"><img border="0" src="../../img/message_box/button-close.png"></a></td></tr></table></td>';
+		$tabla.='<td width="12" background="../../img/message_box/top-right.png"></td></tr>';
+		$tabla.='<tr><td background="../../img/message_box/left.png">&nbsp;</td><td background="../../img/message_box/gradient-bg.png">';
+		$tabla.='<table height="'.$height.'" width="'.($width).'" border="0" cellpadign="0" cellspacing="0" background="../../img/message_box/gradient-bg.png">';
+		$tabla.= '<tr>';
+		$tabla.= '<td>&nbsp;</td>';
 		$tabla.= '<td valign="top">';
 
 				
-		$tabla.= '<table height="100%" border="0" cellpadign="0" cellspacing="0" border="0">'."\n";
-		$tabla.= '<tr>'."\n";
+		$tabla.= '<table height="100%" border="0" cellpadign="0" cellspacing="0" border="0">';
+		$tabla.= '<tr>';
 		if ($iconMsg){
-		   $tabla.= '    <td width="15%" align="center" valign="middle"><img src="'.$arrayTiposImagenes[$iconMsg].'"></td>'."\n";
-		   $tabla.= '    <td width="85%" valign="top"><div class="'.$this->class_name_msg_content.'">'.str_replace("\n",'<br>',$msg).'</div></td>'."\n";
+		   $tabla.= '<td width="15%" align="center" valign="middle"><img src="'.$arrayTiposImagenes[$iconMsg].'"></td>';
+		   $tabla.= '<td width="85%" valign="top"><div class="'.$this->class_name_msg_content.'">'.str_replace("\n",'<br>',$msg).'</div></td>';
 		}else{
-		   $tabla.= '    <td valign="top"><div style="vertical-align:top" class="'.$this->class_name_msg_content.'">'.str_replace("\n",'<br>',$msg).'</div></td>'."\n";	
+		   $tabla.= '<td valign="top"><div style="vertical-align:top" class="'.$this->class_name_msg_content.'">'.str_replace("\n",'<br>',$msg).'</div></td>';	
 		}
 
-		$tabla.= '</tr>'."\n";
+		$tabla.= '</tr>';
 		$tabla.= '</table>';
 				
-		$tabla.= '</td>'."\n";
-		$tabla.= '<td>&nbsp;</td>'."\n";
-		$tabla.= '</tr>'."\n";
+		$tabla.= '</td>';
+		$tabla.= '<td>&nbsp;</td>';
+		$tabla.= '</tr>';
 				
-		$tabla.= '<tr>'."\n";
-		$tabla.= '<td>&nbsp;</td>'."\n";
+		$tabla.= '<tr>';
+		$tabla.= '<td>&nbsp;</td>';
 		$tabla.= '<td align="center"><br><form id="message_box_buttons" name="message_box_buttons">';
 				
 		$primerButton = '';
@@ -875,19 +834,18 @@ class myController {
 		  }
 		}
 								
-		$tabla.= '</form></td>'."\n";
-		$tabla.= '<td>&nbsp;</td>'."\n";
-		$tabla.= '</tr>'."\n";
+		$tabla.= '</form></td>';
+		$tabla.= '<td>&nbsp;</td>';
+		$tabla.= '</tr>';
 				
-		$tabla.= '</table></td><td background="../../img/message_box/right.png">&nbsp;</td></tr><tr><td height="14" background="../../img/message_box/bottom-left.png"></td><td background="../../img/message_box/bottom-middle.png"></td><td background="../../img/message_box/bottom-right.png"></td></tr></table></span>'."\n";
+		$tabla.= '</table></td><td background="../../img/message_box/right.png">&nbsp;</td></tr><tr><td height="14" background="../../img/message_box/bottom-left.png"></td><td background="../../img/message_box/bottom-middle.png"></td><td background="../../img/message_box/bottom-right.png"></td></tr></table></span>';
 
-		$html = '<div id="message_box" >'."\n".//style="margin:inherit;background:#999999;color:#999999;border:1px solid #FFFFFF;padding:0px"
-				$tabla.
-   				'</div>';
+		$html = '<div id="message_box">'.$tabla.'</div>';
 				
-        $this->response->plugin('clsmodalWindow', 'addWindow',$html,'#000000',10);
-
-        $this->response->script('carga();');
+        $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $width, $height);
+		
+        
+        //$this->response->script('carga();');
 	            
         if ($primerButton)
    			$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
