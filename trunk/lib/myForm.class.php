@@ -317,7 +317,14 @@ class myForm {
 	 *
 	 * @var array
 	 */
-	private $arrayAttributesToReplaceInRow = array('widthEtq','widthFld','colSpanEtq','colSpanFld','rowSpanEtq','rowSpanFld');
+	private $arrayAttributesToReplaceInRow = array(
+		'widthEtq',
+		'widthFld',
+		'colSpanEtq',
+		'colSpanFld',
+		'rowSpanEtq',
+		'rowSpanFld'
+	);
 	
 	
 	/**
@@ -1002,7 +1009,7 @@ class myForm {
 	 * @param boolean $boolUseCache Usar o no cache en el formulario
 	 * @param integer $intSeconds   Numero de segundos en que la cache del formulario dura activa 
 	 */
-	public function __construct($nomForm, $Action = '', $jsScript = '', $enctype = '',  $target = '', $boolUseCache = '', $intSeconds = ''){
+	public function __construct($nomForm = '', $Action = '', $jsScript = '', $enctype = '',  $target = '', $boolUseCache = '', $intSeconds = ''){
 		$this->NomForm = $nomForm;
 
 		if ($Action)
@@ -2513,7 +2520,7 @@ class myForm {
 					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq><div name="e_'.$campos_f[1].'" id="e_'.$campos_f[1].'">'.$campos_f[2].'</div></td><td rowSpanFld colSpanFld widthFld class="'.$this->styleClass.'"><div name="c_'.$campos_f[1].'" id="c_'.$campos_f[1].'">'.$campos_f[3].'</div></td>'."\n";
 					break;
 				case 'coment':
-					$this->arrayFormElements[$campos_f[1]] = '<td  rowSpanEtq class="'.$this->styleClass.'" colSpanEtq>'.$campos_f[2].'</td>';
+					$this->arrayFormElements[$campos_f[1]] = '<td widthEtq rowSpanEtq class="'.$this->styleClass.'" colSpanEtq>'.$campos_f[2].'</td>';
 					break;
 				case 'checkbox':
 					$value = '0';
@@ -2636,6 +2643,16 @@ class myForm {
 								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.($numColSpan*2).'"','colspan="'.($numColSpan*2).'"','',''),$this->arrayFormElements[$nameField]);
 								break;
+							/**
+							 * TODO: Para revision
+							 */	
+							case 'coment':
+								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+								                  array('width="'.intval(($widthCol*$numColSpan)*2).'%"','','colspan="'.($numColSpan*2).'"','colspan="'.($numColSpan*2).'"','',''),$this->arrayFormElements[$nameField]);								
+								break;
+							/**
+							 * TODO: Para revision
+							 */		
 							default:
 								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.$numColSpan.'"','colspan="'.$numColSpan.'"','',''),$this->arrayFormElements[$nameField]);
@@ -2647,6 +2664,16 @@ class myForm {
 								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','colspan="2"','colspan="2"','',''),$this->arrayFormElements[$nameField]);
 								break;
+							/**
+							 * TODO: Para revision
+							 */	
+							case 'coment':
+								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+								                  array ('width="'.intval($widthCol*2).'%"','','','','',''),$this->arrayFormElements[$nameField]);								
+								break;
+							/**
+							 * TODO: Para revision
+							 */		
 							default:
 								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','','','',''),$this->arrayFormElements[$nameField]);
@@ -2816,11 +2843,11 @@ class myForm {
 		$buf.='<button '.$this->checkIsHelping($this->idButtonSubmit).' '.$this->checkIfIsDisabled($this->idButtonSubmit).' value="'.trim(strip_tags($this->strSubmit)).'" class="'.$this->styleClassButtons.'" type="submit" name="'.$this->idButtonSubmit.'" id="'.$this->idButtonSubmit.'" ';
 		
 		$jsFunctionFB = $this->jsFunctionEvent;
-		
+
+		$strMixedParams = '';
 		if (stripos($jsFunctionFB,':')!==false){
 						
 			$mixedExtParams = array();
-  			$strMixedParams = '';
 		  		
   			$intCountPrm = count($mixedExtParams = split(':',$jsFunctionFB));
   			$iExtParams = 0;
