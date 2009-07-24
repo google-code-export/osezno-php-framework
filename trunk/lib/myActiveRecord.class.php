@@ -729,7 +729,11 @@ class myActiveRecord {
 							$sql .= $this->$field.', ';
 						}else{
 							
-							$sql .= '\''.addslashes($this->$field).'\', ';
+							if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
+								$sql .= 'NULL, ';
+							else
+								$sql .= '\''.addslashes($this->$field).'\', ';
+								
 						}						
 					}
 
