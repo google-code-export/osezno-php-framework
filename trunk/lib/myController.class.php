@@ -782,15 +782,30 @@ class myController {
                   
 		$tabla = '';
 
+		$bgTl = 'background="../../img/message_box/top-left.png"';
+		$bgTc = 'background="../../img/message_box/top-middle.png"';
+		$bgTr = 'background="../../img/message_box/top-right.png"';
+		
+		$bgMl = 'background="../../img/message_box/left.png"';
+		$bgMc = 'background="../../img/message_box/gradient-bg.png"';
+		$bgMr = 'background="../../img/message_box/right.png"';
+		
+		$bgDl = 'background="../../img/message_box/bottom-left.png"';
+		$bgDc = 'background="../../img/message_box/bottom-middle.png"';
+		$bgDr = 'background="../../img/message_box/bottom-right.png"';
+		
+		$srcCw = '<a href="javascript:;" onclick="closeModalWindow()"><img border="0" src="../../img/message_box/button-close.png"></a>';
+		$srcOz = '<img border="0" src="../../img/message_box/huella.gif">';
+		
+		
 		$tabla.= '<span><table border="0" cellpadign="0" cellspacing="0">';
-
-		$tabla.='<tr><td background="../../img/message_box/top-left.png"></td>';
-		$tabla.='<td background="../../img/message_box/top-middle.png" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">';
-		$tabla.='<table border="0" cellpadign="0" cellspacing="0"><tr><td width="5%"><img src="../../img/message_box/huella.gif"></td><td width="95%" class="'.$this->class_name_msg_ttl.'">'.$arrayTiposTitulos[$iconMsg].'</td>';
-		$tabla.='<td width="10%"><a href="javascript:;" onclick="xajax.closeWindow()"><img border="0" src="../../img/message_box/button-close.png"></a></td></tr></table></td>';
-		$tabla.='<td width="12" background="../../img/message_box/top-right.png"></td></tr>';
-		$tabla.='<tr><td background="../../img/message_box/left.png">&nbsp;</td><td background="../../img/message_box/gradient-bg.png">';
-		$tabla.='<table height="'.$height.'" width="'.($width).'" border="0" cellpadign="0" cellspacing="0" background="../../img/message_box/gradient-bg.png">';
+		$tabla.='<tr><td '.$bgTl.'></td>';
+		$tabla.='<td '.$bgTc.' onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">';
+		$tabla.='<table border="0" cellpadign="0" cellspacing="0"><tr><td width="5%">'.$srcOz.'</td><td width="95%" class="'.$this->class_name_msg_ttl.'">'.$arrayTiposTitulos[$iconMsg].'</td>';
+		$tabla.='<td width="10%">'.$srcCw.'</td></tr></table></td>';
+		$tabla.='<td width="20" '.$bgTr.'>&nbsp;&nbsp;&nbsp;</td></tr>';
+		$tabla.='<tr><td '.$bgMl.'>&nbsp;</td><td '.$bgMc.'>';
+		$tabla.='<table height="'.$height.'" width="'.($width).'" border="0" cellpadign="0" cellspacing="0" '.$bgMc.'>';
 		$tabla.= '<tr>';
 		$tabla.= '<td>&nbsp;</td>';
 		$tabla.= '<td valign="top">';
@@ -820,7 +835,7 @@ class myController {
 		if (is_array($mixedButtons)){
 		  foreach($mixedButtons as $etq=>$action){
 		  	if (!$action)
-		  	 $action = 'xajax.closeWindow()';
+		  	 $action = 'closeModalWindow()';
 		  	$nameButton = 'bmbx_'.strtolower(trim($etq)); 
 				  	
 		  	$objMyForm->styleClassButtons = $this->class_name_msg_buttons;
@@ -838,15 +853,12 @@ class myController {
 		$tabla.= '<td>&nbsp;</td>';
 		$tabla.= '</tr>';
 				
-		$tabla.= '</table></td><td background="../../img/message_box/right.png">&nbsp;</td></tr><tr><td height="14" background="../../img/message_box/bottom-left.png"></td><td background="../../img/message_box/bottom-middle.png"></td><td background="../../img/message_box/bottom-right.png"></td></tr></table></span>';
+		$tabla.= '</table></td><td '.$bgMr.'>&nbsp;</td></tr><tr><td height="14" '.$bgDl.'></td><td '.$bgDc.'></td><td '.$bgDr.'></td></tr></table></span>';
 
 		$html = '<div id="message_box">'.$tabla.'</div>';
 				
         $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $width, $height);
 		
-        
-        //$this->response->script('carga();');
-	            
         if ($primerButton)
    			$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
 	}

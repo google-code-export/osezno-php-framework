@@ -720,7 +720,6 @@ class myForm {
 	public $SWF_file_queue_limit = 10;
 
 
-
 	/**
 	 * Url en donde se encuentra el
 	 * SWF que permite la carga  de
@@ -730,14 +729,48 @@ class myForm {
 	 */
 	public $SWF_flash_url = '';
 
+	
+	/**
+	 * Url de la imagen que por defecto 
+	 * se va a cargar como base para
+	 * dibujar el boton de carga de archivos.
+	 * 
+	 * @var string
+	 */
+	public $SWF_button_image_url = '../../img/my_form/file/XPButtonUploadText_61x22.png';
+	
+	
+	/**
+	 * Id del span donde el button
+	 * se va a alojar.
+	 * 
+	 * @var string
+	 */
+	public $SWF_button_placeholder_id = 'spanButtonPlaceholder';
+	
+	
+	/**
+	 * Ancho del boton en px en el formulario
+	 * 
+	 * @var integer
+	 */
+	public $SWF_button_width = 100;
 
+	
+	/**
+	 * Alto del boton en px en el formulario
+	 * 
+	 * @var integer
+	 */
+	public $SWF_button_height = 22;
+	
+	
 	/**
 	 * Ancho de el tamano del flash.
 	 *
 	 * @var string
 	 */
 	public $SWF_flash_width = '0px';
-
 
 
 	/**
@@ -754,7 +787,6 @@ class myForm {
 	 * @var string
 	 */
 	public $SWF_flash_color = 'FFFFFF';
-
 
 
 	/**
@@ -1095,7 +1127,13 @@ class myForm {
 		//$JS.= 'upload_start_handler: '.$this->SWF_upload_start_handler.','."\n";
 		//$JS.= 'debug_handler: '.$this->SWF_debug_handler.','."\n";
 
-
+		$JS.= '// Button Settings'."\n";
+		$JS.= "\t".'button_image_url : "'.$this->SWF_button_image_url.'",'."\n";
+		$JS.= "\t".'button_placeholder_id : "'.$this->SWF_button_placeholder_id.'",'."\n";
+		$JS.= "\t".'button_width: '.$this->SWF_button_width.','."\n";
+		$JS.= "\t".'button_height: '.$this->SWF_button_height.','."\n";
+		
+		
 		$JS.= '//Flash Settings'."\n";
 		$JS.= "\t".'flash_url: "'.$this->SWF_flash_url.'",'."\n";
 		$JS.= "\t".'flash_width: "'.$this->SWF_flash_width.'",'."\n";
@@ -2182,7 +2220,7 @@ class myForm {
 	 * @param string  $file_types_description  Descripcion de los tipos de archivos que se pueden subir
 	 * @param integer $file_size_limit         Limite de tamano por archivo que se puede subir
 	 */
-	public function addFile ($etq, $name, $upload_url, $flash_url, $file_types = '', $file_types_description = '', $file_size_limit = ''){
+	public function addFile ($etq, $name, $upload_url, $flash_url = '../../swf/swfupload.swf', $file_types = '', $file_types_description = '', $file_size_limit = ''){
 		$name = $this->getColspanRowspan($name);
 		if ($file_types && is_array($file_types))
 		$this->SWF_file_types = $file_types;
@@ -2445,7 +2483,8 @@ class myForm {
 					else
 					$SWFonClick = "swfu.selectFile();";
 
-					$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
+					//$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
+					$bufTemp .= '<span id="spanButtonPlaceholder">';
 
 					if ($this->SWF_src_img_button)
 					$bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SWF_src_img_button.'" border="0">';
@@ -2462,7 +2501,8 @@ class myForm {
 	       				$maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
 	    			}	   
 					
-					$bufTemp .= $this->SWF_str_etq_button.$maxInfoSize.'</button><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
+					//$bufTemp .= $this->SWF_str_etq_button.$maxInfoSize.'</button><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
+					$bufTemp .= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
 					$bufTemp .= '</td>'."\n";
 
 					$this->arrayFormElements[$campos_f[2]] = $bufTemp;
