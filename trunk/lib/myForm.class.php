@@ -737,7 +737,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_button_image_url = '../../img/my_form/file/XPButtonUploadText_61x22.png';
+	public $SWF_button_image_url = '../../img/my_form/file/XPButtonNoText_160x22.png';
 	
 	
 	/**
@@ -754,7 +754,7 @@ class myForm {
 	 * 
 	 * @var integer
 	 */
-	public $SWF_button_width = 100;
+	public $SWF_button_width = 160;
 
 	
 	/**
@@ -952,7 +952,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_str_etq_button = 'Examinar y subir';
+	public $SWF_str_etq_button = 'Examinar';
 
 
 	/**
@@ -1128,11 +1128,46 @@ class myForm {
 		//$JS.= 'debug_handler: '.$this->SWF_debug_handler.','."\n";
 
 		$JS.= '// Button Settings'."\n";
+		$JS.= "\t".'button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,'."\n";
+		$JS.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
+		
+		
 		$JS.= "\t".'button_image_url : "'.$this->SWF_button_image_url.'",'."\n";
 		$JS.= "\t".'button_placeholder_id : "'.$this->SWF_button_placeholder_id.'",'."\n";
 		$JS.= "\t".'button_width: '.$this->SWF_button_width.','."\n";
 		$JS.= "\t".'button_height: '.$this->SWF_button_height.','."\n";
 		
+		if ($this->SWF_upload_several_files == true)
+			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILES,'."\n";
+		else
+			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILE,'."\n";
+		
+		$JS.= "\t".'button_text : \'<span class="btnText">'.$this->SWF_str_etq_button.' ';
+
+		/**
+		 * Deprecated
+		if ($this->SWF_src_img_button)
+			$JS.= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SWF_src_img_button.'" border="0">';
+		*/
+		$maxInfoSize = '';
+		$maxFileSizeUpload = '';
+		   
+	    if ($this->SWF_show_max_upload_size_info_in_button){
+	    	if ($this->SWF_file_size_limit<1024){
+	    		$maxFileSizeUpload = $this->SWF_file_size_limit.' Kb';
+	    	}else if ($this->SWF_file_size_limit<1048576){
+	    	   	$maxFileSizeUpload = number_format($this->SWF_file_size_limit/1024,2).' Mb';
+	    	}else{
+      		   	$maxFileSizeUpload = number_format($this->SWF_file_size_limit/1048576,2).' Gb';
+	    	}
+	       	$maxInfoSize = '('.$maxFileSizeUpload.')';
+	    }	   
+			
+			
+		$JS.= $maxInfoSize.'</span>\','."\n";
+		$JS.= "\t".'button_text_style : ".btnText { text-align: center; font-size: 9; font-weight: bold; font-family: MS Shell Dlg; }",'."\n";
+		$JS.= "\t".'button_text_top_padding : 3,'."\n";
+		$JS.= "\t".'button_text_left_padding : 0,'."\n"; 		
 		
 		$JS.= '//Flash Settings'."\n";
 		$JS.= "\t".'flash_url: "'.$this->SWF_flash_url.'",'."\n";
