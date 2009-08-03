@@ -1109,7 +1109,7 @@ class myForm {
 		}
 		$JS.= '",'."\n";
 		$JS.= "\t".'file_types_description: "'.$this->SWF_file_types_description.'",'."\n";
-		$JS.= "\t".'file_upload_limit: "'.$this->SWF_file_upload_limit.'",'."\n";
+		$JS.= "\t".'file_upload_limit: '.$this->SWF_file_upload_limit.','."\n";
 		$JS.= "\t".'file_queue_limit: '.$this->SWF_file_queue_limit.','."\n";
 			
 		$JS.= '//Event Handler Settings - these functions as defined in Handlers.js'."\n";
