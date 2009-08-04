@@ -717,7 +717,7 @@ class myForm {
 	 *
 	 * @var integer
 	 */
-	public $SWF_file_queue_limit = 10;
+	private $SWF_file_queue_limit = 0;
 
 
 	/**
@@ -961,7 +961,7 @@ class myForm {
 	 *
 	 * @var boolean
 	 */
-	private $SWF_upload_several_files = false;
+	public $SWF_upload_several_files = false;
 
 
 	# Atributos de inicio de configuracion para el editor FCKeditor
@@ -2289,12 +2289,7 @@ class myForm {
 	public function getFile ($name){
 		$buf = '';
 
-		if ($this->SWF_upload_several_files == true)
-		$SWFonClick = "swfu.selectFiles();";
-		else
-		$SWFonClick = "swfu.selectFile();";
-
-		$buf.='<button '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassButtons.'" id="'.$name.'" type="button"  onclick="'.$SWFonClick.'">';
+		$buf.='<span id="spanButtonPlaceholder">';
 		
 		if ($this->SWF_src_img_button)
 		   $buf.='<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SWF_src_img_button.'" border="0">';
@@ -2311,7 +2306,7 @@ class myForm {
 	       $maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
 	    }	   
 		   
-		$buf.=$this->SWF_str_etq_button.$maxInfoSize."</button><div style=\"text-align: left;\" class=\"".$this->styleClassTags."\" id=\"div_file_progress\" name=\"div_file_progress\"></div>";
+		$buf.= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
 		$this->arrayFormElementType[$name] = 'file';
 
 		return $buf;
@@ -2513,16 +2508,11 @@ class myForm {
 				case 'file':
 					$bufTemp = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld>';
 
-					if ($this->SWF_upload_several_files == true)
-					$SWFonClick = "swfu.selectFiles();";
-					else
-					$SWFonClick = "swfu.selectFile();";
-
 					//$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
 					$bufTemp .= '<span id="spanButtonPlaceholder">';
 
 					if ($this->SWF_src_img_button)
-					$bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SWF_src_img_button.'" border="0">';
+						$bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SWF_src_img_button.'" border="0">';
 
 					$maxInfoSize = '';   
 	    			if ($this->SWF_show_max_upload_size_info_in_button){
