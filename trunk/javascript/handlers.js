@@ -138,57 +138,65 @@ function fileQueueError(file, errorCode, message) {
 function fileDialogComplete(numFilesSelected, numFilesQueued) {
 	try {
 		
-		archSel = numFilesSelected;
-		
-		//alert("Se seleccionaron "+numFilesSelected+" y hay "+numFilesQueued+" en cola");		
-		
-		
-		 var Tam = TamVentanaFunc();
+		archSel = numFilesQueued;
+		if (numFilesQueued){
+			//alert("Se seleccionaron "+numFilesSelected+" y hay "+numFilesQueued+" en cola");		
+			var Tam = TamVentanaFunc();
 			
-	     var miCapa = document.createElement('DIV');
-	     miCapa.id = 'SWF_file_upload';
+			var miCapa = document.createElement('DIV');
+			miCapa.id = 'SWF_file_upload';
 	     
-	     document.body.appendChild(miCapa);
+			document.body.appendChild(miCapa);
 	     
-	     miCapa.style.color = '#FFFFFF';
-	     miCapa.style.backgroundColor = '#000000';
-	     miCapa.style.position = 'absolute';
-	     
-		 miCapa.style.zIndex = 5000;
-		 miCapa.style.top    = '0';
-		 miCapa.style.left   = '0';
-		 miCapa.style.width	 = (Tam[0] + 'px');	 
-		 miCapa.style.height = (Tam[1] + 'px');
-		 miCapa.style.minHeight	= '100%';
-		 miCapa.style.display='block';
+			miCapa.style.color = '#FFFFFF';
+			miCapa.style.backgroundColor = '#000000';
+			miCapa.style.position = 'absolute';
+			miCapa.style.zIndex = 5000;
+			miCapa.style.top    = '0';
+			miCapa.style.left   = '0';
+			miCapa.style.width	 = (Tam[0] + 'px');	 
+			miCapa.style.height = (Tam[1] + 'px');
+			miCapa.style.minHeight	= '100%';
+			miCapa.style.display='block';
 		 
-		 if (navigator.appVersion.indexOf("MSIE")!=-1){
-			miCapa.style.filter = "alpha(opacity=" + 10 + ")";
-		 }else{
-			miCapa.style.opacity = ( 10 / 100 );
-		 }
+			if (navigator.appVersion.indexOf("MSIE")!=-1){
+				miCapa.style.filter = "alpha(opacity=" + 10 + ")";
+			}else{
+				miCapa.style.opacity = ( 10 / 100 );
+			}
 		 
-	     var miImagen = document.createElement('DIV');
-	     miImagen.id = 'SWF_file_upload_imagen';
-	     
-	     document.body.appendChild(miImagen);
-	     
-	     miImagen.style.position = 'absolute';
-	     
-		 miImagen.style.zIndex = 5001;
-		 miImagen.style.top    = '0';
-		 miImagen.style.left   = '0';
-		 miImagen.style.width	 = (Tam[0] + 'px');	 
-		 miImagen.style.height = (Tam[1] + 'px');
-		 miImagen.style.minHeight	= '100%';
-		 miImagen.style.display='block';
+			var miImagen = document.createElement('DIV');
+			miImagen.id = 'SWF_file_upload_imagen';
+			document.body.appendChild(miImagen);
+			miImagen.style.position = 'absolute';
+			miImagen.style.zIndex = 5001;
+			miImagen.style.height	= '50px';
+			miImagen.style.width	= '400px';
+			miImagen.style.display='block';
+			miImagen.style.top  = Math.max(((Tam[1] - 50) / 2),0) + 'px';
+			miImagen.style.left = Math.max(((Tam[0] - 400) / 2),0) + 'px';		 
 		 
-	     miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/uploading.gif"><font face="arial" size="1" color="white"><div id="SWF_file_upload_progress_wraper" style="width:200px; background:#C0C0FF none repeat scroll 0% 0%; border: #000000 1px solid;" align="left"><div id="SWF_file_upload_progress" style="width:0px; background:#8080FF none repeat scroll 0% 0%;" align="left"></div></div></font></td></tr></table>';	
+			miImagen.innerHTML = 
+	    	 '<div id="SWF_file_upload_progress_wraper" style="width:400px;heigth:50px; background:#C0C0FF none repeat scroll 0% 0%; border: #000000 1px solid;" align="left">'+
+	    	 '<div id="SWF_file_upload_progress" style="width:0px;heigth:50px; background:#8080FF none repeat scroll 0% 0%;" align="left">&nbsp;</div></div>';
+	    	 
+	     
+			var miCapaProgress = document.createElement('DIV');
+			miCapaProgress.id = 'SWF_file_upload_progress_percent';
+			document.body.appendChild(miCapaProgress);
+			miCapaProgress.style.position = 'absolute';
+			miCapaProgress.style.zIndex = 5002;
+			miCapaProgress.style.height	= '50px';
+			miCapaProgress.style.width	= '400px';
+			miCapaProgress.style.display='block';
+			miCapaProgress.style.top  = Math.max(((Tam[1] - 50) / 2),0) + 'px';
+			miCapaProgress.style.left = Math.max(((Tam[0] - 400) / 2),0) + 'px';
+	     
+			miCapaProgress.innerHTML = '<font face="arial" size="2" color="white"><div id="SWF_file_upload_progress_percent_content" style="width:100%" align="center"></div></font>';
 		
-		
-		/* I want auto start the upload and I can do that here */
-		this.startUpload();
-
+			/* I want auto start the upload and I can do that here */
+			this.startUpload();
+			}
 		
 	} catch (ex)  {
         this.debug(ex);
@@ -202,13 +210,13 @@ function uploadProgress(fileObj, bytesLoaded, bytesTotal) {
 		
 		if (percent === 100) {
 		
-		     document.getElementById("SWF_file_upload_progress").innerHTML = (archUp+1)+" de "+archSel+" 100%";
+		     document.getElementById("SWF_file_upload_progress_percent_content").innerHTML = (archUp+1)+" de "+archSel+" "+fileObj.name+" (100%)";
 
   	            		
 		} else {
 		
-		     document.getElementById("SWF_file_upload_progress").style.width = (percent*2)+"px";
-		     document.getElementById("SWF_file_upload_progress").innerHTML = (archUp+1)+" de "+archSel+" "+percent+"%";
+		     document.getElementById("SWF_file_upload_progress").style.width = (percent*4)+"px";
+		     document.getElementById("SWF_file_upload_progress_percent_content").innerHTML = (archUp+1)+" de "+archSel+" "+fileObj.name+" ("+percent+"%)";
 		     
 		}
 		
@@ -218,7 +226,7 @@ function uploadProgress(fileObj, bytesLoaded, bytesTotal) {
 function uploadSuccess(file, serverData) {
 
     document.getElementById("SWF_file_upload_progress").style.width = "0px";
-    document.getElementById("SWF_file_upload_progress").innerHTML = (archUp+1)+" de "+archSel+" 0%";
+    document.getElementById("SWF_file_upload_progress_percent_content").innerHTML = (archUp+1)+" de "+archSel+" "+file.name+" (0%)";
 
 }
 
@@ -253,11 +261,15 @@ function uploadStart (file) {
 function clearDiv (){
     var el = document.getElementById('SWF_file_upload');
     var padre = el.parentNode;
-padre.removeChild(el);
+    padre.removeChild(el);
 
     var el = document.getElementById('SWF_file_upload_imagen');
     var padre = el.parentNode;
-padre.removeChild(el); 
+    padre.removeChild(el); 
+
+	var el = document.getElementById('SWF_file_upload_progress_percent');
+	var padre = el.parentNode;
+	padre.removeChild(el); 
 }
 
 function uploadError (file, errorCode, message) {
