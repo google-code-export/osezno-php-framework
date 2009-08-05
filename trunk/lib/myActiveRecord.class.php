@@ -1122,6 +1122,7 @@ class myActiveRecord {
 	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0){
 		$results = array();	
 		$sql = '';
+		$fCnd = '';
 		
 		$subSqlF = $this->getStringSqlFields($this->table);
 			

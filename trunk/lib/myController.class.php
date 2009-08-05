@@ -136,7 +136,7 @@ class myController {
 	 * Destructor de la clase
 	 *
 	 */
-	private function __destruct (){
+	public function __destruct (){
 		 
 	}
 
@@ -767,14 +767,14 @@ class myController {
 		  'QUESTION' => 'Toma de decisión',
 		  '' => 'Mensaje del Sistema'
 		);
-				
+
 		if (!$this->widthMessageBox)
 		  $width = 450;
 		else  
 		  $width = $this->widthMessageBox;
 				  
 		if (!$this->heightMessageBox){
-             $height = intval(strlen($params[1])/55)*23;
+             $height = intval(strlen($msg)/55)*23;
                  if ($height<100)
                    $height = 100;
 		}else

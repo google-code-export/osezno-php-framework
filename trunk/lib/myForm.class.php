@@ -1623,14 +1623,15 @@ class myForm {
 	 */
 	public function getButton ($strName, $strLabel, $jsFunction = '', $strSrcImg = ''){
 		$buf = '';
-
+		$strMixedParams = '';
+		
 		$buf.='<button '.$this->checkIfIsDisabled($strName).' '.$this->checkIsHelping($strName).' value="'.strip_tags($strLabel).'" class="'.$this->styleClassButtons.'" type="button" name="'.$strName.'" id="'.$strName.'" ';
 		if ($jsFunction){
 			
 			if (stripos($jsFunction,':')!==false){
 				
 		  		$mixedExtParams = array();
-		  		$strMixedParams = '';
+		  		
 		  		
 		  		$intCountPrm = count($mixedExtParams = split(':',$jsFunction));
 		  		$i = 0;
@@ -2269,7 +2270,7 @@ class myForm {
 		$this->SWF_upload_url = $upload_url;
 		$this->SWF_flash_url  = $flash_url;
 
-		$Cadena   = 'file'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
+		$Cadena   = 'file'.$this->Separador.$etq.$this->Separador.$name;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->uploaderIdArray[] = $name;
 
