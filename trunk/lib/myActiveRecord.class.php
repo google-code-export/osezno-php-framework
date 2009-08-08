@@ -218,7 +218,7 @@ class myActiveRecord {
 	 */
 	public function __destruct(){
 			
-		$this->closeConecction();
+		//$this->closeConecction();
 	}
 
 	/**************/
@@ -490,7 +490,7 @@ class myActiveRecord {
 			
 		switch ($this->engine){
 			case 'mysql':
-				mysqli_query($this->link, $sql = "START TRANSACTION;");
+				mysql_query($sql = "START TRANSACTION;", $this->link);
 					
 				break;
 			case 'postgre':
@@ -513,9 +513,9 @@ class myActiveRecord {
 		switch($this->engine){
 			case 'mysql':
 				if (!trim($GLOBALS['OF_SQL_LOG_ERROR']))
-				    mysqli_query($this->link, $sql = "COMMIT;");
+				    mysql_query($sql = "COMMIT;", $this->link);
 				else{
-					mysqli_query($this->link, $sql = "ROLLBACK;");
+					mysql_query($sql = "ROLLBACK;", $this->link);
 						
 					$exito = false;
 				}
@@ -556,10 +556,10 @@ class myActiveRecord {
 		
 		switch ($this->engine){
 			case 'mysql':
-				$res   =  mysqli_query ($this->link ,$sql);
+				$res   =  mysql_query ($sql, $this->link);
 				$id    =  0;
 					
-				while ($array[$id] =  mysqli_fetch_array($res)){
+				while ($array[$id] =  mysql_fetch_array($res)){
 					$id ++;
 				}
 					
@@ -571,7 +571,7 @@ class myActiveRecord {
 					   unset($array[$i]);
 				}
 					
-				mysqli_free_result ($res);
+				mysql_free_result ($res);
 				break;
 			case 'postgre':
 				$res = pg_query ($this->link, $sql);
@@ -890,16 +890,16 @@ class myActiveRecord {
 			
 		switch ($this->engine){
 			case 'mysql':
-				$res = mysqli_query ($this->link, $sql);
+				$res = mysql_query ($sql, $this->link);
 
-				$iRwsAf = mysqli_affected_rows($this->link);
+				$iRwsAf = mysql_affected_rows($this->link);
 
 				if ($iRwsAf==-1)
 				   $out = 0;
 				else
 				   $out = $iRwsAf;
 
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysqli_error($this->link)."\n";
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
 				break;
 			case 'postgre':
 				$sqlI = $sql;
@@ -934,16 +934,16 @@ class myActiveRecord {
 			
 		switch ($this->engine){
 			case 'mysql':
-				$res = mysqli_query ($this->link, $sql);
+				$res = mysql_query ($sql, $this->link);
 					
-				$iRwsAf = mysqli_affected_rows($this->link);
+				$iRwsAf = mysql_affected_rows($this->link);
 					
 				if ($iRwsAf==-1)
 				   $out = 0;
 				else
 				   $out = $iRwsAf;
 
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysqli_error($this->link)."\n";
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
 				break;
 			case 'postgre':
 					
@@ -1028,16 +1028,16 @@ class myActiveRecord {
 			
 		switch ($this->engine){
 			case 'mysql':
-				$res = mysqli_query ($this->link, $sql);
+				$res = mysql_query ($sql, $this->link);
 					
-				$iRwsAf = mysqli_affected_rows($this->link);
+				$iRwsAf = mysql_affected_rows($this->link);
 					
 				if ($iRwsAf==-1)
 				   $out = 0;
 				else
 				   $out = $iRwsAf;
 
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysqli_error($this->link)."\n";
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
 				break;
 			case 'postgre':
 				$res = pg_query ($this->link, $sql = str_replace('"',"'",$sql));
@@ -1070,12 +1070,12 @@ class myActiveRecord {
 					
 				$sql = 'SELECT last_insert_id() AS current_value; ';
 					
-				$rows = mysqli_fetch_array(
-				mysqli_query($this->link,$sql));
+				$rows = mysql_fetch_array(
+				mysql_query($sql, $this->link));
 					
 				$this->lastInserId = $rows['current_value'];
 					
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysqli_error($this->link)."\n";
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
 					
 				break;
 			case 'postgre':
@@ -1411,16 +1411,22 @@ class myActiveRecord {
 	public function openConecction (){
 		switch ($this->engine){
 			case 'mysql':
-				$this->link = new mysqli(
+				$this->link = mysql_connect(
 				   $this->host,
 				   $this->user,
-				   $this->password,
-				   $this->database
+				   $this->password		   
 				);
-				if (mysqli_connect_errno()) {
-
-					$GLOBALS['OF_SQL_LOG'].="MySQL: Connect failed: ".mysqli_connect_error();
-					
+				
+				if (!$this->link) {
+					$GLOBALS['OF_SQL_LOG'].="MySQL: Connect failed: ".mysql_error();
+				}else{
+					$this->successfulConnect = true;
+				}
+				
+				$db_selected = mysql_select_db($this->database, $this->link);
+				
+				if (!$db_selected) {
+					$GLOBALS['OF_SQL_LOG'].="MySQL: Connect failed: ".mysql_error();
 				}else{
 					$this->successfulConnect = true;
 				}
@@ -1458,10 +1464,12 @@ class myActiveRecord {
 			
 		switch($this->engine){
 			case 'mysql':
-				mysqli_close($this->link);
+				if ($this->link)
+					mysql_close($this->link);
 				break;
 			case 'postgres':
-				pg_close ($this->link);
+				if ($this->link)
+					pg_close ($this->link);
 				break;
 		}
 	}
