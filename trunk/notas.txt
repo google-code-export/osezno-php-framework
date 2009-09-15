@@ -21,3 +21,5 @@ Notas sobre version de Osezno-Framework
   Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 755
   Oscar aldana participa activamente en svn
   
+  
+Arreglar:  Revision, los errores de consultas manuales generadas por medio del metodo query pueden ser seguidas de cerca sobre errores de jecucion y po lo tanto deben abortar las transacciones q sean sus mentoras
