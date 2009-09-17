@@ -23,3 +23,6 @@ Notas sobre version de Osezno-Framework
   
   
 Arreglar:  Revision, los errores de consultas manuales generadas por medio del metodo query pueden ser seguidas de cerca sobre errores de jecucion y po lo tanto deben abortar las transacciones q sean sus mentoras
+
+Modificar el metodo query para obtener el numero de registros afectados por la anterior
+consulta, este resultado no debe depender se si se trata un SELECT, UPDATE, INSERT o DELETE
