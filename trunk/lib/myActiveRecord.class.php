@@ -85,11 +85,11 @@ class myActiveRecord {
 	private $table;
 
 	/**
-	 * Enlace de conexion a la base de datos
+	 * Objeto de conexion a la base de datos
 	 *
 	 * @var resourse
 	 */
-	private $link;
+	private $dbh;
 
 	/**
 	 * Comprueba el estado boleano de si
@@ -111,8 +111,17 @@ class myActiveRecord {
 	 *
 	 * @var integer
 	 */
-	private $num_rows;
+	public $num_rows;
 
+	/**
+	 * Numero entero de campos afectados
+	 * por la ultima consulta select a la
+	 * base de datos.
+	 *  
+	 * @var intger
+	 */
+	private $num_cols;
+	
 
 	/*********************/
 	/* Variables de obra */
@@ -204,6 +213,7 @@ class myActiveRecord {
 		$this->openConecction();
 			
 		if (strcmp($this->table = get_class($this),'myActiveRecord')){
+			
 			if (!isset($this->tableStruct[$this->table]))
 			   $this->getMetaDataTable($this->table);
 		}
@@ -459,10 +469,22 @@ class myActiveRecord {
 	 *
 	 * @return integer
 	 */
-	public function getAfectedRows(){
+	public function getAffectedRows (){
 			
 		return $this->num_rows;
 	}
+	
+	/**
+	 * Obtiene el numero de campos afectados
+	 * por la ultima consulta.
+	 * 
+	 * @return integer
+	 */
+	public function getNumFieldsAffected (){
+		
+		return $this->num_cols;
+	}
+	
 
 	/**
 	 * Obtiene el valor del indice
@@ -549,53 +571,32 @@ class myActiveRecord {
 	 * @param string $sql
 	 */
 	public function query ($sql, $saveInLog = true){
+		
 		if ($saveInLog)
 			$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
 			
 		$array = array();
+		$resQuery = $this->dbh->query($sql);
 		
-		switch ($this->engine){
-			case 'mysql':
-				$res   =  mysql_query ($sql, $this->link);
-				$id    =  0;
-					
-				while ($array[$id] =  mysql_fetch_array($res)){
-					$id ++;
-				}
-					
-				$count = count($array);
-				
-				for ($i=0; $i<$count;$i++){
-
-					if (!is_array($array[$i]))
-					   unset($array[$i]);
-				}
-					
-				mysql_free_result ($res);
-				break;
-			case 'postgre':
-				$res = pg_query ($this->link, $sql);
-
-				$id  =  0;
-				while ($array[$id] = pg_fetch_array ($res)){
-					$id ++;
-				}
-					
-				$count = count($array);
-				
-				for ($i=0; $i<$count;$i++){
-					
-					if (!is_array($array[$i]))
-					   unset($array[$i]);
-					
-				}
-					
-				pg_free_result ($res);
-				break;
+		if (!$resQuery){
+			$eError = array ();
+			$eError = $this->dbh->errorInfo();
+			$GLOBALS['OF_SQL_LOG_ERROR'] = $eError[2];
+		}else{
+			$cadenaSelect = 'select ';
+			$pos = stripos($sql, $cadenaSelect);
+		
+			if ($pos === false){
+				$this->num_rows = $resQuery->rowCount();			
+			}else{
+				$this->num_rows = 0;
+				foreach ($resQuery as $row){
+					$array[] = $this->buildRes($row);
+					$this->num_rows++;	
+				}	
+			}
 		}
-			
-		$this->num_rows = count ($array);
-			
+		
 		return $array;
 	}
 
@@ -1238,14 +1239,15 @@ class myActiveRecord {
 
 	private function buildRes($rF){
 		$cloThis = clone $this;
-
+		
 		if(is_array($rF)){
 			foreach($rF as $name => $value){
-				$cloThis->$name = $value;
-					
+				if (!is_numeric($name)){
+					$cloThis->$name = $value;
+				}
 			}
 		}
-
+		
 		return $cloThis;
 	}
 
@@ -1301,12 +1303,14 @@ class myActiveRecord {
 		switch ($this->engine){
 			case 'mysql':
 				
-				$fields = $this->query('SHOW FIELDS FROM '.$tableName.'');
+				//$fields = $this->query('SHOW FIELDS FROM '.$tableName.'');
 				/**
 				 * TODO: Obtener solo la primera llave primaria
 				 * Probar en mysql que obtenga la primera llave
 				 * primaria encontrada. 
-				 */ 	
+				 */
+				
+				/* 	
 				foreach ($fields as $field){
 
 					if (!$ff)
@@ -1333,6 +1337,7 @@ class myActiveRecord {
 						}
 					}
 				}
+				*/
 					
 				break;
 			case 'postgre':
@@ -1409,51 +1414,23 @@ class myActiveRecord {
 	 * @return resorce
 	 */
 	public function openConecction (){
-		switch ($this->engine){
-			case 'mysql':
-				$this->link = mysql_connect(
-				   $this->host,
-				   $this->user,
-				   $this->password		   
-				);
+		
+		$dsn = $this->engine.
+				':dbname='.$this->database.
+				';host='.$this->host;
+		$user = $this->user;
+		$password = $this->password;
 				
-				if (!$this->link) {
-					$GLOBALS['OF_SQL_LOG'].="MySQL: Connect failed: ".mysql_error();
-				}else{
-					$this->successfulConnect = true;
-				}
-				
-				$db_selected = mysql_select_db($this->database, $this->link);
-				
-				if (!$db_selected) {
-					$GLOBALS['OF_SQL_LOG'].="MySQL: Connect failed: ".mysql_error();
-				}else{
-					$this->successfulConnect = true;
-				}
-				
-				break;
-			case 'postgre':
-				$cmdConnectPostgreSQL = "host=".$this->host
-				." port=".$this->port
-				." dbname=".$this->database
-				." user=".$this->user
-				." password=".$this->password."";
-					
-				if (!$this->link = pg_Connect($cmdConnectPostgreSQL)){
-
-					$GLOBALS['OF_SQL_LOG'].='PostgreSQL: Connect failed';
-					
-				}else{
-					$this->successfulConnect = true;
-				}
-				
-				break;
-			default:
-				$GLOBALS['OF_SQL_LOG'].='ERROR: Usted debe definir un motor de base de datos valido a usar'."\n";
-				break;
-		}
+		try {
+    		$this->dbh = new PDO($dsn, $user, $password);
+    		
+    		$this->successfulConnect = true;
+    		
+		} catch (PDOException $e) {
 			
-		return $this->link;
+    		$GLOBALS['OF_SQL_LOG'].= 'Connection failed: ' . $e->getMessage();
+		}
+
 	}
 
 	/**
