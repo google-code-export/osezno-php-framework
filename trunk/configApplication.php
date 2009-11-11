@@ -22,13 +22,14 @@
   global $MYACTIVERECORD_PARAMS;
   
   
-  $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = 'multivacaciones'; # Nombre de base de datos
-  $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= 'postgre'; # Motor de base de datos; postgre ó mysql
-  $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= '192.168.30.15'; # Direccion Ip o nombre de maquina del motor de base de datos
-  $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= 'postgres'; # Nombre de usuario para conexion 
-  $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = 'porvenir'; # Contraseña de usuario para conexión
-  $GLOBALS['MYACTIVERECORD_PARAMS']['port'] 	= 5432; # Puerto para la conexión, Mysql 3306, Postgre 5432
-
+  $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = 'ethos'; # Nombre de base de datos
+  $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= 'mysql'; # Motor de base de datos; postgre ó mysql
+  $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= 'localhost'; # Direccion Ip o nombre de maquina del motor de base de datos
+  $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= 'root'; # Nombre de usuario para conexion 
+  $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = ''; # Contraseña de usuario para conexión
+  $GLOBALS['MYACTIVERECORD_PARAMS']['port'] 	= 3306; # Puerto para la conexión, Mysql 3306, Postgre 5432
+  
+  
   /**
    * Nombre de la carpeta donde se llaman todas las plantillas [*]
    * Esta carpeta por defecto esta en la raiz del proyecto

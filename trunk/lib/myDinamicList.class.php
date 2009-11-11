@@ -199,7 +199,24 @@ class myDinamicList {
 		$_SESSION['prdLst'][$idLst]['enD'] = $this->objActRcrd->getEngine();
 		
 		$_SESSION['prdLst'][$idLst]['sqlt'] = $_SESSION['prdLst'][$idLst]['sql'] = $sqlLst;
+
+		/**
+		 * Definiciones de variables
+		 */
+		$_SESSION['prdLst'][$idLst]['usPag'] = '';
+		$_SESSION['prdLst'][$idLst]['aordBy'] = '';
+		$_SESSION['prdLst'][$idLst]['shwOrdMet'] = '';
+		$_SESSION['prdLst'][$idLst]['pagRng'] = 0;
+		$_SESSION['prdLst'][$idLst]['shwOrdMet'] = '';
+		$_SESSION['prdLst'][$idLst]['arWdtByCl'] = array ();
+		$_SESSION['prdLst'][$idLst]['arWdtByCl'] = array ();
 		
+		if (!isset($_SESSION['prdLst'][$idLst]['pagIni']))
+			$_SESSION['prdLst'][$idLst]['pagIni'] = 0;
+		
+		
+		$_SESSION['prdLst'][$idLst]['ordBy'] = '';
+		$_SESSION['prdLst'][$idLst]['ordMtd'] = '';
 	}
 	
 	/**
@@ -211,8 +228,7 @@ class myDinamicList {
 	 */
 	public function setShowOrderMethod ($idLst, $boolValue){
 		
-		if (!isset($_SESSION['prdLst'][$idLst]['shwOrdMet']))
-		   $_SESSION['prdLst'][$idLst]['shwOrdMet'] = $boolValue;
+	   $_SESSION['prdLst'][$idLst]['shwOrdMet'] = $boolValue;
 	}	
 	
 	
@@ -394,10 +410,12 @@ class myDinamicList {
 			
 			$_SESSION['prdLst'][$idLst]['cRws']  = $this->objActRcrd->getAfectedRows();
 			
-			$_SESSION['prdLst'][$idLst]['tcPag'] = intval($_SESSION['prdLst'][$idLst]['cRws']/$_SESSION['prdLst'][$idLst]['pagRng']);
+			if ($_SESSION['prdLst'][$idLst]['usPag']){
+				$_SESSION['prdLst'][$idLst]['tcPag'] = intval($_SESSION['prdLst'][$idLst]['cRws']/$_SESSION['prdLst'][$idLst]['pagRng']);
 			
-			if ($_SESSION['prdLst'][$idLst]['cRws']%$_SESSION['prdLst'][$idLst]['pagRng'])
-	           $_SESSION['prdLst'][$idLst]['tcPag'] ++;
+				if ($_SESSION['prdLst'][$idLst]['cRws']%$_SESSION['prdLst'][$idLst]['pagRng'])
+	           		$_SESSION['prdLst'][$idLst]['tcPag'] ++;
+			}  		
 
 		}
 		
@@ -488,18 +506,27 @@ class myDinamicList {
 					}
 					
 					if (isset($_SESSION['prdLst'][$idLst]['arMxdCls'][$Key])){
-						if ($_SESSION['prdLst'][$idLst]['arMxdCls'][$Key][$Value])
+						
+						if ($_SESSION['prdLst'][$idLst]['arMxdCls'][$Key][$Value]){
+						
 							$setColi = $_SESSION['prdLst'][$idLst]['arMxdCls'][$Key][$Value];
-						else	
+							
+						}else{
+							
 							$setColi = $Value;
+						}
+							
 					}else{
 						
 						if (isset($_SESSION['prdLst'][$idLst]['arFncInCl'][$Key])){
 
 							$setColi = $_SESSION['prdLst'][$idLst]['arFncInCl'][$Key]['objClass']->$_SESSION['prdLst'][$idLst]['arFncInCl'][$Key]['nameMethod']($Value);
 							
-						}else
+						}else{
+						
 							$setColi = $Value.'';
+						}
+						
 					}
 					
 					$setCole = '';
@@ -586,6 +613,7 @@ class myDinamicList {
 						$imgOrdBy = '&nbsp;';
 						
 						# Suministrar el link para el ordenamiento dependiendo si esta activo o no
+						
 						if ($_SESSION['prdLst'][$idLst]['shwOrdMet'] == true){
 
 							$strOrdMetBeg = '<a class="'.$_SESSION['prdLst'][$idLst]['stTlCl'].
@@ -607,12 +635,10 @@ class myDinamicList {
 						   		switch ($_SESSION['prdLst'][$idLst]['ordMtd']){
 									case 'ASC':
 										$imgOrdBy = '<img src="'.$GLOBALS['urlProject'].
-										$this->subFolder_inImg.$_SESSION['prdLst'][$idLst]['iOrdA'].'" border="0">';
-									break;
+										$this->subFolder_inImg.$_SESSION['prdLst'][$idLst]['iOrdA'].'" border="0">';										break;
 									case 'DESC':
 										$imgOrdBy = '<img src="'.$GLOBALS['urlProject'].
-										$this->subFolder_inImg.$_SESSION['prdLst'][$idLst]['iOrdD'].'" border="0">';
-									break;
+										$this->subFolder_inImg.$_SESSION['prdLst'][$idLst]['iOrdD'].'" border="0">';										break;
 								}									
 									
 							}else
@@ -625,14 +651,15 @@ class myDinamicList {
 												$_SESSION['prdLst'][$idLst]['sImBkHdClDf'];
 							
 						}
+						
 
-						if ($_SESSION['prdLst'][$idLst]['arWdtByCl'][$key]){
+						if (isset($_SESSION['prdLst'][$idLst]['arWdtByCl'][$key])){
 							
 							$valWidth =  $_SESSION['prdLst'][$idLst]['arWdtByCl'][$key];
 							
 							$this->sumWidthByColumn -= intval($valWidth);
 						}else{
-							$valWidth = intval($this->sumWidthByColumn/($countArrayIndices-count($_SESSION['prdLst'][$idLst]['arWdtByCl'])));
+							$valWidth = intval($this->sumWidthByColumn/($this->objActRcrd->getNumFieldsAffected()-count($_SESSION['prdLst'][$idLst]['arWdtByCl'])));
 						}
 
 						if (strpos($_SESSION['prdLst'][$idLst]['wTb'],'%')){

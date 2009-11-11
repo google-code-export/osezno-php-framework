@@ -1121,6 +1121,13 @@ class myActiveRecord {
 	}
 
 	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0){
+		
+		$sql = '';
+		
+		
+		//echo $subSqlF = $this->getStringSqlFields($this->table);
+		
+		/*
 		$results = array();	
 		$sql = '';
 		$fCnd = '';
@@ -1234,6 +1241,8 @@ class myActiveRecord {
 		}
 			
 		return $results;
+		
+	*/	
 	}
 
 
@@ -1269,7 +1278,7 @@ class myActiveRecord {
 			$iCounter++;
 		}
 			
-		return $subSqlF;
+		//return $subSqlF;
 	}
 
 
@@ -1294,12 +1303,29 @@ class myActiveRecord {
 
 
 	private function getMetaDataTable ($tableName){
-			
+
 		$this->tableStruct[$tableName] = array();
 
 		$pk = '';
 		$ff = '';
 			
+		$resQuery = $this->dbh->query($sql = 'SELECT * FROM '.$tableName.' LIMIT 1');
+		//echo $sql;
+		
+		foreach ($resQuery as  $res){
+			$i=0;
+			foreach ($res as $key => $value){
+				//echo var_export($resQuery->getColumnMeta($i),true);
+				$i+=1;
+			}
+		}
+		
+		$foo = 'Bob'; // Asigna el valor 'Bob' a $foo
+		$bar = & $foo; // Referencia $foo vía $bar.
+		$bar = "Mi nombre es $bar"; // Modifica $bar...
+		echo $foo; // $foo también se modifica.
+		echo $bar; 
+		
 		switch ($this->engine){
 			case 'mysql':
 				
@@ -1345,7 +1371,8 @@ class myActiveRecord {
 				 * TODO: Obtener solo la primera llave primaria
 				 * Implementar a fututo la obtencion de resultados
 				 * el tablas con mas de una llave primaria
-				 */ 	
+				 */
+				/* 	
 				$sqlStruct = 'SELECT
 					col.column_name AS campo
 					,col.data_type as tipo
@@ -1394,14 +1421,16 @@ class myActiveRecord {
 					}
 					
 				}
-					
+				*/	
 				break;
 		}
-			
+
+		/*
 		if ($pk)
 		   $this->tableStruct[$tableName]['pk'] = $pk;
 		else
 		   $this->tableStruct[$tableName]['pk'] = $ff;
+		*/  
 	}
 
 	/**************/
