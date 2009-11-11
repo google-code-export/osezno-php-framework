@@ -2349,7 +2349,7 @@ class myForm {
 	 * @param integer $cols Numero de columnas que tiene el formulario
 	 * @return string
 	 */
-	public function __toString ($cols = ''){
+	public function __toString (){
 		if ($cols)
 		$this->Cols = $cols;
 
