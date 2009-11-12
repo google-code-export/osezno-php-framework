@@ -1122,16 +1122,43 @@ class myActiveRecord {
 
 	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0){
 		
-		$sql = '';
-		
-		
-		//echo $subSqlF = $this->getStringSqlFields($this->table);
-		
-		/*
-		$results = array();	
-		$sql = '';
 		$fCnd = '';
+		$sql = '';
 		
+		$subSqlF = $this->getStringSqlFields($this->table);
+		$results = array();
+		
+		# Condicion compuesta, condicion sencilla
+		if ($this->evalIfIsQuery($strCond) || !$strCond){
+			
+		}else{
+
+			if (is_string($strCond))
+				$strCond = '\''.$strCond.'\'';
+
+			$sql .= 'SELECT '.$subSqlF.' FROM '
+				.$this->table.' WHERE '
+				.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
+
+			$rF = $this->query($sql);
+
+			if ($this->num_rows){
+				$this->keyFinded = $strCond;
+				$rF = $rF[0];
+					
+				foreach ($rF as $etq => $val){
+					if (is_string($etq)){
+						$this->$etq = $val;
+					}
+				}
+					
+			}
+			
+		}
+		
+		echo $sql.'';
+
+		/*
 		$subSqlF = $this->getStringSqlFields($this->table);
 			
 		if ($this->evalIfIsQuery($strCond) || !$strCond){
@@ -1239,10 +1266,10 @@ class myActiveRecord {
 			}
 
 		}
-			
+	*/				
 		return $results;
 		
-	*/	
+
 	}
 
 
@@ -1278,7 +1305,7 @@ class myActiveRecord {
 			$iCounter++;
 		}
 			
-		//return $subSqlF;
+		return $subSqlF;
 	}
 
 
@@ -1304,68 +1331,56 @@ class myActiveRecord {
 
 	private function getMetaDataTable ($tableName){
 
+		$mTable = array ();
 		$this->tableStruct[$tableName] = array();
 
 		$pk = '';
 		$ff = '';
 			
 		$resQuery = $this->dbh->query($sql = 'SELECT * FROM '.$tableName.' LIMIT 1');
-		//echo $sql;
-		
-		foreach ($resQuery as  $res){
-			$i=0;
-			foreach ($res as $key => $value){
-				//echo var_export($resQuery->getColumnMeta($i),true);
-				$i+=1;
-			}
-		}
-		
-		$foo = 'Bob'; // Asigna el valor 'Bob' a $foo
-		$bar = & $foo; // Referencia $foo vía $bar.
-		$bar = "Mi nombre es $bar"; // Modifica $bar...
-		echo $foo; // $foo también se modifica.
-		echo $bar; 
 		
 		switch ($this->engine){
+			
 			case 'mysql':
-				
-				//$fields = $this->query('SHOW FIELDS FROM '.$tableName.'');
+			
 				/**
-				 * TODO: Obtener solo la primera llave primaria
-				 * Probar en mysql que obtenga la primera llave
-				 * primaria encontrada. 
-				 */
-				
-				/* 	
-				foreach ($fields as $field){
-
-					if (!$ff)
-					   $ff = $field['Field'];
-						
-					$this->tableStruct[$tableName]['fields'][$field['Field']] = '';
-
-					$this->tableStruct[$tableName]['types'][$field['Field']] =
-					$field['Type'].' '.$field['Extra'];
-
-					if ($field['Key']=='PRI'){
-						$pk = $field['Field'];
-					}else{
-							
-						if (!strcmp(strtolower($field['Field']),'id')){
-							if (!$pk)
-							   $pk = $field['Field'];
+			 	 * TODO: Obtener solo la primera llave primaria
+			 	 * Probar en mysql que obtenga la primera llave
+			     * primaria encontrada. 
+			     */
+				foreach ($resQuery as  $res){
+					$i=0;
+					foreach ($res as $key => $value){
+						$mTable = $resQuery->getColumnMeta($i);
+					
+						if (!$ff)
+					   		$ff = $mTable['name'];
+					   
+						$this->tableStruct[$tableName]['fields'][$mTable['name']] = '';   
+					
+						$this->tableStruct[$tableName]['types'][$mTable['name']] = $mTable['native_type'].' '.$mTable['flags'][0];
+					
+						if ($mTable['flags'][0]=='primary_key'){
+							$pk = $mTable['name'];
 						}else{
-
-							if (strripos($field['Field'],'id')!==false){
+							
+							if (!strcmp(strtolower($mTable['name']),'id')){
 								if (!$pk)
-								   $pk = $field['Field'];
+							   	$pk = $mTable['name'];
+							}else{
+
+								if (strripos($mTable['name'],'id')!==false){
+									if (!$pk)
+								   	$pk = $mTable['name'];
+								}
 							}
 						}
+					
+						$i+=1;
 					}
 				}
-				*/
 					
-				break;
+			break;
 			case 'postgre':
 				/**
 				 * TODO: Obtener solo la primera llave primaria
@@ -1422,15 +1437,15 @@ class myActiveRecord {
 					
 				}
 				*/	
-				break;
+			break;
 		}
 
-		/*
+		
 		if ($pk)
 		   $this->tableStruct[$tableName]['pk'] = $pk;
 		else
 		   $this->tableStruct[$tableName]['pk'] = $ff;
-		*/  
+
 	}
 
 	/**************/
