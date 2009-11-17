@@ -1126,20 +1126,21 @@ class myActiveRecord {
 		$sql = '';
 		
 		$subSqlF = $this->getStringSqlFields($this->table);
+		
+		$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table;
+		
 		$results = array();
 		
 		# Condicion compuesta, condicion sencilla
-		if ($this->evalIfIsQuery($strCond) || !$strCond){
+		if ( ($strCond  && !$this->evalIfIsQuery($strCond)) || !$strCond){
 			
-		}else{
-
-			if (is_string($strCond))
-				$strCond = '\''.$strCond.'\'';
-
-			$sql .= 'SELECT '.$subSqlF.' FROM '
-				.$this->table.' WHERE '
-				.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
-
+			if ($strCond){
+				if (is_string($strCond))
+					$strCond = '\''.$strCond.'\'';
+				
+				$sql .= ' WHERE '.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
+			}
+				
 			$rF = $this->query($sql);
 
 			if ($this->num_rows){
@@ -1151,28 +1152,18 @@ class myActiveRecord {
 						$this->$etq = $val;
 					}
 				}
-					
-			}
+			}			
 			
-		}
-		
-		echo $sql.'';
-
-		/*
-		$subSqlF = $this->getStringSqlFields($this->table);
+		}else{
 			
-		if ($this->evalIfIsQuery($strCond) || !$strCond){
-			//-> Find all
-
-			$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table.' ';
 			$iCounter = 1;
 
 			if ($strCond)
-			   $sql .= 'WHERE ';
+			   $sql .= ' WHERE ';
 
 			$cCond = count($strCond = explode(
 					'&',$strCond));
-
+			
 			foreach ($strCond as $cnd){
 				
 				# TODO: Evaluar si viene una sentencia booleana
@@ -1201,7 +1192,7 @@ class myActiveRecord {
 					
 				$iCounter ++;
 			}
-
+			
 			if ($orderBy){
 				$sql .= ' ORDER BY '.$orderBy;
 				if ($orderMethod)
@@ -1209,7 +1200,7 @@ class myActiveRecord {
 			}else{
 				$sql .= ' ORDER BY '.$this->tableStruct[$this->table]['pk'].' ';
 			}
-
+			
 			if ($intLimit){
 				switch ($this->engine){
 					case 'mysql':
@@ -1220,56 +1211,21 @@ class myActiveRecord {
 					break;
 				}
 			}
-
+			
 			$rF = $this->query($sql);
+			
+			echo '<b>'.$this->num_rows.'</b> Afectados<br>';
+			
+			#odtener los resultados
+			
+			
+			
 
-			if ($this->num_rows == 1){
-				
-				foreach ($rF[0] as $etq => $val){
-
-					if (is_string($etq)){
-						
-					   $this->$etq = $val;
-					}
-				}
-				
-			}else{
-
-				foreach ($rF as $row){
-					
-					$results[] = $this->buildRes($row);
-				}
-				
-			}
-
-		}else{
-			//-> Find
-			if (is_string($strCond))
-				$strCond = '\''.$strCond.'\'';
-
-			$sql .= 'SELECT '.$subSqlF.' FROM '
-			.$this->table.' WHERE '
-			.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
-
-			$rF = $this->query($sql);
-
-			if ($this->num_rows){
-				$this->keyFinded = $strCond;
-				$rF = $rF[0];
-					
-				foreach ($rF as $etq => $val){
-					if (is_string($etq)){
-						$this->$etq = $val;
-					}
-				}
-					
-			}
-
+			echo $sql;
+			
 		}
-	*/				
+						
 		return $results;
-		
-
 	}
 
 
@@ -1293,9 +1249,9 @@ class myActiveRecord {
 			
 		$subSqlF = '';
 		$iCounter = 1;
-			
+		
 		$countFields = count($fields = $this->tableStruct[$table]['fields']);
-			
+
 		foreach ($fields as $field => $value){
 			$subSqlF .= $field;
 
@@ -1351,33 +1307,38 @@ class myActiveRecord {
 				foreach ($resQuery as  $res){
 					$i=0;
 					foreach ($res as $key => $value){
+						
 						$mTable = $resQuery->getColumnMeta($i);
 					
-						if (!$ff)
-					   		$ff = $mTable['name'];
-					   
-						$this->tableStruct[$tableName]['fields'][$mTable['name']] = '';   
-					
-						$this->tableStruct[$tableName]['types'][$mTable['name']] = $mTable['native_type'].' '.$mTable['flags'][0];
-					
-						if ($mTable['flags'][0]=='primary_key'){
-							$pk = $mTable['name'];
-						}else{
+						if ($mTable['name']){
 							
-							if (!strcmp(strtolower($mTable['name']),'id')){
-								if (!$pk)
-							   	$pk = $mTable['name'];
+							if (!$ff)
+					   			$ff = $mTable['name'];
+					   
+							$this->tableStruct[$tableName]['fields'][$mTable['name']] = '';   
+					
+							$this->tableStruct[$tableName]['types'][$mTable['name']] = $mTable['native_type'].' '.$mTable['flags'][0];
+					
+							if ($mTable['flags'][0]=='primary_key'){
+								$pk = $mTable['name'];
 							}else{
-
-								if (strripos($mTable['name'],'id')!==false){
+							
+								if (!strcmp(strtolower($mTable['name']),'id')){
 									if (!$pk)
-								   	$pk = $mTable['name'];
+							   		$pk = $mTable['name'];
+								}else{
+
+									if (strripos($mTable['name'],'id')!==false){
+										if (!$pk)
+								   		$pk = $mTable['name'];
+									}
 								}
-							}
+							}							
 						}
 					
 						$i+=1;
 					}
+					break;
 				}
 					
 			break;
