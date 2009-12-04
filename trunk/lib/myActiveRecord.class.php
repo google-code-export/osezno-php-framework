@@ -583,6 +583,9 @@ class myActiveRecord {
 			$eError = $this->dbh->errorInfo();
 			$GLOBALS['OF_SQL_LOG_ERROR'] = $eError[2];
 		}else{
+			
+			$this->num_cols = $resQuery->columnCount(); 
+			
 			$cadenaSelect = 'select ';
 			$pos = stripos($sql, $cadenaSelect);
 		
@@ -615,9 +618,10 @@ class myActiveRecord {
 	 * @param string $orderBy
 	 * @param string $orderMethod
 	 * @param integer $intLimit
+	 * @param integer $offSet
 	 * @return object
 	 */
-	public function find($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = ''){
+	public function find($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = '', $offSet = ''){
 
 		return $this->findOperator($strCond, $orderBy, $orderMethod, $intLimit);
 	}
@@ -1120,7 +1124,7 @@ class myActiveRecord {
 		return $return;
 	}
 
-	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0){
+	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
 		
 		$fCnd = '';
 		$sql = '';
@@ -1129,32 +1133,11 @@ class myActiveRecord {
 		
 		$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table;
 		
-		$results = array();
+		//$results = array();
+		$results = '';
 		
 		# Condicion compuesta, condicion sencilla
-		if ( ($strCond  && !$this->evalIfIsQuery($strCond)) || !$strCond){
-			
-			if ($strCond){
-				if (is_string($strCond))
-					$strCond = '\''.$strCond.'\'';
-				
-				$sql .= ' WHERE '.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
-			}
-				
-			$rF = $this->query($sql);
-
-			if ($this->num_rows){
-				$this->keyFinded = $strCond;
-				$rF = $rF[0];
-					
-				foreach ($rF as $etq => $val){
-					if (is_string($etq)){
-						$this->$etq = $val;
-					}
-				}
-			}			
-			
-		}else{
+		if ( $this->evalIfIsQuery($strCond) || !$strCond){
 			
 			$iCounter = 1;
 
@@ -1204,32 +1187,59 @@ class myActiveRecord {
 			if ($intLimit){
 				switch ($this->engine){
 					case 'mysql':
-						$sql .= ' LIMIT 0, '.$intLimit;
+						$sql .= ' LIMIT '.$offset.', '.$intLimit;
 						break;
 					case 'postgre';
-					    $sql .= ' LIMIT '.$intLimit.' OFFSET 0';
+					    $sql .= ' LIMIT '.$intLimit.' OFFSET '.$offset.'';
 					break;
 				}
 			}
 			
 			$rF = $this->query($sql);
 			
-			echo '<b>'.$this->num_rows.'</b> Afectados<br>';
-			
-			#odtener los resultados
-			
-			
-			
+			if ($this->num_rows == 1){
+				
+				foreach ($rF as $row)
+					foreach ($row as $etq => $value){
+						$this->$etq = $value;
+					}
+					
+			}else{
+				//TODO:
 
-			echo $sql;
-			
+				
+			}
+				
+		}else{
+
+			if ($strCond){
+				if (is_string($strCond))
+					$strCond = '\''.$strCond.'\'';
+				
+				$sql .= ' WHERE '.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
+			}
+				
+			$rF = $this->query($sql);
+
+			if ($this->num_rows){
+				$this->keyFinded = $strCond;
+				$rF = $rF[0];
+					
+				foreach ($rF as $etq => $val){
+					if (is_string($etq)){
+						$this->$etq = $val;
+					}
+				}
+			}
+
 		}
 						
-		return $results;
+		return $rF;
 	}
 
 
 	private function buildRes($rF){
+		
 		$cloThis = clone $this;
 		
 		if(is_array($rF)){
