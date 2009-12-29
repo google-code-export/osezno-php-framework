@@ -111,7 +111,7 @@ class myActiveRecord {
 	 *
 	 * @var integer
 	 */
-	public $num_rows;
+	private $num_rows;
 
 	/**
 	 * Numero entero de campos afectados
@@ -160,10 +160,10 @@ class myActiveRecord {
 	 *
 	 * @var unknown_type
 	 */
-	private $arrayStringRelation = array ('<>','<=',
-										  '>=', '!=',
-										  '>', '<', 
-										  '=', '!');
+	private $arrayStringRelation = array (
+		'<>','<=','>=', '!=','>', '<','=', '!'
+	);
+	
 	/**
 	 * Contiene el valor ultimo 
 	 * id insertado en determinada
@@ -183,7 +183,18 @@ class myActiveRecord {
 	 */
 	private $posFijSeq = '_seq';
 
-
+	/**
+	 * Atributos que no son reconocibles para los metodos
+	 * que intervienen en las tablas.
+	 * @var unknown_type
+	 */
+	private $arrayInvalidAtt = array (
+		'database', 'engine', 'host', 'user', 'password', 'port', 'table', 'posFijSeq', 'num_rows', 'num_cols',
+		'dbh', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
+		'arrayInvalidAtt'	
+	);
+	
+	
 	/*******************/
 	/* Metodos magicos */
 	/*******************/
@@ -590,13 +601,18 @@ class myActiveRecord {
 			$pos = stripos($sql, $cadenaSelect);
 		
 			if ($pos === false){
-				$this->num_rows = $resQuery->rowCount();			
+				
+				$this->num_rows = $resQuery->rowCount();
+				
 			}else{
+				
 				$this->num_rows = 0;
+
 				foreach ($resQuery as $row){
 					$array[] = $this->buildRes($row);
 					$this->num_rows++;	
 				}	
+				
 			}
 		}
 		
@@ -722,35 +738,53 @@ class myActiveRecord {
 			$sql .= 'UPDATE '.$this->table.' SET ';
 
 			foreach ($this->classVars as $field => $value){
-					
-				if (!is_null($this->$field)){
 
-					if (strlen(trim($this->$field))){
+				// Para no tocar la llave primaria
+				if (strcmp($field,$this->tableStruct[$this->table]['pk'])){
+					// No tenemos en cuenta los atributos que no fueron definidos
+					if (!is_null($this->$field)){
+						// Queremos verificar las cadenas por eso los arreglos son excluidos
+						if (!is_array($this->$field)){
+							// Queremos verificar las cadenas por eso los objetos son excluidos
+							if (!is_object($this->$field)){
+								if (!is_bool($this->$field)){
+									if (!in_array($field,$this->arrayInvalidAtt)){
+										// No tenemos en cuenta los atributos que no fueron seteados
+										if (strlen(trim($this->$field))){
+											$sql.=$field.' = ';
 
-						$sql.=$field.' = ';
-
-						if (is_numeric($this->$field)){
+											if (is_numeric($this->$field)){
 							
-							$sql .= $this->$field.', ';
-						}else{
+												$sql .= $this->$field.', ';
+											}else{
 							
-							if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
-								$sql .= 'NULL, ';
-							else
-								$sql .= '\''.addslashes($this->$field).'\', ';
+												if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
+													$sql .= 'NULL, ';
+												else
+													$sql .= '\''.addslashes($this->$field).'\', ';
 								
-						}						
+											}	
+										}
+									}
+								}
+							}
+						}
 					}
-
 				}
+				
+				
 			}
 
 			$sql = substr($sql,0,-2).' WHERE '
 			.$this->tableStruct[$this->table]['pk']
 			.' = '.$this->keyFinded;
 
-			$this->updateIn($sql);
+			//$this->updateIn($sql);
 
+			echo 'Registro encontrado';
+			
+			$this->query($sql);
+			
 			// Se va a agregar un registro
 		}else{
 			$sql .= 'INSERT INTO '.$this->table.' (';
@@ -760,33 +794,48 @@ class myActiveRecord {
 				// Para no tocar la llave primaria
 				if (strcmp($field,$this->tableStruct[$this->table]['pk'])){
 
+					// No tenemos en cuenta los atributos que no fueron definidos
 					if (!is_null($this->$field)){
 						
-						if (strlen(trim($this->$field))){
-							$sql.=$field.', ';
+						// Queremos verificar las cadenas por eso los arreglos son excluidos
+						if (!is_array($this->$field)){
 
-							if (is_numeric($this->$field)){
+							// Queremos verificar las cadenas por eso los objetos son excluidos
+							if (!is_object($this->$field)){
+
+								if (!is_bool($this->$field)){
+								
+									if (!in_array($field,$this->arrayInvalidAtt)){
+
+										// No tenemos en cuenta los atributos que no fueron seteados
+										if (strlen(trim($this->$field))){
+
+											$sql.=$field.', ';
+
+											if (is_numeric($this->$field)){
 							
-								$sqlValues .= $this->$field.', ';
-							}else{
+												$sqlValues .= $this->$field.', ';
+											}else{
 							
-							   $sqlValues .= '\''.addslashes($this->$field).'\', ';
-							}						
-							
+							   					$sqlValues .= '\''.addslashes($this->$field).'\', ';
+											}						
+										}
+									}
+								}
+							}
 						}
-						
 					}
 				}
 			}
-			$sql = substr($sql,0,-2)
-			.') VALUES ('
-			.substr($sqlValues,0,-2).')';
+			
+			$sql = substr($sql,0,-2).') VALUES ('.substr($sqlValues,0,-2).')';
 
-			$this->insertIn($sql);
-			$this->setLastInsertId($this->tableStruct[$this->table]['pk']);
+			$this->query($sql);
+			
+			$this->lastInserId = $this->dbh->lastInsertId();
 		}
 		
-		return $this->getAfectedRows();
+		return $this->getAffectedRows();
 	}
 
 	/**
@@ -882,47 +931,7 @@ class myActiveRecord {
 	/* Obreros */
 	/***********/
 	
-	/**
-	 * Trata de insertar un registro en la tabla
-	 *
-	 * @param string $sql
-	 * @return integer
-	 */
-	private function insertIn($sql){
 
-		$out = 0;
-		$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
-			
-		switch ($this->engine){
-			case 'mysql':
-				$res = mysql_query ($sql, $this->link);
-
-				$iRwsAf = mysql_affected_rows($this->link);
-
-				if ($iRwsAf==-1)
-				   $out = 0;
-				else
-				   $out = $iRwsAf;
-
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
-				break;
-			case 'postgre':
-				$sqlI = $sql;
-
-				$res = pg_query ($this->link, $sqlI = str_replace('"',"'", $sqlI));
-
-				$iRwsAf = pg_affected_rows($res);
-
-				$out = $iRwsAf;
-					
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= pg_last_error($this->link)."\n";
-				break;
-		}
-
-		$this->num_rows = $out;
-
-		return $out;
-	}
 
 	/**
 	 * Trata de actualizar un registro
@@ -1060,47 +1069,6 @@ class myActiveRecord {
 		return $out;
 	}
 
-	/**
-	 * Setea y refresca el last insert id para esa tabla
-	 *
-	 * @param string $fld
-	 */
-	private function setLastInsertId ($fld){
-			
-		$sql = '';
-			
-		switch($this->engine){
-
-			case 'mysql':
-					
-				$sql = 'SELECT last_insert_id() AS current_value; ';
-					
-				$rows = mysql_fetch_array(
-				mysql_query($sql, $this->link));
-					
-				$this->lastInserId = $rows['current_value'];
-					
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
-					
-				break;
-			case 'postgre':
-					
-				$sql = "SELECT CURRVAL("."'".$this->table.'_'
-				.$fld.$this->posFijSeq."'"
-				.") AS current_value; ";
-					
-				$rows = pg_fetch_array(
-				pg_query ($this->link, $sql = str_replace('"',"'",$sql)));
-					
-				$this->lastInserId = $rows['current_value'];
-					
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= pg_last_error($this->link)."\n";
-					
-				break;
-		}
-			
-		$GLOBALS['OF_SQL_LOG'] .= $sql."\n";
-	}
 
 	/**
 	 * Evalua si una condicion pertenece a una consulta sql
@@ -1124,6 +1092,7 @@ class myActiveRecord {
 		return $return;
 	}
 
+	
 	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
 		
 		$fCnd = '';
@@ -1218,20 +1187,34 @@ class myActiveRecord {
 				
 				$sql .= ' WHERE '.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
 			}
-				
+			
 			$rF = $this->query($sql);
 
 			if ($this->num_rows){
+
 				$this->keyFinded = $strCond;
 				$rF = $rF[0];
-					
+				
 				foreach ($rF as $etq => $val){
+					
+					
+					
 					if (is_string($etq)){
-						$this->$etq = $val;
-					}
-				}
-			}
+						if (!in_array($etq,$this->arrayInvalidAtt)){
+							$this->$etq = $val;
 
+							echo $etq."<br>";
+						}
+						
+					}
+					
+					
+				}
+				
+				echo '['.$this->getAffectedRows().']';
+				
+			}
+			
 		}
 						
 		return $rF;
