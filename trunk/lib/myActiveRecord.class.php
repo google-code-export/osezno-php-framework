@@ -195,6 +195,12 @@ class myActiveRecord {
 	);
 	
 	
+	private $arrayCrud = array (
+		'insert',
+		'update',
+		'delete'
+	);
+	
 	/*******************/
 	/* Metodos magicos */
 	/*******************/
@@ -517,95 +523,99 @@ class myActiveRecord {
 
 	/**
 	 * Inicia una transaccion
+	 * en el motor de base de datos
 	 *
 	 */
-	public function begin_transaction (){
+	public function beginTransaction (){
 			
+		$this->dbh->beginTransaction();
+		
+		/*
 		switch ($this->engine){
 			case 'mysql':
-				mysql_query($sql = "START TRANSACTION;", $this->link);
-					
+				$sql = "START TRANSACTION";
 				break;
 			case 'postgre':
-				pg_query($this->link, $sql = "BEGIN TRANSACTION;");
-					
+				$sql = "BEGIN TRANSACTION";
 				break;
 		}
 			
-		$GLOBALS['OF_SQL_LOG'] .= $sql."\n";
+		$this->query($sql);
+		*/
 	}
 
-	/**
-	 * Finaliza la trasaccion
-	 *
-	 * @return boolean
-	 */
-	public function end_transaction (){
-		$exito = true;
-			
-		switch($this->engine){
-			case 'mysql':
-				if (!trim($GLOBALS['OF_SQL_LOG_ERROR']))
-				    mysql_query($sql = "COMMIT;", $this->link);
-				else{
-					mysql_query($sql = "ROLLBACK;", $this->link);
-						
-					$exito = false;
-				}
-				break;
-			case 'postgre':
-				if (!trim($GLOBALS['OF_SQL_LOG_ERROR']))
-				    pg_query($this->link, $sql = "COMMIT;");
-				else{
-					pg_query($this->link, $sql = "ROLLBACK;");
-						
-					$exito = false;
-				}
-				break;
-		}
-
-		$GLOBALS['OF_SQL_LOG'] .= $sql."\n";
-			
-		return $exito;
+	public function commit (){
+		
+		//$sql = "COMMIT";
+		//$this->query($sql);
+		
+		$this->dbh->commit();
+		
 	}
+	
+	
+	public function rollBack (){
+		
+		//$sql = "ROLLBACK";
+		//$this->query($sql);
+		
+		$this->dbh->rollBack();
+		
+	} 
 
 
-
-	/**************************************************/
-	/* Funciones CRUD - Query, Insert, Update, Delete */
-	/**************************************************/
 
 	/**
 	 * Ejecuta una consulta SQL
 	 * Devuelve un arreglo con el resultado de la consulta
+	 * 
 	 *
 	 * @param string $sql
 	 */
 	public function query ($sql, $saveInLog = true){
 		
+		$eError = array ();
+		
 		if ($saveInLog)
 			$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
 			
-		$array = array();
-		$resQuery = $this->dbh->query($sql);
-		
-		if (!$resQuery){
-			$eError = array ();
-			$eError = $this->dbh->errorInfo();
-			$GLOBALS['OF_SQL_LOG_ERROR'] = $eError[2];
-		}else{
-			
-			$this->num_cols = $resQuery->columnCount(); 
-			
-			$cadenaSelect = 'select ';
-			$pos = stripos($sql, $cadenaSelect);
-		
+		$isrW = false;	
+		foreach ($this->arrayCrud as $rW){
+			$pos = stripos($sql, $rW);
 			if ($pos === false){
+			}else{
+				$isrW = true;
+				break;
+			}
+		}		
+		
+		if ($isrW){
+			# Update, Delete, Insert
+			echo 'aqui'.'<br>';
+			
+			$this->num_rows = $this->dbh->exec($sql);
 				
-				$this->num_rows = $resQuery->rowCount();
+			$eError = $this->dbh->errorInfo();
+			if (isset($eError[2])){
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
+			}
+			
+			return $this->num_rows;
+			
+		}else{
+			# Select 
+			
+			$array = array();
+			$resQuery = $this->dbh->query($sql);
+		
+			if (!$resQuery){
+				
+				$eError = $this->dbh->errorInfo();
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
 				
 			}else{
-				
+
+				$this->num_cols = $resQuery->columnCount(); 
 				$this->num_rows = 0;
 
 				foreach ($resQuery as $row){
@@ -614,12 +624,18 @@ class myActiveRecord {
 				}	
 				
 			}
+		
+			return $array;
 		}
 		
-		return $array;
+		
 	}
 
-
+	public function exec ($sql){
+		$this->dbh->exec($sql);
+	}
+	
+	
 	/********************/
 	/* Funciones Active */
 	/********************/
@@ -757,12 +773,10 @@ class myActiveRecord {
 							
 												$sql .= $this->$field.', ';
 											}else{
-							
 												if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
 													$sql .= 'NULL, ';
 												else
 													$sql .= '\''.addslashes($this->$field).'\', ';
-								
 											}	
 										}
 									}
@@ -779,9 +793,7 @@ class myActiveRecord {
 			.$this->tableStruct[$this->table]['pk']
 			.' = '.$this->keyFinded;
 
-			//$this->updateIn($sql);
-
-			echo 'Registro encontrado';
+			//echo 'Registro encontrado';
 			
 			$this->query($sql);
 			
@@ -847,22 +859,57 @@ class myActiveRecord {
 	 * @return integer
 	 */
 	public function delete ($strCond){
-		if ($strCond)
-			$this->deleteIn($strCond);
-			
-		return $this->getAfectedRows();
-	}
-
-	/**
-	 * Trata de eliminar todos los registros
-	 * de una tabla.
-	 *
-	 * @return integer
-	 */
-	public function delete_all (){
-		$this->deleteIn();
 		
-		return $this->getAfectedRows();
+		$sql = '';	
+		
+		if ($strCond){
+			
+			$sql .= 'DELETE FROM '.$this->table.'';
+
+			$iCounter = 1;
+
+			if ($this->evalIfIsQuery($strCond)){
+					
+				$sql .= ' WHERE ';
+					
+				$cCond = count($strCond = explode(
+							'&',$strCond));
+					
+				foreach ($strCond as $cnd){
+						
+					# TODO: Evaluar si viene una sentencia booleana
+					list ($fCnd, $vCnd) = explode(	$smblRel = $this->evalSimbolInSubQuery(	$cnd,true),$cnd);
+
+					if (trim($fCnd) && $vCnd){
+							
+						if (is_numeric(trim($vCnd))){
+							$sql .= $fCnd.$smblRel.' '.trim($vCnd);
+
+						}else{
+							$sql .= $fCnd.$smblRel." '".trim($vCnd)."'";
+						}
+
+					}else{
+						$sql .= ' '.trim($cnd);
+					}
+						
+					if ($iCounter<$cCond)
+					$sql .= ' AND';
+						
+					$iCounter ++;
+				}
+				
+			}else{
+				if (is_string($strCond))
+					$strCond = '\''.$strCond.'\'';
+
+				$sql .= ' WHERE '.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
+			}
+
+			$this->query($sql);
+		}
+		
+		return $this->getAffectedRows();
 	}
 
 
@@ -932,144 +979,6 @@ class myActiveRecord {
 	/***********/
 	
 
-
-	/**
-	 * Trata de actualizar un registro
-	 * en la tabla.
-	 *
-	 * @param string $sql
-	 * @return integer
-	 */
-	private function updateIn ($sql){
-			
-		$out= 0;
-		$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
-
-			
-		switch ($this->engine){
-			case 'mysql':
-				$res = mysql_query ($sql, $this->link);
-					
-				$iRwsAf = mysql_affected_rows($this->link);
-					
-				if ($iRwsAf==-1)
-				   $out = 0;
-				else
-				   $out = $iRwsAf;
-
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
-				break;
-			case 'postgre':
-					
-				$res = pg_query ($this->link, $sql = str_replace('"',"'",$sql));
-					
-				$iRwsAf = pg_affected_rows($res);
-					
-				$out = $iRwsAf;
-
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= pg_last_error($this->link)."\n";
-				break;
-		}
-
-		$this->num_rows = $out;
-
-		return $out;
-	}
-
-	/**
-	 * Trata de eliminar uno o varios
-	 * registros de la tabla
-	 *
-	 * @param string $strCond
-	 * @return integer
-	 */
-	private function deleteIn ($strCond = ''){
-			
-		$out= 0;
-		$sql = '';
-			
-		$sql .= 'DELETE FROM '.$this->table.'';
-		$iCounter = 1;
-			
-		if ($strCond){
-
-				
-			if ($this->evalIfIsQuery($strCond)){
-					
-				$sql .= ' WHERE ';
-					
-				$cCond = count($strCond = explode(
-							'&',$strCond));
-					
-					
-				foreach ($strCond as $cnd){
-						
-					# TODO: Evaluar si viene una sentencia booleana
-					list ($fCnd, $vCnd) = explode(
-					$smblRel = $this->evalSimbolInSubQuery(
-					$cnd,true),$cnd);
-
-					if (trim($fCnd) && $vCnd){
-							
-						if (is_numeric(trim($vCnd))){
-							$sql .= $fCnd.$smblRel.
-								' '.trim($vCnd);
-
-						}else{
-							$sql .= $fCnd.$smblRel.
-									" '".trim($vCnd)."'";
-						}
-
-					}else{
-						$sql .= ' '.trim($cnd);
-					}
-						
-					if ($iCounter<$cCond)
-					$sql .= ' AND';
-						
-					$iCounter ++;
-				}
-			}else{
-				if (is_string($strCond))
-				$strCond = '\''.$strCond.'\'';
-
-				$sql .= ' WHERE '.$this->tableStruct[$this->table]['pk']
-				.' = '.$strCond;
-			}
-		}
-			
-		$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
-			
-		switch ($this->engine){
-			case 'mysql':
-				$res = mysql_query ($sql, $this->link);
-					
-				$iRwsAf = mysql_affected_rows($this->link);
-					
-				if ($iRwsAf==-1)
-				   $out = 0;
-				else
-				   $out = $iRwsAf;
-
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= mysql_error($this->link)."\n";
-				break;
-			case 'postgre':
-				$res = pg_query ($this->link, $sql = str_replace('"',"'",$sql));
-					
-				$iRwsAf = pg_affected_rows($res);
-					
-				$out = $iRwsAf;
-
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= pg_last_error($this->link)."\n";
-				break;
-		}
-			
-		$this->num_rows = $out;
-
-		return $out;
-	}
-
-
 	/**
 	 * Evalua si una condicion pertenece a una consulta sql
 	 *
@@ -1102,7 +1011,6 @@ class myActiveRecord {
 		
 		$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table;
 		
-		//$results = array();
 		$results = '';
 		
 		# Condicion compuesta, condicion sencilla
@@ -1176,7 +1084,6 @@ class myActiveRecord {
 			}else{
 				//TODO:
 
-				
 			}
 				
 		}else{
@@ -1197,24 +1104,13 @@ class myActiveRecord {
 				
 				foreach ($rF as $etq => $val){
 					
-					
-					
 					if (is_string($etq)){
 						if (!in_array($etq,$this->arrayInvalidAtt)){
 							$this->$etq = $val;
-
-							echo $etq."<br>";
 						}
-						
 					}
-					
-					
 				}
-				
-				echo '['.$this->getAffectedRows().']';
-				
 			}
-			
 		}
 						
 		return $rF;
@@ -1235,7 +1131,6 @@ class myActiveRecord {
 		
 		return $cloThis;
 	}
-
 
 
 	private function getStringSqlFields ($table){
@@ -1269,7 +1164,6 @@ class myActiveRecord {
 				else
 				   $true = $Relation;
 				break;
-					
 			}
 		}
 
@@ -1437,16 +1331,7 @@ class myActiveRecord {
 	 */
 	public function closeConecction (){
 			
-		switch($this->engine){
-			case 'mysql':
-				if ($this->link)
-					mysql_close($this->link);
-				break;
-			case 'postgres':
-				if ($this->link)
-					pg_close ($this->link);
-				break;
-		}
+
 	}
 
 	/**
