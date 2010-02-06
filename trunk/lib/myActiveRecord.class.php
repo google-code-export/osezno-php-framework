@@ -528,42 +528,49 @@ class myActiveRecord {
 	 */
 	public function beginTransaction (){
 			
-		$this->dbh->beginTransaction();
 		
-		/*
 		switch ($this->engine){
 			case 'mysql':
-				$sql = "START TRANSACTION";
+				//$sql = "START TRANSACTION;";
+				
+				
+				
 				break;
 			case 'postgre':
-				$sql = "BEGIN TRANSACTION";
+				//$sql = "BEGIN TRANSACTION;";
 				break;
 		}
 			
-		$this->query($sql);
-		*/
+		//$this->exec($sql);
+		
+		//echo $this->dbh->getAttribute(PDO::ATTR_AUTOCOMMIT);
+		
+		
+		$this->dbh->beginTransaction();
+		
+		$this->dbh->setAttribute(PDO::ATTR_AUTOCOMMIT, false);
 	}
 
 	public function commit (){
-		
-		//$sql = "COMMIT";
-		//$this->query($sql);
-		
+		/*	
+		$sql = "COMMIT;";
+		$this->exec($sql);
+		*/
+
 		$this->dbh->commit();
-		
 	}
 	
 	
 	public function rollBack (){
-		
-		//$sql = "ROLLBACK";
-		//$this->query($sql);
-		
+		/*
+		$sql = "ROLLBACK";
+		$this->exec($sql);
+		*/
+
 		$this->dbh->rollBack();
-		
 	} 
 
-
+	
 
 	/**
 	 * Ejecuta una consulta SQL
@@ -632,7 +639,9 @@ class myActiveRecord {
 	}
 
 	public function exec ($sql){
+		
 		$this->dbh->exec($sql);
+		
 	}
 	
 	
@@ -913,72 +922,6 @@ class myActiveRecord {
 	}
 
 
-	/**************/
-	/* Utilidades */
-	/**************/
-	
-	/**
-	 * Exporta una consulta sql o una busqueda
-	 * a un archivo de formato html, pdf o xls
-	 *
-	 * @param mixed $mixed
-	 * @param string $format
-	 * @return string
-	 */
-	public function exportQuery ($mixed, $format = 'html'){
-
-		$sw = 0;
-		$return = '';
-			
-		$Rows = $mixed;
-		$buf = '';
-		$buf .=  '<table width="100%"  border="1" cellpadding="0" cellspacing="0">';
-
-		foreach ($Rows as $Row){
-			if (!$sw){
-				$sw = 1;
-				
-				$keys = array_keys($Row);
-				$buf.="\t".'<tr>'."\n";
-				foreach ($keys as $key){
-					if (!is_numeric($key)){
-						$buf.="\t\t".'<td>'.ucwords($key).'</td>';	
-					}
-				}
-				$buf.="\t".'</tr>'."\n";
-				
-			}
-			
-			$buf.="\t".'<tr>'."\n";
-
-			foreach ($Row as $Key => $Value){
-				if (!is_numeric($Key)){
-					if (!$Value)
-					   $Value = '&nbsp;';
-					$buf.="\t\t".'<td>'.$Value.'</td>';
-				}
-			}
-
-			$buf.="\t".'</tr>'."\n";
-		}
-			
-		$buf .=  '</table>';
-			
-		switch ($format){
-			case 'html':
-				$return = $buf;
-				break;
-		}
-			
-		return $return;
-	}
-
-	
-	/***********/
-	/* Obreros */
-	/***********/
-	
-
 	/**
 	 * Evalua si una condicion pertenece a una consulta sql
 	 *
@@ -1001,7 +944,15 @@ class myActiveRecord {
 		return $return;
 	}
 
-	
+	/**
+	 * 
+	 * @param $strCond
+	 * @param $orderBy
+	 * @param $orderMethod
+	 * @param $intLimit
+	 * @param $offset
+	 * @return unknown_type
+	 */
 	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
 		
 		$fCnd = '';
