@@ -1,6 +1,187 @@
 <?php
 
-class myDinamicList {
+class myList  {
+	
+	/**
+	 * Anchura de la tabla que contiene la lista
+	 * 
+	 * @var integer
+	 */
+	private $ATTR_WIDTH_LIST = 1000;
+	
+	/**
+	 * Formato aplicado a la anchura de la tabla que 
+	 * contiene la lista.
+	 * 
+	 * @var string
+	 */
+	private $ATTR_FORMAT_WIDTH_LIST = 'px';
+	
+	/**
+	 * Color de borde de la lista
+	 * 
+	 * @var string
+	 */
+	private $ATTR_BORDER_COLOR = '#E2E4FF';
+	
+	/**
+	 * Tamaño del borde de la lista entre celdas
+	 * 
+	 * @var integer
+	 */
+	private $ATTR_BORDER_CELL_SIZE = 1;
+	
+	/**
+	 * Estilo del contenido de los datos 
+	 * 
+	 * @var string
+	 */
+	private $ATTR_DATA_CONTENT_STYLE = 'contenido_tabla';
+	
+	/**
+	 * Estilo de titulo de las columnas 
+	 * 
+	 * @var string
+	 */
+	private $ATTR_COLUMN_TITLE_STYLE = 'enlace_tabla';
+	
+	/**
+	 * Color de fondo de las filas por defecto.
+	 * 
+	 * @var string
+	 */
+	private $ATTR_DEFAULT_ROW_COLOR = '#FFFFFF';
+	
+	/**
+	 * Color de fondo de filas cuando la distinción
+	 * de filas estas activa.
+	 * 
+	 * @var string
+	 */
+	private $ATTR_MIDDLE_ROW_COLOR = '#E7F4FE';
+	
+	/**
+	 * Usar distincion entre filas
+	 * 
+	 * @var bool
+	 */
+	private $ATTR_USE_DISTINCT_BETW_ROWS = true;
+	
+	private $bufHtml = '';
+	
+	private $objConn;
+	
+	private $sql = '';
+	
+	private $resSql;
+	
+	public function __construct($sqlORobject){
+
+		if (is_object($sqlORobject)){
+			
+			$this->objConn = $sqlORobject;
+			
+			$this->resSql = $sqlORobject->find();
+			
+			$this->sql = $sqlORobject->getSqlLog();
+			
+		}else{
+			
+			$this->objConn = new myActiveRecord();
+			
+			$this->sql = $sql;		
+			
+			$this->resSql = $this->objConn->query ($this->sql);
+			
+		}
+		
+		
+	}
+	
+	public function setAttribute ($name, $value){
+		
+		$this->$name = $value;
+		
+	}
+	
+	
+	public function getAttribute ($name){
+		
+		return $this->$name;
+	}
+	
+	private function buildList (){
+
+		$sw = false;
+		$return = '';
+			
+		$rows = $this->resSql;
+		$buf = '';
+		$buf .=  "\n".'<table width="'.$this->ATTR_WIDTH_LIST.''.$this->ATTR_FORMAT_WIDTH_LIST.'" cellspacing="0" cellpadding="0"><tr><td bgcolor="'.$this->ATTR_BORDER_COLOR.'">'."\n";
+		
+		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->ATTR_BORDER_CELL_SIZE.'" cellpadding="0">'."\n";
+
+		$i = 0;
+		foreach ($rows as $row){
+
+				if ($this->ATTR_USE_DISTINCT_BETW_ROWS){
+					if ($i%2)
+						$bgColor = $this->ATTR_DEFAULT_ROW_COLOR;
+					else	
+						$bgColor = $this->ATTR_MIDDLE_ROW_COLOR;
+				}else
+					$bgColor = $this->ATTR_DEFAULT_ROW_COLOR;			
+			
+			if (!$sw){
+				$sw = true;
+				
+				$buf.='<tr>'."\n"."\t";
+				
+				foreach ($row as $key => $val){
+					if (!is_numeric($key)){
+						$buf.='<td class="'.$this->ATTR_COLUMN_TITLE_STYLE.'">'.ucwords($key).'</td>';	
+					}
+				}
+				$buf.="\n".'</tr>'."\n";
+			}
+			
+						
+			$buf.='<tr>'."\n"."\t";
+
+			
+			foreach ($row as $key => $val){
+				if (!is_numeric($key)){
+					if (!$val)
+					   $Value = '&nbsp;';
+					$buf.='<td bgcolor="'.$bgColor.'" class="'.$this->ATTR_DATA_CONTENT_STYLE.'">'.$val.'</td>';
+				}
+				
+			}
+
+			$buf.= "\n".'</tr>'."\n";
+			$i++;
+		}
+			
+		$buf .=  '</table>'."\n";
+		
+		$buf .=  '</td></tr></table>'."\n";
+				
+		$this->bufHtml = $buf;
+		
+	}
+	
+	public function getList (){
+		
+		$this->buildList();
+		
+		return $this->bufHtml;
+	}
+	
+	
+}
+
+
+class myDinamicListt {
 	
 	/**
 	 * Version de la clase
@@ -17,7 +198,7 @@ class myDinamicList {
 	/**
 	 * Define el ancho de la lista dinamica
 	 */
-	public $STYLE_ancho_lista = '100%';
+	public $STYLE_ancho_lista = '100%';#
 	
 	/**
 	 * Define el nombre de la clase de la hoja de estilos 
@@ -32,7 +213,7 @@ class myDinamicList {
 	 *
 	 * @var string
 	 */
-	public $STYLE_color_borde = '#E2E4FF';
+	public $STYLE_color_borde = '#E2E4FF';#
 	
 	
 	/**
@@ -48,7 +229,7 @@ class myDinamicList {
 	 *
 	 * @var string
 	 */
-	public $STYLE_color_fila_defecto = '#FFFFFF';
+	public $STYLE_color_fila_defecto = '#FFFFFF';#
 
 	/**
 	 * Color de la fila de por medio que se usa
@@ -56,7 +237,7 @@ class myDinamicList {
 	 *
 	 * @var string
 	 */
-	public $STYLE_color_fila_del_medio = '#E7F4FE';
+	public $STYLE_color_fila_del_medio = '#E7F4FE';#
 	
 	/**
 	 * Color de fondo para las filas cuyo cursor pase
@@ -107,7 +288,7 @@ class myDinamicList {
 	 *
 	 * @var string
 	 */
-	public $STYLE_estilo_datos = 'contenido_tabla';
+	public $STYLE_estilo_datos = 'contenido_tabla';#
 
 	/**
 	 * Nombre de la clase de estilos que usan los titulos
@@ -115,7 +296,7 @@ class myDinamicList {
 	 *
 	 * @var string
 	 */
-	public $STYLE_estilo_cabeza_columnas = 'enlace_tabla';
+	public $STYLE_estilo_cabeza_columnas = 'enlace_tabla';#
 		
 	
 	/**
@@ -190,6 +371,7 @@ class myDinamicList {
 	 * @param string $sqlLst Sql consulta original
 	 */
 	public function __construct($idLst, $sqlLst = ''){
+		
 		$this->sqlLst = $sqlLst; 
 		
 		$this->idLst = $idLst;
@@ -214,9 +396,9 @@ class myDinamicList {
 		if (!isset($_SESSION['prdLst'][$idLst]['pagIni']))
 			$_SESSION['prdLst'][$idLst]['pagIni'] = 0;
 		
-		
 		$_SESSION['prdLst'][$idLst]['ordBy'] = '';
 		$_SESSION['prdLst'][$idLst]['ordMtd'] = '';
+		
 	}
 	
 	/**
@@ -351,22 +533,11 @@ class myDinamicList {
 		 */
 		if (isset($_SESSION['prdLst'][$idLst]['ordBy'])){
 			
-			switch ($_SESSION['prdLst'][$idLst]['enD']){
-				
-				case 'mysql':
-					if ($_SESSION['prdLst'][$idLst]['ordMtd']){
-					   $_SESSION['prdLst'][$idLst]['sqlt'] .= ' ORDER BY '.$_SESSION['prdLst'][$idLst]['ordBy'].
-					   ' '.$_SESSION['prdLst'][$idLst]['ordMtd'];
-					}
-				break;
-					
-				case 'postgre':
-					if ($_SESSION['prdLst'][$idLst]['ordMtd']){
-					  $_SESSION['prdLst'][$idLst]['sqlt'] .= ' ORDER BY '.$_SESSION['prdLst'][$idLst]['ordBy'].
-					  ' '.$_SESSION['prdLst'][$idLst]['ordMtd'];
-					}
-				break;
+			if ($_SESSION['prdLst'][$idLst]['ordMtd']){
+			   $_SESSION['prdLst'][$idLst]['sqlt'] .= ' ORDER BY '.$_SESSION['prdLst'][$idLst]['ordBy'].
+			   ' '.$_SESSION['prdLst'][$idLst]['ordMtd'];
 			}
+				
 		}		
 		
 		/**
@@ -408,7 +579,7 @@ class myDinamicList {
 			
 			$this->objActRcrd->query($_SESSION['prdLst'][$idLst]['sql']);
 			
-			$_SESSION['prdLst'][$idLst]['cRws']  = $this->objActRcrd->getAfectedRows();
+			$_SESSION['prdLst'][$idLst]['cRws']  = $this->objActRcrd->getAffectedRows();
 			
 			if ($_SESSION['prdLst'][$idLst]['usPag']){
 				$_SESSION['prdLst'][$idLst]['tcPag'] = intval($_SESSION['prdLst'][$idLst]['cRws']/$_SESSION['prdLst'][$idLst]['pagRng']);
