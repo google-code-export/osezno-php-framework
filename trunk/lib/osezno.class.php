@@ -104,7 +104,12 @@ class osezno {
 		= '<script type="text/javascript" src="'.
 		URL_JS_AS.
 		'"></script>';
-		 
+		
+		$this->arrayAssignAreasHead['string_js_mylist']	 
+		= '<script type="text/javascript" src="'.
+		URL_JS_ML.
+		'"></script>';
+		
 		$this->arrayAssignAreasHead['string_css_common']     
 		= '<link href="'.
 		URL_CSS_TPL.

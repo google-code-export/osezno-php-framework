@@ -879,6 +879,16 @@ class myController {
 	}
 	
 	
+	
+	public function myListMoveTo ($idList, $alias){
+		
+		$this->alert($idList.' '.$alias);
+		
+		return $this->response;
+	}
+	
+	
+	
 	/**
 	 * Ordena o mueve las paginas de una lista
 	 * dinamica.
@@ -894,7 +904,7 @@ class myController {
 	public function myListMove ($NameRefList, $OrderBy = '',  $Desde = '', $Hasta = '', $CambiarOrden = 'S'){
 		$objDinamicList = new myDinamicList($NameRefList, $_SESSION['prdLst'][$NameRefList]['sql']);
 		
-		$this->script('rowsMarked = new Array();');
+		//$this->script('rowsMarked = new Array();');
 		
 		if ($OrderBy && $CambiarOrden == "S"){
 
@@ -914,13 +924,14 @@ class myController {
 			}
 		}
 	
-		$_SESSION['prdLst'][$NameRefList]['pagIni'] = $Desde;
+		//$_SESSION['prdLst'][$NameRefList]['pagIni'] = $Desde;
 
-		$_SESSION['prdLst'][$NameRefList]['acPag'] = $Desde/$Hasta;
+		//$_SESSION['prdLst'][$NameRefList]['acPag'] = $Desde/$Hasta;
 	
 		//Refrescamos la lista dinamica
 		$this->response->assign($NameRefList,'innerHTML',$objDinamicList->getDinamicList($NameRefList,false));
 		
+		/*
 		// Averiguo si estoy en la ultima pagina generada
 		if (($_SESSION['prdLst'][$NameRefList]['acPag']+1)==$_SESSION['prdLst'][$NameRefList]['tcPag']){
 		
@@ -957,6 +968,7 @@ class myController {
 		    	
 			}
 		}
+		*/
 		
 		return $this->response;
 	}

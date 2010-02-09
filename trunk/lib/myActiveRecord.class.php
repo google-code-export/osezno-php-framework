@@ -1005,12 +1005,15 @@ class myActiveRecord {
 			}
 			
 			if ($orderBy){
-				$sql .= ' ORDER BY '.$orderBy;
-				if ($orderMethod)
-				   $sql .= ' '.$orderMethod;
-			}else{
-				$sql .= ' ORDER BY '.$this->tableStruct[$this->table]['pk'].' ';
+				if (is_bool($orderBy)){
+					$sql .= ' ORDER BY '.$this->tableStruct[$this->table]['pk'].' ';
+				}else{
+					$sql .= ' ORDER BY '.$orderBy;
+					if ($orderMethod)
+				   		$sql .= ' '.$orderMethod;
+				}
 			}
+			
 			
 			if ($intLimit){
 				switch ($this->engine){

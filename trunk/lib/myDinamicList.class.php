@@ -67,16 +67,31 @@ class myList  {
 	 */
 	private $ATTR_USE_DISTINCT_BETW_ROWS = true;
 	
+	
+	/**
+	 * Usar metodo de ordenamiento
+	 * 
+	 * @var bool
+	 */
+	private $ATTR_USE_COLUMN_ORDERING = true;
+	
+	
 	private $bufHtml = '';
 	
 	private $objConn;
 	
 	private $sql = '';
 	
+	private $js = '';
+	
 	private $resSql;
 	
-	public function __construct($sqlORobject){
+	private $idList = '';
+	
+	public function __construct($idList, $sqlORobject){
 
+		$this->idList = $idList;
+		
 		if (is_object($sqlORobject)){
 			
 			$this->objConn = $sqlORobject;
@@ -89,11 +104,14 @@ class myList  {
 			
 			$this->objConn = new myActiveRecord();
 			
-			$this->sql = $sql;		
+			$this->sql = $sqlORobject;		
 			
 			$this->resSql = $this->objConn->query ($this->sql);
 			
 		}
+		
+		$sqlPart = substr($this->sql,$fsP = stripos($this->sql,' '),(stripos($this->sql,'from')-$fsP));
+		
 		
 		
 	}
@@ -110,13 +128,32 @@ class myList  {
 		return $this->$name;
 	}
 	
+	
+	private function buildJs (){
+		
+		$js = ''."\n";
+		
+		$js .= '<script type=\'text/javascript\' charset=\'UTF-8\'> '."\n";
+		
+		$js .= 'myList = new myList(\''.$this->idList.'\');'."\n"; 
+		
+		$js .= '</script>'."\n";
+		
+		$this->js = $js;
+		
+		return $this->js;
+	}
+	
 	private function buildList (){
 
 		$sw = false;
+		
 		$return = '';
 			
 		$rows = $this->resSql;
-		$buf = '';
+		
+		$buf = ''.$this->buildJs();
+		
 		$buf .=  "\n".'<table width="'.$this->ATTR_WIDTH_LIST.''.$this->ATTR_FORMAT_WIDTH_LIST.'" cellspacing="0" cellpadding="0"><tr><td bgcolor="'.$this->ATTR_BORDER_COLOR.'">'."\n";
 		
 		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->ATTR_BORDER_CELL_SIZE.'" cellpadding="0">'."\n";
@@ -132,14 +169,27 @@ class myList  {
 				}else
 					$bgColor = $this->ATTR_DEFAULT_ROW_COLOR;			
 			
+			/**
+			 * Titulos de las columnas
+			 */		
 			if (!$sw){
 				$sw = true;
 				
 				$buf.='<tr>'."\n"."\t";
-				
+
 				foreach ($row as $key => $val){
 					if (!is_numeric($key)){
-						$buf.='<td class="'.$this->ATTR_COLUMN_TITLE_STYLE.'">'.ucwords($key).'</td>';	
+						
+						$buf.='<td class="'.$this->ATTR_COLUMN_TITLE_STYLE.'">';
+
+						if ($this->ATTR_USE_COLUMN_ORDERING){
+							$buf.='<a href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
+							ucwords($key).''.'</a>';	
+						}else{
+							$buf.=''.ucwords($key).'';
+						}
+						
+						$buf.='</td>';	
 					}
 				}
 				$buf.="\n".'</tr>'."\n";
@@ -221,7 +271,7 @@ class myDinamicListt {
 	 *
 	 * @var boolean
 	 */
-	public $STYLE_usar_distincion_filas = true;
+	public $STYLE_usar_distincion_filas = true;#
 	
 	/**
 	 * Color de las filas de registros que usan
