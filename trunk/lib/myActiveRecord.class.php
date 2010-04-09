@@ -183,6 +183,16 @@ class myActiveRecord {
 	 */
 	private $posFijSeq = '_seq';
 
+	
+	/**
+	 * Decide si se coloca o no auto comillas sencillas en
+	 * las consulta hechas con el metodo find
+	 * 
+	 * @var unknown_type
+	 */
+	private $autoQuoteOnFind = true;
+	
+	
 	/**
 	 * Atributos que no son reconocibles para los metodos
 	 * que intervienen en las tablas.
@@ -371,6 +381,17 @@ class myActiveRecord {
 		$this->posFijSeq = $posFij;
 	}
 
+	/**
+	 * Setear comillas automatica en el metodo find
+	 * 
+	 * @param $value
+	 * @return unknown_type
+	 */
+	public function setAutoQuotesInFind ($value){
+		
+		$this->autoQuoteOnFind = $value;
+	}
+	
 	/*
 	 * Obtenedores
 	 */
@@ -984,14 +1005,19 @@ class myActiveRecord {
 					list ($fCnd, $vCnd) = explode($smblRel,$cnd);
 				
 				if (trim($fCnd) && $vCnd){
-						
-					if (is_numeric(trim($vCnd))){
-						$sql .= $fCnd.$smblRel.
-						' '.trim($vCnd);
 
+					if ($this->autoQuoteOnFind){
+						if (is_numeric(trim($vCnd))){
+							$sql .= $fCnd.$smblRel.
+							' '.trim($vCnd);
+
+						}else{
+							$sql .= $fCnd.$smblRel.
+							" '".trim($vCnd)."'";
+						}
 					}else{
 						$sql .= $fCnd.$smblRel.
-						" '".trim($vCnd)."'";
+							' '.trim($vCnd).'';
 					}
 
 				}else{
@@ -1043,8 +1069,10 @@ class myActiveRecord {
 		}else{
 
 			if ($strCond){
-				if (is_string($strCond))
-					$strCond = '\''.$strCond.'\'';
+				if ($this->autoQuoteOnFind){
+					if (is_string($strCond))
+						$strCond = '\''.$strCond.'\'';
+				}
 				
 				$sql .= ' WHERE '.$this->tableStruct[$this->table]['pk'].' = '.$strCond;
 			}

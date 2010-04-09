@@ -880,9 +880,51 @@ class myController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Mueve la lista dinamica en sentido adelante, atras, ascendente y descendente.
+	 * 
+	 * @param $idList	Id o nombre de la lista dinámica	
+	 * @param $alias	Alias de la columna
+	 */
 	public function myListMoveTo ($idList, $alias){
 		
-		$this->alert($idList.' '.$alias);
+		if (isset($_SESSION['prdLst'][$idList]['alInQu'][$alias])){
+			
+			if (isset($_SESSION['prdLst'][$idList]['ordMtd'][$alias])){
+				
+				$newMtd = 'ASC';
+				switch ($_SESSION['prdLst'][$idList]['ordMtd'][$alias]){
+					case 'ASC':
+						$newMtd = 'DESC';					
+					break;
+					case 'DESC':
+						$newMtd = '';
+					break;
+				}
+			
+				$_SESSION['prdLst'][$idList]['ordMtd'][$alias] = $newMtd;
+			}
+			
+		}else
+			$this->alert('ERROR: El alias "'.$alias.'" no fue definido en la consulta SQL.');
+		
+		$objMyList = new myList($idList);
+		
+
+		
+		$this->assign($idList,'innerHTML',$objMyList->getList());
+
+		//$this->alert(var_export($_SESSION['prdLst'][$idList]['ordMtd'],true));		
+		//$this->alert($_SESSION['prdLst'][$idList]['ordMtd'][$alias]);
+		$this->alert($_SESSION['prdLst'][$idList]['sqlW']);
 		
 		return $this->response;
 	}

@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Documentación de variables de sesión:
+ * 
+ * alInQu: Arreglo que contiene los alias con sus respectivos campos de la consulta.
+ * sql: Consulta sql original
+ * sqlW: Consulta sql de trabajo, esta cambiando segun los cambios que haga el usuario sobre la lista dinamica
+ *  
+ */
+
+
+/**
+ * 
+ * @author Usuario
+ *
+ */
 class myList  {
 	
 	/**
@@ -82,20 +97,70 @@ class myList  {
 	
 	private $sql = '';
 	
+	private $sqlTemp = '';
+	
 	private $js = '';
 	
 	private $resSql;
 	
 	private $idList = '';
 	
-	public function __construct($idList, $sqlORobject){
+	private $arrayAliasSetInQuery = array ();
+	
+	private $errorLog;
+	
+	public function __construct($idList, $sqlORobject = ''){
 
-		$this->idList = $idList;
+		$this->idList = $idList;		
+		
+		if (!isset($_SESSION['prdLst'])){
+			if (!isset($_SESSION['prdLst'][$idList])){
+				$_SESSION['prdLst'][$idList] = array ();
+			}
+		} 
+		
+		if (!$sqlORobject){
+			# No lleva sql u objeto
+
+			$this->sqlTemp = $_SESSION['prdLst'][$this->idList]['sql'];
+			
+			if (isset($_SESSION['prdLst'][$this->idList]['ordMtd']))
+				if (count($_SESSION['prdLst'][$this->idList]['ordMtd'])){
+					$this->sqlTemp .= $this->getSqlPartOrderBy();
+				}
+
+			$_SESSION['prdLst'][$this->idList]['sqlW'] = $this->sqlTemp;	
+				
+			$this->executeInstance($this->sqlTemp);
+			
+		}else{
+			
+			$this->executeInstance($sqlORobject);
+
+		}
+		
+		
+		
+		if (!isset($_SESSION['prdLst'][$this->idList]['sql']))
+			$_SESSION['prdLst'][$this->idList]['sql'] = $this->sql;
+		
+		/**
+		 * Arreglo con los metodos de ordenamiento por Columna
+		 */	
+		if (!isset($_SESSION['prdLst'][$this->idList]['ordMtd']))
+			$_SESSION['prdLst'][$this->idList]['ordMtd'] = array ();	
+			
+	}
+	
+	
+	
+	
+	private function executeInstance ($sqlORobject){
 		
 		if (is_object($sqlORobject)){
 			
 			$this->objConn = $sqlORobject;
-			
+		
 			$this->resSql = $sqlORobject->find();
 			
 			$this->sql = $sqlORobject->getSqlLog();
@@ -103,19 +168,90 @@ class myList  {
 		}else{
 			
 			$this->objConn = new myActiveRecord();
-			
+		
 			$this->sql = $sqlORobject;		
 			
 			$this->resSql = $this->objConn->query ($this->sql);
+		}
+	
 			
+	}
+	
+	
+	
+	/**
+	 * Obtiene una cadena de texto que le indica a la consulta sql
+	 * principal como debe organizar el resultado de la consulta.
+	 * 
+	 * @return string
+	 */
+	private function getSqlPartOrderBy (){
+		
+		$sqlPart = '';
+		
+		foreach ($_SESSION['prdLst'][$this->idList]['ordMtd'] as $column => $method){
+			if ($method){
+				
+				if (!$sqlPart)
+					$sqlPart = ' ORDER BY ';
+				
+				$sqlPart .= $column.' '.$method.', ';
+			}
 		}
 		
-		$sqlPart = substr($this->sql,$fsP = stripos($this->sql,' '),(stripos($this->sql,'from')-$fsP));
+		$sqlPart = substr($sqlPart,0,-2);
 		
+		return $sqlPart;
+	}
+	
+	/**
+	 * Configura un campo en la consulta SQL para  que  le
+	 * sea definido un alias y este pueda ser usado en los
+	 * demas procesos de busqueda, consulta y ordenamiento.
+	 * 
+	 * @param $field Nombre del campo
+	 * @param $alias Alias del campo
+	 */
+	public function setAliasInQuery ($field, $alias){
 		
+		if (!isset($this->arrayAliasSetInQuery[$alias])){
+			$this->arrayAliasSetInQuery[$alias] = $field;
+			
+			if (!isset($_SESSION['prdLst'][$this->idList]['alInQu']))
+				$_SESSION['prdLst'][$this->idList]['alInQu'] = 
+					array ();
+			
+			$_SESSION['prdLst'][$this->idList]['alInQu'][$alias] = $field;
+			
+		}else
+			$this->errorLog .= 
+				"\n".'WARNING: El alias "'.$alias.'" ya estaba regitrado.';
 		
 	}
 	
+	
+	/**
+	 * Configura si una columna va a tener una propiedad especial 
+	 * que le permitira a esta ser ordenada en forma ascendente o
+	 * descendente o simplemente no ser organizada.
+	 * 
+	 * @param $alias
+	 */
+	public function setUseOrderMethodInColumn ($alias){
+		
+		$_SESSION['prdLst'][$this->idList]['ordMtd'][$alias] = '';
+		
+	}
+	
+	
+	/**
+	 * Configura un atributo de la lista dinamica que va 
+	 * a modificar su vista.
+	 * 
+	 * @param $name  Nombre del atributo
+	 * @param $value Nuevo valor del atributo
+	 * 
+	 */
 	public function setAttribute ($name, $value){
 		
 		$this->$name = $value;
@@ -153,6 +289,8 @@ class myList  {
 		$rows = $this->resSql;
 		
 		$buf = ''.$this->buildJs();
+		
+		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
 		$buf .=  "\n".'<table width="'.$this->ATTR_WIDTH_LIST.''.$this->ATTR_FORMAT_WIDTH_LIST.'" cellspacing="0" cellpadding="0"><tr><td bgcolor="'.$this->ATTR_BORDER_COLOR.'">'."\n";
 		
@@ -215,7 +353,9 @@ class myList  {
 		$buf .=  '</table>'."\n";
 		
 		$buf .=  '</td></tr></table>'."\n";
-				
+
+		$buf .= '</div>'."\n";
+		
 		$this->bufHtml = $buf;
 		
 	}
