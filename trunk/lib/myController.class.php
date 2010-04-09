@@ -918,13 +918,10 @@ class myController {
 		
 		$objMyList = new myList($idList);
 		
-
-		
 		$this->assign($idList,'innerHTML',$objMyList->getList());
 
-		//$this->alert(var_export($_SESSION['prdLst'][$idList]['ordMtd'],true));		
-		//$this->alert($_SESSION['prdLst'][$idList]['ordMtd'][$alias]);
-		$this->alert($_SESSION['prdLst'][$idList]['sqlW']);
+		# TODO: Borrar esta linea
+		//$this->alert($_SESSION['prdLst'][$idList]['sqlW']);
 		
 		return $this->response;
 	}

@@ -91,6 +91,16 @@ class myList  {
 	private $ATTR_USE_COLUMN_ORDERING = true;
 	
 	
+	/**
+	 * Path subcarpeta dentro de la carpeta principal del proyecto
+	 * que almacena las imagenes generales que se usan en las listas
+	 * dinamicas.
+	 *
+	 * @var string
+	 */
+	private $ATTR_SFOLDER_PATH_IMG = '/img/my_dinamiclist/';
+		
+	
 	private $bufHtml = '';
 	
 	private $objConn;
@@ -129,6 +139,7 @@ class myList  {
 					$this->sqlTemp .= $this->getSqlPartOrderBy();
 				}
 
+			#TODO: Borrar esta linea	
 			$_SESSION['prdLst'][$this->idList]['sqlW'] = $this->sqlTemp;	
 				
 			$this->executeInstance($this->sqlTemp);
@@ -239,7 +250,8 @@ class myList  {
 	 */
 	public function setUseOrderMethodInColumn ($alias){
 		
-		$_SESSION['prdLst'][$this->idList]['ordMtd'][$alias] = '';
+		if (!isset($_SESSION['prdLst'][$this->idList]['ordMtd'][$alias]))
+			$_SESSION['prdLst'][$this->idList]['ordMtd'][$alias] = '';
 		
 	}
 	
@@ -288,6 +300,8 @@ class myList  {
 			
 		$rows = $this->resSql;
 		
+		$bufHead = '';
+		
 		$buf = ''.$this->buildJs();
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
@@ -313,29 +327,43 @@ class myList  {
 			if (!$sw){
 				$sw = true;
 				
-				$buf.='<tr>'."\n"."\t";
+				$bufHead.='<tr>'."\n"."\t";
 
 				foreach ($row as $key => $val){
 					if (!is_numeric($key)){
 						
-						$buf.='<td class="'.$this->ATTR_COLUMN_TITLE_STYLE.'">';
-
+						$backGround_hCol = $GLOBALS['urlProject'].$this->ATTR_SFOLDER_PATH_IMG;
+						
+						$bufHead.='<td background="'.$backGround_hCol.'"><div style="text-align:center">';
+						
 						if ($this->ATTR_USE_COLUMN_ORDERING){
-							$buf.='<a href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
-							ucwords($key).''.'</a>';	
+							
+							$orderBy = '';
+							if (isset($_SESSION['prdLst'][$this->idList]['ordMtd'][$key]))
+								$orderBy = $_SESSION['prdLst'][$this->idList]['ordMtd'][$key];
+							
+							$bufHead.='<a class="'.$this->ATTR_COLUMN_TITLE_STYLE.'" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
+							
+							ucwords($key).''.$orderBy.'</a>';
+								
 						}else{
-							$buf.=''.ucwords($key).'';
+							
+							$bufHead .= '<font class="'.$this->ATTR_COLUMN_TITLE_STYLE.'">';
+							
+							$bufHead.=''.ucwords($key).'';
+							
+							$bufHead .= '</font>';
 						}
 						
-						$buf.='</td>';	
+						$bufHead.='</div></td>';	
 					}
 				}
-				$buf.="\n".'</tr>'."\n";
+				$bufHead.="\n".'</tr>'."\n";
+				
+				$buf .='{bufHead}';
 			}
-			
 						
 			$buf.='<tr>'."\n"."\t";
-
 			
 			foreach ($row as $key => $val){
 				if (!is_numeric($key)){
@@ -356,7 +384,7 @@ class myList  {
 
 		$buf .= '</div>'."\n";
 		
-		$this->bufHtml = $buf;
+		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		
 	}
 	
@@ -365,6 +393,10 @@ class myList  {
 		$this->buildList();
 		
 		return $this->bufHtml;
+	}
+	
+	public function save (){
+		
 	}
 	
 	
