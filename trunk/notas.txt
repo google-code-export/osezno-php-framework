@@ -1,27 +1,14 @@
 Notas sobre version de Osezno-Framework
 
-- Dar permisos a el usuario de postgresql con el que se conecta a la base 
-	de datos sobre las tablas 
-		key_column_usage
-		table_constraints
-		tables
-		columns
-	de information_schema para 'SELECT'
-	
 - Problemas encontrados
   Una consulta llamando dos veces a la misma tabla en el metodo order by genera
   problema ya que dice que ese campo es ambiguo
   
-  Catchable fatal error: Object of class mysqli could not be converted to string in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 747
   Incompatibilidad en php 5.2.9-1, este error debe ser cacheado para asegurar la conpatibilidad
   Php 5.2 solo funciona sobre Apache 2.2
   Error
   Normalmente seria algo como 
-  Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 747
-  Notice: Object of class mysqli to string conversion in C:\wamp\www\osezno-framework\trunk\lib\myActiveRecord.class.php on line 755
-  Oscar aldana participa activamente en svn
-  
-  
+
 Arreglar:  Revision, los errores de consultas manuales generadas por medio del metodo query pueden ser seguidas de cerca sobre errores de jecucion y po lo tanto deben abortar las transacciones q sean sus mentoras
 
 Modificar el metodo query para obtener el numero de registros afectados por la anterior
