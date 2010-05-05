@@ -225,7 +225,7 @@ class osezno {
   		$newContent = str_ireplace('</head>', $this->getAllHead().'</head>', $newContent);
   		$newContent = str_ireplace('</body>', $this->getAllBody().'</body>', $newContent);
   		
-  		$newContent = ereg_replace("\{+[0-9a-zA-Z_]+\}","",$newContent);
+  		$newContent = preg_replace('(\\{+[0-9a-zA-Z_]+\\})','',$newContent);
   		
   		echo $newContent;
   	}

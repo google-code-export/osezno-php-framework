@@ -13,3 +13,9 @@ Arreglar:  Revision, los errores de consultas manuales generadas por medio del m
 
 Modificar el metodo query para obtener el numero de registros afectados por la anterior
 consulta, este resultado no debe depender se si se trata un SELECT, UPDATE, INSERT o DELETE
+
+(ERROR) Modificar en la clase de listas dinamicas cuando se aplica una longitud de 80 pixeles a una longitud total de la tabla de 1100 pixeles
+
+Crear atributo de base de datos que permita deicidir si se aplican comillas automaticas cuando se trata de un variable char
+
+Revizar como se comporta setAutoQuotesInFind en active record 

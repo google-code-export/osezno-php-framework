@@ -98,8 +98,24 @@ class myList  {
 	 *
 	 * @var string
 	 */
-	private $ATTR_SFOLDER_PATH_IMG = '/img/my_dinamiclist/';
+	private $ATTR_SFOLDER_PATH_IMG = 'img/my_dinamiclist/';
 		
+	/**
+	 * Path subcarpeta dentro de la carpeta principal del proyecto
+	 * que almacena datos temporales de uso de las lista dinámicas.
+	 * 
+	 * @var string
+	 */
+	private $tmpFolder = 'tmp/';
+	
+	/**
+	 * Extension que es usada para los archivos temporales de las
+	 * listas dinámicas que son creados.
+	 * 
+	 * @var string
+	 */
+	private $extTmpFile = 'myList';
+	
 	
 	private $bufHtml = '';
 	
@@ -107,7 +123,7 @@ class myList  {
 	
 	private $sql = '';
 	
-	private $sqlTemp = '';
+	private $sqlW = '';
 	
 	private $js = '';
 	
@@ -121,58 +137,15 @@ class myList  {
 	
 	public function __construct($idList, $sqlORobject = ''){
 
+		$this->tmpFolder = $GLOBALS['folderProject'].$this->tmpFolder;
+		
 		$this->idList = $idList;		
-		
-		if (!isset($_SESSION['prdLst'])){
-			if (!isset($_SESSION['prdLst'][$idList])){
-				$_SESSION['prdLst'][$idList] = array ();
-			}
-		} 
-		
-		if (!$sqlORobject){
-			# No lleva sql u objeto
 
-			$this->sqlTemp = $_SESSION['prdLst'][$this->idList]['sql'];
-			
-			if (isset($_SESSION['prdLst'][$this->idList]['ordMtd']))
-				if (count($_SESSION['prdLst'][$this->idList]['ordMtd'])){
-					$this->sqlTemp .= $this->getSqlPartOrderBy();
-				}
-
-			#TODO: Borrar esta linea	
-			$_SESSION['prdLst'][$this->idList]['sqlW'] = $this->sqlTemp;	
-				
-			$this->executeInstance($this->sqlTemp);
-			
-		}else{
-			
-			$this->executeInstance($sqlORobject);
-
-		}
-		
-		
-		
-		if (!isset($_SESSION['prdLst'][$this->idList]['sql']))
-			$_SESSION['prdLst'][$this->idList]['sql'] = $this->sql;
-		
-		/**
-		 * Arreglo con los metodos de ordenamiento por Columna
-		 */	
-		if (!isset($_SESSION['prdLst'][$this->idList]['ordMtd']))
-			$_SESSION['prdLst'][$this->idList]['ordMtd'] = array ();	
-			
-	}
-	
-	
-	
-	
-	private function executeInstance ($sqlORobject){
-		
 		if (is_object($sqlORobject)){
 			
 			$this->objConn = $sqlORobject;
 		
-			$this->resSql = $sqlORobject->find();
+			$this->sqlW = $this->resSql = $sqlORobject->find();
 			
 			$this->sql = $sqlORobject->getSqlLog();
 			
@@ -180,15 +153,88 @@ class myList  {
 			
 			$this->objConn = new myActiveRecord();
 		
-			$this->sql = $sqlORobject;		
+			$this->sqlW = $this->sql = $sqlORobject;		
 			
 			$this->resSql = $this->objConn->query ($this->sql);
-		}
-	
-			
+		}		
+
+		$this->createUpdateFileTemp($this->idList,'SQL',$this->sql);
+
+		$this->sqlW .= $this->getSqlPartOrderBy();
 	}
 	
 	
+	/**
+	 * Crea un archivo tmp si no existe.
+	 * Se pueden agregar nuevas variables, si esta existe sera reemplazada.
+	 * 
+	 * @param $idList
+	 * @param $var
+	 * @param $newVal
+	 * @return unknown_type
+	 */
+	private function createUpdateFileTemp ($idList, $var = '', $newVal = ''){
+		
+		$pathFile = $this->getPathFile();
+		
+		if (!file_exists($pathFile)){
+			
+		}
+		
+		$idFileTemp = fopen ($pathFile,'a+');
+		
+		if ($var){
+			
+			$contFile = fread ($idFileTemp,filesize($pathFile));
+			
+			$posFind = strripos($contFile, '['.$var.':');
+			
+			if ($posFind === false){
+				
+				fwrite($idFileTemp,'['.$var.':'.$newVal.":]\n");
+				
+			}else{
+				
+				//fwrite($idFileTemp,'['.$var.']:'.$newVal."\n");
+				
+				$contFile = preg_replace('(\\{+['.$var.']+\\})','',$contFile);
+				
+				echo $contFile;
+			}
+			
+			
+			
+		}
+		
+			
+			
+		fclose ($idFileTemp);
+		
+
+	}
+	
+	/**
+	 * Obtiene la ruta actual donte esta ubicado el archivo temporal de la lista
+	 * 
+	 * @return string
+	 */
+	private function getPathFile (){
+		
+		return $this->tmpFolder.$this->idList.'.'.$this->extTmpFile;
+	}
+	
+	
+	/**
+	 * Lee el archivo actual de la lista dinamica y extrae las variables que se necesitan en un arreglo.
+	 * 
+	 * @return array
+	 */
+	protected  function readFileTemp (){
+		
+		$pathFile = $this->getPathFile();
+				
+		return $pathFile;
+	}
 	
 	/**
 	 * Obtiene una cadena de texto que le indica a la consulta sql
@@ -388,6 +434,10 @@ class myList  {
 		
 	}
 	
+	 	
+	
+	
+	
 	public function getList (){
 		
 		$this->buildList();
@@ -395,8 +445,18 @@ class myList  {
 		return $this->bufHtml;
 	}
 	
-	public function save (){
+	
+	
+}
+
+
+class myListExt extends myList {
+	
+	public function getVarsList (){
 		
+		
+		
+		return $this->readFileTemp();
 	}
 	
 	

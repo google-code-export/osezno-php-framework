@@ -896,32 +896,14 @@ class myController {
 	 */
 	public function myListMoveTo ($idList, $alias){
 		
-		if (isset($_SESSION['prdLst'][$idList]['alInQu'][$alias])){
-			
-			if (isset($_SESSION['prdLst'][$idList]['ordMtd'][$alias])){
-				
-				$newMtd = 'ASC';
-				switch ($_SESSION['prdLst'][$idList]['ordMtd'][$alias]){
-					case 'ASC':
-						$newMtd = 'DESC';					
-					break;
-					case 'DESC':
-						$newMtd = '';
-					break;
-				}
-			
-				$_SESSION['prdLst'][$idList]['ordMtd'][$alias] = $newMtd;
-			}
-			
-		}else
-			$this->alert('ERROR: El alias "'.$alias.'" no fue definido en la consulta SQL.');
 		
-		$objMyList = new myList($idList);
+		$myListExt = new myListExt($idList);
 		
-		$this->assign($idList,'innerHTML',$objMyList->getList());
+		
+		$this->alert(var_export($myListExt->getVarsList(),true));
+		
 
-		# TODO: Borrar esta linea
-		//$this->alert($_SESSION['prdLst'][$idList]['sqlW']);
+		
 		
 		return $this->response;
 	}
@@ -1165,5 +1147,7 @@ class myController {
 	
 	
 }
+
+
 
 ?>

@@ -23,7 +23,7 @@
   
   
   $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = 'ethos'; # Nombre de base de datos
-  $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= 'mysql'; # Motor de base de datos; postgre ó mysql
+  $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= 'mysql'; # Motor de base de datos; pgsql ó mysql
   $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= 'localhost'; # Direccion Ip o nombre de maquina del motor de base de datos
   $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= 'root'; # Nombre de usuario para conexion 
   $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = ''; # Contraseña de usuario para conexión
@@ -165,6 +165,11 @@
    * Ruta tipo url donde se encuentra el js de autosuggest
    */
   define ('URL_JS_AS',       $http.$httpHost.'/javascript/autosuggest.js',true);
+
+  /**
+   * Ruta tipo url donde se encuentra el js de myList
+   */
+  define ('URL_JS_ML',       $http.$httpHost.'/javascript/myList.js',true);
   
   /**
    * Ruta tipo url donde se descarga la hoja de estilos de los controles tipo calendario 
