@@ -11,20 +11,21 @@
    * Vista inicial.
    */
  include 'handlerEvent.php';
-
+ 
  /**
   * Asignar contenidos a areas de la plantilla
   */ 
  $objOsezno->assign('form_title','Cambiar este titulo');
  
+<<<<<<< .mine
+ $objOsezno->assign('work_area',$modelo->builtList('libros'));
+=======
  $objOsezno->assign('work_area','');
  
  $objOsezno->assign('other_area','Cambiar este contenido');
+>>>>>>> .r74
 
- 
- /**
-  * Mostrar la plantilla
-  */
  $objOsezno->call_template('basic/basic.tpl');
+ 
  
 ?>
