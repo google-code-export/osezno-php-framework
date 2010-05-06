@@ -900,7 +900,7 @@ class myController {
 		$myListExt = new myListExt($idList);
 		
 		
-		$this->alert(var_export($myListExt->getVarsList(),true));
+		$this->alert($myListExt->getVar($idList, 'SQL'));
 		
 
 		

@@ -136,10 +136,16 @@ class myList  {
 	private $errorLog;
 	
 	public function __construct($idList, $sqlORobject = ''){
-
-		$this->tmpFolder = $GLOBALS['folderProject'].$this->tmpFolder;
 		
-		$this->idList = $idList;		
+		$this->idList = $idList;
+		
+		if (!isset($_SESSION['prdLst']))
+			$_SESSION['prdLst'] = array ();
+		 	
+
+		if (!isset($_SESSION['prdLst'][$this->idList]))
+			$_SESSION['prdLst'][$this->idList] = array ();
+			
 
 		if (is_object($sqlORobject)){
 			
@@ -158,7 +164,7 @@ class myList  {
 			$this->resSql = $this->objConn->query ($this->sql);
 		}		
 
-		$this->createUpdateFileTemp($this->idList,'SQL',$this->sql);
+		$this->createUpdateVar('SQL',$this->sql);
 
 		$this->sqlW .= $this->getSqlPartOrderBy();
 	}
@@ -168,49 +174,14 @@ class myList  {
 	 * Crea un archivo tmp si no existe.
 	 * Se pueden agregar nuevas variables, si esta existe sera reemplazada.
 	 * 
-	 * @param $idList
 	 * @param $var
 	 * @param $newVal
 	 * @return unknown_type
 	 */
-	private function createUpdateFileTemp ($idList, $var = '', $newVal = ''){
+	private function createUpdateVar ($var, $newVal){
 		
-		$pathFile = $this->getPathFile();
+		$_SESSION['prdLst'][$this->idList][$var] = $newVal;
 		
-		if (!file_exists($pathFile)){
-			
-		}
-		
-		$idFileTemp = fopen ($pathFile,'a+');
-		
-		if ($var){
-			
-			$contFile = fread ($idFileTemp,filesize($pathFile));
-			
-			$posFind = strripos($contFile, '['.$var.':');
-			
-			if ($posFind === false){
-				
-				fwrite($idFileTemp,'['.$var.':'.$newVal.":]\n");
-				
-			}else{
-				
-				//fwrite($idFileTemp,'['.$var.']:'.$newVal."\n");
-				
-				$contFile = preg_replace('(\\{+['.$var.']+\\})','',$contFile);
-				
-				echo $contFile;
-			}
-			
-			
-			
-		}
-		
-			
-			
-		fclose ($idFileTemp);
-		
-
 	}
 	
 	/**
@@ -452,11 +423,11 @@ class myList  {
 
 class myListExt extends myList {
 	
-	public function getVarsList (){
+	public function getVar ($idList, $var){
 		
 		
 		
-		return $this->readFileTemp();
+		return $_SESSION['prdLst'][$idList][$var];
 	}
 	
 	
