@@ -30,7 +30,6 @@
  		
  	}
  	
-<<<<<<< .mine
  	public function formulario (){
  		$objMyForm = new myForm('formulario',NULL,'onSubmitAccept');
  		
@@ -48,9 +47,7 @@
  		
  		return $objMyForm->getForm(1);
  	}
- 	
-=======
->>>>>>> .r74
+
  	
  	public function builtList ($idLista){
  		
