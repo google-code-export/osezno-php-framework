@@ -110,6 +110,16 @@ class osezno {
 		URL_JS_ML.
 		'"></script>';
 		
+		$this->arrayAssignAreasHead['string_js_calendar']   
+		= '<script type="text/javascript" src="'.
+		URL_JS_CAL.
+		'"></script>';
+		
+		$this->arrayAssignAreasHead['string_js_lang_calendar']   
+		= '<script type="text/javascript" src="'.
+		URL_JS_CAL_LANG.
+		'"></script>';
+		
 		$this->arrayAssignAreasHead['string_css_common']     
 		= '<link href="'.
 		URL_CSS_TPL.
@@ -129,6 +139,17 @@ class osezno {
 		= '<script type="text/javascript" src="'.
 		URL_JS_TB.
 		'"></script>';
+		
+		$this->arrayAssignAreasBody['string_js_cal_setup']	 
+		= '<script type="text/javascript">//<![CDATA[
+		var cal = Calendar.setup({
+	  	onSelect: function(cal) { cal.hide() },
+	  	showTime: false,
+	  	weekNumbers: true,
+	  	align:1
+	  	
+      	  });
+		//]]></script>';
   	}
   	
 	/**

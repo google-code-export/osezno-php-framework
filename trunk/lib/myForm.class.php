@@ -23,7 +23,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $Version = '1.6.0';
+	public $version = '1.6.0';
 
 
 	/**
@@ -31,7 +31,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $Method = 'post';
+	public $method = 'post';
 
 
 	/**
@@ -47,7 +47,7 @@ class myForm {
 	 * Ejemplo valida.php
 	 * @var string
 	 */
-	public $Action;
+	public $action;
 
 
 	/**
@@ -55,7 +55,7 @@ class myForm {
 	 * Valores: _self, _blank, _parent, _top
 	 * @var string
 	 */
-	public $Target = '_self';
+	public $target = '_self';
 
 
 	/**
@@ -63,7 +63,7 @@ class myForm {
 	 * Valores: application/x-www-form-urlencoded, multipart/form-data
 	 * @var string
 	 */
-	public $Enctype;
+	public $enctype;
 
 
 	/**
@@ -103,7 +103,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $NomForm;
+	public $nomForm;
 
 
 	/**
@@ -179,7 +179,7 @@ class myForm {
 	 *
 	 * @var integer
 	 */
-	public $Cols = 2;
+	public $cols = 2;
 
 
 	/**
@@ -218,7 +218,7 @@ class myForm {
 	 *
 	 * @var integer
 	 */
-	public $tableBorder = 0;
+	public $borderTable = 0;
 
 
 	/**
@@ -228,7 +228,7 @@ class myForm {
 	 *
 	 * @var boolean
 	 */
-	public $selectUseFirstValue = true;
+	public $useFirstValueInSelect = true;
 
 
 	/**
@@ -236,7 +236,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SrcImageButton = 'save.png';
+	public $srcImageMainButton = 'save.png';
 
 
 	/**
@@ -244,7 +244,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SrcImageCalendarButton  = 'calendar.png';
+	public $srcImageCalendarButton  = 'calendar.png';
 
 
 	/**
@@ -282,7 +282,7 @@ class myForm {
 
 	/**
 	 * Etiqueta de la primera opcion por select
-	 * que se activa solo si $objMyForm->selectUseFirstValue
+	 * que se activa solo si $objMyForm->useFirstValueInSelect
 	 * es igual a 'true'
 	 *
 	 * @var string
@@ -1041,20 +1041,20 @@ class myForm {
 	 * @param boolean $boolUseCache Usar o no cache en el formulario
 	 * @param integer $intSeconds   Numero de segundos en que la cache del formulario dura activa 
 	 */
-	public function __construct($nomForm = '', $Action = '', $jsScript = '', $enctype = '',  $target = '', $boolUseCache = '', $intSeconds = ''){
-		$this->NomForm = $nomForm;
+	public function __construct($nomForm = '', $action = '', $jsScript = '', $enctype = '',  $target = '', $boolUseCache = '', $intSeconds = ''){
+		$this->nomForm = $nomForm;
 
-		if ($Action)
-			$this->Action = $Action;
+		if ($action)
+			$this->action = $action;
 			
 		if ($jsScript)
 			$this->jsFunctionEvent = $jsScript;
 			
 		if ($enctype)
-			$this->Enctype = $enctype;
+			$this->enctype = $enctype;
 			
 		if ($target)
-			$this->Target = $target;
+			$this->target = $target;
 		
 		if (isset($boolUseCache) && isset($intSeconds))
 		   $this->setCache($boolUseCache, $intSeconds);
@@ -1313,7 +1313,7 @@ class myForm {
 		if (is_array($strFunctionORarrayFunctions)){
 			$cantFinctions = count($strFunctionORarrayFunctions);
 			for($i=0;$i<$cantFinctions;$i++){
-				$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions[$i].'(GetDataForm(\''.$this->NomForm.'\''.')';
+				$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions[$i].'(GetDataForm(\''.$this->nomForm.'\''.')';
 				//Miramos si hay parametros adicionales
 				if (!$mixedMoreParams)
 				$this->objEventxJ[$strElementIdORelemlentName] .= ')'.'';
@@ -1337,7 +1337,7 @@ class myForm {
 			}
 			$this->objEventxJ[$strElementIdORelemlentName] .='"';
 		}else{
-			$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions.'(GetDataForm(\''.$this->NomForm.'\''.')';
+			$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions.'(GetDataForm(\''.$this->nomForm.'\''.')';
 			if (!$mixedMoreParams)
 			$this->objEventxJ[$strElementIdORelemlentName] .=')'.'" ';
 			else{
@@ -1660,7 +1660,7 @@ class myForm {
 			if (strpos($jsFunction,'closeWindow'))
 				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'"';
 			else
-				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'(GetDataForm(\''.$this->NomForm.'\') '.$strMixedParams.')"';
+				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'(GetDataForm(\''.$this->nomForm.'\') '.$strMixedParams.')"';
 		}
 			
 		$buf .= '>';
@@ -1687,9 +1687,10 @@ class myForm {
 	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
 	 *
 	 */
-	public function addText($etq = '', $name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = 'N', $CampoFecha = 0, $NameFunctionCallCalendar = 'CallCalendar'){
+	public function addText($etq = '', $name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false, $NameFunctionCallCalendar = 'CallCalendar'){
 		$name     = $this->getColspanRowspan($name);
 		$Cadena   = 'text'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$validacion_numerica.$this->Separador.$CampoFecha.$this->Separador.$NameFunctionCallCalendar;
+		
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'text';
 	}
@@ -1706,17 +1707,17 @@ class myForm {
 	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
 	 *
 	 */
-	public function getText($name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = 'N', $CampoFecha = 0, $NameFunctionCallCalendar = ''){
+	public function getText($name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false, $NameFunctionCallCalendar = ''){
 		$this->arrayFormElementType[$name] = 'text';
 		$keypress = '';
 		$Disabled = '';
 		$LauncherCalendar = '';
 
-		if ($validacion_numerica == 'S')
-		$keypress = ' onKeyPress="return OnlyNum(event)"';
+		if ($validacion_numerica)
+			$keypress = ' onKeyPress="return OnlyNum(event)"';
 
 		if ($CampoFecha){
-			$LauncherCalendar = '<button type="button" class="'.$this->styleClass.'" id="Launcher_'.$name.'"  name="Launcher_'.$name.'" onMouseOver="CallCalendar(\''.$name.'\', \''.$this->dateFormatCalendar.'\', \'Launcher_'.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SrcImageCalendarButton.'" border="0"></button>';
+			$LauncherCalendar = '<button type="button" class="'.$this->styleClass.'" id="Launcher_'.$name.'"  name="Launcher_'.$name.'" onMouseOver="CallCalendar(\''.$name.'\', \''.$this->dateFormatCalendar.'\', \'Launcher_'.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->srcImageCalendarButton.'" border="0"></button>';
 			$Disabled = 'readonly';
 		}
 			
@@ -2103,7 +2104,7 @@ class myForm {
 			$value  = '1';
 		}
 
-		$onClickField = 'onclick="Check(\''.$this->NomForm.'\', \''.$name.'\')';
+		$onClickField = 'onclick="Check(\''.$this->nomForm.'\', \''.$name.'\')';
 			
 		$onEvent = $this->checkExistEventJs($name);
 		if ($onEvent){
@@ -2163,7 +2164,7 @@ class myForm {
 		$name = $this->getColspanRowspan($name);
 		$buf  = '';
 		if (is_array ($value)){
-			if ($this->selectUseFirstValue)
+			if ($this->useFirstValueInSelect)
 			$buf .= "".'<option value="">'.htmlentities($this->strLabelFirstOptionOnSelect).'</option>'."\n";
 			
 			$selectedIsArray = false;
@@ -2214,7 +2215,7 @@ class myForm {
 		$buf.= "\t\t".'<select '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClass.'" name="'.$name.'" id="'.$name.'"'.$string_multiple.' size="'.$size.'" '.$this->checkExistEventJs($name).'>'."\n";
 			
 		if (is_array ($value)){
-			if ($this->selectUseFirstValue)
+			if ($this->useFirstValueInSelect)
 			$buf .= "\t\t".'<option value="">'.htmlentities($this->strLabelFirstOptionOnSelect).'</option>'."\n";
 
 			$selectedIsArray = false;
@@ -2349,15 +2350,15 @@ class myForm {
 	 * @param integer $cols Numero de columnas que tiene el formulario
 	 * @return string
 	 */
-	public function __toString (){
+	public function __toString ($cols = 2){
 		if ($cols)
-		$this->Cols = $cols;
+			$this->cols = $cols;
 
 		$buf = '';
 		if ($this->use_cache){
 			if (file_exists($this->cache_dir)){
 				
-				if (file_exists($fileForm = $this->cache_dir.$this->NomForm.'___DATA___'.$this->cache_int_seconds_time.$this->cache_ext_file)){
+				if (file_exists($fileForm = $this->cache_dir.$this->nomForm.'___DATA___'.$this->cache_int_seconds_time.$this->cache_ext_file)){
 					$arrayNomForm = split( '___', strrev($fileForm));
 
 					list($H,$i,$s) = split(':',date("H:i:s",filemtime($fileForm)));
@@ -2372,13 +2373,13 @@ class myForm {
 						fclose($fileGestor);
 					}else{
 						$fileGestor = fopen($fileForm,'w');
-						fwrite($fileGestor,$fileContenido = $this->compileForm($this->Cols));
+						fwrite($fileGestor,$fileContenido = $this->compileForm($this->cols));
 						fclose($fileGestor);
 					}
 
 				}else{
 					$fileGestor = fopen($fileForm,'w');
-					fwrite($fileGestor,$fileContenido = $this->compileForm($this->Cols));
+					fwrite($fileGestor,$fileContenido = $this->compileForm($this->cols));
 					fclose($fileGestor);
 				}
 				
@@ -2387,7 +2388,7 @@ class myForm {
 			}
 			
 		}else{
-			$fileContenido = $this->compileForm($this->Cols);
+			$fileContenido = $this->compileForm($this->cols);
 		}
 		
 		return $fileContenido;
@@ -2440,38 +2441,38 @@ class myForm {
 		$buf .= '<!--'."\n";
 		$buf .= 'OSEZNO FRAMEWORK'."\n";
 		$buf .= 'Generado con la clase para la creacion de Formularios myForm.class.php'."\n";
-		$buf .= 'Nombre de Formulario: '.$this->NomForm.''."\n";
+		$buf .= 'Nombre de Formulario: '.$this->nomForm.''."\n";
 		$buf .= 'Autor: Jose Ignacio Gutierrez Guzman -  joselitohacker@yahoo.es'."\n";
-		$buf .= 'Version de la Clase:'.$this->Version."\n";
+		$buf .= 'Version de la Clase:'.$this->version."\n";
 		$buf .= '-->'."\n";
 
 		if ($this->useAddFile)
 		  $buf .= $this->getJavaScriptSWFUploader();
 		
-		$buf .= '<div align="center" id="div_'.$this->NomForm.'" name="div_'.$this->NomForm.'">'."\n";
+		$buf .= '<div align="center" id="div_'.$this->nomForm.'" name="div_'.$this->nomForm.'">'."\n";
 
 		if (strlen($this->strNameFieldSet))
 			$buf .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$this->strNameFieldSet.'</legend>'."\n";
 
-		$this->Cols = $cols;
+		$this->cols = $cols;
 
 		$buf .= '<form ';
 
-		if ($this->Action)
-			$buf .= 'action="'.$this->Action.'" ';
+		if ($this->action)
+			$buf .= 'action="'.$this->action.'" ';
 
-		$buf.= 'method="'.$this->Method.'" ';
+		$buf.= 'method="'.$this->method.'" ';
 
-		if(!$this->Action)
+		if(!$this->action)
 			$buf.= 'onsubmit="'.$this->onSubmitAction.'" ';
 
-		if($this->jsFunctionEvent && $this->Action)
+		if($this->jsFunctionEvent && $this->action)
 		$buf.= 'onsubmit="'.$this->onSubmitAction.'" ';
 			
-		if ($this->Enctype)
-			$buf.='enctype= "'.$this->Enctype.'" ';
+		if ($this->enctype)
+			$buf.='enctype= "'.$this->enctype.'" ';
 			
-		$buf.= 'name="'.$this->NomForm.'" id="'.$this->NomForm.'" target="'.$this->Target.'">'."\n";
+		$buf.= 'name="'.$this->nomForm.'" id="'.$this->nomForm.'" target="'.$this->target.'">'."\n";
 
 
 		// Capa necesaria para ejecutar los helpers
@@ -2484,6 +2485,8 @@ class myForm {
 		 * Grupos, o Independientemente. No olvidar que los grupos
 		 * pueden ser reagrupados en super grupos.
 		 */
+			
+		if (count($this->Objects)){	
 		$ObjectKeys = array_keys($this->Objects);
 		$countObjects = count($this->Objects['field']);
 		for($j=0, $objKeysFields = array_keys($this->Objects['field']); $j < $countObjects; $j++){
@@ -2491,13 +2494,14 @@ class myForm {
 			switch ($campos_f[0]){
 				case 'text':// Ok colSpan
 					$keypress = '';
-					if ($campos_f[6] == 'S')
+					if ($campos_f[6])
 					$keypress = ' onKeyPress="return OnlyNum(event)"';
 
 					$Disabled = '';
 					$LauncherCalendar = '';
+
 					if ($campos_f[7]){
-						$LauncherCalendar = '<button type="button" class="'.$this->styleClass.'" id="Launcher_'.$campos_f[2].'"  name="Launcher_'.$campos_f[2].'" onMouseOver="CallCalendar(\''.$campos_f[2].'\', \''.$this->dateFormatCalendar.'\', \'Launcher_'.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SrcImageCalendarButton.'" border="0"></button>';
+						$LauncherCalendar = '<button type="button" class="'.$this->styleClass.'" id="Launcher_'.$campos_f[2].'"  name="Launcher_'.$campos_f[2].'" onMouseOver="cal.manageFields(\'Launcher_'.$campos_f[2].'\', \''.$campos_f[2].'\', \''.$this->dateFormatCalendar.'\')" /><img src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->srcImageCalendarButton.'" border="0"></button>';
 						$Disabled = 'readonly';
 					}
 						
@@ -2561,20 +2565,11 @@ class myForm {
 					$this->arrayFormElements[$campos_f[2]] = ''.'<td rowSpanEtq '.$this->checkIsHelping($campos_f[2]).' style="text-align:center" colSpanEtq class="'.$this->styleClassTags.'">'.$campos_f[1]."<br>".$oFCKeditor->CreateHtml().'</td>'."\n";
 					break;
 				case 'mylist':
-					//$objDinamicList->STYLE_color_borde = $this->MYLIST_color_borde;
-					//$objDinamicList->STYLE_color_fila_del_medio = $this->MYLIST_color_fila_del_medio;
-					//$objDinamicList->STYLE_color_fila_defecto = $this->MYLIST_color_fila_defecto;
-					//$objDinamicList->STYLE_color_cabeza_columna = $this->MYLIST_color_cabeza_columna;
-					//$objDinamicList->STYLE_color_columna_seleccionada = $this->MYLIST_color_columna_seleccionada;
-					//$objDinamicList->STYLE_usar_distincion_filas = $this->MYLIST_usar_distincion_filas;
-					//$objDinamicList->STYLE_color_cabeza_columna = $this->MYLIST_estilo_cabeza_columnas;
-					//$objDinamicList->STYLE_estilo_enlaces = $this->MYLIST_estilo_enlaces;
-					//$objDinamicList->STYLE_estilo_datos = $this->MYLIST_estilo_datos;
-					//$objDinamicList->STYLE_titulo_formulario_parametros = $this->MYLIST_titulo_formulario_parametros;
-					//$objDinamicList->STYLE_ancho_lista = $this->MYLIST_ancho_lista;
 
-					//$buf.=''.'<tr><td style="text-align:center" colspan="'.($this->arrayGroups[$kAgrupa]['intColsByGroup']*2).'"  class="'.$this->styleClassTags.'">'.$campos_f[2].'</th></tr>'."\n";
-					//$buf.=''.'<tr><td style="text-align:center" colspan="'.($this->arrayGroups[$kAgrupa]['intColsByGroup']*2).'">'.$objDinamicList->getDinamicList($campos_f[1],false).'</td></tr>'."\n";
+					/**
+					 * TODO: Crear una lista dinamica con campos check box que permitan chequear elementos correspondientes a una tabla de base de datos o IDs asociados a un resultado de una consulta
+					 */					
+					
 					break;
 				case 'date':
 					$bufTemp = '';
@@ -2597,8 +2592,8 @@ class myForm {
 						$value  = '1';
 					}
 
-					$onClickTag   = 'onclick="checkear(\''.$this->NomForm.'\', \''.$campos_f[2].'\'), Check(\''.$this->NomForm.'\', \''.$campos_f[2].'\')';
-					$onClickField = 'onclick="Check(\''.$this->NomForm.'\', \''.$campos_f[2].'\')';
+					$onClickTag   = 'onclick="checkear(\''.$this->nomForm.'\', \''.$campos_f[2].'\'), Check(\''.$this->nomForm.'\', \''.$campos_f[2].'\')';
+					$onClickField = 'onclick="Check(\''.$this->nomForm.'\', \''.$campos_f[2].'\')';
 						
 					$onEvent = $this->checkExistEventJs($campos_f[2]);
 					if ($onEvent){
@@ -2633,7 +2628,7 @@ class myForm {
 					break;
 			}
 		}
-
+		}
 		/**
 		 * Creamos el HTML de cada unos de lo grupos que agrupan campos
 		 */
@@ -2666,7 +2661,7 @@ class myForm {
 			
 			//  Preguntamos si el grupo en proceso es un arreglo de elementos
 			if (is_array($this->arrayGroups[$kAgrupa])){
-				$bufHTMLgroup .= '<table class="'.$this->styleClassTableForm.'" border="'.$this->tableBorder.'" align="center" cellpadding="'.$this->formCellpadding.'" cellspacing="'.$this->formCellspacing.'" valign="top" width="100%">'."\n";
+				$bufHTMLgroup .= '<table class="'.$this->styleClassTableForm.'" border="'.$this->borderTable.'" align="center" cellpadding="'.$this->formCellpadding.'" cellspacing="'.$this->formCellspacing.'" valign="top" width="100%">'."\n";
 				$kCamposDe = count($this->arrayGroups[$kAgrupa]['arraystrIdFields']);
 				// Calculamos cuantos filas y columna tendra este marco
 				$widthCol = intval(100/($this->arrayGroups[$kAgrupa]['intColsByGroup']*2));
@@ -2784,7 +2779,7 @@ class myForm {
 		for ($i=0;$i<$countarrayGroupsIdInShareSpace;$i++){
 			// Pregunta de seguridad
 			if (is_array($arrayGroupsIdInShareSpace = $this->arrayGroupsIdInShareSpace[$arrayKeysGroupingGroups[$i]]['arrayIdGroups'])){
-				$buf .= '<table width="100%" border="'.$this->tableBorder.'" cellspacing="0">'."\n";
+				$buf .= '<table width="100%" border="'.$this->borderTable.'" cellspacing="0">'."\n";
 				$buf .= '<tr>'."\n";
 				for ($j=0;$j<count($arrayGroupsIdInShareSpace);$j++){
 					$buf.='<td width="'.intval(100/count($arrayGroupsIdInShareSpace)).'%">'.$this->arrayGroupsElementsHTML[$arrayGroupsIdInShareSpace[$j]].'</td>'."\n";
@@ -2816,8 +2811,8 @@ class myForm {
 		}
 
 		// Imprimimos los elementos del formulario restantes
-		$buf .= '<table border="'.$this->tableBorder.'" align="center" cellpadding="'.$this->formCellpadding.'" cellspacing="'.$this->formCellspacing.'" valign="top" width="'.$this->formWidth.'" height="'.$this->formHeight.'">'."\n";
-		$widthCol = intval(100/($this->Cols*2));
+		$buf .= '<table border="'.$this->borderTable.'" align="center" cellpadding="'.$this->formCellpadding.'" cellspacing="'.$this->formCellspacing.'" valign="top" width="'.$this->formWidth.'" height="'.$this->formHeight.'">'."\n";
+		$widthCol = intval(100/($this->cols*2));
 		$cantCamposToShow = count($this->arrayFormElementsToShow);
 
 		$iTemp = 0;
@@ -2829,7 +2824,7 @@ class myForm {
 			
 			$nameField = $this->arrayFormElementsToShow[$i];
 
-			if (!(($iTemp)%$this->Cols) || !$iTemp){
+			if (!(($iTemp)%$this->cols) || !$iTemp){
 				$htmlUseRowSeparator = '';
 				if ($this->useRowSeparator){
 					if (!(($cantTr+2)%2))
@@ -2877,7 +2872,7 @@ class myForm {
 			}
 
 			
-			if (!(($iTemp)%$this->Cols) && $iTemp){
+			if (!(($iTemp)%$this->cols) && $iTemp){
 				$buf .= "\t".'</tr>'."\n";
 			}
 
@@ -2885,7 +2880,7 @@ class myForm {
 		}
 
 
-		$tdFaltan = ($cantTr*$this->Cols)-$sumNumColSpan;
+		$tdFaltan = ($cantTr*$this->cols)-$sumNumColSpan;
 		if ($tdFaltan){
 			for ($i = 0; $i < $tdFaltan; $i++){
 				$buf .= "\t\t".'<td class="'.$this->styleClassTags.'">&nbsp;</td><td class="'.$this->styleClassTags.'">&nbsp;</td>'."\n";
@@ -2895,7 +2890,7 @@ class myForm {
 
 		$buf .= '</table>'."\n";
 
-		$buf .= '<table border="'.$this->tableBorder.'" align="center" width="'.$this->formWidth.'">'."\n";
+		$buf .= '<table border="'.$this->borderTable.'" align="center" width="'.$this->formWidth.'">'."\n";
 		$buf .= '<tr>';
 
 		// Para el primer boton
@@ -2939,20 +2934,20 @@ class myForm {
 		  		
 		}
 		
-		if ($this->jsFunctionEvent && !$this->Action){
+		if ($this->jsFunctionEvent && !$this->action){
 			
-			$buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'(GetDataForm(\''.$this->NomForm.'\')'.$strMixedParams.')"';
-		}else if ($this->jsFunctionEvent && $this->Action){
+			$buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'(GetDataForm(\''.$this->nomForm.'\')'.$strMixedParams.')"';
+		}else if ($this->jsFunctionEvent && $this->action){
 			
-		    $buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'(GetDataForm(\''.$this->NomForm.'\')'.$strMixedParams.')"';
+		    $buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'(GetDataForm(\''.$this->nomForm.'\')'.$strMixedParams.')"';
 		}else{
-		    $buf .= ' onclick="'.$this->NomForm.'.submit()" ';
+		    $buf .= ' onclick="'.$this->nomForm.'.submit()" ';
 		}
 
 		$buf .= '>';
 
-		if ($this->SrcImageButton)
-			$buf .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SrcImageButton.'" border="0">';
+		if ($this->srcImageMainButton)
+			$buf .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->srcImageMainButton.'" border="0">';
 			
 		$buf .= $this->strSubmit;
 
@@ -2964,7 +2959,7 @@ class myForm {
 
 			$buf .= '<button '.$this->checkIsHelping($this->arrayButtonList[$j]['strName']).' '.$this->checkIfIsDisabled($this->arrayButtonList[$j]['strName']).' value="'.trim(strip_tags($this->arrayButtonList[$j]['strLabel'])).'" class="'.$this->styleClassButtons.'" type="submit" name="'.$this->arrayButtonList[$j]['strName'].'" id="'.$this->arrayButtonList[$j]['strName'].'" ';
 			
-			if ($this->arrayButtonList[$j]['jsFunction'] && !$this->Action){
+			if ($this->arrayButtonList[$j]['jsFunction'] && !$this->action){
 
 				$jsFunction = $this->arrayButtonList[$j]['jsFunction'];
 				
@@ -2997,13 +2992,13 @@ class myForm {
 		  		
 		  		}
 				
-				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'(GetDataForm(\''.$this->NomForm.'\')'.$strMixedParams.')"';
+				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'(GetDataForm(\''.$this->nomForm.'\')'.$strMixedParams.')"';
 				
-			}else if ($this->arrayButtonList[$j]['jsFunction'] && $this->Action){
+			}else if ($this->arrayButtonList[$j]['jsFunction'] && $this->action){
 				
-				$buf .= ' onclick="'.$this->prefAjax.$this->arrayButtonList[$j]['jsFunction'].'(GetDataForm(\''.$this->NomForm.'\')'.$strMixedParams.')"';
+				$buf .= ' onclick="'.$this->prefAjax.$this->arrayButtonList[$j]['jsFunction'].'(GetDataForm(\''.$this->nomForm.'\')'.$strMixedParams.')"';
 			}else{
-				$buf .= ' onclick="'.$this->NomForm.'.submit()" ';
+				$buf .= ' onclick="'.$this->nomForm.'.submit()" ';
 			}
 			$buf .= '>';
 
@@ -3025,69 +3020,9 @@ class myForm {
 			
 		$buf .= '</div>'."\n";
 
-		$buf .= '<!-- Fin de Formulario: '.$this->NomForm.' -->'."\n";
+		$buf .= '<!-- Fin de Formulario: '.$this->nomForm.' -->'."\n";
 
 		return $buf;
-	}
-
-	/**
-	 * Genera una pequena cadena Js que se
-	 * usa dentro como parametro unico
-	 * en los $objResponse->addScript()
-	 * con el objetivo de actualizar mas
-	 * rapido un campo sin necesidad escribir codigo
-	 * javascript.
-	 *
-	 * @param string $strElementId Nombre o Id del elemento a refrescar
-	 * @param string $strAtribute  Atributo del elemento
-	 * @param string $strNewValue  Nuevo valor, en blanco para limpiar
-	 * @param string $boolOpener   Si se trata de actualizar una ventana padre o no
-	 * @return string
-	 */
-	public function jsUpdateElement ($strElementId, $strAtribute, $strNewValue = '', $boolOpener = false){
-		$js = '';
-
-		if ($boolOpener):$boolOpener = 'opener.';endif;
-			$js .= $boolOpener.'document.getElementById("'.$strElementId.'").'.$strAtribute.'=\''.$strNewValue.'\'';
-
-		return $js;
-	}
-
-
-	/**
-	 * Genera un pequena cadena Js que se
-	 * usa dentro como parametro unico en los
-	 * $objResponse->addScript() con el
-	 * objetivo de actualizar las rapido
-	 * un campo sin necesidad de escribir codigo javascript.
-	 *
-	 * @param string $strElementId Nombre o Id del elemento a refrescar
-	 * @param string $strAtribute  Atributo del elemento
-	 * @param string $boolOpener   Nuevo valor, en blanco para limpiar
-	 * @return string
-	 */
-	public function jsClearElement ($strElementId, $strAtribute, $boolOpener = false){
-		return $this->jsUpdateElement($strElementId, $strAtribute, '', $boolOpener);
-	}
-
-
-	/**
-	 * Genera una pequena cadena con codigo Js
-	 * que se puede llamar para sobre un evento
-	 * abrir mas rapidamente una ventana.
-	 *
-	 * @param string  $strUrl    Url del contenido de la ventana que se piensa mostrar
-	 * @param integer $intWidth  Ancho de la ventana
-	 * @param integer $intHeight Alto de la ventana
-	 * @param string  $strName   Nombre de la ventana si se desea abrir una nueva y que esta no sea reemplazada
-	 * @return string
-	 */
-	public function jsOpenWindow ($strUrl, $intWidth = '400', $intHeight = '400', $strName = ''){
-		$js = '';
-			
-		$js .= 'OpenWindowForm (\''.$strName.'\','.$intWidth.','.$intHeight.',\''.$strUrl.'\')';
-
-		return $js;
 	}
 
 
@@ -3123,73 +3058,6 @@ class myForm {
 		$this->use_cache = $boolUseCache;
 		$this->cache_int_seconds_time = $intSeconds;
 	}
-
-
-	/**
-	 *  Actualiza el valor de una constante para que esta sea de nuevo leida por una aplicacion
-	 *  En varias apliaciones es necesario leer el valor de una constante para que se pueda
-	 *  obtener un parametro de configuracion
-	 *  @param string $nam_cons, nombre de la constante que estoy buscando
-	 *  @param string $new_val, Nuevo valor asignado para esa constante
-	 *  @param string $file, la ruta del archivo de configuracion en donde se encuentra la variable
-	 *
-	 * Ejemplo
-	 * archivo config.php
-	 *   define ("SALUDO","Hola mundo");
-	 *
-	 * archivo modifica.php
-	 *   print SALUDO;
-	 *   $objMyForm->UpdateDefineValue('SALUDO','Joselitohacker','config.php');
-	 *   print SALUDO;
-	 *
-	 * Salida:
-	 *   Hola mundoJoselitohacker
-	 */
-	function updateDefineValue ($nam_cons,$new_val,$file){
-		$filename = $file;
-		$array = file ($file);
-		for ($i=0;$i<count($array);$i++){
-			if (strpos( $array[$i],$nam_cons)){
-				$array[$i] = "";
-				$array[$i] = "define(\"".$nam_cons."\",\"\");\n";
-			}
-		}
-
-		$fd = fopen ($filename, "w+");
-		for ($i=0;$i<count($array);$i++){
-			fputs ($fd,$array[$i]);
-		}
-			
-		fclose ($fd);
-		$array = file ($file);
-
-		for ($i=0;$i<count($array);$i++){
-			if (strpos( $array[$i],$nam_cons)){
-				$array[$i] = "";
-				$array[$i] = "define(\"".$nam_cons."\",\"".$new_val."\");\n";
-			}
-		}
-			
-		$fd = fopen ($filename, "w+");
-		for ($i=0;$i<count($array);$i++){
-			fputs ($fd,$array[$i]);
-		}
-
-		fclose ($fd);
-	}
-
-
-
- function jsRedirect ($strUrlPage,$intSeconds = 2, $strMsg = 'Any message' ){
-    	$js  = '<script type="text/javascript">'."\n";
-    	$js .= 'function jsRedirect(){'."\n";
-    	$js .= 'location.href="'.$strUrlPage.'" }'."\n";
-    	$js .= 'setTimeout ("jsRedirect()", '.($intSeconds*1000).');'."\n";
-    	$js .= '</script>'."\n";
-
-    	$js .= '<center><br><a href="'.$strUrlPage.'" class="contenido">'.$strMsg.'</a></center>';
-    	return $js;
-    }
 
 
 	// Fin de la Clase

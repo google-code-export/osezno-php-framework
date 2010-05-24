@@ -2,3 +2,7 @@
  				nombre as Nombre, 
  				precio as Valor, 
  				estado as Estado from libros:]
+[SQL2:SELECT LPAD(cast(id as char),6,"0") as Llave, nombre as Nombre, 
+ 				precio as Valor, 
+ 				estado as Estado from libros:]
+

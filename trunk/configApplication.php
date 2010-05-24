@@ -138,8 +138,17 @@
   /**
    * 
    */
-  define ('URL_JS_MW',      $http.$httpHost.'/javascript/myModalWindow.js',true);
+  define ('URL_JS_MW',       $http.$httpHost.'/javascript/myModalWindow.js',true);
   
+  /**
+   * 
+   */
+  define ('URL_JS_CAL',      $http.$httpHost.'/javascript/calendar/jscal2.js',true);
+  
+  /**
+   * 
+   */
+  define ('URL_JS_CAL_LANG', $http.$httpHost.'/javascript/calendar/lang/es.js',true);
   
   /**
    * Ruta tipo url donde se descarga el js de wz tooltip
@@ -174,7 +183,7 @@
   /**
    * Ruta tipo url donde se descarga la hoja de estilos de los controles tipo calendario 
    */
-  define ('URL_CSS_CLD',     $http.$httpHost.'/css/aqua/theme.css',true);
+  define ('URL_CSS_CLD',     $http.$httpHost.'/css/calendar/steel/steel.css',true);
   
   /**
    * Ruta tipo url donde se descarga la hoja de estilos de la pagina
