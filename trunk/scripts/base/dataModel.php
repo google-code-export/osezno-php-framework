@@ -22,6 +22,19 @@
   */
  class modelo {
  	
+	public function form2 (){
+		
+		$objMyForm = new myForm();
+		
+		$objMyForm->addText('Fecha:','fecha',date('Y-m-d'),10,10,true,true);
+		
+		
+		$objMyForm->formWidth = 300;
+	
+		return $objMyForm->getForm(1);
+	} 	
+ 	
+ 	
  	/**
  	 * Constructor de la clase
  	 *
