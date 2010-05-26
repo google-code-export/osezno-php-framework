@@ -115,6 +115,8 @@
   
   require $GLOBALS['folderProject'].'lib/myController.class.php';
   
+  require $GLOBALS['folderProject'].'lib/myCalendar.class.php';
+  
   $httpHost = $_SERVER['HTTP_HOST'].'/'.$baseFolder;
   
   global $urlProject;
@@ -139,16 +141,6 @@
    * 
    */
   define ('URL_JS_MW',       $http.$httpHost.'/javascript/myModalWindow.js',true);
-  
-  /**
-   * 
-   */
-  define ('URL_JS_CAL',      $http.$httpHost.'/javascript/calendar/jscal2.js',true);
-  
-  /**
-   * 
-   */
-  define ('URL_JS_CAL_LANG', $http.$httpHost.'/javascript/calendar/lang/es.js',true);
   
   /**
    * Ruta tipo url donde se descarga el js de wz tooltip
@@ -181,14 +173,19 @@
   define ('URL_JS_ML',       $http.$httpHost.'/javascript/myList.js',true);
   
   /**
-   * Ruta tipo url donde se descarga la hoja de estilos de los controles tipo calendario 
+   * Ruta tipo url donde se encuentra el js de myCalendar
    */
-  define ('URL_CSS_CLD',     $http.$httpHost.'/css/calendar/steel/steel.css',true);
+  define ('URL_JS_MC',       $http.$httpHost.'/javascript/myCalendar.js',true);
   
   /**
    * Ruta tipo url donde se descarga la hoja de estilos de la pagina
    */
   define ('URL_CSS_TPL',     $http.$httpHost.'/css/css.css',true);
+  
+  /**
+   *  
+   */
+  define ('URL_CSS_CAL',     $http.$httpHost.'/css/calendar/calendar.css',true);
   
   /**
    * Ruta tipo url donde se descarga el favicon del proyecto
