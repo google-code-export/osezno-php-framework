@@ -17,7 +17,7 @@
   */ 
  $objOsezno->assign('form_title','Cambiar este titulo');
  
- $objOsezno->assign('work_area',str_repeat('<br>',0).$modelo->form2());
+ $objOsezno->assign('work_area',$modelo->form2());
 
  $objOsezno->call_template('basic/basic.tpl');
  
