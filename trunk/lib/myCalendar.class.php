@@ -43,6 +43,8 @@
 			
 			$objMyForm = new myForm;
 			
+			$objMyForm->jsIndexFunctionEvent = 'GetDataField';
+			
 			$objMyForm->nomForm = $idForm; 
 			
 			$iniCell = '<td class="cellday">';
@@ -57,7 +59,7 @@
 			
 			//$htm .= '';
 			
-			$htm .= 'hi<form method="post" onsubmit="return false" name="'.$idForm.'" id="'.$idForm.'">chao';
+			//$htm .= 'hi<form method="post" onsubmit="return false" name="'.$idForm.'" id="'.$idForm.'">chao';
 			
 			$htm .= '<table cellpadding="0" cellspacing="0"><tr><td class="tablecal">';
 			
@@ -122,7 +124,7 @@
 			
 			$htm .= '</td></tr></table>';
 			
-			$htm .= '</form>';
+			//$htm .= '</form>';
 			
 			$this->calOut = $htm;
 		}

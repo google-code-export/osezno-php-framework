@@ -313,11 +313,16 @@ function isArray(v) {
 	          !(v.propertyIsEnumerable('length'));
 }
 
+function GetDataField(data){
+	
+	alert('GetDataField:'+data);
+	
+}
+
 function GetDataForm (form){
-         var buf = '';
-         var form_elements = new Array();
-         alert(document.getElementById(form).elements.length);
-         /*
+      var buf = '';
+      var form_elements = new Array();
+         
       if (form){   
          for (i=0; i<document.forms[form].elements.length; i++){
               
@@ -354,7 +359,7 @@ function GetDataForm (form){
               
               //alert(i);
          }
-       }  */
+       }  
          return form_elements;
 }
 
