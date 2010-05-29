@@ -1307,7 +1307,9 @@ class myForm {
 
 		if (is_string($strEventORintEvent))
 		$strEventORintEvent = strtolower($strEventORintEvent);
-			
+
+		$this->objEventxJ[$strElementIdORelemlentName] = '';
+		
 		$this->objEventxJ[$strElementIdORelemlentName] .= $array_eJs[$strEventORintEvent].'="';
 
 		if (is_array($strFunctionORarrayFunctions)){
@@ -2209,6 +2211,7 @@ class myForm {
 	 *
 	 */
 	public  function getSelect($name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 100, $multiple = 0){
+		$buf = '';
 		$string_multiple = '';
 		if ($multiple)
 		$string_multiple = ' multiple';

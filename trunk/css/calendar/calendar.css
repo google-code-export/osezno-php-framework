@@ -1,8 +1,51 @@
 @CHARSET "ISO-8859-1";
 
+.tablecal {
+	background-color: silver; 	
+}
+
+.cellday {
+	background-color: white;
+	font-family: sans-serif;
+	color: #5F8BBF;
+	text-align: right;
+	height: 22px;
+	width: 22px;
+}
+
+.cellday_today {
+	background-color: #5F8BBF;
+	font-family: sans-serif;
+	color: white;
+	text-align: right;
+	height: 22px;
+	width: 22px;
+}
+
+.celldays {
+	background-color: #3F5C7F;
+	font-family: sans-serif;
+	color: white;
+	text-align: center;
+	height: 22px;
+	width: 22px;
+	font-size: small;	
+}
+
+.cell_control {
+	background-color: #3F5C7F;
+	font-family: sans-serif;
+	color: white;
+	text-align: center;
+	height: 22px;
+	width: 22px;
+	font-size: small;	
+}
+
 .calmain {
 	background-color: white;
 	border-style: solid;
 	border-color: green;
 	border-width: 1px;
 }
+

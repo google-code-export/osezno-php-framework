@@ -316,6 +316,8 @@ function isArray(v) {
 function GetDataForm (form){
          var buf = '';
          var form_elements = new Array();
+         alert(document.getElementById(form).elements.length);
+         /*
       if (form){   
          for (i=0; i<document.forms[form].elements.length; i++){
               
@@ -352,7 +354,7 @@ function GetDataForm (form){
               
               //alert(i);
          }
-       }  
+       }  */
          return form_elements;
 }
 

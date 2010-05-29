@@ -881,11 +881,20 @@ class myController {
 	
 	
 	
+	public function calEventOnChangeMonth ($datForm, $toUpdate){
+
+		$this->response->alert($datForm[$toUpdate]);
+		
+		return $this->response;
+	}
 	
 	
-	
-	
-	
+	public function calEventOnChangeYear ($datForm, $toUpdate){
+		
+		$this->response->alert($datForm[$toUpdate]);
+		
+		return $this->response;
+	}
 	
 	
 	/**
