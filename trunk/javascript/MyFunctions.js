@@ -315,8 +315,8 @@ function isArray(v) {
 
 function GetDataField(data){
 	
-	alert('GetDataField:'+data);
 	
+	return data;
 }
 
 function GetDataForm (form){
@@ -357,7 +357,6 @@ function GetDataForm (form){
                   break;
               }
               
-              //alert(i);
          }
        }  
          return form_elements;

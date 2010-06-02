@@ -43,7 +43,16 @@
 			
 			$objMyForm = new myForm;
 			
-			$objMyForm->jsIndexFunctionEvent = 'GetDataField';
+			//$objMyForm->jsIndexFunctionEvent = 'GetDataField';
+			
+			/**
+			 * Al averiguar por typeParamOnEvent
+			 * si verificamos si es global o si es field 
+			 * entonces debemos intercambiar entre las funciones 
+			 * de javascript automaticamente que traen los
+			 * datos del formulario.
+			 * 
+			 */
 			
 			$objMyForm->nomForm = $idForm; 
 			
@@ -110,6 +119,8 @@
 				$this->arrYears[] = array ($aIni,$aIni);
 			} 
 
+			$objMyForm->setParamTypeOnEvent('field');
+			
 			$objMyForm->useFirstValueInSelect = false;
 			
 			$objMyForm->addEventJs('cal_month','onchange','calEventOnChangeMonth',array($get['update']));

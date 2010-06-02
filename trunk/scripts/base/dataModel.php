@@ -24,7 +24,7 @@
  	
 	public function form2 (){
 		
-		$objMyForm = new myForm();
+		$objMyForm = new myForm('prueba',NULL,'enviar');
 		
 		$objMyForm->addText('Fecha:','fecha',date('Y-m-d'),10,10,true,true);
 		

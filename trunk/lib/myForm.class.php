@@ -75,20 +75,22 @@ class myForm {
 
 
 	/**
-	 * Nombre de funcion JS que se ejecutara una vez se lance algun evento dentro del
-	 * formulario.
+	 * Nombre de la funcion JS que se ejecutara para pasar por parametro al evento ajax
+	 * que se genere cuando el paramatro de envio sea form
 	 * 
 	 * @var string
 	 */
-	public $jsIndexFunctionEvent = 'GetDataForm';
+	private $jsFunctionSubmitFormOnEvent = 'GetDataForm';
 	
 	
 	/**
-	 * Parametro sobre la principal funcion de evento
+	 * Nombre de la funcion JS que se ejecutara para pasar por parametro al evento ajax
+	 * que se genere cuando el paramatro de envio sea field
 	 * 
 	 * @var string
 	 */
-	public $paramJsOnIndexFunctionEvent;
+	private $jsFunctionSubmitFieldOnEvent = 'GetDataField';
+	
 	
 	/**
 	 * El tipo de parametro que se usara al cumplirse
@@ -99,7 +101,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $typeParamOnEvent = 'global';
+	private $paramTypeOnEvent = 'form';
 	
 	/**
 	 * Prefijo que usa xajax para llamar a sus funciones
@@ -1299,6 +1301,17 @@ class myForm {
 	}
 
 	/**
+	 * Configura el tipo de parametro que va a ser enviado a la funcion de un
+	 * evento. Este parametro puede ser tipo 'form' o tipo 'field'
+	 * 
+	 * @param $paramType	Tipo de parametro
+	 */
+	public function setParamTypeOnEvent ($paramType){
+		
+		$this->paramTypeOnEvent = $paramType;
+	}
+	
+	/**
 	 * Agregar un evento JavaScript al elemento llamado 'id' que es el elemento que queremos modificar
 	 * su propiedad de OnClick, OnBlur... etc
 	 * Por ejemplo, podemos crear una caja de texto sencilla por medio de
@@ -1343,7 +1356,16 @@ class myForm {
 			$cantFinctions = count($strFunctionORarrayFunctions);
 			for($i=0;$i<$cantFinctions;$i++){
 				
-				$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions[$i].'('.$this->jsIndexFunctionEvent.'(\''.$this->nomForm.'\''.')';
+				switch ($this->paramTypeOnEvent){
+					case 'global':
+						$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions[$i].'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->nomForm.'\''.')';
+					break;
+					case 'field':
+						$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions[$i].'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
+					break;
+				}
+				
+					
 				
 				//Miramos si hay parametros adicionales
 				if (!$mixedMoreParams)
@@ -1368,7 +1390,16 @@ class myForm {
 			}
 			$this->objEventxJ[$strElementIdORelemlentName] .='"';
 		}else{
-			$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions.'('.$this->jsIndexFunctionEvent.'(\''.$this->nomForm.'\''.')';
+			
+			switch ($this->paramTypeOnEvent){
+				case 'global':
+					$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->nomForm.'\''.')';
+				break;
+				case 'field':
+					$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions.'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
+				break;
+			}
+			
 			if (!$mixedMoreParams)
 			$this->objEventxJ[$strElementIdORelemlentName] .=')'.'" ';
 			else{
@@ -1691,7 +1722,7 @@ class myForm {
 			if (strpos($jsFunction,'closeWindow'))
 				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'"';
 			else
-				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'('.$this->jsIndexFunctionEvent.'(\''.$this->nomForm.'\') '.$strMixedParams.')"';
+				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->nomForm.'\') '.$strMixedParams.')"';
 		}
 			
 		$buf .= '>';
@@ -2973,10 +3004,10 @@ class myForm {
 		
 		if ($this->jsFunctionEvent && !$this->action){
 			
-			$buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'('.$this->jsIndexFunctionEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
+			$buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
 		}else if ($this->jsFunctionEvent && $this->action){
 			
-		    $buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'('.$this->jsIndexFunctionEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
+		    $buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
 		}else{
 		    $buf .= ' onclick="'.$this->nomForm.'.submit()" ';
 		}
@@ -3029,11 +3060,11 @@ class myForm {
 		  		
 		  		}
 				
-				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'('.$this->jsIndexFunctionEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
+				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
 				
 			}else if ($this->arrayButtonList[$j]['jsFunction'] && $this->action){
 				
-				$buf .= ' onclick="'.$this->prefAjax.$this->arrayButtonList[$j]['jsFunction'].'('.$this->jsIndexFunctionEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
+				$buf .= ' onclick="'.$this->prefAjax.$this->arrayButtonList[$j]['jsFunction'].'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->nomForm.'\')'.$strMixedParams.')"';
 			}else{
 				$buf .= ' onclick="'.$this->nomForm.'.submit()" ';
 			}
