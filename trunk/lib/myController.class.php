@@ -883,6 +883,8 @@ class myController {
 
 		$this->response->alert($datForm);
 		
+		//$this->script('addCalendarWindow(\'../calendarCaller.php?date=2010-'.$datForm.'-00&update=fecha\',\''.$toUpdate.'\')');
+		
 		return $this->response;
 	}
 	
@@ -890,6 +892,8 @@ class myController {
 	public function calEventOnChangeYear ($datForm, $toUpdate){
 		
 		$this->response->alert($datForm);
+		
+		//$this->script('addCalendarWindow(\'../calendarCaller.php?date='.$datForm.'-00&update=fecha\',\''.$toUpdate.'\')');
 		
 		return $this->response;
 	}

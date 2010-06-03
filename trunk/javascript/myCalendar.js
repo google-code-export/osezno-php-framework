@@ -33,19 +33,6 @@ function CalTamVentana() {
 
 function addCalendarWindow (strUrlCalendar, idtrigger){
 	
-	var windowWindth = 300;
-	
-	var windowHeight = 200;
-	
-	var opacity = 100;
-	
-	if (!countId)
-		countId = 0;
-	
-	countId += 1;
-	
-	//capaModalWindow.style.zIndex = countId+2;
-	
 	document.getElementById('div_trigger_'+idtrigger).style.visibility  = 'visible';
 	
 	callUrl(strUrlCalendar+'&div=div_trigger_'+idtrigger, 'div_trigger_'+idtrigger, 'Cargando calendario...', 'Error');

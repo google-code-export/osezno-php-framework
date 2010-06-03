@@ -13,14 +13,14 @@
 		
 		private $calOut;
 		
-		public $format = 'Y-m-d';
+		private $format = 'Y-m-d';
 		
 		
-		public $arrDsem = array (
+		private $arrDsem = array (
 			0=>'D',1=>'L',2=>'M',3=>'M',4=>'J',5=>'V',6=>'S'
 		);
 		
-		public $arrMonth = array (
+		private $arrMonth = array (
 			array(1,'Enero'),
 			array(2,'Febrero'),
 			array(3,'Marzo'),
@@ -35,15 +35,15 @@
 			array(12,'Diciembre')
 		);
 		
-		public $arrYears = array ();
+		private $arrYears = array ();
 		
 		public function __construct($get = ''){
+			
+			echo var_export($get,true);
 			
 			$idForm = 'calform_'.$get['update'];
 			
 			$objMyForm = new myForm;
-			
-			//$objMyForm->jsIndexFunctionEvent = 'GetDataField';
 			
 			/**
 			 * Al averiguar por typeParamOnEvent
@@ -59,16 +59,10 @@
 			$iniCell = '<td class="cellday">';
 			$endCell = '</td>';
 			
-
-			$nA = date('Y');
-			$nM = 5; 
-			
-			
+			list($nA, $nM) = explode ('-',$get['date']);
+			$nM = intval($nM);
+				
 			$htm = '';		
-			
-			//$htm .= '';
-			
-			//$htm .= 'hi<form method="post" onsubmit="return false" name="'.$idForm.'" id="'.$idForm.'">chao';
 			
 			$htm .= '<table cellpadding="0" cellspacing="0"><tr><td class="tablecal">';
 			
@@ -134,8 +128,6 @@
 			$htm .= '</table>';
 			
 			$htm .= '</td></tr></table>';
-			
-			//$htm .= '</form>';
 			
 			$this->calOut = $htm;
 		}
