@@ -879,25 +879,16 @@ class myController {
 	}
 	
 	
-	public function calEventOnChangeMonth ($datForm, $toUpdate){
+	public function calEventOnChange ($partDate, $toUpdate){
 
-		$this->response->alert($datForm);
+		list($nM, $nA) = explode ('_',$partDate);
 		
-		//$this->script('addCalendarWindow(\'../calendarCaller.php?date=2010-'.$datForm.'-00&update=fecha\',\''.$toUpdate.'\')');
+		$cal = new myCal($nA, $nM, $toUpdate);
 		
-		return $this->response;
-	}
-	
-	
-	public function calEventOnChangeYear ($datForm, $toUpdate){
-		
-		$this->response->alert($datForm);
-		
-		//$this->script('addCalendarWindow(\'../calendarCaller.php?date='.$datForm.'-00&update=fecha\',\''.$toUpdate.'\')');
+		$this->assign('div_trigger_'.$toUpdate,'innerHTML',$cal->getCalendar());
 		
 		return $this->response;
 	}
-	
 	
 	/**
 	 * Mueve la lista dinamica en sentido adelante, atras, ascendente y descendente.

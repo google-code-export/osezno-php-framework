@@ -30,6 +30,13 @@ function CalTamVentana() {
   return Tamanyo;
 }
 
+function selectDate (date, update){
+	
+	document.getElementById(update).value  = date;
+	
+	document.getElementById('div_trigger_'+update).style.visibility  = 'hidden';
+	
+}
 
 function addCalendarWindow (strUrlCalendar, idtrigger){
 	

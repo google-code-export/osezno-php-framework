@@ -14,7 +14,7 @@
 }
 
 .cellday_today {
-	background-color: #5F8BBF;
+	background-color: graytext;
 	font-family: sans-serif;
 	color: white;
 	text-align: right;
@@ -29,7 +29,15 @@
 	text-align: center;
 	height: 22px;
 	width: 22px;
-	font-size: small;	
+	font-size: small;
+	text-decoration: none;	
+}
+
+.celldays_a {
+	font-family: sans-serif;
+	font-size: small;
+	text-decoration: none;
+	color: #3F5C7F;	
 }
 
 .cell_control {

@@ -21,27 +21,38 @@
 		);
 		
 		private $arrMonth = array (
-			array(1,'Enero'),
-			array(2,'Febrero'),
-			array(3,'Marzo'),
-			array(4,'Abril'),
-			array(5,'Mayo'),
-			array(6,'Junio'),
-			array(7,'Julio'),
-			array(8,'Agosto'),
-			array(9,'Septiembre'),
-			array(10,'Octubre'),
-			array(11,'Noviembre'),
-			array(12,'Diciembre')
+			1=> 'Enero',
+			2=> 'Febrero',
+			3=> 'Marzo',
+			4=> 'Abril',
+			5=> 'Mayo',
+			6=> 'Junio',
+			7=> 'Julio',
+			8=> 'Agosto',
+			9=> 'Septiembre',
+			10=>'Octubre',
+			11=>'Noviembre',
+			12=>'Diciembre'
 		);
 		
 		private $arrYears = array ();
 		
-		public function __construct($get = ''){
+		public function __construct($nA, $nM, $update){
 			
-			echo var_export($get,true);
+			$arrMonth = array ();
 			
-			$idForm = 'calform_'.$get['update'];
+			foreach ($this->arrMonth as $id => $month){
+				$arrMonth[] = array($id.'_'.$nA, $month);				
+			}
+			
+			/**
+			 * Construimos un arreglo de datos para los años
+			 */
+			for ($aIni=($nA-5);$aIni<($nA+5);$aIni++){
+				$this->arrYears[] = array ($nM.'_'.$aIni,$aIni);
+			} 			
+			
+			$idForm = 'calform_'.$update;
 			
 			$objMyForm = new myForm;
 			
@@ -59,9 +70,6 @@
 			$iniCell = '<td class="cellday">';
 			$endCell = '</td>';
 			
-			list($nA, $nM) = explode ('-',$get['date']);
-			$nM = intval($nM);
-				
 			$htm = '';		
 			
 			$htm .= '<table cellpadding="0" cellspacing="0"><tr><td class="tablecal">';
@@ -92,10 +100,23 @@
 					if ($nD <= $nDmax){
 						
 						if ($w==$id){
+							
+							$iniA = '<a href="#" class="celldays_a" onclick="selectDate(\''.
+								$nA.'-'.
+								$nM.'-'.
+								$nD.'\',\''.
+								$update.'\')">';
+							
+							$endA = '</a>';
+							
 							if (($nM.$nD.$nA)==date('mjY'))
-								$htm .= '<td class="cellday_today">'.$nD.$endCell;
+								$htm .= '<td class="cellday_today">'.$iniA.
+									$nD.
+									$endA.$endCell;
 							else
-								$htm .= $iniCell.$nD.$endCell;
+								$htm .= $iniCell.$iniA.
+									$nD.
+									$endA.$endCell;
 							$nD++;	
 						}else{
 							$htm .= $iniCell.'&nbsp;'.$endCell;
@@ -104,25 +125,33 @@
 					}else
 					  $htm .= $iniCell.'&nbsp;'.$endCell;
 				}
+				
 			}
 			
-			/**
-			 * Construimos un arreglo de datos para los años
-			 */
-			for ($aIni=($nA-5);$aIni<($nA+5);$aIni++){
-				$this->arrYears[] = array ($aIni,$aIni);
-			} 
+
 
 			$objMyForm->setParamTypeOnEvent('field');
 			
 			$objMyForm->useFirstValueInSelect = false;
 			
-			$objMyForm->addEventJs('cal_month','onchange','calEventOnChangeMonth',array($get['update']));
+			$objMyForm->addEventJs('cal_month',
+					'onchange',
+					'calEventOnChange',
+				array($update));
 			
-			$objMyForm->addEventJs('cal_year','onchange','calEventOnChangeYear',array($get['update']));
+			$objMyForm->addEventJs('cal_year',
+					'onchange',
+					'calEventOnChange',
+				array($update));
 			
 			$htm .= '<tr>';
-				$htm .= '<td colspan="7" class="cell_control">'.$objMyForm->getSelect('cal_month',$this->arrMonth,$nM).' - '.$objMyForm->getSelect('cal_year',$this->arrYears,$nA).'</td>';
+				
+			$htm .= '<td colspan="7" class="cell_control">'.
+					$objMyForm->getSelect('cal_month',$arrMonth,$nM.'_'.$nA).
+					' - '.
+					$objMyForm->getSelect('cal_year',$this->arrYears,$nM.'_'.$nA).
+					'</td>';
+					
 			$htm .= '</tr>';
 			
 			$htm .= '</table>';
