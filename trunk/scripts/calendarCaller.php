@@ -8,7 +8,7 @@
  	
  	$nM = intval($nM);
  	
-	$cal = new myCal($nA, $nM, $_GET['update']);
+	$cal = new myCal($nA, $nM, $nD, $_GET['update']);
 	
 	echo $cal->getCalendar();
 	 

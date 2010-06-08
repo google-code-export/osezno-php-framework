@@ -2567,7 +2567,7 @@ class myForm {
 					$LauncherCalendar = '';
 
 					if ($campos_f[7]){
-						$LauncherCalendar = '<button type="button" class="'.$this->styleClass.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(\'../calendarCaller.php?date='.$campos_f[3].'&update='.$campos_f[2].'\',\''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->srcImageCalendarButton.'" border="0"></button>';
+						$LauncherCalendar = '<button type="button" class="'.$this->styleClass.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->srcImageCalendarButton.'" border="0"></button>';
 						$LauncherCalendar .= '<div id="div_trigger_'.$campos_f[2].'" name="div_trigger_'.$campos_f[2].'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden">h</div>';
 						 
 						$Disabled = 'readonly';

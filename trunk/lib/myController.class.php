@@ -881,9 +881,9 @@ class myController {
 	
 	public function calEventOnChange ($partDate, $toUpdate){
 
-		list($nM, $nA) = explode ('_',$partDate);
+		list($nD, $nM, $nA) = explode ('_',$partDate);
 		
-		$cal = new myCal($nA, $nM, $toUpdate);
+		$cal = new myCal($nA, $nM, $nD, $toUpdate);
 		
 		$this->assign('div_trigger_'.$toUpdate,'innerHTML',$cal->getCalendar());
 		

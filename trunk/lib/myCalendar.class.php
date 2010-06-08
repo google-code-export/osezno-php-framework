@@ -17,7 +17,7 @@
 		
 		
 		private $arrDsem = array (
-			0=>'D',1=>'L',2=>'M',3=>'M',4=>'J',5=>'V',6=>'S'
+			1=>'L',2=>'M',3=>'M',4=>'J',5=>'V',6=>'S', 7=>'D'
 		);
 		
 		private $arrMonth = array (
@@ -37,22 +37,28 @@
 		
 		private $arrYears = array ();
 		
-		public function __construct($nA, $nM, $update){
+		public function __construct($nA, $nM, $nDp, $update){
+			
+			$nDp = intval($nDp);
+			
+			$sw = false;
+			
+			$nSem = intval(date('W',mktime(0,0,0,$nM,1,$nA)));
+			
+			$nDsh = $nMsh = '';
 			
 			$arrMonth = array ();
 			
 			foreach ($this->arrMonth as $id => $month){
-				$arrMonth[] = array($id.'_'.$nA, $month);				
+				$arrMonth[] = array($nDp.'_'.$id.'_'.$nA, $month);				
 			}
 			
 			/**
 			 * Construimos un arreglo de datos para los años
 			 */
 			for ($aIni=($nA-5);$aIni<($nA+5);$aIni++){
-				$this->arrYears[] = array ($nM.'_'.$aIni,$aIni);
+				$this->arrYears[] = array ($nDp.'_'.$nM.'_'.$aIni,$aIni);
 			} 			
-			
-			$idForm = 'calform_'.$update;
 			
 			$objMyForm = new myForm;
 			
@@ -65,8 +71,7 @@
 			 * 
 			 */
 			
-			$objMyForm->nomForm = $idForm; 
-			
+
 			$iniCell = '<td class="cellday">';
 			$endCell = '</td>';
 			
@@ -74,12 +79,17 @@
 			
 			$htm .= '<table cellpadding="0" cellspacing="0"><tr><td class="tablecal">';
 			
-			$htm .= '<table cellpadding="1" cellspacing="1">';
+			$htm .= '<table cellpadding="1" cellspacing="1" border=0>';
+			
+			//$htm .= '<tr><td colspan="8" class="cell_window">x</td></tr>';
 			
 			$htm .= '<tr>';
+				$htm .= '<td class="celldays">SM</td>';
+			
 			foreach ($this->arrDsem as $id => $le){
 				$htm .= '<td class="celldays">'.$le.'</td>';
 			}
+			
 			$htm .= '</tr>';
 			
 			$nDmax = date('d',mktime(0,0,0,$nM+1,0,$nA));
@@ -92,19 +102,31 @@
 				
 				foreach ($this->arrDsem as $id => $le){
 					
-					$w = date('w',mktime(0,0,0,$nM,$nD,$nA));
+					$w = date('N',mktime(0,0,0,$nM,$nD,$nA));
 					
-					if ($w==0)
+					if ($w==1||!$sw){
 						$htm .= '<tr>';
-							
+						$sw = true;
+						
+						$htm .= '<td class="cell_week">'.$nSem.'</td>';
+					}
+						
 					if ($nD <= $nDmax){
 						
 						if ($w==$id){
 							
+							$nMsh = $nM;
+							if ($nM<10)
+								$nMsh = '0'.$nM;
+								
+							$nDsh = $nD; 	
+							if ($nD<10)
+								$nDsh = '0'.$nD;
+							
 							$iniA = '<a href="#" class="celldays_a" onclick="selectDate(\''.
 								$nA.'-'.
-								$nM.'-'.
-								$nD.'\',\''.
+								$nMsh.'-'.
+								$nDsh.'\',\''.
 								$update.'\')">';
 							
 							$endA = '</a>';
@@ -119,17 +141,17 @@
 									$endA.$endCell;
 							$nD++;	
 						}else{
+						
 							$htm .= $iniCell.'&nbsp;'.$endCell;
 						}
 						
-					}else
+					}else{
 					  $htm .= $iniCell.'&nbsp;'.$endCell;
+					}
 				}
-				
+				$nSem = intval(date('W',mktime(0,0,0,$nM,$nD,$nA)));
 			}
 			
-
-
 			$objMyForm->setParamTypeOnEvent('field');
 			
 			$objMyForm->useFirstValueInSelect = false;
@@ -146,10 +168,10 @@
 			
 			$htm .= '<tr>';
 				
-			$htm .= '<td colspan="7" class="cell_control">'.
-					$objMyForm->getSelect('cal_month',$arrMonth,$nM.'_'.$nA).
+			$htm .= '<td colspan="8" class="cell_control">'.
+					$objMyForm->getSelect('cal_month',$arrMonth,$nDp.'_'.$nM.'_'.$nA).
 					' - '.
-					$objMyForm->getSelect('cal_year',$this->arrYears,$nM.'_'.$nA).
+					$objMyForm->getSelect('cal_year',$this->arrYears,$nDp.'_'.$nM.'_'.$nA).
 					'</td>';
 					
 			$htm .= '</tr>';

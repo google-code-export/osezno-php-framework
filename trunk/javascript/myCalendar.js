@@ -38,11 +38,13 @@ function selectDate (date, update){
 	
 }
 
-function addCalendarWindow (strUrlCalendar, idtrigger){
+function addCalendarWindow (value, update, idtrigger){
+	
+	var strUrlCalendar = '../calendarCaller.php?date='+value+'&update='+update;
 	
 	document.getElementById('div_trigger_'+idtrigger).style.visibility  = 'visible';
 	
-	callUrl(strUrlCalendar+'&div=div_trigger_'+idtrigger, 'div_trigger_'+idtrigger, 'Cargando calendario...', 'Error');
+	callUrl(strUrlCalendar+'&div=div_trigger_'+idtrigger, 'div_trigger_'+idtrigger, '', 'Error');
 }
 
 
