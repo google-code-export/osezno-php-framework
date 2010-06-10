@@ -916,30 +916,26 @@ class myForm {
 	 * Constructor de la clase de generacion de formularios
 	 *
 	 * @param string  $nomForm  	Nombre del formulario
-	 * @param string  $Action   	El nombre del script a donde va la informacion
-	 * @param string  $jsScript 	En caso de que el form no tenga Action, entonces el boton realizara este evento
-	 * @param string  $enctype  	Tipo de informacion que maneja
+	 * @param string  $event 		En caso de que el form no tenga Action, entonces el boton realizara este evento
+	 * @param string  $action   	El nombre del script a donde va la informacion
 	 * @param string  $target   	Parametro de apertura de los datos
-	 * @param boolean $boolUseCache Usar o no cache en el formulario
-	 * @param integer $intSeconds   Numero de segundos en que la cache del formulario dura activa 
+	 * @param string  $enctype  	Tipo de informacion que maneja
 	 */
-	public function __construct($name = '', $action = '', $jsScript = '', $enctype = '',  $target = '', $boolUseCache = '', $intSeconds = ''){
+	public function __construct($name = '', $event = '', $action = '', $target = '', $enctype = ''){
+
 		$this->name = $name;
 
 		if ($action)
 			$this->action = $action;
 			
-		if ($jsScript)
-			$this->jsFunctionEvent = $jsScript;
+		if ($event)
+			$this->jsFunctionEvent = $event;
+
+		if ($target)
+			$this->target = $target;			
 			
 		if ($enctype)
 			$this->enctype = $enctype;
-			
-		if ($target)
-			$this->target = $target;
-		
-		if (isset($boolUseCache) && isset($intSeconds))
-		   $this->setCache($boolUseCache, $intSeconds);
 	}
 
 	/***
