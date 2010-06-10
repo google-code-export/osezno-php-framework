@@ -61,16 +61,6 @@
 			} 			
 			
 			$objMyForm = new myForm;
-			
-			/**
-			 * Al averiguar por typeParamOnEvent
-			 * si verificamos si es global o si es field 
-			 * entonces debemos intercambiar entre las funciones 
-			 * de javascript automaticamente que traen los
-			 * datos del formulario.
-			 * 
-			 */
-			
 
 			$iniCell = '<td class="cellday">';
 			$endCell = '</td>';
@@ -80,8 +70,6 @@
 			$htm .= '<table cellpadding="0" cellspacing="0"><tr><td class="tablecal">';
 			
 			$htm .= '<table cellpadding="1" cellspacing="1" border=0>';
-			
-			//$htm .= '<tr><td colspan="8" class="cell_window">x</td></tr>';
 			
 			$htm .= '<tr>';
 				$htm .= '<td class="celldays">SM</td>';
@@ -154,7 +142,7 @@
 			
 			$objMyForm->setParamTypeOnEvent('field');
 			
-			$objMyForm->useFirstValueInSelect = false;
+			$objMyForm->selectUseFirstValue = false;
 			
 			$objMyForm->addEventJs('cal_month',
 					'onchange',

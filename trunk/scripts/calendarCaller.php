@@ -1,5 +1,9 @@
 <?php
 
+	/**
+	 * Llama asincronicamente el modulo Calendario para los
+	 * formulario de la clase myForm.
+	 */
 	include '../configApplication.php';
 
  	$objxAjax->processRequest();	
@@ -12,4 +16,6 @@
 	
 	echo $cal->getCalendar();
 	 
+	die();
+	
 ?>
