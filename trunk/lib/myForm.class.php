@@ -941,7 +941,7 @@ class myForm {
 	/***
 	 * Retornar el error de valicacion devuelto por validateForm
 	 */
-	public function getValidationError (){
+	public function getValidationError (){	
 		
 		return $this->validationError; 
 	}
