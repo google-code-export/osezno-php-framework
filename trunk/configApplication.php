@@ -214,8 +214,9 @@
    */
   define ('FRAMEWORK_VERSION','0.1.5',true);
 
-  
-  
   $objxAjax = new xajax();
+  
+  if (!isset($_SESSION['prdLst']))
+  	$_SESSION['prdLst'] = array();
   
 ?>

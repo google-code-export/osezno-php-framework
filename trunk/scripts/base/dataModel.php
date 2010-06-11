@@ -71,6 +71,8 @@
  		
 		$objList = new myList($idLista,$sql);
  
+		$objList->widthList = 500;
+		
  		$objList->setAliasInQuery('LPAD(cast(id as char),6,"0")','Llave');
  		$objList->setAliasInQuery('nombre','Nombre');
  		$objList->setAliasInQuery('precio','Valor');
@@ -80,6 +82,8 @@
  		$objList->setUseOrderMethodInColumn('Nombre');
  		$objList->setUseOrderMethodInColumn('Valor');
  		$objList->setUseOrderMethodInColumn('Estado'); 		
+ 		
+ 		
  		
  		return $objList->getList();
  	}

@@ -22,7 +22,7 @@ class myList  {
 	 * 
 	 * @var integer
 	 */
-	private $ATTR_WIDTH_LIST = 1000;
+	public $widthList = 1000;
 	
 	/**
 	 * Formato aplicado a la anchura de la tabla que 
@@ -30,42 +30,42 @@ class myList  {
 	 * 
 	 * @var string
 	 */
-	private $ATTR_FORMAT_WIDTH_LIST = 'px';
+	private $formatWidthList = 'px';
 	
 	/**
 	 * Color de borde de la lista
 	 * 
 	 * @var string
 	 */
-	private $ATTR_BORDER_COLOR = '#E2E4FF';
+	private $borderColor = '#E2E4FF';
 	
 	/**
 	 * Tamaño del borde de la lista entre celdas
 	 * 
 	 * @var integer
 	 */
-	private $ATTR_BORDER_CELL_SIZE = 1;
+	private $borderCellSize = 1;
 	
 	/**
 	 * Estilo del contenido de los datos 
 	 * 
 	 * @var string
 	 */
-	private $ATTR_DATA_CONTENT_STYLE = 'contenido_tabla';
+	private $styleDataContent = 'contenido_tabla';
 	
 	/**
 	 * Estilo de titulo de las columnas 
 	 * 
 	 * @var string
 	 */
-	private $ATTR_COLUMN_TITLE_STYLE = 'enlace_tabla';
+	private $styleColumnTitle = 'enlace_tabla';
 	
 	/**
 	 * Color de fondo de las filas por defecto.
 	 * 
 	 * @var string
 	 */
-	private $ATTR_DEFAULT_ROW_COLOR = '#FFFFFF';
+	private $defaultRowColor = '#FFFFFF';
 	
 	/**
 	 * Color de fondo de filas cuando la distinción
@@ -73,23 +73,21 @@ class myList  {
 	 * 
 	 * @var string
 	 */
-	private $ATTR_MIDDLE_ROW_COLOR = '#E7F4FE';
+	private $middleRowColor = '#E7F4FE';
 	
 	/**
 	 * Usar distincion entre filas
 	 * 
 	 * @var bool
 	 */
-	private $ATTR_USE_DISTINCT_BETW_ROWS = true;
-	
+	private $useDistBetwRows = true;
 	
 	/**
 	 * Usar metodo de ordenamiento
 	 * 
 	 * @var bool
 	 */
-	private $ATTR_USE_COLUMN_ORDERING = true;
-	
+	private $useOrderByColumn = true;
 	
 	/**
 	 * Path subcarpeta dentro de la carpeta principal del proyecto
@@ -98,15 +96,7 @@ class myList  {
 	 *
 	 * @var string
 	 */
-	private $ATTR_SFOLDER_PATH_IMG = 'img/my_dinamiclist/';
-		
-	/**
-	 * Path subcarpeta dentro de la carpeta principal del proyecto
-	 * que almacena datos temporales de uso de las lista dinámicas.
-	 * 
-	 * @var string
-	 */
-	private $tmpFolder = 'tmp/';
+	private $pathImages = 'img/my_dinamiclist/';
 	
 	/**
 	 * Extension que es usada para los archivos temporales de las
@@ -138,14 +128,6 @@ class myList  {
 	public function __construct($idList, $sqlORobject = ''){
 		
 		$this->idList = $idList;
-		
-		if (!isset($_SESSION['prdLst']))
-			$_SESSION['prdLst'] = array ();
-		 	
-
-		if (!isset($_SESSION['prdLst'][$this->idList]))
-			$_SESSION['prdLst'][$this->idList] = array ();
-			
 
 		if (is_object($sqlORobject)){
 			
@@ -164,48 +146,12 @@ class myList  {
 			$this->resSql = $this->objConn->query ($this->sql);
 		}		
 
-		$this->createUpdateVar('SQL',$this->sql);
+		if (!isset($_SESSION['prdLst'][$this->idList]))
+			$_SESSION['prdLst'][$this->idList] = array ();
 
 		$this->sqlW .= $this->getSqlPartOrderBy();
 	}
 	
-	
-	/**
-	 * Crea un archivo tmp si no existe.
-	 * Se pueden agregar nuevas variables, si esta existe sera reemplazada.
-	 * 
-	 * @param $var
-	 * @param $newVal
-	 * @return unknown_type
-	 */
-	private function createUpdateVar ($var, $newVal){
-		
-		$_SESSION['prdLst'][$this->idList][$var] = $newVal;
-		
-	}
-	
-	/**
-	 * Obtiene la ruta actual donte esta ubicado el archivo temporal de la lista
-	 * 
-	 * @return string
-	 */
-	private function getPathFile (){
-		
-		return $this->tmpFolder.$this->idList.'.'.$this->extTmpFile;
-	}
-	
-	
-	/**
-	 * Lee el archivo actual de la lista dinamica y extrae las variables que se necesitan en un arreglo.
-	 * 
-	 * @return array
-	 */
-	protected  function readFileTemp (){
-		
-		$pathFile = $this->getPathFile();
-				
-		return $pathFile;
-	}
 	
 	/**
 	 * Obtiene una cadena de texto que le indica a la consulta sql
@@ -215,15 +161,20 @@ class myList  {
 	 */
 	private function getSqlPartOrderBy (){
 		
-		$sqlPart = '';
+		$arr = $_SESSION['prdLst'][$this->idList]['ordMtd'];
 		
-		foreach ($_SESSION['prdLst'][$this->idList]['ordMtd'] as $column => $method){
-			if ($method){
+		if (count($arr)){
+		
+			$sqlPart = '';
+		
+			foreach ($arr as $column => $method){
+				if ($method){
 				
-				if (!$sqlPart)
-					$sqlPart = ' ORDER BY ';
+					if (!$sqlPart)
+						$sqlPart = ' ORDER BY ';
 				
-				$sqlPart .= $column.' '.$method.', ';
+					$sqlPart .= $column.' '.$method.', ';
+				}
 			}
 		}
 		
@@ -245,11 +196,13 @@ class myList  {
 		if (!isset($this->arrayAliasSetInQuery[$alias])){
 			$this->arrayAliasSetInQuery[$alias] = $field;
 			
+			/*
 			if (!isset($_SESSION['prdLst'][$this->idList]['alInQu']))
 				$_SESSION['prdLst'][$this->idList]['alInQu'] = 
 					array ();
 			
 			$_SESSION['prdLst'][$this->idList]['alInQu'][$alias] = $field;
+			*/
 			
 		}else
 			$this->errorLog .= 
@@ -273,27 +226,6 @@ class myList  {
 	}
 	
 	
-	/**
-	 * Configura un atributo de la lista dinamica que va 
-	 * a modificar su vista.
-	 * 
-	 * @param $name  Nombre del atributo
-	 * @param $value Nuevo valor del atributo
-	 * 
-	 */
-	public function setAttribute ($name, $value){
-		
-		$this->$name = $value;
-		
-	}
-	
-	
-	public function getAttribute ($name){
-		
-		return $this->$name;
-	}
-	
-	
 	private function buildJs (){
 		
 		$js = ''."\n";
@@ -309,8 +241,23 @@ class myList  {
 		return $this->js;
 	}
 	
+	
+	private function regAttClass ($arr){
+		
+		$_SESSION['prdLst'][$this->idList] = array ();
+		
+		foreach ($arr as $atn => $atv){
+			
+			$_SESSION['prdLst'][$this->idList][$atn] = $atv;
+							
+		}
+		
+	}
+	
 	private function buildList (){
-
+		
+		$this->regAttClass(get_class_vars(get_class($this)));
+		
 		$sw = false;
 		
 		$return = '';
@@ -323,20 +270,20 @@ class myList  {
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
-		$buf .=  "\n".'<table width="'.$this->ATTR_WIDTH_LIST.''.$this->ATTR_FORMAT_WIDTH_LIST.'" cellspacing="0" cellpadding="0"><tr><td bgcolor="'.$this->ATTR_BORDER_COLOR.'">'."\n";
+		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td bgcolor="'.$this->borderColor.'">'."\n";
 		
-		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->ATTR_BORDER_CELL_SIZE.'" cellpadding="0">'."\n";
+		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0">'."\n";
 
 		$i = 0;
 		foreach ($rows as $row){
 
-				if ($this->ATTR_USE_DISTINCT_BETW_ROWS){
+				if ($this->useDistBetwRows){
 					if ($i%2)
-						$bgColor = $this->ATTR_DEFAULT_ROW_COLOR;
+						$bgColor = $this->defaultRowColor;
 					else	
-						$bgColor = $this->ATTR_MIDDLE_ROW_COLOR;
+						$bgColor = $this->middleRowColor;
 				}else
-					$bgColor = $this->ATTR_DEFAULT_ROW_COLOR;			
+					$bgColor = $this->defaultRowColor;			
 			
 			/**
 			 * Titulos de las columnas
@@ -349,23 +296,23 @@ class myList  {
 				foreach ($row as $key => $val){
 					if (!is_numeric($key)){
 						
-						$backGround_hCol = $GLOBALS['urlProject'].$this->ATTR_SFOLDER_PATH_IMG;
+						$backGround_hCol = $GLOBALS['urlProject'].$this->pathImages;
 						
 						$bufHead.='<td background="'.$backGround_hCol.'"><div style="text-align:center">';
 						
-						if ($this->ATTR_USE_COLUMN_ORDERING){
+						if ($this->useOrderByColumn){
 							
 							$orderBy = '';
 							if (isset($_SESSION['prdLst'][$this->idList]['ordMtd'][$key]))
 								$orderBy = $_SESSION['prdLst'][$this->idList]['ordMtd'][$key];
 							
-							$bufHead.='<a class="'.$this->ATTR_COLUMN_TITLE_STYLE.'" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
+							$bufHead.='<a class="'.$this->styleColumnTitle.'" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
 							
 							ucwords($key).''.$orderBy.'</a>';
 								
 						}else{
 							
-							$bufHead .= '<font class="'.$this->ATTR_COLUMN_TITLE_STYLE.'">';
+							$bufHead .= '<font class="'.$this->styleColumnTitle.'">';
 							
 							$bufHead.=''.ucwords($key).'';
 							
@@ -386,7 +333,7 @@ class myList  {
 				if (!is_numeric($key)){
 					if (!$val)
 					   $Value = '&nbsp;';
-					$buf.='<td bgcolor="'.$bgColor.'" class="'.$this->ATTR_DATA_CONTENT_STYLE.'">'.$val.'</td>';
+					$buf.='<td bgcolor="'.$bgColor.'" class="'.$this->styleDataContent.'">'.$val.'</td>';
 				}
 				
 			}

@@ -902,9 +902,9 @@ class myController {
 		$myListExt = new myListExt($idList);
 		
 		
-		$this->alert($myListExt->getVar($idList, 'SQL'));
+		//$this->alert($myListExt->getVar($idList, 'SQL'));
 		
-
+		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		
 		return $this->response;
