@@ -97,15 +97,24 @@ class myList  {
 	 * @var string
 	 */
 	private $pathImages = 'img/my_dinamiclist/';
-	
-	/**
-	 * Extension que es usada para los archivos temporales de las
-	 * listas dinámicas que son creados.
-	 * 
-	 * @var string
-	 */
-	private $extTmpFile = 'myList';
-	
+
+	private $valiNomKeys = array (
+		'widthList',
+		'formatWidthList',
+		'borderColor',
+		'borderCellSize',
+		'styleDataContent',
+		'styleColumnTitle',
+		'defaultRowColor',
+		'middleRowColor',
+		'useDistBetwRows',
+		'useOrderByColumn',
+		'pathImages',
+		'sql',
+		'sqlW',
+		'arrayAliasSetInQuery',
+		'arrayOrdMethod'
+	);	
 	
 	private $bufHtml = '';
 	
@@ -122,6 +131,8 @@ class myList  {
 	private $idList = '';
 	
 	private $arrayAliasSetInQuery = array ();
+	
+	private $arrayOrdMethod = array ();
 	
 	private $errorLog;
 	
@@ -160,7 +171,7 @@ class myList  {
 	 * @return string
 	 */
 	private function getSqlPartOrderBy (){
-		
+		/*
 		$arr = $_SESSION['prdLst'][$this->idList]['ordMtd'];
 		
 		if (count($arr)){
@@ -179,8 +190,8 @@ class myList  {
 		}
 		
 		$sqlPart = substr($sqlPart,0,-2);
-		
-		return $sqlPart;
+		*/
+		//return $sqlPart;
 	}
 	
 	/**
@@ -193,20 +204,7 @@ class myList  {
 	 */
 	public function setAliasInQuery ($field, $alias){
 		
-		if (!isset($this->arrayAliasSetInQuery[$alias])){
-			$this->arrayAliasSetInQuery[$alias] = $field;
-			
-			/*
-			if (!isset($_SESSION['prdLst'][$this->idList]['alInQu']))
-				$_SESSION['prdLst'][$this->idList]['alInQu'] = 
-					array ();
-			
-			$_SESSION['prdLst'][$this->idList]['alInQu'][$alias] = $field;
-			*/
-			
-		}else
-			$this->errorLog .= 
-				"\n".'WARNING: El alias "'.$alias.'" ya estaba regitrado.';
+		$this->arrayAliasSetInQuery[$alias] = $field;
 		
 	}
 	
@@ -220,8 +218,7 @@ class myList  {
 	 */
 	public function setUseOrderMethodInColumn ($alias){
 		
-		if (!isset($_SESSION['prdLst'][$this->idList]['ordMtd'][$alias]))
-			$_SESSION['prdLst'][$this->idList]['ordMtd'][$alias] = '';
+		$this->arrayOrdMethod[$alias] = '';
 		
 	}
 	
@@ -241,17 +238,14 @@ class myList  {
 		return $this->js;
 	}
 	
-	
 	private function regAttClass ($arr){
-		
-		$_SESSION['prdLst'][$this->idList] = array ();
 		
 		foreach ($arr as $atn => $atv){
 			
-			$_SESSION['prdLst'][$this->idList][$atn] = $atv;
-							
+			if (in_array($atn,$this->valiNomKeys))
+				$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
+				
 		}
-		
 	}
 	
 	private function buildList (){
@@ -348,12 +342,11 @@ class myList  {
 
 		$buf .= '</div>'."\n";
 		
+		
+		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		
 	}
-	
-	 	
-	
 	
 	
 	public function getList (){
@@ -363,22 +356,14 @@ class myList  {
 		return $this->bufHtml;
 	}
 	
-	
-	
-}
-
-
-class myListExt extends myList {
-	
-	public function getVar ($idList, $var){
+	public function __destruct(){
 		
 		
 		
-		return $_SESSION['prdLst'][$idList][$var];
 	}
 	
-	
 }
+
 
 
 class myDinamicListt {
