@@ -83,13 +83,6 @@ class myList  {
 	private $useDistBetwRows = true;
 	
 	/**
-	 * Usar metodo de ordenamiento
-	 * 
-	 * @var bool
-	 */
-	private $useOrderByColumn = true;
-	
-	/**
 	 * Path subcarpeta dentro de la carpeta principal del proyecto
 	 * que almacena las imagenes generales que se usan en las listas
 	 * dinamicas.
@@ -98,7 +91,8 @@ class myList  {
 	 */
 	private $pathImages = 'img/my_dinamiclist/';
 
-	private $valiNomKeys = array (
+	
+	private $validNomKeys = array (
 		'widthList',
 		'formatWidthList',
 		'borderColor',
@@ -108,7 +102,6 @@ class myList  {
 		'defaultRowColor',
 		'middleRowColor',
 		'useDistBetwRows',
-		'useOrderByColumn',
 		'pathImages',
 		'sql',
 		'sqlW',
@@ -140,27 +133,41 @@ class myList  {
 		
 		$this->idList = $idList;
 
-		if (is_object($sqlORobject)){
+		if ($sqlORobject){
 			
-			$this->objConn = $sqlORobject;
+			if (is_object($sqlORobject)){
+			
+				$this->objConn = $sqlORobject;
 		
-			$this->sqlW = $this->resSql = $sqlORobject->find();
+				$this->sqlW = $this->resSql = $sqlORobject->find();
 			
-			$this->sql = $sqlORobject->getSqlLog();
+				$this->sql = $sqlORobject->getSqlLog();
+			
+			}else{
+			
+				$this->objConn = new myActiveRecord();
+		
+				$this->sqlW = $this->sql = $sqlORobject;		
+			
+				$this->resSql = $this->objConn->query ($this->sql);
+			}
 			
 		}else{
 			
 			$this->objConn = new myActiveRecord();
-		
-			$this->sqlW = $this->sql = $sqlORobject;		
 			
-			$this->resSql = $this->objConn->query ($this->sql);
+			$this->setVar('sqlW',$this->getVar('sqlW').$this->getSqlPartOrderBy());
+			
+			$this->restVarsSess(array('sqlW'));
+			
+			$this->resSql = $this->objConn->query ($this->sqlW);
 		}		
 
 		if (!isset($_SESSION['prdLst'][$this->idList]))
 			$_SESSION['prdLst'][$this->idList] = array ();
 
-		$this->sqlW .= $this->getSqlPartOrderBy();
+			
+		
 	}
 	
 	
@@ -171,12 +178,12 @@ class myList  {
 	 * @return string
 	 */
 	private function getSqlPartOrderBy (){
-		/*
-		$arr = $_SESSION['prdLst'][$this->idList]['ordMtd'];
+
+		$sqlPart = '';
 		
-		if (count($arr)){
+		$arr = $this->getVar('arrayOrdMethod');
 		
-			$sqlPart = '';
+		if ($arr!==false){
 		
 			foreach ($arr as $column => $method){
 				if ($method){
@@ -190,8 +197,8 @@ class myList  {
 		}
 		
 		$sqlPart = substr($sqlPart,0,-2);
-		*/
-		//return $sqlPart;
+		
+		return $sqlPart;
 	}
 	
 	/**
@@ -242,10 +249,21 @@ class myList  {
 		
 		foreach ($arr as $atn => $atv){
 			
-			if (in_array($atn,$this->valiNomKeys))
+			if (in_array($atn,$this->validNomKeys))
 				$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
 				
 		}
+	}
+	
+	private function restVarsSess ($arrNoInc){
+		
+		foreach ($this->validNomKeys as $varNom){
+			
+			if (!in_array($varNom,$arrNoInc))
+				
+				$this->$varNom = $this->getVar($varNom);
+		}
+		 
 	}
 	
 	private function buildList (){
@@ -283,27 +301,31 @@ class myList  {
 			 * Titulos de las columnas
 			 */		
 			if (!$sw){
+				
+				$arrColOrd = array ();
+				
 				$sw = true;
 				
 				$bufHead.='<tr>'."\n"."\t";
 
 				foreach ($row as $key => $val){
+					
 					if (!is_numeric($key)){
 						
 						$backGround_hCol = $GLOBALS['urlProject'].$this->pathImages;
 						
 						$bufHead.='<td background="'.$backGround_hCol.'"><div style="text-align:center">';
 						
-						if ($this->useOrderByColumn){
-							
-							$orderBy = '';
-							if (isset($_SESSION['prdLst'][$this->idList]['ordMtd'][$key]))
-								$orderBy = $_SESSION['prdLst'][$this->idList]['ordMtd'][$key];
+						$orderBy = $this->getVar('arrayOrdMethod',$key);
+						
+						if ($orderBy !== false){
 							
 							$bufHead.='<a class="'.$this->styleColumnTitle.'" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
 							
 							ucwords($key).''.$orderBy.'</a>';
 								
+							$arrColOrd[$key] = true; 
+							
 						}else{
 							
 							$bufHead .= '<font class="'.$this->styleColumnTitle.'">';
@@ -324,9 +346,12 @@ class myList  {
 			$buf.='<tr>'."\n"."\t";
 			
 			foreach ($row as $key => $val){
+				
 				if (!is_numeric($key)){
+					
 					if (!$val)
 					   $Value = '&nbsp;';
+					   
 					$buf.='<td bgcolor="'.$bgColor.'" class="'.$this->styleDataContent.'">'.$val.'</td>';
 				}
 				
@@ -340,7 +365,7 @@ class myList  {
 		
 		$buf .=  '</td></tr></table>'."\n";
 
-		$buf .= '</div>'."\n";
+		$buf .= '11</div>'."\n";
 		
 		
 		
@@ -348,22 +373,50 @@ class myList  {
 		
 	}
 	
+	/***
+	 * Retorna el valor de un atributo de la lista dinamica.
+	 */
+	public function getVar ($name, $item = ''){
+		$var = false;
+		
+		if ($item){
+			if (isset($_SESSION['prdLst'][$this->idList][$name][$item]))
+				$var = $_SESSION['prdLst'][$this->idList][$name][$item];
+		}else{
+			if (isset($_SESSION['prdLst'][$this->idList][$name]))
+				$var = $_SESSION['prdLst'][$this->idList][$name];
+		}
+			 
+		return $var;
+	}
+
+	
+	public function setVar ($name, $val, $item = ''){
+		
+		if ($item){
+			if (isset($_SESSION['prdLst'][$this->idList][$name][$item]))
+				$_SESSION['prdLst'][$this->idList][$name][$item] = $val;
+		}else{
+			if (isset($_SESSION['prdLst'][$this->idList][$name]))
+				$_SESSION['prdLst'][$this->idList][$name] = $val;
+		}		
+		
+	} 
+	
 	
 	public function getList (){
 		
 		$this->buildList();
 		
-		return $this->bufHtml;
+		return $this->bufHtml.$this->errorLog.$this->sqlW;
 	}
 	
 	public function __destruct(){
 		
-		
-		
+
 	}
 	
 }
-
 
 
 class myDinamicListt {
