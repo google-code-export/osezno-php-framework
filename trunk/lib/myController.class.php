@@ -113,6 +113,7 @@ class myController {
 	 * @param object $objxAjax Objeto de xAjax
 	 */
 	public function __construct($objxAjax){
+		
 		require_once 'plugin/packages/xajax/xajax_core/xajaxResponse.inc.php';
 		
 		$this->response = new xajaxResponse();
@@ -124,7 +125,9 @@ class myController {
 		foreach ( $methods as $method ){
 			
 			if (!in_array($method,$this->arrayInvalidMethods)){
+				
 		       $this->xajaxObject->registerFunction(array($method, $this, $method));
+		       //echo $method."<br>";
 			}
 		}
 		
@@ -872,7 +875,9 @@ class myController {
 	 * @param string $strColorBg
 	 */
 	public function notificationWindow ($strNotification, $intSecDuration = 3, $strColorBg = '#FF0000'){
+		
 		$intSecDuration = $intSecDuration*1000;
+		
 		$strSctipt = 'createNotificationWindow("'.$strNotification.'",'.$intSecDuration.',"'.$strColorBg.'")';
 		
 		$this->response->script($strSctipt);
@@ -914,11 +919,27 @@ class myController {
 			break;
 		}
 		
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
 		return $this->response;
 	}
 	
+	/**
+	 * Carga atributos visuales de la lista dinamica 
+	 * @param $idList
+	 * 
+	 * @return string 
+	 */
+	public function myListLoad ($idList){
+		
+		$myList = new myList($idList);
+		
+		$this->includeCSS($myList->setTheme());
+		
+		return $this->response;
+	}
 	
 	
 	/**

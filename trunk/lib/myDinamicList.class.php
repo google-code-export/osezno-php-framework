@@ -51,14 +51,14 @@ class myList  {
 	 * 
 	 * @var string
 	 */
-	private $styleDataContent = 'contenido_tabla';
+	private $styleDataContent = 'cell_content';
 	
 	/**
 	 * Estilo de titulo de las columnas 
 	 * 
 	 * @var string
 	 */
-	private $styleColumnTitle = 'enlace_tabla';
+	private $styleColumnTitle = 'column_title';
 	
 	/**
 	 * Color de fondo de las filas por defecto.
@@ -84,14 +84,17 @@ class myList  {
 	
 	/**
 	 * Path subcarpeta dentro de la carpeta principal del proyecto
-	 * que almacena las imagenes generales que se usan en las listas
-	 * dinamicas.
-	 *
+	 * que almacena las imagenes generales que se usan en las lista
+	 * dianmicas.
+	 * 
 	 * @var string
 	 */
-	private $pathImages = 'img/my_dinamiclist/';
-
+	private $pathThemes = 'css/themes/';
 	
+	/**
+	 * Nombre de los atributos seteables
+	 * @var array
+	 */
 	private $validNomKeys = array (
 		'widthList',
 		'formatWidthList',
@@ -102,33 +105,87 @@ class myList  {
 		'defaultRowColor',
 		'middleRowColor',
 		'useDistBetwRows',
-		'pathImages',
+		'pathThemes',
 		'sql',
 		'sqlW',
 		'arrayAliasSetInQuery',
-		'arrayOrdMethod'
+		'arrayOrdMethod',
+		'themeName'
 	);	
 	
+	/**
+	 * Hmtl de la lista dinamica
+	 * @var string
+	 */
 	private $bufHtml = '';
 	
+	/**
+	 * Objeto de la conexion a BD
+	 * @var object
+	 */
 	private $objConn;
 	
+	/**
+	 * Cadena de la consulta SQL
+	 * @var string
+	 */
 	private $sql = '';
 	
+	/**
+	 * Cadena SQL 
+	 * @var string
+	 */
 	private $sqlW = '';
 	
+	/**
+	 * Cadena de las funciones JS
+	 * @var string
+	 */
 	private $js = '';
 	
+	/**
+	 * Objeto resultado de la consulta SQL
+	 * @var array
+	 */
 	private $resSql;
 	
+	/**
+	 * Nombre o Id de la lista dinamica
+	 * @var string
+	 */
 	private $idList = '';
 	
+	/**
+	 * Arreglo que contiene los alias de los campos
+	 * @var array
+	 */
 	private $arrayAliasSetInQuery = array ();
 	
+	/**
+	 * Areglo con los ordenamientos de los campos
+	 * @var array
+	 */
 	private $arrayOrdMethod = array ();
 	
+	/**
+	 * Error de la consulta SQL
+	 * @var string
+	 */
 	private $errorLog;
 	
+	/**
+	 * Nombre del tema de estilo que usara la lista
+	 * 
+	 * @var string
+	 */
+	private $themeName = 'default';
+	
+	/**
+	 * Constructor
+	 * @param $idList	Nombre de la lista
+	 * @param $sqlORobject	SQL o Objeto de metodo
+	 * @return string
+	 */
 	public function __construct($idList, $sqlORobject = ''){
 		
 		$this->idList = $idList;
@@ -154,22 +211,30 @@ class myList  {
 			
 		}else{
 			
+			$this->restVarsSess(array('sqlW','sql'));
+			
 			$this->objConn = new myActiveRecord();
 			
-			$this->setVar('sqlW',$this->getVar('sqlW').$this->getSqlPartOrderBy());
+			$this->setVar('sqlW',$this->getVar('sql').$this->getSqlPartOrderBy());
 			
-			$this->restVarsSess(array('sqlW'));
-			
-			$this->resSql = $this->objConn->query ($this->sqlW);
+			$this->resSql = $this->objConn->query ($this->getVar('sqlW'));
 		}		
-
-		if (!isset($_SESSION['prdLst'][$this->idList]))
-			$_SESSION['prdLst'][$this->idList] = array ();
-
-			
 		
 	}
 	
+	/**
+	 * Selecciona un tema de estilos para las lista dinamica.
+	 * 
+	 * @param $theme Nombre del tema
+	 */
+	public function setTheme ($theme = ''){
+		
+		if ($theme)
+			$this->themeName = $theme;
+		else{
+			return  $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/style.css';
+		}			
+	}
 	
 	/**
 	 * Obtiene una cadena de texto que le indica a la consulta sql
@@ -215,7 +280,6 @@ class myList  {
 		
 	}
 	
-	
 	/**
 	 * Configura si una columna va a tener una propiedad especial 
 	 * que le permitira a esta ser ordenada en forma ascendente o
@@ -229,14 +293,15 @@ class myList  {
 		
 	}
 	
-	
 	private function buildJs (){
 		
 		$js = ''."\n";
 		
 		$js .= '<script type=\'text/javascript\' charset=\'UTF-8\'> '."\n";
 		
-		$js .= 'myList = new myList(\''.$this->idList.'\');'."\n"; 
+		$js .= 'myList = new myList(\''.$this->idList.'\');'."\n";
+
+		$js .= 'myList.loadCss();'."\n";
 		
 		$js .= '</script>'."\n";
 		
@@ -245,16 +310,32 @@ class myList  {
 		return $this->js;
 	}
 	
+	/**
+	 * Registra los atributos de la clase basados en una sesion
+	 * @param $arr
+	 * @return unknown_type
+	 */
 	private function regAttClass ($arr){
 		
-		foreach ($arr as $atn => $atv){
+		if (!isset($_SESSION['prdLst'][$this->idList])){
 			
-			if (in_array($atn,$this->validNomKeys))
-				$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
+			$_SESSION['prdLst'][$this->idList] = array ();
+			
+			foreach ($arr as $atn => $atv){
+			
+				if (in_array($atn,$this->validNomKeys))
+			
+					$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
 				
+			}
 		}
 	}
 	
+	/**
+	 * Restaura valores de la clase contenidos en la sesion
+	 * @param $arrNoInc
+	 * @return unknown_type
+	 */
 	private function restVarsSess ($arrNoInc){
 		
 		foreach ($this->validNomKeys as $varNom){
@@ -266,6 +347,10 @@ class myList  {
 		 
 	}
 	
+	/**
+	 * Construye la lista dinamica
+	 * @return unknown_type
+	 */
 	private function buildList (){
 		
 		$this->regAttClass(get_class_vars(get_class($this)));
@@ -279,7 +364,7 @@ class myList  {
 		$bufHead = '';
 		
 		$buf = ''.$this->buildJs();
-		
+
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
 		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td bgcolor="'.$this->borderColor.'">'."\n";
@@ -312,15 +397,15 @@ class myList  {
 					
 					if (!is_numeric($key)){
 						
-						$backGround_hCol = $GLOBALS['urlProject'].$this->pathImages;
-						
+						$backGround_hCol = $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName;
+												
 						$bufHead.='<td background="'.$backGround_hCol.'"><div style="text-align:center">';
 						
 						$orderBy = $this->getVar('arrayOrdMethod',$key);
 						
 						if ($orderBy !== false){
 							
-							$bufHead.='<a class="'.$this->styleColumnTitle.'" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
+							$bufHead.='<a class="'.$this->styleColumnTitle.'" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.$backGround_hCol.''.
 							
 							ucwords($key).''.$orderBy.'</a>';
 								
@@ -365,7 +450,7 @@ class myList  {
 		
 		$buf .=  '</td></tr></table>'."\n";
 
-		$buf .= '11</div>'."\n";
+		$buf .= '</div>'."\n";
 		
 		
 		
@@ -373,8 +458,11 @@ class myList  {
 		
 	}
 	
-	/***
+	/**
 	 * Retorna el valor de un atributo de la lista dinamica.
+	 * @param $name	Nombre de la variable
+	 * @param $item	Si se trata de un arreglo el nombre del indice
+	 * @return string
 	 */
 	public function getVar ($name, $item = ''){
 		$var = false;
@@ -390,7 +478,12 @@ class myList  {
 		return $var;
 	}
 
-	
+	/**
+	 * Configura una variable de la lista
+	 * @param $name	Nombre de la variable
+	 * @param $val	Nuevo valor
+	 * @param $item	Si te trata de un arreglo el nombre del indice
+	 */
 	public function setVar ($name, $val, $item = ''){
 		
 		if ($item){
@@ -403,18 +496,17 @@ class myList  {
 		
 	} 
 	
-	
+	/**
+	 * Obtiene la lista dinamica
+	 * @return string
+	 */
 	public function getList (){
 		
 		$this->buildList();
 		
-		return $this->bufHtml.$this->errorLog.$this->sqlW;
+		return $this->bufHtml;
 	}
-	
-	public function __destruct(){
-		
 
-	}
 	
 }
 
