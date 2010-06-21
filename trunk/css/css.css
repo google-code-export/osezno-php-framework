@@ -158,31 +158,6 @@ body {
 	text-shadow:#CC6633;
 }
 
-.enlace_tabla {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #333333;
-	font-style: normal;
-	text-decoration: none;
-	font-weight: bold;
-}
-
-.enlace_tabla:hover {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #999999;
-	font-style: normal;
-	text-decoration: none;
-	font-weight: bold;
-}
-
-.contenido_tabla {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	font-style: normal;
-	text-decoration: none;
-	text-align:center;
-}
 
 .fondo_fila_medio {
   background-color: #EFECE9;
