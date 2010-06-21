@@ -33,13 +33,6 @@ class myList  {
 	private $formatWidthList = 'px';
 	
 	/**
-	 * Color de borde de la lista
-	 * 
-	 * @var string
-	 */
-	private $borderColor = '#E2E4FF';
-	
-	/**
 	 * Tamaño del borde de la lista entre celdas
 	 * 
 	 * @var integer
@@ -47,18 +40,11 @@ class myList  {
 	private $borderCellSize = 1;
 	
 	/**
-	 * Estilo del contenido de los datos 
-	 * 
-	 * @var string
-	 */
-	private $styleDataContent = 'cell_content';
-	
-	/**
 	 * Estilo de titulo de las columnas 
 	 * 
 	 * @var string
 	 */
-	private $styleColumnTitle = 'column_title';
+	private $styleColumnTitle = '';
 	
 	/**
 	 * Color de fondo de las filas por defecto.
@@ -98,10 +84,7 @@ class myList  {
 	private $validNomKeys = array (
 		'widthList',
 		'formatWidthList',
-		'borderColor',
 		'borderCellSize',
-		'styleDataContent',
-		'styleColumnTitle',
 		'defaultRowColor',
 		'middleRowColor',
 		'useDistBetwRows',
@@ -232,7 +215,7 @@ class myList  {
 		if ($theme)
 			$this->themeName = $theme;
 		else{
-			return  $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/style.css';
+			return  $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/style.css.php?img='.$GLOBALS['urlProject'].'/css/themes/'.$this->themeName.'/';
 		}			
 	}
 	
@@ -293,6 +276,13 @@ class myList  {
 		
 	}
 	
+	/**
+	 * Contruye una cadena que se incluye dentro del codigo
+	 * html para cargar metodos dinamicos con javascript que
+	 * permiten cargan opciones especiales de la lista.
+	 * 
+	 * @return string
+	 */
 	private function buildJs (){
 		
 		$js = ''."\n";
@@ -367,7 +357,7 @@ class myList  {
 
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
-		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td bgcolor="'.$this->borderColor.'">'."\n";
+		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 		
 		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0">'."\n";
 
@@ -397,15 +387,17 @@ class myList  {
 					
 					if (!is_numeric($key)){
 						
-						$backGround_hCol = $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName;
-												
-						$bufHead.='<td background="'.$backGround_hCol.'"><div style="text-align:center">';
-						
 						$orderBy = $this->getVar('arrayOrdMethod',$key);
 						
 						if ($orderBy !== false){
 							
-							$bufHead.='<a class="'.$this->styleColumnTitle.'" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.$backGround_hCol.''.
+							$styleName = 'cell_title';
+							if ($orderBy)
+								$styleName = 'cell_title_selected';
+							
+							$bufHead.='<td class="'.$styleName.'">';
+							
+							$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
 							
 							ucwords($key).''.$orderBy.'</a>';
 								
@@ -413,14 +405,12 @@ class myList  {
 							
 						}else{
 							
-							$bufHead .= '<font class="'.$this->styleColumnTitle.'">';
+							$bufHead.='<td class="cell_title">';
 							
-							$bufHead.=''.ucwords($key).'';
-							
-							$bufHead .= '</font>';
+							$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
 						}
 						
-						$bufHead.='</div></td>';	
+						$bufHead.='</td>';	
 					}
 				}
 				$bufHead.="\n".'</tr>'."\n";
@@ -437,7 +427,7 @@ class myList  {
 					if (!$val)
 					   $Value = '&nbsp;';
 					   
-					$buf.='<td bgcolor="'.$bgColor.'" class="'.$this->styleDataContent.'">'.$val.'</td>';
+					$buf.='<td bgcolor="'.$bgColor.'" class="cell_content">'.$val.'</td>';
 				}
 				
 			}

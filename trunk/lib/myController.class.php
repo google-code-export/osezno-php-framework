@@ -932,7 +932,7 @@ class myController {
 	 * 
 	 * @return string 
 	 */
-	public function myListLoad ($idList){
+	public function myListLoadCSS ($idList){
 		
 		$myList = new myList($idList);
 		

@@ -8,6 +8,6 @@ function myList (idList){
 
 function loadCss (){
 	
-	myListLoad (this.idList);
+	myListLoadCSS (this.idList);
 	
 }
