@@ -1,26 +1,13 @@
 
 function myList (idList){
 	
-	this.pagAct = 1;
-	
 	this.idList = idList;
-	this.moveNext = moveNext;
-	this.moveBack = moveBack;
+	
+	this.loadCss = loadCss;
 }
 
-
-function moveNext (){
+function loadCss (){
 	
-	this.pagAct += 1;
-	
-}
-
-
-function moveBack (){
-	
-	if (this.pagAct>1)
-		this.pagAct -= 1;
+	myListLoad (this.idList);
 	
 }
-
-
