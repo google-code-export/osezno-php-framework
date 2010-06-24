@@ -1,40 +1,4 @@
 /**
- *  myDinamiclist
- */
-var rowsMarked = new Array();
-
-function onRow (o, color, idSon){
-   if (!rowsMarked[o.id]){
-      rowsMarked[o.id] = false;
-      o.style.backgroundColor = color;
-      if (document.getElementById(idSon))
-         document.getElementById(idSon).style.backgroundColor = color;   
-   }
-}
-
-function outRow (o, colorDefault, idSon, colorSelDefault){
-    if (!rowsMarked[o.id]){
-      o.style.backgroundColor = colorDefault;
-      if (document.getElementById(idSon))
-         document.getElementById(idSon).style.backgroundColor = colorSelDefault;
-    }
-}
-
-function markRow (o, color, colorDefault, idSon, colorSelDefault){
-     if (rowsMarked[o.id] == false){
-        o.style.backgroundColor = color;
-        if (document.getElementById(idSon))
-           document.getElementById(idSon).style.backgroundColor = color;
-        rowsMarked[o.id] = true;
-     }else{
-        o.style.backgroundColor = colorDefault;
-        if (document.getElementById(idSon))
-           document.getElementById(idSon).style.backgroundColor = colorSelDefault;
-        rowsMarked[o.id] = false;
-     }
-}
-
-/**
  *  xajax callbacks
  */
   xajax.callback.global.onRequest = function() {

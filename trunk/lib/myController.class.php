@@ -919,7 +919,7 @@ class myController {
 			break;
 		}
 		
-		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		

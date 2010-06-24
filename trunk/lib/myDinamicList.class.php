@@ -40,28 +40,6 @@ class myList  {
 	private $borderCellSize = 1;
 	
 	/**
-	 * Estilo de titulo de las columnas 
-	 * 
-	 * @var string
-	 */
-	private $styleColumnTitle = '';
-	
-	/**
-	 * Color de fondo de las filas por defecto.
-	 * 
-	 * @var string
-	 */
-	private $defaultRowColor = '#FFFFFF';
-	
-	/**
-	 * Color de fondo de filas cuando la distinción
-	 * de filas estas activa.
-	 * 
-	 * @var string
-	 */
-	private $middleRowColor = '#E7F4FE';
-	
-	/**
 	 * Usar distincion entre filas
 	 * 
 	 * @var bool
@@ -85,15 +63,14 @@ class myList  {
 		'widthList',
 		'formatWidthList',
 		'borderCellSize',
-		'defaultRowColor',
-		'middleRowColor',
 		'useDistBetwRows',
 		'pathThemes',
 		'sql',
 		'sqlW',
 		'arrayAliasSetInQuery',
 		'arrayOrdMethod',
-		'themeName'
+		'themeName',
+		'arrayWidthsCols'
 	);	
 	
 	/**
@@ -149,6 +126,13 @@ class myList  {
 	 * @var array
 	 */
 	private $arrayOrdMethod = array ();
+	
+	/**
+	 * Arreglo con los anchos determinados para
+	 * cada columna.
+	 * @var array
+	 */
+	private $arrayWidthsCols = array ();
 	
 	/**
 	 * Error de la consulta SQL
@@ -217,6 +201,19 @@ class myList  {
 		else{
 			return  $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/style.css.php?img='.$GLOBALS['urlProject'].'/css/themes/'.$this->themeName.'/';
 		}			
+	}
+	
+	/**
+	 * Configura manualmente un acho determinado
+	 * para cada columna de la lista dinamica.
+	 * 
+	 * @param $alias	Nombre de la columna
+	 * @param $witdh	Ancho de la columna en PX o %
+	 */
+	public function setWidthColumn ($alias, $witdh){
+		
+		$this->arrayWidthsCols[$alias] = $witdh;
+		
 	}
 	
 	/**
@@ -342,16 +339,23 @@ class myList  {
 	 * @return unknown_type
 	 */
 	private function buildList (){
+
+		/**
+		 * Calcular el ancho de cada columna si no hay definido
+		 * un ancho especifico definido antes por el usuario.
+		 */
+		if (count($this->arrayWidthsCols))
+			$partWidth = ($this->widthList/$this->objConn->getNumFieldsAffected());
 		
 		$this->regAttClass(get_class_vars(get_class($this)));
+		
+		$bufHead = '';
 		
 		$sw = false;
 		
 		$return = '';
 			
 		$rows = $this->resSql;
-		
-		$bufHead = '';
 		
 		$buf = ''.$this->buildJs();
 
@@ -362,15 +366,17 @@ class myList  {
 		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0">'."\n";
 
 		$i = 0;
+		
+		$classTr = 'tr_default';
+		
 		foreach ($rows as $row){
 
 				if ($this->useDistBetwRows){
 					if ($i%2)
-						$bgColor = $this->defaultRowColor;
+						$classTr = 'tr_default';
 					else	
-						$bgColor = $this->middleRowColor;
-				}else
-					$bgColor = $this->defaultRowColor;			
+						$classTr = 'tr_middle_row';
+				}	
 			
 			/**
 			 * Titulos de las columnas
@@ -389,11 +395,18 @@ class myList  {
 						
 						$orderBy = $this->getVar('arrayOrdMethod',$key);
 						
+						
+						
 						if ($orderBy !== false){
 							
 							$styleName = 'cell_title';
-							if ($orderBy)
+							
+							if ($orderBy){
+								
 								$styleName = 'cell_title_selected';
+								
+								$arrColOrd[] = $key; 
+							}
 							
 							$bufHead.='<td class="'.$styleName.'">';
 							
@@ -401,8 +414,6 @@ class myList  {
 							
 							ucwords($key).''.$orderBy.'</a>';
 								
-							$arrColOrd[$key] = true; 
-							
 						}else{
 							
 							$bufHead.='<td class="cell_title">';
@@ -416,9 +427,20 @@ class myList  {
 				$bufHead.="\n".'</tr>'."\n";
 				
 				$buf .='{bufHead}';
+			
 			}
-						
-			$buf.='<tr>'."\n"."\t";
+			
+			$buf.='<tr class="'.$classTr.'" ';
+			
+			$buf.='id="tr_'.$this->idList.'_'.$i.'" ';
+
+			$buf.='onclick="myList.markRow(this, \''.$classTr.'\')" ';
+			
+			$buf.='onmouseover="myList.onRow(this)" ';
+			
+			$buf.='onmouseout="myList.outRow(this, \''.$classTr.'\')" ';
+			
+			$buf.='>'."\n"."\t";
 			
 			foreach ($row as $key => $val){
 				
@@ -427,7 +449,16 @@ class myList  {
 					if (!$val)
 					   $Value = '&nbsp;';
 					   
-					$buf.='<td bgcolor="'.$bgColor.'" class="cell_content">'.$val.'</td>';
+					$buf.='<td class="';
+					
+					if (in_array($key,$arrColOrd))
+						$buf.='cell_content_selected">';
+					else
+						$buf.='cell_content">';
+						
+					$buf.=$val;	
+					
+					$buf.='</td>';
 				}
 				
 			}
