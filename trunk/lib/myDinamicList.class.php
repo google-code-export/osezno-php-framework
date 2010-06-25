@@ -212,7 +212,8 @@ class myList  {
 	 */
 	public function setWidthColumn ($alias, $witdh){
 		
-		$this->arrayWidthsCols[$alias] = $witdh;
+		if (is_int($witdh))
+			$this->arrayWidthsCols[$alias] = $witdh;
 		
 	}
 	
@@ -335,6 +336,35 @@ class myList  {
 	}
 	
 	/**
+	 * Retorna la ruta de la imagen que se va a mostrar segun
+	 * el metodo de ordenamiento.
+	 * 
+	 * @param $method	Metodo de ordenamiento
+	 * @return string	
+	 */
+	private function getSrcImageOrdMethod ($method = ''){
+		
+		$pathImg = $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName;
+		
+		$return = '&nbsp;';
+		if ($method){
+			$return = '<img src="';
+			switch ($method){
+				case 'ASC':
+					$return .= $pathImg.'/asc.gif';
+				break;
+				case 'DESC':
+					$return .= $pathImg.'/desc.gif';
+				break;
+			}
+			$return .= '">';
+		}
+		
+		return $return;
+	}
+	
+	
+	/**
 	 * Construye la lista dinamica
 	 * @return unknown_type
 	 */
@@ -344,8 +374,12 @@ class myList  {
 		 * Calcular el ancho de cada columna si no hay definido
 		 * un ancho especifico definido antes por el usuario.
 		 */
-		if (count($this->arrayWidthsCols))
-			$partWidth = ($this->widthList/$this->objConn->getNumFieldsAffected());
+		$widByCol = 0;
+		$totWid = $this->widthList;
+		foreach ($this->arrayWidthsCols as $col => $wid)
+			$totWid -= $wid;
+		$widByCol	= $totWid / ($this->objConn->getNumFieldsAffected() - count($this->arrayWidthsCols)); 
+		
 		
 		$this->regAttClass(get_class_vars(get_class($this)));
 		
@@ -376,7 +410,7 @@ class myList  {
 						$classTr = 'tr_default';
 					else	
 						$classTr = 'tr_middle_row';
-				}	
+				}
 			
 			/**
 			 * Titulos de las columnas
@@ -393,9 +427,13 @@ class myList  {
 					
 					if (!is_numeric($key)){
 						
+						$widCol = 0;
+						if (isset($this->arrayWidthsCols[$key]))
+							$widCol = $this->arrayWidthsCols[$key];
+						else
+							$widCol = $widByCol;
+						
 						$orderBy = $this->getVar('arrayOrdMethod',$key);
-						
-						
 						
 						if ($orderBy !== false){
 							
@@ -408,21 +446,27 @@ class myList  {
 								$arrColOrd[] = $key; 
 							}
 							
-							$bufHead.='<td class="'.$styleName.'">';
+							$bufHead.='<td class="'.$styleName.'" width="'.$widCol.'">';
 							
-							$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.''.
+							$bufHead.='<table width="100%"><tr><td width="10%">'.$this->getSrcImageOrdMethod($orderBy).'</td><td width="80%" style="text-align:center">'; 
 							
-							ucwords($key).''.$orderBy.'</a>';
-								
+							$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($key).'</a>';
+
+							$bufHead.='</td><td width="10%">&nbsp;</td></tr></table>';
+							
+							$bufHead.='</td>';
+							
 						}else{
 							
-							$bufHead.='<td class="cell_title">';
+							$bufHead.='<td class="cell_title" width="'.$widCol.'">';
 							
 							$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
+							
+							$bufHead.='</td>';	
 						}
-						
-						$bufHead.='</td>';	
+							
 					}
+					
 				}
 				$bufHead.="\n".'</tr>'."\n";
 				
