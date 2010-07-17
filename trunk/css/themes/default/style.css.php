@@ -6,22 +6,37 @@
 }
 
 /** Filas por defecto **/
-.tr_default {
+.td_default {
 	background-color:#FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:center;
 }
 
 /** Fila del medio **/
-.tr_middle_row {
+.td_middle {
 	background-color:#E7F4FE;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:center;
 }
 
 /** Fila seleccionada **/
-.tr_mark_row {
+.td_mark {
 	background-color:#99ACDF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:center;
 }
 
 /** Fila sobre **/
-.tr_over_row {
+.td_over {
 	background-color: #FFD07F;
 }
 

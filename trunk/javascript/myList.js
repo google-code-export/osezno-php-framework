@@ -1,5 +1,5 @@
 
-function myList (idList){
+function myList (idList, numCols){
 
 	this.rowsMarked = new Array();
 	
@@ -13,16 +13,18 @@ function myList (idList){
 	
 	this.markRow 	= markRow;
 	
-	this.defaRowClass   = 'tr_default';
+	this.numCols 	= numCols;
 	
-	this.middleRowClass = 'tr_middle_row'; 
+	this.defaRowClass   = 'td_default';
 	
-	this.markRowClass   = 'tr_mark_row';
+	this.middleRowClass = 'td_middle'; 
 	
-	this.overRowClass	= 'tr_over_row';
+	this.markRowClass   = 'td_mark';
+	
+	this.overRowClass	= 'td_over';
 }
 
-/**
+/*
  * Carga la hoja de estilos de la lista
  * @return
  */
@@ -70,15 +72,19 @@ function markRow (o, cname){
 	
     if (this.rowsMarked[o.id] == 1){
     	 
-       o.className = this.markRowClass;
-        
+       for (i=0;i<this.numCols;i++){
+    	   o.cells[i].className = this.markRowClass;
+       }
+
        this.rowsMarked[o.id] = 0;
         
     }else{
     	
-    	o.className = cname;
-    	 
+    	for (i=0;i<this.numCols;i++){
+    		o.cells[i].className = cname;
+    	}
+    	
     	this.rowsMarked[o.id] = 1;
      }
-     
+
 }

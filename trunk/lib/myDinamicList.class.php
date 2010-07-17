@@ -281,13 +281,13 @@ class myList  {
 	 * 
 	 * @return string
 	 */
-	private function buildJs (){
+	private function buildJs ($getNumFldsAftd){
 		
 		$js = ''."\n";
 		
 		$js .= '<script type=\'text/javascript\' charset=\'UTF-8\'> '."\n";
 		
-		$js .= 'myList = new myList(\''.$this->idList.'\');'."\n";
+		$js .= 'myList = new myList(\''.$this->idList.'\', '.$getNumFldsAftd.');'."\n";
 
 		$js .= 'myList.loadCss();'."\n";
 		
@@ -374,14 +374,18 @@ class myList  {
 		 * Calcular el ancho de cada columna si no hay definido
 		 * un ancho especifico definido antes por el usuario.
 		 */
+		$getNumFldsAftd = $this->objConn->getNumFieldsAffected();
+		
 		$widByCol = 0;
 		$totWid = $this->widthList;
 		foreach ($this->arrayWidthsCols as $col => $wid)
 			$totWid -= $wid;
-		$widByCol	= $totWid / ($this->objConn->getNumFieldsAffected() - count($this->arrayWidthsCols)); 
+		$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
 		
 		
 		$this->regAttClass(get_class_vars(get_class($this)));
+		
+		$cadParam = '';
 		
 		$bufHead = '';
 		
@@ -391,7 +395,7 @@ class myList  {
 			
 		$rows = $this->resSql;
 		
-		$buf = ''.$this->buildJs();
+		$buf = ''.$this->buildJs($getNumFldsAftd);
 
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
@@ -401,15 +405,15 @@ class myList  {
 
 		$i = 0;
 		
-		$classTr = 'tr_default';
+		$classTd = 'td_default';
 		
 		foreach ($rows as $row){
 
 				if ($this->useDistBetwRows){
 					if ($i%2)
-						$classTr = 'tr_default';
+						$classTd = 'td_default';
 					else	
-						$classTr = 'tr_middle_row';
+						$classTd = 'td_middle';
 				}
 			
 			/**
@@ -441,9 +445,13 @@ class myList  {
 							
 							if ($orderBy){
 								
+								$cadParam .= '2,';
+								
 								$styleName = 'cell_title_selected';
 								
 								$arrColOrd[] = $key; 
+							}else{
+								$cadParam .= '1,';
 							}
 							
 							$bufHead.='<td class="'.$styleName.'" width="'.$widCol.'">';
@@ -457,6 +465,8 @@ class myList  {
 							$bufHead.='</td>';
 							
 						}else{
+							
+							$cadParam .= '1,';
 							
 							$bufHead.='<td class="cell_title" width="'.$widCol.'">';
 							
@@ -474,15 +484,15 @@ class myList  {
 			
 			}
 			
-			$buf.='<tr class="'.$classTr.'" ';
+			$buf.='<tr ';
 			
 			$buf.='id="tr_'.$this->idList.'_'.$i.'" ';
-
-			$buf.='onclick="myList.markRow(this, \''.$classTr.'\')" ';
+			
+			$buf.='onclick="myList.markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
 			
 			$buf.='onmouseover="myList.onRow(this)" ';
 			
-			$buf.='onmouseout="myList.outRow(this, \''.$classTr.'\')" ';
+			$buf.='onmouseout="myList.outRow(this, \''.$classTd.'\')" ';
 			
 			$buf.='>'."\n"."\t";
 			
@@ -498,7 +508,7 @@ class myList  {
 					if (in_array($key,$arrColOrd))
 						$buf.='cell_content_selected">';
 					else
-						$buf.='cell_content">';
+						$buf.=''.$classTd.'">';
 						
 					$buf.=$val;	
 					
