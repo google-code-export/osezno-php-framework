@@ -22,6 +22,8 @@ function myList (idList, numCols){
 	this.markRowClass   = 'td_mark';
 	
 	this.overRowClass	= 'td_over';
+	
+	this.colSelected    = 'cell_content_selected';
 }
 
 /*
@@ -65,7 +67,7 @@ function outRow (o, cname){
  * @param cname Clase original
  * @return
  */
-function markRow (o, cname){
+function markRow (o, cName, cCols){
 	
 	if (this.rowsMarked[o.id]==undefined)
 		this.rowsMarked[o.id] = 1;
@@ -79,9 +81,18 @@ function markRow (o, cname){
        this.rowsMarked[o.id] = 0;
         
     }else{
+    
+    	arrCCols = cCols.split(',');
     	
     	for (i=0;i<this.numCols;i++){
-    		o.cells[i].className = cname;
+    		switch (arrCCols[i]){
+    			case '1':
+    				o.cells[i].className = cName;
+    			break;
+    			case '2':
+    				o.cells[i].className = this.colSelected;
+    			break;
+    		}
     	}
     	
     	this.rowsMarked[o.id] = 1;

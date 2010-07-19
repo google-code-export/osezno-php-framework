@@ -29,10 +29,11 @@
 .td_mark {
 	background-color:#99ACDF;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font-size: 12px;
 	font-style: normal;
 	text-decoration: none;
 	text-align:center;
+	font-weight: bold;
 }
 
 /** Fila sobre **/
