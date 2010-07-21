@@ -39,6 +39,11 @@
 /** Fila sobre **/
 .td_over {
 	background-color: #FFD07F;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:center;
 }
 
 /** Contenido de una celda **/

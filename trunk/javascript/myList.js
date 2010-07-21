@@ -44,8 +44,9 @@ function loadCss (){
  */
 function onRow (o){
 	
-	if (o.className != this.markRowClass)
-		o.className = this.overRowClass;
+	for (i=0;i<this.numCols;i++){
+		o.cells[i].className = this.overRowClass;
+	}
 	
 }
 
@@ -55,10 +56,21 @@ function onRow (o){
  * @param cname	Clase original
  * @return
  */
-function outRow (o, cname){
+function outRow (o, cName, cCols){
 	
-	if (o.className != this.markRowClass)
-		o.className = cname;
+	 arrCCols = cCols.split(',');
+	 
+	 for (i=0;i<this.numCols;i++){
+ 		switch (arrCCols[i]){
+ 			case '1':
+ 				o.cells[i].className = cName;
+ 			break;
+ 			case '2':
+ 				o.cells[i].className = this.colSelected;
+ 			break;
+ 		}
+ 	}
+	 
 }
 
 /**
