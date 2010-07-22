@@ -492,7 +492,7 @@ class myList  {
 			
 			$buf.='onmouseover="myList.onRow(this)" ';
 			
-			$buf.='onmouseout="myList.outRow(this, \''.$classTd.'\')" ';
+			$buf.='onmouseout="myList.outRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
 			
 			$buf.='>'."\n"."\t";
 			

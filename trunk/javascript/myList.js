@@ -15,6 +15,8 @@ function myList (idList, numCols){
 	
 	this.numCols 	= numCols;
 	
+	this.clearRowsMarked = clearRowsMarked; 
+	
 	this.defaRowClass   = 'td_default';
 	
 	this.middleRowClass = 'td_middle'; 
@@ -24,6 +26,19 @@ function myList (idList, numCols){
 	this.overRowClass	= 'td_over';
 	
 	this.colSelected    = 'cell_content_selected';
+}
+
+
+function clearRowsMarked (){
+	
+	
+	alert(this.rowsMarked.length);
+	/*
+	for (i=0;i<this.rowsMarked.length;i++){
+		this.rowsMarked[i] = 0;
+		
+	}
+	*/
 }
 
 /*
@@ -44,9 +59,11 @@ function loadCss (){
  */
 function onRow (o){
 	
-	for (i=0;i<this.numCols;i++){
-		o.cells[i].className = this.overRowClass;
-	}
+	 if (this.rowsMarked[o.id] != 1){
+		for (i=0;i<this.numCols;i++){
+			o.cells[i].className = this.overRowClass;
+		}
+	 }
 	
 }
 
@@ -58,18 +75,19 @@ function onRow (o){
  */
 function outRow (o, cName, cCols){
 	
-	 arrCCols = cCols.split(',');
-	 
-	 for (i=0;i<this.numCols;i++){
- 		switch (arrCCols[i]){
- 			case '1':
- 				o.cells[i].className = cName;
- 			break;
- 			case '2':
- 				o.cells[i].className = this.colSelected;
- 			break;
- 		}
- 	}
+	 if (this.rowsMarked[o.id] != 1){
+		arrCCols = cCols.split(',');
+	 	for (i=0;i<this.numCols;i++){
+	 		switch (arrCCols[i]){
+ 				case '1':
+ 					o.cells[i].className = cName;
+ 					break;
+ 				case '2':
+ 					o.cells[i].className = this.colSelected;
+ 					break;
+	 		}
+	 	}
+	 }
 	 
 }
 
@@ -82,15 +100,15 @@ function outRow (o, cName, cCols){
 function markRow (o, cName, cCols){
 	
 	if (this.rowsMarked[o.id]==undefined)
-		this.rowsMarked[o.id] = 1;
+		this.rowsMarked[o.id] = 0;
 	
-    if (this.rowsMarked[o.id] == 1){
-    	 
-       for (i=0;i<this.numCols;i++){
-    	   o.cells[i].className = this.markRowClass;
-       }
-
-       this.rowsMarked[o.id] = 0;
+    if (this.rowsMarked[o.id] == 0){
+    	
+    	for (i=0;i<this.numCols;i++){
+      	   o.cells[i].className = this.markRowClass;
+         }
+    	
+    	this.rowsMarked[o.id] = 1;    	
         
     }else{
     
@@ -106,8 +124,9 @@ function markRow (o, cName, cCols){
     			break;
     		}
     	}
-    	
-    	this.rowsMarked[o.id] = 1;
+
+        this.rowsMarked[o.id] = 0;
+
      }
 
 }
