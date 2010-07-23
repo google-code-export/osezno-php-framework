@@ -1,4 +1,10 @@
 @CHARSET "ISO-8859-1";
+th, td {
+    overflow: hidden;
+    word-wrap: normal;
+    height: 20px;
+    width: 100px;
+}
 
 /** Color de borde de la lista **/
 .list {

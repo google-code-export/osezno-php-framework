@@ -399,7 +399,7 @@ class myList  {
 
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
-		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
+		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0" id="table_'.$this->idList.'"><tr><td class="list">'."\n";
 		
 		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0">'."\n";
 
@@ -425,7 +425,7 @@ class myList  {
 				
 				$sw = true;
 				
-				$bufHead.='<tr>'."\n"."\t";
+				$bufHead.='<thead>'."\n"."\t";
 
 				foreach ($row as $key => $val){
 					
@@ -454,7 +454,7 @@ class myList  {
 								$cadParam .= '1,';
 							}
 							
-							$bufHead.='<td class="'.$styleName.'" width="'.$widCol.'">';
+							$bufHead.='<th class="'.$styleName.'" width="'.$widCol.'">';
 							
 							$bufHead.='<table width="100%"><tr><td width="10%">'.$this->getSrcImageOrdMethod($orderBy).'</td><td width="80%" style="text-align:center">'; 
 							
@@ -462,23 +462,25 @@ class myList  {
 
 							$bufHead.='</td><td width="10%">&nbsp;</td></tr></table>';
 							
-							$bufHead.='</td>';
+							$bufHead.='</th>';
 							
 						}else{
 							
 							$cadParam .= '1,';
 							
-							$bufHead.='<td class="cell_title" width="'.$widCol.'">';
+							$bufHead.='<th class="cell_title" width="'.$widCol.'">';
 							
 							$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
 							
-							$bufHead.='</td>';	
+							$bufHead.='</th>';	
 						}
 							
 					}
 					
 				}
-				$bufHead.="\n".'</tr>'."\n";
+				$bufHead.="\n".'</thead>'."\n";
+				
+				$bufHead .=  '<tbody>'."\n";
 				
 				$buf .='{bufHead}';
 			
@@ -521,13 +523,15 @@ class myList  {
 			$i++;
 		}
 			
+		$buf .=  '</tbody>'."\n";
+		
 		$buf .=  '</table>'."\n";
 		
 		$buf .=  '</td></tr></table>'."\n";
 
 		$buf .= '</div>'."\n";
 		
-		
+		$buf .= '<script type="text/javascript"> installTable("table_'.$this->idList.'"); </script>'."\n";
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		
