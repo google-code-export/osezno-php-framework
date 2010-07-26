@@ -399,9 +399,9 @@ class myList  {
 
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
-		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0" id="table_'.$this->idList.'"><tr><td class="list">'."\n";
+		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 		
-		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0">'."\n";
+		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0" id="table_'.$this->idList.'">'."\n";
 
 		$i = 0;
 		
