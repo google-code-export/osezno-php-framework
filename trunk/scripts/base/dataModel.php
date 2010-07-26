@@ -28,7 +28,6 @@
 		
 		$objMyForm->addText('Fecha:','fecha',date('Y-m-d'),10,10,true,true);
 		
-		
 		$objMyForm->formWidth = 300;
 	
 		return $objMyForm->getForm(1);
@@ -80,10 +79,10 @@
  
  		$objList->setUseOrderMethodInColumn('Llave');
  		$objList->setUseOrderMethodInColumn('Nombre');
- 		$objList->setUseOrderMethodInColumn('Valor');
+ 		//$objList->setUseOrderMethodInColumn('Valor');
  		$objList->setUseOrderMethodInColumn('Estado'); 		
  		
- 		
+ 		$objList->setWidthColumn('Valor',50);
  		
  		return $objList->getList();
  	}
