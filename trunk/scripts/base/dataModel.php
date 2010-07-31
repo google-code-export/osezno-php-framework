@@ -84,6 +84,8 @@
  		
  		$objList->setWidthColumn('Valor',50);
  		
+ 		$objList->setPagination(true,10);
+ 		
  		return $objList->getList();
  	}
  	

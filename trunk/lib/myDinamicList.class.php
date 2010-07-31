@@ -47,6 +47,21 @@ class myList  {
 	private $useDistBetwRows = true;
 	
 	/**
+	 * Usar paginacion.
+	 * 
+	 * @var bool
+	 */
+	private $usePagination = false;
+	
+	/**
+	 * Numero de registros por pagina cuando la paginacion
+	 * esta activa.
+	 * 
+	 * @var integer
+	 */
+	private $recordsPerPage;
+	
+	/**
 	 * Path subcarpeta dentro de la carpeta principal del proyecto
 	 * que almacena las imagenes generales que se usan en las lista
 	 * dianmicas.
@@ -70,7 +85,9 @@ class myList  {
 		'arrayAliasSetInQuery',
 		'arrayOrdMethod',
 		'themeName',
-		'arrayWidthsCols'
+		'arrayWidthsCols',
+		'usePagination',
+		'recordsPerPage'
 	);	
 	
 	/**
@@ -201,6 +218,20 @@ class myList  {
 		else{
 			return  $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/style.css.php?img='.$GLOBALS['urlProject'].'/css/themes/'.$this->themeName.'/';
 		}			
+	}
+
+	/**
+	 * Configura una paginacion sobre la lista dinamica.
+	 * 
+	 * @param $use		Activa o inactiva la paginacion de la lista dinamica			
+	 * @param $rows 	Numero de registro a mostrar por pagina.
+	 */
+	public function setPagination ($use = true, $rows = 20){
+		
+		$this->usePagination = $use;
+		
+		$this->recordsPerPage = $rows;
+		
 	}
 	
 	/**
@@ -370,12 +401,16 @@ class myList  {
 	 */
 	private function buildList (){
 
+		# Numero de campos afectados
+		$getNumFldsAftd = $this->objConn->getNumFieldsAffected();
+		
+		# Numero de registro afectados
+		$getAffectedRows = $this->objConn->getAffectedRows();
+
 		/**
 		 * Calcular el ancho de cada columna si no hay definido
 		 * un ancho especifico definido antes por el usuario.
 		 */
-		$getNumFldsAftd = $this->objConn->getNumFieldsAffected();
-		
 		$widByCol = 0;
 		$totWid = $this->widthList;
 		foreach ($this->arrayWidthsCols as $col => $wid)
