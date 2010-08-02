@@ -6,6 +6,40 @@ th, td {
     width: 100px;
 }
 
+.error_sql_list {
+	background-color:#FDCCCD;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:left;
+	color: red;
+	border-color:#CC0000;
+	border-width: 1px;
+	border-style: solid;
+	padding-left:10px;
+	padding-top:10px;	
+	padding-bottom:10px;
+	padding-right:10px;
+}
+
+.error_sql_list_detail {
+	background-color:#CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:left;
+	color: #333333;
+	border-color:#666666;
+	border-width: 1px;
+	border-style: solid;
+	padding-left:10px;
+	padding-top:10px;	
+	padding-bottom:10px;
+	padding-right:10px;
+}
+
 /** Color de borde de la lista **/
 .list {
 	background-color:#E2E4FF;

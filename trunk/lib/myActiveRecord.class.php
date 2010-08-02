@@ -111,7 +111,7 @@ class myActiveRecord {
 	 *
 	 * @var integer
 	 */
-	private $num_rows;
+	private $num_rows = 0;
 
 	/**
 	 * Numero entero de campos afectados
@@ -120,7 +120,7 @@ class myActiveRecord {
 	 *  
 	 * @var intger
 	 */
-	private $num_cols;
+	private $num_cols = 0;
 	
 
 	/*********************/
@@ -605,7 +605,7 @@ class myActiveRecord {
 		$eError = array ();
 		
 		if ($saveInLog)
-			$GLOBALS['OF_SQL_LOG'] .= $sql.';'."\n";
+			$GLOBALS['OF_SQL_LOG'] .= $sql.' '."\n";
 			
 		$isrW = false;	
 		foreach ($this->arrayCrud as $rW){
@@ -685,7 +685,7 @@ class myActiveRecord {
 	 */
 	public function find($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = '', $offSet = ''){
 
-		return $this->findOperator($strCond, $orderBy, $orderMethod, $intLimit);
+		return $this->findOperator($strCond, $orderBy, $orderMethod, $intLimit, $offSet);
 	}
 
 
@@ -1031,17 +1031,46 @@ class myActiveRecord {
 			}
 			
 			if ($orderBy){
+				
 				if (is_bool($orderBy)){
+					
 					$sql .= ' ORDER BY '.$this->tableStruct[$this->table]['pk'].' ';
+					
 				}else{
-					$sql .= ' ORDER BY '.$orderBy;
-					if ($orderMethod)
-				   		$sql .= ' '.$orderMethod;
+					
+					if (is_array($orderBy)){
+						
+						if (count($orderBy)){
+							
+							$sqlOrderBy = '';
+							
+							$cute = false;
+							foreach ($orderBy as $field => $method){
+							
+								if ($method){
+									$sqlOrderBy .= ' '.$field.' '.$method.', ';
+									$cute = true;
+								}	
+							}
+						
+							if ($cute){
+								$sql .= ' ORDER BY '.substr($sqlOrderBy,0,-2);	
+							}
+							
+						}
+						
+					}else{
+						
+						$sql .= ' ORDER BY '.$orderBy;
+						
+						if ($orderMethod)
+				   			$sql .= ' '.$orderMethod;
+					}
 				}
 			}
 			
-			
 			if ($intLimit){
+				
 				switch ($this->engine){
 					case 'mysql':
 						$sql .= ' LIMIT '.$offset.', '.$intLimit;

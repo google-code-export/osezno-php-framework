@@ -165,6 +165,14 @@ class myList  {
 	private $themeName = 'default';
 	
 	/**
+	 * Determina si existe un error en la consutla sql
+	 * que se ejecuto previo la construccion de la lista.
+	 * 
+	 * @var bool
+	 */
+	private $errorSql = false;
+	
+	/**
 	 * Constructor
 	 * @param $idList	Nombre de la lista
 	 * @param $sqlORobject	SQL o Objeto de metodo
@@ -180,17 +188,21 @@ class myList  {
 			
 				$this->objConn = $sqlORobject;
 		
-				$this->sqlW = $this->resSql = $sqlORobject->find();
+				$this->resSql = $sqlORobject->find(NULL,$this->getVar('arrayOrdMethod'),NULL);
 			
-				$this->sql = $sqlORobject->getSqlLog();
+				$this->sqlW = $this->sql = $sqlORobject->getSqlLog();
 			
 			}else{
 			
 				$this->objConn = new myActiveRecord();
 		
-				$this->sqlW = $this->sql = $sqlORobject;		
+				$this->sqlW = $this->sql = $sqlORobject;
+
+				if ($this->usePagination){
+
+				}
 			
-				$this->resSql = $this->objConn->query ($this->sql);
+				$this->resSql = $this->objConn->query ($this->sqlW);
 			}
 			
 		}else{
@@ -201,8 +213,17 @@ class myList  {
 			
 			$this->setVar('sqlW',$this->getVar('sql').$this->getSqlPartOrderBy());
 			
+			if ($this->usePagination){
+			
+			}
+			
 			$this->resSql = $this->objConn->query ($this->getVar('sqlW'));
-		}		
+		}
+
+		if ($this->objConn->getErrorLog())
+			$this->errorSql = true;
+		
+			
 		
 	}
 	
@@ -246,6 +267,15 @@ class myList  {
 		if (is_int($witdh))
 			$this->arrayWidthsCols[$alias] = $witdh;
 		
+	}
+	
+	private function getSqlPartLimit (){
+		
+		$sqlPart = '';
+		
+		
+		
+		return $sqlPart;
 	}
 	
 	/**
@@ -400,7 +430,7 @@ class myList  {
 	 * @return unknown_type
 	 */
 	private function buildList (){
-
+		
 		# Numero de campos afectados
 		$getNumFldsAftd = $this->objConn->getNumFieldsAffected();
 		
@@ -431,140 +461,147 @@ class myList  {
 		$rows = $this->resSql;
 		
 		$buf = ''.$this->buildJs($getNumFldsAftd);
-
+		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
 		$buf .=  "\n".'<table width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 		
-		$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0" id="table_'.$this->idList.'">'."\n";
-
-		$i = 0;
-		
-		$classTd = 'td_default';
-		
-		foreach ($rows as $row){
-
-				if ($this->useDistBetwRows){
-					if ($i%2)
-						$classTd = 'td_default';
-					else	
-						$classTd = 'td_middle';
-				}
+		if ($this->errorSql){
 			
-			/**
-			 * Titulos de las columnas
-			 */		
-			if (!$sw){
-				
-				$arrColOrd = array ();
-				
-				$sw = true;
-				
-				$bufHead.='<thead>'."\n"."\t";
+			$buf .= '<div class="error_sql_list"><b>Error: </b>'.$this->objConn->getErrorLog().'<br><br><div class="error_sql_list_detail"><b>Query:</b> '.$this->objConn->getSqlLog().'</div></div>';
+		
+		}else{
+			
+			$buf .=  "\n".'<table width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0" id="table_'.$this->idList.'">'."\n";
 
-				foreach ($row as $key => $val){
+			$i = 0;
+		
+			$classTd = 'td_default';
+		
+			foreach ($rows as $row){
+
+					if ($this->useDistBetwRows){
+						if ($i%2)
+							$classTd = 'td_default';
+						else	
+							$classTd = 'td_middle';
+					}
+			
+				/**
+			 	 * Titulos de las columnas
+			 	 */		
+				if (!$sw){
+				
+					$arrColOrd = array ();
+				
+					$sw = true;
+				
+					$bufHead.='<thead>'."\n"."\t";
+
+					foreach ($row as $key => $val){
 					
-					if (!is_numeric($key)){
+						if (!is_numeric($key)){
 						
-						$widCol = 0;
-						if (isset($this->arrayWidthsCols[$key]))
-							$widCol = $this->arrayWidthsCols[$key];
-						else
-							$widCol = $widByCol;
+							$widCol = 0;
+							if (isset($this->arrayWidthsCols[$key]))
+								$widCol = $this->arrayWidthsCols[$key];
+							else
+								$widCol = $widByCol;
 						
-						$orderBy = $this->getVar('arrayOrdMethod',$key);
+							$orderBy = $this->getVar('arrayOrdMethod',$key);
 						
-						if ($orderBy !== false){
+							if ($orderBy !== false){
 							
-							$styleName = 'cell_title';
+								$styleName = 'cell_title';
 							
-							if ($orderBy){
+								if ($orderBy){
 								
-								$cadParam .= '2,';
+									$cadParam .= '2,';
 								
-								$styleName = 'cell_title_selected';
+									$styleName = 'cell_title_selected';
 								
-								$arrColOrd[] = $key; 
+									$arrColOrd[] = $key; 
+								}else{
+									$cadParam .= '1,';
+								}
+							
+								$bufHead.='<th class="'.$styleName.'" width="'.$widCol.'">';
+							
+								$bufHead.='<table width="100%"><tr><td width="10%">'.$this->getSrcImageOrdMethod($orderBy).'</td><td width="80%" style="text-align:center">'; 
+							
+								$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($key).'</a>';
+
+								$bufHead.='</td><td width="10%">&nbsp;</td></tr></table>';
+							
+								$bufHead.='</th>';
+							
 							}else{
+							
 								$cadParam .= '1,';
+							
+								$bufHead.='<th class="cell_title" width="'.$widCol.'">';
+							
+								$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
+							
+								$bufHead.='</th>';	
 							}
 							
-							$bufHead.='<th class="'.$styleName.'" width="'.$widCol.'">';
-							
-							$bufHead.='<table width="100%"><tr><td width="10%">'.$this->getSrcImageOrdMethod($orderBy).'</td><td width="80%" style="text-align:center">'; 
-							
-							$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($key).'</a>';
-
-							$bufHead.='</td><td width="10%">&nbsp;</td></tr></table>';
-							
-							$bufHead.='</th>';
-							
-						}else{
-							
-							$cadParam .= '1,';
-							
-							$bufHead.='<th class="cell_title" width="'.$widCol.'">';
-							
-							$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
-							
-							$bufHead.='</th>';	
 						}
-							
+					
 					}
-					
+					$bufHead.="\n".'</thead>'."\n";
+				
+					$bufHead .=  '<tbody>'."\n";
+				
+					$buf .='{bufHead}';
+			
 				}
-				$bufHead.="\n".'</thead>'."\n";
+			
+				$buf.='<tr ';
+			
+				$buf.='id="tr_'.$this->idList.'_'.$i.'" ';
+			
+				$buf.='onclick="myList.markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
+			
+				$buf.='onmouseover="myList.onRow(this)" ';
+			
+				$buf.='onmouseout="myList.outRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
+			
+				$buf.='>'."\n"."\t";
+			
+				foreach ($row as $key => $val){
 				
-				$bufHead .=  '<tbody>'."\n";
-				
-				$buf .='{bufHead}';
-			
-			}
-			
-			$buf.='<tr ';
-			
-			$buf.='id="tr_'.$this->idList.'_'.$i.'" ';
-			
-			$buf.='onclick="myList.markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
-			
-			$buf.='onmouseover="myList.onRow(this)" ';
-			
-			$buf.='onmouseout="myList.outRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
-			
-			$buf.='>'."\n"."\t";
-			
-			foreach ($row as $key => $val){
-				
-				if (!is_numeric($key)){
+					if (!is_numeric($key)){
 					
-					if (!$val)
-					   $Value = '&nbsp;';
+						if (!$val)
+					   		$Value = '&nbsp;';
 					   
-					$buf.='<td class="';
+						$buf.='<td class="';
 					
-					if (in_array($key,$arrColOrd))
-						$buf.='cell_content_selected">';
-					else
-						$buf.=''.$classTd.'">';
+						if (in_array($key,$arrColOrd))
+							$buf.='cell_content_selected">';
+						else
+							$buf.=''.$classTd.'">';
 						
-					$buf.=$val;	
+						$buf.=$val;	
 					
-					$buf.='</td>';
-				}
+						$buf.='</td>';
+					}
 				
+				}
+
+				$buf.= "\n".'</tr>'."\n";
+				$i++;
 			}
-
-			$buf.= "\n".'</tr>'."\n";
-			$i++;
-		}
 			
-		$buf .=  '</tbody>'."\n";
+			$buf .=  '</tbody>'."\n";
 		
-		$buf .=  '</table>'."\n";
-		
+			$buf .=  '</table>'."\n";
+			}	
+			
 		$buf .=  '</td></tr></table>'."\n";
-
-		$buf .= '</div>'."\n";
+	
+		$buf .= '</div>'.$this->sqlW."\n";
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 	}
