@@ -59,17 +59,16 @@
  	
  	public function procesarFormulario (){
  		
- 		$objMyForm = new myForm('formulario',NULL,'procesarFormulario');
+ 		$objMyForm = new myForm('formulario','procesarFormulario');
  		
  		$objMyForm->addText('Nombre:','nombre');
  		$objMyForm->addText('Apellido:','apellido');
  		
  		$objMyForm->addHelp('nombre','Saludos a The Code Machine');
  		
- 		$objMyForm->formHeight = 0;
+ 		$objMyForm->height = 0;
  		
- 		$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,400);
- 		
+ 		$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,200,2);
  		
  		return $this->response;
  	}
