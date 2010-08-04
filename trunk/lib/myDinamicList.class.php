@@ -601,7 +601,7 @@ class myList  {
 			
 		$buf .=  '</td></tr></table>'."\n";
 	
-		$buf .= '</div>'.$this->sqlW."\n";
+		$buf .= '</div>'."\n";
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 	}

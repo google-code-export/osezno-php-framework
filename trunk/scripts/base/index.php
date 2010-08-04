@@ -17,7 +17,7 @@
   */ 
  $objOsezno->assign('form_title','Cambiar este titulo');
  
- $objOsezno->assign('work_area',$modelo->form2());//$modelo->builtList('lista')
+ $objOsezno->assign('work_area',$modelo->builtList('lista'));
 
  $objOsezno->call_template('basic/basic.tpl');
  

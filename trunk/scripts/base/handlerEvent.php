@@ -70,6 +70,8 @@
  		
  		$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,200,2);
  		
+ 		$this->notificationWindow('Nueva ventana...',2);
+ 		
  		return $this->response;
  	}
 	

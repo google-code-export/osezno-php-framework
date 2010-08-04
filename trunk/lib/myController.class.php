@@ -908,21 +908,25 @@ class myController {
 		
 		$nameVar = 'arrayOrdMethod';
 		
-		$myList = new myList($idList);
-		
-		switch ($myList->getVar($nameVar,$alias)){
+		switch ($_SESSION['prdLst'][$idList][$nameVar][$alias]){
 			case 'ASC':
-				$myList->setVar($nameVar,'DESC',$alias);
+				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'DESC';
 			break;
 			case 'DESC':
-				$myList->setVar($nameVar,'',$alias);
+				$_SESSION['prdLst'][$idList][$nameVar][$alias] = '';
 			break;
 			case '':
-				$myList->setVar($nameVar,'ASC',$alias);
+				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'ASCS';
 			break;
 		}
+
+		$myList = new myList($idList);
 		
-		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		
+		//$arrayColors = array('green','purple','red','blue','black','pink');
+		
+		//$this->notificationWindow(str_replace(array("\n"),array(''),$myList->getVar('sqlW')),2,$arrayColors[rand(0,5)]);
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
