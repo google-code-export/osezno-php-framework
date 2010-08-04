@@ -218,5 +218,6 @@
   
   if (!isset($_SESSION['prdLst']))
   	$_SESSION['prdLst'] = array();
+  	
   
 ?>
