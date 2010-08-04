@@ -86,6 +86,7 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 }
 
 function closeModalWindow (){
+	
 	var idElementBase = 'capaBase'+countId;
     var vcp = document.getElementById(idElementBase);
 

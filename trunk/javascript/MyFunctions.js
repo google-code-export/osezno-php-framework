@@ -58,17 +58,22 @@
      miCapa.id = 'notification';
      
      document.body.appendChild(miCapa);
+
+ 	 if (navigator.appVersion.indexOf("MSIE")!=-1){
+		miCapa.style.filter = "alpha(opacity=0)";
+	 }else{
+		miCapa.style.opacity = 0;
+	 }     
      
-     miCapa.style.color = '#FFFFFF';
-     miCapa.style.backgroundColor = '#000000';
+     miCapa.style.color = '#000000';
+     miCapa.style.backgroundColor = '#FFFFFF';
      miCapa.style.position = 'absolute';
      
 	 miCapa.style.zIndex = 5000;
 	 miCapa.style.top    = '0';
 	 miCapa.style.left   = '0';
-	 miCapa.style.width	 = (arrayPageSize[0] + 'px');	 
-	 miCapa.style.height = (arrayPageSize[1] + 'px');
-	 miCapa.style.minHeight	= '100%';
+	 miCapa.style.width	 = (arrayPageSize[2] + 'px');	 
+	 miCapa.style.height = (arrayPageSize[3] + 'px');
 	 miCapa.style.display='block';
 	 
      var miImagen = document.createElement('DIV');
@@ -85,42 +90,35 @@
 	 miImagen.style.height = (arrayPageSize[3] + 'px');
 	 miImagen.style.minHeight	= '100%';
 	 
-	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/loader.gif" title="Procesando..."></td></tr></table>';
+	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/loader.gif" title="Loading..."></td></tr></table>';
 	
 	 //Preguntar si existe el objeto 
 	 vanecerCallBack(miCapa.id,0);
-	 
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {
     
-    desvanecerCallBack ('notification','imagen_notificacion',11);
+    desvanecerCallBack ('notification','imagen_notificacion',30);
 
     var el = document.getElementById('notification');
     var padre = el.parentNode;
 	padre.removeChild(el);
-	
   }
 
 
 function desvanecerCallBack (idMw, idGif, cont){
 	
 	temp = 30;
-	cont -= 1;
+	cont -= 2;
 	
 	if(cont>0){
 		if (navigator.appVersion.indexOf("MSIE")!=-1){
-		
-	   		//document.getElementById(idMw).style.filter = "alpha(opacity="+(cont)+")";
 	   		document.getElementById(idGif).style.filter = "alpha(opacity="+(cont)+")";
 		}else{
-		
-	   	    //document.getElementById(idMw).style.opacity = cont/100;
 	   	    document.getElementById(idGif).style.opacity = cont/100;
 		}
 		setTimeout("desvanecerCallBack('"+idMw+"','"+idGif+"',"+cont+")",temp);
 	}else{
-		
   		var el = document.getElementById('imagen_notificacion');
     	var padre = el.parentNode;
 		padre.removeChild(el);	
@@ -131,17 +129,18 @@ function desvanecerCallBack (idMw, idGif, cont){
 
 function vanecerCallBack (idMw, cont){
 	
-	temp = 30;
-	cont += 1;
+	temp = 50;
+	cont += 3;
 	
-	if(cont<11){
+	if(cont<61){
 		if (navigator.appVersion.indexOf("MSIE")!=-1){
-	   		document.getElementById(idMw).style.filter = "alpha(opacity="+(cont)+")";
+			document.getElementById(idMw).style.filter = "alpha(opacity="+cont+")";
 		}else{
 	   	    document.getElementById(idMw).style.opacity = cont/100;
 		}
 		setTimeout("vanecerCallBack('"+idMw+"',"+cont+")",temp);
 	}
+	
 	
 }
 
@@ -158,16 +157,32 @@ var nueva_posicion;
 var aux=1;
 var tam;
 var absol;
- 
+
+function aleatorio(inferior,superior){
+	
+    numPosibilidades = superior - inferior
+    aleat = Math.random() * numPosibilidades
+    aleat = Math.round(aleat)
+    
+    return parseInt(inferior) + aleat
+} 
+
 function createNotificationWindow (strNotification, intSecDuration, strColorBg){
+	
+	var pofFijNW = aleatorio(1, 1000);
+	
 	var miCapa = document.createElement('DIV');
-	miCapa.id = 'notificationwindow';
+	
+	miCapa.id = 'notificationwindow_'+pofFijNW;
+	
 	document.body.appendChild(miCapa);
 	
-	miCapa.innerHTML = strNotification;
+	miCapa.innerHTML = '&nbsp;'+strNotification+'&nbsp;';
 	
 	miCapa.style.color = '#FFFFFF';
+	
 	miCapa.style.background = strColorBg;
+	
 	miCapa.style.position = 'absolute';
 	
 	miCapa.style.zIndex = 2000;

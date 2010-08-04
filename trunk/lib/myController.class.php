@@ -682,17 +682,20 @@ class myController {
 			}
 		}
 		
-		$bgTl = 'background="../../img/modal_window/top-left.png"';
-		$bgTc = 'background="../../img/modal_window/top-middle.png"';
-		$bgTr = 'background="../../img/modal_window/top-right.png"';
+		$ext = '.gif';
+		//$ext = '.png';
 		
-		$bgMl = 'background="../../img/modal_window/left.png"';
+		$bgTl = 'background="../../img/modal_window/top-left'.$ext.'"';
+		$bgTc = 'background="../../img/modal_window/top-middle'.$ext.'"';
+		$bgTr = 'background="../../img/modal_window/top-right'.$ext.'"';
+		
+		$bgMl = 'background="../../img/modal_window/left'.$ext.'"';
 		$bgMc = 'background="../../img/modal_window/gradient-bg.png"';
-		$bgMr = 'background="../../img/modal_window/right.png"';
+		$bgMr = 'background="../../img/modal_window/right'.$ext.'"';
 		
-		$bgDl = 'background="../../img/modal_window/bottom-left.png"';
-		$bgDc = 'background="../../img/modal_window/bottom-middle.png"';
-		$bgDr = 'background="../../img/modal_window/bottom-right.png"';
+		$bgDl = 'background="../../img/modal_window/bottom-left'.$ext.'"';
+		$bgDc = 'background="../../img/modal_window/bottom-middle'.$ext.'"';
+		$bgDr = 'background="../../img/modal_window/bottom-right'.$ext.'"';
 		
 		$srcCw = '<a href="javascript:;" onclick="closeModalWindow()"><img border="0" src="../../img/modal_window/button-close.png"></a>';
 		$srcOz = '<img border="0" src="../../img/modal_window/huella.gif">';
