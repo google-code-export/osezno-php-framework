@@ -66,7 +66,7 @@
 	 }     
      
      miCapa.style.color = '#000000';
-     miCapa.style.backgroundColor = '#000000';
+     miCapa.style.backgroundColor = '#AAAAAA';
      miCapa.style.position = 'absolute';
      
 	 miCapa.style.zIndex = 5000;

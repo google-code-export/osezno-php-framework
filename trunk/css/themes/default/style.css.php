@@ -3,7 +3,6 @@ th, td {
     overflow: hidden;
     word-wrap: normal;
     height: 20px;
-    width: 100px;
 }
 
 .error_sql_list {

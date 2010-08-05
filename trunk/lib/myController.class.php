@@ -916,7 +916,7 @@ class myController {
 				$_SESSION['prdLst'][$idList][$nameVar][$alias] = '';
 			break;
 			case '':
-				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'ASCS';
+				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'ASC';
 			break;
 		}
 
