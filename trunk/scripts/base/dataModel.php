@@ -66,19 +66,15 @@
  	public function builtList ($idLista){
  		
  		
- 		/*
  		$sql = 'SELECT LPAD(cast(id as char),6,"0") as Llave, 
  				nombre as Nombre,
  				precio as Valor, 
  				estado as Estado from libros ';
- 		*/
  		
+		$objList = new myList($idLista,$sql);
+		//$libros = new libros;
  		
-		//$objList = new myList($idLista,$sql);
-		$libros = new libros;
- 		
-		$objList = new myList($idLista,$libros);
- 
+		//$objList = new myList($idLista,$libros);
 		$objList->widthList = 500;
 		
  		//$objList->setAliasInQuery('LPAD(cast(id as char),6,"0")','Llave');
@@ -86,14 +82,14 @@
  		//$objList->setAliasInQuery('precio','Valor');
  		//$objList->setAliasInQuery('estado','Estado');
  
- 		$objList->setUseOrderMethodInColumn('id');
- 		$objList->setUseOrderMethodInColumn('nombre');
+ 		$objList->setUseOrderMethodInColumn('Llave');
+ 		$objList->setUseOrderMethodInColumn('Nombre');
  		//$objList->setUseOrderMethodInColumn('Valor');
  		//$objList->setUseOrderMethodInColumn('Estado'); 		
  		
- 		$objList->setWidthColumn('precio',50);
+ 		$objList->setWidthColumn('Valor',50);
  		
- 		//$objList->setPagination(true,10);
+ 		$objList->setPagination(true,10);
  		
  		return $objList->getList();
  	}

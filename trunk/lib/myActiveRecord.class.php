@@ -557,7 +557,7 @@ class myActiveRecord {
 				
 				
 				break;
-			case 'postgre':
+			case 'pgsql':
 				//$sql = "BEGIN TRANSACTION;";
 				break;
 		}

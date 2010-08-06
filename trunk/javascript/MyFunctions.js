@@ -90,7 +90,7 @@
 	 miImagen.style.height = (arrayPageSize[3] + 'px');
 	 miImagen.style.minHeight	= '100%';
 	 
-	 miImagen.innerHTML = '<table border="1" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/loader.gif" title="Loading..."></td></tr></table>';
+	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/loader.gif" title="Loading..."></td></tr></table>';
 	
 	 //Preguntar si existe el objeto 
 	 vanecerCallBack(miCapa.id,0);

@@ -62,6 +62,13 @@ class myList  {
 	private $recordsPerPage;
 	
 	/**
+	 * Pagina actual cuando la paginacion esta activa.
+	 * 
+	 * @var unknown_type
+	 */
+	private $currentPage;
+	
+	/**
 	 * Path subcarpeta dentro de la carpeta principal del proyecto
 	 * que almacena las imagenes generales que se usan en las lista
 	 * dianmicas.
@@ -87,7 +94,8 @@ class myList  {
 		'themeName',
 		'arrayWidthsCols',
 		'usePagination',
-		'recordsPerPage'
+		'recordsPerPage',
+		'currentPage'
 	);	
 	
 	/**
@@ -172,6 +180,9 @@ class myList  {
 	 */
 	private $errorSql = false;
 	
+	
+	private $sqlORobject;
+	
 	/**
 	 * Constructor
 	 * @param $idList	Nombre de la lista
@@ -182,48 +193,7 @@ class myList  {
 		
 		$this->idList = $idList;
 
-		if ($sqlORobject){
-			
-			if (is_object($sqlORobject)){
-			
-				$this->objConn = $sqlORobject;
-		
-				$this->resSql = $sqlORobject->find(NULL,$this->getVar('arrayOrdMethod'),NULL);
-			
-				$this->sqlW = $this->sql = $sqlORobject->getSqlLog();
-			
-			}else{
-			
-				$this->objConn = new myActiveRecord();
-		
-				$this->sqlW = $this->sql = $sqlORobject;
-
-				if ($this->usePagination){
-
-				}
-			
-				$this->resSql = $this->objConn->query ($this->sqlW);
-			}
-			
-		}else{
-			
-			$this->restVarsSess(array('sqlW','sql'));
-			
-			$this->objConn = new myActiveRecord();
-			
-			$this->setVar('sqlW',$this->getVar('sql').$this->getSqlPartOrderBy());
-			
-			if ($this->usePagination){
-			
-			}
-			
-			$this->resSql = $this->objConn->query ($this->getVar('sqlW'));
-		}
-
-		if ($this->objConn->getErrorLog())
-			$this->errorSql = true;
-		
-			
+		$this->sqlORobject = $sqlORobject;
 		
 	}
 	
@@ -253,6 +223,7 @@ class myList  {
 		
 		$this->recordsPerPage = $rows;
 		
+		$this->currentPage = 0;
 	}
 	
 	/**
@@ -269,11 +240,19 @@ class myList  {
 		
 	}
 	
+	/**
+	 * Obtiene la parte de la consulta correspodiente
+	 * a armar una paginacion.
+	 * 
+	 * @return string
+	 */
 	private function getSqlPartLimit (){
 		
 		$sqlPart = '';
 		
+		//$sqlPart .= ' LIMIT  '.$this->getVar('recordsPerPage').' OFFSET '.($this->getVar('currentPage')*$this->getVar('recordsPerPage'));
 		
+		$sqlPart .= ' LIMIT  '.$this->recordsPerPage.' OFFSET '.($this->currentPage*$this->recordsPerPage);
 		
 		return $sqlPart;
 	}
@@ -361,6 +340,7 @@ class myList  {
 	
 	/**
 	 * Registra los atributos de la clase basados en una sesion
+	 * Solamente si no estan registrados antes.
 	 * @param $arr
 	 * @return unknown_type
 	 */
@@ -369,15 +349,17 @@ class myList  {
 		if (!isset($_SESSION['prdLst'][$this->idList])){
 			
 			$_SESSION['prdLst'][$this->idList] = array ();
+
+		}	
 			
-			foreach ($arr as $atn => $atv){
+		foreach ($arr as $atn => $atv){
 			
-				if (in_array($atn,$this->validNomKeys))
+			if (in_array($atn,$this->validNomKeys))
 			
-					$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
+				$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
 				
-			}
 		}
+		
 	}
 	
 	/**
@@ -387,11 +369,14 @@ class myList  {
 	 */
 	private function restVarsSess ($arrNoInc){
 		
-		foreach ($this->validNomKeys as $varNom){
+		foreach ($arrNoInc as $varNom){
 			
-			if (!in_array($varNom,$arrNoInc))
+			if (in_array($varNom,$this->validNomKeys)){
 				
 				$this->$varNom = $this->getVar($varNom);
+				
+			}
+			
 		}
 		 
 	}
@@ -431,6 +416,75 @@ class myList  {
 	 */
 	private function buildList (){
 		
+		$buf = '';
+		
+		if ($this->sqlORobject){
+			
+			$buf .= 'Existe'."<br>";
+			
+			if (is_object($this->sqlORobject)){
+			
+				/*
+				$buf .= 'Es un objeto'."<br>";
+				
+				$this->objConn = $this->sqlORobject;
+		
+				$this->resSql = $this->objConn->find(NULL,$this->getVar('arrayOrdMethod'),NULL);
+			
+				$this->sqlW = $this->sql = $this->objConn->getSqlLog();
+				*/
+			
+			}else{
+			
+				$buf .= 'Es una consutla SQL Primera vez'."<br>";
+				
+				$this->objConn = new myActiveRecord();
+		
+				$this->sql = $this->sqlORobject;
+
+				if ($this->usePagination){
+					
+					$this->sqlW .= $this->getSqlPartLimit();
+													
+				}
+			
+				$sql = $this->sql.''.$this->sqlW;
+				
+				$this->resSql = $this->objConn->query ($sql);
+			}
+			
+		}else{
+			
+			$buf .= 'Es una consutla SQL Segunda vez'."<br>";
+			
+			$this->restVarsSess(array('sqlW','sql','usePagination'));
+			
+			$this->objConn = new myActiveRecord();
+			
+			/*
+			$this->setVar('sqlW',$this->getVar('sql').
+				$this->getSqlPartOrderBy());
+			*/	
+			
+			if ($this->usePagination){
+				
+				$this->sqlW = $this->getSqlPartOrderBy().
+					$this->getSqlPartLimit();
+				
+			}
+			
+			$sql = $this->sql.''.$this->sqlW;
+			
+			$this->resSql = $this->objConn->query ($sql);
+		}
+
+		if ($this->objConn->getErrorLog())
+			$this->errorSql = true;		
+		
+			
+		# Registramos las variables que se han usado
+		$this->regAttClass(get_class_vars(get_class($this)));
+		
 		# Numero de campos afectados
 		$getNumFldsAftd = $this->objConn->getNumFieldsAffected();
 		
@@ -448,8 +502,6 @@ class myList  {
 		$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
 		
 		
-		$this->regAttClass(get_class_vars(get_class($this)));
-		
 		$cadParam = '';
 		
 		$bufHead = '';
@@ -460,11 +512,11 @@ class myList  {
 			
 		$rows = $this->resSql;
 		
-		$buf = ''.$this->buildJs($getNumFldsAftd);
+		$buf .= ''.$this->buildJs($getNumFldsAftd);
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
-		$buf .=  "\n".'<table border="0" width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
+		$buf .=  "\n".'<table border="1" width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 		
 		if ($this->errorSql){
 			
@@ -600,7 +652,17 @@ class myList  {
 			
 		$buf .=  '</td></tr></table>'."\n";
 	
-		$buf .= '</div>'."\n";
+		$buf .= $this->sqlW.'</div>'."\n";
+		
+		# Usar paginacion
+		if ($this->getVar('usePagination')){
+			
+			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
+		
+			
+			
+			$buf .= '</div>'."\n";
+		}
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 	}
