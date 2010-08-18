@@ -88,7 +88,6 @@ class myList  {
 		'useDistBetwRows',
 		'pathThemes',
 		'sql',
-		'sqlW',
 		'arrayAliasSetInQuery',
 		'arrayOrdMethod',
 		'themeName',
@@ -115,12 +114,6 @@ class myList  {
 	 * @var string
 	 */
 	private $sql = '';
-	
-	/**
-	 * Cadena SQL 
-	 * @var string
-	 */
-	private $sqlW = '';
 	
 	/**
 	 * Cadena de las funciones JS
@@ -339,7 +332,7 @@ class myList  {
 	}
 	
 	/**
-	 * Registra los atributos de la clase basados en una sesion
+	 * Registra los atributos de la clase en una sesion.
 	 * Solamente si no estan registrados antes.
 	 * @param $arr
 	 * @return unknown_type
@@ -354,28 +347,22 @@ class myList  {
 			
 		foreach ($arr as $atn => $atv){
 			
-			if (in_array($atn,$this->validNomKeys))
+				if (in_array($atn,$this->validNomKeys))
 			
-				$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
-				
+					$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
 		}
 		
 	}
 	
 	/**
 	 * Restaura valores de la clase contenidos en la sesion
-	 * @param $arrNoInc
 	 * @return unknown_type
 	 */
-	private function restVarsSess ($arrNoInc){
+	private function restVarsSess (){
 		
-		foreach ($arrNoInc as $varNom){
+		foreach ($this->validNomKeys as $varNom){
 			
-			if (in_array($varNom,$this->validNomKeys)){
-				
 				$this->$varNom = $this->getVar($varNom);
-				
-			}
 			
 		}
 		 
@@ -424,15 +411,15 @@ class myList  {
 			
 			if (is_object($this->sqlORobject)){
 			
-				/*
+				
 				$buf .= 'Es un objeto'."<br>";
 				
 				$this->objConn = $this->sqlORobject;
 		
-				$this->resSql = $this->objConn->find(NULL,$this->getVar('arrayOrdMethod'),NULL);
+				$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL);
 			
-				$this->sqlW = $this->sql = $this->objConn->getSqlLog();
-				*/
+				$this->sql = $this->objConn->getSqlLog();
+				
 			
 			}else{
 			
@@ -444,36 +431,28 @@ class myList  {
 
 				if ($this->usePagination){
 					
-					$this->sqlW .= $this->getSqlPartLimit();
+					//$this->sqlW .= $this->getSqlPartLimit();
 													
 				}
 			
-				$sql = $this->sql.''.$this->sqlW;
-				
-				$this->resSql = $this->objConn->query ($sql);
+				$this->resSql = $this->objConn->query ($this->sql);
 			}
 			
 		}else{
 			
-			$buf .= 'Es una consutla SQL Segunda vez'."<br>";
+			$this->restVarsSess();
 			
-			$this->restVarsSess(array('sqlW','sql','usePagination'));
+			$buf .= 'Es una consutla SQL Segunda vez'."<br>";
 			
 			$this->objConn = new myActiveRecord();
 			
-			/*
-			$this->setVar('sqlW',$this->getVar('sql').
-				$this->getSqlPartOrderBy());
-			*/	
-			
 			if ($this->usePagination){
 				
-				$this->sqlW = $this->getSqlPartOrderBy().
-					$this->getSqlPartLimit();
-				
+				//$this->sqlW = $this->getSqlPartOrderBy().
+					//$this->getSqlPartLimit();
 			}
 			
-			$sql = $this->sql.''.$this->sqlW;
+			$sql = $this->sql;
 			
 			$this->resSql = $this->objConn->query ($sql);
 		}
@@ -482,9 +461,6 @@ class myList  {
 			$this->errorSql = true;		
 		
 			
-		# Registramos las variables que se han usado
-		$this->regAttClass(get_class_vars(get_class($this)));
-		
 		# Numero de campos afectados
 		$getNumFldsAftd = $this->objConn->getNumFieldsAffected();
 		
@@ -501,6 +477,7 @@ class myList  {
 			$totWid -= $wid;
 		$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
 		
+		//$buf .= $widByCol;
 		
 		$cadParam = '';
 		
@@ -512,7 +489,7 @@ class myList  {
 			
 		$rows = $this->resSql;
 		
-		$buf .= ''.$this->buildJs($getNumFldsAftd);
+		$buf .= $this->buildJs($getNumFldsAftd);
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
@@ -560,7 +537,10 @@ class myList  {
 							else
 								$widCol = $widByCol;
 						
-							$orderBy = $this->getVar('arrayOrdMethod',$key);
+							$orderBy = '';	
+								
+							if (isset($this->arrayOrdMethod[$key]))
+								$orderBy = $this->arrayOrdMethod[$key];
 						
 							if ($orderBy !== false){
 							
@@ -652,7 +632,7 @@ class myList  {
 			
 		$buf .=  '</td></tr></table>'."\n";
 	
-		$buf .= $this->sqlW.'</div>'."\n";
+		$buf .= 'SQL'.'</div>'."\n";
 		
 		# Usar paginacion
 		if ($this->getVar('usePagination')){
@@ -665,6 +645,9 @@ class myList  {
 		}
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
+		
+		# Registramos las variables que se han usado
+		$this->regAttClass(get_class_vars(get_class($this)));
 	}
 	
 	/**
