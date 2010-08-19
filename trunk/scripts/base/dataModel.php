@@ -85,8 +85,8 @@
  		$objList->setAliasInQuery('estado','Estado');
  		*/
  
- 		$objList->setUseOrderMethodInColumn('Llave');
- 		$objList->setUseOrderMethodInColumn('Nombre');
+ 		//$objList->setUseOrderMethodInColumn('Llave');
+ 		$objList->setUseOrderMethodInColumn('nombre');
  		//$objList->setUseOrderMethodInColumn('Valor');
  		//$objList->setUseOrderMethodInColumn('Estado'); 		
  		

@@ -906,8 +906,11 @@ class myController {
 	 */
 	public function myListMoveTo ($idList, $alias){
 		
+		$myList = new myList($idList);
+		
 		$nameVar = 'arrayOrdMethod';
 		
+		/*
 		switch ($_SESSION['prdLst'][$idList][$nameVar][$alias]){
 			case 'ASC':
 				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'DESC';
@@ -919,8 +922,20 @@ class myController {
 				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'ASC';
 			break;
 		}
-
-		$myList = new myList($idList);
+		*/
+		
+		switch ($myList->getVar($nameVar,$alias)){
+			case 'ASC':
+				$myList->setVar($nameVar,'DESC',$alias);
+			break;
+			case 'DESC':
+				$myList->setVar($nameVar,'',$alias);
+			break;
+			case '':
+				$myList->setVar($nameVar,'ASC',$alias);
+			break;
+		}
+		
 		
 		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		

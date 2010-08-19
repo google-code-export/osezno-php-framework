@@ -94,8 +94,11 @@ class myList  {
 		'arrayWidthsCols',
 		'usePagination',
 		'recordsPerPage',
-		'currentPage'
+		'currentPage',
+		'typeList'
 	);	
+	
+	private $typeList = '';
 	
 	/**
 	 * Hmtl de la lista dinamica
@@ -186,6 +189,17 @@ class myList  {
 		
 		$this->idList = $idList;
 
+		// Preguntamos si sera una lista de objeto o de consulta personalizada
+		if ($sqlORobject){
+			
+			if (is_object($sqlORobject)){
+				$this->typeList = 'object';
+			}else{
+				$this->typeList = 'string';
+			}
+			
+		}
+		
 		$this->sqlORobject = $sqlORobject;
 		
 	}
@@ -303,6 +317,8 @@ class myList  {
 	 */
 	public function setUseOrderMethodInColumn ($alias){
 		
+		//$this->setVar('arrayOrdMethod','',$alias);
+		
 		$this->arrayOrdMethod[$alias] = '';
 		
 	}
@@ -411,7 +427,6 @@ class myList  {
 			
 			if (is_object($this->sqlORobject)){
 			
-				
 				$buf .= 'Es un objeto'."<br>";
 				
 				$this->objConn = $this->sqlORobject;
@@ -420,6 +435,7 @@ class myList  {
 			
 				$this->sql = $this->objConn->getSqlLog();
 				
+				$buf .= $this->sql."<br>";
 			
 			}else{
 			
@@ -454,7 +470,15 @@ class myList  {
 			
 			$sql = $this->sql;
 			
-			$this->resSql = $this->objConn->query ($sql);
+			switch ($this->typeList){
+				case 'object':
+					$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL);
+				break;
+				case 'string':
+					$this->resSql = $this->objConn->query ($sql);
+				break;
+			}
+			
 		}
 
 		if ($this->objConn->getErrorLog())
@@ -489,7 +513,7 @@ class myList  {
 			
 		$rows = $this->resSql;
 		
-		$buf .= $this->buildJs($getNumFldsAftd);
+		$buf .= $this->buildJs($getNumFldsAftd).var_export($this->arrayOrdMethod,true);
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
@@ -539,10 +563,9 @@ class myList  {
 						
 							$orderBy = '';	
 								
-							if (isset($this->arrayOrdMethod[$key]))
+							if (isset($this->arrayOrdMethod[$key])){
+								
 								$orderBy = $this->arrayOrdMethod[$key];
-						
-							if ($orderBy !== false){
 							
 								$styleName = 'cell_title';
 							
