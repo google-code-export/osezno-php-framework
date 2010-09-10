@@ -458,7 +458,7 @@ class myList  {
 			
 			$this->restVarsSess();
 			
-			$buf .= 'Es una consutla SQL Segunda vez'."<br>";
+			$buf .= 'Es una consutla SQL Segunda vez (Obj / Sql)'."<br>";
 			
 			$this->objConn = new myActiveRecord();
 			
@@ -472,7 +472,8 @@ class myList  {
 			
 			switch ($this->typeList){
 				case 'object':
-					$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL);
+					//$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL);
+					$this->resSql = $this->objConn->query ($this->getVar('sql'));
 				break;
 				case 'string':
 					$this->resSql = $this->objConn->query ($sql);

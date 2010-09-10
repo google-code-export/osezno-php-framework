@@ -73,6 +73,7 @@
  		
 		$objList = new myList($idLista,$sql);
 		*/
+		
 		$libros = new libros;
  		
 		$objList = new myList($idLista,$libros);
