@@ -423,11 +423,11 @@ class myList  {
 		
 		if ($this->sqlORobject){
 			
-			$buf .= 'Existe'."<br>";
+			//$buf .= 'Existe'."<br>";
 			
 			if (is_object($this->sqlORobject)){
 			
-				$buf .= 'Es un objeto'."<br>";
+				//$buf .= 'Es un objeto'."<br>";
 				
 				$this->objConn = $this->sqlORobject;
 		
@@ -435,11 +435,11 @@ class myList  {
 			
 				$this->sql = $this->objConn->getSqlLog();
 				
-				$buf .= $this->sql."<br>";
+				//$buf .= $this->sql."<br>";
 			
 			}else{
 			
-				$buf .= 'Es una consutla SQL Primera vez'."<br>";
+				//$buf .= 'Es una consutla SQL Primera vez'."<br>";
 				
 				$this->objConn = new myActiveRecord();
 		
@@ -458,7 +458,7 @@ class myList  {
 			
 			$this->restVarsSess();
 			
-			$buf .= 'Es una consutla SQL Segunda vez (Obj / Sql)'."<br>";
+			//$buf .= 'Es una consutla SQL Segunda vez (Obj / Sql)'."<br>";
 			
 			$this->objConn = new myActiveRecord();
 			
@@ -470,15 +470,15 @@ class myList  {
 			
 			$sql = $this->sql;
 			
-			switch ($this->typeList){
-				case 'object':
+			//switch ($this->typeList){
+				//case 'object':
 					//$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL);
-					$this->resSql = $this->objConn->query ($this->getVar('sql'));
-				break;
-				case 'string':
-					$this->resSql = $this->objConn->query ($sql);
-				break;
-			}
+					//$this->resSql = $this->objConn->query ($this->getVar('sql'));
+				//break;
+				//case 'string':
+			$this->resSql = $this->objConn->query ($sql);
+				//break;
+			//}
 			
 		}
 
@@ -502,8 +502,6 @@ class myList  {
 			$totWid -= $wid;
 		$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
 		
-		//$buf .= $widByCol;
-		
 		$cadParam = '';
 		
 		$bufHead = '';
@@ -514,11 +512,11 @@ class myList  {
 			
 		$rows = $this->resSql;
 		
-		$buf .= $this->buildJs($getNumFldsAftd).var_export($this->arrayOrdMethod,true);
+		$buf .= $this->buildJs($getNumFldsAftd);
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
-		$buf .=  "\n".'<table border="1" width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
+		$buf .=  "\n".'<table border="0" width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 		
 		if ($this->errorSql){
 			
@@ -656,7 +654,7 @@ class myList  {
 			
 		$buf .=  '</td></tr></table>'."\n";
 	
-		$buf .= 'SQL'.'</div>'."\n";
+		$buf .= ''.'</div>'."\n";
 		
 		# Usar paginacion
 		if ($this->getVar('usePagination')){
