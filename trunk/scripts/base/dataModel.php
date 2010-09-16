@@ -88,7 +88,7 @@
  
  		//$objList->setUseOrderMethodInColumn('Llave');
  		$objList->setUseOrderMethodInColumn('nombre');
- 		//$objList->setUseOrderMethodInColumn('Valor');
+ 		$objList->setUseOrderMethodInColumn('precio');
  		//$objList->setUseOrderMethodInColumn('Estado'); 		
  		
  		$objList->setWidthColumn('precio',50);

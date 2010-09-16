@@ -1071,14 +1071,13 @@ class myActiveRecord {
 			
 			if ($intLimit){
 				
-				switch ($this->engine){
-					case 'mysql':
-						$sql .= ' LIMIT '.$offset.', '.$intLimit;
-						break;
-					case 'postgre';
-					    $sql .= ' LIMIT '.$intLimit.' OFFSET '.$offset.'';
-					break;
+				$sql .= ' LIMIT '.$intLimit.'';
+				
+				if ($offset){
+				
+					$sql .= ' OFFSET '.$offset.'';
 				}
+					
 			}
 			
 			$rF = $this->query($sql);

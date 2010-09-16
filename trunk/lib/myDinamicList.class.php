@@ -431,7 +431,7 @@ class myList  {
 				
 				$this->objConn = $this->sqlORobject;
 		
-				$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL);
+				$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
 			
 				$this->sql = $this->objConn->getSqlLog();
 				
@@ -443,14 +443,8 @@ class myList  {
 				
 				$this->objConn = new myActiveRecord();
 		
-				$this->sql = $this->sqlORobject;
+				$this->sql = $this->sqlORobject.''.$this->getSqlPartLimit();
 
-				if ($this->usePagination){
-					
-					//$this->sqlW .= $this->getSqlPartLimit();
-													
-				}
-			
 				$this->resSql = $this->objConn->query ($this->sql);
 			}
 			
@@ -462,23 +456,11 @@ class myList  {
 			
 			$this->objConn = new myActiveRecord();
 			
-			if ($this->usePagination){
-				
-				//$this->sqlW = $this->getSqlPartOrderBy().
-					//$this->getSqlPartLimit();
-			}
-			
-			$sql = $this->sql;
-			
-			//switch ($this->typeList){
-				//case 'object':
-					//$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL);
-					//$this->resSql = $this->objConn->query ($this->getVar('sql'));
-				//break;
-				//case 'string':
+			$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
+
 			$this->resSql = $this->objConn->query ($sql);
-				//break;
-			//}
+			
+			// Configurar cuando sea un objeto
 			
 		}
 
