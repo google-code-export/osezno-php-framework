@@ -96,6 +96,7 @@ class myList  {
 		'recordsPerPage',
 		'currentPage',
 		'typeList'
+		
 	);	
 	
 	private $typeList = '';
@@ -423,23 +424,20 @@ class myList  {
 		
 		if ($this->sqlORobject){
 			
-			//$buf .= 'Existe'."<br>";
-			
 			if (is_object($this->sqlORobject)){
 			
-				//$buf .= 'Es un objeto'."<br>";
+				// Objeto
 				
 				$this->objConn = $this->sqlORobject;
 		
-				$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
+				//$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
+				$this->resSql = $this->objConn->find(NULL,NULL,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
 			
 				$this->sql = $this->objConn->getSqlLog();
 				
-				//$buf .= $this->sql."<br>";
-			
 			}else{
 			
-				//$buf .= 'Es una consutla SQL Primera vez'."<br>";
+				// Cadena
 				
 				$this->objConn = new myActiveRecord();
 		
@@ -454,14 +452,31 @@ class myList  {
 			
 			//$buf .= 'Es una consutla SQL Segunda vez (Obj / Sql)'."<br>";
 			
-			$this->objConn = new myActiveRecord();
-			
-			$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
-
-			$this->resSql = $this->objConn->query ($sql);
-			
 			// Configurar cuando sea un objeto
 			
+			/*
+			switch ($this->typeList){
+				case 'object':
+					$this->objConn = new myActiveRecord();
+					
+					$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
+			
+					$this->sql = $this->objConn->getSqlLog();
+					
+				break;
+				case 'string':
+				*/
+					$this->objConn = new myActiveRecord();
+			
+					//$sql = $this->sql.''.$this->getSqlPartOrderBy().' - '.$this->getSqlPartLimit();
+					
+					$sql = $this->sql.''.$this->getSqlPartOrderBy();
+
+					$this->resSql = $this->objConn->query ($sql);
+					/*
+				break;
+			}
+			*/
 		}
 
 		if ($this->objConn->getErrorLog())
