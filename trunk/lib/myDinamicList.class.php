@@ -397,16 +397,22 @@ class myList  {
 		$pathImg = $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName;
 		
 		$return = '&nbsp;';
+		
 		if ($method){
+			
 			$return = '<img src="';
+			
 			switch ($method){
+				
 				case 'ASC':
 					$return .= $pathImg.'/asc.gif';
 				break;
+				
 				case 'DESC':
 					$return .= $pathImg.'/desc.gif';
 				break;
 			}
+			
 			$return .= '">';
 		}
 		
@@ -443,6 +449,7 @@ class myList  {
 				$iCounter = 1;
 				
 				foreach ($fields as $field => $value){
+					
 					$subSqlF .= $field;
 
 					if ($iCounter<$countFields)
@@ -495,9 +502,12 @@ class myList  {
 		 * un ancho especifico definido antes por el usuario.
 		 */
 		$widByCol = 0;
+		
 		$totWid = $this->widthList;
+		
 		foreach ($this->arrayWidthsCols as $col => $wid)
 			$totWid -= $wid;
+			
 		$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
 		
 		$cadParam = '';
@@ -648,21 +658,49 @@ class myList  {
 			$buf .=  '</tbody>'."\n";
 		
 			$buf .=  '</table>'."\n";
-			}	
+			
+		}	
 			
 		$buf .=  '</td></tr></table>'."\n";
-	
-		$buf .= ''.'</div>'."\n";
+
 		
 		# Usar paginacion
 		if ($this->getVar('usePagination')){
 			
+			$arrBut = array(
+				'_ini_page'	 =>array('<<','beg'),
+			
+				'_back_page' =>array('<', 'bac'),
+			
+				'_next_page' =>array('>', 'nex'),
+			
+				'_end_page'	 =>array('>>','end')
+			);
+			
+			
+			$objMyForm = new myForm;
+			
 			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
+			$buf .= '<table border="1"><tr>';
+
+			foreach ($arrBut as $id => $but){
+
+				$buf .= '<td>'; 
 			
+				$buf .= $objMyForm->getButton($this->idList.$id,$but[0],'myListPage:'.$this->currentPage.':'.$this->idList.':'.$but[1]);
+			
+				$buf .= '</td>';
+				
+			}
+			
+			$buf .= '</tr></table>';
 			
 			$buf .= '</div>'."\n";
-		}
+		}		
+		
+		
+		$buf .= ''.'</div>'."\n";
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		

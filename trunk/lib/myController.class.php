@@ -899,6 +899,20 @@ class myController {
 	}
 	
 	/**
+	 * Mover la lista dinamica a determinada pagina.
+	 * 
+	 * @param $idList
+	 * @param $numPage
+	 * @return unknown_type
+	 */
+	public function myListPage ($datForm, $idList, $numPage, $action){
+		
+		$this->alert($numPage.' '.$idList.' '.$action);
+		
+		return $this->response;
+	}
+	
+	/**
 	 * Mueve la lista dinamica en sentido adelante, atras, ascendente y descendente.
 	 * 
 	 * @param $idList	Id o nombre de la lista dinámica	
