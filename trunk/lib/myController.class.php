@@ -901,13 +901,41 @@ class myController {
 	/**
 	 * Mover la lista dinamica a determinada pagina.
 	 * 
+	 * @param $datForm
 	 * @param $idList
 	 * @param $numPage
+	 * @param $action
 	 * @return unknown_type
 	 */
-	public function myListPage ($datForm, $idList, $numPage, $action){
+	public function myListPage ($datForm, $idList, $action){
 		
-		$this->alert($numPage.' '.$idList.' '.$action);
+		$myList = new myList($idList);
+		
+		$nameVar = 'currentPage';
+		
+		switch ($action){
+			case 'beg':
+				$numPage =0;
+			break;
+			case 'bac':
+				$numPage = $myList->getVar($nameVar)-1;
+			break;
+			case 'nex':
+				$numPage = $myList->getVar($nameVar)+1;
+			break;
+			case 'end':
+			break;
+		}
+		
+		$myList->setVar($nameVar,$numPage);
+		
+		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		
+		$this->assign($idList,'innerHTML',$myList->getList());
+		
+		$js = 'myList.clearRowsMarked();'."\n";
+		
+		$this->script($js);
 		
 		return $this->response;
 	}

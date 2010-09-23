@@ -682,13 +682,21 @@ class myList  {
 			
 			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
-			$buf .= '<table border="1"><tr>';
+			$buf .= '<table border="0"><tr>';
 
+			if ($this->currentPage == 0){
+				$objMyForm->addDisabled($this->idList.'_ini_page');
+				
+				$objMyForm->addDisabled($this->idList.'_back_page');
+			}
+				
+				
+			
 			foreach ($arrBut as $id => $but){
 
 				$buf .= '<td>'; 
 			
-				$buf .= $objMyForm->getButton($this->idList.$id,$but[0],'myListPage:'.$this->currentPage.':'.$this->idList.':'.$but[1]);
+				$buf .= $objMyForm->getButton($this->idList.$id,$but[0],'myListPage:'.$this->idList.':'.$but[1]);
 			
 				$buf .= '</td>';
 				
