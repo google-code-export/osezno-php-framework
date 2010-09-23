@@ -428,12 +428,34 @@ class myList  {
 			
 				// Objeto
 				
+				$sql = '';
+				
 				$this->objConn = $this->sqlORobject;
 		
-				//$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
-				$this->resSql = $this->objConn->find(NULL,NULL,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
-			
-				$this->sql = $this->objConn->getSqlLog();
+				$this->sql = '';
+				
+				$tabStruct = $this->objConn->getAtt('tableStruct');
+				
+				$countFields = count($fields = $tabStruct[$table = $this->objConn->getAtt('table')]['fields']); 
+				
+				$subSqlF = '';
+
+				$iCounter = 1;
+				
+				foreach ($fields as $field => $value){
+					$subSqlF .= $field;
+
+					if ($iCounter<$countFields)
+			   			$subSqlF .= ', ';
+
+					$iCounter++;
+				}
+				
+				$sql = 'SELECT '.$subSqlF.' FROM '.$table;
+
+				$this->sql = $sql;
+				
+				$this->resSql = $this->objConn->find(NULL,NULL,NULL,$this->recordsPerPage);
 				
 			}else{
 			
@@ -450,33 +472,12 @@ class myList  {
 			
 			$this->restVarsSess();
 			
-			//$buf .= 'Es una consutla SQL Segunda vez (Obj / Sql)'."<br>";
+			$this->objConn = new myActiveRecord();
 			
-			// Configurar cuando sea un objeto
-			
-			/*
-			switch ($this->typeList){
-				case 'object':
-					$this->objConn = new myActiveRecord();
+			$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
 					
-					$this->resSql = $this->objConn->find(NULL,$this->arrayOrdMethod,NULL,$this->recordsPerPage,($this->currentPage*$this->recordsPerPage));
+			$this->resSql = $this->objConn->query($sql);
 			
-					$this->sql = $this->objConn->getSqlLog();
-					
-				break;
-				case 'string':
-				*/
-					$this->objConn = new myActiveRecord();
-			
-					//$sql = $this->sql.''.$this->getSqlPartOrderBy().' - '.$this->getSqlPartLimit();
-					
-					$sql = $this->sql.''.$this->getSqlPartOrderBy();
-
-					$this->resSql = $this->objConn->query ($sql);
-					/*
-				break;
-			}
-			*/
 		}
 
 		if ($this->objConn->getErrorLog())

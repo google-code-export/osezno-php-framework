@@ -134,6 +134,11 @@ class myActiveRecord {
 	 */
 	private $tableStruct = array();
 
+	
+	public function getAtt ($att){
+		
+		return $this->$att;
+	}
 
 	/**
 	 * Alias de campos de la tabla
@@ -977,6 +982,7 @@ class myActiveRecord {
 	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
 		
 		$fCnd = '';
+		
 		$sql = '';
 		
 		$subSqlF = $this->getStringSqlFields($this->table);
