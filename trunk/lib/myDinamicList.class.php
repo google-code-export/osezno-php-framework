@@ -62,6 +62,13 @@ class myList  {
 	private $recordsPerPage;
 	
 	/**
+	 * Numero total de registros en todas las paginas
+	 * 
+	 * @var integer
+	 */
+	private $totalRows = 0;
+	
+	/**
 	 * Pagina actual cuando la paginacion esta activa.
 	 * 
 	 * @var unknown_type
@@ -94,6 +101,7 @@ class myList  {
 		'arrayWidthsCols',
 		'usePagination',
 		'recordsPerPage',
+		'totalRows',
 		'currentPage',
 		'typeList'
 		
@@ -464,6 +472,10 @@ class myList  {
 				
 				$this->resSql = $this->objConn->find(NULL,NULL,NULL,$this->recordsPerPage);
 				
+				# Para limitar la ultima pagina
+				if (!$this->recordsPerPage)
+					$this->totalRows = $this->objConn->getAffectedRows();
+				
 			}else{
 			
 				// Cadena
@@ -473,6 +485,10 @@ class myList  {
 				$this->sql = $this->sqlORobject.''.$this->getSqlPartLimit();
 
 				$this->resSql = $this->objConn->query ($this->sql);
+				
+				# Para limitar la ultima pagina
+				if (!$this->recordsPerPage)
+					$this->totalRows = $this->objConn->getAffectedRows();
 			}
 			
 		}else{
@@ -690,8 +706,6 @@ class myList  {
 				$objMyForm->addDisabled($this->idList.'_back_page');
 			}
 				
-				
-			
 			foreach ($arrBut as $id => $but){
 
 				$buf .= '<td>'; 
