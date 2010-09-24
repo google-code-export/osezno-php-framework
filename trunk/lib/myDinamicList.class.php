@@ -68,6 +68,7 @@ class myList  {
 	 */
 	private $totalRows = 0;
 	
+	
 	/**
 	 * Pagina actual cuando la paginacion esta activa.
 	 * 
@@ -185,7 +186,11 @@ class myList  {
 	 */
 	private $errorSql = false;
 	
-	
+	/**
+	 * Cadena SQL u Objeto
+	 * 
+	 * @var unknown_type
+	 */
 	private $sqlORobject;
 	
 	/**
@@ -266,9 +271,8 @@ class myList  {
 		
 		$sqlPart = '';
 		
-		//$sqlPart .= ' LIMIT  '.$this->getVar('recordsPerPage').' OFFSET '.($this->getVar('currentPage')*$this->getVar('recordsPerPage'));
-		
-		$sqlPart .= ' LIMIT  '.$this->recordsPerPage.' OFFSET '.($this->currentPage*$this->recordsPerPage);
+		if ($this->usePagination)
+			$sqlPart .= ' LIMIT  '.$this->recordsPerPage.' OFFSET '.($this->currentPage*$this->recordsPerPage);
 		
 		return $sqlPart;
 	}
@@ -325,8 +329,6 @@ class myList  {
 	 * @param $alias
 	 */
 	public function setUseOrderMethodInColumn ($alias){
-		
-		//$this->setVar('arrayOrdMethod','',$alias);
 		
 		$this->arrayOrdMethod[$alias] = '';
 		
@@ -473,8 +475,8 @@ class myList  {
 				$this->resSql = $this->objConn->find(NULL,NULL,NULL,$this->recordsPerPage);
 				
 				# Para limitar la ultima pagina
-				if (!$this->recordsPerPage)
-					$this->totalRows = $this->objConn->getAffectedRows();
+				//if (!$this->recordsPerPage)
+					//$this->totalRows = $this->objConn->getAffectedRows();
 				
 			}else{
 			
@@ -487,8 +489,8 @@ class myList  {
 				$this->resSql = $this->objConn->query ($this->sql);
 				
 				# Para limitar la ultima pagina
-				if (!$this->recordsPerPage)
-					$this->totalRows = $this->objConn->getAffectedRows();
+				//if (!$this->recordsPerPage)
+					//$this->totalRows = $this->objConn->getAffectedRows();
 			}
 			
 		}else{
@@ -681,7 +683,7 @@ class myList  {
 
 		
 		# Usar paginacion
-		if ($this->getVar('usePagination')){
+		if ($this->usePagination){
 			
 			$arrBut = array(
 				'_ini_page'	 =>array('<<','beg'),
@@ -701,11 +703,26 @@ class myList  {
 			$buf .= '<table border="0"><tr>';
 
 			if ($this->currentPage == 0){
+				
 				$objMyForm->addDisabled($this->idList.'_ini_page');
 				
 				$objMyForm->addDisabled($this->idList.'_back_page');
 			}
+			
+			if ($i<$this->recordsPerPage){
 				
+				$this->totalRows = ($this->currentPage*$this->recordsPerPage)+$i;
+
+				$objMyForm->addDisabled($this->idList.'_next_page');
+				
+				$objMyForm->addDisabled($this->idList.'_end_page');
+			}
+			
+			if ($this->totalRows == 0 ){
+				
+				$objMyForm->addDisabled($this->idList.'_end_page');
+			}
+			
 			foreach ($arrBut as $id => $but){
 
 				$buf .= '<td>'; 

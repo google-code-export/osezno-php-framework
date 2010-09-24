@@ -924,12 +924,13 @@ class myController {
 				$numPage = $myList->getVar($nameVar)+1;
 			break;
 			case 'end':
+				$numPage =intval($myList->getVar('totalRows')/$myList->getVar('recordsPerPage'));
 			break;
 		}
 		
 		$myList->setVar($nameVar,$numPage);
 		
-		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
