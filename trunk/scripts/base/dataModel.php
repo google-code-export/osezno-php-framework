@@ -96,11 +96,16 @@
  		
  		return $objList->getList();
  		*/
- 		
- 		$tbmtipdet = new tbmtipdet;
- 		
+ 						
+		$tbmtipdet = new tbmtipdet;
+		
+		
  		$objList = new myList($idLista,$tbmtipdet);
  		
+ 		$objList->setUseOrderMethodInColumn('mtipdet_id');
+ 		$objList->setUseOrderMethodInColumn('mtip_id');
+ 		
+ 		$objList->setPagination(true,6);
  		
  		return $objList->getList();
  	}

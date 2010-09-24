@@ -246,8 +246,10 @@ class myActiveRecord {
 			
 		if (strcmp($this->table = get_class($this),'myActiveRecord')){
 			
-			if (!isset($this->tableStruct[$this->table]))
+			if (!isset($this->tableStruct[$this->table])){
+				
 			   $this->getMetaDataTable($this->table);
+			}
 		}
 			
 		$this->classVars = get_class_vars($this->table);
@@ -1245,62 +1247,46 @@ class myActiveRecord {
 				}
 					
 			break;
-			case 'postgre':
+			case 'pgsql':
 				/**
 				 * TODO: Obtener solo la primera llave primaria
 				 * Implementar a fututo la obtencion de resultados
 				 * el tablas con mas de una llave primaria
 				 */
-				/* 	
-				$sqlStruct = 'SELECT
-					col.column_name AS campo
-					,col.data_type as tipo
-					,col.character_maximum_length as longitud
-					,(SELECT
-  					kcu.column_name
-					FROM
-  						information_schema.key_column_usage kcu
-  					INNER JOIN information_schema.table_constraints AS tc ON (kcu.constraint_name = tc.constraint_name AND tc.table_name = kcu.table_name)
-						WHERE kcu.table_name = \''.$tableName.'\'
-						AND tc.constraint_type = \'PRIMARY KEY\' LIMIT 1 OFFSET 0) AS llave
- 						FROM
- 						information_schema.tables
-    				INNER JOIN information_schema.columns AS col ON (col.table_name = information_schema.tables.table_name)
-					WHERE
-						information_schema.tables.table_name = \''.$tableName.'\'
-					ORDER BY col.ordinal_position';
+				foreach ($resQuery as  $res){
 					
-				$fields = $this->query($sqlStruct,false);
-
-				foreach ($fields as $field){
-
-					if (!$ff)
-					   $ff = $field['campo'];
+					$i=0;
+					foreach ($res as $key => $value){
 						
-					$this->tableStruct[$tableName]['fields'][$field['campo']] = '';
-
-					$this->tableStruct[$tableName]['types'][$field['campo']] =
-					$field['tipo'].' '.$field['longitud'];
-
-					if ($field['llave']){
-						$pk = $field['llave'];
-					}else{
+						$mTable = $resQuery->getColumnMeta($i);
+						
+						if ($mTable['name']){
 							
-						if (!strcmp(strtolower($field['campo']),'id')){
-							if (!$pk)
-							   $pk = $field['campo'];
-						}else{
-
-							if (strripos($field['campo'],'id')!==false){
+							if (!$ff)
+					   			$ff = $mTable['name'];
+					   
+							$this->tableStruct[$tableName]['fields'][$mTable['name']] = '';   
+					
+							$this->tableStruct[$tableName]['types'][$mTable['name']] = $mTable['native_type'];
+					
+							if (!strcmp(strtolower($mTable['name']),'id')){
 								if (!$pk)
-								   $pk = $field['campo'];
+							  		$pk = $mTable['name'];
+							}else{
+
+								if (strripos($mTable['name'],'id')!==false){
+									if (!$pk)
+							   		$pk = $mTable['name'];
+								}
 							}
-							
+														
 						}
-					}
+					
+						$i+=1;
+						
+					}break;
 					
 				}
-				*/	
 			break;
 		}
 
@@ -1337,6 +1323,7 @@ class myActiveRecord {
 		} catch (PDOException $e) {
 			
     		$GLOBALS['OF_SQL_LOG'].= 'Connection failed: ' . $e->getMessage();
+    		
 		}
 
 	}
