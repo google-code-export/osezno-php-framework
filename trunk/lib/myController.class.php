@@ -953,20 +953,6 @@ class myController {
 		
 		$nameVar = 'arrayOrdMethod';
 		
-		/*
-		switch ($_SESSION['prdLst'][$idList][$nameVar][$alias]){
-			case 'ASC':
-				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'DESC';
-			break;
-			case 'DESC':
-				$_SESSION['prdLst'][$idList][$nameVar][$alias] = '';
-			break;
-			case '':
-				$_SESSION['prdLst'][$idList][$nameVar][$alias] = 'ASC';
-			break;
-		}
-		*/
-		
 		switch ($myList->getVar($nameVar,$alias)){
 			case 'ASC':
 				$myList->setVar($nameVar,'DESC',$alias);
@@ -978,7 +964,6 @@ class myController {
 				$myList->setVar($nameVar,'ASC',$alias);
 			break;
 		}
-		
 		
 		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		

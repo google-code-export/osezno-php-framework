@@ -474,23 +474,16 @@ class myList  {
 				
 				$this->resSql = $this->objConn->find(NULL,NULL,NULL,$this->recordsPerPage);
 				
-				# Para limitar la ultima pagina
-				//if (!$this->recordsPerPage)
-					//$this->totalRows = $this->objConn->getAffectedRows();
-				
 			}else{
 			
 				// Cadena
 				
 				$this->objConn = new myActiveRecord();
 		
-				$this->sql = $this->sqlORobject.''.$this->getSqlPartLimit();
+				$this->sql = $this->sqlORobject;
 
-				$this->resSql = $this->objConn->query ($this->sql);
-				
-				# Para limitar la ultima pagina
-				//if (!$this->recordsPerPage)
-					//$this->totalRows = $this->objConn->getAffectedRows();
+				$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
+
 			}
 			
 		}else{
