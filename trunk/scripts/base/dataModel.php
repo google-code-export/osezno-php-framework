@@ -104,8 +104,12 @@
  		
  		$objList->setUseOrderMethodInColumn('mtipdet_id');
  		$objList->setUseOrderMethodInColumn('mtip_id');
- 		
- 		$objList->setPagination(true,6);
+ 		$objList->setUseOrderMethodInColumn('mtipdet_des');
+ 		$objList->setUseOrderMethodInColumn('m04usr_id');
+ 		$objList->setUseOrderMethodInColumn('mtipdet_fechsist');
+ 		$objList->setUseOrderMethodInColumn('mtipdet_cod');
+
+ 		$objList->setPagination(true,15);
  		
  		return $objList->getList();
  	}

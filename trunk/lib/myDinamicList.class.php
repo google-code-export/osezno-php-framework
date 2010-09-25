@@ -655,7 +655,7 @@ class myList  {
 						else
 							$buf.=''.$classTd.'">';
 						
-						$buf.=$val;	
+						$buf.=htmlentities($val);	
 					
 						$buf.='</td>';
 					}
