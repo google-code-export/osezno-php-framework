@@ -73,7 +73,7 @@
 	 miCapa.style.top    = '0';
 	 miCapa.style.left   = '0';
 	 miCapa.style.width	 = (arrayPageSize[2] + 'px');	 
-	 miCapa.style.height = (arrayPageSize[3] + 'px');
+	 miCapa.style.height = (arrayPageSize[1] + 'px');
 	 miCapa.style.display='block';
 	 
      var miImagen = document.createElement('DIV');
@@ -87,7 +87,7 @@
 	 miImagen.style.top    = '0';
 	 miImagen.style.left   = '0';
 	 miImagen.style.width  = (arrayPageSize[2] + 'px');	 
-	 miImagen.style.height = (arrayPageSize[3] + 'px');
+	 miImagen.style.height = (arrayPageSize[1] + 'px');
 	 miImagen.style.minHeight	= '100%';
 	 
 	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/loader.gif" title="Loading..."></td></tr></table>';
