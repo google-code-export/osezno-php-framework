@@ -679,13 +679,13 @@ class myList  {
 		if ($this->usePagination){
 			
 			$arrBut = array(
-				'_ini_page'	 =>array('<<','beg'),
+				'_ini_page'	 =>array('&nbsp;<<&nbsp;','beg'),
 			
-				'_back_page' =>array('<', 'bac'),
+				'_back_page' =>array('&nbsp;<&nbsp;', 'bac'),
 			
-				'_next_page' =>array('>', 'nex'),
+				'_next_page' =>array('&nbsp;>&nbsp;', 'nex'),
 			
-				'_end_page'	 =>array('>>','end')
+				'_end_page'	 =>array('&nbsp;>>&nbsp;','end')
 			);
 			
 			
@@ -695,6 +695,8 @@ class myList  {
 		
 			$buf .= '<table border="0"><tr>';
 
+			
+			
 			if ($this->currentPage == 0){
 				
 				$objMyForm->addDisabled($this->idList.'_ini_page');
