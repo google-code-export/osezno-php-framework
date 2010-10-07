@@ -229,7 +229,7 @@ class myList  {
 			$this->themeName = $theme;
 		else{
 			return  $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/style.css.php?img='.$GLOBALS['urlProject'].'/css/themes/'.$this->themeName.'/';
-		}			
+		}
 	}
 
 	/**

@@ -4,7 +4,7 @@
  * @uses Metodos y atributos propios del proyecto
  * @package OSEZNO FRAMEWORK
  * @version 0.1
- * @author joselitohaCker
+ * @author Jose Ignacio Gutierrez Guzman
  *
  */	
 class osezno {
@@ -54,9 +54,16 @@ class osezno {
   	/**
   	 * Objeto de xajax
   	 *
-  	 * @var unknown_type
+  	 * @var object
   	 */
   	private $objxAjax;
+  	
+  	/**
+  	 * Nombre del tema de estilos que se usa en el framework
+  	 * 
+  	 * @var string
+  	 */
+  	private $theme;
   	
   	/**
   	 * Contructor de la clase
@@ -64,10 +71,14 @@ class osezno {
   	 * para que este pueda comenzar a ser usado
   	 *
   	 */
-  	public function __construct($objxAjax){
+  	public function __construct($objxAjax, $theme){
+  		
+  		$this->theme = $theme;
 
   		$this->folderProject = $GLOBALS['folderProject'];
-  		$this->urlProject = $GLOBALS['urlProject']; 
+  		
+  		$this->urlProject = $GLOBALS['urlProject'];
+  		 
 		$this->objxAjax = $objxAjax;
   		
   		require $this->folderProject.'lib/plugin/packages/xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
@@ -136,6 +147,16 @@ class osezno {
 		'"></script>';
 
   	}
+  	
+  	/**
+  	 * Setea el nombre del tema de estilos que se va a usar en todo el framework
+  	 * 
+  	 * @param $theme	Nombre del tema
+  	 */
+  	public function setTheme ($theme){
+  		$this->theme = $theme;
+  	}
+  	
   	
 	/**
 	 * Obtiene la ruta fisica del proyecto

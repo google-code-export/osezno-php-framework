@@ -1,61 +1,114 @@
 <?php
   /**
    * @package OSEZNO PHP FRAMEWORK
-   * @copyright 2007-2009  
+   * @copyright 2007-2011
    * @version: 0.1.5
    * @author: Oscar Eduardo Aldana 
    * @author: José Ignacio Gutiérrez Guzmán
-   * developer@osezno-framework.com
    * 
-   * [*] = Configurar antes de iniciar
-   * 
+   * developer@osezno-framework.org
    */
 
+
   /**
-   * Carpeta de projecto ubicada dentro de la caperta publica www [*]
+   * Carpeta de projecto ubicada dentro de la caperta publica www
    */
-  $baseFolder = 'osezno-framework';  // <- Cambiar este nombre de carpeta por el nombre de la carpeta donde se va a guardar el Proyecto
+  $baseFolder = 'osezno-framework';  
+
+  
+  /**********************************************************
+   * 				   DISEÑO Y VISTA  	                    *
+   **********************************************************/  
   
   /**
-   * Idioma que se va a usar en las etiquetas de los objetos 
+   * Idioma que se va a usar en las etiquetas de los objetos
+   * @var string 
    */
   $lang = 'spanish';
   
   /**
-   * Parametros de conexion a base de datos por defecto [*]
+   * Tema actual de estilos
+   * @var string
    */
-  global $MYACTIVERECORD_PARAMS;
-  
-  
-  $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = 'multivacaciones'; # Nombre de base de datos
-  $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= 'pgsql'; # Motor de base de datos; pgsql ó mysql
-  $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= '192.168.30.15'; # Direccion Ip o nombre de maquina del motor de base de datos
-  $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= 'postgresql'; # Nombre de usuario para conexion 
-  $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = 'p4AGtkzenDPecl'; # Contraseña de usuario para conexión
-  $GLOBALS['MYACTIVERECORD_PARAMS']['port'] 	= 5432; # Puerto para la conexión, Mysql 3306, Postgre 5432
-  
-  
+  $theme = 'default';
+
   /**
-   * Nombre de la carpeta donde se llaman todas las plantillas [*]
-   * Esta carpeta por defecto esta en la raiz del proyecto
+   * Nombre de la carpeta donde se llaman todas las plantillas,
+   * esta carpeta por defecto esta en la raiz del proyecto.
+   * @var string
    */
   $templateBaseFolder = 'templates/';
   
   /**
-   * Nombre de la carpeta que guarda las sesiones [*]
-   * Esta carpeta por defecto esta en la raiz del proyecto
+   * Nivel de manejo de errores,
+   * E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL
+   * @var string
+   */
+  $error_reporting = 'E_ALL';
+  
+  /**********************************************************
+   * 				  VARIABLES DE SESION	                *
+   **********************************************************/
+  
+  /**
+   * Nombre de la carpeta que guarda las sesiones,
+   * esta carpeta por defecto esta en la raiz del proyecto.
+   * @var string
    */
   $sessionNameFolder = 'sesiones';
   
   /**
-   * Nombre de cookie referencia de las sesiones de OszenO framework [*]
+   * Nombre de cookie referencia de las sesiones de OszenO framework.
+   * @var string
    */
   $sessionName = 'OSEZNO_FRAMEWORK';
   
   /**
-   * Caducidad en segundos en cache para la sesion [*]
+   * Caducidad en segundos en cache para la sesion.
+   * @var string
    */
   $sessionCacheExpire = 3600;
+
+  
+  /**********************************************************
+   * 				CONEXION BASE DE DATOS	                *
+   **********************************************************/
+  
+  /**
+   * Nombre de base de datos.
+   * @var string
+   */
+  $database = 'multivacaciones';
+  
+  /**
+   * Motor de base de datos; pgsql ó mysql.
+   * @var string
+   */
+  $engine = 'pgsql';
+  
+  /**
+   * Direccion Ip o nombre de maquina del motor de base de datos.
+   * @var string
+   */
+  $host = '192.168.30.15';
+  
+  /**
+   * Nombre de usuario para conexion.
+   * @var string
+   */
+  $user = 'postgresql';
+  
+  /**
+   * Contraseña de usuario para conexión.
+   * @var string
+   */
+  $password = 'p4AGtkzenDPecl';
+
+  /**
+   * Puerto para la conexión, Mysql 3306, Postgre 5432.
+   * @var integer
+   */
+  $port = 5432;
   
   
   /**
@@ -67,6 +120,19 @@
    * No tocar si no es necesario
    * 
    */
+
+  /**
+   * Parametros de conexion a base de datos por defecto
+   */
+  global $MYACTIVERECORD_PARAMS;
+  
+  $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = $database;
+  $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= $engine;
+  $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= $host;
+  $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= $user;
+  $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = $password; 
+  $GLOBALS['MYACTIVERECORD_PARAMS']['port'] 	= $port;
+  
   
   /**
    * Si la pagina fue accedida desde https cambiamos las urls de el framework
@@ -102,7 +168,7 @@
   /**
    * Setear el nivel de errores que desea mostrar dentro de la aplicacion
    */
-  error_reporting(E_ALL);//E_ERROR | E_WARNING | E_PARSE | E_NOTICE  // E_ALL
+  error_reporting($error_reporting);
 
   require_once $GLOBALS['folderProject'].'lib/plugin/packages/xajax/xajax_core/xajax.inc.php';
   
@@ -130,6 +196,11 @@
   $GLOBALS['urlProject'] = $http.$httpHost;
   
   /**
+   * Nombre del tema de hojas de estilos que usara el framework
+   */
+  define ('THEME_NAME',		$theme,true);
+  
+  /**
    * Ruta donde se encuentran las plantillas de Osezno  [*]
    */
   define ('PATH_TEMPLATES', $GLOBALS['folderProject'].$templateBaseFolder,true);
@@ -137,17 +208,17 @@
   /**
    * Ruta tipo url en donde se almacenan los scripts js de xAjax
    */
-  define ('URL_JS_XJX',      $http.$httpHost.'/lib/plugin/packages/xajax/',true);
+  define ('URL_JS_XJX',     $http.$httpHost.'/lib/plugin/packages/xajax/',true);
   
   /**
    * Ruta tipo url donde se descarga el js de funciones
    */
-  define ('URL_JS_FCN',      $http.$httpHost.'/javascript/MyFunctions.js',true);
+  define ('URL_JS_FCN',     $http.$httpHost.'/javascript/MyFunctions.js',true);
 
   /**
    * 
    */
-  define ('URL_JS_MW',       $http.$httpHost.'/javascript/myModalWindow.js',true);
+  define ('URL_JS_MW',      $http.$httpHost.'/javascript/myModalWindow.js',true);
   
   /**
    * Ruta tipo url donde se descarga el js de wz tooltip
