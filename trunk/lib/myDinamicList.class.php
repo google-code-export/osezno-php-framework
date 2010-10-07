@@ -62,11 +62,11 @@ class myList  {
 	private $recordsPerPage;
 	
 	/**
-	 * Numero total de registros en todas las paginas
+	 * Maxima numero de pagina encontrada
 	 * 
 	 * @var integer
 	 */
-	private $totalRows = 0;
+	private $maxNumPage = 0;
 	
 	
 	/**
@@ -102,7 +102,7 @@ class myList  {
 		'arrayWidthsCols',
 		'usePagination',
 		'recordsPerPage',
-		'totalRows',
+		'maxNumPage',
 		'currentPage',
 		'typeList'
 		
@@ -679,24 +679,36 @@ class myList  {
 		if ($this->usePagination){
 			
 			$arrBut = array(
-				'_ini_page'	 =>array('&nbsp;<<&nbsp;','beg'),
+				'_ini_page'	 =>array('&nbsp;--&nbsp;','beg','button'),
 			
-				'_back_page' =>array('&nbsp;<&nbsp;', 'bac'),
+				'_back_page' =>array('&nbsp;-1&nbsp;', 'bac','button'),
 			
-				'_next_page' =>array('&nbsp;>&nbsp;', 'nex'),
+				'_goto_page' =>array(($this->currentPage+1),'goto','field'),
 			
-				'_end_page'	 =>array('&nbsp;>>&nbsp;','end')
+				'_next_page' =>array('&nbsp;+1&nbsp;', 'nex','button'),
+			
+				'_end_page'	 =>array('&nbsp;++&nbsp;','end','button')
 			);
 			
 			
 			$objMyForm = new myForm;
 			
+			$objMyForm->setParamTypeOnEvent('field');
+			
+			$objMyForm->styleTypeHelp = 2;
+			
+			$objMyForm->addHelp($this->idList.'_end_page','&nbsp;'.GOTO_LAST_PAGE.'&nbsp;');
+			
+			$objMyForm->addHelp($this->idList.'_ini_page','&nbsp;'.GOTO_FIRST_PAGE.'&nbsp;');
+			
+			$objMyForm->addHelp($this->idList.'_next_page','&nbsp;'.GOTO_NEXT_PAGE.'&nbsp;');
+			
+			$objMyForm->addHelp($this->idList.'_back_page','&nbsp;'.GOTO_BACK_PAGE.'&nbsp;');
+			
 			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
 			$buf .= '<table border="0"><tr>';
 
-			
-			
 			if ($this->currentPage == 0){
 				
 				$objMyForm->addDisabled($this->idList.'_ini_page');
@@ -706,23 +718,36 @@ class myList  {
 			
 			if ($i<$this->recordsPerPage){
 				
-				$this->totalRows = ($this->currentPage*$this->recordsPerPage)+$i;
-
 				$objMyForm->addDisabled($this->idList.'_next_page');
 				
 				$objMyForm->addDisabled($this->idList.'_end_page');
+				
 			}
 			
-			if ($this->totalRows == 0 ){
+			if ($this->currentPage==$this->maxNumPage){
 				
 				$objMyForm->addDisabled($this->idList.'_end_page');
 			}
 			
-			foreach ($arrBut as $id => $but){
+			foreach ($arrBut as $id => $attr){
 
 				$buf .= '<td>'; 
-			
-				$buf .= $objMyForm->getButton($this->idList.$id,$but[0],'myListPage:'.$this->idList.':'.$but[1]);
+				
+				switch ($attr[2]){
+				
+					case 'button':
+						$buf .= $objMyForm->getButton($this->idList.$id,$attr[0],'myListPage:'.$this->idList.':'.$attr[1]);
+					break;
+					
+					case 'field':
+						
+						$objMyForm->addEventJs($this->idList.$id,'onChange','myListPage',array($this->idList,$attr[1]));
+						
+						$buf .= $objMyForm->getText($this->idList.$id,$attr[0],3,NULL,true);
+					break;
+					
+				}
+				
 			
 				$buf .= '</td>';
 				

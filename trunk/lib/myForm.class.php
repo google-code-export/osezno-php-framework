@@ -975,7 +975,7 @@ class myForm {
 	
 	/**
 	 * Configura el tipo de parametro que va a ser enviado a la funcion de un
-	 * evento. Este parametro puede ser tipo 'form' o tipo 'field'
+	 * evento, este parametro puede ser tipo 'form' o tipo 'field'
 	 * 
 	 * @param $paramType	Tipo de parametro
 	 */

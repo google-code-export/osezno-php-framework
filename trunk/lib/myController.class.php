@@ -913,6 +913,8 @@ class myController {
 		
 		$nameVar = 'currentPage';
 		
+		$error = false;
+		
 		switch ($action){
 			case 'beg':
 				$numPage =0;
@@ -920,23 +922,34 @@ class myController {
 			case 'bac':
 				$numPage = $myList->getVar($nameVar)-1;
 			break;
+			case 'goto':
+				$this->notificationWindow('Opcion aun no disponible. [Pendiente]',3,'red');
+				
+				$error = true;
+			break;
 			case 'nex':
 				$numPage = $myList->getVar($nameVar)+1;
+				
+				if ($numPage>$myList->getVar('maxNumPage'))
+					$myList->setVar('maxNumPage',$numPage);
 			break;
 			case 'end':
-				$numPage =intval($myList->getVar('totalRows')/$myList->getVar('recordsPerPage'));
+				$numPage = $myList->getVar('maxNumPage');
 			break;
 		}
 		
-		$myList->setVar($nameVar,$numPage);
+		if (!$error){
+			
+			$myList->setVar($nameVar,$numPage);
 		
-		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+			$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
-		$this->assign($idList,'innerHTML',$myList->getList());
+			$this->assign($idList,'innerHTML',$myList->getList());
 		
-		$js = 'myList.clearRowsMarked();'."\n";
+			$js = 'myList.clearRowsMarked();'."\n";
 		
-		$this->script($js);
+			$this->script($js);
+		}
 		
 		return $this->response;
 	}
