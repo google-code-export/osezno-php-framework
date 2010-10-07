@@ -21,6 +21,18 @@
  */	
  class eventos extends myController {
 
+ 	/**
+ 	 * Ejemplo de evento
+ 	 * 
+ 	 * @param $params
+ 	 * @return string
+ 	 */
+ 	public function myFunction ($params){
+ 		
+ 		
+ 		return $this->response;
+ 	}
+ 	
 	
  }
 
