@@ -106,13 +106,13 @@ th, td {
 
 /** Celda del titulo de la columna cuando es ordenada **/
 .cell_title_selected {
-	background-image: url('<?= $_GET['img']; ?>col_selected.gif');
+	background-image: url('<?= $_GET['path_img']; ?>top-left.png');
 	text-align:center;
 }
 
 /** Celda del titulo de la columna **/
 .cell_title {
-	background-image: url('<?= $_GET['img']; ?>col_default.gif');
+	background-image: url('<?= $_GET['path_img']; ?>col_default.gif');
 	text-align:center;
 }
 
