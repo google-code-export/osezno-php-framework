@@ -1,0 +1,293 @@
+body {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.notification {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: white;
+}
+
+.path {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: middle;
+}
+.path:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: bold;
+	color: #YELLOW;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+.titulo_pagina {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.formulario_fieldset {
+	font-family: Verdana, Arial,Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight:bold ;
+	text-transform: uppercase;
+	padding: 3px;
+	text-align: center;
+}
+
+.etiqueta {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-align: right;
+	vertical-align: middle;
+	font-weight: bold;
+}
+.message_box {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #3F3F3F;
+	text-align: justify;
+	vertical-align: top;
+}
+
+.ttl_message_box {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #3366FF;
+	text-align: justify;
+	vertical-align: top;
+	font-weight: bold;
+}
+
+.button_message_box {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000033;
+	text-align: center;
+	vertical-align: middle;
+	padding-right: 10px;
+	padding-left: 10px;
+	text-decoration: underline;
+}
+
+.caja {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #999999;
+	vertical-align: middle;
+}
+.boton {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	vertical-align: middle;
+	padding: 3px;
+}
+
+.boton_examinar {
+	background-color: #F8F5E5;
+	cursor: text;
+	background-position: center center;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	border-top: 1px solid #B0B0B0;
+	border-right: 1px solid #B0B0B0;
+	border-bottom: 2px solid #B0B0B0;
+	border-left: 2px solid #B0B0B0;
+	text-decoration:none;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.boton_upload {
+	background-color: #CC9900;
+	cursor: text;
+	background-position: center center;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333333;
+	border-top: 1px solid #B0B0B0;
+	border-right: 1px solid #B0B0B0;
+	border-bottom: 2px solid #B0B0B0;
+	border-left: 2px solid #B0B0B0;
+	text-decoration:none;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.pestana {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.titulo_lista {
+	font-family: Verdana, Arial,Helvetica, sans-serif;
+	font-size:10px;
+	color: #000000;
+	text-transform: uppercase;
+	font-style:normal;
+	text-align:center;
+	font-weight:bold ;
+	background-color: inherit;
+	background-position:bottom left;
+	padding-bottom:3px;
+	list-style-image:inherit;
+	margin-left:auto;
+	text-shadow:#CC6633;
+}
+
+
+.fondo_fila_medio {
+  background-color: #EFECE9;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+
+.celda_seleccionada {
+	background-color: #808080;
+	cursor: text;
+	background-position: center;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	border-top: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #808080;
+	border-left: 1px solid #000000;
+    text-decoration:none;
+}
+
+.celda_opcion {
+	background-color: #CCCCCC;
+	cursor: text;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.celda_opcion:hover {
+	background-color: #537EFF;
+	cursor: text;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+
+	border-top: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #537EFF;
+	border-left: 1px solid #000000;
+}
+
+.enlaces {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.tabla_padre {
+	text-align: center;
+	vertical-align: middle;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border-bottom: 1px solid #000000;
+    text-decoration:none;
+}
+
+.tabla_iframe {
+	background-color: #FFFFFF;
+	cursor: text;
+	background-position: center;
+	text-align: center;
+	vertical-align: middle;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000000;
+	border-top: 1px solid #FFFFFF;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+	text-decoration: none;
+}
+
+.enlaces_explorador {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	color: #000000;
+	text-decoration: none;
+}
+
+.enlaces_explorador:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	color: #3399FF;
+	text-decoration: none;
+}
+
+
+/*
+ * Helpers CSS
+ */
+ .suggestion_list {
+ 	background: white;
+ 	border: 1px solid;
+ 	padding: 2px;
+ 	border-color: gray;
+ }
+
+ .suggestion_list ul {
+ 	padding: 0;
+ 	margin: 0;
+ 	list-style-type: none;
+ 	text-align: left;
+ 	font-family: sans-serif;
+ 	font-size: 12;
+ 	color: gray;
+ }
+
+ .suggestion_list a {
+ 	text-decoration: none;
+ 	color: navy;
+ }
+
+ .suggestion_list .selected {
+ 	background: gray;
+ 	color: white;
+ }
+
+ .suggestion_list .selected a {
+ 	color: white;
+ }
+
+ #autosuggest {
+ 	display: none;
+ }
