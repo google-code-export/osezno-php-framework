@@ -59,22 +59,13 @@ class osezno {
   	private $objxAjax;
   	
   	/**
-  	 * Nombre del tema de estilos que se usa en el framework
-  	 * 
-  	 * @var string
-  	 */
-  	private $theme;
-  	
-  	/**
   	 * Contructor de la clase
   	 * Define caracteristicas iniciales del proyecto
   	 * para que este pueda comenzar a ser usado
   	 *
   	 */
-  	public function __construct($objxAjax, $theme){
+  	public function __construct($objxAjax = ''){
   		
-  		$this->theme = $theme;
-
   		$this->folderProject = $GLOBALS['folderProject'];
   		
   		$this->urlProject = $GLOBALS['urlProject'];
@@ -126,16 +117,6 @@ class osezno {
 		URL_JS_MC.
 		'"></script>';
 		
-		$this->arrayAssignAreasHead['string_css_common']     
-		= '<link href="'.
-		URL_CSS_TPL.
-		'" rel="stylesheet" type="text/css" />';
-
-		$this->arrayAssignAreasHead['string_css_calendar']     
-		= '<link href="'.
-		URL_CSS_CAL.
-		'" rel="stylesheet" type="text/css" />';
-		
 		$this->arrayAssignAreasBody['string_js_tooltip']     
 		= '<script type="text/javascript" src="'.
 		URL_JS_TT.
@@ -146,6 +127,28 @@ class osezno {
 		URL_JS_TB.
 		'"></script>';
 
+		/**
+		 * Llamar a las diferentes hojas de estilos
+		 */
+		
+		$this->arrayAssignAreasHead['string_css_calendar']
+		= '<link href="'.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/calendar/style.css.php?path_img='.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/calendar/'.
+		'" rel="stylesheet" type="text/css" />';
+
+		$this->arrayAssignAreasHead['string_css_mylist']     
+		= '<link href="'.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/mylist/style.css.php?path_img='.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/mylist/'.
+		'" rel="stylesheet" type="text/css" />';
+		
+		$this->arrayAssignAreasHead['string_css_message_box']     
+		= '<link href="'.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/message_box/style.css.php?path_img='.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/message_box/'.
+		'" rel="stylesheet" type="text/css" />';
+		
+/*
+		$this->arrayAssignAreasHead['string_css_calendar']     
+		= '<link href="'.
+		URL_CSS_CAL.
+		'" rel="stylesheet" type="text/css" />';
+		*/
   	}
   	
   	/**
@@ -224,6 +227,7 @@ class osezno {
   		
   		return $toReturn;
   	}
+
   	
   	/**
   	 * Muestra la plantilla seleccionada

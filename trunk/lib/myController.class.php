@@ -1,4 +1,35 @@
 <?php
+
+
+class myControllerExt {
+	
+  	/**
+  	 * Retorna un contenido HTML desde un archivo plano
+  	 * 
+  	 * @param $file	Nombre del archivo fisico
+  	 * @param $arrayReplacement	Arreglo con valores que desea reemplazar
+  	 * @return string
+  	 */
+  	protected function loadHtmlFromFile ($file, $arrayReplacement = ''){
+		
+		$gestor = fopen($file, "r");
+		
+		$contenido = fread($gestor, filesize($file));
+		
+  		if (is_array($arrayReplacement)){
+  			$arrayKeys = array_keys($arrayReplacement);
+  			
+			$contenido = str_ireplace ( $arrayKeys, $arrayReplacement, $contenido);  			
+  		}
+		
+		fclose($gestor);
+  		
+		return $contenido;
+  	}
+	
+}
+
+
 /**
  * myHandlerEvent
  * 
@@ -12,7 +43,7 @@
  * en la aplicacion.
  *
  */
-class myController {
+class myController extends myControllerExt {
 
 	/**
 	 * Objeto de xajax pasado como referencia del Original
@@ -756,6 +787,18 @@ class myController {
 	 * @param  string: Icono que se va a mostra; INFO, WARNING, ERROR, QUESTION 
 	 */	
 	public function messageBox($strNomForm = '', $msg = '', $mixedButtons = array(), $iconMsg = ''){
+		
+
+		$arRepl = array (
+			'{titl_msg}'=>'Hola',
+			'{height_msg_box}'=>$this->heightMessageBox,
+			'{width_msg_box}'=>$this->widthMessageBox,
+			'{cont_msg_box}'=>str_replace("\n",'<br>',$msg)
+		);
+		
+		$html = $this->loadHtmlFromFile($file = $GLOBALS['folderProject'].'/css/themes/'.THEME_NAME.'/message_box/message_box.tpl',$arRepl);
+		
+		/*
 		$objMyForm = new myForm;
 		$objMyForm->NomForm = $strNomForm;
 
@@ -862,11 +905,12 @@ class myController {
 		$tabla.= '</table></td><td '.$bgMr.'>&nbsp;</td></tr><tr><td height="14" '.$bgDl.'></td><td '.$bgDc.'></td><td '.$bgDr.'></td></tr></table></span>';
 
 		$html = '<div id="message_box">'.$tabla.'</div>';
-				
-        $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $width, $height);
+		*/
+        $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, 450, 100);
 		
-        if ($primerButton)
-   			$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
+        //if ($primerButton)
+   			//$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
+		//$this->alert($html);
 	}
 
 	/**

@@ -256,16 +256,6 @@
   define ('URL_JS_MC',       $http.$httpHost.'/javascript/myCalendar.js',true);
   
   /**
-   * Ruta tipo url donde se descarga la hoja de estilos de la pagina
-   */
-  define ('URL_CSS_TPL',     $http.$httpHost.'/css/css.css',true);
-  
-  /**
-   *  
-   */
-  define ('URL_CSS_CAL',     $http.$httpHost.'/css/calendar/calendar.css',true);
-  
-  /**
    * Ruta tipo url donde se descarga el favicon del proyecto
    */
   define ('URL_FAV_ICON',    $http.$httpHost.'/favicon.ico',true);
