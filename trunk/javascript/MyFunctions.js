@@ -98,7 +98,7 @@
 
   xajax.callback.global.beforeResponseProcessing = function() {
     
-    desvanecerCallBack ('notification','imagen_notificacion',30);
+    desvanecerCallBack ('notification','imagen_notificacion',10);
 
     var el = document.getElementById('notification');
     var padre = el.parentNode;

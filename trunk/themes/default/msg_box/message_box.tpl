@@ -8,7 +8,7 @@
 					<tr>
 						<td width="5%">&nbsp;</td>
 						<td width="90%" class="tit_msg_box">{titl_msg}</td>
-						<td width="5%"><a href="javascript:;" onclick="closeModalWindow()">X</a></td>
+						<td width="5%"><a href="javascript:;" onclick="closeModalWindow()"><div class="buttom_close"></div></a></td>
 					</tr>
 				</table>
 				
@@ -24,7 +24,7 @@
 						<td valign="top">
 							<table height="100%" border="0" cellpadign="0" cellspacing="0" border="0">
 								<tr>
-									<td width="15%" align="center" valign="middle"><img src="{src_img}"></td>
+									<td width="15%" align="center" valign="middle"><div class="{class_div_img}"></div></td>
 		   							<td width="85%" valign="top"><div class="cont_msg_box">{cont_msg_box}</div></td>
 								</tr>
 							</table>
@@ -33,7 +33,7 @@
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
-						<td align="center"><br><form id="message_box_buttons" name="message_box_buttons"></form></td>
+						<td align="center"><br><form id="message_box_buttons" name="message_box_buttons">{cont_form}</form></td>
 						<td>&nbsp;</td>
 					</tr>
 				</table>
