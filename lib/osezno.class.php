@@ -132,15 +132,15 @@ class osezno {
 		 */
 		
 		$this->arrayAssignAreasHead['string_css_calendar']
-		= '<link href="'.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/calendar/style.css.php?path_img='.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/calendar/'.
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_mylist']     
-		= '<link href="'.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/mylist/style.css.php?path_img='.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/mylist/'.
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 		$this->arrayAssignAreasHead['string_css_message_box']     
-		= '<link href="'.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/message_box/style.css.php?path_img='.$GLOBALS['urlProject'].'/css/themes/'.THEME_NAME.'/message_box/'.
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 /*

@@ -780,42 +780,22 @@ class myController extends myControllerExt {
 	 * caja de mensaje (messageBox). Es caja de mensaje
 	 * tiene la posibilidad de tener uno o mas botones,
 	 * iconos de acuerdo al tipo de mensaje, texto, ect
-	 * 
-	 * @param  string: Nombre del formulario que abre la caja de mensaje
+	 *
 	 * @param  string: Mensaje
+	 * @param  string: Icono que se va a mostra; img_critical, img_error, img_help, img_info, img_list, img_user, img_warning
 	 * @param  array:  Arreglo de los botones que pueda tener la caja de mensaje 
-	 * @param  string: Icono que se va a mostra; INFO, WARNING, ERROR, QUESTION 
+	 * @param  string: Nombre del formulario que abre la caja de mensaje
 	 */	
-	public function messageBox($strNomForm = '', $msg = '', $mixedButtons = array(), $iconMsg = ''){
+	public function messageBox($msg = '', $iconMsg = '', $mixedButtons = array(), $strNomForm = ''){
 		
-
-		$arRepl = array (
-			'{titl_msg}'=>'Hola',
-			'{height_msg_box}'=>$this->heightMessageBox,
-			'{width_msg_box}'=>$this->widthMessageBox,
-			'{cont_msg_box}'=>str_replace("\n",'<br>',$msg)
+		$arrImg = array (
+			'img_critical','img_error','img_help','img_info','img_list','img_user','img_warning'
 		);
 		
-		$html = $this->loadHtmlFromFile($file = $GLOBALS['folderProject'].'/css/themes/'.THEME_NAME.'/message_box/message_box.tpl',$arRepl);
+		if (!isset($arrImg[$iconMsg]))
+			$iconMsg = 'img_info';
 		
-		/*
-		$objMyForm = new myForm;
-		$objMyForm->NomForm = $strNomForm;
-
-		$arrayTiposImagenes = array(
-		  'INFO' => '../../img/message_box/msg_box_info.png',
-		  'WARNING' => '../../img/message_box/msg_box_warning.png',
-		  'ERROR' => '../../img/message_box/msg_box_error.png',
-		  'QUESTION' => '../../img/message_box/msg_box_question.png'
-		);
-				
-		$arrayTiposTitulos = array(
-		  'INFO' => 'Información para el Usuario',
-		  'WARNING' => 'Advertencia del Sistema',
-		  'ERROR' => 'Error del Sistema',
-		  'QUESTION' => 'Toma de decisión',
-		  '' => 'Mensaje del Sistema'
-		);
+		$file = $GLOBALS['folderProject'].'/themes/'.THEME_NAME.'/msg_box/message_box.tpl';
 
 		if (!$this->widthMessageBox)
 		  $width = 450;
@@ -827,90 +807,54 @@ class myController extends myControllerExt {
                  if ($height<100)
                    $height = 100;
 		}else
-		  $height = $this->heightMessageBox;
-                  
-		$tabla = '';
+		  $height = $this->heightMessageBox;		
 
-		$bgTl = 'background="../../img/message_box/top-left.png"';
-		$bgTc = 'background="../../img/message_box/top-middle.png"';
-		$bgTr = 'background="../../img/message_box/top-right.png"';
+		$frm = '';
 		
-		$bgMl = 'background="../../img/message_box/left.png"';
-		$bgMc = 'background="../../img/message_box/gradient-bg.png"';
-		$bgMr = 'background="../../img/message_box/right.png"';
-		
-		$bgDl = 'background="../../img/message_box/bottom-left.png"';
-		$bgDc = 'background="../../img/message_box/bottom-middle.png"';
-		$bgDr = 'background="../../img/message_box/bottom-right.png"';
-		
-		$srcCw = '<a href="javascript:;" onclick="closeModalWindow()"><img border="0" src="../../img/message_box/button-close.png"></a>';
-		$srcOz = '<img border="0" src="../../img/message_box/huella.gif">';
-		
-		
-		$tabla.= '<span><table border="0" cellpadign="0" cellspacing="0">';
-		$tabla.='<tr><td '.$bgTl.'></td>';
-		$tabla.='<td '.$bgTc.' onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">';
-		$tabla.='<table border="0" cellpadign="0" cellspacing="0"><tr><td width="5%">'.$srcOz.'</td><td width="95%" class="'.$this->class_name_msg_ttl.'">'.$arrayTiposTitulos[$iconMsg].'</td>';
-		$tabla.='<td width="10%">'.$srcCw.'</td></tr></table></td>';
-		$tabla.='<td width="20" '.$bgTr.'>&nbsp;&nbsp;&nbsp;</td></tr>';
-		$tabla.='<tr><td '.$bgMl.'>&nbsp;</td><td '.$bgMc.'>';
-		$tabla.='<table height="'.$height.'" width="'.($width).'" border="0" cellpadign="0" cellspacing="0" '.$bgMc.'>';
-		$tabla.= '<tr>';
-		$tabla.= '<td>&nbsp;</td>';
-		$tabla.= '<td valign="top">';
+		$objMyForm = new myForm;
+		$objMyForm->NomForm = $strNomForm;
 
-				
-		$tabla.= '<table height="100%" border="0" cellpadign="0" cellspacing="0" border="0">';
-		$tabla.= '<tr>';
-		if ($iconMsg){
-		   $tabla.= '<td width="15%" align="center" valign="middle"><img src="'.$arrayTiposImagenes[$iconMsg].'"></td>';
-		   $tabla.= '<td width="85%" valign="top"><div class="'.$this->class_name_msg_content.'">'.str_replace("\n",'<br>',$msg).'</div></td>';
-		}else{
-		   $tabla.= '<td valign="top"><div style="vertical-align:top" class="'.$this->class_name_msg_content.'">'.str_replace("\n",'<br>',$msg).'</div></td>';	
-		}
-
-		$tabla.= '</tr>';
-		$tabla.= '</table>';
-				
-		$tabla.= '</td>';
-		$tabla.= '<td>&nbsp;</td>';
-		$tabla.= '</tr>';
-				
-		$tabla.= '<tr>';
-		$tabla.= '<td>&nbsp;</td>';
-		$tabla.= '<td align="center"><br><form id="message_box_buttons" name="message_box_buttons">';
-				
+		$objMyForm->styleClassButtons = $this->class_name_msg_buttons;
+		
 		$primerButton = '';
-		if (is_array($mixedButtons)){
-		  foreach($mixedButtons as $etq=>$action){
+		if (count($mixedButtons)){
+		  
+			foreach($mixedButtons as $etq=>$action){
+
 		  	if (!$action)
-		  	 $action = 'closeModalWindow()';
+		  	   $action = 'closeModalWindow()';
+
 		  	$nameButton = 'bmbx_'.strtolower(trim($etq)); 
 				  	
-		  	$objMyForm->styleClassButtons = $this->class_name_msg_buttons;
-				  	
-		  	
-		  	$tabla .= $objMyForm->getButton($nameButton,$etq,$action);	
-		  	$tabla .= '&nbsp;&nbsp;&nbsp;';
+		  	$frm .= $objMyForm->getButton($nameButton,$etq,$action);	
+		  	$frm .= '&nbsp;&nbsp;&nbsp;';
 				  	
 		 	if (!$primerButton)
-		  	 $primerButton = $nameButton;
+		  	   $primerButton = $nameButton;
 		  }
+		}else{
+			$etq = MSGBOX_STR_UNI_BUTTON;
+			
+			$nameButton = 'bmbx_'.strtolower(trim($etq));
+			
+			$frm .= $objMyForm->getButton($nameButton,$etq,'closeModalWindow()');
 		}
-								
-		$tabla.= '</form></td>';
-		$tabla.= '<td>&nbsp;</td>';
-		$tabla.= '</tr>';
-				
-		$tabla.= '</table></td><td '.$bgMr.'>&nbsp;</td></tr><tr><td height="14" '.$bgDl.'></td><td '.$bgDc.'></td><td '.$bgDr.'></td></tr></table></span>';
 
-		$html = '<div id="message_box">'.$tabla.'</div>';
-		*/
-        $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, 450, 100);
+		$arRepl = array (
+			'{titl_msg}'=>MSGBOX_TITLE,
+			'{height_msg_box}'=>$height,
+			'{width_msg_box}'=>$width,
+			'{cont_msg_box}'=>str_replace("\n",'<br>',$msg),
+			'{class_div_img}'=>$iconMsg,
+			'{cont_form}'=>$frm
+		);		
 		
-        //if ($primerButton)
-   			//$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
-		//$this->alert($html);
+		$html = $this->loadHtmlFromFile($file, $arRepl);
+		
+        $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',5, $width, $height);
+		
+        if ($primerButton)
+   			$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
 	}
 
 	/**

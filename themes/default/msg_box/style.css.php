@@ -1,5 +1,85 @@
 @CHARSET "ISO-8859-1";
 
+/** Imagen msg_box_critical.gif **/
+.img_critical {
+	background-image: url('<?= $_GET['path_img']; ?>msg_box_critical.gif');
+	height: 50px;
+	width: 50px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/** Imagen msg_box_error.gif **/
+.img_error {
+	background-image: url('<?= $_GET['path_img']; ?>msg_box_error.gif');
+	height: 50px;
+	width: 50px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/** Imagen msg_box_help.gif **/
+.img_help {
+	background-image: url('<?= $_GET['path_img']; ?>msg_box_help.gif');
+	height: 50px;
+	width: 50px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/** Imagen msg_box_info.gif **/
+.img_info {
+	background-image: url('<?= $_GET['path_img']; ?>msg_box_info.gif');
+	height: 50px;
+	width: 50px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/** Imagen msg_box_list.gif **/
+.img_list {
+	background-image: url('<?= $_GET['path_img']; ?>msg_box_list.gif');
+	height: 50px;
+	width: 50px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/** Imagen msg_box_user.gif **/
+.img_user {
+	background-image: url('<?= $_GET['path_img']; ?>msg_box_user.gif');
+	height: 50px;
+	width: 50px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/** Imagen msg_box_warning.gif **/
+.img_warning {
+	background-image: url('<?= $_GET['path_img']; ?>msg_box_warning.gif');
+	height: 50px;
+	width: 50px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/** Boton cerrar **/
+.buttom_close {
+	background-image: url('<?= $_GET['path_img']; ?>button-close.gif');
+	height: 9px;
+	width: 15px;
+	position: absolute;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
 /** Esquina superior izq **/
 .top_left {
 	background-image: url('<?= $_GET['path_img']; ?>top-left.gif');
@@ -48,17 +128,31 @@
 /** Titulo del messagebox **/
 .tit_msg_box {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	font-style: bold;
+	font-size: 15px;
+	font-weight:bold;
+	font-style:none;
 	text-decoration: none;
-	text-align:center;
+	text-align:left;
+	color:#666666;
+	text-shadow:#333333;
 }
 
 /** Contenido del texto del messagebox **/
 .cont_msg_box {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	font-style: bold;
+	font-size: 12px;
 	text-decoration: none;
 	text-align:justify;
+}
+
+/** Estilo de los botones del msg box **/
+.button_message_box{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000033;
+	text-align: center;
+	vertical-align: middle;
+	padding-right: 10px;
+	padding-left: 10px;
+	text-decoration: underline;
 }

@@ -26,9 +26,9 @@
 		
 		$objMyForm = new myForm('prueba','procesarFormulario');
 		
-		$objMyForm->addText('Fecha:','fecha',date('Y-m-d'),10,10,true,true);
+		//$objMyForm->addText('Fecha:','fecha',date('Y-m-d'),10,10,true,true);
 		
-		$objMyForm->width = 300;
+		//$objMyForm->width = 300;
 		
 		$objMyForm->strSubmit = 'Enviar';
 		
