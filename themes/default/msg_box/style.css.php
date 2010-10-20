@@ -2,58 +2,48 @@
 
 /** Esquina superior izq **/
 .top_left {
-	background-image: url('<?= $_GET['path_img']; ?>top-left.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>top-left.gif');
 }
 
 /** Esquina superior centro **/
 .top_center {
-	background-image: url('<?= $_GET['path_img']; ?>top-middle.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>top-middle.gif');
 }
 
 /** Esquina superior Der **/
 .top_right {
-	background-image: url('<?= $_GET['path_img']; ?>top-right.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>top-right.gif');
 }
 
 /** Centro izq **/
 .center_left {
-	background-image: url('<?= $_GET['path_img']; ?>left.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>left.gif');
 }
 
 /** Centro medio **/
 .center_middle {
-	background-image: url('<?= $_GET['path_img']; ?>gradient-bg.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>gradient-bg.gif');
 }
 
 /** Esquina superior Der **/
 .center_right {
-	background-image: url('<?= $_GET['path_img']; ?>right.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>right.gif');
 }
 
 /** Base izq **/
 .bottom_left {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-left.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>bottom-left.gif');
 }
 
 /** Base centro **/
 .bottom_center {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-middle.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>bottom-middle.gif');
 }
 
 /** Base Der **/
 .bottom_right {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-right.png');
-	text-align:center;
+	background-image: url('<?= $_GET['path_img']; ?>bottom-right.gif');
 }
-
 
 /** Titulo del messagebox **/
 .tit_msg_box {
