@@ -32,6 +32,18 @@
 		
 		$objMyForm->strSubmit = 'Enviar';
 		
+		$objMyForm->addButton('word','Word','alert','word.gif');
+		
+		$objMyForm->addButton('excel','Excel','alert','excel.gif');
+		
+		$objMyForm->addButton('ok','Ok','alert','ok.gif');
+		
+		$objMyForm->addButton('cancel','Cancel','alert','cancel.gif');
+		
+		$objMyForm->addButton('list','Grid','alert','list.gif');
+		
+		$objMyForm->width = 550;
+		
 		return $objMyForm->getForm(1);
 	} 	
  	
