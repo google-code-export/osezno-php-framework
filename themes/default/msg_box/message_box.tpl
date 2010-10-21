@@ -1,5 +1,5 @@
 <div id="message_box">
-<table border="0" cellpadign="0" cellspacing="0" height="{height_msg_box}" width="{width_msg_box}">
+<table border="0" cellspacing="0" cellpadding="0" height="{height_msg_box}" width="{width_msg_box}">
 		<tr>
 			<td class="top_left" width="5">&nbsp;</td>
 			<td class="top_center" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor='move'">
