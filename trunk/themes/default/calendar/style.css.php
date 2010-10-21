@@ -65,9 +65,9 @@
 }
 
 .calmain {
-	#background-color: white;
-	#border-style: solid;
-	#border-color: green;
-	#border-width: 1px;
+	/* background-color: white; */
+	/* border-style: solid; */
+	/* border-color: green; */
+	/* border-width: 1px; */
 }
 

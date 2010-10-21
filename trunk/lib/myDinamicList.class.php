@@ -557,7 +557,7 @@ class myList  {
 		
 		if ($this->errorSql){
 			
-			$buf .= '<div class="error_sql_list"><b>Error: </b>'.$this->objConn->getErrorLog().'<br><br><div class="error_sql_list_detail"><b>Query:</b> '.$this->objConn->getSqlLog().'</div></div>';
+			$buf .= '<div class="error"><b>Error: </b>'.$this->objConn->getErrorLog().'<br><br><div class="error_detail"><b>Query:</b> '.$this->objConn->getSqlLog().'</div></div>';
 		
 		}else{
 			

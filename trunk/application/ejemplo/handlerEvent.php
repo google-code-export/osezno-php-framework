@@ -72,12 +72,14 @@
  		
  		$this->notificationWindow('Nueva ventana...',2);
  		*/
- 		//$this->messageBox(NULL,'text text text text text text text text text text text text text text text text text text text text text ');
+
+		//$this->messageBox('text text text text text text text text text text text text text text text text text text text text text ');
  		
  		//$this->modalWindow('hola','Hola',100,600,2);
  		
-
- 		//$this->modalWindowFromUrl('index.php','Yahoo',400,400);
+ 		//$this->modalWindowFromUrl('index.php2','Yahoo',400,400);
+ 		
+ 		$this->errorBox('lkjflskdj lksdjf ','Error en la consulta sql');
  		
  		return $this->response;
  	}

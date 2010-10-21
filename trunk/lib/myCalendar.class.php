@@ -15,24 +15,29 @@
 		
 		private $format = 'Y-m-d';
 		
-		
 		private $arrDsem = array (
-			1=>'L',2=>'M',3=>'M',4=>'J',5=>'V',6=>'S', 7=>'D'
+			1=>CAL_DAY1_LABEL,
+			2=>CAL_DAY2_LABEL,
+			3=>CAL_DAY3_LABEL,
+			4=>CAL_DAY4_LABEL,
+			5=>CAL_DAY5_LABEL,
+			6=>CAL_DAY6_LABEL,
+			7=>CAL_DAY7_LABEL
 		);
 		
 		private $arrMonth = array (
-			1=> 'Enero',
-			2=> 'Febrero',
-			3=> 'Marzo',
-			4=> 'Abril',
-			5=> 'Mayo',
-			6=> 'Junio',
-			7=> 'Julio',
-			8=> 'Agosto',
-			9=> 'Septiembre',
-			10=>'Octubre',
-			11=>'Noviembre',
-			12=>'Diciembre'
+			1=> CAL_MONTH1_LABEL,
+			2=> CAL_MONTH2_LABEL,
+			3=> CAL_MONTH3_LABEL,
+			4=> CAL_MONTH4_LABEL,
+			5=> CAL_MONTH5_LABEL,
+			6=> CAL_MONTH6_LABEL,
+			7=> CAL_MONTH7_LABEL,
+			8=> CAL_MONTH8_LABEL,
+			9=> CAL_MONTH9_LABEL,
+			10=>CAL_MONTH10_LABEL,
+			11=>CAL_MONTH11_LABEL,
+			12=>CAL_MONTH12_LABEL
 		);
 		
 		private $arrYears = array ();
@@ -72,7 +77,7 @@
 			$htm .= '<table cellpadding="1" cellspacing="1" border=0>';
 			
 			$htm .= '<tr>';
-				$htm .= '<td class="celldays">SM</td>';
+				$htm .= '<td class="celldays">'.CAL_WK_LABEL.'</td>';
 			
 			foreach ($this->arrDsem as $id => $le){
 				$htm .= '<td class="celldays">'.$le.'</td>';
