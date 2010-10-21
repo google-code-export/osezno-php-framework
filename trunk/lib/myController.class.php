@@ -112,6 +112,11 @@ class myController extends myControllerExt {
 	   'modalWindow','closeModalWindow'
 	);
 	
+	/**
+	 * Id de la ultima modal window abierta
+     */
+	private $idLastMWopen = '';
+	
 	
 	/**
  	 * Define el alto de la caja de
@@ -646,28 +651,53 @@ class myController extends myControllerExt {
 	
 	
 	/**
-	 * Cierra una ventana modal
-	 *
+	 * Cierra una venta modal
+	 * 
+	 * @return string
 	 */
-	public function closeModalWindow ($divName){
+	public function closeModalWindow (){
 		$_SESSION['lb_widgets']--;
 		$this->response->script('xajax.closeWindow()');
 	}
+
+	/**
+	 * Lanza una ventana modal al igual que modalWindow pero da la opcion de usar una ruta a un script para cargar su contenido desde alli.
+	 * 
+	 * @param $url	Url del script o pagina dentro del servidor al que hace referencia
+	 * @param $title	Titulo de la ventana
+	 * @param $width	Ancho en px
+	 * @param $height	Alto en px
+	 * @param $effect	Efecto de transicion
+	 * 
+	 * @return string
+	 */
+	public function modalWindowFromUrl ($url = '', $title = '', $width = 200, $height = 200, $effect = ''){
+		
+		$this->modalWindow('', $title, $width, $height, $effect);
+		
+		$this->response->script('callUrlAsin("'.$url.'","'.$this->idLastMWopen.'_work")');
+	}
 	
 	/**
-	 * Abre una nueva ventana modal
-	 *
-	 * @param string $htmlContent	Contenido html de la ventana modal
-	 * @param string $title			Titulo de la cventana modal
+	 * Lanza una ventana tipo modal
+	 * 
+	 * @param $htmlContent	Contenido html
+	 * @param $title	Titulo de la ventana
+	 * @param $width	Ancho en px
+	 * @param $height	Alto en px
+	 * @param $effect	Efecto de transicion 1 o 2
+	 * 
+	 * @return string
 	 */
-	public function modalWindow($htmlContent = '', $title = '', $windth = 200, $height = 200, $effect = ''){
+	public function modalWindow($htmlContent = '', $title = '', $width = 200, $height = 200, $effect = ''){
+		
 		$tabla = '';
 		
-		$windthC = ($windth-9);
+		$widthC = ($width-9);
 		
 		$nameFuntionEffect = '';
 		
-		$divName = 'mw_'.date("His");
+		$this->idLastMWopen = 'mw_'.date("His");
 		
 		$arrayEffects = array (
 			'curtain' => 'curtain',
@@ -679,88 +709,55 @@ class myController extends myControllerExt {
 		$tablaDisplay = '';
 		$tablaOpacity = '';
 		
-		if ($windth){
-			$tablaWidth = 'WIDTH: '.$windth.'px;';
+
+		$file = $GLOBALS['folderProject'].'/themes/'.THEME_NAME.'/modal_window/modal_window.tpl';
 		
-			if ($height){
+		$arRepl = array (
+			'{div_name}'=>$this->idLastMWopen,
+			'{tabla_width}'=>$width,
+			'{tabla_height}'=>$height,
+			'{tabla_display}'=>$tablaDisplay,
+			'{tabla_opacity}'=>$tablaOpacity,
+			'{div_height}'=>'',
+			'{html_title}'=>$title,
+			'{width_area}'=>($width-21),
+			'{height_area}'=>($height-52),
+			'{height_main}'=>($height-52),
+			'{html_content}'=>$htmlContent
+		);
+		
+		if ($effect){
 
-				$tablaHeight = 'HEIGHT: '.$height.'px;';
-				
-				if ($effect){
-					switch ($arrayEffects[$effect]){
-						case 'curtain':
+			switch ($arrayEffects[$effect]){
+					case 'curtain':
 					
-
-							$nameFuntionEffect = 'curtain'; 
-							$ini_height = 0;
+						$nameFuntionEffect = 'curtain'; 
+						$ini_height = 40;
 					
-							$tablaHeight = 'HEIGHT: 40px;';
-						break;
-						case 'ghost':
+						$arRepl['{div_height}'] = 'HEIGHT:40px;';
+					break;
+					case 'ghost':
 							
-							if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
-								$tablaOpacity = 'filter: alpha(opacity=100);';
-							}else{
-								$tablaOpacity = 'opacity: 0;';
-							}
+						if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
+							$tablaOpacity = 'filter: alpha(opacity=100);';
+						}else{
+							$tablaOpacity = 'opacity: 0;';
+						}
 						
-							$nameFuntionEffect = 'desvanecer';
-							$ini_height = 0;
+						$nameFuntionEffect = 'desvanecer';
+						$ini_height = 0;
 							
-						break;	
-					}
-				}
+					break;	
 			}
-		}
+			
+		}		
 		
-		$ext = '.gif';
-		//$ext = '.png';
+		$html = $this->loadHtmlFromFile($file, $arRepl);
 		
-		$bgTl = 'background="../../img/modal_window/top-left'.$ext.'"';
-		$bgTc = 'background="../../img/modal_window/top-middle'.$ext.'"';
-		$bgTr = 'background="../../img/modal_window/top-right'.$ext.'"';
-		
-		$bgMl = 'background="../../img/modal_window/left'.$ext.'"';
-		$bgMc = 'background="../../img/modal_window/gradient-bg.png"';
-		$bgMr = 'background="../../img/modal_window/right'.$ext.'"';
-		
-		$bgDl = 'background="../../img/modal_window/bottom-left'.$ext.'"';
-		$bgDc = 'background="../../img/modal_window/bottom-middle'.$ext.'"';
-		$bgDr = 'background="../../img/modal_window/bottom-right'.$ext.'"';
-		
-		$srcCw = '<a href="javascript:;" onclick="closeModalWindow()"><img border="0" src="../../img/modal_window/button-close.png"></a>';
-		$srcOz = '<img border="0" src="../../img/modal_window/huella.gif">';
-		
-		$html = '';
-
-		$htmlTitle = '';
-		
-		$htmlTitle .= '<table border="0" width="100%" cellpadign="0" cellspacing="0">';
-		$htmlTitle .= '<tr><td width="5%" align="left">'.$srcOz.'</td><td width="90%" class="'.$this->class_name_msg_ttl.'">'.$title.'</td><td width="5%" align="rigth">'.$srcCw.'</td></tr>';
-		$htmlTitle .= '</table>';
-		
-		$html .= '<div id="'.$divName.'" style="overflow: hidden;'.$tablaWidth.$tablaHeight.$tablaDisplay.$tablaOpacity.'">';
-		$html .= '<table border="0" width="100%" height="100%" cellpadign="0" cellspacing="0">';
-		
-		$html .= '<tr><td '.$bgTl.' width="7" height="10">&nbsp;</td>';
-		$html .= '<td '.$bgTc.' width="'.$windthC.'" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor=\'move\'">'.$htmlTitle.'</td>';
-		$html .= '<td '.$bgTr.' width="13">&nbsp;</td></tr>';
-
-		$html .= '<tr><td '.$bgMl.'>&nbsp;</td>';
-		$html .= '<td '.$bgMc.' valign="top" align="left"><div style="WIDTH: '.($windth-50).'px;HEIGHT: '.($height-70).'px;overflow: auto;">'.$htmlContent.'</div></td>';
-		$html .= '<td '.$bgMr.'>&nbsp;</td></tr>';
-		
-		$html .= '<tr><td '.$bgDl.' height="15"></td>';
-		$html .= '<td '.$bgDc.' height="15"></td>';
-		$html .= '<td '.$bgDr.' height="15"></td></tr>';
-		
-		$html .= '</table>';
-		$html .= '</div>';
-		
-		$this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $windth, $height);
+		$this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $width, $height);
 		
 		if ($nameFuntionEffect){
-			$this->response->script($nameFuntionEffect.'(\''.$divName.'\','.$windth.','.$height.','.$ini_height.');');
+			$this->response->script($nameFuntionEffect.'(\''.$this->idLastMWopen.'\','.$width.','.$height.','.$ini_height.');');
 		}
 		
 	}

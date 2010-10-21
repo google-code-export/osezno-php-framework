@@ -72,7 +72,12 @@
  		
  		$this->notificationWindow('Nueva ventana...',2);
  		*/
- 		$this->messageBox(NULL,'text text text text text text text text text text text text text text text text text text text text text ');
+ 		//$this->messageBox(NULL,'text text text text text text text text text text text text text text text text text text text text text ');
+ 		
+ 		//$this->modalWindow('hola','Hola',100,600,2);
+ 		
+
+ 		//$this->modalWindowFromUrl('index.php','Yahoo',400,400);
  		
  		return $this->response;
  	}

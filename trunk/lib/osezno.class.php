@@ -130,7 +130,6 @@ class osezno {
 		/**
 		 * Llamar a las diferentes hojas de estilos
 		 */
-		
 		$this->arrayAssignAreasHead['string_css_calendar']
 		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/'.
 		'" rel="stylesheet" type="text/css" />';
@@ -143,12 +142,10 @@ class osezno {
 		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/'.
 		'" rel="stylesheet" type="text/css" />';
 		
-/*
-		$this->arrayAssignAreasHead['string_css_calendar']     
-		= '<link href="'.
-		URL_CSS_CAL.
+		$this->arrayAssignAreasHead['string_css_modal_window']     
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/'.
 		'" rel="stylesheet" type="text/css" />';
-		*/
+
   	}
   	
   	/**

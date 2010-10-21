@@ -139,7 +139,7 @@ function curtain (idMw, intWidth, intHeight, cont){
 	  cont += 5;
 	}
 	
-	if (cont<intHeight){
+	if (cont<=intHeight){
 		 
 		if(ie){
 			document.all[idMw].style.height=cont;

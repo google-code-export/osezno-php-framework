@@ -154,5 +154,5 @@
 	vertical-align: middle;
 	padding-right: 10px;
 	padding-left: 10px;
-	text-decoration: underline;
+	text-decoration: none;
 }
