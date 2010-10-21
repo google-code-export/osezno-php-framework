@@ -138,6 +138,10 @@ class osezno {
 		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/'.
 		'" rel="stylesheet" type="text/css" />';
 		
+		$this->arrayAssignAreasHead['string_css_myform']     
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/myform/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/myform/'.
+		'" rel="stylesheet" type="text/css" />';
+		
 		$this->arrayAssignAreasHead['string_css_message_box']     
 		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/'.
 		'" rel="stylesheet" type="text/css" />';

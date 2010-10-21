@@ -810,7 +810,7 @@ class myController extends myControllerExt {
 		if (!$this->heightMessageBox){
              $height = intval(strlen($msg)/55)*23;
                  if ($height<100)
-                   $height = 220;
+                   $height = 200;
 		}else
 		  $height = $this->heightMessageBox;		
 
@@ -877,7 +877,7 @@ class myController extends myControllerExt {
 		if ($detail)
 			$htmDet = '<br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b>&nbsp;'.$detail.'</div>';
 		
-		$html = '<br><div align="center" class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.$error.'<br>'.$htmDet.'</div>';
+		$html = '<div align="center" class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.$error.'<br>'.$htmDet.'</div>';
 		
 		$this->messageBox($html,'error');
 	}

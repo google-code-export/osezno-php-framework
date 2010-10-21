@@ -433,14 +433,14 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $srcImageMainButton = 'save.png';
+	public $srcImageMainButton = 'save.gif';
 
 	/**
 	 * Ruta de la Imagen que acompana el boton de cada uno de los Controles de calendario
 	 *
 	 * @var string
 	 */
-	public $srcImageCalendarButton  = 'calendar.png';
+	public $srcImageCalendarButton  = 'calendar.gif';
 
 	/**
 	 * Nombre del boton que envia la informacion del Formulario
@@ -454,7 +454,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $pathImages = '/img/my_form/';
+	private $pathImages;
 	
 	/**
 	 * Etiqueta de la primera opcion por select
@@ -923,6 +923,8 @@ class myForm {
 	 */
 	public function __construct($name = '', $event = '', $action = '', $target = '', $enctype = ''){
 
+		$this->pathImages =  '/themes/'.THEME_NAME.'/myform/';
+		
 		$this->name = $name;
 
 		if ($action)
