@@ -131,7 +131,7 @@ class osezno {
 		 * Llamar a las diferentes hojas de estilos
 		 */
 		$this->arrayAssignAreasHead['string_css_calendar']
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/'.
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/style.css.php'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_mylist']     
@@ -146,6 +146,44 @@ class osezno {
 		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/'.
 		'" rel="stylesheet" type="text/css" />';
 
+		$cssErrors = 
+'.error {
+	background-color:#FDCCCD;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:left;
+	color: red;
+	border-color:#CC0000;
+	border-width: 1px;
+	border-style: solid;
+	padding-left:10px;
+	padding-top:10px;	
+	padding-bottom:10px;
+	padding-right:10px;
+}
+
+.error_detail {
+	background-color:#CCCCCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:left;
+	color: #333333;
+	border-color:#666666;
+	border-width: 1px;
+	border-style: solid;
+	padding-left:10px;
+	padding-top:10px;	
+	padding-bottom:10px;
+	padding-right:10px;
+}';
+		
+		$this->arrayAssignAreasHead['css_errors'] = '<style type="text/css">'."\n".$cssErrors."\n".'</style>';
+		
+	
   	}
   	
   	/**

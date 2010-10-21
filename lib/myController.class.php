@@ -779,18 +779,26 @@ class myController extends myControllerExt {
 	 * iconos de acuerdo al tipo de mensaje, texto, ect
 	 *
 	 * @param  string: Mensaje
-	 * @param  string: Icono que se va a mostra; img_critical, img_error, img_help, img_info, img_list, img_user, img_warning
+	 * @param  string: Icono que se va a mostra; critical, error, help, info, list, user, warning
 	 * @param  array:  Arreglo de los botones que pueda tener la caja de mensaje 
 	 * @param  string: Nombre del formulario que abre la caja de mensaje
 	 */	
 	public function messageBox($msg = '', $iconMsg = '', $mixedButtons = array(), $strNomForm = ''){
 		
 		$arrImg = array (
-			'img_critical','img_error','img_help','img_info','img_list','img_user','img_warning'
+			'critical'=>'img_critical',
+			'error'=>'img_error',
+			'help'=>'img_help',
+			'info'=>'img_info',
+			'list'=>'img_list',
+			'user'=>'img_user',
+			'warning'=>'img_warning'
 		);
 		
 		if (!isset($arrImg[$iconMsg]))
 			$iconMsg = 'img_info';
+		else
+			$iconMsg = $arrImg[$iconMsg];	
 		
 		$file = $GLOBALS['folderProject'].'/themes/'.THEME_NAME.'/msg_box/message_box.tpl';
 
@@ -802,7 +810,7 @@ class myController extends myControllerExt {
 		if (!$this->heightMessageBox){
              $height = intval(strlen($msg)/55)*23;
                  if ($height<100)
-                   $height = 100;
+                   $height = 220;
 		}else
 		  $height = $this->heightMessageBox;		
 
@@ -843,7 +851,10 @@ class myController extends myControllerExt {
 			'{width_msg_box}'=>$width,
 			'{cont_msg_box}'=>str_replace("\n",'<br>',$msg),
 			'{class_div_img}'=>$iconMsg,
-			'{cont_form}'=>$frm
+			'{cont_form}'=>$frm,
+			'{width_area}'=>($width-21),
+			'{height_area}'=>($height-52),
+			'{height_main}'=>($height-52),
 		);		
 		
 		$html = $this->loadHtmlFromFile($file, $arRepl);
@@ -854,6 +865,23 @@ class myController extends myControllerExt {
    			$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
 	}
 
+	/**
+	 * Abre un messageBox con la informacion del error
+	 * 
+	 * @param $error	
+	 * @param $detail	Detalle del error
+	 * @return unknown_type
+	 */
+	public function errorBox ($error, $detail = ''){
+		
+		if ($detail)
+			$htmDet = '<br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b>&nbsp;'.$detail.'</div>';
+		
+		$html = '<br><div align="center" class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.$error.'<br>'.$htmDet.'</div>';
+		
+		$this->messageBox($html,'error');
+	}
+	
 	/**
 	 * Crea un mensaje de notificacion que no afecta la ventana
 	 * principal.
