@@ -83,7 +83,7 @@ class myList  {
 	 * 
 	 * @var string
 	 */
-	private $pathThemes = 'css/themes/';
+	private $pathThemes = 'themes/';
 	
 	/**
 	 * Nombre de los atributos seteables
@@ -462,15 +462,11 @@ class myList  {
 			
 				// Objeto
 				
-				$sql = '';
-				
 				$this->objConn = $this->sqlORobject;
 		
-				$this->sql = '';
+				$sql = $this->sql = '';
 				
-				$tabStruct = $this->objConn->getAtt('tableStruct');
-				
-				$countFields = count($fields = $tabStruct[$table = $this->objConn->getAtt('table')]['fields']); 
+				$countFields = count($fields = get_class_vars($table = get_class($this->sqlORobject)) ); 
 				
 				$subSqlF = '';
 
@@ -490,8 +486,6 @@ class myList  {
 
 				$this->sql = $sql;
 				
-				$this->resSql = $this->objConn->find(NULL,NULL,NULL,$this->recordsPerPage);
-				
 			}else{
 			
 				// Cadena
@@ -500,9 +494,9 @@ class myList  {
 		
 				$this->sql = $this->sqlORobject;
 
-				$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
-
 			}
+			
+			$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
 			
 		}else{
 			
