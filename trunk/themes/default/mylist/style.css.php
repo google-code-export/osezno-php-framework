@@ -7,7 +7,7 @@ th, td {
 
 /** Color de borde de la lista **/
 .list {
-	background-color:#E2E4FF;
+	background-color:#D3E0FA;
 }
 
 /** Filas por defecto **/
@@ -32,6 +32,7 @@ th, td {
 
 /** Fila seleccionada **/
 .td_mark {
+	background-image: url('<?= $_GET['path_img']; ?>cell_selected.gif');
 	background-color:#99ACDF;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -43,6 +44,7 @@ th, td {
 
 /** Fila sobre **/
 .td_over {
+	background-image: url('<?= $_GET['path_img']; ?>cell_over.gif');
 	background-color: #FFD07F;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
@@ -67,12 +69,12 @@ th, td {
 	font-style:italic;
 	text-decoration: none;
 	text-align:center;
-	background-color: #F5F5F5;
+	background-color: #ECFBFF;
 }
 
 /** Celda del titulo de la columna cuando es ordenada **/
 .cell_title_selected {
-	background-image: url('<?= $_GET['path_img']; ?>top-left.png');
+	background-image: url('<?= $_GET['path_img']; ?>col_selected.gif');
 	text-align:center;
 }
 
