@@ -87,19 +87,19 @@ th, td {
 /** Contenido de la titulo de la columna **/
 .column_title {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font-size: 13px;
 	color: #FFFFFF;
 	font-style: normal;
 	text-decoration: none;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 /** Contenido del titulo de la columna hover **/
 .column_title:hover {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font-size: 13px;
 	color: #FDFF00;
 	font-style: normal;
 	text-decoration: none;
-	font-weight: bold;
+	font-weight: normal;
 }

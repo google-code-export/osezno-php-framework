@@ -598,6 +598,34 @@ class myActiveRecord {
 		$this->dbh->rollBack();
 	} 
 
+	/**
+	 * Carga una consulta sql desde un archivo fisico
+	 * 
+	 * @param $file	Ruta del archivo fisico
+	 * @param $vars	Arreglo de variables a reemplazar
+	 * @return string
+	 */
+	public function loadSqlFromFile ($file, $vars = array()){
+
+		$link = fopen($file,'r');
+		
+  		$sql = fread($link, filesize($file));
+  		
+  		fclose($link);
+  		
+  		foreach ($vars as $var => $val){
+  			
+  			unset($vars[$var]);
+  			
+  			$vars['{'.$var.'}'] = $val;
+  		}
+		
+  		$keys = array_keys($vars);
+  		
+  		$sql = str_ireplace ( $keys, $vars, $sql);
+  		
+  		return $sql;
+	}
 	
 
 	/**
@@ -622,7 +650,7 @@ class myActiveRecord {
 				$isrW = true;
 				break;
 			}
-		}		
+		}
 		
 		if ($isrW){
 			# Update, Delete, Insert

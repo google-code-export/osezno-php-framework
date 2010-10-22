@@ -22,4 +22,7 @@ Revizar como se comporta setAutoQuotesInFind en active record
 
 
 Jueves 21 Oct 2010
-Revizar primer focus en msg box 
+Revizar primer focus en msg box
+
+Viernes 22 Oct 2010
+Revizar si es necesaria la estructura de la tabla metaData 

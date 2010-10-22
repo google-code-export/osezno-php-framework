@@ -76,41 +76,24 @@
 
  	
  	public function builtList ($idLista){
+ 		/*
+ 		$myAct = new myActiveRecord();
  		
- 		/**
- 		$sql = 'SELECT LPAD(cast(id as char),6,"0") as Llave, 
- 				nombre as Nombre,
- 				precio as Valor, 
- 				estado as Estado from libros ';
- 		
-		$objList = new myList($idLista,$sql);
+		$objList = new myList($idLista,$myAct->loadSqlFromFile('sql/query.sql'));
+
+		$objList->setAliasInQuery('contrato','El Contrato');
 		
-		//$libros = new libros;
-		//$objList = new myList($idLista,$libros);
+		$objList->setUseOrderMethodInColumn('contrato');
+		$objList->setUseOrderMethodInColumn('m01asi_id');
+		$objList->setUseOrderMethodInColumn('socio');
+		$objList->setUseOrderMethodInColumn('email');
 		
-		$objList->widthList = 500;
-		
-		
- 		$objList->setAliasInQuery('LPAD(cast(id as char),6,"0")','Llave');
- 		$objList->setAliasInQuery('nombre','Nombre');
- 		$objList->setAliasInQuery('precio','Valor');
- 		$objList->setAliasInQuery('estado','Estado');
- 		
- 
- 		$objList->setUseOrderMethodInColumn('Llave');
- 		$objList->setUseOrderMethodInColumn('Nombre');
- 		$objList->setUseOrderMethodInColumn('Valor');
- 		$objList->setUseOrderMethodInColumn('Estado'); 		
- 		
- 		//$objList->setWidthColumn('precio',50);
- 		
- 		$objList->setPagination(true,6);
+ 		$objList->setPagination(true,10);
  		
  		return $objList->getList();
  		*/
  						
 		$tbmtipdet = new tbmtipdet;
-		
 		
  		$objList = new myList($idLista,$tbmtipdet);
  		
@@ -121,9 +104,14 @@
  		$objList->setUseOrderMethodInColumn('mtipdet_fechsist');
  		$objList->setUseOrderMethodInColumn('mtipdet_cod');
 
- 		$objList->setPagination(true,15);
+ 		$objList->setAliasInQuery('mtipdet_des','Descripcion');
+ 		
+ 		//$objList->widthList = 210;
+ 		
+ 		$objList->setPagination(true,20);
  		
  		return $objList->getList();
+ 		
  	}
  	
  	/**
@@ -142,7 +130,7 @@
   	
   	public $mtip_id;
   	
-  	public $mtipdet_des;
+  	//public $mtipdet_des;
   	
   	public $m04usr_id;
   	

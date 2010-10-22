@@ -12,7 +12,7 @@ class myControllerExt {
   	 */
   	protected function loadHtmlFromFile ($file, $arrayReplacement = ''){
 		
-		$gestor = fopen($file, "r");
+		$gestor = fopen($file, 'r');
 		
 		$contenido = fread($gestor, filesize($file));
 		
@@ -955,7 +955,7 @@ class myController extends myControllerExt {
 			
 			$myList->setVar($nameVar,$numPage);
 		
-			$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+			//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 			$this->assign($idList,'innerHTML',$myList->getList());
 		
@@ -978,16 +978,20 @@ class myController extends myControllerExt {
 		$myList = new myList($idList);
 		
 		$nameVar = 'arrayOrdMethod';
-		
+
 		switch ($myList->getVar($nameVar,$alias)){
 			case 'ASC':
 				$myList->setVar($nameVar,'DESC',$alias);
 			break;
 			case 'DESC':
 				$myList->setVar($nameVar,'',$alias);
+				
+				//$myList->unSetVaretVar('arrayOrdNum',$alias);
 			break;
 			case '':
 				$myList->setVar($nameVar,'ASC',$alias);
+				
+				//$myList->setVar('arrayOrdNum','1',$alias);
 			break;
 		}
 		
