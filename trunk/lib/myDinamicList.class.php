@@ -98,6 +98,7 @@ class myList  {
 		'sql',
 		'arrayAliasSetInQuery',
 		'arrayOrdMethod',
+		'arrayOrdNum',
 		'themeName',
 		'arrayWidthsCols',
 		'usePagination',
@@ -157,6 +158,12 @@ class myList  {
 	 * @var array
 	 */
 	private $arrayOrdMethod = array ();
+	
+	/**
+	 * Numero de ordenamiento
+	 * @var array
+	 */
+	private $arrayOrdNum = array ();
 	
 	/**
 	 * Arreglo con los anchos determinados para
@@ -335,7 +342,7 @@ class myList  {
 	 */
 	public function setAliasInQuery ($field, $alias){
 		
-		$this->arrayAliasSetInQuery[$alias] = $field;
+		$this->arrayAliasSetInQuery[$field] = $alias;
 		
 	}
 	
@@ -424,25 +431,38 @@ class myList  {
 		
 		$pathImg = $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/';
 		
-		$return = '&nbsp;';
+		$return = '';
 		
 		if ($method){
-			
-			$return = '<img src="';
 			
 			switch ($method){
 				
 				case 'ASC':
-					$return .= $pathImg.'/asc.gif';
+					$return .= $pathImg.'asc.gif';
 				break;
 				
 				case 'DESC':
-					$return .= $pathImg.'/desc.gif';
+					$return .= $pathImg.'desc.gif';
 				break;
 			}
-			
-			$return .= '">';
+
 		}
+		
+		return $return;
+	}
+	
+	/**
+	 * Retorna el alias del campo en la consulta si previamente fue definido
+	 * 
+	 * @param $title	Campo en la consulta
+	 * @return string
+	 */
+	private function returnLabelTitle ($title){
+		
+		$return = $title;
+		
+		if (isset($this->arrayAliasSetInQuery[$title]))
+			$return = $this->arrayAliasSetInQuery[$title];
 		
 		return $return;
 	}
@@ -493,7 +513,6 @@ class myList  {
 				$this->objConn = new myActiveRecord();
 		
 				$this->sql = $this->sqlORobject;
-
 			}
 			
 			$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
@@ -505,7 +524,7 @@ class myList  {
 			$this->objConn = new myActiveRecord();
 			
 			$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
-					
+
 			$this->resSql = $this->objConn->query($sql);
 			
 		}
@@ -592,13 +611,15 @@ class myList  {
 								$widCol = $widByCol;
 						
 							$orderBy = '';	
-								
+
+							$numOrder = '&nbsp;';
+							
 							if (isset($this->arrayOrdMethod[$key])){
 								
 								$orderBy = $this->arrayOrdMethod[$key];
-							
+								
 								$styleName = 'cell_title';
-							
+								
 								if ($orderBy){
 								
 									$cadParam .= '2,';
@@ -612,11 +633,11 @@ class myList  {
 							
 								$bufHead.='<td class="'.$styleName.'" width="'.$widCol.'" align="center">';
 							
-								$bufHead.='<table border="0" width="100%" align="center"><tr><td width="10%">'.$this->getSrcImageOrdMethod($orderBy).'</td><td width="80%" style="text-align:center">'; 
+								$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'">'.$numOrder.'</td><td width="" style="text-align:center">'; 
 							
-								$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($key).'</a>';
+								$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($this->returnLabelTitle($key)).'</a>';
 
-								$bufHead.='</td><td width="10%">&nbsp;</td></tr></table>';
+								$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
 							
 								$bufHead.='</td>';
 							
@@ -626,7 +647,7 @@ class myList  {
 							
 								$bufHead.='<td class="cell_title" width="'.$widCol.'">';
 								
-								$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
+								$bufHead.='<font class="column_title">'.ucwords($this->returnLabelTitle($key)).'</font>';
 							
 								$bufHead.='</td>';	
 							}
@@ -786,6 +807,7 @@ class myList  {
 		$this->regAttClass(get_class_vars(get_class($this)));
 	}
 	
+	
 	/**
 	 * Retorna el valor de un atributo de la lista dinamica.
 	 * @param $name	Nombre de la variable
@@ -815,14 +837,36 @@ class myList  {
 	public function setVar ($name, $val, $item = ''){
 		
 		if ($item){
-			if (isset($_SESSION['prdLst'][$this->idList][$name][$item]))
+			if (isset($_SESSION['prdLst'][$this->idList][$name][$item])){
 				$_SESSION['prdLst'][$this->idList][$name][$item] = $val;
+			}
 		}else{
-			if (isset($_SESSION['prdLst'][$this->idList][$name]))
+			if (isset($_SESSION['prdLst'][$this->idList][$name])){
 				$_SESSION['prdLst'][$this->idList][$name] = $val;
+			}
 		}		
 		
 	} 
+	
+	/**
+	 * Borra una variable de la lista
+	 * @param $name Nombre de la variable
+	 * @param $item	Si se trata de un arreglo el nombre del indice
+	 */
+	public function unSetVar ($name, $item){
+	
+		if ($item){
+			if (isset($_SESSION['prdLst'][$this->idList][$name][$item])){
+				unset($_SESSION['prdLst'][$this->idList][$name][$item]);
+			}
+		}else{
+			if (isset($_SESSION['prdLst'][$this->idList][$name])){
+				unset($_SESSION['prdLst'][$this->idList][$name]);
+			}
+		}
+		
+	}
+	
 	
 	/**
 	 * Obtiene la lista dinamica
