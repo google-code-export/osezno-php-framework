@@ -600,6 +600,20 @@ class myList  {
 				
 					$bufHead.='<tr>'."\n"."\t";
 
+					$arrayOrdNum = array();
+					
+					$cArOrd=$this->getVar('arrayOrdNum');
+					
+					$cOrd=1;
+					
+					foreach ($cArOrd as $nom){
+						
+						$arrayOrdNum[$nom] = $cOrd;
+						
+						$cOrd++;
+						 
+					}
+					
 					foreach ($row as $key => $val){
 					
 						if (!is_numeric($key)){
@@ -627,13 +641,15 @@ class myList  {
 									$styleName = 'cell_title_selected';
 								
 									$arrColOrd[] = $key; 
+									
+									$numOrder = $arrayOrdNum[$key];
 								}else{
 									$cadParam .= '1,';
 								}
 							
 								$bufHead.='<td class="'.$styleName.'" width="'.$widCol.'" align="center">';
 							
-								$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'">'.$numOrder.'</td><td width="" style="text-align:center">'; 
+								$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td><td width="" style="text-align:center">'; 
 							
 								$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($this->returnLabelTitle($key)).'</a>';
 
@@ -836,16 +852,10 @@ class myList  {
 	 */
 	public function setVar ($name, $val, $item = ''){
 		
-		if ($item){
-			if (isset($_SESSION['prdLst'][$this->idList][$name][$item])){
-				$_SESSION['prdLst'][$this->idList][$name][$item] = $val;
-			}
-		}else{
-			if (isset($_SESSION['prdLst'][$this->idList][$name])){
-				$_SESSION['prdLst'][$this->idList][$name] = $val;
-			}
-		}		
-		
+		if ($item)
+			$_SESSION['prdLst'][$this->idList][$name][$item] = $val;
+		else
+			$_SESSION['prdLst'][$this->idList][$name] = $val;
 	} 
 	
 	/**

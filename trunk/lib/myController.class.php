@@ -986,16 +986,16 @@ class myController extends myControllerExt {
 			case 'DESC':
 				$myList->setVar($nameVar,'',$alias);
 				
-				//$myList->unSetVaretVar('arrayOrdNum',$alias);
+				$myList->unSetVar('arrayOrdNum',$alias);
 			break;
 			case '':
 				$myList->setVar($nameVar,'ASC',$alias);
 				
-				//$myList->setVar('arrayOrdNum','1',$alias);
+				$myList->setVar('arrayOrdNum',$alias,$alias);
 			break;
 		}
 		
-		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		//$arrayColors = array('green','purple','red','blue','black','pink');
 		
