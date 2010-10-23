@@ -88,7 +88,7 @@
 		$objList->setUseOrderMethodInColumn('socio');
 		$objList->setUseOrderMethodInColumn('email');
 		
- 		$objList->setPagination(true,10);
+ 		$objList->setPagination(true,20);
  		
  		return $objList->getList();
  		*/
@@ -106,7 +106,7 @@
 
  		$objList->setAliasInQuery('mtipdet_des','Descripcion');
  		
- 		//$objList->widthList = 210;
+ 		//$objList->widthList = 800;
  		
  		$objList->setPagination(true,20);
  		
