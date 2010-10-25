@@ -16,7 +16,7 @@
 	define('MSGBOX_STR_UNI_BUTTON','Aceptar');
 	
 	define('ERROR_DET_LABEL','Detalle del error');
-	define('ERROR_LABEL','Error');
+	define('ERROR_LABEL','Error en');
 	
 	
 	/**

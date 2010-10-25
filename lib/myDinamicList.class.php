@@ -529,7 +529,7 @@ class myList  {
 			
 		}
 
-		if ($this->objConn->getErrorLog())
+		if ($this->objConn->getErrorLog(true))
 			$this->errorSql = true;		
 		
 			
@@ -570,8 +570,8 @@ class myList  {
 		
 		if ($this->errorSql){
 			
-			$buf .= '<div class="error"><b>Error: </b>'.$this->objConn->getErrorLog().'<br><br><div class="error_detail"><b>Query:</b> '.$this->objConn->getSqlLog().'</div></div>';
-		
+			$buf .= $this->objConn->getErrorLog(true);
+			
 		}else{
 			
 			$buf .=  "\n".'<table border="0" width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0" id="table_'.$this->idList.'">'."\n";

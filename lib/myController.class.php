@@ -995,7 +995,7 @@ class myController extends myControllerExt {
 			break;
 		}
 		
-		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		//$arrayColors = array('green','purple','red','blue','black','pink');
 		
