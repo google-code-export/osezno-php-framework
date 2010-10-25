@@ -92,7 +92,8 @@
  		
  		return $objList->getList();
  		*/
- 						
+
+ 		/*
 		$tbmtipdet = new tbmtipdet;
 		
  		$objList = new myList($idLista,$tbmtipdet);
@@ -111,7 +112,16 @@
  		$objList->setPagination(true,20);
  		
  		return $objList->getList();
+ 		*/
  		
+ 		$libros = new libros;
+ 		$objList = new myList($idLista,$libros);
+ 		$objList->setUseOrderMethodInColumn('id');
+ 		$objList->setUseOrderMethodInColumn('nombre');
+ 		$objList->setUseOrderMethodInColumn('precio');
+ 		$objList->setUseOrderMethodInColumn('estado');
+ 		$objList->setPagination(true,15);
+ 		return $objList->getList();
  	}
  	
  	/**
@@ -144,7 +154,7 @@
  	
  	public $id;
  	
- 	public $nombre;
+ 	public $nombres;
  	
  	public $precio;
  	
