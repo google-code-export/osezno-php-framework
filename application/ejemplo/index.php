@@ -12,56 +12,67 @@
    */
  include 'handlerEvent.php';
  
-
+ $users = new users;
+ 
+ if (!$users->isSuccessfulConnect())
+ 	echo $users->getErrorLog(true);
+ else	
+ 	echo 'Bien';	
+ 
+/*
  $libros = new libros;
  
- //$libros->setPk('kik');
- 
-
  $libros->beginTransaction();
  
- $libros->query('delete from librosa where id = 156');
- $libros->query('delete from libross where id = 157');
+ $libros->query('delete from libross where id = 153');
+ $libros->query('delete from libros where id = 154');
 
  if (!$libros->endTransaction()){
- 	echo 'NO Se hizo la trans'."<br>";
- 	//echo $libros->getSqlLog();
+ 	echo 'NO Se hizo la trans '."<br>".$libros->getErrorLog()."<br>".$libros->getSqlLog()."<br>";
  }else{
- 	echo 'Se hizo la trans'."<br>";
+ 	echo 'Se hizo la trans '."<br>".$libros->getErrorLog()."<br>".$libros->getSqlLog()."<br>";
  }
+*/
 
-
  
- 
- //echo $libros->getLastInsertId()."<br>";
- //echo $libros->getSqlLog()."<br>";
- //echo $libros->getErrorLog(true);
- 
- //$libros->
- 
- //foreach ($libros->find() as $row)
- 	//echo $row->id." ".$row->nombre."<br>";
 
  /**
   * Asignar contenidos a areas de la plantilla
   */ 
- $objOsezno->assign('form_title','Cambiar este tituloo');
+ $objOsezno->assign('form_title','Cambiar este titulo');
  //$objOsezno->assign('work_area',$modelo->builtList('idlis'));
  $objOsezno->call_template('basic/basic.tpl');
  	
-/*
-try {
- $conn = new PDO('mysql:dbname=ethos;host=localhost', 'root');
- $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);	
- $conn->beginTransaction();
- $conn->exec('delete from libross where id = 156;');
- $conn->exec('delete from libros where id = 157;');
- print '<p>Transaction complete!</p>';
- $conn->commit();
-}catch (PDOException $e) {
-  print '<p>Unable to complete transaction!</p>'.$e->errorInfo[2];
-  $conn->rollBack();
-} 
-*/
  
-?>
+ /*
+ error_reporting(-1);
+
+  try {
+  	
+	$conn = new PDO("pgsql:host=192.168.30.10;dbname=test",'postgresql','postgresql');
+	
+  } catch (PDOException $e) {
+  	
+    echo $e->getMessage();
+    
+  }
+
+/*  
+    try {
+    	
+	    $conn->beginTransaction(); 
+    
+    	$conn->exec("INSERT INTO users (user) VALES ('JOSELITRON')");
+    	
+    	$conn->commit();
+     
+    	
+	} catch (PDOException $e) {
+    
+    	$conn->rollback(); 
+
+    	echo "Error: ", $e->getMessage();
+	}  
+*/
+  
+?> 

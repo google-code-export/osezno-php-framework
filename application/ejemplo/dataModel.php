@@ -134,20 +134,11 @@
 
  }
  
-  class tbmtipdet extends myActiveRecord {
+  class users extends myActiveRecord {
   	
-  	public $mtipdet_id;
+  	public $id;
   	
-  	public $mtip_id;
-  	
-  	//public $mtipdet_des;
-  	
-  	public $m04usr_id;
-  	
-  	public $mtipdet_fechsist;
-  	
-  	public $mtipdet_cod;
-  	
+  	public $name;
   }
   
   class libros extends myActiveRecord {
@@ -161,8 +152,6 @@
  	public $estado;
  	
  }
- 
- //$libros = new libros();
  
  $modelo = new modelo;
  
