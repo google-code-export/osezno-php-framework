@@ -1897,9 +1897,7 @@ class myForm {
 	 * @param integer $cols Numero de columnas que tiene el formulario
 	 * @return string
 	 */
-	public function __toString ($cols = 2){
-		if ($cols)
-			$this->cols = $cols;
+	public function __toString (){
 
 		$buf = '';
 		if ($this->use_cache){
