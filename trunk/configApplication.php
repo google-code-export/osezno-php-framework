@@ -41,10 +41,14 @@
   
   /**
    * Nivel de manejo de errores,
-   * E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL
+   * E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL | E_DEPRECATED (> 5.3.0) 
    * @var string
    */
-  $error_reporting = 'E_ALL';
+  if (version_compare(PHP_VERSION, '5.3.0') >= 0)
+  	error_reporting(E_ALL ^ E_DEPRECATED);  
+  else
+  	error_reporting(E_ALL);
+  
   
   /**********************************************************
    * 				  VARIABLES DE SESION	                *
@@ -78,13 +82,13 @@
    * Nombre de base de datos.
    * @var string
    */
-  $database = 'ethos';
+  $database = 'test';
   
   /**
    * Motor de base de datos; pgsql ó mysql.
    * @var string
    */
-  $engine = 'mysql';
+  $engine = 'pgsql';
   
   /**
    * Direccion Ip o nombre de maquina del motor de base de datos.
@@ -96,19 +100,19 @@
    * Nombre de usuario para conexion.
    * @var string
    */
-  $user = 'root';
+  $user = 'postgres';
   
   /**
    * Contraseña de usuario para conexión.
    * @var string
    */
-  $password = '';
+  $password = 'postgres';
 
   /**
    * Puerto para la conexión, Mysql 3306, Postgre 5432.
    * @var integer
    */
-  $port = 3306;
+  $port = 5432;
   
   
   /**
@@ -165,11 +169,6 @@
    */
   session_cache_expire ($sessionCacheExpire);
   
-  /**
-   * Setear el nivel de errores que desea mostrar dentro de la aplicacion
-   */
-  error_reporting($error_reporting);
-
   require_once $GLOBALS['folderProject'].'lib/plugin/packages/xajax/xajax_core/xajax.inc.php';
   
   require $GLOBALS['folderProject'].'lib/osezno.class.php';

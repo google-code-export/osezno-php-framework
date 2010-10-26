@@ -504,7 +504,7 @@ class myActiveRecord {
 
 		$error = '';
 		
-		if ($format)
+		if ($HTMLformat)
 			if (trim($GLOBALS['OF_SQL_LOG_ERROR']))
 				$error = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.$GLOBALS['OF_SQL_LOG'].'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.$GLOBALS['OF_SQL_LOG_ERROR'].'</div></div>';
 		else 
@@ -577,9 +577,16 @@ class myActiveRecord {
 				
 				foreach ($this->sqlInTrans as $id => $sql){
 					
-					$res =  $this->dbh->exec($sql);
+					//echo $sql."<br>";
 					
-					//echo 'COUNSULTA:'.$sql.''."<br>"; 
+					$this->dbh->exec($sql);
+					
+					//echo 'CONSULTA:'.$sql.''."<br>"; 
+					
+					$eError = $this->dbh->errorInfo();
+					if (isset($eError[2])){
+						$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
+					}
 					
 				}
 				
@@ -676,6 +683,8 @@ class myActiveRecord {
 			}else{
 				
 				$this->sqlInTrans[] = $sql;
+				
+				return 0;
 			}
 			
 		}else{
