@@ -360,30 +360,6 @@ class myList  {
 	}
 	
 	/**
-	 * Contruye una cadena que se incluye dentro del codigo
-	 * html para cargar metodos dinamicos con javascript que
-	 * permiten cargan opciones especiales de la lista.
-	 * 
-	 * @return string
-	 */
-	private function buildJs ($getNumFldsAftd){
-		
-		$js = ''."\n";
-		
-		$js .= '<script type=\'text/javascript\' charset=\'UTF-8\'> '."\n";
-		
-		$js .= 'myList = new myList(\''.$this->idList.'\', '.$getNumFldsAftd.');'."\n";
-
-		$js .= 'myList.loadCss();'."\n";
-		
-		$js .= '</script>'."\n";
-		
-		$this->js = $js;
-		
-		return $this->js;
-	}
-	
-	/**
 	 * Registra los atributos de la clase en una sesion.
 	 * Solamente si no estan registrados antes.
 	 * @param $arr
@@ -537,7 +513,7 @@ class myList  {
 		$getNumFldsAftd = $this->objConn->getNumFieldsAffected();
 		
 		# Numero de registro afectados
-		$getAffectedRows = $this->objConn->getAffectedRows();
+		$getAffectedRows = $this->objConn->getNumRowsAffected();
 
 		/**
 		 * Calcular el ancho de cada columna si no hay definido
@@ -561,8 +537,6 @@ class myList  {
 		$return = '';
 			
 		$rows = $this->resSql;
-		
-		$buf .= $this->buildJs($getNumFldsAftd);
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
@@ -682,11 +656,11 @@ class myList  {
 			
 				$buf.='id="tr_'.$this->idList.'_'.$i.'" ';
 			
-				$buf.='onclick="myList.markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
+				$buf.='onclick="markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\', '.$getNumFldsAftd.')" ';
 			
-				$buf.='onmouseover="myList.onRow(this)" ';
+				$buf.='onmouseover="onRow(this, '.$getNumFldsAftd.')" ';
 			
-				$buf.='onmouseout="myList.outRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\')" ';
+				$buf.='onmouseout="outRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\', '.$getNumFldsAftd.')" ';
 			
 				$buf.='>'."\n"."\t";
 			
@@ -756,7 +730,7 @@ class myList  {
 			
 			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
-			$buf .= '<table border="0"><tr>';
+			$buf .= '<table border="0" align="center"><tr>';
 
 			if ($this->currentPage == 0){
 				

@@ -40,7 +40,7 @@
 		
 		$objMyForm->addButton('cancel','Cancel','alert','cancel.gif');
 		
-		$objMyForm->addButton('list','Grid','alert','list.gif');
+		$objMyForm->addButton('list','Grid','showGrid','list.gif');
 		
 		$objMyForm->width = 550;
 		
@@ -114,13 +114,13 @@
  		return $objList->getList();
  		*/
  		
- 		$libros = new libros;
- 		$objList = new myList($idLista,$libros);
- 		$objList->setUseOrderMethodInColumn('id');
- 		$objList->setUseOrderMethodInColumn('nombre');
- 		$objList->setUseOrderMethodInColumn('precio');
- 		$objList->setUseOrderMethodInColumn('estado');
- 		$objList->setPagination(true,15);
+ 		$otra = new otra;
+ 		$objList = new myList($idLista,$otra);
+ 		$objList->setUseOrderMethodInColumn('otra_id');
+ 		$objList->setUseOrderMethodInColumn('user_id');
+ 		$objList->setUseOrderMethodInColumn('val');
+ 		$objList->widthList = 470;
+ 		$objList->setPagination(true,5);
  		return $objList->getList();
  	}
  	
@@ -134,25 +134,24 @@
 
  }
  
+  class otra extends myActiveRecord {
+  	
+  	public $otra_id;
+  	
+  	public $user_id;
+  	
+  	public $val;
+  	
+  }
+ 
   class users extends myActiveRecord {
   	
-  	public $id;
+  	public $user_id;
   	
   	public $name;
+  	
   }
   
-  class libros extends myActiveRecord {
- 	
- 	public $id;
- 	
- 	public $nombres;
- 	
- 	public $precio;
- 	
- 	public $estado;
- 	
- }
- 
  $modelo = new modelo;
  
 ?>

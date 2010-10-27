@@ -113,9 +113,9 @@ function responseCallUrl(pageElement) {
      document.body.appendChild(miCapa);
 
  	 if (navigator.appVersion.indexOf("MSIE")!=-1){
-		miCapa.style.filter = "alpha(opacity=0)";
+		miCapa.style.filter = "alpha(opacity=20)";
 	 }else{
-		miCapa.style.opacity = 0;
+		miCapa.style.opacity = 0.2;
 	 }     
      
      miCapa.style.color = '#000000';
@@ -145,8 +145,8 @@ function responseCallUrl(pageElement) {
 	 
 	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/loader.gif" title="Loading..."></td></tr></table>';
 	
-	 //Preguntar si existe el objeto 
-	 vanecerCallBack(miCapa.id,0);
+	 //Preguntar si existe el objeto
+	 //vanecerCallBack(miCapa,0);
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {
@@ -180,18 +180,22 @@ function desvanecerCallBack (idMw, idGif, cont){
 }
 
 
-function vanecerCallBack (idMw, cont){
+function vanecerCallBack (objCapa, cont){
+	
+	var id = objCapa.id;
 	
 	temp = 50;
 	cont += 3;
 	
 	if(cont<61){
+		
 		if (navigator.appVersion.indexOf("MSIE")!=-1){
-			document.getElementById(idMw).style.filter = "alpha(opacity="+cont+")";
+			document.getElementById(id).style.filter = "alpha(opacity="+cont+")";
 		}else{
-	   	    document.getElementById(idMw).style.opacity = cont/100;
+	   	    document.getElementById(id).style.opacity = cont/100;
 		}
-		setTimeout("vanecerCallBack('"+idMw+"',"+cont+")",temp);
+		
+		setTimeout("vanecerCallBack('"+objCapa+"',"+cont+")",temp);
 	}
 	
 }
