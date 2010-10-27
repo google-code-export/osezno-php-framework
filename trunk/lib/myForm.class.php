@@ -410,7 +410,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $height = '100%';
+	public $height = '0%';
 
 	/**
 	 * Borde de la tabla, para programadores

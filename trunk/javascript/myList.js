@@ -1,48 +1,18 @@
 
-function myList (idList, numCols){
+var rowsMarked = new Array();
 
-	this.rowsMarked = new Array();
+var markRowClass   = 'td_mark';
 	
-	this.idList 	= idList;
+var overRowClass   = 'td_over';
 	
-	this.loadCss 	= loadCss;
-	
-	this.onRow 		= onRow;
-
-	this.outRow 	= outRow;
-	
-	this.markRow 	= markRow;
-	
-	this.numCols 	= numCols;
-	
-	this.clearRowsMarked = clearRowsMarked; 
-	
-	this.defaRowClass   = 'td_default';
-	
-	this.middleRowClass = 'td_middle'; 
-	
-	this.markRowClass   = 'td_mark';
-	
-	this.overRowClass	= 'td_over';
-	
-	this.colSelected    = 'cell_content_selected';
-}
+var colSelected    = 'cell_content_selected';
 
 
 function clearRowsMarked (){
 	
-	this.rowsMarked = new Array();
+	rowsMarked = new Array();
 }
 
-/*
- * Carga la hoja de estilos de la lista
- * @return
- */
-function loadCss (){
-	
-	myListLoadCSS (this.idList);
-	
-}
 
 /**
  * Cambia la clase de una fila al pasar
@@ -50,11 +20,11 @@ function loadCss (){
  * @param o Id de la fila
  * @return
  */
-function onRow (o){
-	
-	 if (this.rowsMarked[o.id] != 1){
-		for (i=0;i<this.numCols;i++){
-			o.cells[i].className = this.overRowClass;
+function onRow (o, numCols){
+	 
+	 if (rowsMarked[o.id] != 1){
+		for (var i=0;i<numCols;i++){
+			o.cells[i].className = overRowClass;
 		}
 	 }
 	
@@ -66,17 +36,17 @@ function onRow (o){
  * @param cname	Clase original
  * @return
  */
-function outRow (o, cName, cCols){
+function outRow (o, cName, cCols, numCols){
 	
-	 if (this.rowsMarked[o.id] != 1){
+	 if (rowsMarked[o.id] != 1){
 		arrCCols = cCols.split(',');
-	 	for (i=0;i<this.numCols;i++){
+	 	for (var i=0;i<numCols;i++){
 	 		switch (arrCCols[i]){
  				case '1':
  					o.cells[i].className = cName;
  					break;
  				case '2':
- 					o.cells[i].className = this.colSelected;
+ 					o.cells[i].className = colSelected;
  					break;
 	 		}
 	 	}
@@ -90,35 +60,35 @@ function outRow (o, cName, cCols){
  * @param cname Clase original
  * @return
  */
-function markRow (o, cName, cCols){
+function markRow (o, cName, cCols, numCols){
 	
-	if (this.rowsMarked[o.id]==undefined)
-		this.rowsMarked[o.id] = 0;
+	if (rowsMarked[o.id]==undefined)
+		rowsMarked[o.id] = 0;
 	
-    if (this.rowsMarked[o.id] == 0){
+    if (rowsMarked[o.id] == 0){
     	
-    	for (i=0;i<this.numCols;i++){
-      	   o.cells[i].className = this.markRowClass;
+    	for (i=0;i<numCols;i++){
+      	   o.cells[i].className = markRowClass;
          }
     	
-    	this.rowsMarked[o.id] = 1;    	
+    	rowsMarked[o.id] = 1;    	
         
     }else{
     
     	arrCCols = cCols.split(',');
     	
-    	for (i=0;i<this.numCols;i++){
+    	for (var i=0;i<numCols;i++){
     		switch (arrCCols[i]){
     			case '1':
     				o.cells[i].className = cName;
     			break;
     			case '2':
-    				o.cells[i].className = this.colSelected;
+    				o.cells[i].className = colSelected;
     			break;
     		}
     	}
 
-        this.rowsMarked[o.id] = 0;
+        rowsMarked[o.id] = 0;
 
      }
 

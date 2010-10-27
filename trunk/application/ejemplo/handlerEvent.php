@@ -20,7 +20,16 @@
  */	
  class eventos extends myController {
 
-
+	public function showGrid ($datForm){
+		
+		$modelo = new modelo;
+		
+		$this->modalWindow($modelo->builtList('lista'),'Listado',520,250);
+		
+		return $this->response;
+	}
+ 	
+ 	
  	public function onSubmitAccept(){
  		
  		$objMyForm = new myForm('formulario',NULL,'procesarFormulario');
