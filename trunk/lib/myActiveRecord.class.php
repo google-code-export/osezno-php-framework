@@ -134,17 +134,6 @@ class myActiveRecord {
 	private $tableIdSeq = array ();
 	
 	/**
-	 * Obtiene el valor de un atributo
-	 * 
-	 * @param $att Nombre
-	 * @return string
-	 */
-	public function getAtt ($att){
-		
-		return $this->$att;
-	}
-
-	/**
 	 * Alias de campos de la tabla
 	 *
 	 * @var unknown_type
@@ -200,21 +189,6 @@ class myActiveRecord {
 	private $autoQuoteOnFind = true;
 	
 	/**
-	 * Valor booleano que verifica si actualmente nos encontramos
-	 * en un transaccion o no.
-	 * 
-	 * @var unknown_type
-	 */
-	private $inTransacction = false;
-	
-	/**
-	 * Consulta a ser procesadas en la transaccion
-	 * 
-	 * @var array
-	 */
-	private $sqlInTrans = array();
-	
-	/**
 	 * Atributos que no son reconocibles para los metodos
 	 * que intervienen en las tablas.
 	 * @var array
@@ -260,9 +234,11 @@ class myActiveRecord {
 		$this->setParams($arrayConecction);
 		
 		if (!isset($GLOBALS['OF_SQL_LOG'])){
-			global $OF_SQL_LOG, $OF_SQL_LOG_ERROR;
-		}
+			global $OF_SQL_LOG, $OF_SQL_LOG_ERROR, $OF_IN_TRANSACCTION;
 			
+			$GLOBALS['OF_IN_TRANSACCTION'] = false;
+		}
+		
 		$this->openConecction();
 
 		if (strcmp($this->table = get_class($this),'myActiveRecord')){
@@ -392,6 +368,353 @@ class myActiveRecord {
 	}
 
 	/**
+	 * Valida un atributo de la tabla 
+	 * 
+	 * @param $field
+	 * @return unknown_type
+	 */
+	private function validateAtt ($field){
+		
+		$valid = false;
+		
+		if (strcmp($field,$this->tablePk[$this->table]))
+
+		if (!is_null($this->$field))
+					
+ 		if (!is_array($this->$field))
+							
+		if (!is_object($this->$field))
+								
+		if (!is_bool($this->$field))
+									
+		if (!in_array($field,$this->arrayInvalidAtt))
+										
+		if (strlen(trim($this->$field)))
+											
+			$valid = true;
+
+		return $valid;
+	}
+		
+	/**
+	 * Setea el valor de lastIserId, con el parametro del nombre de la secuencia si aplica
+	 *  
+	 * @return integer
+	 */
+	private function get_LastInsertId (){
+		
+		$idSeq = $this->tableIdSeq[$this->table];
+		
+		return $this->dbh->lastInsertId($idSeq);	
+	}
+	/**
+	 * Arma una consulta Sql con los parametros asignados
+	 * 
+	 * @param $strCond
+	 * @param $orderBy
+	 * @param $orderMethod
+	 * @param $intLimit
+	 * @param $offset
+	 * @return unknown_type
+	 */
+	
+	private function findEngine ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
+		
+		$fCnd = '';
+		
+		$sql = '';
+		
+		$subSqlF = '';
+		$iCounter = 1;
+		
+		$countFields = count($this->classVars);
+
+		foreach ($this->classVars as $var => $val){
+			$subSqlF .= $var;
+
+			if ($iCounter<$countFields)
+			   $subSqlF .= ', ';
+
+			$iCounter++;
+		}
+		
+		$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table;
+		
+		$results = '';
+		
+		# Condicion compuesta, condicion sencilla
+		if ( $this->evalIfIsQuery($strCond) || !$strCond){
+			
+			$iCounter = 1;
+
+			if ($strCond)
+			   $sql .= ' WHERE ';
+
+			$cCond = count($strCond = explode(
+					'&',$strCond));
+			
+			foreach ($strCond as $cnd){
+				
+				# TODO: Evaluar si viene una sentencia booleana
+				$smblRel = $this->evalSimbolInSubQuery($cnd,true);
+				
+				if ($smblRel)
+					list ($fCnd, $vCnd) = explode($smblRel,$cnd);
+				
+				if (trim($fCnd) && $vCnd){
+
+					if ($this->autoQuoteOnFind){
+						if (is_numeric(trim($vCnd))){
+							$sql .= $fCnd.$smblRel.
+							' '.trim($vCnd);
+
+						}else{
+							$sql .= $fCnd.$smblRel.
+							" '".trim($vCnd)."'";
+						}
+					}else{
+						$sql .= $fCnd.$smblRel.
+							' '.trim($vCnd).'';
+					}
+
+				}else{
+					$sql .= ' '.trim($cnd);
+				}
+					
+				if ($iCounter<$cCond)
+				   $sql .= ' AND';
+					
+				$iCounter ++;
+			}
+			
+			if ($orderBy){
+				
+				if (is_bool($orderBy)){
+					
+					$sql .= ' ORDER BY '.$this->tablePk[$this->table].' ';
+					
+				}else{
+					
+					if (is_array($orderBy)){
+						
+						if (count($orderBy)){
+							
+							$sqlOrderBy = '';
+							
+							$cute = false;
+							foreach ($orderBy as $field => $method){
+							
+								if ($method){
+									$sqlOrderBy .= ' '.$field.' '.$method.', ';
+									$cute = true;
+								}	
+							}
+						
+							if ($cute){
+								$sql .= ' ORDER BY '.substr($sqlOrderBy,0,-2);	
+							}
+							
+						}
+						
+					}else{
+						
+						$sql .= ' ORDER BY '.$orderBy;
+						
+						if ($orderMethod)
+				   			$sql .= ' '.$orderMethod;
+					}
+				}
+			}
+			
+			if ($intLimit){
+				
+				$sql .= ' LIMIT '.$intLimit.'';
+				
+				if ($offset){
+				
+					$sql .= ' OFFSET '.$offset.'';
+				}
+					
+			}
+			
+			$rF = $this->query($sql);
+			
+			if ($this->num_rows == 1){
+				
+				foreach ($rF as $row)
+					foreach ($row as $etq => $value){
+						$this->$etq = $value;
+					}
+					
+			}else{
+				//TODO:
+
+			}
+				
+		}else{
+
+			if ($strCond){
+				if ($this->autoQuoteOnFind){
+					if (is_string($strCond))
+						$strCond = '\''.$strCond.'\'';
+				}
+				
+				$sql .= ' WHERE '.$this->tablePk[$this->table].' = '.$strCond;
+			}
+			
+			$rF = $this->query($sql);
+
+			if ($this->num_rows){
+
+				$this->keyFinded = $strCond;
+				$rF = $rF[0];
+				
+				foreach ($rF as $etq => $val){
+					
+					if (is_string($etq)){
+						if (!in_array($etq,$this->arrayInvalidAtt)){
+							$this->$etq = $val;
+						}
+					}
+				}
+			}
+		}
+						
+		return $rF;
+	}
+			
+	/**
+	 * Evalua si una condicion pertenece a una consulta sql
+	 *
+	 * @param unknown_type $strCond
+	 * @return unknown
+	 */
+	private function evalIfIsQuery ($strCond){
+			
+		$return = false;
+			
+		foreach($this->arrayStringRelation as $rel){
+
+			if (strripos($strCond,$rel)!==false){
+					
+				$return = true;
+				
+				break;
+			}
+		}
+			
+		return $return;
+	}
+	
+	/**
+	 * Construye el resultado de la consulta sql
+	 * 
+	 * @param $rF Fila
+	 * @return object
+	 */
+	private function buildRes($rF){
+		
+		$cloThis = clone $this;
+		
+		if(is_array($rF)){
+			
+			foreach($rF as $name => $value){
+				
+				if (!is_numeric($name)){
+					
+					$cloThis->$name = $value;
+				}
+			}
+		}
+		
+		return $cloThis;
+	}
+	
+	/**
+	 * Obtiene los campos de una tabla definida para esa tabla
+	 * 
+	 * @param $table
+	 * @return unknown_type
+	 */
+	private function getStringSqlFields ($table){
+			
+		$subSqlF = '';
+		$iCounter = 1;
+		
+		$countFields = count($fields = $this->tableStruct[$table]['fields']);
+
+		foreach ($fields as $field => $value){
+			
+			$subSqlF .= $field;
+
+			if ($iCounter<$countFields)
+			   $subSqlF .= ', ';
+
+			$iCounter++;
+		}
+			
+		return $subSqlF;
+	}
+	
+	/**
+	 * Evalua la condicion que exite un operador de relacion en find o delete
+	 * 
+	 * @param $strCond
+	 * @param $returnSimbol
+	 * @return unknown_type
+	 */
+	private function evalSimbolInSubQuery ($strCond, $returnSimbol = false){
+			
+		$true = false;
+			
+		foreach ($this->arrayStringRelation as $Relation){
+			
+			if (strpos($strCond,$Relation)!==false){
+				
+				if (!$returnSimbol)
+				   $true = true;
+				else
+				   $true = $Relation;
+				break;
+			}
+		}
+
+		return $true;
+	}
+	
+	/**
+	 * Obtiene la llave primaria de uan tabla basado en la palabra 'id', busca el primer campo de esa tabla
+	 * que tenga la palabra solo 'id' o la primera que contenga 'id'
+	 * 
+	 * @param $tableName
+	 */
+	private function getPkFromTable ($tableName){
+
+		$pk = '';
+
+		foreach ($this->classVars as $var => $val){
+			
+			if (!strcmp(strtolower($var),'id')){
+				if (!$pk)
+	   				$pk = $var;
+			}else{
+
+				if (strripos($var,'id')!==false){
+					if (!$pk)
+			   			$pk = $var;
+				}
+			}
+							
+			if ($pk){
+		   		$this->tablePk[$tableName] = $pk;
+		   		break;
+			}
+			
+		}
+		
+	}	
+	
+	/**
 	 * Setea el posfijo que en postgres se usa para
 	 * llamar a una secuencia en especifico
 	 *
@@ -401,7 +724,7 @@ class myActiveRecord {
 			
 		$this->posFijSeq = $posFij;
 	}
-
+		
 	/**
 	 * Setea el nombre de la secuencia para que despues de un save pueda ser obtenido su valor
 	 * 
@@ -574,15 +897,30 @@ class myActiveRecord {
 			
 		return $this->lastInserId;
 	}
-
+	
+	/**
+	 * Obtiene el valor de un atributo
+	 * 
+	 * @param $att Nombre
+	 * @return string
+	 */
+	public function getAtt ($att){
+		
+		return $this->$att;
+	}
+	
 	/**
 	 * Inicia una transaccion
 	 */
 	public function beginTransaction (){
 		
-		$GLOBALS['OF_SQL_LOG'] .= 'BEGIN TRANSACTION;'."\n";
+		if (!$GLOBALS['OF_IN_TRANSACCTION']){
+			
+			$GLOBALS['OF_SQL_LOG'] .= 'BEGIN TRANSACTION;'."\n";
 		
-		$this->inTransacction = true;
+			$GLOBALS['OF_IN_TRANSACCTION'] = true;
+		}
+		
 	}
 
 	/**
@@ -592,43 +930,26 @@ class myActiveRecord {
 	 */
 	public function endTransaction (){
 		
-		$sucsess = false;
+		$sucsess = true;
 		
-		if ($this->inTransacction){
+		if ($GLOBALS['OF_IN_TRANSACCTION']){
 			
-			try {
-
-				$this->dbh->beginTransaction();
+			$this->dbh->beginTransaction();
 				
-				foreach ($this->sqlInTrans as $sql){
-					
-					$this->dbh->exec($sql);
-					
-					$eError = $this->dbh->errorInfo();
-					
-					if (isset($eError[2])){
-						
-						$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
-					}
-					
-				}
-				
+			if (!$this->getErrorLog()){
+			
 				$GLOBALS['OF_SQL_LOG'] .='COMMIT;'."\n";
 				
 				$this->dbh->commit();
-				
-				$sucsess = true;
-				
-			}catch (PDOException $e){
-
+			
+			}else{
+			
 				$GLOBALS['OF_SQL_LOG'] .='ROLLBACK;'."\n";
-				
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= 'Paila '.$e->getMessage();
 				
 				$this->dbh->rollBack();
 			}
 			
-			$this->inTransacction = false;
+			$GLOBALS['OF_IN_TRANSACCTION'] = false;
 		}
 		
 		return $sucsess;
@@ -700,24 +1021,16 @@ class myActiveRecord {
 				if ($this->getEngine()=='pgsql')
 					$this->tableIdSeq[$this->table] = $this->table.'_'.$this->tablePk[$this->table].$this->posFijSeq;			
 			
-			# Afectar solo Update, Delete o Insert en transaccion
-			if (!$this->inTransacction){
+			$this->num_rows = $this->dbh->exec($sql);
 				
-				$this->num_rows = $this->dbh->exec($sql);
+			$eError = $this->dbh->errorInfo();
 				
-				$eError = $this->dbh->errorInfo();
-				if (isset($eError[2])){
-					$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
-				}
-			
-				return $this->num_rows;
-				
-			}else{
-				
-				$this->sqlInTrans[] = $sql;
-				
-				return 0;
+			if (isset($eError[2])){
+					
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
 			}
+			
+			return $this->num_rows;
 			
 		}else{
 			
@@ -763,9 +1076,8 @@ class myActiveRecord {
 	 */
 	public function find($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = '', $offSet = ''){
 
-		return $this->findOperator($strCond, $orderBy, $orderMethod, $intLimit, $offSet);
+		return $this->findEngine($strCond, $orderBy, $orderMethod, $intLimit, $offSet);
 	}
-
 
 	/**
 	 * Inserta o Modifica los datos de
@@ -777,44 +1089,30 @@ class myActiveRecord {
 		$sql = '';
 		$sqlValues = '';
 			
-		// Se va a actualizar un registro
+		// Update
 		if ($this->keyFinded){
 
 			$sql .= 'UPDATE '.$this->table.' SET ';
 
 			foreach ($this->classVars as $field => $value){
-
-				// Para no tocar la llave primaria
-				if (strcmp($field,$this->tablePk[$this->table])){
-					// No tenemos en cuenta los atributos que no fueron definidos
-					if (!is_null($this->$field)){
-						// Queremos verificar las cadenas por eso los arreglos son excluidos
-						if (!is_array($this->$field)){
-							// Queremos verificar las cadenas por eso los objetos son excluidos
-							if (!is_object($this->$field)){
-								if (!is_bool($this->$field)){
-									if (!in_array($field,$this->arrayInvalidAtt)){
-										// No tenemos en cuenta los atributos que no fueron seteados
-										if (strlen(trim($this->$field))){
-											$sql.=$field.' = ';
-
-											if (is_numeric($this->$field)){
-							
-												$sql .= $this->$field.', ';
-											}else{
-												if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
-													$sql .= 'NULL, ';
-												else
-													$sql .= '\''.addslashes($this->$field).'\', ';
-											}	
-										}
-									}
-								}
-							}
-						}
-					}
-				}
 				
+				if ($this->validateAtt($field)){
+					
+					$sql.=$field.' = ';
+
+					if (is_numeric($this->$field)){
+							
+						$sql .= $this->$field.', ';
+												
+					}else{
+												
+						if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
+							$sql .= 'NULL, ';
+						else
+							$sql .= '\''.addslashes($this->$field).'\', ';
+					}
+				
+				}
 				
 			}
 
@@ -822,76 +1120,41 @@ class myActiveRecord {
 			.$this->tablePk[$this->table]
 			.' = '.$this->keyFinded;
 
-			//echo 'Registro encontrado';
-			
 			$this->query($sql);
 			
-			// Se va a agregar un registro
+		// Insert
 		}else{
 			
 			$sql .= 'INSERT INTO '.$this->table.' (';
 
 			foreach ($this->classVars as $field => $value){
 
-				// Para no tocar la llave primaria
-				if (strcmp($field,$this->tablePk[$this->table])){
+				if ($this->validateAtt($field)){
+					
+					$sql.=$field.', ';
 
-					// No tenemos en cuenta los atributos que no fueron definidos
-					if (!is_null($this->$field)){
-						
-						// Queremos verificar las cadenas por eso los arreglos son excluidos
-						if (!is_array($this->$field)){
-
-							// Queremos verificar las cadenas por eso los objetos son excluidos
-							if (!is_object($this->$field)){
-
-								if (!is_bool($this->$field)){
-								
-									if (!in_array($field,$this->arrayInvalidAtt)){
-
-										// No tenemos en cuenta los atributos que no fueron seteados
-										if (strlen(trim($this->$field))){
-
-											$sql.=$field.', ';
-
-											if (is_numeric($this->$field)){
+					if (is_numeric($this->$field)){
 							
-												$sqlValues .= $this->$field.', ';
-											}else{
+						$sqlValues .= $this->$field.', ';
+					}else{
 							
-							   					$sqlValues .= '\''.addslashes($this->$field).'\', ';
-											}						
-										}
-									}
-								}
-							}
-						}
+						$sqlValues .= '\''.addslashes($this->$field).'\', ';
 					}
+					
 				}
+													
+				$sql = substr($sql,0,-2).') VALUES ('.substr($sqlValues,0,-2).')';
+
+				$this->query($sql);
+			
+				$this->lastInserId = $this->get_LastInsertId();
 			}
 			
-			$sql = substr($sql,0,-2).') VALUES ('.substr($sqlValues,0,-2).')';
-
-			$this->query($sql);
-			
-			$this->lastInserId = $this->setLastInsertId();
 		}
 		
-		return $this->getAffectedRows();
+		return $this->getNumRowsAffected();
 	}
 
-	/**
-	 * Setea el valor de lastIserId, con el parametro del nombre de la secuencia si aplica
-	 *  
-	 * @return integer
-	 */
-	private function setLastInsertId (){
-		
-		$idSeq = $this->tableIdSeq[$this->table];
-		
-		return $this->dbh->lastInsertId($idSeq);	
-	}
-	
 	/**
 	 * Trata de borrar registros de una
 	 * tabla si ellos cumplen con unas
@@ -951,282 +1214,7 @@ class myActiveRecord {
 			$this->query($sql);
 		}
 		
-		return $this->getAffectedRows();
-	}
-
-
-	/**
-	 * Evalua si una condicion pertenece a una consulta sql
-	 *
-	 * @param unknown_type $strCond
-	 * @return unknown
-	 */
-	private function evalIfIsQuery ($strCond){
-			
-		$return = false;
-			
-		foreach($this->arrayStringRelation as $rel){
-
-			if (strripos($strCond,$rel)!==false){
-					
-				$return = true;
-				
-				break;
-			}
-		}
-			
-		return $return;
-	}
-
-	/**
-	 * Arma una consulta Sql con los parametros asignados
-	 * 
-	 * @param $strCond
-	 * @param $orderBy
-	 * @param $orderMethod
-	 * @param $intLimit
-	 * @param $offset
-	 * @return unknown_type
-	 */
-	private function findOperator ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
-		
-		$fCnd = '';
-		
-		$sql = '';
-		
-		$subSqlF = '';
-		$iCounter = 1;
-		
-		$countFields = count($this->classVars);
-
-		foreach ($this->classVars as $var => $val){
-			$subSqlF .= $var;
-
-			if ($iCounter<$countFields)
-			   $subSqlF .= ', ';
-
-			$iCounter++;
-		}
-		
-		$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table;
-		
-		$results = '';
-		
-		# Condicion compuesta, condicion sencilla
-		if ( $this->evalIfIsQuery($strCond) || !$strCond){
-			
-			$iCounter = 1;
-
-			if ($strCond)
-			   $sql .= ' WHERE ';
-
-			$cCond = count($strCond = explode(
-					'&',$strCond));
-			
-			foreach ($strCond as $cnd){
-				
-				# TODO: Evaluar si viene una sentencia booleana
-				$smblRel = $this->evalSimbolInSubQuery($cnd,true);
-				
-				if ($smblRel)
-					list ($fCnd, $vCnd) = explode($smblRel,$cnd);
-				
-				if (trim($fCnd) && $vCnd){
-
-					if ($this->autoQuoteOnFind){
-						if (is_numeric(trim($vCnd))){
-							$sql .= $fCnd.$smblRel.
-							' '.trim($vCnd);
-
-						}else{
-							$sql .= $fCnd.$smblRel.
-							" '".trim($vCnd)."'";
-						}
-					}else{
-						$sql .= $fCnd.$smblRel.
-							' '.trim($vCnd).'';
-					}
-
-				}else{
-					$sql .= ' '.trim($cnd);
-				}
-					
-				if ($iCounter<$cCond)
-				   $sql .= ' AND';
-					
-				$iCounter ++;
-			}
-			
-			if ($orderBy){
-				
-				if (is_bool($orderBy)){
-					
-					$sql .= ' ORDER BY '.$this->tablePk[$this->table].' ';
-					
-				}else{
-					
-					if (is_array($orderBy)){
-						
-						if (count($orderBy)){
-							
-							$sqlOrderBy = '';
-							
-							$cute = false;
-							foreach ($orderBy as $field => $method){
-							
-								if ($method){
-									$sqlOrderBy .= ' '.$field.' '.$method.', ';
-									$cute = true;
-								}	
-							}
-						
-							if ($cute){
-								$sql .= ' ORDER BY '.substr($sqlOrderBy,0,-2);	
-							}
-							
-						}
-						
-					}else{
-						
-						$sql .= ' ORDER BY '.$orderBy;
-						
-						if ($orderMethod)
-				   			$sql .= ' '.$orderMethod;
-					}
-				}
-			}
-			
-			if ($intLimit){
-				
-				$sql .= ' LIMIT '.$intLimit.'';
-				
-				if ($offset){
-				
-					$sql .= ' OFFSET '.$offset.'';
-				}
-					
-			}
-			
-			$rF = $this->query($sql);
-			
-			if ($this->num_rows == 1){
-				
-				foreach ($rF as $row)
-					foreach ($row as $etq => $value){
-						$this->$etq = $value;
-					}
-					
-			}else{
-				//TODO:
-
-			}
-				
-		}else{
-
-			if ($strCond){
-				if ($this->autoQuoteOnFind){
-					if (is_string($strCond))
-						$strCond = '\''.$strCond.'\'';
-				}
-				
-				$sql .= ' WHERE '.$this->tablePk[$this->table].' = '.$strCond;
-			}
-			
-			$rF = $this->query($sql);
-
-			if ($this->num_rows){
-
-				$this->keyFinded = $strCond;
-				$rF = $rF[0];
-				
-				foreach ($rF as $etq => $val){
-					
-					if (is_string($etq)){
-						if (!in_array($etq,$this->arrayInvalidAtt)){
-							$this->$etq = $val;
-						}
-					}
-				}
-			}
-		}
-						
-		return $rF;
-	}
-
-	/**
-	 * Construye el resultado de la consulta sql
-	 * 
-	 * @param $rF Fila
-	 * @return object
-	 */
-	private function buildRes($rF){
-		
-		$cloThis = clone $this;
-		
-		if(is_array($rF)){
-			
-			foreach($rF as $name => $value){
-				
-				if (!is_numeric($name)){
-					
-					$cloThis->$name = $value;
-				}
-			}
-		}
-		
-		return $cloThis;
-	}
-
-	/**
-	 * Obtiene los campos de una tabla definida para esa tabla
-	 * 
-	 * @param $table
-	 * @return unknown_type
-	 */
-	private function getStringSqlFields ($table){
-			
-		$subSqlF = '';
-		$iCounter = 1;
-		
-		$countFields = count($fields = $this->tableStruct[$table]['fields']);
-
-		foreach ($fields as $field => $value){
-			
-			$subSqlF .= $field;
-
-			if ($iCounter<$countFields)
-			   $subSqlF .= ', ';
-
-			$iCounter++;
-		}
-			
-		return $subSqlF;
-	}
-
-	/**
-	 * Evalua la condicion que exite un operador de relacion en find o delete
-	 * 
-	 * @param $strCond
-	 * @param $returnSimbol
-	 * @return unknown_type
-	 */
-	private function evalSimbolInSubQuery ($strCond, $returnSimbol = false){
-			
-		$true = false;
-			
-		foreach ($this->arrayStringRelation as $Relation){
-			
-			if (strpos($strCond,$Relation)!==false){
-				
-				if (!$returnSimbol)
-				   $true = true;
-				else
-				   $true = $Relation;
-				break;
-			}
-		}
-
-		return $true;
+		return $this->getNumRowsAffected();
 	}
 
 	/**
@@ -1248,38 +1236,6 @@ class myActiveRecord {
 	public function setPrimaryKey($field){
 		
 		$this->tablePk[$this->table] = $field;
-		
-	}
-
-	/**
-	 * Obtiene la llave primaria de uan tabla basado en la palabra 'id', busca el primer campo de esa tabla
-	 * que tenga la palabra solo 'id' o la primera que contenga 'id'
-	 * 
-	 * @param $tableName
-	 */
-	private function getPkFromTable ($tableName){
-
-		$pk = '';
-
-		foreach ($this->classVars as $var => $val){
-			
-			if (!strcmp(strtolower($var),'id')){
-				if (!$pk)
-	   				$pk = $var;
-			}else{
-
-				if (strripos($var,'id')!==false){
-					if (!$pk)
-			   			$pk = $var;
-				}
-			}
-							
-			if ($pk){
-		   		$this->tablePk[$tableName] = $pk;
-		   		break;
-			}
-			
-		}
 		
 	}
 
