@@ -84,7 +84,7 @@ class myActiveRecord {
 	 *
 	 * @var resourse
 	 */
-	public $dbh;
+	private $dbh;
 
 	/**
 	 * Comprueba el estado boleano de si
@@ -112,11 +112,6 @@ class myActiveRecord {
 	 */
 	private $num_cols = 0;
 	
-
-	/*********************/
-	/* Variables de obra */
-	/*********************/
-
 	/**
 	 * Estructura de la tabla actual
 	 *
@@ -131,7 +126,19 @@ class myActiveRecord {
 	 */
 	private $tablePk = array ();
 	
+	/**
+	 * Por tabla el id de la secuencia
+	 * 
+	 * @var array
+	 */
+	private $tableIdSeq = array ();
 	
+	/**
+	 * Obtiene el valor de un atributo
+	 * 
+	 * @param $att Nombre
+	 * @return string
+	 */
 	public function getAtt ($att){
 		
 		return $this->$att;
@@ -144,7 +151,6 @@ class myActiveRecord {
 	 */
 	private $classVars;
 
-
 	/**
 	 * LLave de la tabla que se
 	 * esta buscando
@@ -153,7 +159,6 @@ class myActiveRecord {
 	 */
 	private $keyFinded;
 
-	
 	/**
 	 * Usuales relaciones
 	 * que en una consulta
@@ -202,13 +207,17 @@ class myActiveRecord {
 	 */
 	private $inTransacction = false;
 	
-	
+	/**
+	 * Consulta a ser procesadas en la transaccion
+	 * 
+	 * @var array
+	 */
 	private $sqlInTrans = array();
 	
 	/**
 	 * Atributos que no son reconocibles para los metodos
 	 * que intervienen en las tablas.
-	 * @var unknown_type
+	 * @var array
 	 */
 	private $arrayInvalidAtt = array (
 		'database', 'engine', 'host', 'user', 'password', 'port', 'table', 'posFijSeq', 'num_rows', 'num_cols',
@@ -216,7 +225,11 @@ class myActiveRecord {
 		'arrayInvalidAtt'	
 	);
 	
-	
+	/**
+	 * Operaciones no Query
+	 * 
+	 * @var array
+	 */
 	private $arrayCrud = array (
 		'insert',
 		'update',
@@ -257,7 +270,6 @@ class myActiveRecord {
 			
 			if (!isset($this->tablePk[$this->table]))
 			   $this->getPkFromTable($this->table);
-
 		}
 			
 	}
@@ -391,6 +403,16 @@ class myActiveRecord {
 	}
 
 	/**
+	 * Setea el nombre de la secuencia para que despues de un save pueda ser obtenido su valor
+	 * 
+	 * @param $name	Nombre secuencia
+	 */
+	public function setSeqName($name){
+		if ($name)
+			$this->tableIdSeq[$this->table] = $name;		
+	}
+	
+	/**
 	 * Setear comillas automatica en el metodo find
 	 * 
 	 * @param $value
@@ -504,24 +526,25 @@ class myActiveRecord {
 
 		$error = '';
 		
-		if ($HTMLformat)
-			if (trim($GLOBALS['OF_SQL_LOG_ERROR']))
+		if (trim($GLOBALS['OF_SQL_LOG_ERROR'])){
+			if ($HTMLformat)
 				$error = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.$GLOBALS['OF_SQL_LOG'].'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.$GLOBALS['OF_SQL_LOG_ERROR'].'</div></div>';
-		else 
-			$error = trim($GLOBALS['OF_SQL_LOG_ERROR']); 
+			else 
+				$error = trim($GLOBALS['OF_SQL_LOG_ERROR']);
+		}
 			
 		return $error;
 	}
 
 	/**
-	 * Obtiene el numero de filas afectadas
+	 * Obtiene el numero de registros afectados
 	 * por la utima consulta, insercion, actualizacion
 	 * o eliminacion de registros.
 	 * 
 	 *
 	 * @return integer
 	 */
-	public function getAffectedRows (){
+	public function getNumRowsAffected (){
 			
 		return $this->num_rows;
 	}
@@ -554,8 +577,6 @@ class myActiveRecord {
 
 	/**
 	 * Inicia una transaccion
-	 * en el motor de base de datos
-	 *
 	 */
 	public function beginTransaction (){
 		
@@ -564,10 +585,14 @@ class myActiveRecord {
 		$this->inTransacction = true;
 	}
 
-	
+	/**
+	 * Finaliza una transaccion
+	 *  
+	 * @return boolean
+	 */
 	public function endTransaction (){
 		
-		$sucsess = true;
+		$sucsess = false;
 		
 		if ($this->inTransacction){
 			
@@ -575,16 +600,14 @@ class myActiveRecord {
 
 				$this->dbh->beginTransaction();
 				
-				foreach ($this->sqlInTrans as $id => $sql){
-					
-					//echo $sql."<br>";
+				foreach ($this->sqlInTrans as $sql){
 					
 					$this->dbh->exec($sql);
 					
-					//echo 'CONSULTA:'.$sql.''."<br>"; 
-					
 					$eError = $this->dbh->errorInfo();
+					
 					if (isset($eError[2])){
+						
 						$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
 					}
 					
@@ -594,13 +617,13 @@ class myActiveRecord {
 				
 				$this->dbh->commit();
 				
+				$sucsess = true;
+				
 			}catch (PDOException $e){
 
-				$sucsess = false;
-				
 				$GLOBALS['OF_SQL_LOG'] .='ROLLBACK;'."\n";
 				
-				$GLOBALS['OF_SQL_LOG_ERROR'] .= $e->errorInfo[2];
+				$GLOBALS['OF_SQL_LOG_ERROR'] .= 'Paila '.$e->getMessage();
 				
 				$this->dbh->rollBack();
 			}
@@ -656,10 +679,14 @@ class myActiveRecord {
 		if ($saveInLog)
 			$GLOBALS['OF_SQL_LOG'] .= $sql.' '."\n";
 			
-		$isrW = false;	
+		$isrW = false;
+			
 		foreach ($this->arrayCrud as $rW){
+			
 			$pos = stripos($sql, $rW);
+			
 			if ($pos === false){
+				
 			}else{
 				$isrW = true;
 				break;
@@ -667,6 +694,11 @@ class myActiveRecord {
 		}
 		
 		if ($isrW){
+			
+			# Establecer nombre de secuencia automaticamente en Pgsql
+			if (!isset($this->tableIdSeq[$this->table]))
+				if ($this->getEngine()=='pgsql')
+					$this->tableIdSeq[$this->table] = $this->table.'_'.$this->tablePk[$this->table].$this->posFijSeq;			
 			
 			# Afectar solo Update, Delete o Insert en transaccion
 			if (!$this->inTransacction){
@@ -842,12 +874,24 @@ class myActiveRecord {
 
 			$this->query($sql);
 			
-			$this->lastInserId = $this->dbh->lastInsertId();
+			$this->lastInserId = $this->setLastInsertId();
 		}
 		
 		return $this->getAffectedRows();
 	}
 
+	/**
+	 * Setea el valor de lastIserId, con el parametro del nombre de la secuencia si aplica
+	 *  
+	 * @return integer
+	 */
+	private function setLastInsertId (){
+		
+		$idSeq = $this->tableIdSeq[$this->table];
+		
+		return $this->dbh->lastInsertId($idSeq);	
+	}
+	
 	/**
 	 * Trata de borrar registros de una
 	 * tabla si ellos cumplen con unas
@@ -926,6 +970,7 @@ class myActiveRecord {
 			if (strripos($strCond,$rel)!==false){
 					
 				$return = true;
+				
 				break;
 			}
 		}
@@ -1108,14 +1153,22 @@ class myActiveRecord {
 		return $rF;
 	}
 
-	
+	/**
+	 * Construye el resultado de la consulta sql
+	 * 
+	 * @param $rF Fila
+	 * @return object
+	 */
 	private function buildRes($rF){
 		
 		$cloThis = clone $this;
 		
 		if(is_array($rF)){
+			
 			foreach($rF as $name => $value){
+				
 				if (!is_numeric($name)){
+					
 					$cloThis->$name = $value;
 				}
 			}
@@ -1138,6 +1191,7 @@ class myActiveRecord {
 		$countFields = count($fields = $this->tableStruct[$table]['fields']);
 
 		foreach ($fields as $field => $value){
+			
 			$subSqlF .= $field;
 
 			if ($iCounter<$countFields)
@@ -1161,7 +1215,9 @@ class myActiveRecord {
 		$true = false;
 			
 		foreach ($this->arrayStringRelation as $Relation){
+			
 			if (strpos($strCond,$Relation)!==false){
+				
 				if (!$returnSimbol)
 				   $true = true;
 				else
@@ -1245,7 +1301,7 @@ class myActiveRecord {
 		try {
     		$this->dbh = new PDO($dsn, $user, $password);
     		
-    		$this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    		//$this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     		
     		$this->successfulConnect = true;
     		
