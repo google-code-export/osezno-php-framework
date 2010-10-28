@@ -223,7 +223,7 @@ function aleatorio(inferior,superior){
     return parseInt(inferior) + aleat
 } 
 
-function createNotificationWindow (strNotification, intSecDuration, strColorBg){
+function createNotificationWindow (strNotification, intSecDuration, type){
 	
 	var pofFijNW = aleatorio(1, 1000);
 	
@@ -233,24 +233,20 @@ function createNotificationWindow (strNotification, intSecDuration, strColorBg){
 	
 	document.body.appendChild(miCapa);
 	
-	miCapa.innerHTML = '&nbsp;'+strNotification+'&nbsp;';
-	
-	miCapa.style.color = '#FFFFFF';
-	
-	miCapa.style.background = strColorBg;
+	miCapa.innerHTML = '<table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="notifi_img_'+type+'">&nbsp;</div></td><td class="notification_text_'+type+'">&nbsp;'+strNotification+'&nbsp;</td></tr></table>';
 	
 	miCapa.style.position = 'absolute';
 	
 	miCapa.style.zIndex = 2000;
-	miCapa.style.top = -20;
-	miCapa.style.left = 0;
-	miCapa.className = 'notification';
+	miCapa.style.top = -60;
+	miCapa.style.left = 10;
+	miCapa.className = 'notification_'+type;
 	
-	mueveNotificationWindow(miCapa.id, -10, 0)
+	mueveNotificationWindow(miCapa.id, -60, 10);
 	
-	setTimeout("mueveNotificationWindow('"+miCapa.id+"', 0,-30)",intSecDuration);
+	setTimeout("mueveNotificationWindow('"+miCapa.id+"', 10,-60)",intSecDuration);
 	
-	setTimeout("destructNotificationWindow('"+miCapa.id+"')",intSecDuration+500);
+	setTimeout("destructNotificationWindow('"+miCapa.id+"')",intSecDuration+1000);
 }
  	
 function mueveNotificationWindow(idElement, ini,pos){ 
@@ -286,9 +282,11 @@ function mueveNotificationWindow(idElement, ini,pos){
 }
 
 function destructNotificationWindow (idElement){
-    var el = document.getElementById(idElement);
-    var padre = el.parentNode;
-	padre.removeChild(el);
+	if (idElement){
+		var el = document.getElementById(idElement);
+    	var padre = el.parentNode;
+    	padre.removeChild(el);
+	}
 }
 
 

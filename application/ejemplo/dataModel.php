@@ -36,9 +36,9 @@
 		
 		$objMyForm->addButton('excel','Excel','alert','excel.gif');
 		
-		$objMyForm->addButton('ok','Ok','alert','ok.gif');
+		$objMyForm->addButton('ok','Ok','buttonOk','ok.gif');
 		
-		$objMyForm->addButton('cancel','Cancel','alert','cancel.gif');
+		$objMyForm->addButton('cancel','Cancel','buttonCancel','cancel.gif');
 		
 		$objMyForm->addButton('list','Grid','showGrid','list.gif');
 		

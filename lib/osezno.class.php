@@ -149,6 +149,10 @@ class osezno {
 		$this->arrayAssignAreasHead['string_css_modal_window']     
 		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/'.
 		'" rel="stylesheet" type="text/css" />';
+		
+		$this->arrayAssignAreasHead['string_css_notification_window']     
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/notification_window/style.css.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/notification_window/'.
+		'" rel="stylesheet" type="text/css" />';
 
 		$cssErrors = 
 '.error {
