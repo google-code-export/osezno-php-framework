@@ -9,11 +9,12 @@ require ($pathfckEditor);
 /**
  * myForm
  *
- * @uses Creacion de formularios
- * @package OSEZNO FRAMEWORK
- * @version 1.6.0
- * @author joselitohaCker
+ * La clase myForm es la forma de interactuar el desarrollador con los formularios.
  *
+ * @uses Creacion de formularios
+ * @package OSEZNO FRAMEWORK (2008-2011)
+ * @version 1.6.0
+ * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
  * 
  */
 class myForm {

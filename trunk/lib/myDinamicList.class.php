@@ -1,25 +1,21 @@
 <?php
 
 /**
- * Documentación de variables de sesión:
+ * myList
  * 
- * alInQu: Arreglo que contiene los alias con sus respectivos campos de la consulta.
- * sql: Consulta sql original
- * sqlW: Consulta sql de trabajo, esta cambiando segun los cambios que haga el usuario sobre la lista dinamica
- *  
- */
-
-
-/**
- * 
- * @author Usuario
+ * Es la propuesta de osezno-framework cuando se desea implementar una
+ * lista dianamica por medio de una consulta sql o una tabla de myActiveRecord.
+ *
+ * @uses Listas dinamicas
+ * @package OSEZNO FRAMEWORK (2008-2011)
+ * @version 0.1
+ * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
  *
  */
 class myList  {
 	
 	/**
 	 * Anchura de la tabla que contiene la lista
-	 * 
 	 * @var integer
 	 */
 	public $widthList = 1000;
@@ -27,28 +23,24 @@ class myList  {
 	/**
 	 * Formato aplicado a la anchura de la tabla que 
 	 * contiene la lista.
-	 * 
 	 * @var string
 	 */
 	private $formatWidthList = 'px';
 	
 	/**
 	 * Tamaño del borde de la lista entre celdas
-	 * 
 	 * @var integer
 	 */
 	private $borderCellSize = 1;
 	
 	/**
 	 * Usar distincion entre filas
-	 * 
 	 * @var bool
 	 */
 	private $useDistBetwRows = true;
 	
 	/**
 	 * Usar paginacion.
-	 * 
 	 * @var bool
 	 */
 	private $usePagination = false;
@@ -56,14 +48,12 @@ class myList  {
 	/**
 	 * Numero de registros por pagina cuando la paginacion
 	 * esta activa.
-	 * 
 	 * @var integer
 	 */
 	private $recordsPerPage;
 	
 	/**
 	 * Maxima numero de pagina encontrada
-	 * 
 	 * @var integer
 	 */
 	private $maxNumPage = 0;
@@ -71,7 +61,6 @@ class myList  {
 	
 	/**
 	 * Pagina actual cuando la paginacion esta activa.
-	 * 
 	 * @var unknown_type
 	 */
 	private $currentPage;
@@ -105,8 +94,9 @@ class myList  {
 		'recordsPerPage',
 		'maxNumPage',
 		'currentPage',
-		'typeList'
-		
+		'typeList',
+		'arrayEventOnColumn',
+		'arrayFilterOnColumn'
 	);	
 	
 	private $typeList = '';
@@ -171,6 +161,18 @@ class myList  {
 	 * @var array
 	 */
 	private $arrayWidthsCols = array ();
+
+	/**
+	 * Arreglo con los eventos en columnas.
+	 * @var array
+	 */
+	private $arrayEventOnColumn = array ();
+	
+	/**
+	 * Arreglo con los nombre de filtros en columnas
+	 * @var array
+	 */
+	private $arrayFilterOnColumn = array ();
 	
 	/**
 	 * Error de la consulta SQL
@@ -287,6 +289,32 @@ class myList  {
 	}
 	
 	/**
+	 * Configura en una columna segun su alias o nombre
+	 * un evento que se disparara al hacer click sobre ese
+	 * campo en esa columna. El evento recibira como parametro
+	 * el valor de la columna y tambien el nombre de la lista dinamica.
+	 * 
+	 * @param $alias	Alias o nombre de la columna como la escribio
+	 * @param $event	Nombre del evento que disparara en el handlerEvent
+	 * @param $confirm_msg	Mensaje de confirmacion
+	 */
+	public function setEventOnColumn ($alias, $event, $confirm_msg = ''){
+		
+		$this->arrayEventOnColumn[$alias] = $event.'::'.htmlentities($confirm_msg);
+	}
+	
+	/**
+	 * Pone en una columna una opcion de filtrar segun los resultados mostrados en dicha
+	 * columna del total de registros hasta que sea eliminado dicho filtro.
+	 * 
+	 * @param $alias	Nombre de la columna
+	 */
+	public function setUseFilterOnColumn ($alias){
+		
+		$this->arrayFilterOnColumn[$alias] = true;
+	}
+	
+	/**
 	 * Obtiene la parte de la consulta correspodiente
 	 * a armar una paginacion.
 	 * 
@@ -342,7 +370,7 @@ class myList  {
 	 */
 	public function setAliasInQuery ($field, $alias){
 		
-		$this->arrayAliasSetInQuery[$field] = $alias;
+		$this->arrayAliasSetInQuery[$field] = htmlentities($alias);
 		
 	}
 	
@@ -353,7 +381,7 @@ class myList  {
 	 * 
 	 * @param $alias
 	 */
-	public function setUseOrderMethodInColumn ($alias){
+	public function setUseOrderMethodOnColumn ($alias){
 		
 		$this->arrayOrdMethod[$alias] = '';
 		
@@ -491,7 +519,8 @@ class myList  {
 				$this->sql = $this->sqlORobject;
 			}
 			
-			$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
+			if ($this->objConn->isSuccessfulConnect())
+				$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
 			
 		}else{
 			
@@ -501,7 +530,8 @@ class myList  {
 			
 			$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
 
-			$this->resSql = $this->objConn->query($sql);
+			if ($this->objConn->isSuccessfulConnect())
+				$this->resSql = $this->objConn->query($sql);
 			
 		}
 
@@ -523,20 +553,7 @@ class myList  {
 		
 		$totWid = $this->widthList;
 		
-		foreach ($this->arrayWidthsCols as $col => $wid)
-			$totWid -= $wid;
-			
-		$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
-		
-		$cadParam = '';
-		
-		$bufHead = '';
-		
-		$sw = false;
-		
-		$return = '';
-			
-		$rows = $this->resSql;
+		$return = $bufHead = $cadParam = '';
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
@@ -547,6 +564,15 @@ class myList  {
 			$buf .= $this->objConn->getErrorLog(true);
 			
 		}else{
+
+			foreach ($this->arrayWidthsCols as $col => $wid)
+				$totWid -= $wid;
+			
+			$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
+		
+			$sw = false;
+		
+			$rows = $this->resSql;
 			
 			$buf .=  "\n".'<table border="0" width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0" id="table_'.$this->idList.'">'."\n";
 
@@ -556,12 +582,12 @@ class myList  {
 		
 			foreach ($rows as $row){
 
-					if ($this->useDistBetwRows){
-						if ($i%2)
-							$classTd = 'td_default';
-						else	
-							$classTd = 'td_middle';
-					}
+				if ($this->useDistBetwRows){
+					if ($i%2)
+						$classTd = 'td_default';
+					else	
+						$classTd = 'td_middle';
+				}
 			
 				/**
 			 	 * Titulos de las columnas
@@ -576,11 +602,9 @@ class myList  {
 
 					$arrayOrdNum = array();
 					
-					$cArOrd=$this->getVar('arrayOrdNum');
-					
 					$cOrd=1;
 					
-					foreach ($cArOrd as $nom){
+					foreach ($this->arrayOrdNum as $nom){
 						
 						$arrayOrdNum[$nom] = $cOrd;
 						
@@ -617,6 +641,7 @@ class myList  {
 									$arrColOrd[] = $key; 
 									
 									$numOrder = $arrayOrdNum[$key];
+									
 								}else{
 									$cadParam .= '1,';
 								}
@@ -678,7 +703,17 @@ class myList  {
 						else
 							$buf.=''.$classTd.'">';
 						
-						$buf.=htmlentities($val);	
+						if (isset($this->arrayEventOnColumn[$key])){
+							
+							list($event,$strMsg) = explode('::',$this->arrayEventOnColumn[$key]); 
+							
+							if ($strMsg)
+								$strMsg = ' onClick="return confirm(\''.$strMsg.'\')"';
+							
+							$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.ucwords($this->returnLabelTitle($key)).'</a>';
+							
+						}else
+							$buf.=htmlentities($val);	
 					
 						$buf.='</td>';
 					}
@@ -699,7 +734,7 @@ class myList  {
 
 		
 		# Usar paginacion
-		if ($this->usePagination){
+		if ($this->usePagination && !$this->errorSql){
 			
 			$arrBut = array(
 				'_ini_page'	 =>array('&nbsp;--&nbsp;','beg','button'),
@@ -786,7 +821,7 @@ class myList  {
 			$buf .= '</tr></table>';
 			
 			$buf .= '</div>'."\n";
-		}		
+		}
 		
 		
 		$buf .= ''.'</div>'."\n";

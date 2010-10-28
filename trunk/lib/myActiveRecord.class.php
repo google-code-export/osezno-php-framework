@@ -2,17 +2,16 @@
 /**
  * myActiveRecord
  *
- * @uses Acceso a bases de datos por medio de objetos de PHP
- * @package OSEZNO FRAMEWORK
- * @version 0.1
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
- *
  * La clase myActiveRecord es la propuesta que da osezno framework
  * para acceder a las bases de datos de Postgres, MySql mediante
  * objetos del Lenguaje de programacion. Extendiendo la clase a subclases
  * que tengan la informacion de cada una de las tablas a las que se
  * quieran acceder.
- *
+ * 
+ * @uses Acceso a bases de datos por medio de objetos de PHP
+ * @package OSEZNO FRAMEWORK (2008-2011)
+ * @version 0.1
+ * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
  */
 class myActiveRecord {
 
@@ -1244,7 +1243,7 @@ class myActiveRecord {
 	 *
 	 * @return resorce
 	 */
-	public function openConecction (){
+	private function openConecction (){
 		
 		$dsn = $this->engine.
 				':dbname='.$this->database.
@@ -1275,7 +1274,7 @@ class myActiveRecord {
 	 * Cierra la conexion a la base de datos
 	 *
 	 */
-	public function closeConecction (){
+	private function closeConecction (){
 			
 
 	}
