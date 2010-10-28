@@ -890,11 +890,24 @@ class myController extends myControllerExt {
 	 * @param integer $intSecDuration
 	 * @param string $strColorBg
 	 */
-	public function notificationWindow ($strNotification, $intSecDuration = 3, $strColorBg = '#FF0000'){
+	public function notificationWindow ($strNotification, $intSecDuration = 3, $style = 'info'){
+		
+		$styles = array(
+			'info'=>'info',
+			'ok'=>'ok',
+			'cancel'=>'cancel',
+			'error'=>'error',
+			'warning'=>'warning',
+			'help'=>'help',
+			'critical'=>'critical'
+		);
+		
+		if (!isset($styles[$style]))
+			$style = 'info';
 		
 		$intSecDuration = $intSecDuration*1000;
 		
-		$strSctipt = 'createNotificationWindow("'.$strNotification.'",'.$intSecDuration.',"'.$strColorBg.'")';
+		$strSctipt = 'createNotificationWindow("'.$strNotification.'",'.$intSecDuration.',"'.$style.'")';
 		
 		$this->response->script($strSctipt);
 	}

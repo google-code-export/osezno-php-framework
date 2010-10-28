@@ -20,6 +20,22 @@
  */	
  class eventos extends myController {
 
+ 	public function buttonOk ($datForm){
+ 		
+ 		$this->notificationWindow('Ok',3,'ok');
+ 		
+ 		
+ 		return $this->response;
+ 	}
+
+  	public function buttonCancel ($datForm){
+ 		
+ 		$this->notificationWindow('Cancel',3,'cancel');
+ 		
+ 		
+ 		return $this->response;
+ 	} 	
+ 	
 	public function showGrid ($datForm){
 		
 		$modelo = new modelo;
