@@ -93,27 +93,29 @@
  		return $objList->getList();
  		*/
 
- 		/*
+ 		
 		$tbmtipdet = new tbmtipdet;
 		
  		$objList = new myList($idLista,$tbmtipdet);
  		
- 		$objList->setUseOrderMethodInColumn('mtipdet_id');
- 		$objList->setUseOrderMethodInColumn('mtip_id');
- 		$objList->setUseOrderMethodInColumn('mtipdet_des');
- 		$objList->setUseOrderMethodInColumn('m04usr_id');
- 		$objList->setUseOrderMethodInColumn('mtipdet_fechsist');
- 		$objList->setUseOrderMethodInColumn('mtipdet_cod');
-
- 		$objList->setAliasInQuery('mtipdet_des','Descripcion');
+ 		//$objList->setUseOrderMethodInColumn('mtipdet_id');
+ 		$objList->setUseOrderMethodOnColumn('mtip_id');
+ 		$objList->setUseOrderMethodOnColumn('mtipdet_des');
+ 		$objList->setUseOrderMethodOnColumn('m04usr_id');
+ 		$objList->setUseOrderMethodOnColumn('mtipdet_fechsist');
+ 		$objList->setUseOrderMethodOnColumn('mtipdet_cod');
+ 		
+ 		$objList->setEventOnColumn('mtipdet_id','deleteRecord','¿Desea borrar el registro?');
+ 		$objList->setAliasInQuery('mtipdet_des','Descripción');
+ 		$objList->setAliasInQuery('mtipdet_id','Eliminar');
  		
  		//$objList->widthList = 800;
  		
  		$objList->setPagination(true,20);
  		
- 		return $objList->getList();
- 		*/
+ 		return $objList->getList(true);
  		
+ 		/*
  		$otra = new otra;
  		$objList = new myList($idLista,$otra);
  		$objList->setUseOrderMethodInColumn('otra_id');
@@ -122,6 +124,7 @@
  		$objList->widthList = 470;
  		$objList->setPagination(true,5);
  		return $objList->getList();
+ 		*/
  	}
  	
  	/**
@@ -133,6 +136,22 @@
  	}
 
  }
+ 
+  class tbmtipdet extends myActiveRecord {
+  	
+  	public $mtipdet_id;
+  	
+  	public $mtip_id;
+  	
+  	public $mtipdet_des;
+  	
+  	public $m04usr_id;
+  	
+  	public $mtipdet_fechsist;
+  	
+  	public $mtipdet_cod;
+  	
+  }
  
   class otra extends myActiveRecord {
   	

@@ -1026,7 +1026,6 @@ class myController extends myControllerExt {
 	/**
 	 * Carga atributos visuales de la lista dinamica 
 	 * @param $idList
-	 * 
 	 * @return string 
 	 */
 	public function myListLoadCSS ($idList){
@@ -1039,90 +1038,18 @@ class myController extends myControllerExt {
 	}
 
 	/**
-	 * Recarga la consulta de una lista dinamica
-	 * mediante su formulario de parametrizacion
-	 *
-	 * @param mixed $FormElements
-	 * @param string $strLabel
-	 * @param string $strNomDiv
+	 * Procesa una consulta desde una lista dinamica filtro
+	 * 
+	 * @param $datForm	Datos de form
+	 * @return string
 	 */
-	public function myListReloadQuery ($FormElements, $strLabel = '', $strNomDiv = ''){
-		$objMyForm = new myForm;
-	 
-		$this->script('rowsMarked = new Array();');
-		unset($_SESSION['prdLst'][$NameRefList]['ordBy'], $_SESSION['prdLst'][$NameRefList]['ordMtd']);
+	public function onSubmitQueryForm ($datForm){
 		
-		$NameRefList = $FormElements['mylist_ndiv'];
-		$objDinamicList = new myDinamicList($NameRefList);
-	
-		if ($FormElements && $strLabel){
-			if ($FormElements['mylist_filter_select']){
-				if (strlen($FormElements['mylist_text'])){
-					// La consulta Original
-					$strSqlOriginal    = $_SESSION['prdLst'][$NameRefList]['sqlt'];
-					$strConsultaActual = $_SESSION['prdLst'][$NameRefList]['sqlt'];
-					 
-					switch ($FormElements['mylist_filter_select']){
-						case 1://'abc123 %'
-							if (strpos(strtolower($strConsultaActual),'where')){
-								$strConsultaActual .= ' AND UPPER('.$FormElements['mylist_select'].') LIKE \''.strtoupper($FormElements['mylist_text']).'%\' ';
-							}else{
-								$strConsultaActual .= ' WHERE UPPER('.$FormElements['mylist_select'].') LIKE \''.strtoupper($FormElements['mylist_text']).'%\' ';
-							}
-							break;
-						case 2://'% abc123'
-							if (strpos(strtolower($strConsultaActual),'where')){
-								$strConsultaActual .= ' AND UPPER('.$FormElements['mylist_select'].') LIKE \'%'.strtoupper($FormElements['mylist_text']).'\' ';
-							}else{
-								$strConsultaActual .= ' WHERE UPPER('.$FormElements['mylist_select'].') LIKE \'%'.strtoupper($FormElements['mylist_text']).'\' ';
-							}
-							break;
-						case 3://'% abc123 %'
-							if (strpos(strtolower($strConsultaActual),'where')){
-								$strConsultaActual .= ' AND UPPER('.$FormElements['mylist_select'].') LIKE \'%'.strtoupper($FormElements['mylist_text']).'%\' ';
-							}else{
-								$strConsultaActual .= ' WHERE UPPER('.$FormElements['mylist_select'].') LIKE \'%'.strtoupper($FormElements['mylist_text']).'%\' ';
-							}
-							break;
-						case 4://'= abc123'
-							if (strpos(strtolower($strConsultaActual),'where')){
-								$strConsultaActual .= ' AND UPPER('.$FormElements['mylist_select'].') = \''.strtoupper($FormElements['mylist_text']).'\' ';
-							}else{
-								$strConsultaActual .= ' WHERE UPPER('.$FormElements['mylist_select'].') = \''.strtoupper($FormElements['mylist_text']).'\' ';
-							}
-							break;
-						case 5://'!= abc123'
-							if (strpos(strtolower($strConsultaActual),'where')){
-								$strConsultaActual .= ' AND UPPER('.$FormElements['mylist_select'].') != \''.strtoupper($FormElements['mylist_text']).'\' ';
-							}else{
-								$strConsultaActual .= ' WHERE UPPER('.$FormElements['mylist_select'].') != \''.strtoupper($FormElements['mylist_text']).'\' ';
-							}
-							break;
-					}
-					$_SESSION['prdLst'][$NameRefList]['sqlt'] = $strConsultaActual;
-
-					$_SESSION['prdLst'][$NameRefList]['usPag'] = false;
-			    	$_SESSION['prdLst'][$NameRefList]['shwOrdMet'] = false;
-				 
-					$this->response->assign($FormElements['mylist_ndiv'],'innerHTML',$objDinamicList->getDinamicList($NameRefList,false));
-				 
-				}else{
-					//$this->response->alert('Por favor digite un valor para ser buscado en la columna \''.$strLabel.'\'.');
-					$this->notificationWindow('Por favor digite un valor para ser buscado en la columna <b>'.$strLabel.'</b>',5);
-				}
-			}else{
-				//$this->response->alert('Por favor seleccione una regla para el filtro.');
-				$this->notificationWindow('Por favor seleccione una regla para el filtro.',5);
-			}
-		}else {
-			$_SESSION['prdLst'][$NameRefList]['usPag'] = true;
-			$_SESSION['prdLst'][$NameRefList]['shwOrdMet'] = true;
-			$this->response->assign($strNomDiv,'innerHTML',$objDinamicList->getDinamicList($NameRefList,false));  
-		}
-	
+		$this->messageBox(var_export($datForm,true));
+		
 		return $this->response;
 	}
-	
+
 }
 
 ?>

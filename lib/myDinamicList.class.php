@@ -95,8 +95,7 @@ class myList  {
 		'maxNumPage',
 		'currentPage',
 		'typeList',
-		'arrayEventOnColumn',
-		'arrayFilterOnColumn'
+		'arrayEventOnColumn'
 	);	
 	
 	private $typeList = '';
@@ -167,12 +166,6 @@ class myList  {
 	 * @var array
 	 */
 	private $arrayEventOnColumn = array ();
-	
-	/**
-	 * Arreglo con los nombre de filtros en columnas
-	 * @var array
-	 */
-	private $arrayFilterOnColumn = array ();
 	
 	/**
 	 * Error de la consulta SQL
@@ -301,17 +294,6 @@ class myList  {
 	public function setEventOnColumn ($alias, $event, $confirm_msg = ''){
 		
 		$this->arrayEventOnColumn[$alias] = $event.'::'.htmlentities($confirm_msg);
-	}
-	
-	/**
-	 * Pone en una columna una opcion de filtrar segun los resultados mostrados en dicha
-	 * columna del total de registros hasta que sea eliminado dicho filtro.
-	 * 
-	 * @param $alias	Nombre de la columna
-	 */
-	public function setUseFilterOnColumn ($alias){
-		
-		$this->arrayFilterOnColumn[$alias] = true;
 	}
 	
 	/**
@@ -474,9 +456,10 @@ class myList  {
 	
 	/**
 	 * Construye la lista dinamica
+	 * @param $showQueryForm	Mostrar formulario de consulta
 	 * @return unknown_type
 	 */
-	private function buildList (){
+	private function buildList ($showQueryForm){
 		
 		$buf = '';
 		
@@ -828,10 +811,34 @@ class myList  {
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		
+		if ($showQueryForm)
+			$this->bufHtml = $this->buildQueryForm($fields).$this->bufHtml;
+		
+		
 		# Registramos las variables que se han usado
 		$this->regAttClass(get_class_vars(get_class($this)));
 	}
 	
+	/**
+	 * Construye el Html del formulario de consulta
+	 * @return string
+	 */
+	private function buildQueryForm ($fields){
+		
+		$objMyForm = new myForm($this->idList.'QueryForm','onSubmitQueryForm');
+		
+		foreach ($fields as $field => $value){
+			
+			$objMyForm->addText($field,$field);
+		}
+		
+
+		$objMyForm->srcImageMainButton = 'ok.gif';
+		
+		$objMyForm->strSubmit = LABEL_QUERY_BUTTON_FORM;
+		
+		return $objMyForm->getForm(2);
+	}
 	
 	/**
 	 * Retorna el valor de un atributo de la lista dinamica.
@@ -888,17 +895,17 @@ class myList  {
 	
 	
 	/**
-	 * Obtiene la lista dinamica
+	 * Obtiene el contenido de la lista dinámica
+	 * @param $showQueryForm	Mostrar formulario de consulta
 	 * @return string
 	 */
-	public function getList (){
+	public function getList ($showQueryForm = false){
 		
-		$this->buildList();
+		$this->buildList($showQueryForm);
 		
 		return $this->bufHtml;
 	}
 
-	
 }
 
 

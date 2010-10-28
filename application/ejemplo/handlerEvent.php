@@ -20,6 +20,13 @@
  */	
  class eventos extends myController {
 
+ 	public function deleteRecord($id){
+ 		
+ 		$this->notificationWindow('El registro con el ID <b>'.$id.'</b> no sera eliminado',3,'warning');
+ 		
+ 		return $this->response;
+ 	}
+ 	
  	public function buttonOk ($datForm){
  		
  		$this->notificationWindow('Ok',3,'ok');
