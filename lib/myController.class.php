@@ -33,15 +33,15 @@ class myControllerExt {
 /**
  * myHandlerEvent
  * 
- * @uses Controlador de eventos
- * @package OSEZNO FRAMEWORK
- * @version 0.1
- * @author joselitohaCker
- *  
  * Clase que es padre de los eventos
  * de los diferentes modulos que existan
  * en la aplicacion.
- *
+ * 
+ * @uses Controlador de eventos
+ * @package OSEZNO FRAMEWORK (2008-2011)
+ * @version 0.1
+ * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ *  
  */
 class myController extends myControllerExt {
 
@@ -888,7 +888,7 @@ class myController extends myControllerExt {
 	 *
 	 * @param string $strNotification
 	 * @param integer $intSecDuration
-	 * @param string $strColorBg
+	 * @param string $style
 	 */
 	public function notificationWindow ($strNotification, $intSecDuration = 3, $style = 'info'){
 		
@@ -949,7 +949,7 @@ class myController extends myControllerExt {
 				$numPage = $myList->getVar($nameVar)-1;
 			break;
 			case 'goto':
-				$this->notificationWindow('Opcion aun no disponible. [Pendiente]',3,'red');
+				$this->notificationWindow('Opcion aun no disponible.',5,'info');
 				
 				$error = true;
 			break;
@@ -972,7 +972,7 @@ class myController extends myControllerExt {
 		
 			$this->assign($idList,'innerHTML',$myList->getList());
 		
-			$js = 'myList.clearRowsMarked();'."\n";
+			$js = 'clearRowsMarked();'."\n";
 		
 			$this->script($js);
 		}
@@ -981,7 +981,7 @@ class myController extends myControllerExt {
 	}
 	
 	/**
-	 * Mueve la lista dinamica en sentido adelante, atras, ascendente y descendente.
+	 * Ordena ascendente y descendente las columnas.
 	 * 
 	 * @param $idList	Id o nombre de la lista dinámica	
 	 * @param $alias	Alias de la columna
@@ -1016,7 +1016,7 @@ class myController extends myControllerExt {
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
-		$js = 'myList.clearRowsMarked();'."\n";
+		$js = 'clearRowsMarked();'."\n";
 		
 		$this->script($js);
 		
@@ -1034,91 +1034,6 @@ class myController extends myControllerExt {
 		$myList = new myList($idList);
 		
 		$this->includeCSS($myList->setTheme());
-		
-		return $this->response;
-	}
-	
-	
-	/**
-	 * Ordena o mueve las paginas de una lista
-	 * dinamica.
-	 *
-	 * @param string $NameRefList
-	 * @param string $OrderBy
-	 * @param string $aliasOrderBy
-	 * @param integer $Desde
-	 * @param integer $Hasta
-	 * @param string $CambiarOrden
-	 * @return string
-	 */
-	public function myListMove ($NameRefList, $OrderBy = '',  $Desde = '', $Hasta = '', $CambiarOrden = 'S'){
-		$objDinamicList = new myDinamicList($NameRefList, $_SESSION['prdLst'][$NameRefList]['sql']);
-		
-		//$this->script('rowsMarked = new Array();');
-		
-		if ($OrderBy && $CambiarOrden == "S"){
-
-			$_SESSION['prdLst'][$NameRefList]['ordBy']  = $OrderBy;
-
-			switch ($_SESSION['prdLst'][$NameRefList]['ordMtd']){
-				case 'ASC':
-					$_SESSION['prdLst'][$NameRefList]['ordMtd'] = 'DESC';
-					break;
-				case 'DESC':
-					$_SESSION['prdLst'][$NameRefList]['ordMtd'] = '';
-					unset($_SESSION['prdLst'][$NameRefList]['ordBy']);
-					break;
-				case '':
-					$_SESSION['prdLst'][$NameRefList]['ordMtd'] = 'ASC';
-					break;
-			}
-		}
-	
-		//$_SESSION['prdLst'][$NameRefList]['pagIni'] = $Desde;
-
-		//$_SESSION['prdLst'][$NameRefList]['acPag'] = $Desde/$Hasta;
-	
-		//Refrescamos la lista dinamica
-		$this->response->assign($NameRefList,'innerHTML',$objDinamicList->getDinamicList($NameRefList,false));
-		
-		/*
-		// Averiguo si estoy en la ultima pagina generada
-		if (($_SESSION['prdLst'][$NameRefList]['acPag']+1)==$_SESSION['prdLst'][$NameRefList]['tcPag']){
-		
-			//Preguntamos si la ultima pagina ya se lleno para regenar el tope
-			if ($_SESSION['prdLst'][$NameRefList]['cTsh']==$_SESSION['prdLst'][$NameRefList]['pagRng']){
-			
-				//$this->alert('Se llego al tope'); 
-				
-				$objActiveRecord = new myActiveRecord;
-				$antes = $_SESSION['prdLst'][$NameRefList]['cRws'];
-			
-				switch($_SESSION['prdLst'][$NameRefList]['enD']){
-					case 'mysql':
-						$_SESSION['prdLst'][$NameRefList]['cRws'] = mysqli_num_rows(mysqli_query($_SESSION['prdLst'][$NameRefList]['sql']));
-					break;
-					case 'postgre':
-						$_SESSION['prdLst'][$NameRefList]['cRws'] = pg_num_rows (pg_query($_SESSION['prdLst'][$NameRefList]['sql']));
-					break; 
-				}
-		    	
-				//$this->alert('Encontramos ahora que hay '.$_SESSION['prdLst'][$NameRefList]['cRws'].' de '.$antes.' que habian antes');
-		    	
-		    	if ($_SESSION['prdLst'][$NameRefList]['cRws']>($_SESSION['prdLst'][$NameRefList]['tcPag']*$_SESSION['prdLst'][$NameRefList]['pagRng'])){
-			   		$_SESSION['prdLst'][$NameRefList]['tcPag'] = intval($_SESSION['prdLst'][$NameRefList]['cRws']/$_SESSION['prdLst'][$NameRefList]['pagRng'])+1;
-			   	
-			   	//$this->alert('Aumentamos una pagina');
-			   	
-			   	$objDinamicListUpdate = new myDinamicList($NameRefList, $_SESSION['prdLst'][$NameRefList]['sql']);
-			   
-			   	$this->response->assign($NameRefList,'innerHTML',$objDinamicListUpdate->getDinamicList($NameRefList,false));
-		    	}else{
-		       		//$this->alert('NO aumentamos ninguna pagina');
-		    	}
-		    	
-			}
-		}
-		*/
 		
 		return $this->response;
 	}
@@ -1208,75 +1123,6 @@ class myController extends myControllerExt {
 		return $this->response;
 	}
 	
-	/**
-	 * Aplica determinado filtro por columna segun
-	 * la disponibilidad de los valores regitrados
-	 * en esa columna.
-	 *
-	 * @param string $NameRefList
-	 * @param string $idDiv
-	 * @param string $whereValue
-	 * @param string $filterBy
-	 * @param string $filterByAlias
-	 * @return string
-	 */
-	public function myListFilterIn ($NameRefList, $idDiv, $whereValue, $filterBy, $filterByAlias){
-	 	$objMyList = new myDinamicList($NameRefList);
-	 
-	 	$this->script('rowsMarked = new Array();');
-	 	unset($_SESSION['prdLst'][$NameRefList]['ordBy'], $_SESSION['prdLst'][$NameRefList]['ordMtd']);
-	 	
-	 	$strConsultaActual = $_SESSION['prdLst'][$NameRefList]['sql'];
-	 	$this->response->assign($idDiv,'style.visibility','hidden');
-	 
-	 	if (!isset($_SESSION['prdLst'][$NameRefList]['fltByCl']))
-	    	$_SESSION['prdLst'][$NameRefList]['fltByCl'] = array();
-
-	 	if (trim($whereValue)){   
-	   		$_SESSION['prdLst'][$NameRefList]['fltByCl'][$filterBy] = $whereValue;
-	 	}else{      
-	   		unset($_SESSION['prdLst'][$NameRefList]['fltByCl'][$filterBy]);
-	 	}
-	   
-		if ($nFiltros = count($_SESSION['prdLst'][$NameRefList]['fltByCl'])){
-			if (strpos(strtolower($strConsultaActual),'where')){
-		  		$strConsultaActual .= ' AND ';		
-			}else{
-		  		$strConsultaActual .= ' WHERE ';
-			}
-		
-			$i = 0;
-			foreach ($_SESSION['prdLst'][$NameRefList]['fltByCl'] as $key => $value){
-				if (is_numeric($value))
-			  		$strConsultaActual .= $key.' = '.$value;
-				else  
-			  		$strConsultaActual .= $key.' = \''.$value.'\'';
-
-				if ($i<($nFiltros-1))  
-			  		$strConsultaActual .= ' AND ';
-			  
-				$i++;  
-			}
-		
-			$_SESSION['prdLst'][$NameRefList]['sqlt'] = $strConsultaActual;
-
-	  		$_SESSION['prdLst'][$NameRefList]['usPag'] = false;
-	  		$_SESSION['prdLst'][$NameRefList]['shwOrdMet'] = false;
-	  
-		}else{
-	  		$_SESSION['prdLst'][$NameRefList]['usPag'] = true;
-	  		$_SESSION['prdLst'][$NameRefList]['shwOrdMet'] = true;
-		
-		}
-	
-		$this->response->assign($NameRefList,'innerHTML',$objMyList->getDinamicList($NameRefList,false));
-	
-		return $this->response;	 
-	}	
-	
-	
 }
-
-
 
 ?>

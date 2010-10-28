@@ -10,6 +10,17 @@ th, td {
 	background-color:#D3E0FA;
 }
 
+a {
+	font-size: 10px;
+	color:#5F8CEA;
+	text-decoration: none;
+}
+a:hover {
+	font-size: 10px;
+	color:#EA5F5F;
+	text-decoration: none;
+}
+
 /** Filas por defecto **/
 .td_default {
 	background-color:#FFFFFF;
@@ -32,7 +43,7 @@ th, td {
 
 /** Fila seleccionada **/
 .td_mark {
-	background-image: url('<?= $_GET['path_img']; ?>cell_selected.gif');
+	background-image: url('<?= $_GET['path_img']; ?>cell_over.gif');
 	background-color:#99ACDF;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -44,7 +55,7 @@ th, td {
 
 /** Fila sobre **/
 .td_over {
-	background-image: url('<?= $_GET['path_img']; ?>cell_over.gif');
+	background-image: url('<?= $_GET['path_img']; ?>cell_selected.gif');
 	background-color: #FFD07F;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
@@ -56,7 +67,6 @@ th, td {
 /** Contenido de una celda **/
 .cell_content {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
 	font-style: normal;
 	text-decoration: none;
 	text-align:center;
