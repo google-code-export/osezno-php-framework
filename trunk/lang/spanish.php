@@ -7,6 +7,7 @@
 	define('GOTO_FIRST_PAGE','Ir a la primera p&aacute;gina');
 	define('GOTO_NEXT_PAGE','Ir a la siguiente p&aacute;gina');
 	define('GOTO_BACK_PAGE','Ir a la anterior p&aacute;gina');
+	define('LABEL_QUERY_BUTTON_FORM','Consultar');
 
 
 	/**
