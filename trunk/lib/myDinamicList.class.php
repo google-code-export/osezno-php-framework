@@ -95,7 +95,9 @@ class myList  {
 		'maxNumPage',
 		'currentPage',
 		'typeList',
-		'arrayEventOnColumn'
+		'arrayEventOnColumn',
+		'arrayFieldsOnQuery',
+		'sqlWhere'
 	);	
 	
 	/**
@@ -125,6 +127,12 @@ class myList  {
 	 * @var string
 	 */
 	private $sql = '';
+	
+	/**
+	 * Cadena de la consulta cuando se habilita el filtro por lista.
+	 * @var string
+	 */
+	private $sqlWhere = '';
 	
 	/**
 	 * Cadena de las funciones JS
@@ -200,7 +208,8 @@ class myList  {
 	 * 
 	 * @var bool
 	 */
-	private $errorSql = false;
+	private $successFul = true;
+	
 	
 	/**
 	 * Cadena SQL u Objeto
@@ -324,6 +333,16 @@ class myList  {
 			$sqlPart .= ' LIMIT  '.$this->recordsPerPage.' OFFSET '.($this->currentPage*$this->recordsPerPage);
 		
 		return $sqlPart;
+	}
+	
+	/**
+	 * Obtiene la parte de la consulta correspondiente
+	 * a condiciones cuando fueron aplicadas en el filtro.
+	 * @return string
+	 */
+	private function getSqlPartWhere (){
+		
+		return $this->sqlWhere;
 	}
 	
 	/**
@@ -530,7 +549,7 @@ class myList  {
 			
 			$this->objConn = new myActiveRecord();
 			
-			$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
+			$sql = $this->sql.''.$this->getSqlPartWhere().''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
 
 			if ($this->objConn->isSuccessfulConnect())
 				$this->resSql = $this->objConn->query($sql);
@@ -538,7 +557,7 @@ class myList  {
 		}
 
 		if ($this->objConn->getErrorLog(true))
-			$this->errorSql = true;		
+			$this->successFul = false;		
 		
 			
 		# Numero de campos afectados
@@ -561,7 +580,7 @@ class myList  {
 		
 		$buf .=  "\n".'<table border="0" width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 		
-		if ($this->errorSql){
+		if (!$this->successFul){
 			
 			$buf .= $this->objConn->getErrorLog(true);
 			
@@ -596,6 +615,8 @@ class myList  {
 			 	 */		
 				if (!$sw){
 				
+					$this->arrayFieldsOnQuery = array();
+					
 					$arrColOrd = array ();
 				
 					$sw = true;
@@ -738,7 +759,7 @@ class myList  {
 
 		
 		# Usar paginacion
-		if ($this->usePagination && !$this->errorSql){
+		if ($this->usePagination && $this->successFul){
 			
 			$arrBut = array(
 				'_ini_page'	 =>array('&nbsp;--&nbsp;','beg','button'),
@@ -873,7 +894,7 @@ class myList  {
 		
 		$arFields = array();
 		
-		$objMyForm = new myForm($this->idList.'QueryForm','onSubmitQueryForm');
+		$objMyForm = new myForm($this->idList.'QueryForm','onSubmitQuery');
 
 		$objMyForm->border = 0;
 		
@@ -917,7 +938,6 @@ class myList  {
 						$maxlenght = 10;
 						$size = 12;
 						
-						$value = date('Y-m-d');
 					break;
 				}
 					
@@ -932,10 +952,10 @@ class myList  {
 			}
 				
 		}
-
-		$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
 		
-		$objMyForm->addHidden('idlist',$this->idList);
+		$objMyForm->addHidden($arFields[] = 'idlist',$this->idList);
+		
+		$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
 		
 		$objMyForm->addButton('cancel_query',LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
 		
@@ -945,7 +965,7 @@ class myList  {
 		
 		$objMyForm->strSubmit = LABEL_QUERY_BUTTON_FORM;
 		
-		return $objMyForm->getForm(2);
+		return $objMyForm->getForm(1);
 	}
 	
 	/**
@@ -999,6 +1019,15 @@ class myList  {
 			}
 		}
 		
+	}
+	
+	/**
+	 * Indica si la lista se ejecuto correctamente o no
+	 * @return boolean
+	 */
+	public function isSuccessfulProcess (){
+		
+		return $this->successFul;
 	}
 	
 	
