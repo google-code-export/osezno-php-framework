@@ -1043,13 +1043,39 @@ class myController extends myControllerExt {
 	 * @param $datForm	Datos de form
 	 * @return string
 	 */
-	public function onSubmitQueryForm ($datForm){
+	public function onSubmitQuery ($datForm){
 		
 		$this->messageBox(var_export($datForm,true));
 		
 		return $this->response;
 	}
 
+	/**
+	 * Cancela el filtro actual sobre la consulta de una lista dinamica
+	 * 
+	 * @param $datForm	Datos de form
+	 * @return string
+	 */
+	public function onSubmitCancelQuery ($datForm){
+		
+		$this->messageBox(var_export($datForm,true));
+		
+		return $this->response;
+	}
+	
+	/**
+	 * Cuarda el resultado de la consulta de una lista dinamica segun el filtro aplicado al disco
+	 * 
+	 * @param $datForm	Datos de form
+	 * @return string
+	 */
+	public function onSubmitDownloadQuery ($datForm){
+
+		$this->messageBox(var_export($datForm,true));
+		
+		return $this->response;
+	}
+	
 }
 
 ?>

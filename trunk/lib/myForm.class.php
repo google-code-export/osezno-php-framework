@@ -1717,28 +1717,28 @@ class myForm {
 		$buf  = '';
 		if (is_array ($value)){
 			if ($this->selectUseFirstValue)
-			$buf .= "".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
+				$buf .= "".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
 			
 			$selectedIsArray = false;
 			if (is_array($selected)){
 			   $selectedIsArray = true;
 			}
 			
-			for ($i=0,$array_keys = array_keys ($value);$i<count ($array_keys); $i++){
-				$sel = "";
+			foreach ($value as $id => $value){
+				$sel = '';
 				if (!$selectedIsArray){
-				   if (!strcmp($value[$array_keys[$i]][0],$selected)){
-				   	  $sel = " selected";
+				   if (!strcmp($id,$selected)){
+				   	  $sel = ' selected';
 				   }
 				}else{
-				   if (in_array($value[$array_keys[$i]][0],$selected)){
-				      $sel = " selected";
+				   if (in_array($id,$selected)){
+				      $sel = ' selected';
 				   }					
 				}
-				   
-				$buf .= "\t\t".'<option value="'.$value[$array_keys[$i]][0].'"'.$sel.'>'.substr($value[$array_keys[$i]][1],0,$truncar_hasta).'</option>'."\n";
+				
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.substr($value,0,$truncar_hasta).'</option>'."\n";
 			}
-
+			
 			$buf .= "\t\t".'</select>'."\n";
 			$value = $buf;
 		}
@@ -1775,18 +1775,19 @@ class myForm {
 			   $selectedIsArray = true;
 			}	
 			
-			for ($i=0,$array_keys = array_keys ($value);$i<count ($array_keys); $i++){
-				$sel = "";
+			foreach ($value as $id => $value){
+				$sel = '';
 				if (!$selectedIsArray){
-				  if (!strcmp($value[$array_keys[$i]][0],$selected)){
-				     $sel = " selected";
-				  }
-				}else{    
-				  if (in_array($value[$array_keys[$i]][0],$selected)){
-				     $sel = " selected";
-				  }
+				   if (!strcmp($id,$selected)){
+				   	  $sel = ' selected';
+				   }
+				}else{
+				   if (in_array($id,$selected)){
+				      $sel = ' selected';
+				   }					
 				}
-				$buf .= "\t\t".'<option value="'.$value[$array_keys[$i]][0].'"'.$sel.'>'.htmlentities(substr($value[$array_keys[$i]][1],0,$truncar_hasta)).'</option>'."\n";
+				
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.substr($value,0,$truncar_hasta).'</option>'."\n";
 			}
 
 			$buf .= '</select>'."\n";
@@ -2693,7 +2694,7 @@ class myForm {
 				$cantTr++;
 			}
 
-			if ($this->arrayFormElementsColspan[$nameField]){
+			if (isset($this->arrayFormElementsColspan[$nameField])){
 				$numColSpan = $this->arrayFormElementsColspan[$nameField];
 				$iTemp += $numColSpan;
 				$sumNumColSpan += $numColSpan;
