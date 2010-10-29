@@ -1352,6 +1352,7 @@ class myForm {
 	 *
 	 */
 	public function addHidden($name = '', $value = ''){
+		$name     = $this->getColspanRowspan($name);
 		$Cadena   = 'hidden'.$this->Separador.$name.$this->Separador.$value;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'hidden';

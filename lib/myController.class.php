@@ -1045,7 +1045,57 @@ class myController extends myControllerExt {
 	 */
 	public function onSubmitQuery ($datForm){
 		
-		$this->messageBox(var_export($datForm,true));
+		$arrayCond = array (
+			'equal'=>'=',
+			'different'=>'!=',
+			'greater_than' => '>',
+			'less_than' => '<'
+		);
+		
+		$sqlWhere = '';
+		
+		$idList  = $datForm['idlist'];
+		
+		$myList = new myList($idList);
+		
+		$arFldsOnQry = $myList->getVar('arrayFieldsOnQuery');
+		
+		$arEvntOnClm = $myList->getVar('arrayEventOnColumn');
+		
+		foreach ($arFldsOnQry as $field){
+
+			if (!isset($arEvntOnClm[$field])){
+				
+				if ($datForm[$field]){
+					
+					$val = $datForm[$field];
+					
+					if (!is_numeric($datForm[$field]))
+						$val = "'".$datForm[$field]."'";
+					
+					$sqlWhere .= $field.' '.$arrayCond[$datForm['opt_'.$field]].' '.$val.' AND ';
+				}
+			}
+		}
+		
+		if ($sqlWhere){
+			$myList->setVar('maxNumPage',0);
+			
+			$myList->setVar('sqlWhere',' WHERE '.substr($sqlWhere,0,-4));
+		}
+			
+		$this->alert($sqlWhere);
+		
+		$this->assign($idList,'innerHTML',$myList->getList());
+		
+		if ($myList->isSuccessfulProcess())
+			$this->notificationWindow(MSG_QUERY_FORM_OK,3,'ok');
+		else
+			$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');	
+		
+		$js = 'clearRowsMarked();'."\n";
+		
+		$this->script($js);
 		
 		return $this->response;
 	}
@@ -1058,7 +1108,19 @@ class myController extends myControllerExt {
 	 */
 	public function onSubmitCancelQuery ($datForm){
 		
-		$this->messageBox(var_export($datForm,true));
+		$idList  = $datForm['idlist'];
+		
+		$myList = new myList($idList);
+		
+		$myList->setVar('sqlWhere','');
+		
+		$this->assign($idList,'innerHTML',$myList->getList());
+		
+		$js = 'clearRowsMarked();'."\n";
+		
+		$this->script($js);
+		
+		$this->notificationWindow(MSG_RESTART_QUERY_LIST,3,'info');
 		
 		return $this->response;
 	}

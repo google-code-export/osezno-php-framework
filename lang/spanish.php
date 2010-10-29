@@ -11,6 +11,9 @@
 	define('LABEL_CANCEL_QUERY_BUTTON_FORM','Cancelar');
 	define('LABEL_DOWNLOAD_QUERY_BUTTON_FORM','Descargar');
 	define('LABEL_FORM_FIELDSET','Filtrar resultados en la lista');
+	define('MSG_RESTART_QUERY_LIST','La consulta ha sido reiniciada');
+	define('MSG_QUERY_FORM_OK','La consulta se filtro sin problemas.');
+	define('MSG_QUERY_FORM_BAD','Se encontraron problemas al ejecutar la consulta');
 
 
 	/**
