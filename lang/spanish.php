@@ -8,6 +8,9 @@
 	define('GOTO_NEXT_PAGE','Ir a la siguiente p&aacute;gina');
 	define('GOTO_BACK_PAGE','Ir a la anterior p&aacute;gina');
 	define('LABEL_QUERY_BUTTON_FORM','Consultar');
+	define('LABEL_CANCEL_QUERY_BUTTON_FORM','Cancelar');
+	define('LABEL_DOWNLOAD_QUERY_BUTTON_FORM','Descargar');
+	define('LABEL_FORM_FIELDSET','Filtrar resultados en la lista');
 
 
 	/**

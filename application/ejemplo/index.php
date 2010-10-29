@@ -17,8 +17,8 @@
   * Asignar contenidos a areas de la plantilla
   */ 
  $objOsezno->assign('form_title','Cambiar este titulo');
- $objOsezno->assign('work_area',$modelo->form2().$modelo->builtList('lita'));
- //$objOsezno->assign('work_area',$modelo->builtList('litas'));
+ //$objOsezno->assign('work_area',$modelo->form2());
+ $objOsezno->assign('work_area',$modelo->builtList('litas'));
  $objOsezno->call_template('basic/basic.tpl');
   
  

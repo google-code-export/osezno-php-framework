@@ -61,14 +61,14 @@ class myCal {
 		$arrMonth = array ();
 			
 		foreach ($this->arrMonth as $id => $month){
-			$arrMonth[] = array($nDp.'_'.$id.'_'.$nA, $month);				
+			$arrMonth[$nDp.'_'.$id.'_'.$nA] = $month;				
 		}
 			
 		/**
 		 * Construimos un arreglo de datos para los años
 		 */
 		for ($aIni=($nA-5);$aIni<($nA+5);$aIni++){
-			$this->arrYears[] = array ($nDp.'_'.$nM.'_'.$aIni,$aIni);
+			$this->arrYears[$nDp.'_'.$nM.'_'.$aIni] = $aIni;
 		} 			
 			
 		$objMyForm = new myForm;

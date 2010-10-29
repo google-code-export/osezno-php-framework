@@ -8,6 +8,9 @@
 
  	$objxAjax->processRequest();	
 	
+ 	if (!$_GET['date'])
+ 		$_GET['date'] = date('Y-m-d');
+ 	
  	list($nA, $nM, $nD) = explode ('-',$_GET['date']);
  	
  	$nM = intval($nM);

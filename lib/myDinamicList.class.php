@@ -98,6 +98,14 @@ class myList  {
 		'arrayEventOnColumn'
 	);	
 	
+	/**
+	 * Tipos de datos que una columna puede ser
+	 * @var array
+	 */
+	private $dataTypeColumn = array (
+		'string','numeric','date'
+	);
+	
 	private $typeList = '';
 	
 	/**
@@ -355,10 +363,14 @@ class myList  {
 	 * 
 	 * @param $field Nombre del campo
 	 * @param $alias Alias del campo
+	 * @param $data_type El tipo de dato para dar un trato especial en cada caso (string, numeric, date)
 	 */
-	public function setAliasInQuery ($field, $alias){
+	public function setAliasInQuery ($field, $alias, $data_type = 'string'){
 		
-		$this->arrayAliasSetInQuery[$field] = htmlentities($alias);
+		if (!in_array($data_type,$this->dataTypeColumn))
+			$data_type = 'string';
+		
+		$this->arrayAliasSetInQuery[$field] = htmlentities($alias).'::'.$data_type;
 		
 	}
 	
@@ -453,8 +465,9 @@ class myList  {
 		
 		$return = $title;
 		
-		if (isset($this->arrayAliasSetInQuery[$title]))
-			$return = $this->arrayAliasSetInQuery[$title];
+		if (isset($this->arrayAliasSetInQuery[$title])){
+			list($return, $data_type) = explode ('::',$this->arrayAliasSetInQuery[$title]);
+		}
 		
 		return $return;
 	}
@@ -828,19 +841,106 @@ class myList  {
 	}
 	
 	/**
+	 * Retorna un arreglo equivalente a las reglas aplicables para determinado campo en el formulario de
+	 * filtro segun el tipo de campo que fue definido.
+	 * @param $data_type	Tipo de dato
+	 * @return array
+	 */
+	private function returnDataTypeSelectArray ($data_type){
+		
+		$arrayReturn = array(
+			'equal'=>'=',
+			'different'=>'!='
+		);
+		
+		switch($data_type){
+			
+			case'numeric':
+				$arrayReturn['greater_than'] 	= '>';
+				
+				$arrayReturn['less_than'] 		= '<';
+			break;
+		}
+		
+		return $arrayReturn;
+	}
+	
+	/**
 	 * Construye el Html del formulario de consulta
 	 * @return string
 	 */
 	private function buildQueryForm (){
 		
-		$objMyForm = new myForm($this->idList.'QueryForm','onSubmitQueryForm');
+		$arFields = array();
 		
+		$objMyForm = new myForm($this->idList.'QueryForm','onSubmitQueryForm');
+
+		$objMyForm->border = 0;
+		
+		$objMyForm->selectUseFirstValue = false;
+		
+		$objMyForm->idMainButton = $this->idList.'_query';
+				
 		foreach ($this->arrayFieldsOnQuery as $field){
 			
-			$objMyForm->addText($field,$field);
+			$data_type = '';
+			
+			if (!isset($this->arrayEventOnColumn[$field])){
+				
+				if (isset($this->arrayAliasSetInQuery[$field])){
+					
+					list($label, $data_type) =
+					 
+						explode ('::',$this->arrayAliasSetInQuery[$field]);
+				}else
+					$label = $field;
+				
+				$maxlenght = $value = '';
+				$size = 10;
+				
+				$date_field = $valid_num = false;
+					
+				switch ($data_type){
+					
+					case 'numeric':
+						$valid_num = true;
+						
+						$maxlenght = 8;
+						$size = 8;
+						
+						$value = 0;
+					break;
+					
+					case'date':
+						$date_field = true;
+						
+						$maxlenght = 10;
+						$size = 12;
+						
+						$value = date('Y-m-d');
+					break;
+				}
+					
+				$objMyForm->addText($label.$objMyForm->getSelect(
+				
+					'opt_'.$field,$this->returnDataTypeSelectArray($data_type)),
+				
+					$field,$value,$size,$maxlenght,$valid_num,$date_field
+				);
+				
+				$arFields[] = $field;
+			}
+				
 		}
-		
 
+		$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
+		
+		$objMyForm->addHidden('idlist',$this->idList);
+		
+		$objMyForm->addButton('cancel_query',LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
+		
+		$objMyForm->addButton('save_query',LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif');
+		
 		$objMyForm->srcImageMainButton = 'ok.gif';
 		
 		$objMyForm->strSubmit = LABEL_QUERY_BUTTON_FORM;

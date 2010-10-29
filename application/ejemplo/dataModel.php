@@ -87,7 +87,9 @@
  		$objList->setUseOrderMethodOnColumn('prof_id');
  		
  		$objList->setAliasInQuery('usuario_id','Eliminar');
- 		$objList->setAliasInQuery('nombre','Nombre completo');
+ 		$objList->setAliasInQuery('nombre','Nombre','string');
+ 		$objList->setAliasInQuery('edad','Edad','numeric');
+ 		$objList->setAliasInQuery('prof_id','Profesion','date');
  		
  		$objList->setEventOnColumn('usuario_id','deleteRecord','¿Desea borrar el registro?');
  		$objList->setEventOnColumn('actualizar','updateRecord','¿Desea actualizar el registro?');
@@ -122,6 +124,14 @@
  	public $edad;
  	
  	public $prof_id;
+ 	
+ }
+ 
+ class profesion extends myActiveRecord {
+ 	
+ 	public $prof_id;
+ 	
+ 	public $profesion;
  	
  }
  
