@@ -21,4 +21,5 @@
  //$objOsezno->assign('work_area',$modelo->builtList('litas'));
  $objOsezno->call_template('basic/basic.tpl');
   
+ 
 ?> 

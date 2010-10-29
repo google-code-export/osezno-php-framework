@@ -76,55 +76,31 @@
 
  	
  	public function builtList ($idLista){
- 		/*
- 		$myAct = new myActiveRecord();
  		
-		$objList = new myList($idLista,$myAct->loadSqlFromFile('sql/query.sql'));
-
-		$objList->setAliasInQuery('contrato','El Contrato');
+		$usuarios = new usuarios;
 		
-		$objList->setUseOrderMethodInColumn('contrato');
-		$objList->setUseOrderMethodInColumn('m01asi_id');
-		$objList->setUseOrderMethodInColumn('socio');
-		$objList->setUseOrderMethodInColumn('email');
-		
- 		$objList->setPagination(true,20);
+ 		$objList = new myList($idLista,$usuarios->loadSqlFromFile('sql/query.sql'));
  		
- 		return $objList->getList();
- 		*/
-
+ 		$objList->setUseOrderMethodOnColumn('usuario_id');
+ 		$objList->setUseOrderMethodOnColumn('nombre');
+ 		$objList->setUseOrderMethodOnColumn('edad');
+ 		$objList->setUseOrderMethodOnColumn('prof_id');
  		
-		$tbmtipdet = new tbmtipdet;
-		
- 		$objList = new myList($idLista,$tbmtipdet);
+ 		$objList->setAliasInQuery('usuario_id','Eliminar');
+ 		$objList->setAliasInQuery('nombre','Nombre completo');
  		
- 		//$objList->setUseOrderMethodInColumn('mtipdet_id');
- 		$objList->setUseOrderMethodOnColumn('mtip_id');
- 		$objList->setUseOrderMethodOnColumn('mtipdet_des');
- 		$objList->setUseOrderMethodOnColumn('m04usr_id');
- 		$objList->setUseOrderMethodOnColumn('mtipdet_fechsist');
- 		$objList->setUseOrderMethodOnColumn('mtipdet_cod');
+ 		$objList->setEventOnColumn('usuario_id','deleteRecord','¿Desea borrar el registro?');
+ 		$objList->setEventOnColumn('actualizar','updateRecord','¿Desea actualizar el registro?');
  		
- 		$objList->setEventOnColumn('mtipdet_id','deleteRecord','¿Desea borrar el registro?');
- 		$objList->setAliasInQuery('mtipdet_des','Descripción');
- 		$objList->setAliasInQuery('mtipdet_id','Eliminar');
+ 		$objList->setWidthColumn('usuario_id',80);
+ 		$objList->setWidthColumn('actualizar',80);
  		
- 		//$objList->widthList = 800;
+ 		$objList->widthList = 800;
  		
- 		$objList->setPagination(true,20);
+ 		$objList->setPagination(true,15);
  		
  		return $objList->getList(true);
  		
- 		/*
- 		$otra = new otra;
- 		$objList = new myList($idLista,$otra);
- 		$objList->setUseOrderMethodInColumn('otra_id');
- 		$objList->setUseOrderMethodInColumn('user_id');
- 		$objList->setUseOrderMethodInColumn('val');
- 		$objList->widthList = 470;
- 		$objList->setPagination(true,5);
- 		return $objList->getList();
- 		*/
  	}
  	
  	/**
@@ -136,41 +112,20 @@
  	}
 
  }
+
+ class usuarios extends myActiveRecord {
+ 	
+ 	public $usuario_id;
+ 	
+ 	public $nombre;
+ 	
+ 	public $edad;
+ 	
+ 	public $prof_id;
+ 	
+ }
  
-  class tbmtipdet extends myActiveRecord {
-  	
-  	public $mtipdet_id;
-  	
-  	public $mtip_id;
-  	
-  	public $mtipdet_des;
-  	
-  	public $m04usr_id;
-  	
-  	public $mtipdet_fechsist;
-  	
-  	public $mtipdet_cod;
-  	
-  }
  
-  class otra extends myActiveRecord {
-  	
-  	public $otra_id;
-  	
-  	public $user_id;
-  	
-  	public $val;
-  	
-  }
- 
-  class users extends myActiveRecord {
-  	
-  	public $user_id;
-  	
-  	public $name;
-  	
-  }
-  
  $modelo = new modelo;
  
 ?>

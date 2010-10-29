@@ -20,6 +20,13 @@
  */	
  class eventos extends myController {
 
+ 	public function updateRecord ($id){
+ 		
+ 		$this->notificationWindow('El registro con el ID <b>'.$id.'</b> no sera actualizado',3,'ok');
+ 		
+ 		return $this->response;
+ 	}
+ 	
  	public function deleteRecord($id){
  		
  		$this->notificationWindow('El registro con el ID <b>'.$id.'</b> no sera eliminado',3,'warning');

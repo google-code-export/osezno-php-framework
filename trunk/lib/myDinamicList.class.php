@@ -168,6 +168,12 @@ class myList  {
 	private $arrayEventOnColumn = array ();
 	
 	/**
+	 * Arreglo con los nombres de las columnas obtenidos
+	 * @var array
+	 */
+	private $arrayFieldsOnQuery = array();
+	
+	/**
 	 * Error de la consulta SQL
 	 * @var string
 	 */
@@ -598,7 +604,9 @@ class myList  {
 					foreach ($row as $key => $val){
 					
 						if (!is_numeric($key)){
-						
+
+							$this->arrayFieldsOnQuery[] = $key;
+							
 							$widCol = 0;
 							if (isset($this->arrayWidthsCols[$key]))
 								$widCol = $this->arrayWidthsCols[$key];
@@ -812,7 +820,7 @@ class myList  {
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		
 		if ($showQueryForm)
-			$this->bufHtml = $this->buildQueryForm($fields).$this->bufHtml;
+			$this->bufHtml = $this->buildQueryForm().$this->bufHtml;
 		
 		
 		# Registramos las variables que se han usado
@@ -823,11 +831,11 @@ class myList  {
 	 * Construye el Html del formulario de consulta
 	 * @return string
 	 */
-	private function buildQueryForm ($fields){
+	private function buildQueryForm (){
 		
 		$objMyForm = new myForm($this->idList.'QueryForm','onSubmitQueryForm');
 		
-		foreach ($fields as $field => $value){
+		foreach ($this->arrayFieldsOnQuery as $field){
 			
 			$objMyForm->addText($field,$field);
 		}

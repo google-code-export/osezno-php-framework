@@ -82,7 +82,7 @@
    * Nombre de base de datos.
    * @var string
    */
-  $database = 'test';
+  $database = 'osezno';
   
   /**
    * Motor de base de datos; pgsql ó mysql.

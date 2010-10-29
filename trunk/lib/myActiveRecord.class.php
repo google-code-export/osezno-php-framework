@@ -1085,7 +1085,9 @@ class myActiveRecord {
 	 * @return boolean
 	 */
 	public function save (){
+		
 		$sql = '';
+		
 		$sqlValues = '';
 			
 		// Update
@@ -1115,9 +1117,7 @@ class myActiveRecord {
 				
 			}
 
-			$sql = substr($sql,0,-2).' WHERE '
-			.$this->tablePk[$this->table]
-			.' = '.$this->keyFinded;
+			$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->table].' = '.$this->keyFinded;
 
 			$this->query($sql);
 			
@@ -1127,9 +1127,9 @@ class myActiveRecord {
 			$sql .= 'INSERT INTO '.$this->table.' (';
 
 			foreach ($this->classVars as $field => $value){
-
+				
 				if ($this->validateAtt($field)){
-					
+				
 					$sql.=$field.', ';
 
 					if (is_numeric($this->$field)){
@@ -1139,16 +1139,15 @@ class myActiveRecord {
 							
 						$sqlValues .= '\''.addslashes($this->$field).'\', ';
 					}
-					
+						
 				}
-													
-				$sql = substr($sql,0,-2).') VALUES ('.substr($sqlValues,0,-2).')';
+			}									
+			
+			$sql = substr($sql,0,-2).') VALUES ('.substr($sqlValues,0,-2).')';
 
-				$this->query($sql);
+			$this->query($sql);
 			
-				$this->lastInserId = $this->get_LastInsertId();
-			}
-			
+			$this->lastInserId = $this->get_LastInsertId();
 		}
 		
 		return $this->getNumRowsAffected();
