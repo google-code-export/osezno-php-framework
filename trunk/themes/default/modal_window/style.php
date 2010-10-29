@@ -2,7 +2,7 @@
 
 /** Boton cerrar **/
 .buttom_close_mw {
-	background-image: url('<?= $_GET['path_img']; ?>button-close.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>button-close.gif');
 	height: 9px;
 	width: 15px;
 	position: absolute;
@@ -12,47 +12,47 @@
 
 /** Esquina superior izq **/
 .mw_top_left {
-	background-image: url('<?= $_GET['path_img']; ?>top-left.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>top-left.gif');
 }
 
 /** Esquina superior centro **/
 .mw_top_center {
-	background-image: url('<?= $_GET['path_img']; ?>top-middle.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>top-middle.gif');
 }
 
 /** Esquina superior Der **/
 .mw_top_right {
-	background-image: url('<?= $_GET['path_img']; ?>top-right.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>top-right.gif');
 }
 
 /** Centro izq **/
 .mw_center_left {
-	background-image: url('<?= $_GET['path_img']; ?>left.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>left.gif');
 }
 
 /** Centro medio **/
 .mw_center_middle {
-	background-image: url('<?= $_GET['path_img']; ?>gradient-bg.png');
+	background-image: url('<?php echo $_GET['path_img']; ?>gradient-bg.png');
 }
 
 /** Esquina superior Der **/
 .mw_center_right {
-	background-image: url('<?= $_GET['path_img']; ?>right.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>right.gif');
 }
 
 /** Base izq **/
 .mw_bottom_left {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-left.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>bottom-left.gif');
 }
 
 /** Base centro **/
 .mw_bottom_center {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-middle.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>bottom-middle.gif');
 }
 
 /** Base Der **/
 .mw_bottom_right {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-right.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>bottom-right.gif');
 }
 
 /** Titulo de la ventana modal **/

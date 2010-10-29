@@ -2,7 +2,7 @@
  * Info
  */
 .notifi_img_info {
-	background-image: url('<?= $_GET['path_img']; ?>info.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>info.gif');
 	height: 25px;
 	width: 25px;
 	position:static;
@@ -33,7 +33,7 @@
  * Ok
  */
 .notifi_img_ok {
-	background-image: url('<?= $_GET['path_img']; ?>ok.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>ok.gif');
 	height: 25px;
 	width: 25px;
 	position:static;
@@ -65,7 +65,7 @@
  * Cancel
  */
 .notifi_img_cancel {
-	background-image: url('<?= $_GET['path_img']; ?>cancel.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>cancel.gif');
 	height: 25px;
 	width: 25px;
 	position:static;
@@ -97,7 +97,7 @@
  * Error
  */
 .notifi_img_error {
-	background-image: url('<?= $_GET['path_img']; ?>error.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>error.gif');
 	height: 25px;
 	width: 25px;
 	position:static;
@@ -129,7 +129,7 @@
  * Warning
  */
 .notifi_img_warning {
-	background-image: url('<?= $_GET['path_img']; ?>warning.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>warning.gif');
 	height: 25px;
 	width: 25px;
 	position:static;
@@ -160,7 +160,7 @@
  * Help
  */
 .notifi_img_help {
-	background-image: url('<?= $_GET['path_img']; ?>help.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>help.gif');
 	height: 25px;
 	width: 25px;
 	position:static;
@@ -191,7 +191,7 @@
  * Critical
  */
 .notifi_img_critical {
-	background-image: url('<?= $_GET['path_img']; ?>critical.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>critical.gif');
 	height: 25px;
 	width: 25px;
 	position:static;

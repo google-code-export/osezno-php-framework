@@ -43,7 +43,7 @@ a:hover {
 
 /** Fila seleccionada **/
 .td_mark {
-	background-image: url('<?= $_GET['path_img']; ?>cell_over.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>cell_over.gif');
 	background-color:#99ACDF;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
@@ -55,7 +55,7 @@ a:hover {
 
 /** Fila sobre **/
 .td_over {
-	background-image: url('<?= $_GET['path_img']; ?>cell_selected.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>cell_selected.gif');
 	background-color: #FFD07F;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
@@ -84,13 +84,13 @@ a:hover {
 
 /** Celda del titulo de la columna cuando es ordenada **/
 .cell_title_selected {
-	background-image: url('<?= $_GET['path_img']; ?>col_selected.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>col_selected.gif');
 	text-align:center;
 }
 
 /** Celda del titulo de la columna **/
 .cell_title {
-	background-image: url('<?= $_GET['path_img']; ?>col_default.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>col_default.gif');
 	text-align:center;
 }
 

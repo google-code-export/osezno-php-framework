@@ -2,7 +2,7 @@
 
 /** Imagen msg_box_critical.gif **/
 .img_critical {
-	background-image: url('<?= $_GET['path_img']; ?>msg_box_critical.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>msg_box_critical.gif');
 	height: 50px;
 	width: 50px;
 	position:static;
@@ -12,7 +12,7 @@
 
 /** Imagen msg_box_error.gif **/
 .img_error {
-	background-image: url('<?= $_GET['path_img']; ?>msg_box_error.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>msg_box_error.gif');
 	height: 50px;
 	width: 50px;
 	position:static;
@@ -22,7 +22,7 @@
 
 /** Imagen msg_box_help.gif **/
 .img_help {
-	background-image: url('<?= $_GET['path_img']; ?>msg_box_help.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>msg_box_help.gif');
 	height: 50px;
 	width: 50px;
 	position:static;
@@ -32,7 +32,7 @@
 
 /** Imagen msg_box_info.gif **/
 .img_info {
-	background-image: url('<?= $_GET['path_img']; ?>msg_box_info.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>msg_box_info.gif');
 	height: 50px;
 	width: 50px;
 	position:static;
@@ -42,7 +42,7 @@
 
 /** Imagen msg_box_list.gif **/
 .img_list {
-	background-image: url('<?= $_GET['path_img']; ?>msg_box_list.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>msg_box_list.gif');
 	height: 50px;
 	width: 50px;
 	position:static;
@@ -52,7 +52,7 @@
 
 /** Imagen msg_box_user.gif **/
 .img_user {
-	background-image: url('<?= $_GET['path_img']; ?>msg_box_user.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>msg_box_user.gif');
 	height: 50px;
 	width: 50px;
 	position:static;
@@ -62,7 +62,7 @@
 
 /** Imagen msg_box_warning.gif **/
 .img_warning {
-	background-image: url('<?= $_GET['path_img']; ?>msg_box_warning.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>msg_box_warning.gif');
 	height: 50px;
 	width: 50px;
 	position:static;
@@ -72,7 +72,7 @@
 
 /** Boton cerrar **/
 .buttom_close {
-	background-image: url('<?= $_GET['path_img']; ?>button-close.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>button-close.gif');
 	height: 9px;
 	width: 15px;
 	position: absolute;
@@ -82,47 +82,47 @@
 
 /** Esquina superior izq **/
 .top_left {
-	background-image: url('<?= $_GET['path_img']; ?>top-left.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>top-left.gif');
 }
 
 /** Esquina superior centro **/
 .top_center {
-	background-image: url('<?= $_GET['path_img']; ?>top-middle.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>top-middle.gif');
 }
 
 /** Esquina superior Der **/
 .top_right {
-	background-image: url('<?= $_GET['path_img']; ?>top-right.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>top-right.gif');
 }
 
 /** Centro izq **/
 .center_left {
-	background-image: url('<?= $_GET['path_img']; ?>left.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>left.gif');
 }
 
 /** Centro medio **/
 .center_middle {
-	background-image: url('<?= $_GET['path_img']; ?>gradient-bg.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>gradient-bg.gif');
 }
 
 /** Esquina superior Der **/
 .center_right {
-	background-image: url('<?= $_GET['path_img']; ?>right.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>right.gif');
 }
 
 /** Base izq **/
 .bottom_left {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-left.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>bottom-left.gif');
 }
 
 /** Base centro **/
 .bottom_center {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-middle.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>bottom-middle.gif');
 }
 
 /** Base Der **/
 .bottom_right {
-	background-image: url('<?= $_GET['path_img']; ?>bottom-right.gif');
+	background-image: url('<?php echo $_GET['path_img']; ?>bottom-right.gif');
 }
 
 /** Titulo del messagebox **/
