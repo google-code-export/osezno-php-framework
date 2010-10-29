@@ -143,7 +143,7 @@ function responseCallUrl(pageElement) {
 	 miImagen.style.height = (arrayPageSize[1] + 'px');
 	 miImagen.style.minHeight	= '100%';
 	 
-	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../img/common/loader.gif" title="Loading..."></td></tr></table>';
+	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../javascript/img/common/loader.gif" title="Loading..."></td></tr></table>';
 	
 	 //Preguntar si existe el objeto
 	 //vanecerCallBack(miCapa,0);
