@@ -1008,11 +1008,7 @@ class myController extends myControllerExt {
 			break;
 		}
 		
-		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
-		
-		//$arrayColors = array('green','purple','red','blue','black','pink');
-		
-		//$this->notificationWindow(str_replace(array("\n"),array(''),$myList->getVar('sqlW')),2,$arrayColors[rand(0,5)]);
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
@@ -1062,16 +1058,20 @@ class myController extends myControllerExt {
 		
 		$arEvntOnClm = $myList->getVar('arrayEventOnColumn');
 		
+		$arSAliQuery = $myList->getVar('arrayAliasSetInQuery');
+		
 		foreach ($arFldsOnQry as $field){
 
 			if (!isset($arEvntOnClm[$field])){
 				
 				if ($datForm[$field]){
 					
-					$val = $datForm[$field];
+					$val = "'".$datForm[$field]."'";
 					
-					if (!is_numeric($datForm[$field]))
-						$val = "'".$datForm[$field]."'";
+					list($ali,$data_type) = explode('::',$arSAliQuery[$field]);
+					
+					if ($data_type=='numeric')
+						$val = $datForm[$field];
 					
 					$sqlWhere .= $field.' '.$arrayCond[$datForm['opt_'.$field]].' '.$val.' AND ';
 				}
@@ -1079,18 +1079,28 @@ class myController extends myControllerExt {
 		}
 		
 		if ($sqlWhere){
+			
 			$myList->setVar('maxNumPage',0);
 			
 			$myList->setVar('sqlWhere',' WHERE '.substr($sqlWhere,0,-4));
 		}
 			
-		$this->alert($sqlWhere);
-		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
-		if ($myList->isSuccessfulProcess())
-			$this->notificationWindow(MSG_QUERY_FORM_OK,3,'ok');
-		else
+		if ($myList->isSuccessfulProcess()){
+			
+			if ($sqlWhere){
+				
+				if ($myList->getNumRowsAffected())
+				
+					$this->notificationWindow(MSG_QUERY_FORM_OK,3,'ok');
+				else
+					$this->notificationWindow(MSG_QUERY_FORM_NOROWS,3,'info');
+					
+			}else
+				$this->notificationWindow(MSG_QUERY_FORM_NULL,3,'warning');
+				
+		}else
 			$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');	
 		
 		$js = 'clearRowsMarked();'."\n";
@@ -1116,7 +1126,7 @@ class myController extends myControllerExt {
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
-		$js = 'clearRowsMarked();'."\n";
+		$js = $idList.'QueryForm.reset(); clearRowsMarked();'."\n";
 		
 		$this->script($js);
 		
