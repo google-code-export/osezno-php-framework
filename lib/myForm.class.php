@@ -1352,7 +1352,6 @@ class myForm {
 	 *
 	 */
 	public function addHidden($name = '', $value = ''){
-		$name     = $this->getColspanRowspan($name);
 		$Cadena   = 'hidden'.$this->Separador.$name.$this->Separador.$value;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'hidden';
@@ -1901,6 +1900,28 @@ class myForm {
 	 * @return string
 	 */
 	public function __toString (){
+		return $this->getForm();
+	}
+
+	/**
+	 * Imprime el formulario final
+	 *
+	 * @param integer $cols Numero de columnas
+	 */
+	public function showForm($cols = 2){
+		print $this->getForm($cols);
+	}
+
+	/**
+	 * Obtiene el HTML de un formulario previamente configurado
+	 *
+	 * @param integer $cols Numero de columnas que tiene el formulario
+	 * @return string
+	 */
+	public function getForm($cols = 2){
+		
+		if ($cols)
+			$this->cols = $cols;
 
 		$buf = '';
 		if ($this->use_cache){
@@ -1940,25 +1961,6 @@ class myForm {
 		}
 		
 		return $fileContenido;
-	}
-
-	/**
-	 * Imprime el formulario final
-	 *
-	 * @param integer $cols Numero de columnas
-	 */
-	public function showForm($cols = 2){
-		print $this->__toString($cols);
-	}
-
-	/**
-	 * Obtiene el HTML de un formulario previamente configurado
-	 *
-	 * @param integer $cols Numero de columnas que tiene el formulario
-	 * @return string
-	 */
-	public function getForm($cols = 2){
-		return $this->__toString($cols);
 	}
 
 	/**
@@ -2550,7 +2552,7 @@ class myForm {
 						$cantTr++;
 					}
 
-					if ($this->arrayFormElementsColspan[$nameField]){
+					if (isset($this->arrayFormElementsColspan[$nameField])){
 						$numColSpan = $this->arrayFormElementsColspan[$nameField];
 						$iTemp += $numColSpan;
 						$sumNumColSpan += $numColSpan;
@@ -2696,9 +2698,15 @@ class myForm {
 			}
 
 			if (isset($this->arrayFormElementsColspan[$nameField])){
-				$numColSpan = $this->arrayFormElementsColspan[$nameField];
-				$iTemp += $numColSpan;
-				$sumNumColSpan += $numColSpan;
+				if($this->arrayFormElementsColspan[$nameField]){
+					$numColSpan = $this->arrayFormElementsColspan[$nameField];
+					$iTemp += $numColSpan;
+					$sumNumColSpan += $numColSpan;
+				}else{
+					$numColSpan = 0;
+					$iTemp++;
+					$sumNumColSpan ++;
+				}
 			}else{
 				$numColSpan = 0;
 				$iTemp++;

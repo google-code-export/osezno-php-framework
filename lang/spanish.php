@@ -7,15 +7,36 @@
 	define('GOTO_FIRST_PAGE','Ir a la primera p&aacute;gina');
 	define('GOTO_NEXT_PAGE','Ir a la siguiente p&aacute;gina');
 	define('GOTO_BACK_PAGE','Ir a la anterior p&aacute;gina');
+	
 	define('LABEL_QUERY_BUTTON_FORM','Consultar');
+	define('LABEL_HELP_QUERY_BUTTON_FORM','Ejecuta la consulta basada en las reglas declaradas.');
+
+	define('LABEL_FIELDSET_ADD_RULE_FORM','Parametros de la regla');
+	define('LABEL_RELATION_SELECT_OPT_EQUAL','Igual que');
+	define('LABEL_RELATION_SELECT_OPT_DIFERENT','Diferente de');
+	define('LABEL_RELATION_SELECT_OPT_GRE_THEN','Mayor que');
+	define('LABEL_RELATION_SELECT_OPT_LSS_THEN','Menor que');
+	define('LABEL_LOGIC_FIELD_ADD_RULE_FORM','Operador l&oacute;gico');
+	define('LABEL_RELATION_FIELD_ADD_RULE_FORM','Operador de relaci&oacute;n');
+	define('LABEL_RELATION_OPTAND_ADD_RULE_FORM','Y (And)');
+	define('LABEL_RELATION_OPTOR_ADD_RULE_FORM','O (Or)');
+	define('LABEL_FIELD_LIST_ADD_RULE_FORM','Campo lista');
+	define('LABEL_FIELD_VALUE_ADD_RULE_FORM','Valor campo');
+	
 	define('LABEL_CANCEL_QUERY_BUTTON_FORM','Cancelar');
+	define('LABEL_HELP_CANCEL_QUERY_BUTTON_FORM','Cancela todas las reglas declaradas y retorna la lista a su consulta original.');
 	define('LABEL_DOWNLOAD_QUERY_BUTTON_FORM','Descargar');
+	define('LABEL_HELP_DOWNLOAD_QUERY_BUTTON_FORM','Descarga la consulta actual en un formato elegible.');
+	define('LABEL_ADD_RULE_QUERY_BUTTON_FORM','Agr. Regla');
+	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Agrega una regla a la consulta original para que esta sea filtrada.');
+	define('TITLE_ADD_RULE_QUERY_FORM','Agregar Regla a la Lista Din&aacute;mica');
 	define('LABEL_FORM_FIELDSET','Filtrar resultados en la lista');
 	define('MSG_RESTART_QUERY_LIST','La consulta ha sido reiniciada');
 	define('MSG_QUERY_FORM_OK','La consulta fue realizada exitosamente.');
 	define('MSG_QUERY_FORM_BAD','Se encontraron problemas al ejecutar la consulta');
 	define('MSG_QUERY_FORM_NULL','Debe escribir un valor a filtrar.');
 	define('MSG_QUERY_FORM_NOROWS','No se encontraron registros que coincidan con la consulta.');
+	
 
 
 	/**

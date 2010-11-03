@@ -874,31 +874,6 @@ class myList  {
 	}
 	
 	/**
-	 * Retorna un arreglo equivalente a las reglas aplicables para determinado campo en el formulario de
-	 * filtro segun el tipo de campo que fue definido.
-	 * @param $data_type	Tipo de dato
-	 * @return array
-	 */
-	private function returnDataTypeSelectArray ($data_type){
-		
-		$arrayReturn = array(
-			'equal'=>'=',
-			'different'=>'!='
-		);
-		
-		switch($data_type){
-			
-			case'numeric':
-				$arrayReturn['greater_than'] 	= '>';
-				
-				$arrayReturn['less_than'] 		= '<';
-			break;
-		}
-		
-		return $arrayReturn;
-	}
-	
-	/**
 	 * Construye el Html del formulario de consulta
 	 * @return string
 	 */
@@ -916,6 +891,7 @@ class myList  {
 		
 		$objMyForm->idMainButton = $this->idList.'_query';
 				
+		/*
 		foreach ($this->arrayFieldsOnQuery as $field){
 			
 			$data_type = '';
@@ -966,18 +942,39 @@ class myList  {
 			}
 				
 		}
+		*/
 		
 		$objMyForm->addHidden($arFields[] = 'idlist',$this->idList);
 		
 		$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
 		
-		$objMyForm->addButton('cancel_query',LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
+		$objMyForm->addButton('add_rule',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'showFormAddRuleQuery','add.gif');
 		
 		$objMyForm->addButton('save_query',LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif');
 		
+		$objMyForm->addButton('cancel_query',LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
+		
 		$objMyForm->srcImageMainButton = 'ok.gif';
 		
+		$objMyForm->addDisabled('cancel_query');
+		$objMyForm->addDisabled('save_query');
+		$objMyForm->addDisabled($objMyForm->idMainButton);
+		
 		$objMyForm->strSubmit = LABEL_QUERY_BUTTON_FORM;
+		
+		/**
+		 * Helps
+		 */
+		$objMyForm->styleTypeHelp = 2;
+		
+		$objMyForm->addHelp($objMyForm->idMainButton,LABEL_HELP_QUERY_BUTTON_FORM);
+		
+		$objMyForm->addHelp('add_rule',LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
+		
+		$objMyForm->addHelp('save_query',LABEL_HELP_DOWNLOAD_QUERY_BUTTON_FORM);
+		
+		$objMyForm->addHelp('cancel_query',LABEL_HELP_CANCEL_QUERY_BUTTON_FORM);
+		
 		
 		return $objMyForm->getForm(1);
 	}
