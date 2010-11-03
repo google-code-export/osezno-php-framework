@@ -1008,7 +1008,7 @@ class myController extends myControllerExt {
 			break;
 		}
 		
-		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
@@ -1144,6 +1144,98 @@ class myController extends myControllerExt {
 	public function onSubmitDownloadQuery ($datForm){
 
 		$this->messageBox(var_export($datForm,true));
+		
+		return $this->response;
+	}
+	
+	
+	/**
+	 * Abre una ventana modal con un formulario que permite agregar una regla a la consulta actual de la lista dinamica.
+	 * 
+	 * @param $datForm	Datos de form
+	 * @return string
+	 */
+	public function showFormAddRuleQuery ($datForm){
+
+		$spaCha = '&nbsp;';
+		
+		$arCompare = array(
+			'equal'=>str_repeat($spaCha,2).'='.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_EQUAL.')',
+			'different'=>'&nbsp;<>&nbsp;('.LABEL_RELATION_SELECT_OPT_DIFERENT.')',
+			'greater_than'=>str_repeat($spaCha,2).'>'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_GRE_THEN.')',
+			'less_than'=>str_repeat($spaCha,2).'<'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_LSS_THEN.')'
+		);
+		
+		$idForm = $datForm['idlist'].'_add_rule';
+		
+		$objMyForm = new myForm($idForm,'onSubmitAddRuleQuery');
+		
+		$objMyForm->selectUseFirstValue = false;
+		
+		$arFields = array();
+		
+		$objList = new myList($datForm['idlist']);
+		
+		$arFldOnQry = $objList->getVar('arrayFieldsOnQuery');
+		
+		$arEvnOnClm = $objList->getVar('arrayEventOnColumn');
+		
+		$arAlsInQry = $objList->getVar('arrayAliasSetInQuery');
+		
+		foreach ($arFldOnQry as $field){
+			
+			if (!isset($arEvnOnClm[$field])){
+				
+				if (isset($arAlsInQry[$field]))
+					$data = $arAlsInQry[$field];
+				else
+					$data = $field;
+				list($etq,$data_type) = explode('::',$data);
+					
+				$arFields[$field] = $etq;
+			}
+		}
+		
+		$objMyForm->addSelect(LABEL_LOGIC_FIELD_ADD_RULE_FORM.':',
+			'logic',
+			array(
+				'AND'=>LABEL_RELATION_OPTAND_ADD_RULE_FORM,
+				'OR'=>LABEL_RELATION_OPTOR_ADD_RULE_FORM)
+			);
+		
+		$objMyForm->addSelect(LABEL_FIELD_LIST_ADD_RULE_FORM.':',
+			'field',$arFields);
+
+		$objMyForm->addSelect(LABEL_RELATION_FIELD_ADD_RULE_FORM.':','relation',$arCompare);
+		
+		$objMyForm->addText(LABEL_FIELD_VALUE_ADD_RULE_FORM.':','value',NULL,10,0,NULL);		
+		
+		$objMyForm->addHidden('idlist',$datForm['idlist']);
+		
+		$objMyForm->strFormFieldSet = LABEL_FIELDSET_ADD_RULE_FORM.':';
+		
+		$objMyForm->srcImageMainButton = 'ok.gif';
+		
+		$objMyForm->strSubmit = LABEL_ADD_RULE_QUERY_BUTTON_FORM;
+		
+		$objMyForm->addButton('cancel_add_rule',LABEL_CANCEL_QUERY_BUTTON_FORM,'closeModalWindow','cancel.gif');
+		
+		$objMyForm->border = 0;
+		
+		$this->modalWindow($objMyForm->getForm(2),TITLE_ADD_RULE_QUERY_FORM,550,225);
+		
+		return $this->response;
+	}
+	
+	/**
+	 * Ejecuta la accion de agregar una regla a la lista dinamica.
+	 * 
+	 * @param $datForm	Datos de form
+	 * @return string
+	 */
+	public function onSubmitAddRuleQuery ($datForm){
+		
+		
 		
 		return $this->response;
 	}
