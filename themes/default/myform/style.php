@@ -8,8 +8,8 @@
 
 .caja {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
-	color: #999999;
+	font-size: 11px;
+	color: #000000;
 	vertical-align: middle;
 }
 
@@ -21,9 +21,18 @@
 	padding: 3px;
 }
 
+.etiqueta_center {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
 .etiqueta {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font-size: 11px;
 	color: #000000;
 	text-align: right;
 	vertical-align: middle;
