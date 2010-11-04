@@ -24,13 +24,11 @@
  	
 	public function form2 (){
 		
-		$objMyForm = new myForm('prueba','procesarFormulario');
+		$objMyForm = new myForm('prueba');
 		
 		$objMyForm->addText('Fecha:','fecha',date('Y-m-d'),10,10,true,true);
 		
 		$objMyForm->width = 300;
-		
-		$objMyForm->strSubmit = 'Enviar';
 		
 		$objMyForm->addButton('word','Word','alert','word.gif');
 		
