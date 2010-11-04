@@ -1157,6 +1157,20 @@ class myController extends myControllerExt {
 	 */
 	public function showFormAddRuleQuery ($datForm){
 
+		$objList = new myList($datForm['idlist']);
+		
+		$objList->setVar('numRuleQuery',$numRuleQuery = $objList->getVar('numRuleQuery')+1);
+		
+		//$this->alert($numRuleQuery);
+		
+		/*
+		 //Agregar 
+		$this->append('g1','innerHTML',$numRuleQuery);
+		 //Eliminar
+		$this->remove($datForm['idlist']);
+		*/
+		
+		/*
 		$spaCha = '&nbsp;';
 		
 		$arCompare = array(
@@ -1168,7 +1182,7 @@ class myController extends myControllerExt {
 		
 		$idForm = $datForm['idlist'].'_add_rule';
 		
-		$objMyForm = new myForm($idForm,'onSubmitAddRuleQuery');
+		$objMyForm = new myForm($idForm);
 		
 		$objMyForm->selectUseFirstValue = false;
 		
@@ -1214,15 +1228,14 @@ class myController extends myControllerExt {
 		
 		$objMyForm->strFormFieldSet = LABEL_FIELDSET_ADD_RULE_FORM.':';
 		
-		$objMyForm->srcImageMainButton = 'ok.gif';
-		
-		$objMyForm->strSubmit = LABEL_ADD_RULE_QUERY_BUTTON_FORM;
+		$objMyForm->addButton('add_rule',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'onSubmitAddRuleQuery','ok.gif');
 		
 		$objMyForm->addButton('cancel_add_rule',LABEL_CANCEL_QUERY_BUTTON_FORM,'closeModalWindow','cancel.gif');
 		
 		$objMyForm->border = 0;
 		
 		$this->modalWindow($objMyForm->getForm(2),TITLE_ADD_RULE_QUERY_FORM,550,225);
+		*/
 		
 		return $this->response;
 	}

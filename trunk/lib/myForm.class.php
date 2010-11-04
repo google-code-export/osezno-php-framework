@@ -2226,7 +2226,7 @@ class myForm {
 			$arguments = explode ($this->colSpanIdentifier,$objName);
 			$objName = $arguments[0];
 			$this->arrayFormElementsColspan[$objName] = $arguments[1];
-			if ($arguments[2])
+			if (isset($arguments[2]))
 			   $this->arrayFormElementsRowspan[$objName] = $arguments[2];
 			else   
 			   $this->arrayFormElementsRowspan[$objName] = $rowspan;
@@ -2412,7 +2412,7 @@ class myForm {
 					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq><div name="e_'.$campos_f[1].'" id="e_'.$campos_f[1].'">'.$campos_f[2].'</div></td><td rowSpanFld colSpanFld widthFld class="'.$this->styleClassFields.'"><div name="c_'.$campos_f[1].'" id="c_'.$campos_f[1].'">'.$campos_f[3].'</div></td>'."\n";
 					break;
 				case 'coment':
-					$this->arrayFormElements[$campos_f[1]] = '<td widthEtq rowSpanEtq class="'.$this->styleClassFields.'" colSpanEtq>'.$campos_f[2].'</td>';
+					$this->arrayFormElements[$campos_f[1]] = '<td widthEtq rowSpanEtq class="'.$this->styleClassTags.'" colSpanEtq>'.$campos_f[2].'</td>';
 					break;
 				case 'checkbox':
 					$value = '0';

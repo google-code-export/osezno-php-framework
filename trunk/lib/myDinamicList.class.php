@@ -58,6 +58,7 @@ class myList  {
 	 */
 	private $maxNumPage = 0;
 	
+	private $numRuleQuery = 0;
 	
 	/**
 	 * Pagina actual cuando la paginacion esta activa.
@@ -97,7 +98,8 @@ class myList  {
 		'typeList',
 		'arrayEventOnColumn',
 		'arrayFieldsOnQuery',
-		'sqlWhere'
+		'sqlWhere',
+		'numRuleQuery'
 	);	
 	
 	/**
@@ -216,11 +218,10 @@ class myList  {
 	 */
 	private $successFul = true;
 	
-	
 	/**
 	 * Cadena SQL u Objeto
 	 * 
-	 * @var unknown_type
+	 * @var string
 	 */
 	private $sqlORobject;
 	
@@ -850,9 +851,7 @@ class myList  {
 					
 				}
 				
-			
 				$buf .= '</td>';
-				
 			}
 			
 			$buf .= '</tr></table>';
@@ -874,6 +873,15 @@ class myList  {
 	}
 	
 	/**
+	 * Retorna el formulario filtro de lista por medio de reglas
+	 * @return string
+	 */
+	public function getQueryForm (){
+		
+		return $this->buildQueryForm();
+	}
+	
+	/**
 	 * Construye el Html del formulario de consulta
 	 * @return string
 	 */
@@ -885,12 +893,15 @@ class myList  {
 
 		$objMyForm->width = $this->widthList.''.$this->formatWidthList;
 		
-		$objMyForm->border = 0;
+		$objMyForm->border = 1;
 		
 		$objMyForm->selectUseFirstValue = false;
 		
-		$objMyForm->idMainButton = $this->idList.'_query';
-				
+		
+		for ($i=0;$i<$this->numRuleQuery;$i++){
+			
+		}
+		
 		/*
 		foreach ($this->arrayFieldsOnQuery as $field){
 			
@@ -944,9 +955,19 @@ class myList  {
 		}
 		*/
 		
-		$objMyForm->addHidden($arFields[] = 'idlist',$this->idList);
+		$objMyForm->styleClassTags = 'etiqueta_center';
 		
-		$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
+		$objMyForm->addComent('lbl_1',LABEL_LOGIC_FIELD_ADD_RULE_FORM);
+		$objMyForm->addComent('lbl_2',LABEL_FIELD_LIST_ADD_RULE_FORM);
+		$objMyForm->addComent('lbl_3',LABEL_RELATION_FIELD_ADD_RULE_FORM);
+		$objMyForm->addComent('lbl_4',LABEL_FIELD_VALUE_ADD_RULE_FORM);
+		
+		
+		//$objMyForm->addHidden('idlist',$this->idList);
+		
+		//$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
+
+		$objMyForm->addButton('exec_query',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'onSubmitQuery','ok.gif');
 		
 		$objMyForm->addButton('add_rule',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'showFormAddRuleQuery','add.gif');
 		
@@ -954,20 +975,19 @@ class myList  {
 		
 		$objMyForm->addButton('cancel_query',LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
 		
-		$objMyForm->srcImageMainButton = 'ok.gif';
+		$objMyForm->addDisabled('exec_query');
 		
 		$objMyForm->addDisabled('cancel_query');
-		$objMyForm->addDisabled('save_query');
-		$objMyForm->addDisabled($objMyForm->idMainButton);
 		
-		$objMyForm->strSubmit = LABEL_QUERY_BUTTON_FORM;
+		$objMyForm->addDisabled('save_query');
+		
 		
 		/**
 		 * Helps
 		 */
 		$objMyForm->styleTypeHelp = 2;
 		
-		$objMyForm->addHelp($objMyForm->idMainButton,LABEL_HELP_QUERY_BUTTON_FORM);
+		$objMyForm->addHelp('exec_query',LABEL_HELP_QUERY_BUTTON_FORM);
 		
 		$objMyForm->addHelp('add_rule',LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
 		
@@ -976,7 +996,7 @@ class myList  {
 		$objMyForm->addHelp('cancel_query',LABEL_HELP_CANCEL_QUERY_BUTTON_FORM);
 		
 		
-		return $objMyForm->getForm(1);
+		return $objMyForm->getForm(4);
 	}
 	
 	/**
