@@ -337,25 +337,11 @@ class myForm {
 	public $enctype;
 
 	/**
-	 * La accion (Funcion) javaScript que realizara cuando haga click en el boton.
-	 *
-	 * @var string
-	 */
-	public $jsFunctionEvent;
-	
-	/**
 	 * Prefijo que usa xajax para llamar a sus funciones
 	 *
 	 * @var string
 	 */
 	public $prefAjax = '';
-
-	/**
-	 * Etiqueta del boton que enviara los datos del formulario.
-	 *
-	 * @var string
-	 */
-	public $strSubmit = 'Send';
 
 	/**
 	 * El nombre del formulario con el que se esta interactuando.
@@ -430,25 +416,11 @@ class myForm {
 	public $selectUseFirstValue = true;
 
 	/**
-	 * Ruta de la Imagen que acompana el boton que cierra el formulario
-	 *
-	 * @var string
-	 */
-	public $srcImageMainButton = 'save.gif';
-
-	/**
 	 * Ruta de la Imagen que acompana el boton de cada uno de los Controles de calendario
 	 *
 	 * @var string
 	 */
 	public $srcImageCalendarButton  = 'calendar.gif';
-
-	/**
-	 * Nombre del boton que envia la informacion del Formulario
-	 *
-	 * @var string
-	 */
-	public $idMainButton = 'enviar';
 
 	/**
 	 * Path subcarpeta dentro de la carpeta principal del poryecto
@@ -922,7 +894,7 @@ class myForm {
 	 * @param string  $target   	Parametro de apertura de los datos
 	 * @param string  $enctype  	Tipo de informacion que maneja
 	 */
-	public function __construct($name = '', $event = '', $action = '', $target = '', $enctype = ''){
+	public function __construct($name = '', $action = '', $target = '', $enctype = ''){
 
 		$this->pathImages =  '/themes/'.THEME_NAME.'/myform/';
 		
@@ -931,9 +903,6 @@ class myForm {
 		if ($action)
 			$this->action = $action;
 			
-		if ($event)
-			$this->jsFunctionEvent = $event;
-
 		if ($target)
 			$this->target = $target;			
 			
@@ -2329,9 +2298,6 @@ class myForm {
 		if(!$this->action)
 			$buf.= 'onsubmit="'.$this->onSubmitAction.'" ';
 
-		if($this->jsFunctionEvent && $this->action)
-		$buf.= 'onsubmit="'.$this->onSubmitAction.'" ';
-			
 		if ($this->enctype)
 			$buf.='enctype= "'.$this->enctype.'" ';
 			
@@ -2757,65 +2723,14 @@ class myForm {
 		$buf .= '<table border="'.$this->border.'" align="center" width="'.$this->width.'">'."\n";
 		$buf .= '<tr>';
 
-		// Para el primer boton
 		$countArrayButtonList = count ($this->arrayButtonList);
 		$intWidth = 100;
+		
 		if ($countArrayButtonList)
-			$intWidth = $intWidth / ($countArrayButtonList+1);
+			$intWidth = $intWidth / ($countArrayButtonList);
 			
-		$buf .= '<td align="center" style="text-align:center" width="'.$intWidth.'%">';
-			
-		$buf.='<button '.$this->checkIsHelping($this->idMainButton).' '.$this->checkIfIsDisabled($this->idMainButton).' value="'.trim(strip_tags($this->strSubmit)).'" class="'.$this->styleClassButtons.'" type="submit" name="'.$this->idMainButton.'" id="'.$this->idMainButton.'" ';
-		
-		$jsFunctionFB = $this->jsFunctionEvent;
-
 		$strMixedParams = '';
-		if (stripos($jsFunctionFB,':')!==false){
-						
-			$mixedExtParams = array();
-		  		
-  			$intCountPrm = count($mixedExtParams = split(':',$jsFunctionFB));
-  			$iExtParams = 0;
-		  		
-  			foreach ($mixedExtParams as $param){
-					
-		  			if (!$iExtParams)
-						$jsFunctionFB = $param;
-		  			
-		  			if ($jsFunctionFB!=$param){
-		  				if (!is_numeric($param))
-							$strMixedParams .= '\''.$param.'\'';
-						else	
-							$strMixedParams .= $param;
-		  			}
-		  			
-		  			if (($iExtParams+1)<$intCountPrm){
-						$strMixedParams .= ',';
-		  			}
-		  			
-				$iExtParams++;					  			
-			}
-		}
-		
-		if ($this->jsFunctionEvent && !$this->action){
 			
-			$buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\')'.$strMixedParams.')"';
-		}else if ($this->jsFunctionEvent && $this->action){
-			
-		    $buf .= ' onclick="'.$this->prefAjax.$jsFunctionFB.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\')'.$strMixedParams.')"';
-		}else{
-		    $buf .= ' onclick="'.$this->name.'.submit()" ';
-		}
-
-		$buf .= '>';
-
-		if ($this->srcImageMainButton)
-			$buf .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageMainButton.'" border="0">';
-			
-		$buf .= $this->strSubmit;
-
-		$buf .= '</button></td>';
-
 		// Para mostrar los demas botones
 		for ($j = 0; $j < $countArrayButtonList; $j++){
 			$buf .= '<td align="center" style="text-align:center" width="'.$intWidth.'%">';
