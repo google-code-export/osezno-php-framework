@@ -881,7 +881,7 @@ class myList  {
 		
 		$arFields = array();
 		
-		$objMyForm = new myForm($this->idList.'QueryForm','onSubmitQuery');
+		$objMyForm = new myForm($this->idList.'QueryForm');
 
 		$objMyForm->width = $this->widthList.''.$this->formatWidthList;
 		
