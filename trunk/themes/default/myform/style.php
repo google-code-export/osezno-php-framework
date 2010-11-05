@@ -14,11 +14,17 @@
 }
 
 .boton {
+	height:28px;
+	padding-bottom:0px;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+}
+
+.boton_font {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #000000;
-	vertical-align: middle;
-	padding: 3px;
 }
 
 .etiqueta_center {

@@ -893,7 +893,7 @@ class myList  {
 
 		$objMyForm->width = $this->widthList.''.$this->formatWidthList;
 		
-		$objMyForm->border = 1;
+		$objMyForm->border = 0;
 		
 		$objMyForm->selectUseFirstValue = false;
 		
@@ -958,18 +958,24 @@ class myList  {
 		$objMyForm->styleClassTags = 'etiqueta_center';
 		
 		$objMyForm->addComent('lbl_1',LABEL_LOGIC_FIELD_ADD_RULE_FORM);
+		
 		$objMyForm->addComent('lbl_2',LABEL_FIELD_LIST_ADD_RULE_FORM);
+		
 		$objMyForm->addComent('lbl_3',LABEL_RELATION_FIELD_ADD_RULE_FORM);
+		
 		$objMyForm->addComent('lbl_4',LABEL_FIELD_VALUE_ADD_RULE_FORM);
+
+		$objMyForm->addComent('lbl_5',LABEL_REM_RULE_FORM);
+		
+		$objMyForm->addComent('rule_for:5','<div id="rule_for_'.$this->idList.'"></div>');
 		
 		
-		//$objMyForm->addHidden('idlist',$this->idList);
 		
 		//$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
 
-		$objMyForm->addButton('exec_query',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'onSubmitQuery','ok.gif');
+		$objMyForm->addButton('exec_query','Holakjdklas','onSubmitQuery:'.$this->idList);
 		
-		$objMyForm->addButton('add_rule',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'showFormAddRuleQuery','add.gif');
+		$objMyForm->addButton('add_rule',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'MYLIST_addRuleQuery','add.gif');
 		
 		$objMyForm->addButton('save_query',LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif');
 		
@@ -996,7 +1002,7 @@ class myList  {
 		$objMyForm->addHelp('cancel_query',LABEL_HELP_CANCEL_QUERY_BUTTON_FORM);
 		
 		
-		return $objMyForm->getForm(4);
+		return $objMyForm->getForm(5);
 	}
 	
 	/**
