@@ -1,4 +1,29 @@
 @CHARSET "ISO-8859-1";
+
+/**
+ * Rule Apply
+ */
+.rule_apply {
+	background-image: url('<?php echo $_GET['path_img']; ?>ok.gif');
+	height: 15px;
+	width: 15px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
+/**
+ * Rule Cancel
+ */
+.rule_cancel {
+	background-image: url('<?php echo $_GET['path_img']; ?>cancel.gif');
+	height: 15px;
+	width: 15px;
+	position:static;
+	margin:0px;
+	background-repeat: no-repeat;
+}
+
 th, td {
     overflow: hidden;
     word-wrap: normal;
