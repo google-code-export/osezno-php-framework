@@ -1034,13 +1034,177 @@ class myController extends myControllerExt {
 	}
 
 	/**
-	 * Procesa una consulta desde una lista dinamica filtro
+	 * Cancela el filtro actual sobre la consulta de una lista dinamica
 	 * 
 	 * @param $datForm	Datos de form
 	 * @return string
 	 */
-	public function onSubmitQuery ($datForm){
+	public function onSubmitCancelQuery ($datForm){
 		
+		$idList  = $datForm['idlist'];
+		
+		$myList = new myList($idList);
+		
+		$myList->setVar('sqlWhere','');
+		
+		$this->assign($idList,'innerHTML',$myList->getList());
+		
+		$js = $idList.'QueryForm.reset(); clearRowsMarked();'."\n";
+		
+		$this->script($js);
+		
+		$this->notificationWindow(MSG_RESTART_QUERY_LIST,3,'info');
+		
+		return $this->response;
+	}
+	
+	/**
+	 * Cuarda el resultado de la consulta de una lista dinamica segun el filtro aplicado al disco
+	 * 
+	 * @param $datForm	Datos de form
+	 * @return string
+	 */
+	public function onSubmitDownloadQuery ($datForm){
+
+		$this->messageBox(var_export($datForm,true));
+		
+		return $this->response;
+	}
+	
+	
+	/**
+	 * Abre una ventana modal con un formulario que permite agregar una regla a la consulta actual de la lista dinamica.
+	 * 
+	 * @param $datForm	Datos de form
+	 * @return string
+	 */
+	public function MYLIST_addRuleQuery ($datForm, $idList){
+		
+		$arFields = array();
+		
+		$objMyForm = new myForm($idForm = $idList.'QueryForm');
+		
+		$objMyForm->cellPadding = 0;
+		
+		$objMyForm->selectUseFirstValue = false;
+		
+		$objList = new myList($idList);
+		
+		$arFldOnQry = $objList->getVar('arrayFieldsOnQuery');
+		
+		$arEvnOnClm = $objList->getVar('arrayEventOnColumn');
+		
+		$arAlsInQry = $objList->getVar('arrayAliasSetInQuery');		
+		
+		$objList->setVar('numRuleQuery',$numRuleQuery = $objList->getVar('numRuleQuery')+1);
+
+		$html = '<table border="0" id="rule_gp_'.$idList.'_'.$numRuleQuery.'" width="100%" cellpadding="0" cellspacing="0">';
+		
+		$html .= '<tr>';
+		
+		$html .= '<td width="10%" align="center"><div id="status_'.$idList.'_'.$numRuleQuery.'" class="rule_cancel" id=""></div></td>';
+		
+		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect(
+			'logic_'.$numRuleQuery,
+			array(
+				'AND'=>LABEL_RELATION_OPTAND_ADD_RULE_FORM,
+			
+				'OR'=>LABEL_RELATION_OPTOR_ADD_RULE_FORM)
+			).'</td>';
+		
+		foreach ($arFldOnQry as $field){
+			
+			if (!isset($arEvnOnClm[$field])){
+				
+				if (isset($arAlsInQry[$field]))
+					$data = $arAlsInQry[$field];
+				else
+					$data = $field;
+					
+				list($etq,$data_type) = explode('::',$data);
+					
+				$arFields[$field] = $etq;
+			}
+		}
+			
+		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
+			
+		$spaCha = '&nbsp;';
+		
+		$arCompare = array(
+		
+			'equal'=>str_repeat($spaCha,2).'='.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_EQUAL.')',
+		
+			'different'=>'&nbsp;<>&nbsp;('.LABEL_RELATION_SELECT_OPT_DIFERENT.')',
+		
+			'greater_than'=>str_repeat($spaCha,2).'>'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_GRE_THEN.')',
+		
+			'less_than'=>str_repeat($spaCha,2).'<'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_LSS_THEN.')'
+		);		
+		
+		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$arCompare).'</td>';
+		
+		$html .= '<td width="18%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,10).'</td>';
+		
+		$html .= '<td align="center">'.
+		
+			$objMyForm->getButton($idList.'_apply_rule_'.$numRuleQuery,NULL,'MYLIST_applyRuleQuery:'.$idList.':'.$numRuleQuery,'ok.gif').
+			
+			$objMyForm->getButton($idList.'_remove_rule_'.$numRuleQuery,NULL,'MYLIST_removeRuleQuery:'.$idList.':'.$numRuleQuery,'remove.gif').
+			
+		'</td>';
+		
+		$html .= '</tr>';
+		
+		$html .= '</table>';
+		
+		$this->append('rule_for_'.$idList,'innerHTML',$html);
+		
+		$this->script("blockFirstElementForm('".$idForm."')");
+		
+		return $this->response;
+	}
+	
+	/**
+	 * Elimina una regla del formulario de filtro por reglas de la lista dinamica
+	 * 
+	 * @param $datForm	Datos de form
+	 * @param $idList	Id de la lista
+	 * @param $numRule	Id de la regla
+	 * @return string
+	 */
+	public function MYLIST_removeRuleQuery ($datForm, $idList, $numRule){
+
+		$idForm = $idList.'QueryForm';
+		
+		$this->remove('rule_gp_'.$idList.'_'.$numRule);
+
+		$this->script("blockFirstElementForm('".$idForm."')");
+		
+		return $this->response;
+	}
+	
+	
+	/**
+	 * Aplicar una regla antes definida
+	 * 
+	 * @param $datForm	Datos de form
+	 * @param $idList	Id de la lista
+	 * @param $numRule	Id de la regla
+	 * @return string
+	 */
+	public function MYLIST_applyRuleQuery ($datForm, $idList, $numRule){
+		
+		$this->notificationWindow($numRule);
+		
+		//logic_
+		//field_
+		//relation_
+		//value_
+		
+		$this->assign('status_'.$idList.'_'.$numRule,'className','rule_apply');
+		
+		/*
 		$arrayCond = array (
 			'equal'=>'=',
 			'different'=>'!=',
@@ -1106,157 +1270,7 @@ class myController extends myControllerExt {
 		$js = 'clearRowsMarked();'."\n";
 		
 		$this->script($js);
-		
-		return $this->response;
-	}
-
-	/**
-	 * Cancela el filtro actual sobre la consulta de una lista dinamica
-	 * 
-	 * @param $datForm	Datos de form
-	 * @return string
-	 */
-	public function onSubmitCancelQuery ($datForm){
-		
-		$idList  = $datForm['idlist'];
-		
-		$myList = new myList($idList);
-		
-		$myList->setVar('sqlWhere','');
-		
-		$this->assign($idList,'innerHTML',$myList->getList());
-		
-		$js = $idList.'QueryForm.reset(); clearRowsMarked();'."\n";
-		
-		$this->script($js);
-		
-		$this->notificationWindow(MSG_RESTART_QUERY_LIST,3,'info');
-		
-		return $this->response;
-	}
-	
-	/**
-	 * Cuarda el resultado de la consulta de una lista dinamica segun el filtro aplicado al disco
-	 * 
-	 * @param $datForm	Datos de form
-	 * @return string
-	 */
-	public function onSubmitDownloadQuery ($datForm){
-
-		$this->messageBox(var_export($datForm,true));
-		
-		return $this->response;
-	}
-	
-	
-	/**
-	 * Abre una ventana modal con un formulario que permite agregar una regla a la consulta actual de la lista dinamica.
-	 * 
-	 * @param $datForm	Datos de form
-	 * @return string
-	 */
-	public function MYLIST_addRuleQuery ($datForm, $idList){
-		
-		$arFields = array();
-		
-		$objMyForm = new myForm($idList.'QueryForm');
-		
-		$objMyForm->cellPadding = 0;
-		
-		$objMyForm->selectUseFirstValue = false;
-		
-		$objList = new myList($idList);
-		
-		$arFldOnQry = $objList->getVar('arrayFieldsOnQuery');
-		
-		$arEvnOnClm = $objList->getVar('arrayEventOnColumn');
-		
-		$arAlsInQry = $objList->getVar('arrayAliasSetInQuery');		
-		
-		$objList->setVar('numRuleQuery',$numRuleQuery = $objList->getVar('numRuleQuery')+1);
-
-		$html = '<table border="0" id="rule_gp_'.$idList.'_'.$numRuleQuery.'" width="100%" cellpadding="0" cellspacing="0">';
-		
-		$html .= '<tr>';
-		
-		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect(
-			'logic_'.$numRuleQuery,
-			array(
-				'AND'=>LABEL_RELATION_OPTAND_ADD_RULE_FORM,
-			
-				'OR'=>LABEL_RELATION_OPTOR_ADD_RULE_FORM)
-			).'</td>';
-		
-		foreach ($arFldOnQry as $field){
-			
-			if (!isset($arEvnOnClm[$field])){
-				
-				if (isset($arAlsInQry[$field]))
-					$data = $arAlsInQry[$field];
-				else
-					$data = $field;
-					
-				list($etq,$data_type) = explode('::',$data);
-					
-				$arFields[$field] = $etq;
-			}
-		}
-			
-		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
-			
-		$spaCha = '&nbsp;';
-		
-		$arCompare = array(
-		
-			'equal'=>str_repeat($spaCha,2).'='.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_EQUAL.')',
-		
-			'different'=>'&nbsp;<>&nbsp;('.LABEL_RELATION_SELECT_OPT_DIFERENT.')',
-		
-			'greater_than'=>str_repeat($spaCha,2).'>'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_GRE_THEN.')',
-		
-			'less_than'=>str_repeat($spaCha,2).'<'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_LSS_THEN.')'
-		);		
-		
-		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$arCompare).'</td>';
-		
-		$html .= '<td width="20%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,10).'</td>';
-		
-		$html .= '<td align="center">'.$objMyForm->getButton('remove_rule_'.$numRuleQuery,NULL,'MYLIST_removeRuleQuery:'.$idList.':'.$numRuleQuery,'remove.gif').'</td>';
-		
-		$html .= '</tr>';
-		
-		$html .= '</table>';
-		
-		$this->append('rule_for_'.$idList,'innerHTML',$html);
-		
-		return $this->response;
-	}
-	
-	/**
-	 * Elimina una regla del formulario de filtro por reglas de la lista dinamica
-	 * 
-	 * @param $datForm	Datos de form
-	 * @param $idList	Id de la lista
-	 * @param $numRuleQuery	Id de la regla
-	 * @return string
-	 */
-	public function MYLIST_removeRuleQuery ($datForm, $idList, $numRuleQuery){
-		
-		$this->remove('rule_gp_'.$idList.'_'.$numRuleQuery);
-		
-		return $this->response;
-	}
-	
-	
-	/**
-	 * Ejecuta la accion de agregar una regla a la lista dinamica.
-	 * 
-	 * @param $datForm	Datos de form
-	 * @return string
-	 */
-	public function onSubmitAddRuleQuery ($datForm){
-		
-		
+		*/
 		
 		return $this->response;
 	}

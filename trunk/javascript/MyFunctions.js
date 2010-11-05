@@ -1,4 +1,27 @@
 
+/**
+ * Bloquea el primer select-one de un formulario de filtro de una lista dinamica
+ * @param nomForm
+ * @return
+ */
+function blockFirstElementForm (nomForm){
+	var i;
+	var id;
+	var option;
+	for (i=0; i<document.forms[nomForm].elements.length; i++){
+        
+		option = document.forms[nomForm].elements[i].type;
+		if (option == 'select-one'){
+			id = document.forms[nomForm].elements[i].id;
+			document.getElementById(id).disabled = true;
+			document.getElementById(id).style.display = "none";
+			break;
+		}
+		
+   }	
+}
+
+
 function callUrlAsin(url, pageElement) {
 
     try{

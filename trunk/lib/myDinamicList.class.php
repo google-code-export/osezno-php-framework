@@ -803,7 +803,7 @@ class myList  {
 			
 			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
-			$buf .= '<table border="0" align="center"><tr>';
+			$buf .= '<table border="1" align="center"><tr>';
 
 			if ($this->currentPage == 0){
 				
@@ -848,7 +848,6 @@ class myList  {
 						$buf .= $objMyForm->getText($this->idList.$id,$attr[0],3,NULL,true);
 						
 					break;
-					
 				}
 				
 				$buf .= '</td>';
@@ -895,105 +894,44 @@ class myList  {
 		
 		$objMyForm->border = 0;
 		
-		$objMyForm->selectUseFirstValue = false;
-		
-		
-		for ($i=0;$i<$this->numRuleQuery;$i++){
-			
-		}
-		
-		/*
-		foreach ($this->arrayFieldsOnQuery as $field){
-			
-			$data_type = '';
-			
-			if (!isset($this->arrayEventOnColumn[$field])){
-				
-				if (isset($this->arrayAliasSetInQuery[$field])){
-					
-					list($label, $data_type) =
-					 
-						explode ('::',$this->arrayAliasSetInQuery[$field]);
-				}else
-					$label = $field;
-				
-				$maxlenght = $value = '';
-				$size = 10;
-				
-				$date_field = $valid_num = false;
-					
-				switch ($data_type){
-					
-					case 'numeric':
-						$valid_num = true;
-						
-						$maxlenght = 8;
-						$size = 8;
-						
-						$value = 0;
-					break;
-					
-					case'date':
-						$date_field = true;
-						
-						$maxlenght = 10;
-						$size = 12;
-						
-					break;
-				}
-					
-				$objMyForm->addText($label.$objMyForm->getSelect(
-				
-					'opt_'.$field,$this->returnDataTypeSelectArray($data_type)),
-				
-					$field,$value,$size,$maxlenght,$valid_num,$date_field
-				);
-				
-				$arFields[] = $field;
-			}
-				
-		}
-		*/
-		
 		$objMyForm->styleClassTags = 'etiqueta_center';
 		
-		$objMyForm->addComent('lbl_1',LABEL_LOGIC_FIELD_ADD_RULE_FORM);
+		$htble = '';
 		
-		$objMyForm->addComent('lbl_2',LABEL_FIELD_LIST_ADD_RULE_FORM);
+		$htble .= '<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr>';
 		
-		$objMyForm->addComent('lbl_3',LABEL_RELATION_FIELD_ADD_RULE_FORM);
+		$htble .= '<td width="10%" class="'.$objMyForm->styleClassTags.'">'.LABEL_STATUS_RULE_FORM.'</td>';
 		
-		$objMyForm->addComent('lbl_4',LABEL_FIELD_VALUE_ADD_RULE_FORM);
-
-		$objMyForm->addComent('lbl_5',LABEL_REM_RULE_FORM);
+		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_LOGIC_FIELD_ADD_RULE_FORM.'</td>';
 		
-		$objMyForm->addComent('rule_for:5','<div id="rule_for_'.$this->idList.'"></div>');
+		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_FIELD_LIST_ADD_RULE_FORM.'</td>';
 		
+		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_RELATION_FIELD_ADD_RULE_FORM.'</td>';
 		
+		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_FIELD_VALUE_ADD_RULE_FORM.'</td>';
 		
-		//$objMyForm->addGroup('g1',LABEL_FORM_FIELDSET,$arFields,3,true);
-
-		$objMyForm->addButton('exec_query','Holakjdklas','onSubmitQuery:'.$this->idList);
+		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_REM_RULE_FORM.'</td>';
 		
-		$objMyForm->addButton('add_rule',LABEL_ADD_RULE_QUERY_BUTTON_FORM,'MYLIST_addRuleQuery','add.gif');
+		$htble .= '</tr></table>';
 		
-		$objMyForm->addButton('save_query',LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif');
+		$objMyForm->addComent('labels',$htble);
 		
-		$objMyForm->addButton('cancel_query',LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
+		$objMyForm->addComent('rule_for','<div id="rule_for_'.$this->idList.'"></div>');
 		
-		$objMyForm->addDisabled('exec_query');
+		$objMyForm->addButton('add_rule_'.$this->idList,LABEL_ADD_RULE_QUERY_BUTTON_FORM,'MYLIST_addRuleQuery:'.$this->idList,'add.gif');
 		
-		$objMyForm->addDisabled('cancel_query');
+		$objMyForm->addButton('save_query_'.$this->idList,LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif');
 		
-		$objMyForm->addDisabled('save_query');
+		$objMyForm->addButton('cancel_query_'.$this->idList,LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
 		
+		$objMyForm->addDisabled('cancel_query_'.$this->idList);
+		
+		$objMyForm->addDisabled('save_query_'.$this->idList);
 		
 		/**
 		 * Helps
 		 */
 		$objMyForm->styleTypeHelp = 2;
-		
-		$objMyForm->addHelp('exec_query',LABEL_HELP_QUERY_BUTTON_FORM);
 		
 		$objMyForm->addHelp('add_rule',LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
 		
@@ -1002,7 +940,7 @@ class myList  {
 		$objMyForm->addHelp('cancel_query',LABEL_HELP_CANCEL_QUERY_BUTTON_FORM);
 		
 		
-		return $objMyForm->getForm(5);
+		return $objMyForm->getForm(1);
 	}
 	
 	/**
