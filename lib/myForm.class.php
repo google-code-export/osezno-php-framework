@@ -1202,10 +1202,12 @@ class myForm {
 			
 		$buf .= '>';
 
+		$buf .= '<table border="0" cellspacing="0" cellpadding="0"><tr>';
+		
 		if ($strSrcImg)
-			$buf .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0">';
+			$buf .= '<td><img style="padding-right: 2px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0"></td>';
 			
-		$buf.=$strLabel.'</button>';
+		$buf.='<td class="boton_font">'.$strLabel.'</td></tr></table></button>';
 
 		return $buf;
 	}
@@ -1321,6 +1323,7 @@ class myForm {
 	 *
 	 */
 	public function addHidden($name = '', $value = ''){
+		$name     = $this->getColspanRowspan($name);
 		$Cadena   = 'hidden'.$this->Separador.$name.$this->Separador.$value;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'hidden';
@@ -2779,10 +2782,12 @@ class myForm {
 			}
 			$buf .= '>';
 
-			if ($this->arrayButtonList[$j]['strSrcImg'])
-			$buf .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$this->arrayButtonList[$j]['strSrcImg'].'" border="0">';
+			$buf.='<table border="0" cellpadding="0" cellspacing="0"><tr>';
+			
+			if (isset($this->arrayButtonList[$j]['strSrcImg']))
+				$buf .= '<td><img style="padding-right: 2px;" src="'.$this->arrayButtonList[$j]['strSrcImg'].'" border="0"></td>';
 
-			$buf.=$this->arrayButtonList[$j]['strLabel'];
+			$buf.='<td class="boton_font">'.$this->arrayButtonList[$j]['strLabel'].'</td></tr></table>';
 
 			$buf.='</button></td>';
 		}
