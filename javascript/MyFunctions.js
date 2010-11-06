@@ -457,6 +457,10 @@ function GetDataForm (form){
                        form_elements[document.forms[form].elements[i].name] = document.forms[form].elements[i].value; 
                     }                  
                   break;
+                  case 'button':
+                  break;
+                  case 'submit':
+                  break;
            	      default:
                      form_elements[document.forms[form].elements[i].name] = document.forms[form].elements[i].value;                     
                   break;
