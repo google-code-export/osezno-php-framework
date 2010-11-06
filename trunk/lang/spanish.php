@@ -30,6 +30,8 @@
 	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Agrega una regla a la consulta original para que esta sea filtrada.');
 	define('TITLE_ADD_RULE_QUERY_FORM','Agregar Regla a la Lista Din&aacute;mica');
 	
+	
+	define('MSG_APPLY_RULE_VALUE_NULL','Debe escribir un valor para la regla');
 	define('MSG_RESTART_QUERY_LIST','La consulta ha sido reiniciada');
 	define('MSG_QUERY_FORM_OK','La consulta fue realizada exitosamente.');
 	define('MSG_QUERY_FORM_BAD','Se encontraron problemas al ejecutar la consulta');

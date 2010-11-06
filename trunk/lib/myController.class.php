@@ -1181,6 +1181,10 @@ class myController extends myControllerExt {
 
 		$this->script("blockFirstElementForm('".$idForm."')");
 		
+		/**
+		 * Cuando se elimina el filtro se vuelve a ejecutar la consulta
+		 */
+		
 		return $this->response;
 	}
 	
@@ -1195,14 +1199,33 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_applyRuleQuery ($datForm, $idList, $numRule){
 		
-		$this->notificationWindow($numRule);
+		$arRel = array (
+			'equal'=>'=',
+			'different'=>'<>',
+			'greater_than'=>'>',
+			'less_than'=>'<'
+		);
 		
-		//logic_
-		//field_
-		//relation_
-		//value_
+		$sqlRule = '';
 		
-		$this->assign('status_'.$idList.'_'.$numRule,'className','rule_apply');
+		$val = trim($datForm['value_'.$numRule]);
+		
+		if ($val){
+			
+			$sqlRule .= $datForm['logic_'.$numRule].' '.$datForm['field_'.$numRule].' '.$arRel[$datForm['relation_'.$numRule]].' ';
+			
+			if (!is_numeric($val))
+				$val = '\''.$val.'\'';
+			
+			$sqlRule .= $val; 	
+				
+			$this->assign('status_'.$idList.'_'.$numRule,'className','rule_apply');
+			
+			$this->notificationWindow($sqlRule);
+			
+		}else
+			$this->notificationWindow(MSG_APPLY_RULE_VALUE_NULL,3,'error');
+		
 		
 		/*
 		$arrayCond = array (
