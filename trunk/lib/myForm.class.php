@@ -2284,8 +2284,8 @@ class myForm {
 		if ($this->useAddFile)
 		  $buf .= $this->getJavaScriptSWFUploader();
 		
-		$buf .= '<div align="center" id="div_'.$this->name.'" name="div_'.$this->name.'">'."\n";
-
+		 $buf .= '<div class="form_cont" align="center" id="div_'.$this->name.'" name="div_'.$this->name.'">'."\n";
+		
 		if (strlen($this->strFormFieldSet))
 			$buf .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$this->strFormFieldSet.'</legend>'."\n";
 

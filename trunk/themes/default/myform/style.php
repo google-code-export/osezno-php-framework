@@ -27,15 +27,6 @@
 	color: #000000;
 }
 
-.etiqueta_center {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	color: #000000;
-	text-align: center;
-	vertical-align: middle;
-	font-weight: bold;
-}
-
 .etiqueta {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;

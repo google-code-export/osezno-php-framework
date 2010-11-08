@@ -98,7 +98,6 @@ class myList  {
 		'typeList',
 		'arrayEventOnColumn',
 		'arrayFieldsOnQuery',
-		'sqlWhere',
 		'numRuleQuery',
 		'arrayWhereRules'
 	);	
@@ -130,12 +129,6 @@ class myList  {
 	 * @var string
 	 */
 	private $sql = '';
-	
-	/**
-	 * Cadena de la consulta cuando se habilita el filtro por lista.
-	 * @var string
-	 */
-	private $sqlWhere = '';
 	
 	/**
 	 * Cadena de las funciones JS
@@ -356,7 +349,21 @@ class myList  {
 	 */
 	private function getSqlPartWhere (){
 		
-		return $this->sqlWhere;
+		$sqlWhere = '';
+		
+		if (count($this->arrayWhereRules)){
+			$sqlWhere = ' WHERE ';
+			
+			$rules = '';
+			
+			foreach ($this->arrayWhereRules as $id => $rule){
+				$rules .= $rule.' ';
+			}
+		
+			$sqlWhere .= substr($rules, 3);
+		}
+		
+		return $sqlWhere;
 	}
 	
 	/**
@@ -901,7 +908,42 @@ class myList  {
 		
 		$objMyForm->border = 0;
 		
-		$objMyForm->styleClassTags = 'etiqueta_center';
+		$objMyForm->styleClassTags = 'etiqueta_filtro';
+		
+		$htble = '';
+
+		/**
+		 * Helps
+		 */
+		$objMyForm->styleTypeHelp = 2;
+		
+		$objMyForm->addHelp('add_rule_'.$this->idList,LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
+		
+		$objMyForm->addHelp('save_query',LABEL_HELP_DOWNLOAD_QUERY_BUTTON_FORM);
+		
+		$objMyForm->addHelp('cancel_query',LABEL_HELP_CANCEL_QUERY_BUTTON_FORM);
+		
+		$objMyForm->addDisabled('cancel_query_'.$this->idList);
+		
+		$objMyForm->addDisabled('save_query_'.$this->idList);
+
+		$htble .= '<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr>';
+		
+		$htble .= '<td width="10%">&nbsp;</td>';
+		
+		$htble .= '<td width="18%">&nbsp;</td>';
+		
+		$htble .= '<td width="18%">'.$objMyForm->getButton('add_rule_'.$this->idList,LABEL_ADD_RULE_QUERY_BUTTON_FORM,'MYLIST_addRuleQuery:'.$this->idList,'add.gif').'</td>';
+		
+		$htble .= '<td width="18%">'.$objMyForm->getButton('save_query_'.$this->idList,LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif').'</td>';
+		
+		$htble .= '<td width="18%">'.$objMyForm->getButton('cancel_query_'.$this->idList,LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif').'</td>';
+		
+		$htble .= '<td width="18%">&nbsp;</td>';
+		
+		$htble .= '</tr></table>';
+		
+		$objMyForm->addComent('options',$htble);
 		
 		$htble = '';
 		
@@ -924,27 +966,6 @@ class myList  {
 		$objMyForm->addComent('labels',$htble);
 		
 		$objMyForm->addComent('rule_for','<div id="rule_for_'.$this->idList.'"></div>');
-		
-		$objMyForm->addButton('add_rule_'.$this->idList,LABEL_ADD_RULE_QUERY_BUTTON_FORM,'MYLIST_addRuleQuery:'.$this->idList,'add.gif');
-		
-		$objMyForm->addButton('save_query_'.$this->idList,LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif');
-		
-		$objMyForm->addButton('cancel_query_'.$this->idList,LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif');
-		
-		$objMyForm->addDisabled('cancel_query_'.$this->idList);
-		
-		$objMyForm->addDisabled('save_query_'.$this->idList);
-		
-		/**
-		 * Helps
-		 */
-		$objMyForm->styleTypeHelp = 2;
-		
-		$objMyForm->addHelp('add_rule',LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
-		
-		$objMyForm->addHelp('save_query',LABEL_HELP_DOWNLOAD_QUERY_BUTTON_FORM);
-		
-		$objMyForm->addHelp('cancel_query',LABEL_HELP_CANCEL_QUERY_BUTTON_FORM);
 		
 		
 		return $objMyForm->getForm(1);
