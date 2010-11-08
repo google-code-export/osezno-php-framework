@@ -99,7 +99,8 @@ class myList  {
 		'arrayEventOnColumn',
 		'arrayFieldsOnQuery',
 		'sqlWhere',
-		'numRuleQuery'
+		'numRuleQuery',
+		'arrayWhereRules'
 	);	
 	
 	/**
@@ -171,6 +172,12 @@ class myList  {
 	 * @var array
 	 */
 	private $arrayOrdMethod = array ();
+	
+	/**
+	 * Arreglo con las subconsultas que intervienen como reglas.
+	 * @var array
+	 */
+	private $arrayWhereRules = array ();
 	
 	/**
 	 * Numero de ordenamiento
