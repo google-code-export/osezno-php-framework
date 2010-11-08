@@ -912,7 +912,13 @@ class myController extends myControllerExt {
 		$this->response->script($strSctipt);
 	}
 	
-	
+	/**
+	 * Evento que se cumple al cambiar el mes o año a mostrar en el calendario.
+	 * 
+	 * @param $partDate
+	 * @param $toUpdate
+	 * @return unknown_type
+	 */
 	public function calEventOnChange ($partDate, $toUpdate){
 
 		list($nD, $nM, $nA) = explode ('_',$partDate);
@@ -1160,6 +1166,10 @@ class myController extends myControllerExt {
 		
 		$this->append('rule_for_'.$idList,'innerHTML',$html);
 		
+		foreach ($datForm as $id => $value){
+			$this->assign($id,'value',$value);
+		}
+		
 		$this->script("blockFirstElementForm('".$idForm."')");
 		
 		return $this->response;
@@ -1184,7 +1194,20 @@ class myController extends myControllerExt {
 		/**
 		 * Cuando se elimina el filtro se vuelve a ejecutar la consulta
 		 */
+		$myList = new myList($idList);
 		
+		$myList->setVar('maxNumPage',0);
+		
+		$myList->setVar('currentPage',0);
+		
+		$myList->unSetVar('arrayWhereRules',$numRule);
+			
+		$this->assign($idList,'innerHTML',$myList->getList());
+		
+		$js = 'clearRowsMarked();'."\n";
+		
+		$this->script($js);	
+
 		return $this->response;
 	}
 	
@@ -1212,6 +1235,8 @@ class myController extends myControllerExt {
 		
 		if ($val){
 			
+			$myList = new myList($idList);
+			
 			$sqlRule .= $datForm['logic_'.$numRule].' '.$datForm['field_'.$numRule].' '.$arRel[$datForm['relation_'.$numRule]].' ';
 			
 			if (!is_numeric($val))
@@ -1219,64 +1244,17 @@ class myController extends myControllerExt {
 			
 			$sqlRule .= $val; 	
 				
-			$this->assign('status_'.$idList.'_'.$numRule,'className','rule_apply');
-			
-			$this->notificationWindow($sqlRule);
-			
-		}else
-			$this->notificationWindow(MSG_APPLY_RULE_VALUE_NULL,3,'error');
-		
-		
-		/*
-		$arrayCond = array (
-			'equal'=>'=',
-			'different'=>'!=',
-			'greater_than' => '>',
-			'less_than' => '<'
-		);
-		
-		$sqlWhere = '';
-		
-		$idList  = $datForm['idlist'];
-		
-		$myList = new myList($idList);
-		
-		$arFldsOnQry = $myList->getVar('arrayFieldsOnQuery');
-		
-		$arEvntOnClm = $myList->getVar('arrayEventOnColumn');
-		
-		$arSAliQuery = $myList->getVar('arrayAliasSetInQuery');
-		
-		foreach ($arFldsOnQry as $field){
-
-			if (!isset($arEvntOnClm[$field])){
-				
-				if ($datForm[$field]){
-					
-					$val = "'".$datForm[$field]."'";
-					
-					list($ali,$data_type) = explode('::',$arSAliQuery[$field]);
-					
-					if ($data_type=='numeric')
-						$val = $datForm[$field];
-					
-					$sqlWhere .= $field.' '.$arrayCond[$datForm['opt_'.$field]].' '.$val.' AND ';
-				}
-			}
-		}
-		
-		if ($sqlWhere){
+			$myList->setVar('arrayWhereRules',$sqlRule,$numRule);
 			
 			$myList->setVar('maxNumPage',0);
 			
-			$myList->setVar('sqlWhere',' WHERE '.substr($sqlWhere,0,-4));
-		}
+			$myList->setVar('currentPage',0);
 			
-		$this->assign($idList,'innerHTML',$myList->getList());
+			$this->assign($idList,'innerHTML',$myList->getList());
 		
-		if ($myList->isSuccessfulProcess()){
+			if ($myList->isSuccessfulProcess()){
 			
-			if ($sqlWhere){
+				$this->assign('status_'.$idList.'_'.$numRule,'className','rule_apply');
 				
 				if ($myList->getNumRowsAffected())
 				
@@ -1284,16 +1262,18 @@ class myController extends myControllerExt {
 				else
 					$this->notificationWindow(MSG_QUERY_FORM_NOROWS,3,'info');
 					
-			}else
-				$this->notificationWindow(MSG_QUERY_FORM_NULL,3,'warning');
-				
+			}else{
+				$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');
+
+				$myList->unSetVar('arrayWhereRules',$numRule);
+			}	
+		
+			$js = 'clearRowsMarked();'."\n";
+		
+			$this->script($js);			
+			
 		}else
-			$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');	
-		
-		$js = 'clearRowsMarked();'."\n";
-		
-		$this->script($js);
-		*/
+			$this->notificationWindow(MSG_APPLY_RULE_VALUE_NULL,3,'error');
 		
 		return $this->response;
 	}

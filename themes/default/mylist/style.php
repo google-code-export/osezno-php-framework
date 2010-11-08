@@ -1,6 +1,34 @@
 @CHARSET "ISO-8859-1";
 
 /**
+ * Contenido del formulario
+ **/
+.form_cont {
+	background-color:#BBCEF7;
+	font-style: normal;
+	text-decoration: none;
+	border-color:#4A7EEA;
+	border-width: 1px;
+	border-style: solid;
+	padding-left:1px;
+	padding-top:1px;	
+	padding-bottom:1px;
+	padding-right:1px;
+}
+
+/**
+ * Etiquetas de campo formulario de filtro
+ **/
+.etiqueta_filtro {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666666;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+/**
  * Rule Apply
  */
 .rule_apply {
