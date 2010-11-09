@@ -1,5 +1,19 @@
 @CHARSET "ISO-8859-1";
 
+.formulario {
+	background-color:#FFFFFF;
+	font-style: normal;
+	text-decoration: none;
+	border-color:gray;
+	border-width: 1px;
+	border-style: solid;
+	padding-left:1px;
+	padding-top:1px;	
+	padding-bottom:1px;
+	padding-right:1px;
+}
+
+
 .fondo_tabla_form {
 }
 
