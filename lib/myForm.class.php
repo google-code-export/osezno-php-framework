@@ -299,16 +299,6 @@ class myForm {
 	protected $objHelps = array ();
 
 	/**
-	 * Arreglo que contiene los nombres de los objetos que
-	 * estan referenciado como  objetos del formulario que
-	 * van a usar helpers, y que solo es valido para   los
-	 * campos de tipo texto.
-	 *
-	 * @var array
-	 */
-	protected $objHelpers = array ();	
-	
-	/**
 	 * El metodo que utilizara en el momento de enviar el Formulario.
 	 *
 	 * @var string
@@ -1095,22 +1085,6 @@ class myForm {
 	public function addHelp ($objName, $strHelp){
 		if (!in_array($objName, $this->objHelps)){
 			$this->objHelps[$objName] = str_replace("'","\\'",str_replace('"',"'",$strHelp));
-		}
-	}
-
-	/**
-	 * Agregar un helper a este campo, solo  aplicando
-	 * a los campos del formulario que sean campo tipo
-	 * texto.
-	 * Nota: Este metodo no funciona como lo hace addHelp
-	 * antes de un getText, solo funciona con los addText
-	 *
-	 * @param String $objName      Nombre o id del objeto del formulario al que se le va a agregar el Helper
-	 * @param String $mixedStrings Arreglo que contiene los items del helper que seran mostrados a medida que el usuario escriba en la caja de texto
-	 */
-	public function addHelper ($objName, $mixedStrings){
-		if (!in_array($objName, $this->objHelpers)){
-			$this->objHelpers[$objName] = $mixedStrings;
 		}
 	}
 
@@ -2047,49 +2021,6 @@ class myForm {
 	}
 
 	/**
-	 * Dentro de la llamada de contruccion del
-	 * formulario verifica si el objeto que se
-	 * esta construyendo tiene asociada un helper
-	 * para entonces construirlo y adicionarlo
-	 * al campo texto que sera mostrado en el formulario.
-	 *
-	 * @param string $objName Nombre del objeto del formulario al que esta asociado
-	 * @return string
-	 */
-	protected function checkIsHasHelper ($objName){
-		$return = '';
-		$arrayKeysObjHelpers = array_keys ($this->objHelpers);
-		if (in_array($objName,$arrayKeysObjHelpers)){
-			$return .= '<script type="text/javascript">'."\n";
-			if (is_array($this->objHelpers[$objName])){
-				$return .= 'var '.$objName.'s = new Array (';
-				foreach ($this->objHelpers[$objName] as $item){
-					$return .= '"'.$item[0].'", ';
-				}
-				$return = substr($return,0,-2);
-				$return .= ');'."\n";
-				$return .= 'new AutoSuggest(document.getElementById(\''.$objName.'\'),'.$objName.'s);'."\n";
-		   
-			}else{
-				$arrayTempItems = explode (',',$this->objHelpers[$objName]);
-				if (count($arrayTempItems)){
-					$return .= 'var '.$objName.'s = new Array (';
-					foreach ($arrayTempItems as $item){
-						$return .= '"'.trim($item).'", ';
-					}
-					$return = substr($return,0,-2);
-					$return .= ');'."\n";
-					$return .= 'new AutoSuggest(document.getElementById(\''.$objName.'\'),'.$objName.'s);'."\n";
-				}
-			}
-			
-			$return .= '</script>'."\n";
-		}
-
-		return $return;
-	}
-	
-	/**
 	 * Obtener el javascript necesario para
 	 * imprimirlo en las etiquetas <head></head>
 	 * para el cargar la configuracion del SWFUploader
@@ -2291,10 +2222,6 @@ class myForm {
 		if ($this->useAddFile)
 		  $buf .= $this->getJavaScriptSWFUploader();
 		
-		$buf .= '<div class="'.$this->styleClassForm.'" align="center" id="div_'.$this->name.'" name="div_'.$this->name.'">'."\n";
-		
-		if (strlen($this->strFormFieldSet))
-			$buf .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$this->strFormFieldSet.'</legend>'."\n";
 
 		$this->cols = $cols;
 
@@ -2313,11 +2240,12 @@ class myForm {
 			
 		$buf.= 'name="'.$this->name.'" id="'.$this->name.'" target="'.$this->target.'">'."\n";
 
-
-		// Capa necesaria para ejecutar los helpers
-		if (count($this->objHelpers))
-			$buf .= '<div id="autosuggest"><ul></ul></div>';
-
+		$buf .= '<div class="'.$this->styleClassForm.'" align="center" id="div_'.$this->name.'" name="div_'.$this->name.'">'."\n";
+		
+		if (strlen($this->strFormFieldSet))
+			$buf .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$this->strFormFieldSet.'</legend>'."\n";
+		
+		
 		/**
 		 * Creamos cada uno de los Objetos HTML
 		 * con el objetivo de que mas adelante sean procesados en:
@@ -2346,7 +2274,7 @@ class myForm {
 						$Disabled = 'readonly';
 					}
 						
-					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="text" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" '.$Disabled.' maxlength="'.$campos_f[5].'"'.$keypress.''.$this->checkExistEventJs($campos_f[2]).''.$this->checkIfIsDisabled($campos_f[2]).'>'.$this->checkIsHasHelper($campos_f[2]).$LauncherCalendar.'</td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="text" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" '.$Disabled.' maxlength="'.$campos_f[5].'"'.$keypress.''.$this->checkExistEventJs($campos_f[2]).''.$this->checkIfIsDisabled($campos_f[2]).'>'.$LauncherCalendar.'</td>'."\n";
 					break;
 				case 'password':
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="password" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" maxlength="'.$campos_f[5].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'></td>'."\n";
@@ -2802,12 +2730,14 @@ class myForm {
 		$buf .='</tr>';
 		$buf .= '</table>'."\n";
 
-		$buf .= '</form>'."\n";
-
 		if (strlen($this->strFormFieldSet))
 			$buf .= '</fieldset>'."\n";
 			
 		$buf .= '</div>'."\n";
+		
+		$buf .= '</form>'."\n";
+
+		
 
 		$buf .= '<!-- Fin de Formulario: '.$this->name.' -->'."\n";
 

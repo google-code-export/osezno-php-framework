@@ -53,6 +53,12 @@ class myList  {
 	private $recordsPerPage;
 	
 	/**
+	 * Numero de registros por pagina cuando el usuario selecciona desde el formulario
+	 * @var integer
+	 */
+	private $recordsPerPageForm = 1;
+	
+	/**
 	 * Maxima numero de pagina encontrada
 	 * @var integer
 	 */
@@ -97,6 +103,7 @@ class myList  {
 		'arrayWidthsCols',
 		'usePagination',
 		'recordsPerPage',
+		'recordsPerPageForm',
 		'maxNumPage',
 		'currentPage',
 		'typeList',
@@ -365,7 +372,7 @@ class myList  {
 		$sqlPart = '';
 		
 		if ($this->usePagination)
-			$sqlPart .= ' LIMIT  '.$this->recordsPerPage.' OFFSET '.($this->currentPage*$this->recordsPerPage);
+			$sqlPart .= ' LIMIT  '.($this->recordsPerPage*$this->recordsPerPageForm).' OFFSET '.($this->currentPage*($this->recordsPerPage*$this->recordsPerPageForm));
 		
 		return $sqlPart;
 	}
@@ -823,6 +830,13 @@ class myList  {
 			
 				'_goto_page' =>array(($this->currentPage+1),'goto','field'),
 			
+				'_chg_pag'	 =>array(
+						array(1=>($this->recordsPerPage*1),
+							  2=>($this->recordsPerPage*2),
+							  3=>($this->recordsPerPage*3),
+							  4=>($this->recordsPerPage*4),
+							  5=>($this->recordsPerPage*5)),'amp_pag','select'),
+			
 				'_next_page' =>array('&nbsp;+1&nbsp;', 'nex','button'),
 			
 				'_end_page'	 =>array('&nbsp;++&nbsp;','end','button')
@@ -830,6 +844,8 @@ class myList  {
 			
 			
 			$objMyForm = new myForm;
+			
+			$objMyForm->selectUseFirstValue = false;
 			
 			$objMyForm->setParamTypeOnEvent('field');
 			
@@ -845,7 +861,7 @@ class myList  {
 			
 			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
-			$buf .= '<table border="1" align="center"><tr>';
+			$buf .= '<table border="0" align="center"><tr>';
 
 			if ($this->currentPage == 0){
 				
@@ -854,7 +870,7 @@ class myList  {
 				$objMyForm->addDisabled($this->idList.'_back_page');
 			}
 			
-			if ($i<$this->recordsPerPage){
+			if ($i<($this->recordsPerPage*$this->recordsPerPageForm)){
 				
 				$objMyForm->addDisabled($this->idList.'_next_page');
 				
@@ -887,6 +903,15 @@ class myList  {
 						//$objMyForm->addEventJs($this->idList.$id,'onChange','myListPage',array($this->idList,$attr[1]));
 						
 						$buf .= $objMyForm->getText($this->idList.$id,$attr[0],3,NULL,true);
+						
+					break;
+					case 'select':
+						
+						$objMyForm->addHelp($this->idList.$id,LABEL_HELP_CHPAG_SELECT_FORM);
+						
+						$objMyForm->addEventJs($this->idList.$id,'onchange','MYLIST_chPag',array($this->idList));
+						
+						$buf .= $objMyForm->getSelect($this->idList.$id,$attr[0],$this->recordsPerPageForm);
 						
 					break;
 				}
@@ -948,36 +973,48 @@ class myList  {
 		
 		$objMyForm->addHelp('add_rule_'.$this->idList,LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
 		
-		$objMyForm->addHelp('save_query',LABEL_HELP_DOWNLOAD_QUERY_BUTTON_FORM);
-		
-		$objMyForm->addHelp('cancel_query',LABEL_HELP_CANCEL_QUERY_BUTTON_FORM);
-		
 		$objMyForm->addDisabled('cancel_query_'.$this->idList);
 		
 		$objMyForm->addDisabled('save_query_'.$this->idList);
 
 		$htble .= '<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr>';
 		
+		$anyBut = false;
+		
 		$objMyForm->addHelp('xls_'.$this->idList,LABEL_HELP_EXCEL_BUTTON_FORM);
 		
 		if (!$this->arrayDataTypeExport['xls'])
 			$objMyForm->addDisabled('xls_'.$this->idList);
+		else
+			$anyBut = true;
 			
-		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('xls_'.$this->idList,'','MYLIST_exportData:xls:'.$this->idList,'excel.gif').'</td>';
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('xls_'.$this->idList,'','MYLIST_exportData:xls:'.$this->idList,'excel.gif').'</td>';
 
 		$objMyForm->addHelp('html_'.$this->idList,LABEL_HELP_HTML_BUTTON_FORM);
 		
 		if (!$this->arrayDataTypeExport['html'])
 			$objMyForm->addDisabled('html_'.$this->idList);
+		else
+			$anyBut = true;
 		
-		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('html_'.$this->idList,'','MYLIST_exportData:html:'.$this->idList,'html.gif').'</td>';
+		
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','MYLIST_exportData:html:'.$this->idList,'html.gif').'</td>';
 		
 		$objMyForm->addHelp('pdf_'.$this->idList,LABEL_HELP_PDF_BUTTON_FORM);
 		
 		if (!$this->arrayDataTypeExport['pdf'])
 			$objMyForm->addDisabled('pdf_'.$this->idList);
+		else
+			$anyBut = true;	
 		
-		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('pdf_'.$this->idList,'','MYLIST_exportData:pdf:'.$this->idList,'pdf.gif').'</td>';
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','MYLIST_exportData:pdf:'.$this->idList,'pdf.gif').'</td>';
+		
+		$objMyForm->addHelp('not_pg_'.$this->idList,LABEL_HELP_USELIMIT_RULE_FORM);
+		
+		if (!$anyBut)
+			$objMyForm->addDisabled('not_pg_'.$this->idList);
+		
+		$htble .= '<td width="10%" class="'.$objMyForm->styleClassTags.'">'.LABEL_USELIMIT_RULE_FORM.':'.$objMyForm->getCheckBox('not_pg_'.$this->idList,true).'</td>';
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
@@ -989,9 +1026,7 @@ class myList  {
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="10%">&nbsp;</td>';
-		
-		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('add_rule_'.$this->idList,'','MYLIST_addRuleQuery:'.$this->idList,'add.gif').'</td>';
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','MYLIST_addRuleQuery:'.$this->idList,'find.gif').'</td>';
 		
 		$htble .= '</tr></table>';
 		
@@ -1015,10 +1050,9 @@ class myList  {
 		
 		$htble .= '</tr></table>';
 		
-		$objMyForm->addComent('labels',$htble);
+		//$objMyForm->addComent('labels',$htble);
 		
-		$objMyForm->addComent('rule_for','<div id="rule_for_'.$this->idList.'"></div>');
-		
+		$objMyForm->addComent('rule_for','<div class="form_rule_for_list" id="rule_for_'.$this->idList.'"></div>');
 		
 		return $objMyForm->getForm(1);
 	}
