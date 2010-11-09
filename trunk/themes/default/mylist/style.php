@@ -1,10 +1,33 @@
 @CHARSET "ISO-8859-1";
 
 /**
+ * Reglas filtro lista
+ */
+.form_rule_for_list {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+    background-clip: border-box;
+	min-height:0px;
+	background-color:#D3E0FA;
+	font-style: normal;
+	text-decoration: none;
+	border-color:#BBCEF7;
+	border-width: 1px;
+	border-style: solid;
+	padding-left:0px;
+	padding-top:0px;	
+	padding-bottom:0px;
+	padding-right:0px;
+}
+
+/**
  * Contenido del formulario
  **/
 .form_cont_filter {
-	background-color:#BBCEF7;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+    background-clip: border-box;
+	background-color:#BFD5FF;
 	font-style: normal;
 	text-decoration: none;
 	border-color:#4A7EEA;
@@ -21,11 +44,11 @@
  **/
 .etiqueta_filtro {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 11px;
+	font-size: 10px;
 	color: #666666;
 	text-align: center;
 	vertical-align: middle;
-	font-weight: bold;
+	height:auto;
 }
 
 /**

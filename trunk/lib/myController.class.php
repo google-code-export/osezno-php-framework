@@ -930,6 +930,25 @@ class myController extends myControllerExt {
 		return $this->response;
 	}
 	
+	public function MYLIST_chPag ($datForm, $idList){
+		
+		$myList = new myList($idList);
+		
+		$myList->setVar('recordsPerPageForm',$datForm[$idList.'_chg_pag']);
+		
+		$myList->setVar('maxNumPage',0);
+		
+		$myList->setVar('currentPage',0);
+		
+		$this->assign($idList,'innerHTML',$myList->getList());
+		
+		$js = 'clearRowsMarked();'."\n";
+		
+		$this->script($js);
+		
+		return $this->response;
+	}
+	
 	/**
 	 * Mover la lista dinamica a determinada pagina.
 	 * 
@@ -1034,7 +1053,13 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_exportData ($datForm, $format, $idList){
 
-		$this->redirect('../downloadQuery.php?id_list='.$idList.'&format='.$format);
+		$usepg = 'f';
+		if ($datForm['not_pg_'.$idList]){
+			$usepg = 't';
+		}
+		
+		$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg;
+		$this->redirect($url);
 		
 		return $this->response;
 	}
