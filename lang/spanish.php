@@ -22,13 +22,16 @@
 	define('LABEL_FIELD_VALUE_ADD_RULE_FORM','Valor');
 	define('LABEL_REM_RULE_FORM','Aplicar/Remover');
 	
-	define('LABEL_CANCEL_QUERY_BUTTON_FORM','Cancelar');
+	//define('LABEL_CANCEL_QUERY_BUTTON_FORM','Cancelar');
 	define('LABEL_HELP_CANCEL_QUERY_BUTTON_FORM','Cancela todas las reglas declaradas y retorna la lista a su consulta original.');
-	define('LABEL_DOWNLOAD_QUERY_BUTTON_FORM','Descargar');
+	//define('LABEL_DOWNLOAD_QUERY_BUTTON_FORM','Descargar');
 	define('LABEL_HELP_DOWNLOAD_QUERY_BUTTON_FORM','Descarga la consulta actual en un formato elegible.');
-	define('LABEL_ADD_RULE_QUERY_BUTTON_FORM','Ag.Regla');
+	//define('LABEL_ADD_RULE_QUERY_BUTTON_FORM','Ag.Regla');
 	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Agrega una regla a la consulta original para que esta sea filtrada.');
 	define('TITLE_ADD_RULE_QUERY_FORM','Agregar Regla a la Lista Din&aacute;mica');
+	define('LABEL_HELP_EXCEL_BUTTON_FORM','Exportar a Excel.');
+	define('LABEL_HELP_HTML_BUTTON_FORM','Exportar a Html.');
+	define('LABEL_HELP_PDF_BUTTON_FORM','Exportar a Pdf.');
 	
 	
 	define('MSG_APPLY_RULE_VALUE_NULL','Debe escribir un valor para la regla');

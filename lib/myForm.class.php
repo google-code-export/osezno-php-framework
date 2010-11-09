@@ -449,6 +449,13 @@ class myForm {
 	public $useRowSeparator = false;
 	
 	/**
+	 * Nombre de la clase que por defecto usan los formularios
+	 * 
+	 * @var string
+	 */
+	public $styleClassForm = 'formulario';
+	
+	/**
 	 * Nombre de la clase que por defecto usan las
 	 * tablas que se crean para el formulario.
 	 *
@@ -2284,7 +2291,7 @@ class myForm {
 		if ($this->useAddFile)
 		  $buf .= $this->getJavaScriptSWFUploader();
 		
-		 $buf .= '<div class="form_cont" align="center" id="div_'.$this->name.'" name="div_'.$this->name.'">'."\n";
+		$buf .= '<div class="'.$this->styleClassForm.'" align="center" id="div_'.$this->name.'" name="div_'.$this->name.'">'."\n";
 		
 		if (strlen($this->strFormFieldSet))
 			$buf .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$this->strFormFieldSet.'</legend>'."\n";

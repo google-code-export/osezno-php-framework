@@ -109,7 +109,7 @@ class myController extends myControllerExt {
 	   'waitForCSS', 'waitFor', 'sleep', 'setReturnValue', 'getContentType', 
 	   'getOutput', 'getCommandCount', 'loadCommands', 'closeWindow', 
 	   'window', 'closeMessageBox', 'messageBox','notificationWindow',
-	   'modalWindow','closeModalWindow'
+	   'modalWindow','closeModalWindow','loadHtmlFromFile','modalWindowFromUrl','errorBox'
 	);
 	
 	/**
@@ -238,7 +238,7 @@ class myController extends myControllerExt {
 	 * @param  string: The relative or fully qualified URL.
 	 * @param  integer, optional: Number of seconds to delay before the redirect occurs.
 	 */
-	public function redirect($strUrl, $intDelaySeconds){
+	public function redirect($strUrl, $intDelaySeconds = 1){
 
 		$this->response->redirect($strUrl, $intDelaySeconds);
 	}
@@ -919,7 +919,7 @@ class myController extends myControllerExt {
 	 * @param $toUpdate
 	 * @return unknown_type
 	 */
-	public function calEventOnChange ($partDate, $toUpdate){
+	public function MYFORM_calOnChange ($partDate, $toUpdate){
 
 		list($nD, $nM, $nA) = explode ('_',$partDate);
 		
@@ -939,7 +939,7 @@ class myController extends myControllerExt {
 	 * @param $action
 	 * @return unknown_type
 	 */
-	public function myListPage ($datForm, $idList, $action){
+	public function MYLIST_page ($datForm, $idList, $action){
 		
 		$myList = new myList($idList);
 		
@@ -992,7 +992,7 @@ class myController extends myControllerExt {
 	 * @param $idList	Id o nombre de la lista dinámica	
 	 * @param $alias	Alias de la columna
 	 */
-	public function myListMoveTo ($idList, $alias){
+	public function MYLIST_moveTo ($idList, $alias){
 		
 		$myList = new myList($idList);
 		
@@ -1026,62 +1026,24 @@ class myController extends myControllerExt {
 	}
 	
 	/**
-	 * Carga atributos visuales de la lista dinamica 
-	 * @param $idList
-	 * @return string 
-	 */
-	public function myListLoadCSS ($idList){
-		
-		$myList = new myList($idList);
-		
-		$this->includeCSS($myList->setTheme());
-		
-		return $this->response;
-	}
-
-	/**
-	 * Cancela el filtro actual sobre la consulta de una lista dinamica
-	 * 
-	 * @param $datForm	Datos de form
-	 * @return string
-	 */
-	public function onSubmitCancelQuery ($datForm){
-		
-		$idList  = $datForm['idlist'];
-		
-		$myList = new myList($idList);
-		
-		$myList->setVar('sqlWhere','');
-		
-		$this->assign($idList,'innerHTML',$myList->getList());
-		
-		$js = $idList.'QueryForm.reset(); clearRowsMarked();'."\n";
-		
-		$this->script($js);
-		
-		$this->notificationWindow(MSG_RESTART_QUERY_LIST,3,'info');
-		
-		return $this->response;
-	}
-	
-	/**
 	 * Cuarda el resultado de la consulta de una lista dinamica segun el filtro aplicado al disco
 	 * 
 	 * @param $datForm	Datos de form
-	 * @return string
+	 * @param $format	Formato
+	 * @param $idList	Id lista
 	 */
-	public function onSubmitDownloadQuery ($datForm){
+	public function MYLIST_exportData ($datForm, $format, $idList){
 
-		$this->messageBox(var_export($datForm,true));
+		$this->redirect('../downloadQuery.php?id_list='.$idList.'&format='.$format);
 		
 		return $this->response;
 	}
-	
 	
 	/**
 	 * Abre una ventana modal con un formulario que permite agregar una regla a la consulta actual de la lista dinamica.
 	 * 
 	 * @param $datForm	Datos de form
+	 * @param $idList	Id lista
 	 * @return string
 	 */
 	public function MYLIST_addRuleQuery ($datForm, $idList){

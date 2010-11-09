@@ -97,6 +97,8 @@
  		
  		$objList->widthList = 800;
  		
+ 		$objList->setExportData(true,true,false);
+ 		
  		$objList->setPagination(true,15);
  		
  		return $objList->getList(true);

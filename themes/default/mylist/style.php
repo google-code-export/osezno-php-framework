@@ -3,7 +3,7 @@
 /**
  * Contenido del formulario
  **/
-.form_cont {
+.form_cont_filter {
 	background-color:#BBCEF7;
 	font-style: normal;
 	text-decoration: none;

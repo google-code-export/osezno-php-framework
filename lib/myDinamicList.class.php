@@ -58,6 +58,10 @@ class myList  {
 	 */
 	private $maxNumPage = 0;
 	
+	/**
+	 * Numero actual de regla maxima	 
+	 * @var integer
+	 */
 	private $numRuleQuery = 0;
 	
 	/**
@@ -99,7 +103,8 @@ class myList  {
 		'arrayEventOnColumn',
 		'arrayFieldsOnQuery',
 		'numRuleQuery',
-		'arrayWhereRules'
+		'arrayWhereRules',
+		'arrayDataTypeExport'
 	);	
 	
 	/**
@@ -196,6 +201,11 @@ class myList  {
 	 * @var array
 	 */
 	private $arrayFieldsOnQuery = array();
+	
+	/**
+	 * Arreglo con los tipos de datos en que es posible exportar la lista dinamica
+	 */
+	private $arrayDataTypeExport = array ('xls'=>false, 'html'=>false, 'pdf'=>false);
 	
 	/**
 	 * Error de la consulta SQL
@@ -324,6 +334,24 @@ class myList  {
 	public function setEventOnColumn ($alias, $event, $confirm_msg = ''){
 		
 		$this->arrayEventOnColumn[$alias] = $event.'::'.htmlentities($confirm_msg);
+	}
+	
+	/**
+	 * Configura la posibilidad de que en una lista deinamica 
+	 * se le permita descargar la consulta actual en un formato
+	 * seleccionable.
+	 * 
+	 * @param $xls		Formato xls
+	 * @param $html		Formato html
+	 * @param $pdf		Formato pdf
+	 */
+	public function setExportData ($xls = true, $html = true, $pdf = true){
+
+		$this->arrayDataTypeExport = array(
+			'xls'=>$xls,
+			'html'=>$html,
+			'pdf'=>$pdf
+		);
 	}
 	
 	/**
@@ -699,7 +727,7 @@ class myList  {
 							
 									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td><td width="" style="text-align:center">'; 
 							
-									$bufHead.='<a class="column_title" href="javascript:;" onClick="myListMoveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($this->returnLabelTitle($key)).'</a>';
+									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($this->returnLabelTitle($key)).'</a>';
 
 									$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
 							
@@ -852,8 +880,7 @@ class myList  {
 							$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
 						}
 						
-						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut,'myListPage:'.$this->idList.':'.$attr[1]);
-					break;
+						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut,'MYLIST_page:'.$this->idList.':'.$attr[1]);					break;
 					
 					case 'field':
 						
@@ -910,6 +937,8 @@ class myList  {
 		
 		$objMyForm->styleClassTags = 'etiqueta_filtro';
 		
+		$objMyForm->styleClassForm = 'form_cont_filter';
+		
 		$htble = '';
 
 		/**
@@ -929,17 +958,40 @@ class myList  {
 
 		$htble .= '<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr>';
 		
+		$objMyForm->addHelp('xls_'.$this->idList,LABEL_HELP_EXCEL_BUTTON_FORM);
+		
+		if (!$this->arrayDataTypeExport['xls'])
+			$objMyForm->addDisabled('xls_'.$this->idList);
+			
+		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('xls_'.$this->idList,'','MYLIST_exportData:xls:'.$this->idList,'excel.gif').'</td>';
+
+		$objMyForm->addHelp('html_'.$this->idList,LABEL_HELP_HTML_BUTTON_FORM);
+		
+		if (!$this->arrayDataTypeExport['html'])
+			$objMyForm->addDisabled('html_'.$this->idList);
+		
+		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('html_'.$this->idList,'','MYLIST_exportData:html:'.$this->idList,'html.gif').'</td>';
+		
+		$objMyForm->addHelp('pdf_'.$this->idList,LABEL_HELP_PDF_BUTTON_FORM);
+		
+		if (!$this->arrayDataTypeExport['pdf'])
+			$objMyForm->addDisabled('pdf_'.$this->idList);
+		
+		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('pdf_'.$this->idList,'','MYLIST_exportData:pdf:'.$this->idList,'pdf.gif').'</td>';
+		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="18%">&nbsp;</td>';
+		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="18%">'.$objMyForm->getButton('add_rule_'.$this->idList,LABEL_ADD_RULE_QUERY_BUTTON_FORM,'MYLIST_addRuleQuery:'.$this->idList,'add.gif').'</td>';
+		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="18%">'.$objMyForm->getButton('save_query_'.$this->idList,LABEL_DOWNLOAD_QUERY_BUTTON_FORM,'onSubmitDownloadQuery','download.gif').'</td>';
+		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="18%">'.$objMyForm->getButton('cancel_query_'.$this->idList,LABEL_CANCEL_QUERY_BUTTON_FORM,'onSubmitCancelQuery','cancel.gif').'</td>';
+		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="18%">&nbsp;</td>';
+		$htble .= '<td width="10%">&nbsp;</td>';
+		
+		$htble .= '<td width="10%" align="center">'.$objMyForm->getButton('add_rule_'.$this->idList,'','MYLIST_addRuleQuery:'.$this->idList,'add.gif').'</td>';
 		
 		$htble .= '</tr></table>';
 		
