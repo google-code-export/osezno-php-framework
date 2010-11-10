@@ -102,11 +102,6 @@ class osezno {
 		URL_SWF_FCN.
 		'"></script>';
 		 
-		$this->arrayAssignAreasHead['string_js_autosuggest'] 
-		= '<script type="text/javascript" src="'.
-		URL_JS_AS.
-		'"></script>';
-		
 		$this->arrayAssignAreasHead['string_js_mylist']	 
 		= '<script type="text/javascript" src="'.
 		URL_JS_ML.
@@ -156,6 +151,8 @@ class osezno {
 
 		$cssErrors = 
 '.error {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#FDCCCD;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
@@ -173,6 +170,8 @@ class osezno {
 }
 
 .error_detail {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#CCCCCC;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;

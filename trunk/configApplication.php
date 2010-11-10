@@ -195,6 +195,11 @@
   $GLOBALS['urlProject'] = $http.$httpHost;
   
   /**
+   * Lang en uso
+   */
+  define ('LANG',			$lang,true);
+  
+  /**
    * Nombre del tema de hojas de estilos que usara el framework
    */
   define ('THEME_NAME',		$theme,true);
@@ -239,11 +244,6 @@
    */
   define ('URL_SWF_HLD',     $http.$httpHost.'/javascript/handlers.js',true);
   
-  /**
-   * Ruta tipo url donde se encuentra el js de autosuggest
-   */
-  define ('URL_JS_AS',       $http.$httpHost.'/javascript/autosuggest.js',true);
-
   /**
    * Ruta tipo url donde se encuentra el js de myList
    */

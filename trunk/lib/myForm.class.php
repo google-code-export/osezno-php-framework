@@ -1633,29 +1633,6 @@ class myForm {
 	}
 
 	/**
-	 * Agrega una lista dinamica al formulario para poder seleccionar
-	 * uno o varios Registros de esa lista dinamica.
-	 *
-	 * En construccion
-	 *
-	 * @param unknown_type $etq
-	 * @param unknown_type $name
-	 * @param unknown_type $sql
-	 * @param unknown_type $idToCheckBox
-	 */
-	public function addList ($etq = '', $name, $sql, $idToCheckBox){
-		if ($sql){
-			$objDinamicList = new myDinamicList($name,$sql);
-
-			$objDinamicList->getDinamicList($name,false);
-			$objDinamicList->setColumn($name, $idToCheckBox, '',$this->getCheckBox($idToCheckBox));
-
-			$Cadena = 'mylist'.$this->Separador.$name.$this->Separador.$etq;
-			$this->Objects['field'][$name] = $Cadena;
-		}
-	}
-
-	/**
 	 * Agrega una combo desplegable (menu)
 	 *
 	 * @param string $etq       	Etiqueta del campo

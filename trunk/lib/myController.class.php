@@ -930,6 +930,22 @@ class myController extends myControllerExt {
 		return $this->response;
 	}
 	
+	/**
+	 * Nivel de ayuda listas dinamicas
+	 * @param $datForm
+	 * @return unknown_type
+	 */
+	public function MYLIST_help ($datForm){
+		
+		return $this->response;
+	}
+	
+	/**
+	 * Cambiar el numero de registros a paginar
+	 * @param $datForm
+	 * @param $idList
+	 * @return unknown_type
+	 */
 	public function MYLIST_chPag ($datForm, $idList){
 		
 		$myList = new myList($idList);
@@ -1033,7 +1049,7 @@ class myController extends myControllerExt {
 			break;
 		}
 		
-		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
@@ -1079,6 +1095,8 @@ class myController extends myControllerExt {
 		
 		$objMyForm->cellPadding = 0;
 		
+		$objMyForm->styleTypeHelp = 2;
+		
 		$objMyForm->selectUseFirstValue = false;
 		
 		$objList = new myList($idList);
@@ -1096,6 +1114,8 @@ class myController extends myControllerExt {
 		$html .= '<tr>';
 		
 		$html .= '<td width="10%" align="center"><div id="status_'.$idList.'_'.$numRuleQuery.'" class="rule_cancel" id=""></div></td>';
+		
+		$objMyForm->addHelp('logic_'.$numRuleQuery,LABEL_LOGIC_FIELD_ADD_RULE_FORM);
 		
 		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect(
 			'logic_'.$numRuleQuery,
@@ -1119,25 +1139,39 @@ class myController extends myControllerExt {
 				$arFields[$field] = $etq;
 			}
 		}
-			
+		
+		$objMyForm->addHelp('field_'.$numRuleQuery, LABEL_FIELD_LIST_ADD_RULE_FORM);
+		
 		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
 			
 		$spaCha = '&nbsp;';
 		
 		$arCompare = array(
 		
-			'equal'=>str_repeat($spaCha,2).'='.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_EQUAL.')',
+			'equal'=>'=',
 		
-			'different'=>'&nbsp;<>&nbsp;('.LABEL_RELATION_SELECT_OPT_DIFERENT.')',
+			'greater_than'=>'>',
 		
-			'greater_than'=>str_repeat($spaCha,2).'>'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_GRE_THEN.')',
+			'greater_equal_than'=>'>=',
 		
-			'less_than'=>str_repeat($spaCha,2).'<'.str_repeat($spaCha,2).'('.LABEL_RELATION_SELECT_OPT_LSS_THEN.')'
+			'less_than'=>'<',
+		
+			'less_equal_than'=>'<=',
+			
+			'different'=>'<>'
 		);		
+		
+		$objMyForm->addHelp('relation_'.$numRuleQuery,LABEL_RELATION_FIELD_ADD_RULE_FORM);
 		
 		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$arCompare).'</td>';
 		
-		$html .= '<td width="18%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,10).'</td>';
+		$objMyForm->addHelp('value_'.$numRuleQuery,LABEL_FIELD_VALUE_ADD_RULE_FORM);
+		
+		$html .= '<td width="18%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).'</td>';
+		
+		$objMyForm->addHelp($idList.'_apply_rule_'.$numRuleQuery,LABEL_HELP_APPLY_RULE_FORM);
+		
+		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
 		
 		$html .= '<td align="center">'.
 		
@@ -1209,12 +1243,20 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_applyRuleQuery ($datForm, $idList, $numRule){
 		
-		$arRel = array (
+		$arRel = array(
+		
 			'equal'=>'=',
-			'different'=>'<>',
+		
 			'greater_than'=>'>',
-			'less_than'=>'<'
-		);
+		
+			'greater_equal_than'=>'>=',
+		
+			'less_than'=>'<',
+		
+			'less_equal_than'=>'<=',
+			
+			'different'=>'<>'
+		);	
 		
 		$sqlRule = '';
 		

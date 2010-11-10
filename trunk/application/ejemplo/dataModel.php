@@ -26,7 +26,11 @@
 		
 		$objMyForm = new myForm('prueba');
 		
-		$objMyForm->addText('Fecha:','fecha',date('Y-m-d'),10,10,true,true);
+		$objMyForm->addCheckBox('Check me!','cheq');
+		
+		$objMyForm->addText('Fecha Inicial:','fecha1',date('Y-m-d'),10,10,true,true);
+		
+		$objMyForm->addText('Fecha Finals:','fecha2',date('Y-m-d'),10,10,true,true);
 		
 		$objMyForm->width = 300;
 		
@@ -40,9 +44,9 @@
 		
 		$objMyForm->addButton('list','Grid','showGrid','list.gif');
 		
-		$objMyForm->width = 550;
+		$objMyForm->width = 750;
 		
-		return $objMyForm->getForm(1);
+		return $objMyForm->getForm(3);
 	} 	
  	
  	
@@ -89,20 +93,22 @@
  		$objList->setAliasInQuery('edad','Edad','numeric');
  		$objList->setAliasInQuery('prof_id','Profesion','date');
  		
- 		$objList->setEventOnColumn('usuario_id','deleteRecord','¿Desea borrar el registro?');
+ 		//$objList->setEventOnColumn('usuario_id','deleteRecord','¿Desea borrar el registro?');
  		$objList->setEventOnColumn('actualizar','updateRecord','¿Desea actualizar el registro?');
  		
- 		$objList->setWidthColumn('usuario_id',80);
- 		$objList->setWidthColumn('actualizar',80);
+ 		$objList->setGlobalEventOnColumn('usuario_id','deleteRecords',NULL,'remove.gif');
  		
- 		$objList->widthList = 800;
+ 		$objList->setWidthColumn('usuario_id',100);
+ 		$objList->setWidthColumn('actualizar',100);
+ 		$objList->setWidthColumn('nombre',300);
+ 		
+ 		$objList->widthList = 750;
  		
  		$objList->setExportData(true,true,false);
  		
  		$objList->setPagination(true,20);
  		
  		return $objList->getList(true);
- 		
  	}
  	
  	/**

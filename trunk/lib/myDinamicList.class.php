@@ -111,7 +111,8 @@ class myList  {
 		'arrayFieldsOnQuery',
 		'numRuleQuery',
 		'arrayWhereRules',
-		'arrayDataTypeExport'
+		'arrayDataTypeExport',
+		'globalEventOnColumn'
 	);	
 	
 	/**
@@ -135,6 +136,12 @@ class myList  {
 	 * @var object
 	 */
 	private $objConn;
+	
+	/**
+	 * Objeto de formularios
+	 * @var object
+	 */
+	private $objForm;
 	
 	/**
 	 * Cadena de la consulta SQL
@@ -215,6 +222,11 @@ class myList  {
 	private $arrayDataTypeExport = array ('xls'=>false, 'html'=>false, 'pdf'=>false);
 	
 	/**
+	 * Informacion del evento global
+	 */
+	private $globalEventOnColumn = '';
+	
+	/**
 	 * Error de la consulta SQL
 	 * @var string
 	 */
@@ -272,6 +284,9 @@ class myList  {
 		
 		$this->sqlORobject = $sqlORobject;
 		
+		$this->objForm = new myForm;
+		
+		$this->objForm->setParamTypeOnEvent('field');
 	}
 	
 	/**
@@ -344,7 +359,7 @@ class myList  {
 	}
 	
 	/**
-	 * Configura la posibilidad de que en una lista deinamica 
+	 * Configura la posibilidad de que en una lista dinamica 
 	 * se le permita descargar la consulta actual en un formato
 	 * seleccionable.
 	 * 
@@ -359,6 +374,22 @@ class myList  {
 			'html'=>$html,
 			'pdf'=>$pdf
 		);
+	}
+	
+	/**
+	 * Configura un unico evento global en una lista dinamica sobre columna definida
+	 * para que los registros marcados se vean afectados por dicho evento. El evento 
+	 * programado recibira en un arreglo los registros seleccionados de dicha columna.
+	 * 
+	 * @param $alias	Alias o nombre de la columna del que tomara el valor
+	 * @param $event	Nombre del evento que disparara en el handlerEvent
+	 * @param $labelButton	Etiqueta del boton que dispara el evento.
+	 * @param $srcImage	Nombre de la imagen para el boton
+	 * @param $strHelp	Etiqueta de ayuda sobre el boton
+	 */
+	public function setGlobalEventOnColumn ($alias, $event, $labelButton, $srcImage = '', $strHelp = ''){
+		
+		$this->globalEventOnColumn = $alias.'::'.$event.'::'.htmlentities($labelButton).'::'.$srcImage.'::'.htmlentities($strHelp);
 	}
 	
 	/**
@@ -480,7 +511,7 @@ class myList  {
 			
 				if (in_array($atn,$this->validNomKeys))
 			
-					$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
+						$_SESSION['prdLst'][$this->idList][$atn] = $this->$atn;
 		}
 		
 	}
@@ -693,6 +724,8 @@ class myList  {
 						 
 						}
 					
+						$firsKey = true;
+						
 						foreach ($row as $key => $val){
 					
 							if (!is_numeric($key)){
@@ -710,6 +743,19 @@ class myList  {
 
 								$numOrder = '&nbsp;';
 							
+								if ($firsKey && $this->globalEventOnColumn){
+									$firsKey = false;
+									
+									list ($alsGbl,$v2,$v3,$v4,$v5) = explode('::',$this->globalEventOnColumn);
+									
+									$nmChk = $this->idList.'_over_all';
+									
+									$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList));
+									
+									$htmlGlobal = $this->objForm->getCheckBox($nmChk);
+								}else
+									$htmlGlobal = '&nbsp';
+								
 								if (isset($this->arrayOrdMethod[$key])){
 								
 									$orderBy = $this->arrayOrdMethod[$key];
@@ -732,23 +778,27 @@ class myList  {
 							
 									$bufHead.='<td class="'.$styleName.'" width="'.$widCol.'" align="center">';
 							
-									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td><td width="" style="text-align:center">'; 
+									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td width="" style="text-align:center">'; 
 							
 									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($this->returnLabelTitle($key)).'</a>';
 
-									$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
+									$bufHead.='</td><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td></tr></table>';
 							
 									$bufHead.='</td>';
 							
 								}else{
-							
+									
 									$cadParam .= '1,';
-							
-									$bufHead.='<td class="cell_title" width="'.$widCol.'">';
-								
+									
+									$bufHead.='<td width="'.$widCol.'" align="center" class="cell_title">';
+									
+									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td>';
+									
 									$bufHead.='<font class="column_title">'.ucwords($this->returnLabelTitle($key)).'</font>';
 							
-									$bufHead.='</td>';	
+									$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
+
+									$bufHead.='</td>';
 								}
 							
 							}
@@ -773,20 +823,31 @@ class myList  {
 			
 					$buf.='>'."\n"."\t";
 			
+					$firsVal = true;
+					
 					foreach ($row as $key => $val){
 				
 						if (!is_numeric($key)){
-					
+							
 							if (!$val)
 					   			$Value = '&nbsp;';
 					   
-							$buf.='<td class="';
-					
-							if (in_array($key,$arrColOrd))
-								$buf.='cell_content_selected">';
-							else
-								$buf.=''.$classTd.'">';
-						
+					   		$buf.='<td class="';	
+					   			
+							if (in_array($key,$arrColOrd)){
+								$class='cell_content_selected';
+							}else
+								$class=$classTd;
+								
+							$buf .= $class.'">';	
+					   		
+							if ($firsVal && $this->globalEventOnColumn){
+								
+								$nmCheck = $this->idList.'_'.$row->$alsGbl;
+								
+					   			$buf.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$this->objForm->getCheckBox($nmCheck).'</td><td class="'.$class.'_checkbox">';
+							}	
+					   		
 							if (isset($this->arrayEventOnColumn[$key])){
 							
 								list($event,$strMsg) = explode('::',$this->arrayEventOnColumn[$key]); 
@@ -799,8 +860,22 @@ class myList  {
 							}else
 								$buf.=htmlentities($val);	
 					
-							$buf.='</td>';
+							if ($firsVal && $this->globalEventOnColumn){
+					   			$buf.='</td><td width="20px">&nbsp;</td></tr></table>';
+					   			$firsVal = false;	
+					   		}
+							
+					   		$buf.='</td>';
+					   		
+							
+							
+							
+							
+							
+							
 						}
+						
+						
 				
 					}
 
@@ -997,7 +1072,6 @@ class myList  {
 		else
 			$anyBut = true;
 		
-		
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','MYLIST_exportData:html:'.$this->idList,'html.gif').'</td>';
 		
 		$objMyForm->addHelp('pdf_'.$this->idList,LABEL_HELP_PDF_BUTTON_FORM);
@@ -1014,9 +1088,7 @@ class myList  {
 		if (!$anyBut)
 			$objMyForm->addDisabled('not_pg_'.$this->idList);
 		
-		$htble .= '<td width="10%" class="'.$objMyForm->styleClassTags.'">'.LABEL_USELIMIT_RULE_FORM.':'.$objMyForm->getCheckBox('not_pg_'.$this->idList,true).'</td>';
-		
-		$htble .= '<td width="10%">&nbsp;</td>';
+		$htble .= '<td width="10%" align="left" class="'.$objMyForm->styleClassTags.'">'.LABEL_USELIMIT_RULE_FORM.':'.$objMyForm->getCheckBox('not_pg_'.$this->idList,true).'</td>';
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
@@ -1028,29 +1100,13 @@ class myList  {
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','MYLIST_addRuleQuery:'.$this->idList,'find.gif').'</td>';
 		
+		$objMyForm->addDisabled('help_'.$this->idList);
+		
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','MYLIST_help','help.gif').'</td>';
+		
 		$htble .= '</tr></table>';
 		
 		$objMyForm->addComent('options',$htble);
-		
-		$htble = '';
-		
-		$htble .= '<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr>';
-		
-		$htble .= '<td width="10%" class="'.$objMyForm->styleClassTags.'">'.LABEL_STATUS_RULE_FORM.'</td>';
-		
-		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_LOGIC_FIELD_ADD_RULE_FORM.'</td>';
-		
-		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_FIELD_LIST_ADD_RULE_FORM.'</td>';
-		
-		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_RELATION_FIELD_ADD_RULE_FORM.'</td>';
-		
-		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_FIELD_VALUE_ADD_RULE_FORM.'</td>';
-		
-		$htble .= '<td width="18%" class="'.$objMyForm->styleClassTags.'">'.LABEL_REM_RULE_FORM.'</td>';
-		
-		$htble .= '</tr></table>';
-		
-		//$objMyForm->addComent('labels',$htble);
 		
 		$objMyForm->addComent('rule_for','<div class="form_rule_for_list" id="rule_for_'.$this->idList.'"></div>');
 		
@@ -1142,6 +1198,5 @@ class myList  {
 	}
 
 }
-
 
 ?>
