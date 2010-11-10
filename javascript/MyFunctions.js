@@ -1,27 +1,4 @@
 
-/**
- * Bloquea el primer select-one de un formulario de filtro de una lista dinamica
- * @param nomForm
- * @return
- */
-function blockFirstElementForm (nomForm){
-	var i;
-	var id;
-	var option;
-	for (i=0; i<document.forms[nomForm].elements.length; i++){
-        
-		option = document.forms[nomForm].elements[i].type;
-		if (option == 'select-one'){
-			id = document.forms[nomForm].elements[i].id;
-			document.getElementById(id).disabled = true;
-			document.getElementById(id).style.display = "none";
-			break;
-		}
-		
-   }	
-}
-
-
 function callUrlAsin(url, pageElement) {
 
     try{
@@ -346,16 +323,7 @@ function checkear (the_form, item)
 }
 
 function Check(the_form, item){
- var status = document.forms[the_form].elements[item].checked
-
- if (document.forms[the_form].elements[item].checked == 0){
-    document.forms[the_form].elements[item].value='0'
-    }
- else
-    {
-    document.forms[the_form].elements[item].value='1'
-    }
-}                
+}
 
 function setCheckboxes(the_form, do_check){
     var elts      = (typeof(document.forms[the_form].elements) != 'undefined')
@@ -438,7 +406,7 @@ function GetDataForm (form){
                
               switch (option){
                  case 'checkbox':
-                    var checkbox_value = document.forms[form].elements[i].value;
+                    var checkbox_value = document.forms[form].elements[i].checked;
                     form_elements[document.forms[form].elements[i].name] = checkbox_value;
                  break;
                  case 'select-multiple':

@@ -107,9 +107,25 @@ a:hover {
 	text-align:center;
 }
 
+.td_default_checkbox {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:center;
+}
+
 /** Fila del medio **/
 .td_middle {
 	background-color:#E7F4FE;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	text-decoration: none;
+	text-align:center;
+}
+
+.td_middle_checkbox {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	font-style: normal;

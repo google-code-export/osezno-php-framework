@@ -7,6 +7,36 @@ var overRowClass   = 'td_over';
 	
 var colSelected    = 'cell_content_selected';
 
+function checkAllBoxesOnList (value, idlist){
+	
+	for (i=0;i<document.ids.length;i++){
+		alert(document.ids[i].type);
+	}
+	
+}
+
+/**
+ * Bloquea el primer select-one de un formulario de filtro de una lista dinamica
+ * @param nomForm
+ * @return
+ */
+function blockFirstElementForm (nomForm){
+	
+	var i;
+	var id;
+	var option;
+	
+	for (i=0; i<document.forms[nomForm].elements.length; i++){
+		option = document.forms[nomForm].elements[i].type;
+		
+		if (option == 'select-one'){
+			id = document.forms[nomForm].elements[i].id;
+			document.getElementById(id).disabled = true;
+			document.getElementById(id).style.display = "none";
+			break;
+		}
+   }	
+}
 
 function clearRowsMarked (){
 	

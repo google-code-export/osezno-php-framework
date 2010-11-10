@@ -9,19 +9,24 @@
 	define('GOTO_BACK_PAGE','Ir a la anterior p&aacute;gina');
 	
 	define('LABEL_FIELDSET_ADD_RULE_FORM','Parametros de la regla');
-	define('LABEL_RELATION_SELECT_OPT_EQUAL','Igual que');
-	define('LABEL_RELATION_SELECT_OPT_DIFERENT','Diferente de');
-	define('LABEL_RELATION_SELECT_OPT_GRE_THEN','Mayor que');
-	define('LABEL_RELATION_SELECT_OPT_LSS_THEN','Menor que');
+	define('LABEL_RELATION_SELECT_OPT_EQUAL','Igual');
+	define('LABEL_RELATION_SELECT_OPT_DIFERENT','Diferente');
+	define('LABEL_RELATION_SELECT_OPT_GRE_THEN','Mayor');
+	define('LABEL_RELATION_SELECT_OPT_GRE_EQUAL_THEN','Mayor igual');
+	define('LABEL_RELATION_SELECT_OPT_LSS_THEN','Menor');
+	define('LABEL_RELATION_SELECT_OPT_LSS_EQUAL_THEN','Menor igual');
+	
 	define('LABEL_STATUS_RULE_FORM','Estado');
-	define('LABEL_LOGIC_FIELD_ADD_RULE_FORM','Tipo uni&oacute;n');
-	define('LABEL_RELATION_FIELD_ADD_RULE_FORM','Comparaci&oacute;n');
-	define('LABEL_RELATION_OPTAND_ADD_RULE_FORM','Y (And)');
-	define('LABEL_RELATION_OPTOR_ADD_RULE_FORM','O (Or)');
+	define('LABEL_LOGIC_FIELD_ADD_RULE_FORM','Uni&oacute;n l&oacute;gica');
+	define('LABEL_RELATION_FIELD_ADD_RULE_FORM','Operador');
+	define('LABEL_RELATION_OPTAND_ADD_RULE_FORM','Y');
+	define('LABEL_RELATION_OPTOR_ADD_RULE_FORM','O');
 	define('LABEL_FIELD_LIST_ADD_RULE_FORM','Campo');
 	define('LABEL_FIELD_VALUE_ADD_RULE_FORM','Valor');
-	define('LABEL_REM_RULE_FORM','Aplicar/Remover');
+	define('LABEL_HELP_APPLY_RULE_FORM','Aplicar');
+	define('LABEL_HELP_REM_RULE_FORM','Remover');
 	define('LABEL_USELIMIT_RULE_FORM','Limitar');
+	define('TITLE_WINDOW_HELP_MYLIST','Ayuda listas din&aacute;micas');
 	
 	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Filtrar registros.');
 	define('LABEL_HELP_EXCEL_BUTTON_FORM','Exportar a Excel.');
@@ -32,12 +37,12 @@
 	
 	
 	
-	define('MSG_APPLY_RULE_VALUE_NULL','Debe escribir un valor para la regla');
+	define('MSG_APPLY_RULE_VALUE_NULL','El valor es requerido.');
 	define('MSG_RESTART_QUERY_LIST','La consulta ha sido reiniciada');
-	define('MSG_QUERY_FORM_OK','La consulta fue realizada exitosamente.');
-	define('MSG_QUERY_FORM_BAD','Se encontraron problemas al ejecutar la consulta');
-	define('MSG_QUERY_FORM_NULL','Debe escribir un valor a filtrar.');
-	define('MSG_QUERY_FORM_NOROWS','No se encontraron registros que coincidan con la consulta.');
+	define('MSG_QUERY_FORM_OK','Filtro aplicado.');
+	define('MSG_QUERY_FORM_BAD','Error al ejecutar la consulta');
+	define('MSG_QUERY_FORM_NULL','El valor es requerido.');
+	define('MSG_QUERY_FORM_NOROWS','No hay registros que mostrar.');
 	
 
 

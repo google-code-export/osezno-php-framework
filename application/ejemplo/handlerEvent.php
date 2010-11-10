@@ -36,8 +36,7 @@
  	
  	public function buttonOk ($datForm){
  		
- 		$this->notificationWindow('Ok',3,'ok');
- 		
+ 		$this->alert(var_export($datForm,true));
  		
  		return $this->response;
  	}

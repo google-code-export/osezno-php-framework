@@ -11,6 +11,8 @@
 }
 
 .notification_info {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#B9DCFF;
 	border-color:#003366;
 	border-width: 1px;
@@ -42,6 +44,8 @@
 }
 
 .notification_ok {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#D6F5C5;
 	border-color:#4EA71D;
 	border-width: 1px;
@@ -74,6 +78,8 @@
 }
 
 .notification_cancel {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#FFB7B7;
 	border-color:#FF0000;
 	border-width: 1px;
@@ -106,6 +112,8 @@
 }
 
 .notification_error {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#FFB7B7;
 	border-color:#FF0000;
 	border-width: 1px;
@@ -138,6 +146,8 @@
 }
 
 .notification_warning {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#FFEBAE;
 	border-color:#CC9900;
 	border-width: 1px;
@@ -169,6 +179,8 @@
 }
 
 .notification_help {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#FFEBAE;
 	border-color:#003366;
 	border-width: 1px;
@@ -200,6 +212,8 @@
 }
 
 .notification_critical {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#CCCCCC;
 	border-color:#000000;
 	border-width: 1px;
