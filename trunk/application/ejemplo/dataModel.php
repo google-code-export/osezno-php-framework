@@ -106,7 +106,7 @@
  		
  		$objList->setExportData(true,true,false);
  		
- 		$objList->setPagination(true,20);
+ 		$objList->setPagination(true,10);
  		
  		return $objList->getList(true);
  	}
