@@ -96,7 +96,7 @@
  		//$objList->setEventOnColumn('usuario_id','deleteRecord','¿Desea borrar el registro?');
  		$objList->setEventOnColumn('actualizar','updateRecord','¿Desea actualizar el registro?');
  		
- 		$objList->setGlobalEventOnColumn('usuario_id','deleteRecords',NULL,'remove.gif');
+ 		$objList->setGlobalEventOnColumn('usuario_id','showRecords','Ok','ok.gif','Mostrar registros');
  		
  		$objList->setWidthColumn('usuario_id',100);
  		$objList->setWidthColumn('actualizar',100);

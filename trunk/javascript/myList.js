@@ -7,10 +7,72 @@ var overRowClass   = 'td_over';
 	
 var colSelected    = 'cell_content_selected';
 
-function checkAllBoxesOnList (value, idlist){
+/**
+ * Hace un simple check sobre el objeto seleccionado
+ * 
+ * @param data
+ * @param id
+ * @return
+ */
+function check_onlist(data, id){
 	
-	for (i=0;i<document.ids.length;i++){
-		alert(document.ids[i].type);
+	if (!document.getElementById(id).checked)
+		document.getElementById(id).checked = true;
+	else
+		document.getElementById(id).checked = false;
+}
+
+/**
+ * Retorna los id de la lista seleccionados para validar que registros fueron chequeados
+ * @param idlist
+ * @return
+ */
+function enventGlobalOnList (idlist){
+	
+	var ids = new Array();
+	
+	var ins=document.getElementsByTagName('input');
+	
+	for (var i=0;i<ins.length;i++){
+		
+		if (ins[i].type == 'checkbox'){
+			
+			if (ins[i].id.substr(0,idlist.length)==idlist){
+				
+				ids[ins[i].id.substr(ins[i].id.lastIndexOf('_')+1)] = document.getElementById(ins[i].id).checked;
+			}
+		}
+	}
+
+	return ids;
+}
+
+/**
+ * Marca o desmarca los checkboxes de una lista dinamica
+ * 
+ * @param value
+ * @param idlist
+ * @param idmaster
+ * @return
+ */
+function checkAllBoxesOnList (value, idlist, idmaster){
+	
+	var ins=document.getElementsByTagName('input');
+	
+	var valmain = document.getElementById(idmaster).checked;
+	
+	for (var i=0;i<ins.length;i++){
+		
+		if (ins[i].type == 'checkbox'){
+			
+			if (ins[i].id.substr(0,idlist.length)==idlist){
+				
+				 if (valmain == true)
+					 ins[i].checked=true;
+				 else
+					 ins[i].checked=false;
+			}
+		}
 	}
 	
 }
@@ -90,8 +152,18 @@ function outRow (o, cName, cCols, numCols){
  * @param cname Clase original
  * @return
  */
-function markRow (o, cName, cCols, numCols){
+function markRow (o, cName, cCols, numCols, field){
 	
+	 if (field.length){
+		 
+		 var valField = document.getElementById(field).checked;
+		 
+		 if (valField == true)
+			 document.getElementById(field).checked = false;
+		 else
+			 document.getElementById(field).checked = true;
+	 }
+	 
 	if (rowsMarked[o.id]==undefined)
 		rowsMarked[o.id] = 0;
 	

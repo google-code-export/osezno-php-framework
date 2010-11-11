@@ -58,7 +58,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	private $paramTypeOnEvent = 'form';
+	private $paramTypeOnEvent = 'global';
 	
 	/**
 	 * Extension de el archivo que la cache generara
@@ -1056,6 +1056,7 @@ class myForm {
 			 $this->objEventxJ[$strElementIdORelemlentName] .=')'.'" ';
 			}
 		}
+		
 	}
 	
 	/**
@@ -1602,31 +1603,18 @@ class myForm {
 	 * @param char   $ini_sts   Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado
 	 *
 	 */
-	public function getCheckBox($name = '', $ini_sts = 'N'){
+	public function getCheckBox($name = '', $ini_sts = false){
 		$buf = '';
 
-		$value = '0';
 		$cheked = '';
-		if ($ini_sts == 'S'){
+		if ($ini_sts == true){
 			$cheked = 'checked';
-			$value  = '1';
 		}
 
-		$onClickField = 'onclick="Check(\''.$this->name.'\', \''.$name.'\')';
-			
 		$onEvent = $this->checkExistEventJs($name);
-		if ($onEvent){
-			if (strpos(strtolower($onEvent),'onclick')){
-				$addEvent = substr($onEvent,10,-2);
-
-				$onClickField	.= ','.$addEvent;
-
-				$onEvent = '';
-			}
-		}
-		$onClickField  .= '"';
-
-		$buf .= '<input '.$onEvent.' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$name.'" id="'.$name.'" value="'.$value.'"  '.$onClickField.'  '.$cheked.' '.$this->checkIfIsDisabled($name).'>'."\n";
+		
+		$buf .= '<input '.$onEvent.' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$name.'" id="'.$name.'"  '.$cheked.' '.$this->checkIfIsDisabled($name).'>'."\n";
+		
 		$this->arrayFormElementType[$name] = 'checkbox';
 
 		return $buf;
@@ -1986,10 +1974,10 @@ class myForm {
 		if (in_array($objName,$arrayKeysObjHelps)){
 			switch ($this->styleTypeHelp){
 				case 1:
-					$return = ' onmouseover="'.$objName.'.style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\',BALLOON, true, ABOVE, true, FADEIN, 300, FADEOUT, 300)" ';//
+					$return = ' onmouseover="getElementById(\''.$objName.'\').style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\',BALLOON, true, ABOVE, true, FADEIN, 300, FADEOUT, 300)" ';//
 					break;
 				case 2:
-					$return = ' onmouseover="'.$objName.'.style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\')" ';//
+					$return = ' onmouseover="getElementById(\''.$objName.'\').style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\')" ';//
 					break;
 			}
 		}
@@ -2330,33 +2318,17 @@ class myForm {
 					$this->arrayFormElements[$campos_f[1]] = '<td widthEtq rowSpanEtq class="'.$this->styleClassTags.'" colSpanEtq>'.$campos_f[2].'</td>';
 					break;
 				case 'checkbox':
-					$value = '0';
+					
 					$cheked = '';
-
-					if ($campos_f[3] == 'S'){
+					if ($campos_f[3] == true){
 						$cheked = 'checked';
-						$value  = '1';
 					}
 
-					$onClickTag   = 'onclick="checkear(\''.$this->name.'\', \''.$campos_f[2].'\'), Check(\''.$this->name.'\', \''.$campos_f[2].'\')';
-					$onClickField = 'onclick="Check(\''.$this->name.'\', \''.$campos_f[2].'\')';
+					$onClickTag   = 'onclick="checkear(\''.$campos_f[2].'\')"';
 						
 					$onEvent = $this->checkExistEventJs($campos_f[2]);
-					if ($onEvent){
-						if (strpos(strtolower($onEvent),'onclick')){
-							$addEvent = substr($onEvent,10,-2);
-							 
-							$onClickTag .= ','.$addEvent;
-							$onClickField	.= ','.$addEvent;
-
-							$onEvent = '';
-						}
-					}
 						
-					$onClickTag    .= '"';
-					$onClickField  .= '"';
-						
-					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq '.$onClickTag.' '.$onEvent.' class="'.$this->styleClassTags.'"  widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$onClickField.' '.$onEvent.' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$value.'"   '.$cheked.' '.$this->checkIfIsDisabled($campos_f[2]).'>'.'</td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq '.$onClickTag.' class="'.$this->styleClassTags.'"  widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$onEvent.' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$campos_f[2].'" id="'.$campos_f[2].'" '.$cheked.' '.$this->checkIfIsDisabled($campos_f[2]).'>'.'</td>'."\n";
 					break;
 				case 'time':
 					$bufTemp = '';

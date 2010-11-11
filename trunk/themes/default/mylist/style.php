@@ -174,6 +174,15 @@ a:hover {
 	background-color: #ECFBFF;
 }
 
+/** Contenido de una celda cuando es ordenada Checkbox **/
+.cell_content_selected_checkbox {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-style:italic;
+	text-decoration: none;
+	text-align:center;
+}
+
 /** Celda del titulo de la columna cuando es ordenada **/
 .cell_title_selected {
 	background-image: url('<?php echo $_GET['path_img']; ?>col_selected.gif');
