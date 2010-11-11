@@ -289,12 +289,9 @@ function destructNotificationWindow (idElement){
 	}
 }
 
-
-
 /**
  * Manejo de archivos
  */	
-
 function fileQueuedFunction(file, queuelength) {
 	var ul = document.getElementById("joselito");
 	var li = document.createElement("li");
@@ -313,16 +310,18 @@ function CentrarVentana(){
       moveTo(x, y);
       }
       
-function checkear (the_form, item)
-{
- var status = document.forms[the_form].elements[item].checked
- if (status == true)
-    document.forms[the_form].elements[item].checked=false
- else
-    document.forms[the_form].elements[item].checked=true
-}
+/**
+ * Por medio de la eitqueta de un checkbox cheka o no la misma dependiendo de su valor actual-
+ * 
+ * @param id
+ * @return
+ */
+function checkear (id){
 
-function Check(the_form, item){
+	if (document.getElementById(id).checked == true)
+		document.getElementById(id).checked = false;
+	else
+		document.getElementById(id).checked = true;
 }
 
 function setCheckboxes(the_form, do_check){

@@ -20,6 +20,13 @@
  */	
  class eventos extends myController {
 
+ 	public function showRecords($ids){
+ 		
+ 		$this->alert(var_export($ids,true));
+ 		
+ 		return $this->response;
+ 	}
+ 	
  	public function updateRecord ($id){
  		
  		$this->notificationWindow('El registro con el ID <b>'.$id.'</b> no sera actualizado',3,'ok');

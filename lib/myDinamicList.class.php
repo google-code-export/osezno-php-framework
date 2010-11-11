@@ -746,11 +746,11 @@ class myList  {
 								if ($firsKey && $this->globalEventOnColumn){
 									$firsKey = false;
 									
-									list ($alsGbl,$v2,$v3,$v4,$v5) = explode('::',$this->globalEventOnColumn);
+									list ($alsGbl) = explode('::',$this->globalEventOnColumn);
 									
 									$nmChk = $this->idList.'_over_all';
 									
-									$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList));
+									$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk));
 									
 									$htmlGlobal = $this->objForm->getCheckBox($nmChk);
 								}else
@@ -810,12 +810,17 @@ class myList  {
 						$buf .='{bufHead}';
 			
 					}
+					
+					$nmCheck = '';
+					
+					if ($this->globalEventOnColumn)
+						$nmCheck = $this->idList.'_'.$row->$alsGbl;
 			
 					$buf.='<tr ';
 			
 					$buf.='id="tr_'.$this->idList.'_'.$i.'" ';
 			
-					$buf.='onclick="markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\', '.$getNumFldsAftd.')" ';
+					$buf.='onclick="markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\', '.$getNumFldsAftd.', \''.$nmCheck.'\')" ';
 			
 					$buf.='onmouseover="onRow(this, '.$getNumFldsAftd.')" ';
 			
@@ -845,8 +850,10 @@ class myList  {
 								
 								$nmCheck = $this->idList.'_'.$row->$alsGbl;
 								
+								$this->objForm->addEventJs($nmCheck,'onclick','check_onlist',array($nmCheck));
+								
 					   			$buf.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$this->objForm->getCheckBox($nmCheck).'</td><td class="'.$class.'_checkbox">';
-							}	
+							}
 					   		
 							if (isset($this->arrayEventOnColumn[$key])){
 							
@@ -867,19 +874,12 @@ class myList  {
 							
 					   		$buf.='</td>';
 					   		
-							
-							
-							
-							
-							
-							
 						}
-						
-						
 				
 					}
 
 					$buf.= "\n".'</tr>'."\n";
+					
 					$i++;
 				}
 			
@@ -894,6 +894,27 @@ class myList  {
 			}
 			
 		}	
+
+		$buf .= '<div  style="width:'.$this->widthList.''.$this->formatWidthList.'" id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
+		
+		$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%"><tr><td align="left" width="33%">';
+		
+		if($this->globalEventOnColumn){
+			
+			$this->objForm->name = $this->idList;
+			
+			$this->objForm->styleTypeHelp = 2;
+			
+			list ($alsGbl,$evnt,$lblBtn,$srcImg,$strHelp) = explode('::',$this->globalEventOnColumn);
+			
+			if ($strHelp)
+				$this->objForm->addHelp('glevn_'.$this->idList,$strHelp);
+
+			$buf .= str_replace('GetDataForm','enventGlobalOnList',$this->objForm->getButton('glevn_'.$this->idList,$lblBtn,$evnt,$srcImg));
+		}else
+			$buf .= '&nbsp;';
+
+		$buf .= '</td><td width="34%" align="center">';	
 		
 		# Usar paginacion
 		if ($this->usePagination && $this->successFul && $this->numAffectedRows){
@@ -934,9 +955,7 @@ class myList  {
 			
 			$objMyForm->addHelp($this->idList.'_back_page','&nbsp;'.GOTO_BACK_PAGE.'&nbsp;');
 			
-			$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
-		
-			$buf .= '<table border="0" align="center"><tr>';
+			$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="250"><tr>';
 
 			if ($this->currentPage == 0){
 				
@@ -995,10 +1014,9 @@ class myList  {
 			}
 			
 			$buf .= '</tr></table>';
-			
-			$buf .= '</div>'."\n";
 		}
-		
+
+		$buf .= '</td><td width="33%">&nbsp;</td></tr></table></div>'."\n";
 		
 		$buf .= ''.'</div>'."\n";
 		
