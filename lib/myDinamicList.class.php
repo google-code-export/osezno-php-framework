@@ -750,7 +750,7 @@ class myList  {
 									
 									$nmChk = $this->idList.'_over_all';
 									
-									$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk));
+									$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk, $getNumFldsAftd));
 									
 									$htmlGlobal = $this->objForm->getCheckBox($nmChk);
 								}else

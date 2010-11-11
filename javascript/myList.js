@@ -55,22 +55,40 @@ function enventGlobalOnList (idlist){
  * @param idmaster
  * @return
  */
-function checkAllBoxesOnList (value, idlist, idmaster){
+function checkAllBoxesOnList (value, idlist, idmaster, numCols){
 	
 	var ins=document.getElementsByTagName('input');
 	
 	var valmain = document.getElementById(idmaster).checked;
 	
-	for (var i=0;i<ins.length;i++){
+	var idtr = '';
+	
+	for (var i=id=0;i<ins.length;i++){
 		
 		if (ins[i].type == 'checkbox'){
 			
 			if (ins[i].id.substr(0,idlist.length)==idlist){
+
+				idtr = 'tr_'+idlist+'_'+id;
 				
-				 if (valmain == true)
+				 if (valmain == true){
+					 
 					 ins[i].checked=true;
-				 else
+					 
+					 rowsMarked[idtr] = 1;
+					 
+					 for (j=0;j<numCols;j++){
+				     	 document.getElementById(idtr).cells[j].className = markRowClass;
+				     }
+					 
+				 }else{
+					 
 					 ins[i].checked=false;
+					 
+					 rowsMarked[idtr] = 0;
+				 }
+				 
+				 id+=1;
 			}
 		}
 	}
