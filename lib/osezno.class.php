@@ -189,8 +189,6 @@ class osezno {
 }';
 		
 		$this->arrayAssignAreasHead['css_errors'] = '<style type="text/css">'."\n".$cssErrors."\n".'</style>';
-		
-	
   	}
   	
   	/**
@@ -201,7 +199,6 @@ class osezno {
   	public function setTheme ($theme){
   		$this->theme = $theme;
   	}
-  	
   	
 	/**
 	 * Obtiene la ruta fisica del proyecto
@@ -269,7 +266,6 @@ class osezno {
   		
   		return $toReturn;
   	}
-
   	
   	/**
   	 * Muestra la plantilla seleccionada
@@ -277,28 +273,40 @@ class osezno {
   	 * @param string $strNameTemplate
   	 */
   	public function call_template ($strNameTemplate){
+  		
   		$newContent = '';
   		
   		/**
   		 * Obtension de la plantilla
   		 */
-  		$linkTpl = fopen($fileName = $this->pathFolderTemplates.$strNameTemplate,'r');
-  		$contHTML = fread($linkTpl,filesize($fileName));
-  		fclose($linkTpl);
+  		$linkTpl = @fopen($fileName = $this->pathFolderTemplates.$strNameTemplate,'r');
   		
-  		/**
-  		 * Areas del usuario
-  		 */
-  		$arrayKeys = array_keys($this->arrayAssignAreas);
-  		$newContent = str_ireplace ( $arrayKeys, $this->arrayAssignAreas, $contHTML);
+  		if ($linkTpl){
 
-  		/**
-  		 * Areas de OseznO
-  		 */
-  		$newContent = str_ireplace('</head>', $this->getAllHead().'</head>', $newContent);
-  		$newContent = str_ireplace('</body>', $this->getAllBody().'</body>', $newContent);
+  			$contHTML = fread($linkTpl,filesize($fileName));
+  			
+  			fclose($linkTpl);
   		
-  		$newContent = preg_replace('(\\{+[0-9a-zA-Z_]+\\})','',$newContent);
+  			/**
+  		 	 * Areas del usuario
+  		 	 */
+  			$arrayKeys = array_keys($this->arrayAssignAreas);
+  			
+  			$newContent = str_ireplace ( $arrayKeys, $this->arrayAssignAreas, $contHTML);
+
+  			/**
+  		 	 * Areas de OseznO
+  		 	 */
+  			$newContent = str_ireplace('</head>', $this->getAllHead().'</head>', $newContent);
+  			
+  			$newContent = str_ireplace('</body>', $this->getAllBody().'</body>', $newContent);
+  		
+  			$newContent = preg_replace('(\\{+[0-9a-zA-Z_]+\\})','',$newContent);
+  		}else{
+  			
+  			$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.MSG_TEMPLATE_NO_FOUND.'&nbsp;&quot;'.$strNameTemplate.'&quot;<br><br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b> '.MSG_TEMPLATE_NO_FOUND_DET.'&nbsp;&quot;'.$this->pathFolderTemplates.'&quot;</div></div>';
+  			die ($this->arrayAssignAreasHead['css_errors'].$msgError);
+  		}
   		
   		echo $newContent;
   	}
