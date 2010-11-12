@@ -88,12 +88,12 @@ th, td {
 
 a {
 	font-size: 10px;
-	color:#5F8CEA;
+	color:#002F91;
 	text-decoration: none;
 }
 a:hover {
 	font-size: 10px;
-	color:#EA5F5F;
+	color:#004DEC;
 	text-decoration: none;
 }
 
@@ -142,7 +142,7 @@ a:hover {
 	font-style: normal;
 	text-decoration: none;
 	text-align:center;
-	font-weight: bold;
+	color:#FFFFFF;
 }
 
 /** Fila sobre **/

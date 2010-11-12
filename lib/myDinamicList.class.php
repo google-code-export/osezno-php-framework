@@ -1030,6 +1030,13 @@ class myList  {
 		$this->regAttClass(get_class_vars(get_class($this)));
 	}
 	
+	/**
+	 * Retorna el campo checkbox que acompaña cada registro cuando el evento global esta activo
+	 * 
+	 * @param $getNumFldsAftd	Numero de campos afectados
+	 * @param $cadParam			Columnas ordenadas
+	 * @return string
+	 */
 	private function returnCheckBox ($getNumFldsAftd, $cadParam){
 		
 		$htmlGlobal = '';
