@@ -44,10 +44,14 @@
 	define('MSG_QUERY_FORM_NULL','El valor es requerido.');
 	define('MSG_QUERY_FORM_NOROWS','No hay registros que mostrar.');
 	
-
+	/**
+	 * Uso y manejo de palntillas
+	 */	
+	define('MSG_TEMPLATE_NO_FOUND','Al intentar usar la plantilla');
+	define('MSG_TEMPLATE_NO_FOUND_DET','La ruta del archivo no existe o no es accesible');
 
 	/**
-	 * Message box
+	 * Message box / Errores
 	 */
 	define('MSGBOX_TITLE','Informaci&oacute;n del sistema');
 	define('MSGBOX_STR_UNI_BUTTON','Aceptar');
