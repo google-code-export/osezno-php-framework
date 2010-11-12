@@ -578,6 +578,7 @@ class myList  {
 		return $return;
 	}
 	
+	private $firsKey = false;
 	
 	/**
 	 * Construye la lista dinamica
@@ -724,7 +725,7 @@ class myList  {
 						 
 						}
 					
-						$firsKey = true;
+						$this->firsKey = true;
 						
 						foreach ($row as $key => $val){
 					
@@ -743,18 +744,11 @@ class myList  {
 
 								$numOrder = '&nbsp;';
 							
-								if ($firsKey && $this->globalEventOnColumn){
-									$firsKey = false;
-									
-									list ($alsGbl) = explode('::',$this->globalEventOnColumn);
-									
-									$nmChk = $this->idList.'_over_all';
-									
-									$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk, $getNumFldsAftd));
-									
-									$htmlGlobal = $this->objForm->getCheckBox($nmChk);
+								if ($this->firsKey){
+									$htmlGlobal = '{htmlGlobal}';
+									$this->firsKey = false;
 								}else
-									$htmlGlobal = '&nbsp';
+									$htmlGlobal = '&nbsp;';	
 								
 								if (isset($this->arrayOrdMethod[$key])){
 								
@@ -807,14 +801,20 @@ class myList  {
 				
 						$bufHead .=  '</tr>'."\n";
 				
+						$bufHead = str_replace('{htmlGlobal}',$this->returnCheckBox($getNumFldsAftd, $cadParam),$bufHead);
+						
 						$buf .='{bufHead}';
 			
 					}
 					
 					$nmCheck = '';
 					
-					if ($this->globalEventOnColumn)
+					if ($this->globalEventOnColumn){
+						
+						list ($alsGbl) = explode('::',$this->globalEventOnColumn);
+						
 						$nmCheck = $this->idList.'_'.$row->$alsGbl;
+					}
 			
 					$buf.='<tr ';
 			
@@ -1029,6 +1029,25 @@ class myList  {
 		# Registramos las variables que se han usado
 		$this->regAttClass(get_class_vars(get_class($this)));
 	}
+	
+	private function returnCheckBox ($getNumFldsAftd, $cadParam){
+		
+		$htmlGlobal = '';
+		
+		if ($this->globalEventOnColumn){
+		
+			list ($alsGbl) = explode('::',$this->globalEventOnColumn);
+									
+			$nmChk = $this->idList.'_over_all';
+									
+			$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk, $getNumFldsAftd, $cadParam));
+									
+			$htmlGlobal = $this->objForm->getCheckBox($nmChk);
+		}
+			
+		return 	$htmlGlobal;
+	}
+	
 	
 	/**
 	 * Retorna el formulario filtro de lista por medio de reglas
