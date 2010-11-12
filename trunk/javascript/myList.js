@@ -55,7 +55,7 @@ function enventGlobalOnList (idlist){
  * @param idmaster
  * @return
  */
-function checkAllBoxesOnList (value, idlist, idmaster, numCols){
+function checkAllBoxesOnList (value, idlist, idmaster, numCols, cCols){
 	
 	var ins=document.getElementsByTagName('input');
 	
@@ -69,6 +69,13 @@ function checkAllBoxesOnList (value, idlist, idmaster, numCols){
 			
 			if (ins[i].id.substr(0,idlist.length)==idlist){
 
+				if (ins[i].id.indexOf('over_all')==-1){
+				
+				if (id%2)
+					cName = 'td_default';
+				else
+					cName = 'td_middle';
+					
 				idtr = 'tr_'+idlist+'_'+id;
 				
 				 if (valmain == true){
@@ -78,6 +85,7 @@ function checkAllBoxesOnList (value, idlist, idmaster, numCols){
 					 rowsMarked[idtr] = 1;
 					 
 					 for (j=0;j<numCols;j++){
+						 
 				     	 document.getElementById(idtr).cells[j].className = markRowClass;
 				     }
 					 
@@ -85,12 +93,32 @@ function checkAllBoxesOnList (value, idlist, idmaster, numCols){
 					 
 					 ins[i].checked=false;
 					 
+					 arrCCols = new Array();
+					 
+					 arrCCols = cCols.split(',');
+					 
+					 for (var j=0;j<numCols;j++){
+						 
+				    	switch (arrCCols[j]){
+				    		case '1':
+				    			document.getElementById(idtr).cells[j].className = cName;
+				    		break;
+				    		case '2':
+				    			document.getElementById(idtr).cells[j].className = colSelected;
+				    		break;
+				    		}
+				     }
+					 
 					 rowsMarked[idtr] = 0;
 				 }
 				 
-				 id+=1;
+				 id++;
+				 
+				}
+				 
 			}
 		}
+		
 	}
 	
 }
@@ -195,9 +223,12 @@ function markRow (o, cName, cCols, numCols, field){
         
     }else{
     
+    	arrCCols = new Array();
+    	
     	arrCCols = cCols.split(',');
     	
     	for (var i=0;i<numCols;i++){
+    		
     		switch (arrCCols[i]){
     			case '1':
     				o.cells[i].className = cName;
