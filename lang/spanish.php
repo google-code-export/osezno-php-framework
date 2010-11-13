@@ -26,8 +26,11 @@
 	define('LABEL_HELP_APPLY_RULE_FORM','Aplicar');
 	define('LABEL_HELP_REM_RULE_FORM','Remover');
 	define('LABEL_USELIMIT_RULE_FORM','Limitar');
+	define('LABEL_FIRST_OPT_SELECT_GLOBAL_ACTION','Seleccione...');
 	define('TITLE_WINDOW_HELP_MYLIST','Ayuda listas din&aacute;micas');
 	
+	
+	define('LABEL_HELP_SELECT_GLOBAL_ACTION','Seleccione una opci&oacute;n');
 	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Filtrar registros.');
 	define('LABEL_HELP_EXCEL_BUTTON_FORM','Exportar a Excel.');
 	define('LABEL_HELP_HTML_BUTTON_FORM','Exportar a Html.');

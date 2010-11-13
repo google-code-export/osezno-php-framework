@@ -112,7 +112,8 @@ class myList  {
 		'numRuleQuery',
 		'arrayWhereRules',
 		'arrayDataTypeExport',
-		'globalEventOnColumn'
+		'globalEventOnColumn',
+		'globalEventsName'
 	);	
 	
 	/**
@@ -222,9 +223,14 @@ class myList  {
 	private $arrayDataTypeExport = array ('xls'=>false, 'html'=>false, 'pdf'=>false);
 	
 	/**
-	 * Informacion del evento global
+	 * Nombre de la columna del evento global
 	 */
 	private $globalEventOnColumn = '';
+	
+	/**
+	 * Arreglo con los metodos y nombres que se ejecutaran en el evento global
+	 */
+	private $globalEventsName = array();
 	
 	/**
 	 * Error de la consulta SQL
@@ -378,18 +384,17 @@ class myList  {
 	
 	/**
 	 * Configura un unico evento global en una lista dinamica sobre columna definida
-	 * para que los registros marcados se vean afectados por dicho evento. El evento 
+	 * para que los registros marcados se vean afectados por dicho evento o eventos. El evento 
 	 * programado recibira en un arreglo los registros seleccionados de dicha columna.
 	 * 
 	 * @param $alias	Alias o nombre de la columna del que tomara el valor
-	 * @param $event	Nombre del evento que disparara en el handlerEvent
-	 * @param $labelButton	Etiqueta del boton que dispara el evento.
-	 * @param $srcImage	Nombre de la imagen para el boton
-	 * @param $strHelp	Etiqueta de ayuda sobre el boton
+	 * @param $events	Array con los nombres y etiquetas de evento que ejecutara el handlerEvent
 	 */
-	public function setGlobalEventOnColumn ($alias, $event, $labelButton, $srcImage = '', $strHelp = ''){
+	public function setGlobalEventOnColumn ($alias, $events = array ()){
 		
-		$this->globalEventOnColumn = $alias.'::'.$event.'::'.htmlentities($labelButton).'::'.$srcImage.'::'.htmlentities($strHelp);
+		$this->globalEventOnColumn = $alias;
+		
+		$this->globalEventsName = $events;
 	}
 	
 	/**
@@ -525,7 +530,6 @@ class myList  {
 		foreach ($this->validNomKeys as $varNom){
 			
 				$this->$varNom = $this->getVar($varNom);
-			
 		}
 		 
 	}
@@ -811,7 +815,7 @@ class myList  {
 					
 					if ($this->globalEventOnColumn){
 						
-						list ($alsGbl) = explode('::',$this->globalEventOnColumn);
+						$alsGbl = $this->globalEventOnColumn;
 						
 						$nmCheck = $this->idList.'_'.$row->$alsGbl;
 					}
@@ -901,16 +905,20 @@ class myList  {
 		
 		if($this->globalEventOnColumn){
 			
+			$idSelect = 'global_event_'.$this->idList;
+			
 			$this->objForm->name = $this->idList;
+			
+			$this->objForm->selectStringFirstLabelOption = LABEL_FIRST_OPT_SELECT_GLOBAL_ACTION;
 			
 			$this->objForm->styleTypeHelp = 2;
 			
-			list ($alsGbl,$evnt,$lblBtn,$srcImg,$strHelp) = explode('::',$this->globalEventOnColumn);
+			$this->objForm->addEventJs ($idSelect,'onchange','execGlobalEventOnList',array($this->idList, $idSelect));
 			
-			if ($strHelp)
-				$this->objForm->addHelp('glevn_'.$this->idList,$strHelp);
-
-			$buf .= str_replace('GetDataForm','enventGlobalOnList',$this->objForm->getButton('glevn_'.$this->idList,$lblBtn,$evnt,$srcImg));
+			$this->objForm->addHelp($idSelect,LABEL_HELP_SELECT_GLOBAL_ACTION);
+			
+			$buf .= $this->objForm->getSelect($idSelect,$this->globalEventsName);
+			
 		}else
 			$buf .= '&nbsp;';
 
@@ -1025,7 +1033,6 @@ class myList  {
 		if ($showQueryForm)
 			$this->bufHtml = $this->buildQueryForm().$this->bufHtml;
 		
-		
 		# Registramos las variables que se han usado
 		$this->regAttClass(get_class_vars(get_class($this)));
 	}
@@ -1054,7 +1061,6 @@ class myList  {
 			
 		return 	$htmlGlobal;
 	}
-	
 	
 	/**
 	 * Retorna el formulario filtro de lista por medio de reglas
@@ -1227,7 +1233,6 @@ class myList  {
 		
 		return $this->successFul;
 	}
-	
 	
 	/**
 	 * Obtiene el contenido de la lista dinámica

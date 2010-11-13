@@ -20,9 +20,23 @@
  */	
  class eventos extends myController {
 
- 	public function showRecords($ids){
+ 	public function showRecords_1($ids){
  		
- 		$this->alert(var_export($ids,true));
+ 		$this->notificationWindow('Selecciono '.count($ids).' registros para Actualizar',3,'ok');
+ 		
+ 		return $this->response;
+ 	}
+ 	
+ 	public function showRecords_2($ids){
+ 		
+ 		$this->notificationWindow('Selecciono '.count($ids).' registros para Modificar',3,'ok');
+ 		
+ 		return $this->response;
+ 	}
+ 	
+ 	public function showRecords_3($ids){
+ 		
+ 		$this->notificationWindow('Selecciono '.count($ids).' registros para Eliminar',3,'ok');
  		
  		return $this->response;
  	}
