@@ -23,23 +23,45 @@ function check_onlist(data, id){
 }
 
 /**
+ * Executa un evento global definido por el usuario en la lista dinamica
+ * 
+ * @param eventToCall
+ * @param idlist
+ * @return
+ */
+function execGlobalEventOnList (eventToCall, idlist, idselect){
+	
+	if (eventToCall){
+		
+		document.getElementById(idselect).value = '';
+		
+		setTimeout (eventToCall+"(returnRowsSelectedOnList('"+idlist+"'))");
+	}
+}
+
+/**
  * Retorna los id de la lista seleccionados para validar que registros fueron chequeados
  * @param idlist
  * @return
  */
-function enventGlobalOnList (idlist){
+function returnRowsSelectedOnList (idlist){
 	
 	var ids = new Array();
 	
 	var ins=document.getElementsByTagName('input');
 	
-	for (var i=0;i<ins.length;i++){
+	for (var j=i=0;i<ins.length;i++){
 		
 		if (ins[i].type == 'checkbox'){
 			
 			if (ins[i].id.substr(0,idlist.length)==idlist){
 				
-				ids[ins[i].id.substr(ins[i].id.lastIndexOf('_')+1)] = document.getElementById(ins[i].id).checked;
+				if (document.getElementById(ins[i].id).checked == true){
+
+					ids[j] = ins[i].id.substr(ins[i].id.lastIndexOf('_')+1);
+					
+					j++;
+				}
 			}
 		}
 	}
@@ -146,6 +168,10 @@ function blockFirstElementForm (nomForm){
    }	
 }
 
+ /**
+  * Quita las marcas los registros seleccionados de una lista
+  * @return
+  */
 function clearRowsMarked (){
 	
 	rowsMarked = new Array();
