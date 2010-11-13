@@ -8,7 +8,7 @@
 	-moz-border-radius: 10px 10px 10px 10px;
     background-clip: border-box;
 	min-height:0px;
-	background-color:#D3E0FA;
+	background-color:#BEE1FC;
 	font-style: normal;
 	text-decoration: none;
 	border-color:#BBCEF7;
@@ -27,26 +27,27 @@
 	border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
     background-clip: border-box;
-	background-color:#BFD5FF;
+	background-color:#E7F4FE;
 	font-style: normal;
 	text-decoration: none;
-	border-color:#4A7EEA;
+	border-color:#D3E0FA;
 	border-width: 1px;
 	border-style: solid;
 	padding-left:1px;
 	padding-top:1px;	
 	padding-bottom:1px;
 	padding-right:1px;
+	width:98%;
 }
 
 /**
  * Etiquetas de campo formulario de filtro
  **/
-.etiqueta_filtro {
+.texto_formularios {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	color: #666666;
-	text-align: center;
+	text-align: right;
 	vertical-align: middle;
 	height:auto;
 }
