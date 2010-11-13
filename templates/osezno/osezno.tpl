@@ -10,16 +10,16 @@ body {
 }
 .titulo_pagina{
 	font-family:Arial, Helvetica, sans-serif;
-	color:#666666;
+	color:#FFF;
 	font-size:22px;
 	font-style:normal;
 	font-weight:bold;
 	font-variant:normal;
-	text-shadow:#003333;
+	text-shadow:#666;
 }
 .desc_pagina{
 	font-family:Arial, Helvetica, sans-serif;
-	color:#FFFFFF;
+	color:#009AE2;
 	font-size:10px;
 	font-style:normal;
 }
@@ -30,30 +30,33 @@ body {
   <table width="780" border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td width="5" align="right" background="../../templates/osezno/bg_left.gif">&nbsp;</td>
-      <td width="770" bgcolor="#808080"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+      <td width="780" bgcolor="#808080"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
         <tr>
-          <td background="../../templates/osezno/head.jpg" width="770" height="80">
-          <table width="100%" height="80" border="0" cellpadding="0" cellspacing="0">
+          <td background="../../templates/osezno/head.jpg" width="769" height="90">
+          <table width="100%" height="86" border="0" cellpadding="0" cellspacing="0">
   			<tr>
     			<td>&nbsp;</td>
   			</tr>
   			<tr>
-    			<td align="right" class="titulo_pagina">{nombre_pagina}&nbsp;</td>
+    			<td height="32" align="right" valign="bottom" class="titulo_pagina">{nombre_pagina}&nbsp;</td>
   			</tr>
   			<tr>
-    			<td height="29">&nbsp;</td>
+    			<td height="29" class="desc_pagina" align="right" valign="top">{form_title}&nbsp;</td>
   			</tr>
 		  </table>
 		  </td>
         </tr>
         <tr>
-          <td align="right" bgcolor="#808080" class="desc_pagina">{form_title}&nbsp;</td>
+          <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
         </tr>
         <tr>
-          <td><br><div align="center" name="work_area" id="work_area">{work_area}</div></td>
+          <td align="center" bgcolor="#FFFFFF">{work_area}</td>
         </tr>
         <tr>
-          <td><div name="other_area" id="other_area">{other_area}</div></td>
+          <td><br><div align="center" name="work_area" id="work_area"></div></td>
+        </tr>
+        <tr>
+          <td align="center"><div name="other_area" id="other_area">{other_area}</div></td>
         </tr>		
         <tr>
           <td><img src="../../templates/osezno/foot.jpg" width="770" height="20" /></td>

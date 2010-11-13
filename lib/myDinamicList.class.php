@@ -1024,7 +1024,7 @@ class myList  {
 			$buf .= '</tr></table>';
 		}
 
-		$buf .= '</td><td width="33%">&nbsp;</td></tr></table></div>'."\n";
+		$buf .= '</td><td width="33%" align="right" class="texto_formularios">&nbsp;</td></tr></table></div>'."\n";
 		
 		$buf .= ''.'</div>'."\n";
 		
@@ -1081,11 +1081,11 @@ class myList  {
 		
 		$objMyForm = new myForm($this->idList.'QueryForm');
 
-		$objMyForm->width = $this->widthList.''.$this->formatWidthList;
+		$objMyForm->width = '98%';
 		
 		$objMyForm->border = 0;
 		
-		$objMyForm->styleClassTags = 'etiqueta_filtro';
+		$objMyForm->styleClassTags = 'texto_formularios';
 		
 		$objMyForm->styleClassForm = 'form_cont_filter';
 		
