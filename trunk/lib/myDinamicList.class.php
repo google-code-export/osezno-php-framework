@@ -310,7 +310,7 @@ class myList  {
 	}
 
 	/**
-	 * Configura si va a usar imagenes sobre los botones de paginacion.
+	 * Configura si va a usar imagenes sobre los botones.
 	 * 
 	 * @param $use	Valor booleano
 	 */
