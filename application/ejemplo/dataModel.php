@@ -83,6 +83,8 @@
 		
  		$objList = new myList($idLista,$usuarios->loadSqlFromFile('sql/query.sql'));
  		
+ 		$objList->setUseImgOnButtons(false);
+ 		
  		$objList->setUseOrderMethodOnColumn('usuario_id');
  		$objList->setUseOrderMethodOnColumn('nombre');
  		$objList->setUseOrderMethodOnColumn('edad');
