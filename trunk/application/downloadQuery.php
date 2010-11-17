@@ -14,10 +14,6 @@
 		
 		$objList = new myList($idList);
 		
-		$myAct = new myActiveRecord();
-		
-		$myAct->query($objList->getVar('sql'));
-		
  		/**
  		 * Where rules
  		 */
@@ -77,11 +73,11 @@
 			$sqlLimit .= ' LIMIT  '.($rdsPg*$rdsPgFr).' OFFSET '.(($cntPg*$rdsPg)*$rdsPgFr);
 		}
  		
- 		$sql = $myAct->getSqlLog().''.$sqlWhere.''.$sqlOrder.''.$sqlLimit;
+ 		$sql = $objList->getVar('sql').''.$sqlWhere.''.$sqlOrder.''.$sqlLimit;
  		
- 		$resSql = $myAct->query($sql,false);
-
  		$xlsOut = $htmlOut = $pdfOut = '';
+ 		
+ 		$export = new myExportData($sql,$_GET['format']);
  		
 		switch ($_GET['format']){
 			
@@ -90,26 +86,8 @@
 				$content_type = 'Content-type: application/x-msexcel';
 				
 				$xlsOut = '';
- 		
- 				$xlsOut .= '<table border="1">';
-				
-				foreach ($resSql as $row){
- 			
- 					$xlsOut .= '<tr>';
- 			
- 					foreach ($row as $key => $val){
-
- 						$xlsOut .= '<td>';
  				
- 						$xlsOut .= $val;
- 				
- 						$xlsOut .= '</td>';
- 					}
- 			
- 					$xlsOut .= '</tr>';
- 				}
- 		
- 				$xlsOut .= '</table>';
+ 				$xlsOut = $export->getResult();
  		
 			break;
 			
@@ -119,25 +97,7 @@
 				
 				$htmlOut = '';
  		
- 				$htmlOut .= '<table border="1">';
- 		
- 				foreach ($resSql as $row){
- 			
- 					$htmlOut .= '<tr>';
- 			
- 					foreach ($row as $key => $val){
-
- 						$htmlOut .= '<td>';
- 				
- 						$htmlOut .= $val;
- 				
- 						$htmlOut .= '</td>';
- 					}
- 			
- 					$htmlOut .= '</tr>';
- 				}
- 		
- 				$htmlOut .= '</table>';
+ 				$htmlOut = $export->getResult();
  		
 			break;
 			
