@@ -1,6 +1,12 @@
 <?php
 
 	/**
+	 * Exportar datos
+	 */
+	define('MYEXPORT_ERROR_INVALID_FORMAT','El formato a exportar no es valido.');
+	define('MYEXPORT_ERROR_CREATE_FILE','No es posible crear el archivo especifico.');
+
+	/**
 	 * Listas dinamicas
 	 */
 	define('GOTO_LAST_PAGE','Ir a la ultima p&aacute;gina encontrada'); 	

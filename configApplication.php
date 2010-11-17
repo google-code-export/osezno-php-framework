@@ -179,6 +179,8 @@
   
   require $GLOBALS['folderProject'].'lib/myActiveRecord.class.php';
   
+  require $GLOBALS['folderProject'].'lib/myExportData.class.php';
+  
   require $GLOBALS['folderProject'].'lib/myTime.class.php';
   
   require $GLOBALS['folderProject'].'lib/myTabs.class.php';
@@ -193,6 +195,12 @@
   
   global $urlProject;
   $GLOBALS['urlProject'] = $http.$httpHost;
+  
+  global $OF_SQL_LOG_ERROR;
+  $GLOBALS['OF_SQL_LOG_ERROR'] = '';
+  
+  global $OF_SQL_LOG;
+  $GLOBALS['OF_SQL_LOG'] = '';
   
   /**
    * Lang en uso
