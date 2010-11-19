@@ -1,6 +1,6 @@
 <?php
 
-	//delay(5000);
+	delay(5000);
 
 /*	$x = fopen('log.txt','a');
 	if (move_uploaded_file($_FILES['Filedata']['tmp_name'],$_FILES['Filedata']['name'])){

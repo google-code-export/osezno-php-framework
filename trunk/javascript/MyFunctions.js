@@ -125,7 +125,10 @@ function responseCallUrl(pageElement) {
 
   xajax.callback.global.onRequest = function() {
 	  
-	  var arrayPageSize = new Array();
+	 var arrayScrollPos = new Array();
+	 arrayScrollPos = getScrollXY();
+	  
+	 var arrayPageSize = new Array();
      arrayPageSize = getPageSize();
      
      var miCapa = document.createElement('DIV');
@@ -134,19 +137,19 @@ function responseCallUrl(pageElement) {
      document.body.appendChild(miCapa);
 
  	 if (navigator.appVersion.indexOf("MSIE")!=-1){
-		miCapa.style.filter = "alpha(opacity=20)";
+		miCapa.style.filter = "alpha(opacity=10)";
 	 }else{
-		miCapa.style.opacity = 0.2;
+		miCapa.style.opacity = 0.1;
 	 }     
      
      miCapa.style.color = '#000000';
-     miCapa.style.backgroundColor = '#AAAAAA';
+     miCapa.style.backgroundColor = '#000000';
      miCapa.style.position = 'absolute';
      
 	 miCapa.style.zIndex = 5000;
-	 miCapa.style.top    = '0';
-	 miCapa.style.left   = '0';
-	 miCapa.style.width	 = (arrayPageSize[2] + 'px');	 
+	 miCapa.style.top    = 0;
+	 miCapa.style.left   = 0;
+	 miCapa.style.width	 = (arrayPageSize[0] + 'px');	 
 	 miCapa.style.height = (arrayPageSize[1] + 'px');
 	 miCapa.style.display='block';
 	 
@@ -158,68 +161,24 @@ function responseCallUrl(pageElement) {
 	 miImagen.style.position = 'absolute';
 
 	 miImagen.style.zIndex = 5001;
-	 miImagen.style.top    = '0';
-	 miImagen.style.left   = '0';
-	 miImagen.style.width  = (arrayPageSize[2] + 'px');	 
-	 miImagen.style.height = (arrayPageSize[1] + 'px');
-	 miImagen.style.minHeight	= '100%';
-	 
-	 miImagen.innerHTML = '<table border="0" width="100%" height="100%"><tr><td align="center" valign="middle"><img src="../../javascript/img/common/loader.gif" title="Loading..."></td></tr></table>';
-	
-	 //Preguntar si existe el objeto
-	 //vanecerCallBack(miCapa,0);
+	 miImagen.style.top    = ((arrayPageSize[3]/2)+arrayScrollPos[1])-12;
+	 miImagen.style.left   = (arrayPageSize[2]/2)-20;
+	 miImagen.style.width  = '25px';
+	 miImagen.style.height = '40px';
+
+	 miImagen.innerHTML = '<img id="loader_image" src="../../javascript/img/common/loader.gif">';
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {
     
-    desvanecerCallBack ('notification','imagen_notificacion',10);
-
+    var el = document.getElementById('imagen_notificacion');
+    var padre = el.parentNode;
+	padre.removeChild(el);
+	  
     var el = document.getElementById('notification');
     var padre = el.parentNode;
 	padre.removeChild(el);
   }
-
-
-function desvanecerCallBack (idMw, idGif, cont){
-	
-	temp = 30;
-	cont -= 2;
-	
-	if(cont>0){
-		if (navigator.appVersion.indexOf("MSIE")!=-1){
-	   		document.getElementById(idGif).style.filter = "alpha(opacity="+(cont)+")";
-		}else{
-	   	    document.getElementById(idGif).style.opacity = cont/100;
-		}
-		setTimeout("desvanecerCallBack('"+idMw+"','"+idGif+"',"+cont+")",temp);
-	}else{
-  		var el = document.getElementById('imagen_notificacion');
-    	var padre = el.parentNode;
-		padre.removeChild(el);	
-	}	
-	
-}
-
-
-function vanecerCallBack (objCapa, cont){
-	
-	var id = objCapa.id;
-	
-	temp = 50;
-	cont += 3;
-	
-	if(cont<61){
-		
-		if (navigator.appVersion.indexOf("MSIE")!=-1){
-			document.getElementById(id).style.filter = "alpha(opacity="+cont+")";
-		}else{
-	   	    document.getElementById(id).style.opacity = cont/100;
-		}
-		
-		setTimeout("vanecerCallBack('"+objCapa+"',"+cont+")",temp);
-	}
-	
-}
 
 
 /*
@@ -331,21 +290,6 @@ function destructNotificationWindow (idElement){
     	var padre = el.parentNode;
     	padre.removeChild(el);
 	}
-}
-
-/**
- * Manejo de archivos
- */	
-function fileQueuedFunction(file, queuelength) {
-	var ul = document.getElementById("joselito");
-	var li = document.createElement("li");
-	ul.appendChild(document.createTextNode(file.name));
-}
-
-function uploadProgressFunction(file, bytesloaded, bytestotal) {
-	var progress = document.getElementById("lista_archivos");
-	var percent = Math.ceil((bytesloaded / bytestotal) * 100);
-	progress.innerHTML = percent + "%";	
 }
 
 function CentrarVentana(){
@@ -503,53 +447,3 @@ function add_values(objetoSelect)
              }
          return opt_selected;
          }           
- 
-function diaHoy()
-        {
-        var dias=new Array (
-                            "Domingo","Lunes","Martes",
-                            "Miercoles","Jueves",
-                            "Viernes","Sabado"
-                           );
-        var meses=new Array (
-                             "Enero","Febrero","Marzo",
-                             "Abril","Mayo","Junio",
-                             "Julio","Agosto","Septiembre",
-                             "Octubre","Noviembre","Diciembre"
-                            );
-        var hoy = new Date();
-        var fecha = "Hoy es "+dias[hoy.getDay()] + " " +  hoy.getDate() + " de " + meses[hoy.getMonth()] + " de " + hoy.getFullYear();
-        document.write(fecha);
-        }
-
-function muestraReloj()
-{
-if (!document.layers && !document.all && !document.getElementById) return;
-   var fechacompleta = new Date();
-   var horas = fechacompleta.getHours();
-   var minutos = fechacompleta.getMinutes();
-   var segundos = fechacompleta.getSeconds();
-   var mt = "am";
-   if (horas > 12)
-      {
-      mt = "pm";
-      horas = horas - 12;
-      }
-   if (horas == 0)
-      horas = 12;
-   if (minutos <= 9)
-      minutos = "0" + minutos;
-   if (segundos <= 9)
-      segundos = "0" + segundos;
-   cadenareloj = horas + ":" + minutos + ":" + segundos + " " + mt;
-   if (document.layers)
-      {
-      document.layers.spanreloj.document.write(cadenareloj);
-      document.layers.spanreloj.document.close();
-      }
-   else if (document.all)
-           spanreloj.innerHTML = cadenareloj;
-   else if (document.getElementById)
-           document.getElementById("spanreloj").innerHTML = cadenareloj;
-   setTimeout("muestraReloj()", 1000);
-}

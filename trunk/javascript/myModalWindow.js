@@ -3,33 +3,6 @@ var nc = (document.layers) ? true:false
 var ie = (document.all) ? true:false
 var n6 = (document.getElementById) ? true:false
 
-
-function TamVentana() {
-  var Tamanyo = [0, 0];
-  if (typeof window.innerWidth != 'undefined')
-  {
-    Tamanyo = [
-        window.innerWidth,
-        window.innerHeight
-    ];
-  }
-  else if (typeof document.documentElement != 'undefined'
-      && typeof document.documentElement.clientWidth !=
-      'undefined' && document.documentElement.clientWidth != 0)
-  {
- Tamanyo = [
-        document.documentElement.clientWidth,
-        document.documentElement.clientHeight
-    ];
-  }
-  else   {
-    Tamanyo = [
-        document.getElementsByTagName('body')[0].clientWidth,
-        document.getElementsByTagName('body')[0].clientHeight
-    ];
-  }
-  return Tamanyo;
-}
 window.onresize = function() {
   
 };
@@ -43,7 +16,11 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 	
 	countId += 1;
 	
-	var Tam = TamVentana();
+	var arrayScrollPos = new Array();
+	arrayScrollPos = getScrollXY();
+	
+	var arrayPageSize = new Array();
+    arrayPageSize = getPageSize();
 	
 	var capaBase = document.createElement('DIV');
 	capaBase.id = 'capaBase'+countId;
@@ -58,8 +35,8 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 	capaBase.style.top  = 0;
 	capaBase.style.left = 0;
 	
-	capaBase.style.height = Tam[1];
-	capaBase.style.width = Tam[0];
+	capaBase.style.height = arrayPageSize[1];
+	capaBase.style.width = arrayPageSize[0];
  	
 	if (navigator.appVersion.indexOf("MSIE")!=-1){
 		capaBase.style.filter = "alpha(opacity=" + opacity + ")";
@@ -79,8 +56,8 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 
 	capaModalWindow.style.position = 'absolute';
 	
-	capaModalWindow.style.top  = Math.max(((Tam[1] - windowHeight) / 2),0) + 'px';
-	capaModalWindow.style.left = Math.max(((Tam[0] - windowWindth) / 2),0) + 'px';
+	capaModalWindow.style.top = Math.max(arrayScrollPos[1]+(arrayPageSize[3]/2)-(windowHeight/2)-100)+'px';
+	capaModalWindow.style.left = Math.max(((arrayPageSize[0] - windowWindth) / 2),0) + 'px';
 	
 	capaModalWindow.innerHTML = strContent;
 }

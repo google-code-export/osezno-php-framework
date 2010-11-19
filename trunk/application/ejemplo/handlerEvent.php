@@ -20,6 +20,28 @@
  */	
  class eventos extends myController {
 
+ 	public function onSubmitSaveChanges ($form, $id){
+ 		
+ 		$usuarios = new usuarios;
+ 		
+		$usuarios->find($id);
+		
+		$usuarios->nombre = $form['nombre'];
+ 		
+ 		$usuarios->edad = $form['edad'];
+		
+ 		$usuarios->prof_id = $form['prof_id'];
+ 		
+ 		if ($usuarios->save()){
+ 			$this->notificationWindow('Los cambios fueron guardados',3,'ok');
+ 			
+ 			$this->closeModalWindow();
+ 		}else
+ 			$this->messageBox($usuarios->getErrorLog(),'critical');
+		
+ 		return $this->response;
+ 	}
+ 	
  	public function showRecords_1($ids){
  		
  		$this->notificationWindow('Selecciono '.count($ids).' registros para Actualizar',3,'ok');
@@ -29,22 +51,24 @@
  	
  	public function showRecords_2($ids){
  		
- 		$this->notificationWindow('Selecciono '.count($ids).' registros para Modificar',3,'ok');
+ 		$this->notificationWindow('Selecciono '.count($ids).' registros para Modificar',3,'warning');
  		
  		return $this->response;
  	}
  	
  	public function showRecords_3($ids){
  		
- 		$this->notificationWindow('Selecciono '.count($ids).' registros para Eliminar',3,'ok');
+ 		$this->notificationWindow('Selecciono '.count($ids).' registros para Eliminar',3,'cancel');
  		
  		return $this->response;
  	}
  	
  	public function updateRecord ($id){
- 		
- 		$this->notificationWindow('El registro con el ID <b>'.$id.'</b> no sera actualizado',3,'ok');
- 		
+
+		$modelo = new modelo;
+		
+		$this->modalWindow($modelo->formEdit($id),'Editar registro',310,185);
+		
  		return $this->response;
  	}
  	
@@ -57,15 +81,12 @@
  	
  	public function buttonOk ($datForm){
  		
- 		$this->alert(var_export($datForm,true));
- 		
  		return $this->response;
  	}
 
   	public function buttonCancel ($datForm){
  		
  		$this->notificationWindow('Cancel',3,'cancel');
- 		
  		
  		return $this->response;
  	} 	
@@ -74,40 +95,13 @@
 		
 		$modelo = new modelo;
 		
-		$this->modalWindow($modelo->builtList('lista'),'Listado',520,250);
+		$this->modalWindow($modelo->builtList('lista'),'Listado',800,270,2);
 		
 		return $this->response;
 	}
  	
  	
  	public function onSubmitAccept(){
- 		
- 		$objMyForm = new myForm('formulario',NULL,'procesarFormulario');
- 		
- 		$objMyForm->addText('Nombre:','nombre');
- 		$objMyForm->addText('Apellido:','apellido');
- 		
- 		$objMyForm->addText('Nombre:','nombre1');
- 		$objMyForm->addText('Nombre:','nombre2');
- 		$objMyForm->addText('Nombre:','nombre3');
- 		$objMyForm->addText('Nombre:','nombre4');
- 		$objMyForm->addText('Nombre:','nombre5');
- 		$objMyForm->addText('Nombre:','nombre6');
- 		$objMyForm->addText('Nombre:','nombre7');
- 		$objMyForm->addText('Nombre:','nombre8');
- 		$objMyForm->addText('Nombre:','nombre9');
- 		//$objMyForm->addText('Nombre:','nombre10');
- 		//$objMyForm->addText('Nombre:','nombre11');
- 		//$objMyForm->addText('Nombre:','nombre12');
- 		//$objMyForm->addText('Nombre:','nombre12');
- 		//$objMyForm->addText('Nombre:','nombre13');
- 		
- 		$objMyForm->addHelp('nombre','Saludos a The Code Machine');
- 		
- 		$objMyForm->formHeight = 0;
- 		
- 		//$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,400);
- 		//$this->modalWindow('hola','The Code Machine',400,400);
  		
  		$this->messageBox(NULL,'Hola',array('Acpetar'=>NULL),'ERROR');
  		
@@ -116,29 +110,9 @@
  	
 
  	
- 	public function procesarFormulario (){
- 		/*
- 		$objMyForm = new myForm('formulario','procesarFormulario');
+ 	public function procesarFormulario ($datForm){
  		
- 		$objMyForm->addText('Nombre:','nombre');
- 		$objMyForm->addText('Apellido:','apellido');
- 		
- 		$objMyForm->addHelp('nombre','Saludos a The Code Machine');
- 		
- 		$objMyForm->height = 0;
- 		
- 		$this->modalWindow($objMyForm->getForm(1),'The Code Machine',400,200,2);
- 		
- 		$this->notificationWindow('Nueva ventana...',2);
- 		*/
-
-		//$this->messageBox('text text text text text text text text text text text text text text text text text text text text text ');
- 		
- 		//$this->modalWindow('hola','Hola',100,600,2);
- 		
- 		//$this->modalWindowFromUrl('index.php2','Yahoo',400,400);
- 		
- 		$this->errorBox('lkjflskdj lksdjf ','Error en la consulta sql');
+ 		$this->messageBox('Los datos del formulario son:'."\n".var_export($datForm,true),'warning');
  		
  		return $this->response;
  	}

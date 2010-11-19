@@ -22,6 +22,32 @@
   */
  class modelo {
  	
+ 	public function formEdit($id){
+ 		
+ 		$usuarios = new usuarios();
+ 		
+ 		$usuarios->find($id);
+ 		
+ 		$profesion = new profesion();
+ 		
+ 		$profesiones = array();
+ 		
+ 		foreach ($profesion->find() as $row)
+ 			$profesiones[$row->prof_id] = $row->profesion;
+ 		
+ 		$objMyForm = new myForm('editRow');
+ 		
+ 		$objMyForm->addText('Nombre:','nombre',$usuarios->nombre);
+ 		
+ 		$objMyForm->addText('Edad:','edad',$usuarios->edad,4,2,true);
+ 		
+ 		$objMyForm->addSelect('Profesión:','prof_id',$profesiones,$usuarios->prof_id);
+
+ 		$objMyForm->addButton('b1','Guardar','onSubmitSaveChanges:'.$id,'save.gif');
+ 		
+ 		return $objMyForm->getForm(1);
+ 	}
+ 	
 	public function form2 (){
 		
 		$objMyForm = new myForm('prueba');
@@ -38,7 +64,7 @@
 		
 		$objMyForm->addButton('excel','Excel','alert','excel.gif');
 		
-		$objMyForm->addButton('ok','Ok','buttonOk','ok.gif');
+		$objMyForm->addButton('ok','Ok','procesarFormulario','ok.gif');
 		
 		$objMyForm->addButton('cancel','Cancel','buttonCancel','cancel.gif');
 		
@@ -61,17 +87,23 @@
  	public function formulario (){
  		$objMyForm = new myForm('formulario',NULL,'onSubmitAccept');
  		
- 		$objMyForm->SWF_upload_several_files = true;
+ 		$objMyForm->FILE_src_img_button = 'add.gif';
  		
- 		$objMyForm->addFile('Archivo:','file','upload.php');
+ 		$objMyForm->FILE_upload_several_files = true;
  		
- 		$objMyForm->SWF_src_img_button = 'file_find.png';
-		$objMyForm->SWF_file_size_limit = 10000;
+ 		$objMyForm->FILE_debug = true;
+ 		
+ 		$objMyForm->addFile('Archivo plano:','file','upload.php');
+ 		
+ 		$objMyForm->FILE_src_img_button = 'add.gif';
+		$objMyForm->FILE_size_limit = 100;
  		
  		
- 		$objMyForm->SWF_debug = 'false';
+ 		$objMyForm->FILE_debug = 'false';
  		
  		$objMyForm->formWidth = 500;
+ 		
+ 		$objMyForm->addButton('saludar','Saludar','procesarFormulario','ok.gif');
  		
  		return $objMyForm->getForm(1);
  	}
@@ -106,7 +138,7 @@
  		
  		$objList->setExportData(true,true,false);
  		
- 		$objList->setPagination(true,15);
+ 		$objList->setPagination(true,50);
  		
  		return $objList->getList(true);
  	}
