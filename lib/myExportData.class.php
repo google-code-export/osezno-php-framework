@@ -1,7 +1,13 @@
 <?php
 
 
-class myExportData extends myActiveRecord {
+class myExportData {
+	
+	/**
+	 * Objeto de conexion DB
+	 * @var object
+	 */
+	private $myAct;
 	
 	/**
 	 * Formatos validos de resultado
@@ -59,9 +65,11 @@ class myExportData extends myActiveRecord {
 		
 		if (in_array($format,$this->arValidFormat)){
 			
-			$this->resSql = $this->query($sql);
+			$this->myAct = new myActiveRecord();
 			
-			$this->error = $this->getErrorLog(false);
+			$this->resSql = $this->myAct->query($sql);
+			
+			$this->error = $this->myAct->getErrorLog(false);
 			
 		}else{
 			$success = false;
@@ -77,6 +85,8 @@ class myExportData extends myActiveRecord {
 	 * @return string
 	 */
 	private function buildResult (){
+		
+		//TODO: Casos de uso, pdf
 		
 		$out = '';
  		
@@ -150,13 +160,13 @@ class myExportData extends myActiveRecord {
 		
 		if (!$this->error){
 			
-			if ($this->filePath)
+			if ($this->filePath){
 			
 				if (!$this->buildFileOut())
 				
 					$return = $this->getError();
 				
-			else{
+			}else{
 				
 				$this->buildResult();
 				
