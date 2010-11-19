@@ -225,6 +225,16 @@ function aleatorio(inferior,superior){
 
 function createNotificationWindow (strNotification, intSecDuration, type){
 	
+	var arrayPageSize = new Array();
+	
+    arrayPageSize = getPageSize();
+	
+    var checkPoint = (arrayPageSize[1]-arrayPageSize[3]);
+    
+    var startPoint = checkPoint-60;
+    
+    var endPoint = checkPoint+10;
+    
 	var pofFijNW = aleatorio(1, 1000);
 	
 	var miCapa = document.createElement('DIV');
@@ -238,13 +248,18 @@ function createNotificationWindow (strNotification, intSecDuration, type){
 	miCapa.style.position = 'absolute';
 	
 	miCapa.style.zIndex = 2000;
-	miCapa.style.top = -60;
+	
+	miCapa.style.top = startPoint+70;
+	
 	miCapa.style.left = 10;
+	
 	miCapa.className = 'notification_'+type;
 	
-	mueveNotificationWindow(miCapa.id, -60, 10);
+	vanecerCallBack(miCapa, 100);
 	
-	setTimeout("mueveNotificationWindow('"+miCapa.id+"', 10,-60)",intSecDuration);
+	//mueveNotificationWindow(miCapa.id, startPoint, endPoint);
+	
+	//setTimeout("mueveNotificationWindow('"+miCapa.id+"', "+endPoint+","+startPoint+")",intSecDuration);
 	
 	setTimeout("destructNotificationWindow('"+miCapa.id+"')",intSecDuration+1000);
 }

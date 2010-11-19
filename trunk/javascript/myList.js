@@ -52,18 +52,19 @@ function returnRowsSelectedOnList (idlist){
 	
 	for (var j=i=0;i<ins.length;i++){
 		
-		if (ins[i].type == 'checkbox'){
+		if (ins[i].type == 'checkbox')
 			
-			if (ins[i].id.substr(0,idlist.length)==idlist){
+		if (ins[i].id.substr(0,idlist.length)==idlist)
 				
-				if (document.getElementById(ins[i].id).checked == true){
+		if (ins[i].id.substr(idlist.length)!='_over_all')
+				
+		if (document.getElementById(ins[i].id).checked == true){
 
-					ids[j] = ins[i].id.substr(ins[i].id.lastIndexOf('_')+1);
+			ids[j] = ins[i].id.substr(ins[i].id.lastIndexOf('_')+1);
 					
-					j++;
-				}
-			}
+			j++;
 		}
+				
 	}
 
 	return ids;

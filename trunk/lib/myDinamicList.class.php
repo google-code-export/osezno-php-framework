@@ -261,13 +261,6 @@ class myList  {
 	private $sqlORobject;
 	
 	/**
-	 * Usar o no imagenes sobre los botones segun el estilo seleccionado
-	 * 
-	 * @var boolean
-	 */
-	private $useImgOnButtons = true;
-	
-	/**
 	 * Constructor
 	 * @param $idList	Nombre de la lista
 	 * @param $sqlORobject	SQL o Objeto de metodo
@@ -309,17 +302,6 @@ class myList  {
 		}
 	}
 
-	/**
-	 * Configura si va a usar imagenes sobre los botones.
-	 * 
-	 * @param $use	Valor booleano
-	 */
-	public function setUseImgOnButtons ($use){
-		
-		$this->useImgOnButtons = $use;
-		
-	}
-	
 	/**
 	 * Configura una paginacion sobre la lista dinamica.
 	 * 
@@ -992,11 +974,7 @@ class myList  {
 				
 					case 'button':
 						
-						if (!$this->useImgOnButtons){
-							$htmlBut = $attr[0];
-						}else{
-							$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
-						}
+						$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
 						
 						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut,'MYLIST_page:'.$this->idList.':'.$attr[1]);					break;
 					

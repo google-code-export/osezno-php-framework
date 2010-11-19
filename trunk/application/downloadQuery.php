@@ -4,15 +4,11 @@
 
 	if (isset($_GET['id_list'])){
 		
-		$content_type = '';
-		
-		$content_disposition = '';
-
-		$content_disposition = 'Content-Disposition: attachment; filename=query.'.$_GET['format'];
-		
 		$idList = $_GET['id_list'];
 		
 		$objList = new myList($idList);
+		
+		$sql = $objList->getVar('sql');
 		
  		/**
  		 * Where rules
@@ -73,7 +69,7 @@
 			$sqlLimit .= ' LIMIT  '.($rdsPg*$rdsPgFr).' OFFSET '.(($cntPg*$rdsPg)*$rdsPgFr);
 		}
  		
- 		$sql = $objList->getVar('sql').''.$sqlWhere.''.$sqlOrder.''.$sqlLimit;
+ 		$sql = $sql.''.$sqlWhere.''.$sqlOrder.''.$sqlLimit;
  		
  		$xlsOut = $htmlOut = $pdfOut = '';
  		
@@ -85,8 +81,6 @@
 				
 				$content_type = 'Content-type: application/x-msexcel';
 				
-				$xlsOut = '';
- 				
  				$xlsOut = $export->getResult();
  		
 			break;
@@ -95,21 +89,22 @@
 				
 				$content_type = 'Content-type: text/html';
 				
-				$htmlOut = '';
- 		
  				$htmlOut = $export->getResult();
  		
 			break;
 			
 			case 'pdf':
+				
 				$content_type = 'Content-type: application/pdf';
-
+				
+				$pdfOut = $export->getResult();
 			break;
 		}
  		
 		header ($content_type);
- 		header ($content_disposition);
-		
+ 		header ('Content-Disposition: attachment; filename='.$_GET['id_list'].'_'.date('Ymd_His').'.'.$_GET['format']);
+ 		header ('Content-Length: '.strlen($xlsOut.$htmlOut.$pdfOut));
+ 		
  		if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")){
     		
  			header('Pragma: private');

@@ -83,8 +83,6 @@
 		
  		$objList = new myList($idLista,$usuarios->loadSqlFromFile('sql/query.sql'));
  		
- 		$objList->setUseImgOnButtons(false);
- 		
  		$objList->setUseOrderMethodOnColumn('usuario_id');
  		$objList->setUseOrderMethodOnColumn('nombre');
  		$objList->setUseOrderMethodOnColumn('edad');
@@ -108,7 +106,7 @@
  		
  		$objList->setExportData(true,true,false);
  		
- 		$objList->setPagination(true,20);
+ 		$objList->setPagination(true,15);
  		
  		return $objList->getList(true);
  	}
