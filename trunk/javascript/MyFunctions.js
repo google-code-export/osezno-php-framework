@@ -52,6 +52,27 @@ function responseCallUrl(pageElement) {
  *  xajax callbacks
  */
 
+ /**
+  * Obtiene la posicion actual del scroll en un arreglo
+  */
+ function getScrollXY() {
+	  var scrOfX = 0, scrOfY = 0;
+	  if( typeof( window.pageYOffset ) == 'number' ) {
+	    //Netscape compliant
+	    scrOfY = window.pageYOffset;
+	    scrOfX = window.pageXOffset;
+	  } else if( document.body && ( document.body.scrollLeft || document.body.scrollTop ) ) {
+	    //DOM compliant
+	    scrOfY = document.body.scrollTop;
+	    scrOfX = document.body.scrollLeft;
+	  } else if( document.documentElement && ( document.documentElement.scrollLeft || document.documentElement.scrollTop ) ) {
+	    //IE6 standards compliant mode
+	    scrOfY = document.documentElement.scrollTop;
+	    scrOfX = document.documentElement.scrollLeft;
+	  }
+	  return [ scrOfX, scrOfY ];
+	}
+ 
  /*
   * Obtiene el tamaño de una area de trabajo visible para un browser
   */
@@ -225,15 +246,19 @@ function aleatorio(inferior,superior){
 
 function createNotificationWindow (strNotification, intSecDuration, type){
 	
+	var arrayScrollPos = new Array();
+	
 	var arrayPageSize = new Array();
 	
     arrayPageSize = getPageSize();
+    
+    arrayScrollPos = getScrollXY();
 	
-    var checkPoint = (arrayPageSize[1]-arrayPageSize[3]);
+    var checkPoint = arrayScrollPos[1]-60;
     
-    var startPoint = checkPoint-60;
+    var startPoint = checkPoint;
     
-    var endPoint = checkPoint+10;
+    var endPoint = checkPoint+70;
     
 	var pofFijNW = aleatorio(1, 1000);
 	
@@ -249,17 +274,21 @@ function createNotificationWindow (strNotification, intSecDuration, type){
 	
 	miCapa.style.zIndex = 2000;
 	
-	miCapa.style.top = startPoint+70;
+	miCapa.style.top = startPoint;
 	
 	miCapa.style.left = 10;
 	
 	miCapa.className = 'notification_'+type;
 	
-	vanecerCallBack(miCapa, 100);
+	if (navigator.appVersion.indexOf("MSIE")!=-1){
+		miCapa.style.filter = "alpha(opacity=90)";
+	 }else{
+		miCapa.style.opacity = 0.9;
+	 }  
+
+	mueveNotificationWindow(miCapa.id, startPoint, endPoint);
 	
-	//mueveNotificationWindow(miCapa.id, startPoint, endPoint);
-	
-	//setTimeout("mueveNotificationWindow('"+miCapa.id+"', "+endPoint+","+startPoint+")",intSecDuration);
+	setTimeout("mueveNotificationWindow('"+miCapa.id+"', "+endPoint+","+startPoint+")",intSecDuration);
 	
 	setTimeout("destructNotificationWindow('"+miCapa.id+"')",intSecDuration+1000);
 }
