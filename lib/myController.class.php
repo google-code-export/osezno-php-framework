@@ -656,8 +656,8 @@ class myController extends myControllerExt {
 	 * @return string
 	 */
 	public function closeModalWindow (){
-		$_SESSION['lb_widgets']--;
-		$this->response->script('xajax.closeWindow()');
+		
+		$this->response->script('closeModalWindow()');
 	}
 
 	/**
@@ -842,7 +842,7 @@ class myController extends myControllerExt {
 			
 			$nameButton = 'bmbx_'.strtolower(trim($etq));
 			
-			$frm .= $objMyForm->getButton($nameButton,$etq,'closeModalWindow()');
+			$frm .= $objMyForm->getButton($nameButton,$etq,'closeModalWindow');
 		}
 
 		$arRepl = array (
@@ -906,6 +906,8 @@ class myController extends myControllerExt {
 			$style = 'info';
 		
 		$intSecDuration = $intSecDuration*1000;
+		
+		$strNotification = str_replace('"','\"',$strNotification);
 		
 		$strSctipt = 'createNotificationWindow("'.$strNotification.'",'.$intSecDuration.',"'.$style.'")';
 		
@@ -1049,7 +1051,7 @@ class myController extends myControllerExt {
 			break;
 		}
 		
-		$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		

@@ -380,7 +380,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $width = '100%';
+	public $width = '98%';
 
 	/**
 	 * Tamano de alto de la tabla que contiene el formulario en porcentaje o px
@@ -536,7 +536,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_upload_url;
+	public $FILE_upload_url;
 	# Un ejemplo de el script que sube los datos puede ser ...
 	# - Inicio
 	//   // Si se pretende conservar el ID de la sesion actual, se hace con un parametro GET
@@ -568,7 +568,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_file_post_name;
+	public $FILE_file_post_name;
 
 	/**
 	 * The param_object should be a simple JavaScript object.
@@ -576,14 +576,14 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_post_params = array();
+	public $FILE_post_params = array();
 
 	/**
 	 * Los tipos de archivo que son admisibles
 	 *
 	 * @var array
 	 */
-	public $SWF_file_types = array('*.*');
+	public $FILE_file_types = array('*.*');
 
 	/**
 	 * La descripcion de los tipos de archivo
@@ -591,7 +591,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_file_types_description = 'Todos los tipos';
+	public $FILE_file_types_description = 'Todos los tipos';
 
 	/**
 	 * El tamano maximo en kilobytes
@@ -600,7 +600,7 @@ class myForm {
 	 *
 	 * @var integer
 	 */
-	public $SWF_file_size_limit = 2048;
+	public $FILE_size_limit = 2048;
 
 	/**
 	 * Setea si se va a mostrar o no informacion de 
@@ -609,24 +609,24 @@ class myForm {
 	 *
 	 * @var unknown_type
 	 */
-	public $SWF_show_max_upload_size_info_in_button = true;
+	public $FILE_show_max_upload_size_info_in_button = true;
 
 	/**
 	 * Numero maximo de archivos que
-	 * pueden ser subidos.
+	 * pueden ser subidos, cero es sin limite.
 	 *
 	 * @var integer
 	 */
-	public $SWF_file_upload_limit = 0;
+	public $FILE_file_upload_limit = 0;
 
 	/**
 	 * Numero maximo de archivos en
 	 * archivos en  cola que pueden
-	 * estar.
+	 * estar, cero es sin limite.
 	 *
 	 * @var integer
 	 */
-	public $SWF_file_queue_limit = 0;
+	public $FILE_file_queue_limit = 0;
 
 	/**
 	 * Url en donde se encuentra el
@@ -635,7 +635,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_flash_url = '';
+	public $FILE_flash_url = '';
 	
 	/**
 	 * Url de la imagen que por defecto 
@@ -644,7 +644,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_button_image_url = '../../img/my_form/file/XPButtonNoText_160x22.png';
+	public $FILE_button_image_url = 'button_file.gif';
 	
 	/**
 	 * Id del span donde el button
@@ -652,56 +652,56 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_button_placeholder_id = 'spanButtonPlaceholder';
+	public $FILE_button_placeholder_id = 'spanButtonPlaceholder';
 	
 	/**
 	 * Ancho del boton en px en el formulario
 	 * 
 	 * @var integer
 	 */
-	public $SWF_button_width = 160;
+	public $FILE_button_width = 160;
 	
 	/**
 	 * Alto del boton en px en el formulario
 	 * 
 	 * @var integer
 	 */
-	public $SWF_button_height = 22;
+	public $FILE_button_height = 22;
 	
 	/**
 	 * Ancho de el tamano del flash.
 	 *
 	 * @var string
 	 */
-	public $SWF_flash_width = '0px';
+	public $FILE_flash_width = '0px';
 
 	/**
 	 * Alto de el tamano del flash.
 	 *
 	 * @var string
 	 */
-	public $SWF_flash_height = '0px';
+	public $FILE_flash_height = '0px';
 
 	/**
 	 * Color de piel para el flash.
 	 *
 	 * @var string
 	 */
-	public $SWF_flash_color = 'FFFFFF';
+	public $FILE_flash_color = 'FFFFFF';
 
 	/**
 	 * Habilitar el debug o no
 	 *
 	 * @var bool
 	 */
-	public $SWF_debug = 'false';
+	public $FILE_debug = 'false';
 
 	/**
 	 * The swfUploadLoaded event is fired by flashReady. It is overridable. When swfUploadLoaded is called it is safe to call SWFUpload methods.
 	 *
 	 * @var string
 	 */
-	public $SWF_swfupload_loaded_handler = 'swfuploadLoadedHandler';
+	public $FILE_swfupload_loaded_handler = 'swfuploadLoadedHandler';
 
 	/**
 	 * Este evento se dispara inmediatamente antes de que la
@@ -714,14 +714,14 @@ class myForm {
 	 *  
 	 * @var string
 	 */
-	public $SWF_file_dialog_start_handler = 'fileDialogStart';
+	public $FILE_file_dialog_start_handler = 'fileDialogStart';
 
 	/**
 	 * No usar o tener en cuenta este evento.
 	 *
 	 * @var string
 	 */
-	public $SWF_file_queued_handler = 'fileQueued';
+	public $FILE_file_queued_handler = 'fileQueued';
 
 	/**
 	 * Se ejecuta cuando existe o se produjo un
@@ -735,7 +735,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_file_queue_error_handler = 'fileQueueError';
+	public $FILE_file_queue_error_handler = 'fileQueueError';
 
 	/**
 	 * Se ejecuta cuando se a echo click sobre el
@@ -748,7 +748,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_file_dialog_complete_handler = 'fileDialogComplete';
+	public $FILE_file_dialog_complete_handler = 'fileDialogComplete';
 
 	/**
 	 * Funcion que es llamada cuando comienza todo
@@ -759,7 +759,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_upload_start_handler = 'uploadStart';
+	public $FILE_upload_start_handler = 'uploadStart';
 
 	/**
 	 * Se produce cuando el listado de los archivos
@@ -770,7 +770,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_upload_progress_handler = 'uploadProgress';
+	public $FILE_upload_progress_handler = 'uploadProgress';
 
 	/**
 	 * El evento es uploadError se dispara en cualquier momento
@@ -782,7 +782,7 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_upload_error_handler = 'uploadError';
+	public $FILE_upload_error_handler = 'uploadError';
 
 	/**
 	 * Este evento se ejecuta cuando un archivo es subido exitosamente
@@ -793,7 +793,7 @@ class myForm {
 	 *  
 	 * @var string
 	 */
-	public $SWF_upload_success_handler = 'uploadSuccess';
+	public $FILE_upload_success_handler = 'uploadSuccess';
 
 	/**
 	 * Este evento siempre se dispara al final de un ciclo de una carga.
@@ -803,21 +803,21 @@ class myForm {
 	 * 
 	 * @var string
 	 */
-	public $SWF_upload_complete_handler = 'uploadComplete';
+	public $FILE_upload_complete_handler = 'uploadComplete';
 
 	/**
 	 * Enter description here...
 	 *
 	 * @var string
 	 */
-	public $SWF_debug_handler = 'debugHandler';
+	public $FILE_debug_handler = 'debugHandler';
 
 	/**
 	 * Enter description here...
 	 *
 	 * @var array
 	 */
-	public $SWF_custom_settings = array();
+	public $FILE_custom_settings = array();
 
 	/**
 	 * Ruta de la imagen que acompaña el boton
@@ -825,7 +825,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_src_img_button = '';
+	public $FILE_src_img_button = '';
 
 	/**
 	 * Texto que esta dentro del boton
@@ -833,7 +833,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	public $SWF_str_etq_button = 'Examinar';
+	public $FILE_str_etq_button = 'Examinar';
 
 	/**
 	 * Decidir si por upload se pueden se
@@ -841,7 +841,7 @@ class myForm {
 	 *
 	 * @var boolean
 	 */
-	public $SWF_upload_several_files = false;
+	public $FILE_upload_several_files = false;
 
 	# Atributos de inicio de configuracion para el editor FCKeditor
 
@@ -928,11 +928,11 @@ class myForm {
 	 * @param boolean $useShowHide Usar o no propiedad para mostrar y ocultar las capas
 	 * @param string  $iniVisibilitySts Si se activo la propiedad de mostrar y ocultar el fieldset, determinar el estado inicial 
 	 */
-	public function addGroup ($idGroup, $strFieldSet, $arraystrIdFields, $intCols = 2, $useShowHide = false, $iniVisibilitySts = 'show'){
+	public function addGroup ($idGroup, $strFieldSet = '', $arraystrIdFields = array(), $intCols = 2, $useShowHide = false, $iniVisibilitySts = 'show'){
 		
 		$this->arrayGroups[] = array(
 			'idGroup' => $idGroup, 
-			'strFieldSet' => $strFieldSet, 
+			'strFieldSet' => htmlentities($strFieldSet), 
 			'arraystrIdFields' => $arraystrIdFields, 
 			'intColsByGroup' => $intCols,
 			'useShowHide' => $useShowHide,
@@ -1085,7 +1085,7 @@ class myForm {
 	 */
 	public function addHelp ($objName, $strHelp){
 		if (!in_array($objName, $this->objHelps)){
-			$this->objHelps[$objName] = str_replace("'","\\'",str_replace('"',"'",$strHelp));
+			$this->objHelps[$objName] = str_replace("'","\\'",str_replace('"',"'",htmlentities($strHelp)));
 		}
 	}
 
@@ -1112,9 +1112,9 @@ class myForm {
 	 * boton, debe agregar separado por (:) los valores que necesite
 	 * 
 	 */
-	public function addButton ($strName, $strLabel, $jsFunction = '', $strSrcImg = ''){
+	public function addButton ($strName, $strLabel = '', $jsFunction = '', $strSrcImg = ''){
 		$this->arrayButtonList[] = array('strName'    =>  $strName,
-                                         'strLabel'   =>  $strLabel,
+                                         'strLabel'   =>  htmlentities($strLabel),
                                          'jsFunction' =>  $jsFunction);
 		
 		$count = count($this->arrayButtonList);
@@ -1140,7 +1140,7 @@ class myForm {
 	 * boton, debe agregar separado por (:) los valores que necesite	 
 	 *  
 	 */
-	public function getButton ($strName, $strLabel, $jsFunction = '', $strSrcImg = ''){
+	public function getButton ($strName, $strLabel = '', $jsFunction = '', $strSrcImg = ''){
 		$buf = '';
 		$strMixedParams = '';
 		
@@ -1209,7 +1209,7 @@ class myForm {
 	 */
 	public function addText($etq = '', $name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
 		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'text'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$validacion_numerica.$this->Separador.$CampoFecha;
+		$Cadena   = 'text'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$validacion_numerica.$this->Separador.$CampoFecha;
 		
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'text';
@@ -1261,7 +1261,7 @@ class myForm {
 	 */
 	public function addTextArea($etq = '', $name = '', $value = '', $cols = '', $rows = '', $wrap = ''){
 		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'textarea'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value.$this->Separador.$cols.$this->Separador.$rows.$this->Separador.$wrap;
+		$Cadena   = 'textarea'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$cols.$this->Separador.$rows.$this->Separador.$wrap;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'textarea';
 	}
@@ -1338,7 +1338,7 @@ class myForm {
 	 */
 	public function addPassword($etq = '', $name = '', $value = '', $size = '', $maxlength = ''){
 		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'password'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength;
+		$Cadena   = 'password'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'password';
 	}
@@ -1411,7 +1411,7 @@ class myForm {
 			$strD .= "\t\t".'<option value="'.$i.'"'.$selected.' class="'.$this->styleClassFields.'">'.$i.'</option>'."\n";
 		}
 
-		$Cadena = 'date'.$this->Separador.$etq.$this->Separador.$prefName.$this->Separador.$strY.$this->Separador.$strM.$this->Separador.$strD;
+		$Cadena = 'date'.$this->Separador.htmlentities($etq).$this->Separador.$prefName.$this->Separador.$strY.$this->Separador.$strM.$this->Separador.$strD;
 		$this->Objects['field'][$prefName] = $Cadena;
 		$this->arrayFormElementType[$prefName] = 'date';
 	}
@@ -1458,7 +1458,7 @@ class myForm {
 			$strM .= "\t\t".'<option value="'.$i.'"'.$selected.'>'.$label.$i.'</option>'."\n";
 		}
 
-		$Cadena = 'time'.$this->Separador.$etq.$this->Separador.$prefName.$this->Separador.$strH.$this->Separador.$strM;
+		$Cadena = 'time'.$this->Separador.htmlentities($etq).$this->Separador.$prefName.$this->Separador.$strH.$this->Separador.$strM;
 		$this->Objects['field'][$prefName] = $Cadena;
 		$this->arrayFormElementType[$prefName] = 'time';
 	}
@@ -1519,7 +1519,7 @@ class myForm {
 	 */
 	public function addWhiteSpace ($id, $val_e = '', $val_c = ''){
 		$id = $this->getColspanRowspan($id);
-		$this->Objects['field']['whitespace_'.$id] = 'whitespace'.$this->Separador.$id.$this->Separador.$val_e.$this->Separador.$val_c;
+		$this->Objects['field']['whitespace_'.$id] = 'whitespace'.$this->Separador.$id.$this->Separador.htmlentities($val_e).$this->Separador.$val_c;
 		$this->arrayFormElementType[$id] = 'whitespace';
 	}
 
@@ -1550,7 +1550,7 @@ class myForm {
 		$name = '_'.$this->counterRadiosForThisForm+=1;
 
 		//$name = $this->getColspanRowspan($name);
-		$Cadena = 'radiobutton'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value.$this->Separador.$name_group.$this->Separador.$is_checked;
+		$Cadena = 'radiobutton'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$name_group.$this->Separador.$is_checked;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'radiobutton';
 			
@@ -1589,7 +1589,7 @@ class myForm {
 	 */
 	public function addCheckBox($etq = '', $name = '', $ini_sts = 'N'){
 		$name = $this->getColspanRowspan($name);
-		$Cadena = 'checkbox'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$ini_sts;
+		$Cadena = 'checkbox'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$ini_sts;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->arrayFormElementType[$name] = 'checkbox';
 
@@ -1662,7 +1662,7 @@ class myForm {
 		}
 		$maxlength = '';
 
-		$Cadena   = 'select'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$multiple;
+		$Cadena   = 'select'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$multiple;
 		$this->Objects['field'][$name] = $Cadena;
 
 		$this->arrayFormElementType[$name] = 'select';
@@ -1728,21 +1728,25 @@ class myForm {
 	 * @param string  $file_types_description  Descripcion de los tipos de archivos que se pueden subir
 	 * @param integer $file_size_limit         Limite de tamano por archivo que se puede subir
 	 */
-	public function addFile ($etq, $name, $upload_url, $flash_url = '../../swf/swfupload.swf', $file_types = '', $file_types_description = '', $file_size_limit = ''){
+	public function addFile ($etq, $name, $upload_url, $flash_url = '', $file_types = '', $file_types_description = '', $file_size_limit = ''){
+		
+		if (!$flash_url)
+			$flash_url = $GLOBALS['urlProject'].'/swf/swfupload.swf';
+		
 		$name = $this->getColspanRowspan($name);
 		if ($file_types && is_array($file_types))
-		$this->SWF_file_types = $file_types;
+		$this->FILE_file_types = $file_types;
 			
 		if ($file_types_description)
-		$this->SWF_file_types_description = $file_types_description;
+		$this->FILE_file_types_description = $file_types_description;
 			
 		if (intval($file_size_limit))
-		$this->SWF_file_size_limit = $file_size_limit;
+		$this->FILE_size_limit = $file_size_limit;
 
-		$this->SWF_upload_url = $upload_url;
-		$this->SWF_flash_url  = $flash_url;
+		$this->FILE_upload_url = $upload_url;
+		$this->FILE_flash_url  = $flash_url;
 
-		$Cadena   = 'file'.$this->Separador.$etq.$this->Separador.$name;
+		$Cadena   = 'file'.$this->Separador.htmlentities($etq).$this->Separador.$name;
 		$this->Objects['field'][$name] = $Cadena;
 		$this->uploaderIdArray[] = $name;
 
@@ -1762,17 +1766,17 @@ class myForm {
 
 		$buf.='<span id="spanButtonPlaceholder">';
 		
-		if ($this->SWF_src_img_button)
-		   $buf.='<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->SWF_src_img_button.'" border="0">';
+		if ($this->FILE_src_img_button)
+		   $buf.='<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
 		
 		$maxInfoSize = '';   
-	    if ($this->SWF_show_max_upload_size_info_in_button){
-	    	if ($this->SWF_file_size_limit<1024){
-	           $maxFileSizeUpload = '('.$this->SWF_file_size_limit.' Kb)';
-	    	}else if ($this->SWF_file_size_limit<1048576){
-	    	   $maxFileSizeUpload = '('.number_format($this->SWF_file_size_limit/1024,2).' Mb)';
+	    if ($this->FILE_show_max_upload_size_info_in_button){
+	    	if ($this->FILE_size_limit<1024){
+	           $maxFileSizeUpload = '('.$this->FILE_size_limit.' Kb)';
+	    	}else if ($this->FILE_size_limit<1048576){
+	    	   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1024,2).' Mb)';
 	    	}else{
-      		   $maxFileSizeUpload = '('.number_format($this->SWF_file_size_limit/1048576,2).' Gb)';
+      		   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1048576,2).' Gb)';
 	    	}
 	       $maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
 	    }	   
@@ -2000,14 +2004,14 @@ class myForm {
 		$JS.= 'swfu = new SWFUpload({'."\n";
 
 		$JS.= '// Backend Settings'."\n";
-		$JS.= "\t".'upload_url : "'.$this->SWF_upload_url.'",'."\n";
+		$JS.= "\t".'upload_url : "'.$this->FILE_upload_url.'",'."\n";
 			
-		if (count($this->SWF_file_post_name)){
+		if (count($this->FILE_file_post_name)){
 			$JS.= 'post_params : {'."\n";
-			$swf_file_post_name_Keys = array_keys($this->SWF_file_post_name);
-			for ($i=0;$i<count($this->SWF_file_post_name);$i++){
-				$JS.= '"'.$swf_file_post_name_Keys[$i].'" : "'.$this->SWF_file_post_name[$swf_file_post_name_Keys[$i]].'"';
-				if ($i!=(count($this->SWF_file_post_name)-1))
+			$swf_file_post_name_Keys = array_keys($this->FILE_file_post_name);
+			for ($i=0;$i<count($this->FILE_file_post_name);$i++){
+				$JS.= '"'.$swf_file_post_name_Keys[$i].'" : "'.$this->FILE_file_post_name[$swf_file_post_name_Keys[$i]].'"';
+				if ($i!=(count($this->FILE_file_post_name)-1))
 				$JS.= ',';
 			}
 			$JS.= "\n".'},'."\n";
@@ -2015,65 +2019,66 @@ class myForm {
 			
 			
 		$JS.= '// File Upload Settings '."\n";
-		$JS.= "\t".'file_size_limit: "'.$this->SWF_file_size_limit.'",'."\n";
+		$JS.= "\t".'file_size_limit: "'.$this->FILE_size_limit.'",'."\n";
 		$JS.= "\t".'file_types : "';
-		for ($i=0;$i<count($this->SWF_file_types);$i++){
-			$JS.= "".''.$this->SWF_file_types[$i].'';
-			if ($i!=(count($this->SWF_file_types)-1))
+		for ($i=0;$i<count($this->FILE_file_types);$i++){
+			$JS.= "".''.$this->FILE_file_types[$i].'';
+			if ($i!=(count($this->FILE_file_types)-1))
 			$JS.= ';';
 		}
 		$JS.= '",'."\n";
-		$JS.= "\t".'file_types_description: "'.$this->SWF_file_types_description.'",'."\n";
-		$JS.= "\t".'file_upload_limit: '.$this->SWF_file_upload_limit.','."\n";
-		$JS.= "\t".'file_queue_limit: '.$this->SWF_file_queue_limit.','."\n";
+		$JS.= "\t".'file_types_description: "'.$this->FILE_file_types_description.'",'."\n";
+		$JS.= "\t".'file_upload_limit: '.$this->FILE_file_upload_limit.','."\n";
+		$JS.= "\t".'file_queue_limit: '.$this->FILE_file_queue_limit.','."\n";
 			
 		$JS.= '//Event Handler Settings - these functions as defined in Handlers.js'."\n";
 		$JS.= '//The handlers are not part of SWFUpload but are part of my website and control how'."\n";
 		$JS.= '//my website reacts to the SWFUpload events.'."\n";
-		$JS.= "\t".'file_queue_error_handler: '.$this->SWF_file_queue_error_handler.','."\n";
-		$JS.= "\t".'file_dialog_complete_handler: '.$this->SWF_file_dialog_complete_handler.','."\n";
-		$JS.= "\t".'upload_progress_handler: '.$this->SWF_upload_progress_handler.','."\n";
-		$JS.= "\t".'upload_error_handler: '.$this->SWF_upload_error_handler.','."\n";
-		$JS.= "\t".'upload_success_handler: '.$this->SWF_upload_success_handler.','."\n";
-		$JS.= "\t".'upload_complete_handler: '.$this->SWF_upload_complete_handler.','."\n";
-		$JS.= "\t".'swfupload_loaded_handler: '.$this->SWF_swfupload_loaded_handler.','."\n";
-		$JS.= "\t".'file_dialog_start_handler: '.$this->SWF_file_dialog_start_handler.','."\n";
-		$JS.= "\t".'file_queued_handler: '.$this->SWF_file_queued_handler.','."\n";
-		//$JS.= 'upload_start_handler: '.$this->SWF_upload_start_handler.','."\n";
-		//$JS.= 'debug_handler: '.$this->SWF_debug_handler.','."\n";
+		$JS.= "\t".'file_queue_error_handler: '.$this->FILE_file_queue_error_handler.','."\n";
+		$JS.= "\t".'file_dialog_complete_handler: '.$this->FILE_file_dialog_complete_handler.','."\n";
+		$JS.= "\t".'upload_progress_handler: '.$this->FILE_upload_progress_handler.','."\n";
+		$JS.= "\t".'upload_error_handler: '.$this->FILE_upload_error_handler.','."\n";
+		$JS.= "\t".'upload_success_handler: '.$this->FILE_upload_success_handler.','."\n";
+		$JS.= "\t".'upload_complete_handler: '.$this->FILE_upload_complete_handler.','."\n";
+		$JS.= "\t".'swfupload_loaded_handler: '.$this->FILE_swfupload_loaded_handler.','."\n";
+		$JS.= "\t".'file_dialog_start_handler: '.$this->FILE_file_dialog_start_handler.','."\n";
+		$JS.= "\t".'file_queued_handler: '.$this->FILE_file_queued_handler.','."\n";
+		//$JS.= 'upload_start_handler: '.$this->FILE_upload_start_handler.','."\n";
+		//$JS.= 'debug_handler: '.$this->FILE_debug_handler.','."\n";
 
 		$JS.= '// Button Settings'."\n";
 		$JS.= "\t".'button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,'."\n";
 		$JS.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
 		
 		
-		$JS.= "\t".'button_image_url : "'.$this->SWF_button_image_url.'",'."\n";
-		$JS.= "\t".'button_placeholder_id : "'.$this->SWF_button_placeholder_id.'",'."\n";
-		$JS.= "\t".'button_width: '.$this->SWF_button_width.','."\n";
-		$JS.= "\t".'button_height: '.$this->SWF_button_height.','."\n";
+		$JS.= "\t".'button_image_url : "'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_button_image_url.'",'."\n";
+		$JS.= "\t".'button_placeholder_id : "'.$this->FILE_button_placeholder_id.'",'."\n";
+		$JS.= "\t".'button_width: '.$this->FILE_button_width.','."\n";
+		$JS.= "\t".'button_height: '.$this->FILE_button_height.','."\n";
 		
-		if ($this->SWF_upload_several_files == true)
+		if ($this->FILE_upload_several_files == true)
 			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILES,'."\n";
 		else
 			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILE,'."\n";
 		
-		$JS.= "\t".'button_text : \'<span class="btnText">'.$this->SWF_str_etq_button.' ';
+		$JS.= "\t".'button_text : \'<span class="btnText">'.$this->FILE_str_etq_button.' ';
 
 		/**
 		 * Deprecated
-		if ($this->SWF_src_img_button)
-			$JS.= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->subFolder_inImg.$this->SWF_src_img_button.'" border="0">';
+		if ($this->FILE_src_img_button)
+			$JS.= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
 		*/
+		
 		$maxInfoSize = '';
 		$maxFileSizeUpload = '';
 		   
-	    if ($this->SWF_show_max_upload_size_info_in_button){
-	    	if ($this->SWF_file_size_limit<1024){
-	    		$maxFileSizeUpload = $this->SWF_file_size_limit.' Kb';
-	    	}else if ($this->SWF_file_size_limit<1048576){
-	    	   	$maxFileSizeUpload = number_format($this->SWF_file_size_limit/1024,2).' Mb';
+	    if ($this->FILE_show_max_upload_size_info_in_button){
+	    	if ($this->FILE_size_limit<1024){
+	    		$maxFileSizeUpload = $this->FILE_size_limit.' Kb';
+	    	}else if ($this->FILE_size_limit<1048576){
+	    	   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1024,2).' Mb';
 	    	}else{
-      		   	$maxFileSizeUpload = number_format($this->SWF_file_size_limit/1048576,2).' Gb';
+      		   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1048576,2).' Gb';
 	    	}
 	       	$maxInfoSize = '('.$maxFileSizeUpload.')';
 	    }	   
@@ -2085,21 +2090,21 @@ class myForm {
 		$JS.= "\t".'button_text_left_padding : 0,'."\n"; 		
 		
 		$JS.= '//Flash Settings'."\n";
-		$JS.= "\t".'flash_url: "'.$this->SWF_flash_url.'",'."\n";
-		$JS.= "\t".'flash_width: "'.$this->SWF_flash_width.'",'."\n";
-		$JS.= "\t".'flash_height: "'.$this->SWF_flash_height.'",'."\n";
-		$JS.= "\t".'flash_color: "#'.$this->SWF_flash_color.'",'."\n";
+		$JS.= "\t".'flash_url: "'.$this->FILE_flash_url.'",'."\n";
+		$JS.= "\t".'flash_width: "'.$this->FILE_flash_width.'",'."\n";
+		$JS.= "\t".'flash_height: "'.$this->FILE_flash_height.'",'."\n";
+		$JS.= "\t".'flash_color: "#'.$this->FILE_flash_color.'",'."\n";
 			
 		$JS.= '//Debug Settings'."\n";
-		$JS.= "\t".'debug: '.$this->SWF_debug.''."\n";
+		$JS.= "\t".'debug: '.$this->FILE_debug.''."\n";
 			
-		//$JS.= 'file_post_name : "'.$this->SWF_file_post_name.'",'."\n";
+		//$JS.= 'file_post_name : "'.$this->FILE_file_post_name.'",'."\n";
 		/*
 		 $JS.= 'custom_settings : {'."\n";
-		 $swf_custom_settings_Keys = array_keys($this->SWF_custom_settings);
-		 for ($i=0;$i<count($this->SWF_custom_settings);$i++){
-		 $JS.= ''.$swf_custom_settings_Keys[$i].' : "'.$this->SWF_custom_settings[$swf_custom_settings_Keys[$i]].'"';
-		 if ($i!=(count($this->SWF_custom_settings)-1))
+		 $swf_custom_settings_Keys = array_keys($this->FILE_custom_settings);
+		 for ($i=0;$i<count($this->FILE_custom_settings);$i++){
+		 $JS.= ''.$swf_custom_settings_Keys[$i].' : "'.$this->FILE_custom_settings[$swf_custom_settings_Keys[$i]].'"';
+		 if ($i!=(count($this->FILE_custom_settings)-1))
 		 $JS.= ',';
 		 }
 		 $JS.= '}'."\n";
@@ -2250,22 +2255,22 @@ class myForm {
 					//$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
 					$bufTemp .= '<span id="spanButtonPlaceholder">';
 
-					if ($this->SWF_src_img_button)
-						$bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->SWF_src_img_button.'" border="0">';
+					if ($this->FILE_src_img_button)
+						$bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
 
 					$maxInfoSize = '';   
-	    			if ($this->SWF_show_max_upload_size_info_in_button){
-	    				if ($this->SWF_file_size_limit<1024){
-	           				$maxFileSizeUpload = '('.$this->SWF_file_size_limit.' Kb)';
-	    				}else if ($this->SWF_file_size_limit<1048576){
-	    	   				$maxFileSizeUpload = '('.number_format($this->SWF_file_size_limit/1024,2).' Mb)';
+	    			if ($this->FILE_show_max_upload_size_info_in_button){
+	    				if ($this->FILE_size_limit<1024){
+	           				$maxFileSizeUpload = '('.$this->FILE_size_limit.' Kb)';
+	    				}else if ($this->FILE_size_limit<1048576){
+	    	   				$maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1024,2).' Mb)';
 	    				}else{
-      		   				$maxFileSizeUpload = '('.number_format($this->SWF_file_size_limit/1048576,2).' Gb)';
+      		   				$maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1048576,2).' Gb)';
 	    				}
 	       				$maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
 	    			}	   
 					
-					//$bufTemp .= $this->SWF_str_etq_button.$maxInfoSize.'</button><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
+					//$bufTemp .= $this->FILE_str_etq_button.$maxInfoSize.'</button><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
 					$bufTemp .= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
 					$bufTemp .= '</td>'."\n";
 

@@ -20,8 +20,8 @@
  
  $objOsezno->assign('form_title','Tabla de resgistros del sistema');
  
- $objOsezno->assign('work_area',$modelo->builtList('litas2'));
- //$objOsezno->assign('work_area',$modelo->form2());
+ //$objOsezno->assign('work_area',$modelo->builtList('litas2'));
+ $objOsezno->assign('work_area',$modelo->form2());
   
  //$objOsezno->call_template('multivacaciones/multivacaciones.tpl');
  $objOsezno->call_template('osezno/osezno.tpl');

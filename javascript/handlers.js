@@ -13,68 +13,6 @@ var aux=1;
 var tam;
 var absol;
  
-function createNotificationWindowFiles (strNotification, intSecDuration, strColorBg){
-	var miCapa = document.createElement('DIV');
-	miCapa.id = 'notificationwindow';
-	document.body.appendChild(miCapa);
-	
-	miCapa.innerHTML = strNotification;
-	
-	miCapa.style.color = '#FFFFFF';
-	miCapa.style.background = strColorBg;
-	miCapa.style.position = 'absolute';
-	
-	miCapa.style.zIndex = 2000;
-	miCapa.style.top = -20;
-	miCapa.style.left = 0;
-	miCapa.className = 'notification';
-	
-	mueveNotificationWindow(miCapa.id, -10, 0)
-	
-	setTimeout("mueveNotificationWindowFiles('"+miCapa.id+"', 0,-30)",intSecDuration);
-	
-	setTimeout("destructNotificationWindowFiles('"+miCapa.id+"')",intSecDuration+500);
-}
- 	
-function mueveNotificationWindowFiles(idElement, ini,pos){ 
-	posicion=ini;     
-   	tam=1;  
- 	if ((ini>pos) && ((ini-pos)<10))
- 	 tam=ini-pos;
- 	if ((ini>pos) && ((ini-pos)>10))
- 	 tam=1;
- 	if ((ini<pos) && ((pos-ini)<10))
- 	 tam=ini-pos;
- 	if ((ini<pos) && ((pos-ini)<10))
- 	 tam=1;	  
-	if (ini<pos)
-	 nueva_posicion=posicion+tam					
- 	else if (ini>pos)
- 	 nueva_posicion=posicion-tam						
-	else
-	 nueva_posicion=pos;	  
-	
-	aux=pos;	  
-	if(nueva_posicion!=pos){
-      if(ie) 
-        document.all[idElement].style.top=nueva_posicion;
-      else if(nc) 
-        document.layers[idElement].top=nueva_posicion;
-      else if(n6) 
-        document.getElementById(idElement).style.top=nueva_posicion;          
-      
-      posicion=nueva_posicion;
-      setTimeout("mueveNotificationWindowFiles('"+idElement+"',posicion,aux)",10);
-     }
-}
-
-function destructNotificationWindowFiles (idElement){
-    var el = document.getElementById(idElement);
-    var padre = el.parentNode;
-	padre.removeChild(el);
-}
-
-
 function TamVentanaFunc() {
   var Tamanyo = [0, 0];
   if (typeof window.innerWidth != 'undefined')
@@ -112,21 +50,21 @@ function fileQueueError(file, errorCode, message) {
 		switch (errorCode) {
 		case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
 			this.debug("Error Code: File too big, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: File too big, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: File too big, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
 			this.debug("Error Code: Zero byte file, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: Zero byte file, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: Zero byte file, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
 			this.debug("Error Code: Invalid File Type, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: Invalid File Type, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: Invalid File Type, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		default:
 			if (file !== null) {
 			}
 			this.debug("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		}
 		
@@ -278,27 +216,27 @@ function uploadError (file, errorCode, message) {
 		switch (errorCode) {
 		case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
 			this.debug("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_FAILED:
 			this.debug("Error Code: Upload Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: Upload Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: Upload Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.UPLOAD_ERROR.IO_ERROR:
 			this.debug("Error Code: IO Error, File name: " + file.name + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: IO Error, File name: " + file.name + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: IO Error, File name: " + file.name + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.UPLOAD_ERROR.SECURITY_ERROR:
 			this.debug("Error Code: Security Error, File name: " + file.name + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: Security Error, File name: " + file.name + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: Security Error, File name: " + file.name + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED:
 			this.debug("Error Code: Upload Limit Exceeded, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: Upload Limit Exceeded, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: Upload Limit Exceeded, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.UPLOAD_ERROR.FILE_VALIDATION_FAILED:
 			this.debug("Error Code: File Validation Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: File Validation Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: File Validation Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		case SWFUpload.UPLOAD_ERROR.FILE_CANCELLED:
 			// If there aren't any files left (they were all cancelled) disable the cancel button
@@ -310,7 +248,7 @@ function uploadError (file, errorCode, message) {
 			break;
 		default:
 			this.debug("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
-			createNotificationWindowFiles("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"red");
+			createNotificationWindow("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message,5000,"error");
 			break;
 		}
 		
