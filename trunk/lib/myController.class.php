@@ -840,7 +840,7 @@ class myController extends myControllerExt {
 		}else{
 			$etq = MSGBOX_STR_UNI_BUTTON;
 			
-			$nameButton = 'bmbx_'.strtolower(trim($etq));
+			$primerButton = $nameButton = 'bmbx_'.strtolower(trim($etq));
 			
 			$frm .= $objMyForm->getButton($nameButton,$etq,'closeModalWindow');
 		}
@@ -861,8 +861,7 @@ class myController extends myControllerExt {
 		
         $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',5, $width, $height);
 		
-        if ($primerButton)
-   			$this->response->script('document.message_box_buttons.'.$primerButton.'.focus()');
+        $this->script('document.all.'.$primerButton.'.focus()');
 	}
 
 	/**
