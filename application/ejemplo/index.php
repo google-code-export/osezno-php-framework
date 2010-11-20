@@ -16,14 +16,12 @@
  /**
   * Asignar contenidos a areas de la plantilla
   */ 
- $objOsezno->assign('nombre_pagina','Tabla de registros');
+ $objOsezno->assign('name','Usuarios');
  
- $objOsezno->assign('form_title','Tabla de resgistros del sistema');
+ $objOsezno->assign('desc','Administración de usuarios del sistema');
  
- //$objOsezno->assign('work_area',$modelo->builtList('litas2'));
- $objOsezno->assign('work_area',$modelo->form2());
-  
- //$objOsezno->call_template('multivacaciones/multivacaciones.tpl');
+ $objOsezno->assign('main_area',$modelo->getMainForm());
+ 
  $objOsezno->call_template('osezno/osezno.tpl');
  
 ?> 

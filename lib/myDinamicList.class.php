@@ -731,7 +731,9 @@ class myList  {
 								$numOrder = '&nbsp;';
 							
 								if ($this->firsKey){
+									
 									$htmlGlobal = '{htmlGlobal}';
+									
 									$this->firsKey = false;
 								}else
 									$htmlGlobal = '&nbsp;';	
@@ -772,7 +774,7 @@ class myList  {
 									
 									$bufHead.='<td width="'.$widCol.'" align="center" class="cell_title">';
 									
-									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td>';
+									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td align="center">';
 									
 									$bufHead.='<font class="column_title">'.ucwords($this->returnLabelTitle($key)).'</font>';
 							
@@ -885,7 +887,7 @@ class myList  {
 		
 		$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%"><tr><td align="left" width="33%">';
 		
-		if($this->globalEventOnColumn){
+		if($this->globalEventOnColumn && $this->successFul){
 			
 			$idSelect = 'global_event_'.$this->idList;
 			
@@ -1008,7 +1010,7 @@ class myList  {
 		
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		
-		if ($showQueryForm)
+		if ($showQueryForm && $this->successFul)
 			$this->bufHtml = $this->buildQueryForm().$this->bufHtml;
 		
 		# Registramos las variables que se han usado

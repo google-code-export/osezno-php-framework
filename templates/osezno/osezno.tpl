@@ -38,10 +38,10 @@ body {
     			<td>&nbsp;</td>
   			</tr>
   			<tr>
-    			<td height="32" align="right" valign="bottom" class="titulo_pagina">{nombre_pagina}&nbsp;</td>
+    			<td height="32" align="right" valign="bottom" class="titulo_pagina">{name}&nbsp;</td>
   			</tr>
   			<tr>
-    			<td height="29" class="desc_pagina" align="right" valign="top">{form_title}&nbsp;</td>
+    			<td height="29" class="desc_pagina" align="right" valign="top">{desc}&nbsp;&nbsp;</td>
   			</tr>
 		  </table>
 		  </td>
@@ -50,13 +50,10 @@ body {
           <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
         </tr>
         <tr>
-          <td align="center" bgcolor="#FFFFFF">{work_area}</td>
+          <td align="center" bgcolor="#FFFFFF"><div align="center" name="main_area" id="main_area">{main_area}</div></td>
         </tr>
         <tr>
-          <td><br><div align="center" name="work_area" id="work_area"></div></td>
-        </tr>
-        <tr>
-          <td align="center"><div name="other_area" id="other_area">{other_area}</div></td>
+          <td align="center"><div name="alt_area" id="alt_area">{alt_area}</div></td>
         </tr>		
         <tr>
           <td><img src="../../templates/osezno/foot.jpg" width="770" height="20" /></td>

@@ -15,7 +15,7 @@
 		</tr>
 		<tr height="{height_main}">
 			<td class="mw_center_left">&nbsp;</td>
-			<td class="mw_center_middle" valign="top" align="left"><div id="{div_name}_work" style="WIDTH:{width_area}px;HEIGHT:{height_area}px;overflow: auto;" class="cont_mw">{html_content}</div></td>
+			<td class="mw_center_middle" valign="top" align="center"><div id="{div_name}_work" style="WIDTH:{width_area}px;HEIGHT:{height_area}px;overflow: auto;" class="cont_mw">{html_content}</div></td>
 			<td class="mw_center_right">&nbsp;</td>
 		</tr>
 		<tr height="27">

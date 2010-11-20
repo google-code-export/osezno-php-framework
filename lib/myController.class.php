@@ -1127,16 +1127,20 @@ class myController extends myControllerExt {
 				'OR'=>LABEL_RELATION_OPTOR_ADD_RULE_FORM)
 			).'</td>';
 		
+		
 		foreach ($arFldOnQry as $field){
 			
 			if (!isset($arEvnOnClm[$field])){
 				
-				if (isset($arAlsInQry[$field]))
-					$data = $arAlsInQry[$field];
-				else
-					$data = $field;
+				$etq = $field;
+				
+				if (isset($arAlsInQry[$field])){
 					
-				list($etq,$data_type) = explode('::',$data);
+					$data = $arAlsInQry[$field];
+					
+					list($etq,$data_type) = explode('::',$data);
+				}else
+					$data = $field;
 					
 				$arFields[$field] = $etq;
 			}
