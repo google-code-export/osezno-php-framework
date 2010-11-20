@@ -22,14 +22,7 @@
 
 	public function onClickCalcular ($d){
 		
-		$this->messageBox('Tu edad es '.$d);
-		
-		return $this->response;
-	}
-	
-	public function onClickGetFormAddRecord (){
-		
-		$modelo = new modelo;
+		$this->messageBox('Tu edad es '.$d,'warning');
 		
 		return $this->response;
 	}

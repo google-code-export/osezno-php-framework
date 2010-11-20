@@ -20,7 +20,7 @@
  
  $objOsezno->assign('desc','Administración de usuarios del sistema');
  
- $objOsezno->assign('main_area',$modelo->getMainForm());
+ $objOsezno->assign('on_load','onClickGetListRecords()');
  
  $objOsezno->call_template('osezno/osezno.tpl');
  

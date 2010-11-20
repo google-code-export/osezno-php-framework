@@ -143,6 +143,7 @@
 	font-size: 12px;
 	text-decoration: none;
 	text-align:justify;
+	vertical-align:middle;
 }
 
 /** Estilo de los botones del msg box **/

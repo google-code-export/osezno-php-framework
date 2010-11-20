@@ -30,19 +30,6 @@
  		
  	}
  	
- 	public function getMainForm (){
- 		
- 		$objMyForm = new myForm('main_form');
- 		
- 		$objMyForm->addButton('new_record','Nuevo','onClickGetFormAddRecord','new.gif');
- 		
- 		$objMyForm->addButton('show_records','Registros','onClickGetListRecords','list.gif');
- 		
- 		$objMyForm->width = 400;
- 		
- 		return $objMyForm->getForm();
- 	} 
- 	
  	public function builtList ($idLista){
  		
 		$usuarios = new usuarios;
