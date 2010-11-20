@@ -56,7 +56,7 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 
 	capaModalWindow.style.position = 'absolute';
 	
-	capaModalWindow.style.top = Math.max(arrayScrollPos[1]+(arrayPageSize[3]/2)-(windowHeight/2)-100)+'px';
+	capaModalWindow.style.top = Math.max(arrayScrollPos[1]+(arrayPageSize[3]/2)-(windowHeight/2))+'px';
 	capaModalWindow.style.left = Math.max(((arrayPageSize[0] - windowWindth) / 2),0) + 'px';
 	
 	capaModalWindow.innerHTML = strContent;

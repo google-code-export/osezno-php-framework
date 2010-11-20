@@ -20,107 +20,30 @@
  */	
  class eventos extends myController {
 
- 	public function onSubmitSaveChanges ($form, $id){
- 		
- 		$usuarios = new usuarios;
- 		
-		$usuarios->find($id);
+	public function onClickCalcular ($d){
 		
-		$usuarios->nombre = $form['nombre'];
- 		
- 		$usuarios->edad = $form['edad'];
-		
- 		$usuarios->prof_id = $form['prof_id'];
- 		
- 		if ($usuarios->save()){
- 			$this->notificationWindow('Los cambios fueron guardados',3,'ok');
- 			
- 			$this->closeModalWindow();
- 		}else
- 			$this->messageBox($usuarios->getErrorLog(),'critical');
-		
- 		return $this->response;
- 	}
- 	
- 	public function showRecords_1($ids){
- 		
- 		$this->notificationWindow('Selecciono '.count($ids).' registros para Actualizar',3,'ok');
- 		
- 		return $this->response;
- 	}
- 	
- 	public function showRecords_2($ids){
- 		
- 		$this->notificationWindow('Selecciono '.count($ids).' registros para Modificar',3,'warning');
- 		
- 		return $this->response;
- 	}
- 	
- 	public function showRecords_3($ids){
- 		
- 		$this->notificationWindow('Selecciono '.count($ids).' registros para Eliminar',3,'cancel');
- 		
- 		return $this->response;
- 	}
- 	
- 	public function updateRecord ($id){
-
-		$modelo = new modelo;
-		
-		$this->modalWindow($modelo->formEdit($id),'Editar registro',310,185);
-		
- 		return $this->response;
- 	}
- 	
- 	public function deleteRecord($id){
- 		
- 		$this->notificationWindow('El registro con el ID <b>'.$id.'</b> no sera eliminado',3,'warning');
- 		
- 		return $this->response;
- 	}
- 	
- 	public function buttonOk ($datForm){
- 		
- 		return $this->response;
- 	}
-
-  	public function buttonCancel ($datForm){
- 		
- 		$this->notificationWindow('Cancel',3,'cancel');
- 		
- 		return $this->response;
- 	} 	
- 	
-	public function showGrid ($datForm){
-		
-		$modelo = new modelo;
-		
-		$this->modalWindow($modelo->builtList('lista'),'Listado',800,270,2);
+		$this->messageBox('Tu edad es '.$d);
 		
 		return $this->response;
 	}
- 	
- 	
- 	public function onSubmitAccept(){
- 		
- 		$this->messageBox(NULL,'Hola',array('Acpetar'=>NULL),'ERROR');
- 		
- 		return $this->response;
- 	}
- 	
-
- 	
- 	public function procesarFormulario ($datForm){
- 		
- 		$this->messageBox('Los datos del formulario son:'."\n".var_export($datForm,true),'warning');
- 		
- 		return $this->response;
- 	}
 	
+	public function onClickGetFormAddRecord (){
+		
+		$modelo = new modelo;
+		
+		return $this->response;
+	}
+	
+ 	public function onClickGetListRecords (){
+		
+		$modelo = new modelo;
+		
+		$this->modalWindow($modelo->builtList('usuarios'),'Usuarios del Sistema',725,500);
+		
+		return $this->response;
+	}
  }
 
- 
- 
  
  /**
   * No modificar
