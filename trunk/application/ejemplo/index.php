@@ -24,4 +24,4 @@
  
  $objOsezno->call_template('osezno/osezno.tpl');
  
-?> 
+?>
