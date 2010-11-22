@@ -40,13 +40,10 @@ function responseCallUrl(pageElement) {
 		 output = req.responseText;
 		  
 	  	 document.getElementById(pageElement).innerHTML = output;
-	        	 
 	  }
 	  
 	}
-	   
 }
-
 
 /*
  *  xajax callbacks
@@ -122,7 +119,6 @@ function responseCallUrl(pageElement) {
 		return arrayPageSize;
 	}	
 
-
   xajax.callback.global.onRequest = function() {
 	  
 	 var arrayScrollPos = new Array();
@@ -137,13 +133,13 @@ function responseCallUrl(pageElement) {
      document.body.appendChild(miCapa);
 
  	 if (navigator.appVersion.indexOf("MSIE")!=-1){
-		miCapa.style.filter = "alpha(opacity=10)";
+		miCapa.style.filter = "alpha(opacity=0)";
 	 }else{
-		miCapa.style.opacity = 0.1;
+		miCapa.style.opacity = 0;
 	 }     
      
      miCapa.style.color = '#000000';
-     miCapa.style.backgroundColor = '#000000';
+     miCapa.style.backgroundColor = '#FFFFFF';
      miCapa.style.position = 'absolute';
      
 	 miCapa.style.zIndex = 5000;
@@ -166,7 +162,7 @@ function responseCallUrl(pageElement) {
 	 miImagen.style.width  = '25px';
 	 miImagen.style.height = '40px';
 
-	 miImagen.innerHTML = '<img id="loader_image" src="../../javascript/img/common/loader.gif">';
+	 //miImagen.innerHTML = '<img id="loader_image" src="../../javascript/img/common/loader.gif">';
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {
