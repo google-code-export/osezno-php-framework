@@ -1237,7 +1237,7 @@ class myForm {
 			$keypress = ' onKeyPress="return OnlyNum(event)"';
 
 		if ($CampoFecha){
-			$LauncherCalendar = '<button type="button" class="'.$this->styleClassFields.'" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.getElementById(\''.$name.'\').value, \''.$name.'\', \''.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+			$LauncherCalendar = '<button '.$this->checkIfIsDisabled($name).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.getElementById(\''.$name.'\').value, \''.$name.'\', \''.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
 			$LauncherCalendar .= '<div id="div_trigger_'.$name.'" name="div_trigger_'.$name.'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden"></div>';
 			
 			$Disabled = 'readonly';
@@ -2238,7 +2238,7 @@ class myForm {
 					$LauncherCalendar = '';
 
 					if ($campos_f[7]){
-						$LauncherCalendar = '<button type="button" class="'.$this->styleClassFields.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+						$LauncherCalendar = '<button '.$this->checkIfIsDisabled($name).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
 						$LauncherCalendar .= '<div id="div_trigger_'.$campos_f[2].'" name="div_trigger_'.$campos_f[2].'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden">h</div>';
 						 
 						$Disabled = 'readonly';
