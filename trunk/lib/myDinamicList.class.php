@@ -1126,9 +1126,11 @@ class myList  {
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="10%">&nbsp;</td>';
-		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','MYLIST_addRuleQuery:'.$this->idList,'find.gif').'</td>';
+
+		$objMyForm->addHelp($this->idList.'_apply_rule',LABEL_HELP_APPLY_RULE_FORM);
+
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'MYLIST_applyRuleQuery:'.$this->idList,'ok.gif').'</td>';
 		
 		$objMyForm->addDisabled('help_'.$this->idList);
 		

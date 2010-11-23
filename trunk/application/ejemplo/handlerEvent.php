@@ -22,8 +22,6 @@
 
 	public function onClickCalcular ($d){
 		
-		sleep(5);
-		
 		$this->messageBox('Tu edad es '.$d,'warning');
 		
 		return $this->response;
