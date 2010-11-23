@@ -162,7 +162,7 @@ function responseCallUrl(pageElement) {
 	 miImagen.style.width  = '25px';
 	 miImagen.style.height = '40px';
 
-	 //miImagen.innerHTML = '<img id="loader_image" src="../../javascript/img/common/loader.gif">';
+	 miImagen.innerHTML = '<img id="loader_image" src="../../javascript/img/common/loader.gif">';
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {
@@ -176,7 +176,42 @@ function responseCallUrl(pageElement) {
 	padre.removeChild(el);
   }
 
+  
+  function onResizeScroll (){
 
+	  var arrayPageSize = new Array();
+	  arrayPageSize = getPageSize();
+
+	  var capaBaseId = '';
+	  
+	  for (i=0;i<=countId;i++){
+		  capaBaseId = 'capaBase'+countId;
+		  
+		  document.getElementById(capaBaseId).style.height = arrayPageSize[1];
+		  document.getElementById(capaBaseId).style.width = arrayPageSize[0];
+	  }
+	   
+  }
+  
+  /**
+   * Funcion aplicada cuando el browser es cambiado de tamaño
+   */
+  function Resize (){
+	  
+	  var arrayPageSize = new Array();
+	  arrayPageSize = getPageSize();
+
+	  var capaBaseId = '';
+	  
+	  for (i=0;i<=countId;i++){
+		  capaBaseId = 'capaBase'+countId;
+		  
+		  document.getElementById(capaBaseId).style.height = arrayPageSize[1];
+		  document.getElementById(capaBaseId).style.width = arrayPageSize[0];
+	  }  
+	   
+  }
+  
 /*
  * notificationWindow
  */

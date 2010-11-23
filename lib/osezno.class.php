@@ -74,54 +74,57 @@ class osezno {
   		
   		require $this->folderProject.'lib/plugin/packages/xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
   		
-		$this->arrayAssignAreasHead['xajax_scripts']         
+		$this->arrayAssignAreasHead['xajax_scripts']
 		= $this->objxAjax->getJavascript(URL_JS_XJX);
 		
-		$this->arrayAssignAreasHead['string_favicon']        
+		$this->arrayAssignAreasHead['string_favicon']
 		= '<link rel="shortcut icon" href="'.
 		URL_FAV_ICON.
 		'">';
 		
-		$this->arrayAssignAreasHead['string_js_common']     
+		$this->arrayAssignAreasHead['string_js_common']
 		 = '<script type="text/javascript" src="'.
 		 URL_JS_FCN.
 		 '"></script>';
 		
-		$this->arrayAssignAreasHead['string_js_mw']     
+		$this->arrayAssignAreasHead['string_js_mw']
 		 = '<script type="text/javascript" src="'.
 		 URL_JS_MW.
 		 '"></script>';		 
 		 
-		$this->arrayAssignAreasHead['string_js_swf_hld']     
+		$this->arrayAssignAreasHead['string_js_swf_hld']
 		= '<script type="text/javascript" src="'.
 		URL_SWF_HLD.
 		'"></script>';
 		 
-		$this->arrayAssignAreasHead['string_js_swf_fcn']     
+		$this->arrayAssignAreasHead['string_js_swf_fcn']
 		= '<script type="text/javascript" src="'.
 		URL_SWF_FCN.
 		'"></script>';
 		 
-		$this->arrayAssignAreasHead['string_js_mylist']	 
+		$this->arrayAssignAreasHead['string_js_mylist']
 		= '<script type="text/javascript" src="'.
 		URL_JS_ML.
 		'"></script>';
 		
-		$this->arrayAssignAreasHead['string_js_mycalendar']	 
+		$this->arrayAssignAreasHead['string_js_mycalendar']
 		= '<script type="text/javascript" src="'.
 		URL_JS_MC.
 		'"></script>';
 		
-		$this->arrayAssignAreasBody['string_js_tooltip']     
+		$this->arrayAssignAreasBody['string_js_tooltip']
 		= '<script type="text/javascript" src="'.
 		URL_JS_TT.
 		'"></script>';
 		
-		$this->arrayAssignAreasBody['string_js_balloon']	 
+		$this->arrayAssignAreasBody['string_js_balloon']
 		= '<script type="text/javascript" src="'.
 		URL_JS_TB.
 		'"></script>';
-
+		
+		$this->arrayAssignAreasBody['string_js_resize']
+		= '<script type="text/javascript">window.onresize=Resize;</script>';
+		
 		/**
 		 * Llamar a las diferentes hojas de estilos
 		 */

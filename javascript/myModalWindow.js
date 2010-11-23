@@ -3,10 +3,6 @@ var nc = (document.layers) ? true:false
 var ie = (document.all) ? true:false
 var n6 = (document.getElementById) ? true:false
 
-window.onresize = function() {
-  
-};
-
 function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight){
 	
 	var opacity = intOpacity;
@@ -128,109 +124,105 @@ function curtain (idMw, intWidth, intHeight, cont){
      
 	   setTimeout("curtain('"+idMw+"',"+intWidth+","+intHeight+","+cont+")",temp);
 	}
-}   
- 
+}
 
  /**
   * Drag and drop para modalWindow y messageBox
   */
  var is_ie = navigator.appName == 'Microsoft Internet Explorer';
- 	var is_op = navigator.appName == 'Opera' ? true : false;
- 	var is_ns = !is_ie && !is_op ? true : false;
+ var is_op = navigator.appName == 'Opera' ? true : false;
+ var is_ns = !is_ie && !is_op ? true : false;
  	
- 	function js_drag(e)
- 	{
- 		var sufijo = 'modalWindow';
- 		var capas;
- 		var idcapa;
- 		var lb_widgets = 0;
- 		capas = document.getElementsByTagName("div");
+ function js_drag(e){
+ 		
+	var sufijo = 'modalWindow';
+ 	var capas;
+ 	var idcapa;
+ 	var lb_widgets = 0;
+ 	capas = document.getElementsByTagName("div");
  		 
- 	    for (iCapas=0;iCapas<capas.length;iCapas++){
-   			idcapa = capas[iCapas].getAttribute('id');
-   			if (idcapa){
- 	  			if (idcapa.substring(0,sufijo.length) == sufijo)
-   					lb_widgets++;
-   			}
-   		} 
+ 	for (iCapas=0;iCapas<capas.length;iCapas++){
+   		idcapa = capas[iCapas].getAttribute('id');
+   		if (idcapa){
+ 	  		if (idcapa.substring(0,sufijo.length) == sufijo)
+   				lb_widgets++;
+   		}
+   	} 
  		
- 		var elemento =  sufijo+lb_widgets;
+ 	var elemento =  sufijo+lb_widgets;
    	
- 		e||window.event;
- 		var e = e;
- 		var Obj = new Object(); 
- 		var body  = document.getElementsByTagName('body')[0];
- 		Obj.zI = 0;
- 		Obj.Elemento = typeof(elemento) == 'object' ? elemento : document.getElementById(elemento);
- 		js_position = function(ly,x,y)
- 		{
- 			x = is_ie||is_op ? e.clientX + document.documentElement.scrollLeft + body.scrollLeft : e.clientX + window.scrollX;
- 			y = is_ie||is_op ? e.clientY + document.documentElement.scrollTop + body.scrollTop : e.clientY + window.scrollY;
- 			Obj.startX=x;
- 			Obj.startY=y;
- 			Obj.startL=parseInt(Obj.Elemento.style.left,10);
- 			Obj.startT=parseInt(Obj.Elemento.style.top,10);
- 			Obj.startL=isNaN(Obj.startL) ? 0 : Obj.startL;
- 			Obj.startT=isNaN(Obj.startT) ? 0 : Obj.startT;
- 			//Obj.Elemento.style.zIndex = ++Obj.zI;
- 			js_addEvent(document,'mousemove',startdrag);
- 			js_addEvent(document,'mouseup',enddrag);
- 			js_addEvent(document,'keypress',enddrag);
- 			if(is_ie){    e.cancelBubble = true;    e.returnValue = false;    } else
- 			{
- 				e.preventDefault();
- 			}
- 		};
- 		
- 		startdrag = function(e)
- 		{
- 			var x, y;
- 			e||event;
- 			x = is_ie||is_op ? e.clientX + document.documentElement.scrollLeft + body.scrollLeft : e.clientX + window.scrollX;
- 			y = is_ie||is_op ? e.clientY + document.documentElement.scrollTop + body.scrollTop : e.clientY + window.scrollY;
- 			ILeft = ( Obj.startL + x - parseInt(Obj.startX) );
- 			ITop = ( Obj.startT + y - parseInt(Obj.startY) );
- 			js_moveTo(Obj.Elemento,ILeft,ITop);
- 			
- 			if (navigator.appVersion.indexOf("MSIE")!=-1){
- 			   Obj.Elemento.style.filter = "alpha(opacity=" + 50 + ")";
- 			}else{
- 			   Obj.Elemento.style.opacity = ( 50 / 100 );
- 			}
- 			
- 			if(is_ie){   
- 			    e.cancelBubble = true; e.returnValue = false;    
- 			}else{
- 				e.preventDefault();
- 			}
- 		};
- 		
- 		enddrag = function (e)
- 		{
- 			js_detEvent(document,'mousemove',startdrag);
- 			js_detEvent(document,'mouseup',enddrag);
- 			
- 			if (navigator.appVersion.indexOf("MSIE")!=-1){
- 			   Obj.Elemento.style.filter = "alpha(opacity=" + 100 + ")";
- 			}else{
- 			   Obj.Elemento.style.opacity = ( 100 / 100 );
- 			}
- 			
- 		};
- 		
- 		js_position(Obj.Elemento,e.clientX,e.clientY);
- 		
- 	};
+ 	e||window.event;
+ 	var e = e;
+ 	var Obj = new Object(); 
+ 	var body  = document.getElementsByTagName('body')[0];
+ 	Obj.zI = 0;
+ 	Obj.Elemento = typeof(elemento) == 'object' ? elemento : document.getElementById(elemento);
  	
- 	js_moveTo = function(element,Left,Top)
- 	{
+ 	js_position = function(ly,x,y){
+ 		x = is_ie||is_op ? e.clientX + document.documentElement.scrollLeft + body.scrollLeft : e.clientX + window.scrollX;
+ 		y = is_ie||is_op ? e.clientY + document.documentElement.scrollTop + body.scrollTop : e.clientY + window.scrollY;
+ 		Obj.startX=x;
+ 		Obj.startY=y;
+ 		Obj.startL=parseInt(Obj.Elemento.style.left,10);
+ 		Obj.startT=parseInt(Obj.Elemento.style.top,10);
+ 		Obj.startL=isNaN(Obj.startL) ? 0 : Obj.startL;
+ 		Obj.startT=isNaN(Obj.startT) ? 0 : Obj.startT;
+ 		//Obj.Elemento.style.zIndex = ++Obj.zI;
+ 		js_addEvent(document,'mousemove',startdrag);
+ 		js_addEvent(document,'mouseup',enddrag);
+ 		js_addEvent(document,'keypress',enddrag);
+ 		if(is_ie){    
+ 			e.cancelBubble = true;
+ 			e.returnValue = false;    
+ 		}else{
+ 			e.preventDefault();
+ 		}
+ 	};
+ 		
+ 	startdrag = function(e){
+ 		var x, y;
+ 		e||event;
+ 		x = is_ie||is_op ? e.clientX + document.documentElement.scrollLeft + body.scrollLeft : e.clientX + window.scrollX;
+ 		y = is_ie||is_op ? e.clientY + document.documentElement.scrollTop + body.scrollTop : e.clientY + window.scrollY;
+ 		ILeft = ( Obj.startL + x - parseInt(Obj.startX) );
+ 		ITop = ( Obj.startT + y - parseInt(Obj.startY) );
+ 		js_moveTo(Obj.Elemento,ILeft,ITop);
+ 			
+ 		if (navigator.appVersion.indexOf("MSIE")!=-1){
+ 		    Obj.Elemento.style.filter = "alpha(opacity=" + 50 + ")";
+ 		}else{
+ 			Obj.Elemento.style.opacity = ( 50 / 100 );
+ 		}
+ 			
+ 		if(is_ie){
+ 		    e.cancelBubble = true; e.returnValue = false;    
+ 		}else{
+ 			e.preventDefault();
+ 		}
+ 	};
+ 		
+ 	enddrag = function (e){
+ 		js_detEvent(document,'mousemove',startdrag);
+ 		js_detEvent(document,'mouseup',enddrag);
+ 			
+ 		if (navigator.appVersion.indexOf("MSIE")!=-1){
+ 		   Obj.Elemento.style.filter = "alpha(opacity=" + 100 + ")";
+ 		}else{
+ 		   Obj.Elemento.style.opacity = ( 100 / 100 );
+ 		}
+ 		
+ 		onResizeScroll();
+ 	};
+ 		
+ 	js_position(Obj.Elemento,e.clientX,e.clientY);
+ };
+ 	
+ 	js_moveTo = function(element,Left,Top){
  		element.style.left = Left + "px";
  		element.style.top  = Top + "px";
- 		
  	};
  	
- 	js_addEvent = function(Layer,eventype,func)
- 	{
+ 	js_addEvent = function(Layer,eventype,func){
  		if( is_ns )
  			Layer.addEventListener( eventype, func, true );
  		else if( is_ie )
@@ -239,8 +231,7 @@ function curtain (idMw, intWidth, intHeight, cont){
  			Layer[ "on" + eventype ] = func;
  	};
  	
- 	js_detEvent = function(Layer,typef,func)
- 	{
+ 	js_detEvent = function(Layer,typef,func){
  		if(is_ie)
  			Layer.detachEvent("on" + typef, func);
  		else if(is_ns)

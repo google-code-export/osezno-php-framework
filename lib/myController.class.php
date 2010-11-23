@@ -1174,14 +1174,10 @@ class myController extends myControllerExt {
 		
 		$html .= '<td width="18%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).'</td>';
 		
-		$objMyForm->addHelp($idList.'_apply_rule_'.$numRuleQuery,LABEL_HELP_APPLY_RULE_FORM);
-		
 		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
 		
 		$html .= '<td align="center">'.
 		
-			$objMyForm->getButton($idList.'_apply_rule_'.$numRuleQuery,NULL,'MYLIST_applyRuleQuery:'.$idList.':'.$numRuleQuery,'ok.gif').
-			
 			$objMyForm->getButton($idList.'_remove_rule_'.$numRuleQuery,NULL,'MYLIST_removeRuleQuery:'.$idList.':'.$numRuleQuery,'remove.gif').
 			
 		'</td>';
@@ -1243,10 +1239,11 @@ class myController extends myControllerExt {
 	 * 
 	 * @param $datForm	Datos de form
 	 * @param $idList	Id de la lista
-	 * @param $numRule	Id de la regla
 	 * @return string
 	 */
-	public function MYLIST_applyRuleQuery ($datForm, $idList, $numRule){
+	public function MYLIST_applyRuleQuery ($datForm, $idList){
+		
+		$numRule = 0;
 		
 		$arRel = array(
 		
