@@ -40,15 +40,25 @@
  		
  		$objList->widthList = 700;
  		
- 		$objList->setAliasInQuery('edad','Eda');
+ 		$objList->setAliasInQuery('edad','Calcular Edad');
+ 		
+ 		$objList->setAliasInQuery('usuario_id','Ver');
  		
  		$objList->setEventOnColumn('edad','onClickCalcular');
+ 		
+ 		$objList->setEventOnColumn('usuario_id','onClickMostrarDatos');
  		
  		$objList->setExportData();
  		
  		$objList->setUseOrderMethodOnColumn('nombre');
  		
- 		$objList->setWidthColumn('usuario_id',70);
+ 		$objList->setUseOrderMethodOnColumn('prof_id');
+ 		
+ 		$objList->setWidthColumn('usuario_id',100);
+ 		
+ 		$objList->setWidthColumn('edad',140);
+ 		
+ 		$objList->setGlobalEventOnColumn('usuario_id',array('onSelectDeleteRows'=>'Eliminar','onSelectUpdateRows'=>'Actualizar'));
  		
  		return $objList->getList(true);
  	}
