@@ -1102,8 +1102,22 @@ class myController extends myControllerExt {
 			$usepg = 't';
 		}
 		
-		$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg;
-		$this->redirect($url);
+		if ($format=='pdf'){
+			
+			$error = '';
+			if (!class_exists('PDFlib')) {
+				$error = MSG_ERROR_PDF_NOLOAD;
+				
+				$this->messageBox($error,'critical');
+			}
+			
+		}
+		
+		if (!$error){
+			
+			$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg;
+			$this->redirect($url);
+		}
 		
 		return $this->response;
 	}

@@ -90,28 +90,38 @@ class myExportData {
 		
 		$out = '';
  		
- 		$out .= '<table border="1">';
+		switch ($this->format){
+			case 'pdf':
 				
-		foreach ($this->resSql as $row){
+			# TODO: Pdf file
+    
+			break;
+			default:
+				
+				$out .= '<table border="1">';
+				
+				foreach ($this->resSql as $row){
  			
- 			$out .= '<tr>';
+ 					$out .= '<tr>';
  			
- 			foreach ($row as $key => $val){
+ 					foreach ($row as $key => $val){
 
- 				$out .= '<td>';
+ 						$out .= '<td>';
  				
- 				$out .= $val;
+ 						$out .= $val;
  			
- 				$out .= '</td>';
- 			}
+ 						$out .= '</td>';
+ 					}
  			
- 			$out .= '</tr>';
- 		}
+ 				$out .= '</tr>';
+ 				}
  		
- 		$out .= '</table>';
+ 				$out .= '</table>';
+ 				
+			break;
+		}
  		
  		$this->resText = $out;
- 		
 	}
 	
 	/**
