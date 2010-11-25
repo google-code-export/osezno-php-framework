@@ -31,7 +31,9 @@
 		
 		$modelo = new modelo;
 		
-		$this->modalWindow($modelo->builtList('usuarios'),'Usuarios del Sistema',725,500);
+		//$this->modalWindow($modelo->builtList('usuarios'),'Usuarios del Sistema',725,500);
+		
+		$this->assign('work_area','innerHTML',$modelo->builtList('usuarios'));
 		
 		return $this->response;
 	}

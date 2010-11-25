@@ -1059,7 +1059,7 @@ class myList  {
 		
 		$arFields = array();
 		
-		$objMyForm = new myForm($this->idList.'QueryForm');
+		$objMyForm = new myForm($nomForm = $this->idList.'QueryForm');
 
 		$objMyForm->width = '98%';
 		
