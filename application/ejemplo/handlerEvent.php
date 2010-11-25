@@ -27,18 +27,36 @@
 		return $this->response;
 	}
 	
- 	public function onClickGetListRecords (){
+	public function onSelectDeleteRows ($array){
 		
-		$modelo = new modelo;
-		
-		//$this->modalWindow($modelo->builtList('usuarios'),'Usuarios del Sistema',725,500);
-		
-		$this->assign('work_area','innerHTML',$modelo->builtList('usuarios'));
+		$this->notificationWindow('Eliminados '.count($array).' registros.',5,'error');
 		
 		return $this->response;
 	}
- }
+	
+	public function onSelectUpdateRows ($array){
+		
+		$this->notificationWindow('Actualizados '.count($array).' registros.',5,'ok');
+		
+		return $this->response;
+	}
 
+	public function onClickMostrarDatos($usuario_id){
+		
+		$usuarios = new usuarios;
+		
+		$profesion = new profesion;
+		
+		$usuarios->find($usuario_id);
+		
+		$profesion->find($usuarios->prof_id);
+		
+		$this->messageBox('Nombre:'.$usuarios->nombre."\n".'Edad:'.$usuarios->edad."\n".'Profesion:'.$profesion->profesion);
+		
+		return $this->response;
+	}
+	
+ }
  
  /**
   * No modificar

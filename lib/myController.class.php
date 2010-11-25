@@ -117,6 +117,33 @@ class myController extends myControllerExt {
      */
 	private $idLastMWopen = '';
 	
+	/**
+	 * Relacion en filtros sql
+	 * @var unknown_type
+	 */
+	private $myDinamicListRel = array(		
+	
+			'like'=>'LIKE',
+	
+			'in'=>'IN',
+			
+			'greater_than'=>'>',
+		
+			'greater_equal_than'=>'>=',
+		
+			'equal'=>'=',
+
+			'different'=>'<>',
+	
+			'less_than'=>'<',
+		
+			'less_equal_than'=>'<=',
+			
+			'notin'=>'NOT IN',
+	
+			'notlike'=>'NOT LIKE'
+			
+		);
 	
 	/**
  	 * Define el alto de la caja de
@@ -1151,24 +1178,9 @@ class myController extends myControllerExt {
 			
 		$spaCha = '&nbsp;';
 		
-		$arCompare = array(
-		
-			'equal'=>'=',
-		
-			'greater_than'=>'>',
-		
-			'greater_equal_than'=>'>=',
-		
-			'less_than'=>'<',
-		
-			'less_equal_than'=>'<=',
-			
-			'different'=>'<>'
-		);		
-		
 		$objMyForm->addHelp('relation_'.$numRuleQuery,LABEL_RELATION_FIELD_ADD_RULE_FORM);
 		
-		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$arCompare).'</td>';
+		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$this->myDinamicListRel).'</td>';
 		
 		$objMyForm->addHelp('value_'.$numRuleQuery,LABEL_FIELD_VALUE_ADD_RULE_FORM);
 		
@@ -1251,21 +1263,6 @@ class myController extends myControllerExt {
 		
 		$someNullValues = false;
 		
-		$arRel = array(
-		
-			'equal'=>'=',
-		
-			'greater_than'=>'>',
-		
-			'greater_equal_than'=>'>=',
-		
-			'less_than'=>'<',
-		
-			'less_equal_than'=>'<=',
-			
-			'different'=>'<>'
-		);
-		
 		$sqlRule = '';
 					
 		$myList = new myList($idList);
@@ -1282,10 +1279,35 @@ class myController extends myControllerExt {
 					
 					$someValues = true;
 					
-					$sqlRule .= $datForm['logic_'.$i].' '.$datForm['field_'.$i].' '.$arRel[$datForm['relation_'.$i]].' ';
-					
-					if (!is_numeric($val))
+					if (in_array($datForm['relation_'.$i],array('in','notin'))){
+						
+						$nVal = '(';
+						
+							$vals = explode(',',$val);
+							
+							foreach ($vals as $nVals){
+								
+								if (!is_numeric($nVals))
+									$nVals = '\''.$nVals.'\'';
+								
+								$nVal .= $nVals.',';
+							}
+						
+						$val = substr($nVal,0,-1).')';
+						
+					}else if (in_array($datForm['relation_'.$i],array('like','notlike'))){
+						
 						$val = '\''.$val.'\'';
+						
+					}else{
+						
+						if (!is_numeric($val))
+							$val = '\''.$val.'\'';
+							
+					}
+					
+					$sqlRule .= $datForm['logic_'.$i].' '.$datForm['field_'.$i].' '.$this->myDinamicListRel[$datForm['relation_'.$i]].' ';
+					
 			
 					$sqlRule .= $val;
 					
@@ -1326,7 +1348,7 @@ class myController extends myControllerExt {
 			}else{
 				$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');
 
-				$myList->unSetVar('arrayWhereRules',$numRule);
+				$myList->unSetVar('arrayWhereRules',$i);
 			}
 		
 			$js = 'clearRowsMarked();'."\n";
@@ -1337,55 +1359,6 @@ class myController extends myControllerExt {
 			
 			$this->notificationWindow(MSG_APPLY_RULES_ALL_VALUES_NULL,3,'warning');
 		}
-					
-		
-		/*
-		 = 0;
-		
-		$val = trim($datForm['value_'.$numRule]);
-		
-		if ($val){
-			
-			$myList = new myList($idList);
-			
-			$sqlRule .= $datForm['logic_'.$numRule].' '.$datForm['field_'.$numRule].' '.$arRel[$datForm['relation_'.$numRule]].' ';
-			
-			if (!is_numeric($val))
-				$val = '\''.$val.'\'';
-			
-			$sqlRule .= $val; 	
-				
-			$myList->setVar('arrayWhereRules',$sqlRule,$numRule);
-			
-			$myList->setVar('maxNumPage',0);
-			
-			$myList->setVar('currentPage',0);
-			
-			$this->assign($idList,'innerHTML',$myList->getList());
-		
-			if ($myList->isSuccessfulProcess()){
-			
-				$this->assign('status_'.$idList.'_'.$numRule,'className','rule_apply');
-				
-				if ($myList->getNumRowsAffected())
-				
-					$this->notificationWindow(MSG_QUERY_FORM_OK,3,'ok');
-				else
-					$this->notificationWindow(MSG_QUERY_FORM_NOROWS,3,'info');
-					
-			}else{
-				$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');
-
-				$myList->unSetVar('arrayWhereRules',$numRule);
-			}
-		
-			$js = 'clearRowsMarked();'."\n";
-		
-			$this->script($js);			
-			
-		}else
-			$this->notificationWindow(MSG_APPLY_RULE_VALUE_NULL,3,'error');
-		*/
 		
 		return $this->response;
 	}
