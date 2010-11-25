@@ -20,8 +20,10 @@
  
  $objOsezno->assign('desc','Administración de usuarios del sistema');
  
- $objOsezno->assign('on_load','onClickGetListRecords()');
+ //$objOsezno->assign('on_load','onClickGetListRecords()');
+ $modelo = new modelo;
+ $objOsezno->assign('main_area',$modelo->builtList('usuarios'));
  
- $objOsezno->call_template('osezno/osezno.tpl');
+ $objOsezno->call_template('multivacaciones/multivacaciones.tpl');
  
 ?>

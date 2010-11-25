@@ -29,7 +29,7 @@
 	define('LABEL_RELATION_OPTOR_ADD_RULE_FORM','O');
 	define('LABEL_FIELD_LIST_ADD_RULE_FORM','Campo');
 	define('LABEL_FIELD_VALUE_ADD_RULE_FORM','Valor');
-	define('LABEL_HELP_APPLY_RULE_FORM','Aplicar');
+	define('LABEL_HELP_APPLY_RULE_FORM','Aplicar filtro');
 	define('LABEL_HELP_REM_RULE_FORM','Remover');
 	define('LABEL_USELIMIT_RULE_FORM','Limitar');
 	define('LABEL_FIRST_OPT_SELECT_GLOBAL_ACTION','Seleccione...');
@@ -37,7 +37,7 @@
 	
 	
 	define('LABEL_HELP_SELECT_GLOBAL_ACTION','Seleccione una opci&oacute;n');
-	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Filtrar registros.');
+	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Nuevo filtro');
 	define('LABEL_HELP_EXCEL_BUTTON_FORM','Exportar a Excel.');
 	define('LABEL_HELP_HTML_BUTTON_FORM','Exportar a Html.');
 	define('LABEL_HELP_PDF_BUTTON_FORM','Exportar a Pdf.');
@@ -46,7 +46,7 @@
 	
 	
 	
-	define('MSG_APPLY_RULE_VALUE_NULL','El valor es requerido.');
+	define('MSG_APPLY_RULES_ALL_VALUES_NULL','Debe escribir al menos un valor.');
 	define('MSG_RESTART_QUERY_LIST','La consulta ha sido reiniciada');
 	define('MSG_QUERY_FORM_OK','Filtro aplicado.');
 	define('MSG_QUERY_FORM_BAD','Error al ejecutar la consulta');

@@ -27,6 +27,14 @@
 	vertical-align: middle;
 }
 
+.caja_required {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color:#FFD7D7;
+	vertical-align: middle;
+}
+
 .boton {
 	height:28px;
 	padding-bottom:0px;

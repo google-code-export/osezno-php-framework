@@ -1207,28 +1207,32 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_removeRuleQuery ($datForm, $idList, $numRule){
 
+		$myList = new myList($idList);
+		
 		$idForm = $idList.'QueryForm';
+		
+		$arWhRls = $myList->getVar('arrayWhereRules');
 		
 		$this->remove('rule_gp_'.$idList.'_'.$numRule);
 
 		$this->script("blockFirstElementForm('".$idForm."')");
 		
-		/**
-		 * Cuando se elimina el filtro se vuelve a ejecutar la consulta
-		 */
-		$myList = new myList($idList);
-		
-		$myList->setVar('maxNumPage',0);
-		
-		$myList->setVar('currentPage',0);
-		
-		$myList->unSetVar('arrayWhereRules',$numRule);
+		if (isset($arWhRls[$numRule])){
 			
-		$this->assign($idList,'innerHTML',$myList->getList());
+			$myList->unSetVar('arrayWhereRules',$numRule);
+
+			$myList->setVar('maxNumPage',0);
 		
-		$js = 'clearRowsMarked();'."\n";
+			$myList->setVar('currentPage',0);
+
+			#Cuando se elimina el filtro se vuelve a ejecutar la consulta
+			
+			$this->assign($idList,'innerHTML',$myList->getList());
+			
+			$js = 'clearRowsMarked();'."\n";
 		
-		$this->script($js);	
+			$this->script($js);
+		}
 
 		return $this->response;
 	}
@@ -1243,7 +1247,9 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_applyRuleQuery ($datForm, $idList){
 		
-		$numRule = 0;
+		$someValues = false;
+		
+		$someNullValues = false;
 		
 		$arRel = array(
 		
@@ -1258,9 +1264,83 @@ class myController extends myControllerExt {
 			'less_equal_than'=>'<=',
 			
 			'different'=>'<>'
-		);	
+		);
 		
 		$sqlRule = '';
+					
+		$myList = new myList($idList);
+		
+		$numRules = $myList->getVar('numRuleQuery');
+		
+		for ($i=1;$i<=$numRules;$i++){
+			
+			if (isset($datForm['field_'.$i])){
+
+				$val = trim($datForm['value_'.$i]);
+				 
+				if ($val){
+					
+					$someValues = true;
+					
+					$sqlRule .= $datForm['logic_'.$i].' '.$datForm['field_'.$i].' '.$arRel[$datForm['relation_'.$i]].' ';
+					
+					if (!is_numeric($val))
+						$val = '\''.$val.'\'';
+			
+					$sqlRule .= $val;
+					
+					$myList->setVar('arrayWhereRules',$sqlRule,$i);
+					
+					$this->assign('value_'.$i,'className','caja');
+					
+					$this->assign('status_'.$idList.'_'.$i,'className','rule_apply');
+					
+				}else{
+					
+					$someNullValues = true;
+					
+					$this->assign('value_'.$i,'className','caja_required');
+				}
+				
+			}
+			
+		}
+		
+		if ($someValues){
+			
+			$myList->setVar('maxNumPage',0);
+			
+			$myList->setVar('currentPage',0);
+		
+			$this->assign($idList,'innerHTML',$myList->getList());
+		
+			if ($myList->isSuccessfulProcess()){
+			
+				if ($myList->getNumRowsAffected()){
+				
+					$this->notificationWindow(MSG_QUERY_FORM_OK,3,'ok');
+					
+			}else
+				$this->notificationWindow(MSG_QUERY_FORM_NOROWS,3,'info');
+					
+			}else{
+				$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');
+
+				$myList->unSetVar('arrayWhereRules',$numRule);
+			}
+		
+			$js = 'clearRowsMarked();'."\n";
+		
+			$this->script($js);
+			
+		}else{
+			
+			$this->notificationWindow(MSG_APPLY_RULES_ALL_VALUES_NULL,3,'warning');
+		}
+					
+		
+		/*
+		 = 0;
 		
 		$val = trim($datForm['value_'.$numRule]);
 		
@@ -1297,7 +1377,7 @@ class myController extends myControllerExt {
 				$this->notificationWindow(MSG_QUERY_FORM_BAD,3,'error');
 
 				$myList->unSetVar('arrayWhereRules',$numRule);
-			}	
+			}
 		
 			$js = 'clearRowsMarked();'."\n";
 		
@@ -1305,6 +1385,7 @@ class myController extends myControllerExt {
 			
 		}else
 			$this->notificationWindow(MSG_APPLY_RULE_VALUE_NULL,3,'error');
+		*/
 		
 		return $this->response;
 	}
