@@ -24,6 +24,6 @@
  
  $objOsezno->assign('main_area',$modelo->builtList('usuarios'));
  
- $objOsezno->call_template('osezno/osezno.tpl');
+ $objOsezno->call_template('multivacaciones/multivacaciones.tpl');
  
 ?>

@@ -48,14 +48,21 @@ class myExportData {
 	private $resText = '';
 	
 	/**
+	 * Id de la lista dinamica asociada si existe
+	 * @var string
+	 */
+	private $idList = '';
+	
+	/**
 	 * Exportar datos desde una consulta.
 	 * 
 	 * @param $sql	Consulta SQL
 	 * @param $format	Formato de archivo
 	 * @param $filePath	Guardar en archivo fisico
+	 * @param $id_list	Nombre de lista dinamica
 	 * @return string
 	 */
-	public function __construct($sql, $format = 'html', $filePath = ''){
+	public function __construct($sql, $format = 'html', $filePath = '', $idList = ''){
 		
 		$success = true; 
 		
@@ -77,6 +84,9 @@ class myExportData {
 			$this->error = MYEXPORT_ERROR_INVALID_FORMAT;
 		}
 		
+		if ($idList)
+			$this->idList = $idList;
+		
 		return $success;
 	}
 	
@@ -86,37 +96,162 @@ class myExportData {
 	 */
 	private function buildResult (){
 		
-		//TODO: Casos de uso, pdf
-		
 		$out = '';
  		
+		$arWidth = array();
+		
+		$arAli = array();
+		
+		$width = '';
+		
+		if ($this->idList){
+			
+			$myList = new myList($this->idList);
+		
+			$arWidth = $myList->getVar('arrayWidthsCols');
+		
+			$widthList = $myList->getVar('widthList');
+			
+			$arAli = $myList->getVar('arrayAliasSetInQuery');
+		}
+		
 		switch ($this->format){
+			
 			case 'pdf':
 				
-			# TODO: Pdf file
-    
+				$swTl = 0;
+				
+				$pdf = new FPDF();
+				
+				$pdf->SetFont('Arial','',8);
+				
+				$pdf->SetLineWidth(.1);
+				
+				$pdf->AddPage();
+				
+				foreach ($this->resSql as $row){
+					
+					if (!$swTl){
+						
+						foreach ($row as $key => $val){
+							$widthCol = 40;
+						
+							if (isset($arWidth[$key])){
+								$widthCol = $arWidth[$key];
+							}
+
+							if (isset($arAli[$key]))
+								list($key,$data_type) = explode('::',$arAli[$key]);
+							
+							$pdf->Cell(($widthCol/6),3,ucwords(strtolower($key)),1,0,'C',false);
+						}
+
+						$pdf->Ln();
+						
+						$swTl = 1;
+					}
+					
+					foreach ($row as $key => $val){
+						
+						$widthCol = 40;
+						
+						if (isset($arWidth[$key])){
+							$widthCol = $arWidth[$key];
+						}
+						
+						$align = 'L';
+						if (is_numeric($val))
+							$align = 'R';
+						
+						$pdf->Cell(($widthCol/6),3,$val,1,0,$align);
+						
+					}
+					$pdf->Ln();
+				}
+				
+				$out .= $pdf->Output('','S');
+			 	
 			break;
 			default:
 				
-				$out .= '<table border="1">';
+				$swTl = 0;
 				
+				if ($this->format == 'html'){
+					
+					$out .= '<html>';
+					
+					$out .= '<head><style type="text/css">td{font-family: Arial, Helvetica, sans-serif;font-size: 13px;}</style></head>';
+					
+					$out .= '<body>';
+					
+					$out .= '<table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#000000">';
+					
+					$out .= '<table border="0" cellspacing="1" cellpadding="0">';
+				}else
+					$out .= '<table border="1">';
+				
+				$bg = '';
+				
+				if ($this->format == 'html')
+					$bg = 'bgcolor="#FFFFFF"';					
+					
 				foreach ($this->resSql as $row){
  			
+					if (!$swTl){
+						
+						$out .= '<tr>';
+ 			
+ 						foreach ($row as $key => $val){
+
+ 							$widthCol = '';
+						
+							if (isset($arWidth[$key])){
+								$widthCol = 'width="'.$arWidth[$key].'"';
+							}
+						
+ 							$out .= '<td '.$widthCol.' align="center" '.$bg.'>';
+
+ 							if (isset($arAli[$key]))
+								list($key,$data_type) = explode('::',$arAli[$key]);
+ 							
+ 							$out .= ucwords(strtolower($key));
+ 			
+ 							$out .= '</td>';
+ 						}
+ 			
+ 						$out .= '</tr>';
+						
+						$swTl = 1;
+					}
+					
  					$out .= '<tr>';
  			
  					foreach ($row as $key => $val){
 
- 						$out .= '<td>';
+ 						$align = 'left';
+						if (is_numeric($val))
+							$align = 'right';
+ 						
+ 						
+ 						$out .= '<td '.$bg.' align="'.$align.'">';
  				
  						$out .= $val;
  			
  						$out .= '</td>';
  					}
  			
- 				$out .= '</tr>';
+ 					$out .= '</tr>';
+ 					
+ 					
  				}
  		
  				$out .= '</table>';
+ 				
+ 				if ($this->format == 'html'){
+					$out .= '</td></tr></table>';
+					
+					$out .= '</body></html>';
+ 				}
  				
 			break;
 		}

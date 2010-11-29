@@ -171,6 +171,8 @@
   
   require_once $GLOBALS['folderProject'].'lib/plugin/packages/xajax/xajax_core/xajax.inc.php';
   
+  require $GLOBALS['folderProject'].'lib/plugin/packages/fpdf/fpdf.php';
+  
   require $GLOBALS['folderProject'].'lib/osezno.class.php';
   
   require $GLOBALS['folderProject'].'lib/myForm.class.php';

@@ -73,7 +73,7 @@
  		
  		$xlsOut = $htmlOut = $pdfOut = '';
  		
- 		$export = new myExportData($sql,$_GET['format']);
+ 		$export = new myExportData($sql,$_GET['format'],'',$idList);
  		
 		switch ($_GET['format']){
 			
@@ -102,7 +102,7 @@
 		}
  		
 		header ($content_type);
- 		header ('Content-Disposition: attachment; filename='.$_GET['id_list'].'_'.date('Ymd_His').'.'.$_GET['format']);
+ 		header ('Content-Disposition: attachment; filename="'.$_GET['id_list'].'_'.date('Ymd_His').'.'.$_GET['format'].'"');
  		header ('Content-Length: '.strlen($xlsOut.$htmlOut.$pdfOut));
  		
  		if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")){
@@ -111,6 +111,7 @@
  			
     		header('Cache-control: private, must-revalidate');
  		}
+ 		
  		
  		echo $xlsOut.$htmlOut.$pdfOut;
 	}
