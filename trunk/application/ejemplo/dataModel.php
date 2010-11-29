@@ -54,9 +54,13 @@
  		
  		$objList->setUseOrderMethodOnColumn('prof_id');
  		
- 		$objList->setWidthColumn('usuario_id',100);
+ 		$objList->setWidthColumn('usuario_id',80);
  		
- 		$objList->setWidthColumn('edad',140);
+ 		$objList->setWidthColumn('nombre',410);
+ 		
+ 		$objList->setWidthColumn('edad',130);
+ 		
+ 		$objList->setWidthColumn('prof_id',80);
  		
  		$objList->setGlobalEventOnColumn('usuario_id',array('onSelectDeleteRows'=>'Eliminar','onSelectUpdateRows'=>'Actualizar'));
  		

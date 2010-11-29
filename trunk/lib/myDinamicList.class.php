@@ -665,7 +665,8 @@ class myList  {
 				foreach ($this->arrayWidthsCols as $col => $wid)
 					$totWid -= $wid;
 			
-				$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
+				if ($totWid)	
+					$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
 		
 				$sw = false;
 		

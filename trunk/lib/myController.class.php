@@ -1102,9 +1102,10 @@ class myController extends myControllerExt {
 			$usepg = 't';
 		}
 		
+		$error = '';
+		
 		if ($format=='pdf'){
 			
-			$error = '';
 			if (!class_exists('PDFlib')) {
 				$error = MSG_ERROR_PDF_NOLOAD;
 				
