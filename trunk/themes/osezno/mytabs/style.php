@@ -21,7 +21,7 @@
   padding:0 0 0 9px;
   }
 
-#div_tab a {
+#div_tab span {
   float:left;
   display:block;
   background:url("<?php echo $_GET['path_img']; ?>right.gif") no-repeat right top;
@@ -31,16 +31,17 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   color:#FFFFFF;
+  cursor:pointer;
   }
 
 /* Commented Backslash Hack
    hides rule from IE5-Mac \*/
 
-#div_tab a {float:none;}
+#div_tab span {float:none;}
 
 /* End IE5-Mac hack */
 
-#div_tab a:hover {
+#div_tab span:hover {
   color:#000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -50,7 +51,7 @@
   background-image:url("<?php echo $_GET['path_img']; ?>left_on.gif");
 }
 
-#div_tab .current a {
+#div_tab .current span {
   background-image:url("<?php echo $_GET['path_img']; ?>right_on.gif");
   color:#333;
   padding-bottom:5px;

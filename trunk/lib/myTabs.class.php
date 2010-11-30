@@ -52,7 +52,7 @@ class myTabs{
 		
 		foreach ($this->arrayTabs as $etqTab => $urlTab){
 			
-			$html .= '<li id="tab'.$i.'"><a href="javascript:void(makeactive(\'tab'.$i.'\','.$couAr.',\''.$urlTab.'\'))">'.$etqTab.'</a></li>';
+			$html .= '<li id="tab'.$i.'"><span onclick="makeactive(\'tab'.$i.'\','.$couAr.',\''.$urlTab.'\')">'.$etqTab.'</span></li>';
 			
 			$i++;
 		}
