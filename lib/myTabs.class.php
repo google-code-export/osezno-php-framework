@@ -38,9 +38,10 @@ class myTabs{
 	 * Obtiene el HTML de que genera las Tabs en la pagina
 	 * o directamente en la plantilla
 	 *
+	 * @param string $tabDefa Tab por defecto
 	 * @return string
 	 */
-	public function getTabsHtml(){
+	public function getTabsHtml($tabDefa = ''){
 		
 		$html = '';
 
@@ -50,14 +51,22 @@ class myTabs{
 		
 		$couAr = count($this->arrayTabs);
 		
+		$idTabDef = '';
+		
 		foreach ($this->arrayTabs as $etqTab => $urlTab){
 			
 			$html .= '<li id="tab'.$i.'"><span onclick="makeactive(\'tab'.$i.'\','.$couAr.',\''.$urlTab.'\')">'.$etqTab.'</span></li>';
+			
+			if ($tabDefa == $etqTab)
+				$idTabDef = $i;
 			
 			$i++;
 		}
 		
 		$html .= '</ul></div></td></tr><tr><td><div id="content_tab"></div></td></tr></table>';
+		
+		if ($tabDefa)
+			$html .= '<script type="text/javascript">makeactive(\'tab'.$idTabDef.'\','.($i-1).',\''.$this->arrayTabs[$tabDefa].'\')</script>';
 		
 		return $html;
 	}

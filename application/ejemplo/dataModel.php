@@ -37,8 +37,6 @@
  	
  	public function getIndexForm (){
  		
- 		sleep(10);
- 		
  		$myForm = new myForm('index_form');
  		
  		$myForm->addText('Nombre usuario:','nom');
@@ -58,7 +56,7 @@
  		
  		$myTabs->addTab('Agregar','indexForm.php');
  		
- 		return $myTabs->getTabsHtml();
+ 		return $myTabs->getTabsHtml('Registros');
  	}
  	
 
