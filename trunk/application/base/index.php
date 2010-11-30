@@ -17,12 +17,18 @@
  /**
   * Asignar contenidos a areas de la plantilla
   */ 
- $objOsezno->assign('Area de plantilla','Contenido en area');
+ $objOsezno->assign('name','');
+ 
+ $objOsezno->assign('desc','');
+ 
+ $objOsezno->assign('main_area','');
+ 
+ $objOsezno->assign('alt_area','');
  
   
  /**
   * Mostrar la plantilla
   */
- $objOsezno->call_template('basic/basic.tpl');
+ $objOsezno->call_template('osezno/osezno.tpl');
  
 ?>

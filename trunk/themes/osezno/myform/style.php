@@ -1,6 +1,9 @@
 @CHARSET "ISO-8859-1";
 
 .formulario {
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+    background-clip: border-box;
 	background-color:#FFFFFF;
 	font-style: normal;
 	text-decoration: none;

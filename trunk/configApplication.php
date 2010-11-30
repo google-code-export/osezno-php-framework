@@ -30,7 +30,7 @@
    * Tema actual de estilos
    * @var string
    */
-  $theme = 'default';
+  $theme = 'osezno';
 
   /**
    * Nombre de la carpeta donde se llaman todas las plantillas,
@@ -252,7 +252,12 @@
    * Ruta tipo url donde se encuentra el js de myList
    */
   define ('URL_JS_ML',       $http.$httpHost.'/javascript/myList.js',true);
-  
+
+  /**
+   * Ruta tipo url donde se encuentra el js de myTabs
+   */
+  define ('URL_JS_MT',       $http.$httpHost.'/javascript/myTabs.js',true);
+    
   /**
    * Ruta tipo url donde se encuentra el js de myCalendar
    */

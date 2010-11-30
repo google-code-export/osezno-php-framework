@@ -18,7 +18,7 @@ class myList  {
 	 * Anchura de la tabla que contiene la lista
 	 * @var integer
 	 */
-	public $widthList = 1000;
+	public $width = 1000;
 	
 	/**
 	 * Formato aplicado a la anchura de la tabla que 
@@ -90,7 +90,7 @@ class myList  {
 	 * @var array
 	 */
 	private $validNomKeys = array (
-		'widthList',
+		'width',
 		'formatWidthList',
 		'borderCellSize',
 		'useDistBetwRows',
@@ -286,6 +286,8 @@ class myList  {
 		$this->objForm = new myForm;
 		
 		$this->objForm->setParamTypeOnEvent('field');
+		
+		$this->themeName = THEME_NAME;
 	}
 	
 	/**
@@ -646,7 +648,7 @@ class myList  {
 		 */
 		$widByCol = 0;
 		
-		$totWid = $this->widthList;
+		$totWid = $this->width;
 		
 		$return = $bufHead = $cadParam = '';
 		
@@ -660,7 +662,7 @@ class myList  {
 			
 			if ($this->numAffectedRows){
 				
-				$buf .=  "\n".'<table border="0" width="'.$this->widthList.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
+				$buf .=  "\n".'<table border="0" width="'.$this->width.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 			
 				foreach ($this->arrayWidthsCols as $col => $wid)
 					$totWid -= $wid;
@@ -854,10 +856,12 @@ class myList  {
 								$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.ucwords($this->returnLabelTitle($key)).'</a>';
 							
 							}else
-								$buf.=htmlentities($val);	
+								$buf.=$val.'';	
 					
 							if ($firsVal && $this->globalEventOnColumn){
+								
 					   			$buf.='</td><td width="20px">&nbsp;</td></tr></table>';
+					   			
 					   			$firsVal = false;	
 					   		}
 							
@@ -884,7 +888,7 @@ class myList  {
 			
 		}	
 
-		$buf .= '<div  style="width:'.$this->widthList.''.$this->formatWidthList.'" id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
+		$buf .= '<div  style="width:'.$this->width.''.$this->formatWidthList.'" id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
 		$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%"><tr><td align="left" width="33%">';
 		
