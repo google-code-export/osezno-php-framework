@@ -66,7 +66,7 @@ class myTabs{
 		$html .= '</ul></div></td></tr><tr><td><div id="content_tab"></div></td></tr></table>';
 		
 		if ($tabDefa)
-			$html .= '<script type="text/javascript">makeactive(\'tab'.$idTabDef.'\','.($i-1).',\''.$this->arrayTabs[$tabDefa].'\')</script>';
+			$html .= '<script type="text/javascript">makeactive(\'tab'.$idTabDef.'\','.($i).',\''.$this->arrayTabs[$tabDefa].'\')</script>';
 		
 		return $html;
 	}
