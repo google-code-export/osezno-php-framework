@@ -16,12 +16,8 @@
  /**
   * Asignar contenidos a areas de la plantilla
   */ 
- $objOsezno->assign('name','Usuarios');
+ $objOsezno->assign('content',$modelo->getIndexForm());
  
- $objOsezno->assign('desc','Administración de usuarios del sistema');
- 
- $objOsezno->assign('main_area',$modelo->getTabs());
- 
- $objOsezno->call_template('multivacaciones/multivacaciones.tpl');
+ $objOsezno->call_template('simple/simple.tpl');
  
 ?>

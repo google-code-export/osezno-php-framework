@@ -1,0 +1,137 @@
+var req = new Array();
+
+var addInfo = 'Please wait...';
+
+var reloadInfo = 'Slow process ';
+
+var idInterval = new Array();
+
+var idFuncion = new Array();
+
+var counter = new Array();
+
+
+function cancelQuery (tab){
+	
+	document.getElementById('counter_info_'+tab).innerHTML = 'Cancelando...';
+	
+	req[tab].abort();
+	
+}
+
+function contador (tab){
+
+	counter[tab] += 1;
+	
+	if (document.getElementById('counter_info_'+tab)){
+	
+		if (counter[tab]>5){
+			document.getElementById('counter_info_'+tab).style.color = 'red';
+			document.getElementById('counter_info_'+tab).innerHTML = reloadInfo+'(<a href="javascript:void('+idFuncion[tab]+'('+tab+'))">Reload</a>) (<a href="javascript:void(cancelQuery(\''+tab+'\'))">Abort</a>)'+' (<b>'+counter[tab]+' seg</b>) ';
+		}else	
+			document.getElementById('counter_info_'+tab).innerHTML = addInfo+' ('+counter[tab]+' seg) ';
+	}
+	
+}
+
+function detenerInterval (tab){
+	
+	clearInterval(idInterval[tab]);
+	
+	counter[tab] = 0;
+	
+}
+
+function callAHAH(url, pageElement, callMessage, errorMessage, tab, funcion) {
+
+	if (idInterval[tab])
+		detenerInterval(tab);
+	
+	counter[tab] = 0;
+	
+	idFuncion[tab] = funcion;
+	
+	idInterval[tab] = setInterval("contador('"+tab+"')",1000);
+
+	callMessage = '<div style="font-family: arial;color: gray;font-size: 12;" id="counter_info_'+tab+'" name="counter_info_'+tab+'">'+addInfo+'</div>';
+	
+	document.getElementById(pageElement).innerHTML = callMessage;
+		
+     try {
+    	 req[tab] = new XMLHttpRequest(); /* e.g. Firefox */
+     } catch(e) {
+       try {
+    	   req[tab] = new ActiveXObject("Msxml2.XMLHTTP");  /* some versions IE */
+       } catch (e) {
+         try {
+        	 req[tab] = new ActiveXObject("Microsoft.XMLHTTP");  /* some versions IE */
+         } catch (E) {
+        	 req[tab] = false;
+         } 
+       } 
+     }
+
+     req[tab].onreadystatechange = function() {responseAHAH(pageElement, errorMessage, tab);};
+     
+     req[tab].open("GET",url,true);
+     
+     req[tab].send(null);
+     
+  }
+
+
+
+function responseAHAH(pageElement, errorMessage, tab) {
+	
+   var output = '';
+   
+   if(req[tab].readyState == 4) {
+	   
+	   detenerInterval(tab);
+	   
+      if(req[tab].status == 200) {
+         
+    	 output = req[tab].responseText;
+         
+         document.getElementById(pageElement).innerHTML = output;
+         
+         
+         if (navigator.appVersion.indexOf("MSIE")!=-1){
+        	 
+         }else{
+        	 
+        		 var el = document.getElementById('imagen_notificacion_1');
+        	 
+        		 if(el){
+        			 var padre = el.parentNode;
+        			 padre.removeChild(el);
+        		 }
+         }
+                  
+         
+         } else {
+        	 document.getElementById(pageElement).innerHTML = errorMessage+"\n"+output;
+        	 
+         }
+      }
+   
+   
+  }
+
+/**
+ * Activa una pestaña
+ * @param tabActive	Id de la pestaña
+ * @param countTabs	Numero de pestañas 
+ * @param urlActive	Url a la que apunta la pestaña
+ * @return
+ */
+function makeactive(tabActive, countTabs, urlActive) { 
+		
+		for (var i=0;i<countTabs;i++){
+			document.getElementById("tab"+i).className = '';
+		}
+
+		document.getElementById(tabActive).className = 'current'; 
+		
+		callAHAH(urlActive, 'content_tab', '<font face="arial" size="2" color="green">Cargando informaci&oacute;n...</font>', '<font face="arial" size="2" color="red">ERROR al obtener respuesta de la petici&oacute;n</font>','tab'+i, 'makeactive'); 
+}

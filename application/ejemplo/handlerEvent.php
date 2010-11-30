@@ -20,38 +20,9 @@
  */	
  class eventos extends myController {
 
-	public function onClickCalcular ($d){
+	public function onClickSave ($data){
 		
-		$this->messageBox('Tu edad es '.$d,'warning');
-		
-		return $this->response;
-	}
-	
-	public function onSelectDeleteRows ($array){
-		
-		$this->notificationWindow('Eliminados '.count($array).' registros.',5,'error');
-		
-		return $this->response;
-	}
-	
-	public function onSelectUpdateRows ($array){
-		
-		$this->notificationWindow('Actualizados '.count($array).' registros.',5,'ok');
-		
-		return $this->response;
-	}
-
-	public function onClickMostrarDatos($usuario_id){
-		
-		$usuarios = new usuarios;
-		
-		$profesion = new profesion;
-		
-		$usuarios->find($usuario_id);
-		
-		$profesion->find($usuarios->prof_id);
-		
-		$this->messageBox('Nombre:'.$usuarios->nombre."\n".'Edad:'.$usuarios->edad."\n".'Profesion:'.$profesion->profesion);
+		$this->notificationWindow('Datos salvados...');
 		
 		return $this->response;
 	}

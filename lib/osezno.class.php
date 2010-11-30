@@ -107,6 +107,11 @@ class osezno {
 		URL_JS_ML.
 		'"></script>';
 		
+		$this->arrayAssignAreasHead['string_js_mytabs']
+		= '<script type="text/javascript" src="'.
+		URL_JS_MT.
+		'"></script>';
+		
 		$this->arrayAssignAreasHead['string_js_mycalendar']
 		= '<script type="text/javascript" src="'.
 		URL_JS_MC.
@@ -152,6 +157,10 @@ class osezno {
 		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/notification_window/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/notification_window/'.
 		'" rel="stylesheet" type="text/css" />';
 
+		$this->arrayAssignAreasHead['string_css_tabs']     
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mytabs/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mytabs/'.
+		'" rel="stylesheet" type="text/css" />';
+		
 		$cssErrors = 
 '.error {
 	border-radius: 10px 10px 10px 10px;

@@ -22,81 +22,47 @@
   */
  class modelo {
  	
- 	/**
- 	 * Constructor de la clase
- 	 *
- 	 */
- 	public function __construct (){
+ 	public function getIndexGrid (){
  		
+ 		$myList = new myList('usuarios', 'select * from usuarios');
+ 		
+ 		$myList->setUseOrderMethodOnColumn('nombre');
+ 		
+ 		$myList->setPagination(true,20);
+ 		
+ 		$myList->width = 700; 
+ 		
+ 		return $myList->getList(false);
  	}
  	
- 	public function builtList ($idLista){
+ 	public function getIndexForm (){
  		
-		$usuarios = new usuarios;
-		
- 		$objList = new myList($idLista,$usuarios);
+ 		sleep(10);
  		
- 		$objList->setPagination(true,15);
+ 		$myForm = new myForm('index_form');
  		
- 		$objList->widthList = 700;
+ 		$myForm->addText('Nombre usuario:','nom');
  		
- 		$objList->setAliasInQuery('edad','Calcular Edad');
+ 		$myForm->addText('Apellido usuario:','ape');
  		
- 		$objList->setAliasInQuery('usuario_id','Ver');
+ 		$myForm->addButton('bt1','Salvar','onClickSave');
  		
- 		$objList->setEventOnColumn('edad','onClickCalcular');
- 		
- 		$objList->setEventOnColumn('usuario_id','onClickMostrarDatos');
- 		
- 		$objList->setExportData();
- 		
- 		$objList->setUseOrderMethodOnColumn('nombre');
- 		
- 		$objList->setUseOrderMethodOnColumn('prof_id');
- 		
- 		$objList->setWidthColumn('usuario_id',80);
- 		
- 		$objList->setWidthColumn('nombre',410);
- 		
- 		$objList->setWidthColumn('edad',130);
- 		
- 		$objList->setWidthColumn('prof_id',80);
- 		
- 		$objList->setGlobalEventOnColumn('usuario_id',array('onSelectDeleteRows'=>'Eliminar','onSelectUpdateRows'=>'Actualizar'));
- 		
- 		return $objList->getList(true);
+ 		return $myForm->getForm(1);
  	}
  	
- 	/**
- 	 * Destructor de la clase
- 	 *
- 	 */
- 	public function __destruct (){
+ 	public function getTabs (){
  		
+ 		$myTabs = new myTabs;
+ 		
+ 		$myTabs->addTab('Registros','indexGrid.php');
+ 		
+ 		$myTabs->addTab('Agregar','indexForm.php');
+ 		
+ 		return $myTabs->getTabsHtml();
  	}
+ 	
 
  }
-
- class usuarios extends myActiveRecord {
- 	
- 	public $usuario_id;
- 	
- 	public $nombre;
- 	
- 	public $edad;
- 	
- 	public $prof_id;
- 	
- }
- 
- class profesion extends myActiveRecord {
- 	
- 	public $prof_id;
- 	
- 	public $profesion;
- 	
- }
- 
  
  $modelo = new modelo;
  
