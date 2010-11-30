@@ -2,7 +2,7 @@ var req = new Array();
 
 var addInfo = 'Please wait...';
 
-var reloadInfo = 'Slow process ';
+var reloadInfo = 'Slow process, you can ';
 
 var idInterval = new Array();
 
@@ -12,8 +12,6 @@ var counter = new Array();
 
 
 function cancelQuery (tab){
-	
-	document.getElementById('counter_info_'+tab).innerHTML = 'Cancelando...';
 	
 	req[tab].abort();
 	
@@ -25,11 +23,13 @@ function contador (tab){
 	
 	if (document.getElementById('counter_info_'+tab)){
 	
-		if (counter[tab]>5){
+		if (counter[tab]>3){
+			
 			document.getElementById('counter_info_'+tab).style.color = 'red';
-			document.getElementById('counter_info_'+tab).innerHTML = reloadInfo+'(<a href="javascript:void('+idFuncion[tab]+'('+tab+'))">Reload</a>) (<a href="javascript:void(cancelQuery(\''+tab+'\'))">Abort</a>)'+' (<b>'+counter[tab]+' seg</b>) ';
+			
+			document.getElementById('counter_info_'+tab).innerHTML = reloadInfo+'<a href="javascript:void(cancelQuery(\''+tab+'\'))"><font face="arial" size="2" color="blue">abort</font></a> this process'+' (<b>'+counter[tab]+' seconds elapsed</b>) ';
 		}else	
-			document.getElementById('counter_info_'+tab).innerHTML = addInfo+' ('+counter[tab]+' seg) ';
+			document.getElementById('counter_info_'+tab).innerHTML = addInfo+' ('+counter[tab]+' seconds elapsed) ';
 	}
 	
 }
@@ -133,5 +133,5 @@ function makeactive(tabActive, countTabs, urlActive) {
 
 		document.getElementById(tabActive).className = 'current'; 
 		
-		callAHAH(urlActive, 'content_tab', '<font face="arial" size="2" color="green">Cargando informaci&oacute;n...</font>', '<font face="arial" size="2" color="red">ERROR al obtener respuesta de la petici&oacute;n</font>','tab'+i, 'makeactive'); 
+		callAHAH(urlActive, 'content_tab', '', '','tab'+i, 'makeactive'); 
 }
