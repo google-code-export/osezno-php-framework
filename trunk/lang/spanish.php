@@ -50,8 +50,6 @@
 	define('MSG_QUERY_FORM_NULL','El valor es requerido.');
 	define('MSG_QUERY_FORM_NOROWS','No hay registros que mostrar.');
 	
-	define('MSG_ERROR_PDF_NOLOAD','El modulo PDF no esta cargado o no existe.');
-	
 	define('MSG_ERROR_IDLIST_NOTDEFINED','La lista din&aacute;mica no esta definida.');
 	
 	/**

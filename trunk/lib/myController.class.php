@@ -645,12 +645,12 @@ class myController extends myControllerExt {
  	* requeridos.
  	* 
  	* @param string: Nombre de la ventana.
+ 	* @param string: Url que desea abrir. 
  	* @param int: Ancho de la ventana.
  	* @param int: Alto de la ventana.
- 	* @param string: Url que desea abrir.
  	* @param mixed: Arreglo de datos con llaves y valores que pueden pasados como parametros o variables GET.    
  	*/
-	public function window ($strNomWindow, $widthWindow, $heightWindow, $strUrl, $mixedGetParams){
+	public function window ($strNomWindow, $strUrl, $widthWindow = '400', $heightWindow = '300', $mixedGetParams = ''){
 		if (is_array($mixedGetParams)){
 				   
 		    $countGet = count($mixedGetParams);	
@@ -996,6 +996,8 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_help ($datForm){
 		
+		$this->window('help_list','../mylistHelp.php',350,630);
+		
 		return $this->response;
 	}
 	
@@ -1134,16 +1136,6 @@ class myController extends myControllerExt {
 		}
 		
 		$error = '';
-		
-		if ($format=='pdf'){
-			
-			if (!class_exists('PDFlib')) {
-				$error = MSG_ERROR_PDF_NOLOAD;
-				
-				$this->messageBox($error,'critical');
-			}
-			
-		}
 		
 		if (!$error){
 			

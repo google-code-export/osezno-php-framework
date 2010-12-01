@@ -37,14 +37,15 @@
  		
  		$usuarios->edad = $datos['edad'];
  		
- 		if ($usuarios->save())
- 			$this->notificationWindow('Datos salvados');
- 		else
- 			$this->messageBox($usuarios->getErrorLog());	
- 		
- 		$this->closeModalWindow();	
+ 		if ($usuarios->save()){
  			
- 		$this->MYLIST_reload('usuarios');	
+ 			$this->notificationWindow('Datos salvados');
+
+ 			$this->closeModalWindow();	
+ 			
+ 			$this->MYLIST_reload('usuarios');
+ 		}else
+ 			$this->messageBox($usuarios->getErrorLog());
  		
  		return $this->response;
  	}
@@ -60,7 +61,7 @@
  	
 	public function onClickSave ($data){
 		
-		if ($this->MYFORM_validate($data,array('nom','ape'))){
+		if ($this->MYFORM_validate($data,array('nom','ape','sex'))){
 
 			$this->notificationWindow('Campos diligenciados',3,'ok');
 		}else{

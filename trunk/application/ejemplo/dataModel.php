@@ -51,7 +51,7 @@
  		
  		$myList->setUseOrderMethodOnColumn('prof_id');
  		
- 		$myList->setPagination(true,20);
+ 		$myList->setPagination(true,10);
  		
  		$myList->width = 700; 
  		
@@ -77,6 +77,8 @@
  		$myForm->addText('Nombre usuario:','nom');
  		
  		$myForm->addText('Apellido usuario:','ape');
+ 		
+ 		$myForm->addSelect('Sexo:','sex',array('M'=>'Masculino','F'=>'Femenino'));
  		
  		$myForm->addButton('bt1','Salvar','onClickSave');
  		

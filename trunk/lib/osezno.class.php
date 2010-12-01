@@ -31,6 +31,13 @@ class osezno {
   	private $pathFolderTemplates;
   	
   	/**
+  	 * Areas definidas y asignadas dentro de la plantilla
+  	 *  
+  	 * @var mixed
+  	 */
+  	private $arrayAssignAreas = array ();
+  	
+  	/**
   	 * Arreglo con los areas del head que se van a autocompletar
   	 *
   	 * @var mixed
@@ -296,16 +303,21 @@ class osezno {
   		if ($linkTpl){
 
   			$contHTML = fread($linkTpl,filesize($fileName));
+
+  			$newContent = $contHTML; 
   			
   			fclose($linkTpl);
   		
   			/**
   		 	 * Areas del usuario
   		 	 */
-  			$arrayKeys = array_keys($this->arrayAssignAreas);
+  			if (count($this->arrayAssignAreas)){
+  				
+  				$arrayKeys = array_keys($this->arrayAssignAreas);
   			
-  			$newContent = str_ireplace ( $arrayKeys, $this->arrayAssignAreas, $contHTML);
-
+  				$newContent = str_ireplace ( $arrayKeys, $this->arrayAssignAreas, $contHTML);
+  			}
+  			
   			/**
   		 	 * Areas de OseznO
   		 	 */
@@ -320,7 +332,7 @@ class osezno {
   			die ($this->arrayAssignAreasHead['css_errors'].$msgError);
   		}
   		
-  		echo $newContent;
+  		echo $newContent;;
   	}
   	
   }
