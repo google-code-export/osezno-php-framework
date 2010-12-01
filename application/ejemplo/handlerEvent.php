@@ -44,7 +44,7 @@
  		
  		$this->closeModalWindow();	
  			
- 		$this->MYLIST_reload('usuarioss');	
+ 		$this->MYLIST_reload('usuarios');	
  		
  		return $this->response;
  	}
@@ -60,7 +60,12 @@
  	
 	public function onClickSave ($data){
 		
-		$this->notificationWindow('Datos salvados...');
+		if ($this->MYFORM_validate($data,array('nom','ape'))){
+
+			$this->notificationWindow('Campos diligenciados',3,'ok');
+		}else{
+			$this->notificationWindow('Campos sin dilegenciar',3,'error');
+		}
 		
 		return $this->response;
 	}

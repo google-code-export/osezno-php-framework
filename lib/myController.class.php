@@ -959,6 +959,37 @@ class myController extends myControllerExt {
 	}
 	
 	/**
+	 * Evento que valida el contenido de un formulario 
+	 * 
+	 * @param $datForm	Datos del formulario
+	 * @param $requiredFields	Campos requeridos
+	 * @return string
+	 */
+	public function MYFORM_validate($datForm,$requiredFields){
+		
+		$valid = true;
+		
+		if (is_array($requiredFields)){
+			
+			foreach ($requiredFields as $field){
+				
+				if (!$datForm[$field]){
+					
+					$this->assign($field,'className','caja_required');
+
+					$valid = false;
+				}else{
+					
+					$this->assign($field,'className','caja');
+				}	
+				
+			}
+		}
+		
+		return $valid;
+	}
+	
+	/**
 	 * Nivel de ayuda listas dinamicas
 	 * @param $datForm
 	 * @return unknown_type
@@ -1398,7 +1429,6 @@ class myController extends myControllerExt {
 		}else
 			$this->messageBox(MSG_ERROR_IDLIST_NOTDEFINED,'critical');	
 		
-		return $this->response;
 	}
 	
 }
