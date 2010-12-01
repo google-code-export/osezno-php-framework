@@ -52,6 +52,8 @@
 	
 	define('MSG_ERROR_PDF_NOLOAD','El modulo PDF no esta cargado o no existe.');
 	
+	define('MSG_ERROR_IDLIST_NOTDEFINED','La lista din&aacute;mica no esta definida.');
+	
 	/**
 	 * Uso y manejo de palntillas
 	 */	

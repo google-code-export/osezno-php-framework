@@ -22,6 +22,6 @@
  
  $objOsezno->assign('main_area',$modelo->getTabs());
  
- $objOsezno->call_template('osezno/osezno.tpl');
+ $objOsezno->call_template('multivacaciones/multivacaciones.tpl');
  
 ?>
