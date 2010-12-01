@@ -1137,8 +1137,6 @@ class myList  {
 
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'MYLIST_applyRuleQuery:'.$this->idList,'ok.gif').'</td>';
 		
-		$objMyForm->addDisabled('help_'.$this->idList);
-		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','MYLIST_help','help.gif').'</td>';
 		
 		$htble .= '</tr></table>';
