@@ -1378,6 +1378,29 @@ class myController extends myControllerExt {
 		return $this->response;
 	}
 	
+	/**
+	 * Refresca la informacion contenida de una lista dinamica
+	 * 
+	 * @param $idList
+	 * @return unknown_type
+	 */
+	public function MYLIST_reload($idList){
+		
+		if (isset($_SESSION['prdLst'][$idList])){
+			
+			$myList = new myList($idList);
+		
+			$this->assign($idList,'innerHTML',$myList->getList());
+		
+			$js = 'clearRowsMarked();'."\n";
+		
+			$this->script($js);
+		}else
+			$this->messageBox(MSG_ERROR_IDLIST_NOTDEFINED,'critical');	
+		
+		return $this->response;
+	}
+	
 }
 
 ?>
