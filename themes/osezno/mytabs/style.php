@@ -25,7 +25,7 @@
   float:left;
   display:block;
   background:url("<?php echo $_GET['path_img']; ?>right.gif") no-repeat right top;
-  padding:2px 15px 5px 6px;
+  padding:4px 15px 5px 6px;
   text-decoration:none;
   font-weight:normal;
   font-family: Arial, Helvetica, sans-serif;
@@ -42,7 +42,7 @@
 /* End IE5-Mac hack */
 
 #div_tab span:hover {
-  color:#000;
+  color:#D9FFAE;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
 }
