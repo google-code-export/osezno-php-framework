@@ -20,32 +20,72 @@
  */	
  class eventos extends myController {
 
+ 	public function globalModifyAccept($data){
+ 		
+		$this->alert(var_export($data,true)); 		
+ 		
+ 		return $this->response;
+ 	}
+ 	
  	public function globalModify($data){
  		
- 		$this->alert(var_export($data,true));
+		$this->messageBox('Desea eliminar estos registros?','warning',array('Si'=>'globalModifyAccept','No'=>NULL)); 		
  		
  		return $this->response;
  	}
  	
  	public function saveUser ($datos, $id){
  		
- 		$usuarios = new usuarios;
+ 		if ($this->MYFORM_validate($datos,array('nombre','apellido','edad','prof_id'))){
+			$usuarios = new usuarios;
  		
- 		$usuarios->find($id);
+ 			if ($id)
+ 				$usuarios->find($id);
  		
- 		$usuarios->nombre = $datos['nombre'];
+ 			$usuarios->nombre = $datos['nombre'];
  		
- 		$usuarios->edad = $datos['edad'];
+ 			$usuarios->apellido = $datos['apellido'];
  		
- 		if ($usuarios->save()){
+ 			$usuarios->edad = $datos['edad'];
+ 		
+ 			$usuarios->prof_id = $datos['prof_id'];
+ 		
+ 			if ($usuarios->save()){
  			
- 			$this->notificationWindow('Datos salvados');
+ 				$this->notificationWindow('Los cambios fueron guardados '.$usuarios->getLastInsertId(),3,'ok');
 
- 			$this->closeModalWindow();	
+ 				$this->closeModalWindow();	
  			
- 			$this->MYLIST_reload('usuarios');
- 		}else
- 			$this->messageBox($usuarios->getErrorLog());
+ 				if ($id)
+ 					$this->MYLIST_reload('usuarios');
+ 				
+ 			}else
+ 				$this->messageBox($usuarios->getErrorLog());
+ 			
+ 		}else{
+ 			$this->notificationWindow('Existen campos sin diligenciar.',3,'error');
+ 		}
+ 		
+ 		return $this->response;
+ 	}
+ 	
+ 	public function cancelAdd ($dat,$from){
+ 		
+ 		$this->notificationWindow('Acci&oacute;n cancelada.',3,'cancel');
+ 		
+ 		if ($from == 'grid')
+ 			$this->closeModalWindow();
+ 		else{
+ 			
+ 			$this->clear('nombre','value');
+ 			
+ 			$this->clear('apellido','value');
+ 			
+ 			$this->clear('prof_id','value');
+ 			
+ 			$this->clear('edad','value');
+ 			
+ 		}	
  		
  		return $this->response;
  	}
@@ -54,7 +94,7 @@
 
  		$modelo = new modelo;
  		
- 		$this->modalWindow($modelo->formEdit($id),'Editar',250,200);
+ 		$this->modalWindow($modelo->formEdit($id,'grid'),'Editar',450,160);
  		
  		return $this->response;
  	}

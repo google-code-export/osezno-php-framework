@@ -853,23 +853,28 @@ class myController extends myControllerExt {
 		  
 			foreach($mixedButtons as $etq=>$action){
 
-		  	if (!$action)
-		  	   $action = 'closeModalWindow()';
+		  		if (!$action)
+		  			$action = 'closeModalWindow';
+		  	
+		  		$nameButton = 'bmbx_'.strtolower(trim($etq)); 
 
-		  	$nameButton = 'bmbx_'.strtolower(trim($etq)); 
+		  		$objMyForm->addEventJs($nameButton,'onclick',$action);
+		  	
+		  		$frm .= $objMyForm->getButton($nameButton,$etq);	
+		  		$frm .= '&nbsp;&nbsp;&nbsp;';
 				  	
-		  	$frm .= $objMyForm->getButton($nameButton,$etq,$action);	
-		  	$frm .= '&nbsp;&nbsp;&nbsp;';
-				  	
-		 	if (!$primerButton)
-		  	   $primerButton = $nameButton;
+		 		if (!$primerButton)
+		  	   		$primerButton = $nameButton;
 		  }
+		  
 		}else{
 			$etq = MSGBOX_STR_UNI_BUTTON;
 			
 			$primerButton = $nameButton = 'bmbx_'.strtolower(trim($etq));
 			
-			$frm .= $objMyForm->getButton($nameButton,$etq,'closeModalWindow');
+			$objMyForm->addEventJs($nameButton,'onclick','closeModalWindow');
+			
+			$frm .= $objMyForm->getButton($nameButton,$etq);
 		}
 
 		$arRepl = array (
@@ -1229,10 +1234,12 @@ class myController extends myControllerExt {
 		$html .= '<td width="18%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).'</td>';
 		
 		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
+
+		$objMyForm->addEventJs($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',array($idList,$numRuleQuery));
 		
 		$html .= '<td align="center">'.
 		
-			$objMyForm->getButton($idList.'_remove_rule_'.$numRuleQuery,NULL,'MYLIST_removeRuleQuery:'.$idList.':'.$numRuleQuery,'remove.gif').
+			$objMyForm->getButton($idList.'_remove_rule_'.$numRuleQuery,NULL,'remove.gif').
 			
 		'</td>';
 		

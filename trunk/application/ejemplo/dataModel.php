@@ -22,50 +22,75 @@
   */
  class modelo {
  	
- 	public function formEdit ($id){
+ 	public function formEdit ($id,$from){
  		
  		$usuarios = new usuarios;
  		
- 		$usuarios->find($id);
+ 		if ($from=='grid')
+ 			$usuarios->find($id);
+ 		
+ 		$profesiones = new profesiones;
+ 		
+ 		$profs = array();
+ 		
+ 		foreach ($profesiones->find() as $row)
+ 			$profs[$row->prof_id] = $row->profesion; 
  		
  		$myForm = new myForm('editar');
  		
  		$myForm->addText('Nombre:','nombre',$usuarios->nombre);
  		
- 		$myForm->addText('Edad:','edad',$usuarios->edad);
+ 		$myForm->addText('Apellido:','apellido',$usuarios->apellido);
  		
- 		$myForm->addButton('edit','Salvar','saveUser:'.$id);
+ 		$myForm->addText('Edad:','edad',$usuarios->edad,3,3,true);
  		
- 		return $myForm->getForm(1);
+ 		$myForm->addSelect('Profesion:','prof_id',$profs, $usuarios->prof_id);
+ 		
+ 		$myForm->addButton('edit','Guardar','ok.gif');
+ 		
+ 		$myForm->addButton('cancel','Cancelar','cancel.gif');
+ 		
+ 		$myForm->addEventJs('cancel','onclick','cancelAdd',array($from,1,2,3));
+ 		$myForm->addEventJs('edit','onclick','cancelAdd',array($from,1,2,3));
+ 		
+ 		$myForm->width = 400;
+ 		
+ 		return $myForm->getForm(2);
  	}
  	
  	public function getIndexGrid (){
  		
- 		$myList = new myList('usuarios', 'select * from usuarios');
+ 		$myAct = new myActiveRecord();
+ 		
+ 		$myList = new myList('usuarios', $myAct->loadSqlFromFile('sql/query.sql'));
  		
  		$myList->setExportData();
  		
- 		$myList->setUseOrderMethodOnColumn('nombre');
+ 		$myList->setUseOrderMethodOnColumn('Nombre');
  		
- 		$myList->setUseOrderMethodOnColumn('edad');
+ 		$myList->setUseOrderMethodOnColumn('Apellido');
  		
- 		$myList->setUseOrderMethodOnColumn('prof_id');
+ 		$myList->setUseOrderMethodOnColumn('Edad');
+ 		
+ 		$myList->setUseOrderMethodOnColumn('Profesion');
  		
  		$myList->setPagination(true,10);
  		
  		$myList->width = 700; 
  		
- 		$myList->setWidthColumn('usuario_id',150);
+ 		$myList->setWidthColumn('Modificar',100);
  		
- 		$myList->setWidthColumn('nombre',250);
+ 		$myList->setWidthColumn('Nombre',150);
  		
- 		$myList->setWidthColumn('edad',150);
+ 		$myList->setWidthColumn('Apellido',150);
  		
- 		$myList->setWidthColumn('prof_id',150);
+ 		$myList->setWidthColumn('Edad',100);
  		
- 		$myList->setEventOnColumn('usuario_id','editUsuario');
+ 		$myList->setWidthColumn('Profesion',200);
  		
- 		$myList->setGlobalEventOnColumn('usuario_id',array('globalModify'=>'Modificar'));
+ 		$myList->setEventOnColumn('Modificar','editUsuario');
+ 		
+ 		$myList->setGlobalEventOnColumn('Modificar',array('globalModify'=>'Eliminar'));
  		
  		return $myList->getList(true);
  	}
@@ -94,6 +119,14 @@
  	
 
  }
+
+ class profesiones extends myActiveRecord {
+ 	
+ 	public $prof_id;
+ 	
+ 	public $profesion;
+ 	
+ }
  
  class usuarios extends myActiveRecord {
  	
@@ -102,6 +135,8 @@
  	public $edad;
  	
  	public $nombre;
+ 	
+ 	public $apellido;
  	
  	public $prof_id;
  	

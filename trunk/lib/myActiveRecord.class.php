@@ -402,7 +402,9 @@ class myActiveRecord {
 	 */
 	private function get_LastInsertId (){
 		
-		$idSeq = $this->tableIdSeq[$this->table];
+		$idSeq = '';
+		if (isset($this->tableIdSeq[$this->table]))
+			$idSeq = $this->tableIdSeq[$this->table];
 		
 		return $this->dbh->lastInsertId($idSeq);	
 	}
