@@ -74,12 +74,8 @@
  		
  		$myForm = new myForm('index_form');
  		
- 		$myForm->addText('Nombre usuario:','nom');
- 		
- 		$myForm->addText('Apellido usuario:','ape');
- 		
- 		$myForm->addSelect('Sexo:','sex',array('M'=>'Masculino','F'=>'Femenino'));
- 		
+ 		$myForm->addSelect('Sexo:','sex',array('F'=>'Femenino','M'=>'Masculino'),array('F','M'),5,0,true);
+ 		 		
  		$myForm->addButton('bt1','Salvar','onClickSave');
  		
  		return $myForm->getForm(1);
