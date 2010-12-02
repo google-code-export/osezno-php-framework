@@ -16,7 +16,7 @@
  /**
   * Asignar contenidos a areas de la plantilla
   */ 
- $objOsezno->assign('content',$modelo->getIndexForm());
+ $objOsezno->assign('content',$modelo->formEdit(NULL,'tab'));
  
  $objOsezno->call_template('simple/simple.tpl');
  

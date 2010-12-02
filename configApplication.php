@@ -88,7 +88,7 @@
    * Motor de base de datos; pgsql ó mysql.
    * @var string
    */
-  $engine = 'pgsql';
+  $engine = 'mysql';
   
   /**
    * Direccion Ip o nombre de maquina del motor de base de datos.
@@ -100,19 +100,19 @@
    * Nombre de usuario para conexion.
    * @var string
    */
-  $user = 'postgres';
+  $user = 'root';
   
   /**
    * Contraseña de usuario para conexión.
    * @var string
    */
-  $password = 'postgres';
+  $password = '';
 
   /**
    * Puerto para la conexión, Mysql 3306, Postgre 5432.
    * @var integer
    */
-  $port = 5432;
+  $port = 3306;
   
   
   /**

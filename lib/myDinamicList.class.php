@@ -983,8 +983,10 @@ class myList  {
 						
 						$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
 						
-						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut,'MYLIST_page:'.$this->idList.':'.$attr[1]);					break;
-					
+						$objMyForm->addEventJs($this->idList.$id,'onclick','MYLIST_page',array($this->idList,$attr[1]));
+						
+						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut);					
+					break;
 					case 'field':
 						
 						//$objMyForm->addEventJs($this->idList.$id,'onChange','myListPage',array($this->idList,$attr[1]));
@@ -1097,8 +1099,10 @@ class myList  {
 			$objMyForm->addDisabled('xls_'.$this->idList);
 		else
 			$anyBut = true;
+
+		$objMyForm->addEventJs('xls_'.$this->idList,'onclick','MYLIST_exportData',array('xls',$this->idList));
 			
-		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('xls_'.$this->idList,'','MYLIST_exportData:xls:'.$this->idList,'excel.gif').'</td>';
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('xls_'.$this->idList,'','excel.gif').'</td>';
 
 		$objMyForm->addHelp('html_'.$this->idList,LABEL_HELP_HTML_BUTTON_FORM);
 		
@@ -1107,7 +1111,9 @@ class myList  {
 		else
 			$anyBut = true;
 		
-		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','MYLIST_exportData:html:'.$this->idList,'html.gif').'</td>';
+		$objMyForm->addEventJs('html_'.$this->idList,'onclick','MYLIST_exportData',array('html',$this->idList));	
+			
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','html.gif').'</td>';
 		
 		$objMyForm->addHelp('pdf_'.$this->idList,LABEL_HELP_PDF_BUTTON_FORM);
 		
@@ -1116,7 +1122,9 @@ class myList  {
 		else
 			$anyBut = true;	
 		
-		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','MYLIST_exportData:pdf:'.$this->idList,'pdf.gif').'</td>';
+		$objMyForm->addEventJs('pdf_'.$this->idList,'onclick','MYLIST_exportData',array('pdf',$this->idList));	
+			
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','pdf.gif').'</td>';
 		
 		$objMyForm->addHelp('not_pg_'.$this->idList,LABEL_HELP_USELIMIT_RULE_FORM);
 		
@@ -1131,13 +1139,19 @@ class myList  {
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','MYLIST_addRuleQuery:'.$this->idList,'find.gif').'</td>';
+		$objMyForm->addEventJs('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',array($this->idList));
+		
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','find.gif').'</td>';
 
 		$objMyForm->addHelp($this->idList.'_apply_rule',LABEL_HELP_APPLY_RULE_FORM);
 
-		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'MYLIST_applyRuleQuery:'.$this->idList,'ok.gif').'</td>';
+		$objMyForm->addEventJs($this->idList.'_apply_rule','onclick','MYLIST_applyRuleQuery',array($this->idList));
 		
-		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','MYLIST_help','help.gif').'</td>';
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'ok.gif').'</td>';
+		
+		$objMyForm->addEventJs('help_'.$this->idList,'onclick','MYLIST_help');
+		
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','help.gif').'</td>';
 		
 		$htble .= '</tr></table>';
 		

@@ -1105,17 +1105,15 @@ class myForm {
 	 *
 	 * @param string $strName    Nombre del Elemento
 	 * @param string $strLabel   Etiqueta o valor del Elemento
-	 * @param string $jsFunction Funcion xjx que ejecuta
 	 * @param string $strSrcImg  Ruta de la img que lo acompana
 	 * 
 	 * Nota: Si desea pasar variables adicionales al evento del
 	 * boton, debe agregar separado por (:) los valores que necesite
 	 * 
 	 */
-	public function addButton ($strName, $strLabel = '', $jsFunction = '', $strSrcImg = ''){
+	public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
 		$this->arrayButtonList[] = array('strName'    =>  $strName,
-                                         'strLabel'   =>  htmlentities($strLabel),
-                                         'jsFunction' =>  $jsFunction);
+                                         'strLabel'   =>  htmlentities($strLabel));
 		
 		$count = count($this->arrayButtonList);
 		
@@ -1132,7 +1130,6 @@ class myForm {
 	 *
 	 * @param string $strName    Nombre del boton
 	 * @param string $strLabel   Etiqueta del boton
-	 * @param string $jsFunction Funcion xjx que ejecuta
 	 * @param string $strSrcImg  Ruta de la img que lo acompana
 	 * @return string
 	 * 
@@ -1140,11 +1137,12 @@ class myForm {
 	 * boton, debe agregar separado por (:) los valores que necesite	 
 	 *  
 	 */
-	public function getButton ($strName, $strLabel = '', $jsFunction = '', $strSrcImg = ''){
+	public function getButton ($strName, $strLabel = '', $strSrcImg = ''){
 		$buf = '';
 		$strMixedParams = '';
 		
 		$buf.='<button '.$this->checkIfIsDisabled($strName).' '.$this->checkIsHelping($strName).' value="'.strip_tags($strLabel).'" class="'.$this->styleClassButtons.'" type="button" name="'.$strName.'" id="'.$strName.'" ';
+		/*
 		if ($jsFunction){
 			
 			if (stripos($jsFunction,':')!==false){
@@ -1181,8 +1179,8 @@ class myForm {
 			else
 				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\') '.$strMixedParams.')"';
 		}
-			
-		$buf .= '>';
+		*/	
+		$buf .= $this->checkExistEventJs($strName).'>';
 
 		$buf .= '<table border="0" cellspacing="0" cellpadding="0"><tr>';
 		
@@ -2238,13 +2236,13 @@ class myForm {
 				case 'text':// Ok colSpan
 					$keypress = '';
 					if ($campos_f[6])
-					$keypress = ' onKeyPress="return OnlyNum(event)"';
+						$keypress = ' onKeyPress="return OnlyNum(event)"';
 
 					$Disabled = '';
 					$LauncherCalendar = '';
 
 					if ($campos_f[7]){
-						$LauncherCalendar = '<button '.$this->checkIfIsDisabled($name).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+						$LauncherCalendar = '<button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
 						$LauncherCalendar .= '<div id="div_trigger_'.$campos_f[2].'" name="div_trigger_'.$campos_f[2].'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden">h</div>';
 						 
 						$Disabled = 'readonly';
@@ -2417,14 +2415,21 @@ class myForm {
 					}
 
 					if (isset($this->arrayFormElementsColspan[$nameField])){
-						$numColSpan = $this->arrayFormElementsColspan[$nameField];
-						$iTemp += $numColSpan;
-						$sumNumColSpan += $numColSpan;
+						if($this->arrayFormElementsColspan[$nameField]){
+							$numColSpan = $this->arrayFormElementsColspan[$nameField];
+							$iTemp += $numColSpan;
+							$sumNumColSpan += $numColSpan;
+						}else{
+							$numColSpan = 0;
+							$iTemp++;
+							$sumNumColSpan ++;
+						}
 					}else{
 						$numColSpan = 0;
 						$iTemp++;
 						$sumNumColSpan ++;
 					}
+					
 						
 					$attObj = $this->arrayFormElementType[$nameField];
 					if ($numColSpan){
@@ -2633,48 +2638,8 @@ class myForm {
 		for ($j = 0; $j < $countArrayButtonList; $j++){
 			$buf .= '<td align="center" style="text-align:center" width="'.$intWidth.'%">';
 
-			$buf .= '<button '.$this->checkIsHelping($this->arrayButtonList[$j]['strName']).' '.$this->checkIfIsDisabled($this->arrayButtonList[$j]['strName']).' value="'.trim(strip_tags($this->arrayButtonList[$j]['strLabel'])).'" class="'.$this->styleClassButtons.'" type="submit" name="'.$this->arrayButtonList[$j]['strName'].'" id="'.$this->arrayButtonList[$j]['strName'].'" ';
+			$buf .= '<button '.$this->checkIsHelping($this->arrayButtonList[$j]['strName']).' '.$this->checkIfIsDisabled($this->arrayButtonList[$j]['strName']).' value="'.trim(strip_tags($this->arrayButtonList[$j]['strLabel'])).'" class="'.$this->styleClassButtons.'" type="submit" name="'.$this->arrayButtonList[$j]['strName'].'" id="'.$this->arrayButtonList[$j]['strName'].'" '.$this->checkExistEventJs($this->arrayButtonList[$j]['strName']);
 			
-			if ($this->arrayButtonList[$j]['jsFunction'] && !$this->action){
-
-				$jsFunction = $this->arrayButtonList[$j]['jsFunction'];
-				
-				if (stripos($jsFunction,':')!==false){
-					
-	  				$mixedExtParams = array();
-		  			$strMixedParams = '';
-		  		
-		  			$intCountPrm = count($mixedExtParams = split(':',$jsFunction));
-		  			$iExtParams = 0;
-		  		
-		  			foreach ($mixedExtParams as $param){
-					
-		  				if (!$iExtParams)
-					   		$jsFunction = $param; 	
-		  			
-		  				if ($jsFunction!=$param){
-		  					if (!is_numeric($param))
-								$strMixedParams .= '\''.$param.'\'';
-							else	
-								$strMixedParams .= $param;
-		  				}
-		  			
-		  				if (($iExtParams+1)<$intCountPrm){
-							$strMixedParams .= ',';
-		  				}
-		  			
-						$iExtParams++;					  			
-		  			}
-		  		}
-				
-				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\')'.$strMixedParams.')"';
-				
-			}else if ($this->arrayButtonList[$j]['jsFunction'] && $this->action){
-				
-				$buf .= ' onclick="'.$this->prefAjax.$this->arrayButtonList[$j]['jsFunction'].'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\')'.$strMixedParams.')"';
-			}else{
-				$buf .= ' onclick="'.$this->name.'.submit()" ';
-			}
 			$buf .= '>';
 
 			$buf.='<table border="0" cellpadding="0" cellspacing="0"><tr>';
