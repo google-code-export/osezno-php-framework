@@ -1630,7 +1630,7 @@ class myForm {
 	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
 	 *
 	 */
-	public function addSelect($etq = '', $name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 100, $multiple = 0){
+	public function addSelect($etq = '', $name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
 		$name = $this->getColspanRowspan($name);
 		$buf  = '';
 		if (is_array ($value)){
@@ -1654,7 +1654,10 @@ class myForm {
 				   }					
 				}
 				
-				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.substr($value,0,$truncar_hasta).'</option>'."\n";
+				if ($truncar_hasta)
+					$value = substr($value,0,$truncar_hasta);
+					
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
 			}
 			
 			$buf .= "\t\t".'</select>'."\n";
@@ -1677,7 +1680,7 @@ class myForm {
 	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
 	 *
 	 */
-	public  function getSelect($name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 100, $multiple = 0){
+	public  function getSelect($name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
 		$buf = '';
 		$string_multiple = '';
 		if ($multiple)
@@ -1705,7 +1708,10 @@ class myForm {
 				   }					
 				}
 				
-				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.substr($value,0,$truncar_hasta).'</option>'."\n";
+				if ($truncar_hasta)
+					$value = substr($value,0,$truncar_hasta);
+					
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
 			}
 
 			$buf .= '</select>'."\n";

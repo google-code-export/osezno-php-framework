@@ -973,15 +973,19 @@ class myController extends myControllerExt {
 			
 			foreach ($requiredFields as $field){
 				
-				if (!$datForm[$field]){
+				if (isset($datForm[$field])){
+				
+					if (!$datForm[$field]){
 					
-					$this->assign($field,'className','caja_required');
+						$this->assign($field,'className','caja_required');
 
-					$valid = false;
-				}else{
+						$valid = false;
+					}else{
 					
-					$this->assign($field,'className','caja');
-				}	
+						$this->assign($field,'className','caja');
+					}	
+				
+				}
 				
 			}
 		}
