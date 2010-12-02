@@ -29,6 +29,7 @@
  	
  	public function globalModify($data){
  		
+ 		#TODO: Pasar parametros botones en messageBox
 		$this->messageBox('Desea eliminar estos registros?','warning',array('Si'=>'globalModifyAccept','No'=>NULL)); 		
  		
  		return $this->response;
@@ -37,6 +38,7 @@
  	public function saveUser ($datos, $id){
  		
  		if ($this->MYFORM_validate($datos,array('nombre','apellido','edad','prof_id'))){
+ 			
 			$usuarios = new usuarios;
  		
  			if ($id)
