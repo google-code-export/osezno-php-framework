@@ -50,8 +50,9 @@
  		
  		$myForm->addButton('cancel','Cancelar','cancel.gif');
  		
- 		$myForm->addEventJs('cancel','onclick','cancelAdd',array($from,1,2,3));
- 		$myForm->addEventJs('edit','onclick','cancelAdd',array($from,1,2,3));
+ 		$myForm->addEventJs('cancel','onclick','cancelAdd',array($from));
+ 		
+ 		$myForm->addEventJs('edit','onclick','saveUser',array($id));
  		
  		$myForm->width = 400;
  		
@@ -93,17 +94,6 @@
  		$myList->setGlobalEventOnColumn('Modificar',array('globalModify'=>'Eliminar'));
  		
  		return $myList->getList(true);
- 	}
- 	
- 	public function getIndexForm (){
- 		
- 		$myForm = new myForm('index_form');
- 		
- 		$myForm->addSelect('Sexo:','sex',array('F'=>'Femenino','M'=>'Masculino'),array('F','M'),5,0,true);
- 		 		
- 		$myForm->addButton('bt1','Salvar','onClickSave');
- 		
- 		return $myForm->getForm(1);
  	}
  	
  	public function getTabs (){
