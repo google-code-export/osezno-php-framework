@@ -431,12 +431,14 @@ class myActiveRecord {
 		$countFields = count($this->classVars);
 
 		foreach ($this->classVars as $var => $val){
-			$subSqlF .= $var;
+			if (!in_array($var,$this->arrayInvalidAtt)){
+				$subSqlF .= $var;
 
-			if ($iCounter<$countFields)
-			   $subSqlF .= ', ';
+				if ($iCounter<$countFields)
+			   		$subSqlF .= ', ';
 
-			$iCounter++;
+				$iCounter++;
+			}
 		}
 		
 		$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table;
