@@ -1003,7 +1003,7 @@ class myForm {
  					
  				if (is_array(func_get_arg($i))){
  					
- 					$buf .= 'GetArray(';
+ 					$buf .= 'GetArray(  ';
  					
  					foreach (func_get_arg($i) as $key => $value){
  						

@@ -22,14 +22,12 @@
 
  	public function globalModifyAccept($data){
  		
- 		
- 		
 		return $this->response;
  	}
  	
  	public function globalModify($data){
  		
- 		$this->messageBox('quiere o no?','warning',array('Modificar'=>'globalModifyAccept'),$data);
+ 		$this->messageBox('quiere o no?','warning',array('Modificar'=>'globalModifyAccept','No'),$data);
  		
  		return $this->response;
  	}
