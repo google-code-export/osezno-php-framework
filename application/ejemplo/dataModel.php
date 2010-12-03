@@ -52,7 +52,7 @@
  		
  		$myForm->addEvent('cancel','onclick','cancelAdd',array($from));
  		
- 		$myForm->addEvent('edit','onclick','saveUser',array('a','b'),4);
+ 		$myForm->addEvent('edit','onclick','saveUser',$id);
  		
  		$myForm->width = 400;
  		

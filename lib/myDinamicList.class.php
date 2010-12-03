@@ -902,7 +902,7 @@ class myList  {
 			
 			$this->objForm->styleTypeHelp = 2;
 			
-			$this->objForm->addEvent($idSelect,'onchange','execGlobalEventOnList',array($this->idList, $idSelect));
+			$this->objForm->addEvent($idSelect,'onchange','execGlobalEventOnList',$this->idList, $idSelect);
 			
 			$this->objForm->addHelp($idSelect,LABEL_HELP_SELECT_GLOBAL_ACTION);
 			
@@ -983,7 +983,7 @@ class myList  {
 						
 						$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
 						
-						$objMyForm->addEvent($this->idList.$id,'onclick','MYLIST_page',array($this->idList,$attr[1]));
+						$objMyForm->addEvent($this->idList.$id,'onclick','MYLIST_page',$this->idList,$attr[1]);
 						
 						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut);					
 					break;
@@ -998,7 +998,7 @@ class myList  {
 						
 						$objMyForm->addHelp($this->idList.$id,LABEL_HELP_CHPAG_SELECT_FORM);
 						
-						$objMyForm->addEvent($this->idList.$id,'onchange','MYLIST_chPag',array($this->idList));
+						$objMyForm->addEvent($this->idList.$id,'onchange','MYLIST_chPag',$this->idList);
 						
 						$buf .= $objMyForm->getSelect($this->idList.$id,$attr[0],$this->recordsPerPageForm);
 						
@@ -1041,7 +1041,7 @@ class myList  {
 									
 			$nmChk = $this->idList.'_over_all';
 									
-			$this->objForm->addEvent($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk, $getNumFldsAftd, $cadParam));
+			$this->objForm->addEvent($nmChk,'onclick','checkAllBoxesOnList',$this->idList,$nmChk, $getNumFldsAftd, $cadParam);
 									
 			$htmlGlobal = $this->objForm->getCheckBox($nmChk);
 		}
@@ -1100,7 +1100,7 @@ class myList  {
 		else
 			$anyBut = true;
 
-		$objMyForm->addEvent('xls_'.$this->idList,'onclick','MYLIST_exportData',array('xls',$this->idList));
+		$objMyForm->addEvent('xls_'.$this->idList,'onclick','MYLIST_exportData','xls',$this->idList);
 			
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('xls_'.$this->idList,'','excel.gif').'</td>';
 
@@ -1111,7 +1111,7 @@ class myList  {
 		else
 			$anyBut = true;
 		
-		$objMyForm->addEvent('html_'.$this->idList,'onclick','MYLIST_exportData',array('html',$this->idList));	
+		$objMyForm->addEvent('html_'.$this->idList,'onclick','MYLIST_exportData','html',$this->idList);	
 			
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','html.gif').'</td>';
 		
@@ -1122,7 +1122,7 @@ class myList  {
 		else
 			$anyBut = true;	
 		
-		$objMyForm->addEvent('pdf_'.$this->idList,'onclick','MYLIST_exportData',array('pdf',$this->idList));	
+		$objMyForm->addEvent('pdf_'.$this->idList,'onclick','MYLIST_exportData','pdf',$this->idList);	
 			
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','pdf.gif').'</td>';
 		
@@ -1139,13 +1139,13 @@ class myList  {
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$objMyForm->addEvent('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',array($this->idList));
+		$objMyForm->addEvent('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',$this->idList);
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','find.gif').'</td>';
 
 		$objMyForm->addHelp($this->idList.'_apply_rule',LABEL_HELP_APPLY_RULE_FORM);
 
-		$objMyForm->addEvent($this->idList.'_apply_rule','onclick','MYLIST_applyRuleQuery',array($this->idList));
+		$objMyForm->addEvent($this->idList.'_apply_rule','onclick','MYLIST_applyRuleQuery',$this->idList);
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'ok.gif').'</td>';
 		
