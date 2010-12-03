@@ -894,8 +894,6 @@ class myController extends myControllerExt {
         $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',5, $width, $height);
 		
         $this->script('document.all.'.$primerButton.'.focus()');
-        
-        return 'Holaaaa';
 	}
 
 	/**
@@ -1237,7 +1235,7 @@ class myController extends myControllerExt {
 		
 		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
 
-		$objMyForm->addEvent($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',array($idList,$numRuleQuery));
+		$objMyForm->addEvent($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',$idList,$numRuleQuery);
 		
 		$html .= '<td align="center">'.
 		
