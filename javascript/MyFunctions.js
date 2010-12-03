@@ -410,11 +410,26 @@ function GetDataField(data){
 	return data;
 }
 
+function GetArray(){
+	
+	ar = new Array();
+	
+	for (var i=0;i<arguments.length;i++)
+		ar[i] = arguments[i];
+	
+	return ar;
+}
+
 function GetDataForm (form){
-      var buf = '';
+      
+	  var buf = '';
+	
       var form_elements = new Array();
          
-      if (form){   
+      if (form){
+    	  
+    	 form_elements['form_id'] = form; 
+    	  
          for (i=0; i<document.forms[form].elements.length; i++){
               
               if (isArray(document.forms[form].elements[i].name)) 

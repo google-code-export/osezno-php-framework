@@ -20,23 +20,43 @@
  */	
  class eventos extends myController {
 
- 	public function globalModifyAccept($data){
+ 	public function hola ($a, $b){
  		
-		$this->alert(var_export($data,true)); 		
+ 		$numArg = func_num_args();
  		
- 		return $this->response;
+ 		if ($numArg >= 2){
+ 			
+ 			$this->alert('Le pasaron mas de dos..');
+ 			
+ 		}
+ 		for($i=2;$i<$numArg;$i++){
+ 			
+ 			$this->alert(func_get_arg($i));
+ 			
+ 		}
+ 		
+ 		
+ 	}
+ 	
+ 	public function globalModifyAccept($data, $i){
+ 		
+		return $this->response;
  	}
  	
  	public function globalModify($data){
  		
- 		#TODO: Pasar parametros botones en messageBox
-		$this->messageBox('Desea eliminar estos registros?','warning',array('Si'=>'globalModifyAccept','No'=>NULL)); 		
+ 		$this->hola(1,2,3,4,5,6,array(1,2,3));
  		
  		return $this->response;
  	}
  	
- 	public function saveUser ($datos, $id){
+ 	public function saveUser ($datos, $datos2){
  		
+ 		$this->alert(var_export($datos,true));
+ 		
+ 		$this->alert(var_export($datos2,true));
+ 		
+ 		/*
  		if ($this->MYFORM_validate($datos,array('nombre','apellido','edad','prof_id'))){
  			
 			$usuarios = new usuarios;
@@ -67,7 +87,7 @@
  		}else{
  			$this->notificationWindow('Existen campos sin diligenciar.',3,'error');
  		}
- 		
+ 		*/
  		return $this->response;
  	}
  	

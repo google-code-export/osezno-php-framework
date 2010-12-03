@@ -841,7 +841,7 @@ class myList  {
 								
 								$nmCheck = $this->idList.'_'.$row->$alsGbl;
 								
-								$this->objForm->addEventJs($nmCheck,'onclick','check_onlist',array($nmCheck));
+								$this->objForm->addEvent($nmCheck,'onclick','check_onlist',array($nmCheck));
 								
 					   			$buf.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$this->objForm->getCheckBox($nmCheck).'</td><td class="'.$class.'_checkbox">';
 							}
@@ -902,7 +902,7 @@ class myList  {
 			
 			$this->objForm->styleTypeHelp = 2;
 			
-			$this->objForm->addEventJs ($idSelect,'onchange','execGlobalEventOnList',array($this->idList, $idSelect));
+			$this->objForm->addEvent($idSelect,'onchange','execGlobalEventOnList',array($this->idList, $idSelect));
 			
 			$this->objForm->addHelp($idSelect,LABEL_HELP_SELECT_GLOBAL_ACTION);
 			
@@ -983,13 +983,13 @@ class myList  {
 						
 						$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
 						
-						$objMyForm->addEventJs($this->idList.$id,'onclick','MYLIST_page',array($this->idList,$attr[1]));
+						$objMyForm->addEvent($this->idList.$id,'onclick','MYLIST_page',array($this->idList,$attr[1]));
 						
 						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut);					
 					break;
 					case 'field':
 						
-						//$objMyForm->addEventJs($this->idList.$id,'onChange','myListPage',array($this->idList,$attr[1]));
+						//$objMyForm->addEvent($this->idList.$id,'onChange','myListPage',array($this->idList,$attr[1]));
 						
 						$buf .= $objMyForm->getText($this->idList.$id,$attr[0],3,NULL,true);
 						
@@ -998,7 +998,7 @@ class myList  {
 						
 						$objMyForm->addHelp($this->idList.$id,LABEL_HELP_CHPAG_SELECT_FORM);
 						
-						$objMyForm->addEventJs($this->idList.$id,'onchange','MYLIST_chPag',array($this->idList));
+						$objMyForm->addEvent($this->idList.$id,'onchange','MYLIST_chPag',array($this->idList));
 						
 						$buf .= $objMyForm->getSelect($this->idList.$id,$attr[0],$this->recordsPerPageForm);
 						
@@ -1041,7 +1041,7 @@ class myList  {
 									
 			$nmChk = $this->idList.'_over_all';
 									
-			$this->objForm->addEventJs($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk, $getNumFldsAftd, $cadParam));
+			$this->objForm->addEvent($nmChk,'onclick','checkAllBoxesOnList',array($this->idList,$nmChk, $getNumFldsAftd, $cadParam));
 									
 			$htmlGlobal = $this->objForm->getCheckBox($nmChk);
 		}
@@ -1100,7 +1100,7 @@ class myList  {
 		else
 			$anyBut = true;
 
-		$objMyForm->addEventJs('xls_'.$this->idList,'onclick','MYLIST_exportData',array('xls',$this->idList));
+		$objMyForm->addEvent('xls_'.$this->idList,'onclick','MYLIST_exportData',array('xls',$this->idList));
 			
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('xls_'.$this->idList,'','excel.gif').'</td>';
 
@@ -1111,7 +1111,7 @@ class myList  {
 		else
 			$anyBut = true;
 		
-		$objMyForm->addEventJs('html_'.$this->idList,'onclick','MYLIST_exportData',array('html',$this->idList));	
+		$objMyForm->addEvent('html_'.$this->idList,'onclick','MYLIST_exportData',array('html',$this->idList));	
 			
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','html.gif').'</td>';
 		
@@ -1122,7 +1122,7 @@ class myList  {
 		else
 			$anyBut = true;	
 		
-		$objMyForm->addEventJs('pdf_'.$this->idList,'onclick','MYLIST_exportData',array('pdf',$this->idList));	
+		$objMyForm->addEvent('pdf_'.$this->idList,'onclick','MYLIST_exportData',array('pdf',$this->idList));	
 			
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','pdf.gif').'</td>';
 		
@@ -1139,17 +1139,17 @@ class myList  {
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$objMyForm->addEventJs('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',array($this->idList));
+		$objMyForm->addEvent('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',array($this->idList));
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','find.gif').'</td>';
 
 		$objMyForm->addHelp($this->idList.'_apply_rule',LABEL_HELP_APPLY_RULE_FORM);
 
-		$objMyForm->addEventJs($this->idList.'_apply_rule','onclick','MYLIST_applyRuleQuery',array($this->idList));
+		$objMyForm->addEvent($this->idList.'_apply_rule','onclick','MYLIST_applyRuleQuery',array($this->idList));
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'ok.gif').'</td>';
 		
-		$objMyForm->addEventJs('help_'.$this->idList,'onclick','MYLIST_help');
+		$objMyForm->addEvent('help_'.$this->idList,'onclick','MYLIST_help');
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','help.gif').'</td>';
 		

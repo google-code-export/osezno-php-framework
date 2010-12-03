@@ -22,7 +22,7 @@
   */
  class modelo {
  	
- 	public function formEdit ($id,$from){
+ 	public function formEdit ($id ='',$from = ''){
  		
  		$usuarios = new usuarios;
  		
@@ -50,9 +50,9 @@
  		
  		$myForm->addButton('cancel','Cancelar','cancel.gif');
  		
- 		$myForm->addEventJs('cancel','onclick','cancelAdd',array($from));
+ 		$myForm->addEvent('cancel','onclick','cancelAdd',array($from));
  		
- 		$myForm->addEventJs('edit','onclick','saveUser',array($id));
+ 		$myForm->addEvent('edit','onclick','saveUser',array('a','b'),4);
  		
  		$myForm->width = 400;
  		
