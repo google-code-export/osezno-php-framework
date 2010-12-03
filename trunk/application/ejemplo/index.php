@@ -20,8 +20,8 @@
  
  $objOsezno->assign('desc','Administración de usuarios del sistema');
  
- $objOsezno->assign('main_area',$modelo->getTabs());
+ $objOsezno->assign('main_area',$modelo->formEdit());
  
- $objOsezno->call_template('osezno/osezno.tpl');
+ $objOsezno->call_template('multivacaciones/multivacaciones.tpl');
  
 ?>

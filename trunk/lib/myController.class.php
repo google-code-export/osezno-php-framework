@@ -858,7 +858,7 @@ class myController extends myControllerExt {
 		  	
 		  		$nameButton = 'bmbx_'.strtolower(trim($etq)); 
 
-		  		$objMyForm->addEventJs($nameButton,'onclick',$action);
+		  		$objMyForm->addEvent($nameButton,'onclick',$action);
 		  	
 		  		$frm .= $objMyForm->getButton($nameButton,$etq);	
 		  		$frm .= '&nbsp;&nbsp;&nbsp;';
@@ -872,7 +872,7 @@ class myController extends myControllerExt {
 			
 			$primerButton = $nameButton = 'bmbx_'.strtolower(trim($etq));
 			
-			$objMyForm->addEventJs($nameButton,'onclick','closeModalWindow');
+			$objMyForm->addEvent($nameButton,'onclick','closeModalWindow');
 			
 			$frm .= $objMyForm->getButton($nameButton,$etq);
 		}
@@ -894,6 +894,8 @@ class myController extends myControllerExt {
         $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',5, $width, $height);
 		
         $this->script('document.all.'.$primerButton.'.focus()');
+        
+        return 'Holaaaa';
 	}
 
 	/**
@@ -1235,7 +1237,7 @@ class myController extends myControllerExt {
 		
 		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
 
-		$objMyForm->addEventJs($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',array($idList,$numRuleQuery));
+		$objMyForm->addEvent($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',array($idList,$numRuleQuery));
 		
 		$html .= '<td align="center">'.
 		

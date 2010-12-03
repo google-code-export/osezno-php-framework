@@ -155,12 +155,12 @@ class myCal {
 			
 		$objMyForm->selectUseFirstValue = false;
 			
-		$objMyForm->addEventJs('cal_month',
+		$objMyForm->addEvent('cal_month',
 				'onchange',
 				'MYFORM_calOnChange',
 			array($update));
 			
-		$objMyForm->addEventJs('cal_year',
+		$objMyForm->addEvent('cal_year',
 				'onchange',
 				'MYFORM_calOnChange',
 			array($update));

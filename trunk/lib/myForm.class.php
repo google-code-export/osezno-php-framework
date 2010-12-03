@@ -959,14 +959,16 @@ class myForm {
 	 * Por ejemplo, podemos crear una caja de texto sencilla por medio de
 	 * $obj-> addText('Nombre:','nombre'); y despues agregar el siguiente metodo
 	 *
-	 * $obj->addEventJs()
+	 * $obj->addEvent('nombre','onchange','function', $param1, $param2...)
 	 *
 	 * Para que en la obtencion del formulario ese evento sea escrito en la salida HTML
 	 *
-	 * @param string  $strElementIdORelemlentName  Nombre o id del objeto del formulario al que se le va a agregar un evento Js
-	 * @param integer $strEventORintEvent          El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento
-	 * @param string  $strFunctionORarrayFunctions El nombre de la funcion o funciones que deseamos llamar (Ajax) al momento de cumplirse el evento
-	 * @param mixed   $mixedMoreParams             Arreglo con otros parametros que uno quiera pasar
+	 * @param string  $objName   Nombre o id del objeto del formulario al que se le va a agregar un evento Js
+	 * @param integer $event     El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento
+	 * @param string  $functions El nombre de la funcion o funciones que deseamos llamar al momento de cumplirse el evento
+	 * @param $param1...
+	 * @param $param2...
+	 * @param $param3...
 	 *
 	 * Valores permitidos (1->blur, 2->change, 3->click, 4->focus, 5->mouseout, 6->OnMouseOver)
 	 *
@@ -977,8 +979,12 @@ class myForm {
 	 * -text
 	 * -radiobuttons
 	 * -checkbox
+	 * -buttons
 	 */
-	public function addEventJs ($strElementIdORelemlentName,$strEventORintEvent,$strFunctionORarrayFunctions, $mixedMoreParams = ''){
+	public function addEvent($objName,$event,$functions){
+		
+		$buf = '';
+		
 		$array_eJs = array (
 		1 => ' OnBlur',      'onblur' =>      ' OnBlur',
 		2 => ' OnChange',    'onchange' =>    ' OnChange',
@@ -987,74 +993,81 @@ class myForm {
 		5 => ' OnMouseOut',  'onmouseout' =>  ' OnMouseOut',
 		6 => ' OnMouseOver', 'onmouseover' => ' OnMouseOver');
 
-		if (is_string($strEventORintEvent))
-		$strEventORintEvent = strtolower($strEventORintEvent);
+		$numArg = func_num_args();
+ 		
+ 		if ($numArg >= 4){
+ 			
+ 			$buf .= ', ';
+ 			
+ 			for($i=3;$i<$numArg;$i++){
+ 					
+ 				if (is_array(func_get_arg($i))){
+ 					
+ 					$buf .= 'GetArray(';
+ 					
+ 					foreach (func_get_arg($i) as $value){
+ 						
+ 						$buf .= '\''.$value.'\', ';
+ 						
+ 					}
+ 					
+ 					$buf = substr($buf,0,-2).'), ';
+ 					
+ 				}else{
+ 					
+ 					$buf .= '\''.func_get_arg($i).'\', ';
+ 					
+ 				}
+ 						
+ 			}
 
-		$this->objEventxJ[$strElementIdORelemlentName] = '';
+ 			$buf = substr($buf,0,-2);
+ 		}
 		
-		$this->objEventxJ[$strElementIdORelemlentName] .= $array_eJs[$strEventORintEvent].'="';
+		if (is_string($event))
+			$event = strtolower($event);
 
-		if (is_array($strFunctionORarrayFunctions)){
-			$cantFinctions = count($strFunctionORarrayFunctions);
+		$this->objEventxJ[$objName] = '';
+		
+		$this->objEventxJ[$objName] .= $array_eJs[$event].'="';
+
+		if (is_array($functions)){
+			
+			$cantFinctions = count($functions);
+			
 			for($i=0;$i<$cantFinctions;$i++){
 				
 				switch ($this->paramTypeOnEvent){
 					case 'global':
-						$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions[$i].'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\''.')';
+						$this->objEventxJ[$objName] .= $this->prefAjax.$functions[$i].'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\''.')';
 					break;
 					case 'field':
-						$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions[$i].'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
+						$this->objEventxJ[$objName] .= $this->prefAjax.$functions[$i].'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
 					break;
 				}
+ 		
+				if (!$numArg)
+					$this->objEventxJ[$objName] .= ')';
+				else
+					$this->objEventxJ[$objName] .= ' '.$buf.')';
 				
-				//Miramos si hay parametros adicionales
-				if (!$mixedMoreParams)
-				$this->objEventxJ[$strElementIdORelemlentName] .= ')'.'';
-				else{
-					$this->objEventxJ[$strElementIdORelemlentName] .= ', ';
-					 
-					$countMoreParams = count ($mixedMoreParams);$k=0;
-					foreach($mixedMoreParams as $valParam){
-						if (!is_numeric($valParam) && !$this->exists_JavascriptFormat_InParamEvent($valParam))
-							$valParam = "'".$valParam."'";
-						$this->objEventxJ[$strElementIdORelemlentName] .= $valParam;
-						if ($k<($countMoreParams-1))
-							$this->objEventxJ[$strElementIdORelemlentName] .= ', ';
-						$k++;
-					}
-					$this->objEventxJ[$strElementIdORelemlentName] .=')';
-				}
-					
 				if (($i+1)<$cantFinctions)
-				$this->objEventxJ[$strElementIdORelemlentName] .=', ';
+					$this->objEventxJ[$objName] .=', ';
 			}
-			$this->objEventxJ[$strElementIdORelemlentName] .='"';
+			$this->objEventxJ[$objName] .='"';
 		}else{
 			
 			switch ($this->paramTypeOnEvent){
 				case 'global':
-					$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\''.')';
+					$this->objEventxJ[$objName] .= $this->prefAjax.$functions.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\''.')';
 				break;
 				case 'field':
-					$this->objEventxJ[$strElementIdORelemlentName] .= $this->prefAjax.$strFunctionORarrayFunctions.'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
+					$this->objEventxJ[$objName] .= $this->prefAjax.$functions.'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
 				break;
 			}
 			
-			if (!$mixedMoreParams)
-			$this->objEventxJ[$strElementIdORelemlentName] .=')'.'" ';
-			else{
-			 $this->objEventxJ[$strElementIdORelemlentName] .= ', ';
-			 $countMoreParams = count ($mixedMoreParams);$i=0;
-			 foreach($mixedMoreParams as $valParam){
-			 	if (!is_numeric($valParam) && !$this->exists_JavascriptFormat_InParamEvent($valParam))
-			 	    $valParam = "'".$valParam."'";
-			 	$this->objEventxJ[$strElementIdORelemlentName] .= $valParam;
-			 	if ($i<($countMoreParams-1))
-			 		$this->objEventxJ[$strElementIdORelemlentName] .= ', ';
-			 	$i++;
-			 }
-			 $this->objEventxJ[$strElementIdORelemlentName] .=')'.'" ';
-			}
+			$this->objEventxJ[$objName] .=$buf.')"';
+			
 		}
 		
 	}
