@@ -195,7 +195,7 @@ class myActiveRecord {
 	private $arrayInvalidAtt = array (
 		'database', 'engine', 'host', 'user', 'password', 'port', 'table', 'posFijSeq', 'num_rows', 'num_cols',
 		'dbh', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
-		'arrayInvalidAtt'	
+		'arrayInvalidAtt','tablePk', 'tableIdSeq', 'autoQuoteOnFind', 'arrayCrud'	
 	);
 	
 	/**
@@ -428,20 +428,17 @@ class myActiveRecord {
 		$subSqlF = '';
 		$iCounter = 1;
 		
-		$countFields = count($this->classVars);
-
 		foreach ($this->classVars as $var => $val){
 			if (!in_array($var,$this->arrayInvalidAtt)){
 				$subSqlF .= $var;
 
-				if ($iCounter<$countFields)
-			   		$subSqlF .= ', ';
+			   	$subSqlF .= ', ';
 
 				$iCounter++;
 			}
 		}
 		
-		$sql .= 'SELECT '.$subSqlF.' FROM '.$this->table;
+		$sql .= 'SELECT '.substr($subSqlF,0,-2).' FROM '.$this->table;
 		
 		$results = '';
 		
