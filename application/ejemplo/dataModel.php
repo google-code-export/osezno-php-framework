@@ -91,7 +91,7 @@
  		
  		$myList->setEventOnColumn('Modificar','editUsuario');
  		
- 		$myList->setGlobalEventOnColumn('Modificar',array('globalModify'=>'Eliminar'));
+ 		$myList->setGlobalEventOnColumn('Modificar',array('Eliminar'=>'globalModify'));
  		
  		return $myList->getList(true);
  	}
