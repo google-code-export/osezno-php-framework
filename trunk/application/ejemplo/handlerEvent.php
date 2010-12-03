@@ -20,9 +20,18 @@
  */	
  class eventos extends myController {
 
- 	public function globalModifyAccept($data, $i){
+ 	public function globalModifyAccept($data){
+ 		
+ 		
  		
 		return $this->response;
+ 	}
+ 	
+ 	public function globalModify($data){
+ 		
+ 		$this->messageBox('quiere o no?','warning',array('Modificar'=>'globalModifyAccept'),$data);
+ 		
+ 		return $this->response;
  	}
  	
  	public function saveUser ($datos,$id){

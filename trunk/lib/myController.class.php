@@ -808,9 +808,13 @@ class myController extends myControllerExt {
 	 * @param  string: Mensaje
 	 * @param  string: Icono que se va a mostra; critical, error, help, info, list, user, warning
 	 * @param  array:  Arreglo de los botones que pueda tener la caja de mensaje 
-	 * @param  string: Nombre del formulario que abre la caja de mensaje
+	 * @param1 array/string Parametro 1
+	 * @param2 array/string Parametro 2
+	 * @param3 array/string Parametro 3
+	 * @param4 array/string Parametro 4
+	 * @param5 array/string Parametro 5
 	 */	
-	public function messageBox($msg = '', $iconMsg = '', $mixedButtons = array(), $strNomForm = ''){
+	public function messageBox($msg = '', $iconMsg = '', $mixedButtons = array(), $param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = ''){
 		
 		$arrImg = array (
 			'critical'=>'img_critical',
@@ -844,8 +848,7 @@ class myController extends myControllerExt {
 		$frm = '';
 		
 		$objMyForm = new myForm;
-		$objMyForm->NomForm = $strNomForm;
-
+		
 		$objMyForm->styleClassButtons = $this->class_name_msg_buttons;
 		
 		$primerButton = '';
@@ -858,9 +861,9 @@ class myController extends myControllerExt {
 		  	
 		  		$nameButton = 'bmbx_'.strtolower(trim($etq)); 
 
-		  		$objMyForm->addEvent($nameButton,'onclick',$action);
+		  		$objMyForm->addEvent($nameButton,'onclick',$action, $param1, $param2, $param3, $param4, $param5);
 		  	
-		  		$frm .= $objMyForm->getButton($nameButton,$etq);	
+		  		$frm .= str_ireplace('GetDataForm(\'\'),','',$objMyForm->getButton($nameButton,$etq));	
 		  		$frm .= '&nbsp;&nbsp;&nbsp;';
 				  	
 		 		if (!$primerButton)
@@ -874,7 +877,7 @@ class myController extends myControllerExt {
 			
 			$objMyForm->addEvent($nameButton,'onclick','closeModalWindow');
 			
-			$frm .= $objMyForm->getButton($nameButton,$etq);
+			$frm .= str_ireplace('GetDataForm(\'\'),','',$objMyForm->getButton($nameButton,$etq));
 		}
 
 		$arRepl = array (
@@ -893,7 +896,7 @@ class myController extends myControllerExt {
 		
         $this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',5, $width, $height);
 		
-        $this->script('document.all.'.$primerButton.'.focus()');
+        $this->script('document.getElementById(\''.$primerButton.'\').focus()');
 	}
 
 	/**

@@ -906,7 +906,7 @@ class myList  {
 			
 			$this->objForm->addHelp($idSelect,LABEL_HELP_SELECT_GLOBAL_ACTION);
 			
-			$buf .= $this->objForm->getSelect($idSelect,$this->globalEventsName);
+			$buf .= $this->objForm->getSelect($idSelect,array_flip($this->globalEventsName));
 			
 		}else
 			$buf .= '&nbsp;';

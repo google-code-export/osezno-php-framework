@@ -1005,10 +1005,9 @@ class myForm {
  					
  					$buf .= 'GetArray(';
  					
- 					foreach (func_get_arg($i) as $value){
+ 					foreach (func_get_arg($i) as $key => $value){
  						
- 						$buf .= '\''.$value.'\', ';
- 						
+ 						$buf .= '\''.$key.':::'.$value.'\', ';
  					}
  					
  					$buf = substr($buf,0,-2).'), ';
