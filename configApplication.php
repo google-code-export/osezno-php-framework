@@ -12,8 +12,9 @@
 
   /**
    * Carpeta de projecto ubicada dentro de la caperta publica www
+   * Ej: osezno-framework/ 
    */
-  $baseFolder = 'osezno-framework';  
+  $baseFolder = 'osezno-framework/';  
 
   
   /**********************************************************
@@ -147,7 +148,7 @@
   }
     
   global $folderProject;
-  $GLOBALS['folderProject'] = str_replace('//','/',$_SERVER['DOCUMENT_ROOT'].'/'.$baseFolder.'/');
+  $GLOBALS['folderProject'] = str_replace('//','/',$_SERVER['DOCUMENT_ROOT'].'/'.$baseFolder);
 
   /**
    * Se van a  guardar todas las sesiones en la siguiente carpeta

@@ -141,31 +141,31 @@ class osezno {
 		 * Llamar a las diferentes hojas de estilos
 		 */
 		$this->arrayAssignAreasHead['string_css_calendar']
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/calendar/style.php'.
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/calendar/style.php'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_mylist']     
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/'.
+		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mylist/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 		$this->arrayAssignAreasHead['string_css_myform']     
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/myform/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/myform/'.
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/myform/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/myform/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 		$this->arrayAssignAreasHead['string_css_message_box']     
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/msg_box/'.
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/msg_box/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/msg_box/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 		$this->arrayAssignAreasHead['string_css_modal_window']     
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/modal_window/'.
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/modal_window/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/modal_window/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 		$this->arrayAssignAreasHead['string_css_notification_window']     
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/notification_window/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/notification_window/'.
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/notification_window/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/notification_window/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_tabs']     
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mytabs/style.php?path_img='.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mytabs/'.
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mytabs/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mytabs/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 		$cssErrors = 
