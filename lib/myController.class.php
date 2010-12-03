@@ -856,6 +856,11 @@ class myController extends myControllerExt {
 		  
 			foreach($mixedButtons as $etq=>$action){
 
+				if (!$etq){
+					$etq = $action;
+					$action = '';
+				}
+				
 		  		if (!$action)
 		  			$action = 'closeModalWindow';
 		  	
