@@ -3,9 +3,9 @@
  * myTabs
  *
  * @uses Creacion de pestanas
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.5
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *
  * La clase crea pestanas para uso de varias URLs dentro de una misma ventana
  *

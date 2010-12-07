@@ -1,6 +1,16 @@
 <?php
 
 
+/**
+ * myControllerExt
+ *
+ * @internal
+ * @uses Extension controlador de eventos
+ * @package	OSEZNO-PHP-FRAMEWORK 
+ * @version 0.1
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ *  
+ */
 class myControllerExt {
 	
   	/**
@@ -31,16 +41,16 @@ class myControllerExt {
 
 
 /**
- * myHandlerEvent
+ * myController
  * 
  * Clase que es padre de los eventos
  * de los diferentes modulos que existan
  * en la aplicacion.
  * 
  * @uses Controlador de eventos
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package	OSEZNO-PHP-FRAMEWORK 
  * @version 0.1
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *  
  */
 class myController extends myControllerExt {
@@ -158,10 +168,7 @@ class myController extends myControllerExt {
 
 	
 	/**
- 	 * Define el ancho de la caja de
- 	 * mensaje, si no tiene un valor
- 	 * este sera por defecto 450px
- 	 *
+ 	 * Define el ancho de la caja de mensaje, si no tiene un valor este sera por defecto 450px
  	 * @var int
  	 */	
 	public $widthMessageBox;

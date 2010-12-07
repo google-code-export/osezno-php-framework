@@ -1,0 +1,1061 @@
+<html>
+<head>
+<title>Docs For Class myActiveRecord</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">OSEZNO-PHP-FRAMEWORK</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                              		  [ <a href="../classtrees_OSEZNO-PHP-FRAMEWORK.html" class="menu">class tree: OSEZNO-PHP-FRAMEWORK</a> ]
+		  [ <a href="../elementindex_OSEZNO-PHP-FRAMEWORK.html" class="menu">index: OSEZNO-PHP-FRAMEWORK</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+      <b>Packages:</b><br />
+              <a href="../li_OSEZNO-PHP-FRAMEWORK.html">OSEZNO-PHP-FRAMEWORK</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myActiveRecord.class.php.html">		myActiveRecord.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myCalendar.class.php.html">		myCalendar.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myController.class.php.html">		myController.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myDinamicList.class.php.html">		myDinamicList.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myExportData.class.php.html">		myExportData.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myForm.class.php.html">		myForm.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myTabs.class.php.html">		myTabs.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myTime.class.php.html">		myTime.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_osezno.class.php.html">		osezno.class.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html">myActiveRecord</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myCal.html">myCal</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myControllerExt.html">myControllerExt</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html">myExportData</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myList.html">myList</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html">myTabs</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myTime.html">myTime</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/osezno.html">osezno</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: myActiveRecord</h1>
+Source Location: /myActiveRecord.class.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description">myActiveRecord</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
+                  </ul>
+
+
+
+
+        
+        
+<h4>Version:</h4>
+<ul>
+  <li>0.1</li>
+</ul>
+
+        
+</td>
+
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#method__construct">__construct</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#method__destruct">__destruct</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodbeginTransaction">beginTransaction</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methoddelete">delete</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodendTransaction">endTransaction</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodfind">find</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetAtt">getAtt</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetDatabase">getDatabase</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetEngine">getEngine</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetErrorLog">getErrorLog</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetHost">getHost</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetLastInsertId">getLastInsertId</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetNumFieldsAffected">getNumFieldsAffected</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetNumRowsAffected">getNumRowsAffected</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetPassword">getPassword</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetPort">getPort</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetSqlLog">getSqlLog</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetUser">getUser</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodisSuccessfulConnect">isSuccessfulConnect</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodloadSqlFromFile">loadSqlFromFile</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodquery">query</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodsave">save</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodsetAutoQuotesInFind">setAutoQuotesInFind</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodsetPk">setPk</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodsetPosfijSeq">setPosfijSeq</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodsetPrimaryKey">setPrimaryKey</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodsetSeqName">setSeqName</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 16]<br />
+myActiveRecord<br /><br /><p>La clase myActiveRecord es la propuesta que da osezno framework  para acceder a las bases de datos de Postgres, MySql mediante  objetos del Lenguaje de programacion. Extendiendo la clase a subclases  que tengan la informacion de cada una de las tablas a las que se  quieran acceder.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>version:</b>&nbsp;&nbsp;</td><td>0.1</td>
+  </tr>
+  <tr>
+    <td><b>uses:</b>&nbsp;&nbsp;</td><td>Acceso - a bases de datos por medio de objetos de PHP</td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="method__construct"></a>
+	<h3>constructor __construct <span class="smalllinenumber">[line 238]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>myActiveRecord __construct(
+[$database
+$database = ''], [$user
+$user = ''], [$password
+$password = ''], [$host
+$host = ''], [$engine
+$engine = ''], [$port
+$port = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abre una conexion a base de datos.<br /><br /><p>Instancia a un nuevo objeto una conexion a la base con los parametros usados.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$database&nbsp;&nbsp;</td>
+        <td><b>$database</b>&nbsp;&nbsp;</td>
+        <td>Nombre base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">$user&nbsp;&nbsp;</td>
+        <td><b>$user</b>&nbsp;&nbsp;</td>
+        <td>Usuario de base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">$password&nbsp;&nbsp;</td>
+        <td><b>$password</b>&nbsp;&nbsp;</td>
+        <td>Clave de usuario de base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">$host&nbsp;&nbsp;</td>
+        <td><b>$host</b>&nbsp;&nbsp;</td>
+        <td>Ruta fisica del servidor de base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">$engine&nbsp;&nbsp;</td>
+        <td><b>$engine</b>&nbsp;&nbsp;</td>
+        <td>Motor de base de datos seleccionado. (mysql o pgsql)</td>
+      </tr>
+          <tr>
+        <td class="type">$port&nbsp;&nbsp;</td>
+        <td><b>$port</b>&nbsp;&nbsp;</td>
+        <td>Puerto de conexion.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method__destruct"></a>
+	<h3>destructor __destruct <span class="smalllinenumber">[line 274]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void __destruct(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Destructor de la clase<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodbeginTransaction"></a>
+	<h3>method beginTransaction <span class="smalllinenumber">[line 959]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void beginTransaction(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Inicia una transaccion<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methoddelete"></a>
+	<h3>method delete <span class="smalllinenumber">[line 1212]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer delete(
+string
+$strCond)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Trata de borrar registros de una  tabla si ellos cumplen con unas  condiciones.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strCond</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodendTransaction"></a>
+	<h3>method endTransaction <span class="smalllinenumber">[line 975]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean endTransaction(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Finaliza una transaccion<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodfind"></a>
+	<h3>method find <span class="smalllinenumber">[line 1124]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>object find(
+[string
+$strCond = ''], [string
+$orderBy = ''], [string
+$orderMethod = ''], [integer
+$intLimit = ''], [integer
+$offSet = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Trata de encontrar registros de una  tabla en la base de datos en uso que  cumplan con determinadas condiciones  segun campos de la tabla.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strCond</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$orderBy</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$orderMethod</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$intLimit</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$offSet</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetAtt"></a>
+	<h3>method getAtt <span class="smalllinenumber">[line 951]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getAtt(
+$att
+$att)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el valor de un atributo<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$att&nbsp;&nbsp;</td>
+        <td><b>$att</b>&nbsp;&nbsp;</td>
+        <td>Nombre</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetDatabase"></a>
+	<h3>method getDatabase <span class="smalllinenumber">[line 799]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getDatabase(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el valor del nombre  de la base de datos actual  para conectarse.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetEngine"></a>
+	<h3>method getEngine <span class="smalllinenumber">[line 811]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getEngine(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el valor del nombre  del motor de la base de datos  actualmente en uso<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetErrorLog"></a>
+	<h3>method getErrorLog <span class="smalllinenumber">[line 891]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getErrorLog(
+[$HTMLformat
+$HTMLformat = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene una cadena con el  utimo error en una transaccion <ul><li>consulta sql a la base de datos.</li></ul><br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$HTMLformat&nbsp;&nbsp;</td>
+        <td><b>$HTMLformat</b>&nbsp;&nbsp;</td>
+        <td>Aplicar formato html a la salida de errores true/false</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetHost"></a>
+	<h3>method getHost <span class="smalllinenumber">[line 824]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getHost(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el valor del nombre<br /><br /><p>del servidor o su ip, al  cual se esta conectado en  este momento</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetLastInsertId"></a>
+	<h3>method getLastInsertId <span class="smalllinenumber">[line 940]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getLastInsertId(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el valor del indice<br /><br /><p><ul><li>llave primaria siempre y cuando</li></ul> este sea un campo autoincrmentable <ul><li>serial del ultimo registro insertado</li></ul> en una tabla</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetNumFieldsAffected"></a>
+	<h3>method getNumFieldsAffected <span class="smalllinenumber">[line 925]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getNumFieldsAffected(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el numero de campos afectados  por la ultima consulta.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetNumRowsAffected"></a>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 914]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getNumRowsAffected(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el numero de registros afectados  por la utima consulta, insercion, actualizacion <ul><li>eliminacion de registros.</li></ul><br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetPassword"></a>
+	<h3>method getPassword <span class="smalllinenumber">[line 851]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getPassword(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el valor de la clave<br /><br /><p>actual que en este momento  esta siendo usada por el  usuario para conectarse a  la base de datos.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetPort"></a>
+	<h3>method getPort <span class="smalllinenumber">[line 865]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getPort(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el valor del puerto<br /><br /><p>actual que en este momento  se utiliza para conectarse  al motor de la base de datos  via TCP/IP</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetSqlLog"></a>
+	<h3>method getSqlLog <span class="smalllinenumber">[line 878]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getSqlLog(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene un registro de las  consulta echas al motor de  la base de datos. Incluso en  una transaccion.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetUser"></a>
+	<h3>method getUser <span class="smalllinenumber">[line 837]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getUser(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el valor del nombre  del usuario que en este momento  se encuentra conectado a la  base de datos.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodisSuccessfulConnect"></a>
+	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1336]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean isSuccessfulConnect(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Despues de intentar abrir una conexion en el constructor  verifica si esta se pudo abrir o no.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodloadSqlFromFile"></a>
+	<h3>method loadSqlFromFile <span class="smalllinenumber">[line 1010]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string loadSqlFromFile(
+$file
+$file, [$vars
+$vars = array()])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Carga una consulta sql desde un archivo fisico<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$file&nbsp;&nbsp;</td>
+        <td><b>$file</b>&nbsp;&nbsp;</td>
+        <td>Ruta del archivo fisico</td>
+      </tr>
+          <tr>
+        <td class="type">$vars&nbsp;&nbsp;</td>
+        <td><b>$vars</b>&nbsp;&nbsp;</td>
+        <td>Arreglo de variables a reemplazar</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodquery"></a>
+	<h3>method query <span class="smalllinenumber">[line 1040]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void query(
+string
+$sql, [
+$saveInLog = true])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Ejecuta una consulta SQL  Devuelve un arreglo con el resultado de la consulta<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$sql</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$saveInLog</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsave"></a>
+	<h3>method save <span class="smalllinenumber">[line 1135]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean save(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Inserta o Modifica los datos de  un registro.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetAutoQuotesInFind"></a>
+	<h3>method setAutoQuotesInFind <span class="smalllinenumber">[line 787]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>unknown_type setAutoQuotesInFind(
+$value
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Setear comillas automatica en el metodo find<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$value&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetPk"></a>
+	<h3>method setPk <span class="smalllinenumber">[line 1272]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setPk(
+$field
+$field)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Alias de setPrimaryKey<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$field&nbsp;&nbsp;</td>
+        <td><b>$field</b>&nbsp;&nbsp;</td>
+        <td>Campo Pk</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetPosfijSeq"></a>
+	<h3>method setPosfijSeq <span class="smalllinenumber">[line 765]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setPosfijSeq(
+[string
+$posFij = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Setea el posfijo que en postgres se usa para  llamar a una secuencia en especifico<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$posFij</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetPrimaryKey"></a>
+	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1283]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setPrimaryKey(
+$field
+$field)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configura una llave primaria para la tabla, si no se suministra se calculara automaticamente.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$field&nbsp;&nbsp;</td>
+        <td><b>$field</b>&nbsp;&nbsp;</td>
+        <td>Campo Pk</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetSeqName"></a>
+	<h3>method setSeqName <span class="smalllinenumber">[line 775]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setSeqName(
+$name
+$name)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Setea el nombre de la secuencia para que despues de un save pueda ser obtenido su valor<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$name&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre secuencia</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Tue, 07 Dec 2010 18:04:06 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

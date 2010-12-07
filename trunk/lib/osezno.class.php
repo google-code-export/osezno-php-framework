@@ -2,9 +2,9 @@
 /**
  * oszeno.class.php
  * @uses Metodos y atributos propios del proyecto
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *
  */	
 class osezno {

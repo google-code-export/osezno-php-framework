@@ -7,9 +7,9 @@
  * lista dianamica por medio de una consulta sql o una tabla de myActiveRecord.
  *
  * @uses Listas dinamicas
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *
  */
 class myList  {

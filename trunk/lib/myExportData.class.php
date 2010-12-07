@@ -1,6 +1,10 @@
 <?php
 
-
+/**
+ * 
+ * @package OSEZNO-PHP-FRAMEWORK 
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ */
 class myExportData {
 	
 	/**
