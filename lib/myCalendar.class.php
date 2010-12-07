@@ -6,9 +6,9 @@
  * Calendario como componente de myForm 
  * 
  * @uses Llamado a calendario en formularios
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *  
  */
 class myCal {

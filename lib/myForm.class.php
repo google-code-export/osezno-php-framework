@@ -1,7 +1,5 @@
 <?php
-/**
- * Inclusion de clases para el fckeditor
- */
+
 $pathfckEditor = 'plugin/editors/fck_editor/fckeditor.php';
 require ($pathfckEditor);
 
@@ -12,9 +10,9 @@ require ($pathfckEditor);
  * La clase myForm es la forma de interactuar el desarrollador con los formularios.
  *
  * @uses Creacion de formularios
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package OSEZNO-PHP-FRAMEWORK
  * @version 1.6.0
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  * 
  */
 class myForm {

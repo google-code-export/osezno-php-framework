@@ -3,9 +3,9 @@
  * myTime
  *
  * @uses Manejo de Tiempo y fechas
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *
  * Ultima actualizacion: 30 Enero 2007
  *

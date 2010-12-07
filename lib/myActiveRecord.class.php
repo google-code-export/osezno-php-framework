@@ -9,199 +9,214 @@
  * quieran acceder.
  * 
  * @uses Acceso a bases de datos por medio de objetos de PHP
- * @package OSEZNO FRAMEWORK (2008-2011)
+ * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
- * @author Jose Ignacio Gutierrez Guzman jose.gutierrez@osezno-framework.org
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 class myActiveRecord {
 
 	/**
-	 * Nombre de la base de datos a
-	 * la cual debe conectarse
-	 *
+	 * Nombre base de datos
+	 * 
+	 * Nombre de la base de datos a la cual debe conectarse
+	 * @access private
 	 * @var string
 	 */
-	private $database;
+	private $myact_database;
 
 	/**
-	 * Nombre del motor de bases de
-	 * datos que vamos a usar, puede
-	 * usarse 'mysql' o 'postgres'
-	 *
+	 * Motor base de datos
+	 * 
+	 * Nombre del motor de bases de datos que vamos a usar, puede usarse 'mysql' o 'postgres'
+	 * @access private
 	 * @var string
 	 */
-	private $engine;
+	private $myact_engine;
 
 	/**
-	 * Nombre del Servidor o Ip
-	 * donde se encuentra el motor
-	 * de la base de datos.
-	 *
+	 * Direccion fisica servidor BD
+	 * 
+	 * Nombre del Servidor o Ip donde se encuentra el motor de la base de datos.
+	 * @access private
 	 * @var string
 	 */
-	private $host;
+	private $myact_host;
 
 	/**
-	 * Nombre del usuario que
-	 * permite el acceso a la
-	 * base de datos para conexion.
-	 *
+	 * Usuario para la conexion
+	 * 
+	 * Nombre del usuario que permite el acceso a la base de datos para conexion.
+	 * @access private
 	 * @var string
 	 */
-	private $user;
+	private $myact_user;
 
 	/**
-	 * Clave de acceso del usuario
-	 * que permite la conexion a 
-	 * la base de datos.
-	 *
+	 * Clave de acceso 
+	 * 
+	 * Clave de acceso del usuario que permite la conexion a la base de datos.
+	 * @access private
 	 * @var string
 	 */
-	private $password;
+	private $myact_password;
 
 	/**
-	 * Puerto del motor de la Base de 
-	 * datos que se usara para conectarse
-	 * al motor de base de datos seleccionado.
+	 * Puerto de conexion
+	 * 
+	 * Puerto del motor de la Base de datos que se usara para conectarse al motor de base de datos seleccionado. 
 	 * Puede usar 3306 para mysql o 5432 para postgresql
-	 *
+	 * @access private
 	 * @var integer
 	 */
-	private $port;
+	private $myact_port;
 
 	/**
-	 * Nombre de la tabla de la base de datos
-	 * que actuamente se encuentra en uso para
-	 * la transaccion.
-	 *
+	 * Tabla actual de trabajo
+	 * 
+	 * Nombre de la tabla de la base de datos que actuamente se encuentra en uso para la transaccion.
+	 * @access private
 	 * @var string
 	 */
-	private $table;
+	private $myact_table;
 
 	/**
+	 * Objeto de la conexion.
+	 * 
 	 * Objeto de conexion a la base de datos
-	 *
+	 * @access private
 	 * @var resourse
 	 */
-	private $dbh;
+	private $myact_dbh;
 
 	/**
-	 * Comprueba el estado boleano de si
-	 * la actual conexion esta abierta o
-	 * cerrada.
+	 * Estado de la conexion actual.
+	 * 
+	 * Comprueba el estado boleano de si la actual conexion esta abierta o cerrada.
+	 * @access private
 	 * @var boolean
 	 */
 	private $successfulConnect = false;
 	
 	/**
-	 * Numero entero de filas afectadas
-	 * por la ultima consulta a la base
-	 * de datos.
-	 *
+	 * Filas afectadas.
+	 * 
+	 * Numero entero de filas afectadas por la ultima consulta a la base de datos.
+	 * @access private
 	 * @var integer
 	 */
 	private $num_rows = 0;
 
 	/**
-	 * Numero entero de campos afectados
-	 * por la ultima consulta select a la
-	 * base de datos.
-	 *  
+	 * Columna afectadas.
+	 * 
+	 * Numero entero de campos afectados por la ultima consulta select a la base de datos.
+	 * @access private
 	 * @var intger
 	 */
 	private $num_cols = 0;
 	
 	/**
-	 * Estructura de la tabla actual
-	 *
+	 * Estructura actual de la tabla.
+	 * 
+	 * Estructura actual de la tabla.
+	 * @access private
 	 * @var mixed
 	 */
 	private $tableStruct = array();
 
 	/**
-	 * Llaves primarias de cada tabla, segun hayan sido definidas o se definan automaticamente.
+	 * Llaves primarias de la tablas.
 	 * 
-	 * @var array
+	 * Llaves primarias de cada tabla, segun hayan sido definidas o se definan automaticamente.
+	 * @access private
+	 * @var mixed
 	 */
 	private $tablePk = array ();
 	
 	/**
-	 * Por tabla el id de la secuencia
+	 * Id de secuencia.
 	 * 
+	 * Por tabla el id de la secuencia
+	 * @access private
 	 * @var array
 	 */
 	private $tableIdSeq = array ();
 	
 	/**
 	 * Alias de campos de la tabla
-	 *
-	 * @var unknown_type
+	 * 
+	 * Alias de campos de la tabla en uso.
+	 * @access private
+	 * @var string
 	 */
 	private $classVars;
 
 	/**
-	 * LLave de la tabla que se
-	 * esta buscando
-	 *
+	 * Valor a buscar principal.
+	 * 
+	 * Valor a buscar sobre la llave principal de la tabla.
+	 * @access private
 	 * @var unknown_type
 	 */
 	private $keyFinded;
 
 	/**
-	 * Usuales relaciones
-	 * que en una consulta
-	 * o en una busqueda pueda
-	 * tener
-	 *
-	 * @var unknown_type
+	 * Operadores lógicos
+	 * 
+	 * Operadores logicos usados para buscar registros de una tabla.
+	 * @access private
+	 * @var mixed
 	 */
 	private $arrayStringRelation = array (
 		'<>','<=','>=', '!=','>', '<','=', '!'
 	);
 	
 	/**
-	 * Contiene el valor ultimo 
-	 * id insertado en determinada
-	 * tabla cuando es llamado el
-	 * metodo save
-	 *
-	 * @var unknown_type
+	 * Valor de ultimo id sobre registro agregado.
+	 * 
+	 * Contiene el valor ultimo id insertado en determinada tabla cuando es llamado el metodo save().
+	 * @access private
+	 * @var integer
 	 */
 	private $lastInserId;
 
-
 	/**
-	 * Posfijo del nombre de las
-	 * secuencias que se unas en postgres
-	 *
-	 * @var unknown_type
+	 * Posfijo en nombre de secuencia Postgresql
+	 * 
+	 * Posfijo del nombre de las secuencias que se usan en postgresql.
+	 * @access private
+	 * @var string
 	 */
 	private $posFijSeq = '_seq';
 
-	
 	/**
-	 * Decide si se coloca o no auto comillas sencillas en
-	 * las consulta hechas con el metodo find
+	 * Usar auto comillas en query.
 	 * 
-	 * @var unknown_type
+	 * Decide si se coloca o no auto comillas sencillas en las consulta hechas con el metodo query cuando se ubica texto dentro de ella.
+	 * @access private 
+	 * @var boolean
 	 */
 	private $autoQuoteOnFind = true;
 	
 	/**
-	 * Atributos que no son reconocibles para los metodos
-	 * que intervienen en las tablas.
-	 * @var array
+	 * Atributos no reconocibles
+	 * 
+	 * Atributos que no son reconocibles para los metodos que intervienen en las tablas.
+	 * @access private
+	 * @var mixed
 	 */
 	private $arrayInvalidAtt = array (
-		'database', 'engine', 'host', 'user', 'password', 'port', 'table', 'posFijSeq', 'num_rows', 'num_cols',
-		'dbh', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
+		'myact_database', 'myact_engine', 'myact_host', 'myact_user', 'myact_password', 'myact_port', 'myact_table', 'posFijSeq', 'num_rows', 'num_cols',
+		'myact_dbh', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
 		'arrayInvalidAtt','tablePk', 'tableIdSeq', 'autoQuoteOnFind', 'arrayCrud'	
 	);
 	
 	/**
-	 * Operaciones no Query
+	 * Operaciones no query.
 	 * 
-	 * @var array
+	 * Operaciones no Query.
+	 * @access private
+	 * @var mixed
 	 */
 	private $arrayCrud = array (
 		'insert',
@@ -210,14 +225,15 @@ class myActiveRecord {
 	);
 
 	/**
-	 * Intancia a un nuevo objeto
+	 * Abre una conexion a base de datos.
 	 * 
-	 * @param $database	Base de datos
-	 * @param $user	Usuario
-	 * @param $password	Clave de usuario
-	 * @param $host	Host de DB
-	 * @param $engine	Motor de DB
-	 * @param $port	Puerto logico
+	 * Instancia a un nuevo objeto una conexion a la base con los parametros usados. 
+	 * @param $database	Nombre base de datos.
+	 * @param $user	Usuario de base de datos.
+	 * @param $password	Clave de usuario de base de datos.
+	 * @param $host	Ruta fisica del servidor de base de datos.
+	 * @param $engine Motor de base de datos seleccionado. (mysql o pgsql)	
+	 * @param $port	Puerto de conexion.
 	 */
 	public function __construct($database = '', $user = '', $password = '', $host = '', $engine = '', $port = ''){
 
@@ -233,6 +249,7 @@ class myActiveRecord {
 		$this->setParams($arrayConecction);
 		
 		if (!isset($GLOBALS['OF_SQL_LOG'])){
+			
 			global $OF_SQL_LOG, $OF_SQL_LOG_ERROR, $OF_IN_TRANSACCTION;
 			
 			$GLOBALS['OF_IN_TRANSACCTION'] = false;
@@ -240,11 +257,12 @@ class myActiveRecord {
 		
 		$this->openConecction();
 
-		if (strcmp($this->table = get_class($this),'myActiveRecord')){
-			$this->classVars = get_class_vars($this->table);
+		if (strcmp($this->myact_table = get_class($this),'myActiveRecord')){
 			
-			if (!isset($this->tablePk[$this->table]))
-			   $this->getPkFromTable($this->table);
+			$this->classVars = get_class_vars($this->myact_table);
+			
+			if (!isset($this->tablePk[$this->myact_table]))
+			   $this->getPkFromTable($this->myact_table);
 		}
 			
 	}
@@ -265,7 +283,7 @@ class myActiveRecord {
 	 */
 	private  function setDatabase ($newDatabase){
 			
-		$this->database = $newDatabase;
+		$this->myact_database = $newDatabase;
 	}
 
 	/**
@@ -275,7 +293,7 @@ class myActiveRecord {
 	 */
 	private function setEngine ($newEngine){
 			
-		$this->engine = $newEngine;
+		$this->myact_engine = $newEngine;
 	}
 
 	/**
@@ -286,7 +304,7 @@ class myActiveRecord {
 	 */
 	private function setHost ($newHost){
 			
-		$this->host = $newHost;
+		$this->myact_host = $newHost;
 	}
 
 	/**
@@ -297,7 +315,7 @@ class myActiveRecord {
 	 */
 	private function setUser ($newUser){
 			
-		$this->user = $newUser;
+		$this->myact_user = $newUser;
 	}
 
 	/**
@@ -309,7 +327,7 @@ class myActiveRecord {
 	 */
 	private function setPassword ($newPassword){
 			
-		$this->password = $newPassword;
+		$this->myact_password = $newPassword;
 	}
 
 	/**
@@ -321,7 +339,7 @@ class myActiveRecord {
 	 */
 	private function setPort ($newPort){
 			
-		$this->port = $newPort;
+		$this->myact_port = $newPort;
 	}
 
 	/**
@@ -334,6 +352,7 @@ class myActiveRecord {
 	 * @param mixed $arrayParams
 	 */
 	private function setParams ($arrayParams){
+		
 		if ($arrayParams['database'])
 		   $this->setDatabase($arrayParams['database']);
 		else   
@@ -376,7 +395,7 @@ class myActiveRecord {
 		
 		$valid = false;
 		
-		if (strcmp($field,$this->tablePk[$this->table]))
+		if (strcmp($field,$this->tablePk[$this->myact_table]))
 
 		if (!is_null($this->$field))
 					
@@ -403,10 +422,11 @@ class myActiveRecord {
 	private function get_LastInsertId (){
 		
 		$idSeq = '';
-		if (isset($this->tableIdSeq[$this->table]))
-			$idSeq = $this->tableIdSeq[$this->table];
 		
-		return $this->dbh->lastInsertId($idSeq);	
+		if (isset($this->tableIdSeq[$this->myact_table]))
+			$idSeq = $this->tableIdSeq[$this->myact_table];
+		
+		return $this->myact_dbh->lastInsertId($idSeq);	
 	}
 	/**
 	 * Arma una consulta Sql con los parametros asignados
@@ -426,10 +446,13 @@ class myActiveRecord {
 		$sql = '';
 		
 		$subSqlF = '';
+		
 		$iCounter = 1;
 		
 		foreach ($this->classVars as $var => $val){
+			
 			if (!in_array($var,$this->arrayInvalidAtt)){
+				
 				$subSqlF .= $var;
 
 			   	$subSqlF .= ', ';
@@ -438,7 +461,7 @@ class myActiveRecord {
 			}
 		}
 		
-		$sql .= 'SELECT '.substr($subSqlF,0,-2).' FROM '.$this->table;
+		$sql .= 'SELECT '.substr($subSqlF,0,-2).' FROM '.$this->myact_table;
 		
 		$results = '';
 		
@@ -464,20 +487,25 @@ class myActiveRecord {
 				if (trim($fCnd) && $vCnd){
 
 					if ($this->autoQuoteOnFind){
+						
 						if (is_numeric(trim($vCnd))){
+							
 							$sql .= $fCnd.$smblRel.
 							' '.trim($vCnd);
 
 						}else{
+							
 							$sql .= $fCnd.$smblRel.
 							" '".trim($vCnd)."'";
 						}
 					}else{
+						
 						$sql .= $fCnd.$smblRel.
 							' '.trim($vCnd).'';
 					}
 
 				}else{
+					
 					$sql .= ' '.trim($cnd);
 				}
 					
@@ -491,7 +519,7 @@ class myActiveRecord {
 				
 				if (is_bool($orderBy)){
 					
-					$sql .= ' ORDER BY '.$this->tablePk[$this->table].' ';
+					$sql .= ' ORDER BY '.$this->tablePk[$this->myact_table].' ';
 					
 				}else{
 					
@@ -502,10 +530,13 @@ class myActiveRecord {
 							$sqlOrderBy = '';
 							
 							$cute = false;
+							
 							foreach ($orderBy as $field => $method){
 							
 								if ($method){
+									
 									$sqlOrderBy .= ' '.$field.' '.$method.', ';
+									
 									$cute = true;
 								}	
 							}
@@ -543,6 +574,7 @@ class myActiveRecord {
 				
 				foreach ($rF as $row)
 					foreach ($row as $etq => $value){
+						
 						$this->$etq = $value;
 					}
 					
@@ -554,12 +586,14 @@ class myActiveRecord {
 		}else{
 
 			if ($strCond){
+				
 				if ($this->autoQuoteOnFind){
+					
 					if (is_string($strCond))
 						$strCond = '\''.$strCond.'\'';
 				}
 				
-				$sql .= ' WHERE '.$this->tablePk[$this->table].' = '.$strCond;
+				$sql .= ' WHERE '.$this->tablePk[$this->myact_table].' = '.$strCond;
 			}
 			
 			$rF = $this->query($sql);
@@ -567,12 +601,15 @@ class myActiveRecord {
 			if ($this->num_rows){
 
 				$this->keyFinded = $strCond;
+				
 				$rF = $rF[0];
 				
 				foreach ($rF as $etq => $val){
 					
 					if (is_string($etq)){
+						
 						if (!in_array($etq,$this->arrayInvalidAtt)){
+							
 							$this->$etq = $val;
 						}
 					}
@@ -639,6 +676,7 @@ class myActiveRecord {
 	private function getStringSqlFields ($table){
 			
 		$subSqlF = '';
+		
 		$iCounter = 1;
 		
 		$countFields = count($fields = $this->tableStruct[$table]['fields']);
@@ -695,18 +733,22 @@ class myActiveRecord {
 		foreach ($this->classVars as $var => $val){
 			
 			if (!strcmp(strtolower($var),'id')){
+				
 				if (!$pk)
 	   				$pk = $var;
 			}else{
 
 				if (strripos($var,'id')!==false){
+					
 					if (!$pk)
 			   			$pk = $var;
 				}
 			}
 							
 			if ($pk){
+				
 		   		$this->tablePk[$tableName] = $pk;
+		   		
 		   		break;
 			}
 			
@@ -731,8 +773,9 @@ class myActiveRecord {
 	 * @param $name	Nombre secuencia
 	 */
 	public function setSeqName($name){
+		
 		if ($name)
-			$this->tableIdSeq[$this->table] = $name;		
+			$this->tableIdSeq[$this->myact_table] = $name;		
 	}
 	
 	/**
@@ -755,7 +798,7 @@ class myActiveRecord {
 	 */
 	public function getDatabase (){
 			
-		return $this->database;
+		return $this->myact_database;
 	}
 
 	/**
@@ -767,7 +810,7 @@ class myActiveRecord {
 	 */
 	public function getEngine (){
 			
-		return $this->engine;
+		return $this->myact_engine;
 	}
 
 	/**
@@ -780,7 +823,7 @@ class myActiveRecord {
 	 */
 	public function getHost (){
 			
-		return $this->host;
+		return $this->myact_host;
 	}
 
 	/**
@@ -793,7 +836,7 @@ class myActiveRecord {
 	 */
 	public function getUser (){
 			
-		return $this->user;
+		return $this->myact_user;
 	}
 
 	/**
@@ -807,7 +850,7 @@ class myActiveRecord {
 	 */
 	public function getPassword (){
 			
-		return $this->password;
+		return $this->myact_password;
 	}
 
 	/**
@@ -821,7 +864,7 @@ class myActiveRecord {
 	 */
 	public function getPort (){
 			
-		return $this->port;
+		return $this->myact_port;
 	}
 	
 	/**
@@ -850,6 +893,7 @@ class myActiveRecord {
 		$error = '';
 		
 		if (trim($GLOBALS['OF_SQL_LOG_ERROR'])){
+			
 			if ($HTMLformat)
 				$error = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.$GLOBALS['OF_SQL_LOG'].'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.$GLOBALS['OF_SQL_LOG_ERROR'].'</div></div>';
 			else 
@@ -934,19 +978,19 @@ class myActiveRecord {
 		
 		if ($GLOBALS['OF_IN_TRANSACCTION']){
 			
-			$this->dbh->beginTransaction();
+			$this->myact_dbh->beginTransaction();
 				
 			if (!$this->getErrorLog()){
 			
 				$GLOBALS['OF_SQL_LOG'] .='COMMIT;'."\n";
 				
-				$this->dbh->commit();
+				$this->myact_dbh->commit();
 			
 			}else{
 			
 				$GLOBALS['OF_SQL_LOG'] .='ROLLBACK;'."\n";
 				
-				$this->dbh->rollBack();
+				$this->myact_dbh->rollBack();
 			}
 			
 			$GLOBALS['OF_IN_TRANSACCTION'] = false;
@@ -1017,13 +1061,13 @@ class myActiveRecord {
 		if ($isrW){
 			
 			# Establecer nombre de secuencia automaticamente en Pgsql
-			if (!isset($this->tableIdSeq[$this->table]))
+			if (!isset($this->tableIdSeq[$this->myact_table]))
 				if ($this->getEngine()=='pgsql')
-					$this->tableIdSeq[$this->table] = $this->table.'_'.$this->tablePk[$this->table].$this->posFijSeq;			
+					$this->tableIdSeq[$this->myact_table] = $this->myact_table.'_'.$this->tablePk[$this->myact_table].$this->posFijSeq;			
 			
-			$this->num_rows = $this->dbh->exec($sql);
+			$this->num_rows = $this->myact_dbh->exec($sql);
 				
-			$eError = $this->dbh->errorInfo();
+			$eError = $this->myact_dbh->errorInfo();
 				
 			if (isset($eError[2])){
 					
@@ -1036,21 +1080,24 @@ class myActiveRecord {
 			
 			# Select / No se afectan en transacciones
 			$array = array();
-			$resQuery = $this->dbh->query($sql);
+			$resQuery = $this->myact_dbh->query($sql);
 		
 			if (!$resQuery){
 				
-				$eError = $this->dbh->errorInfo();
+				$eError = $this->myact_dbh->errorInfo();
 				
 				$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
 				
 			}else{
 
-				$this->num_cols = $resQuery->columnCount(); 
+				$this->num_cols = $resQuery->columnCount();
+				
 				$this->num_rows = 0;
 
 				foreach ($resQuery as $row){
+					
 					$array[] = $this->buildRes($row);
+					
 					$this->num_rows++;	
 				}	
 				
@@ -1094,7 +1141,7 @@ class myActiveRecord {
 		// Update
 		if ($this->keyFinded){
 
-			$sql .= 'UPDATE '.$this->table.' SET ';
+			$sql .= 'UPDATE '.$this->myact_table.' SET ';
 
 			foreach ($this->classVars as $field => $value){
 				
@@ -1118,14 +1165,14 @@ class myActiveRecord {
 				
 			}
 
-			$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->table].' = '.$this->keyFinded;
+			$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->myact_table].' = '.$this->keyFinded;
 
 			$this->query($sql);
 			
 		// Insert
 		}else{
 			
-			$sql .= 'INSERT INTO '.$this->table.' (';
+			$sql .= 'INSERT INTO '.$this->myact_table.' (';
 
 			foreach ($this->classVars as $field => $value){
 				
@@ -1168,7 +1215,7 @@ class myActiveRecord {
 		
 		if ($strCond){
 			
-			$sql .= 'DELETE FROM '.$this->table.'';
+			$sql .= 'DELETE FROM '.$this->myact_table.'';
 
 			$iCounter = 1;
 
@@ -1204,10 +1251,11 @@ class myActiveRecord {
 				}
 				
 			}else{
+				
 				if (is_string($strCond))
 					$strCond = '\''.$strCond.'\'';
 
-				$sql .= ' WHERE '.$this->tablePk[$this->table].' = '.$strCond;
+				$sql .= ' WHERE '.$this->tablePk[$this->myact_table].' = '.$strCond;
 			}
 
 			$this->query($sql);
@@ -1234,7 +1282,7 @@ class myActiveRecord {
 	 */
 	public function setPrimaryKey($field){
 		
-		$this->tablePk[$this->table] = $field;
+		$this->tablePk[$this->myact_table] = $field;
 		
 	}
 
@@ -1245,24 +1293,25 @@ class myActiveRecord {
 	 */
 	private function openConecction (){
 		
-		$dsn = $this->engine.
-				':dbname='.$this->database.
-				';host='.$this->host;
+		$dsn = $this->myact_engine.
+				':dbname='.$this->myact_database.
+				';host='.$this->myact_host;
 		
-		$user = $this->user;
+		$user = $this->myact_user;
 		
-		$password = $this->password;
+		$password = $this->myact_password;
 				
 		try {
-    		$this->dbh = new PDO($dsn, $user, $password);
+			
+    		$this->myact_dbh = new PDO($dsn, $user, $password);
     		
-    		//$this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    		//$this->myact_dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     		
     		$this->successfulConnect = true;
     		
 		} catch (PDOException $e) {
 			
-			$GLOBALS['OF_SQL_LOG'] .= 'Connect to '.$this->engine;
+			$GLOBALS['OF_SQL_LOG'] .= 'Connect to '.$this->myact_engine;
 			
     		$GLOBALS['OF_SQL_LOG_ERROR'].= ''.$e->getMessage();
     			
