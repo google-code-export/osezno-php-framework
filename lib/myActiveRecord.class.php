@@ -227,7 +227,32 @@ class myActiveRecord {
 	/**
 	 * Abre una conexion a base de datos.
 	 * 
-	 * Instancia a un nuevo objeto una conexion a la base con los parametros usados. 
+	 * Instancia a un nuevo objeto una conexion a la base con los parametros usados.
+	 * El parametro engine puede ser mysql o pgsql.
+	 * <code>
+	 * 
+	 * 
+	 * <?php
+	 * 
+	 * # Ejemplo 1: 
+	 * 
+	 * $myAct = new myActiveRecord('database');
+	 * 
+	 * # Ejemplo 2:
+	 * 
+	 * class table extends myActiveRecord {
+	 * 
+	 *   public $field1;
+	 *   
+	 *   public $field2;
+	 *    
+	 * }
+	 * 
+	 * $table = new table('database');
+	 * 
+	 * ?>
+	 * 
+	 * </code>
 	 * @param $database	Nombre base de datos.
 	 * @param $user	Usuario de base de datos.
 	 * @param $password	Clave de usuario de base de datos.
@@ -268,17 +293,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Destructor de la clase
-	 *
-	 */
-	public function __destruct(){
-			
-		//$this->closeConecction();
-	}
-
-	/**
-	 * Setear la base de datos que se va a usar
-	 *
+	 * Seleccionar Base de datos.
+	 * 
+	 * Selecciona la base de datos que se va a usar.
+	 * @access private
 	 * @param string $newDatabase
 	 */
 	private  function setDatabase ($newDatabase){
@@ -287,8 +305,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Setear el motor de bases de datos que se va a usar
-	 *
+	 * Seleccionar motor de base de datos.
+	 * 
+	 * Selecciona el motor de base de datos que se va a usar.
+	 * @access private
 	 * @param string $newEngine
 	 */
 	private function setEngine ($newEngine){
@@ -297,9 +317,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Setear el nombre del host o su ip para
-	 * conectarse a su motor de base de datos
-	 *
+	 * Seleccionar el host de la base de datos.
+	 * 
+	 * Selecciona el host donde esta ubicado el motor de la base de datos.
+	 * @access private
 	 * @param string $newHost
 	 */
 	private function setHost ($newHost){
@@ -308,9 +329,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Setear el nombre de usuario que se usara
-	 * para conectarse a la base de datos
-	 *
+	 * Seleccionar el usuario.
+	 * 
+	 * Selecciona el usuario de la base de datos para la conexion.
+	 * @access private
 	 * @param string $newUser
 	 */
 	private function setUser ($newUser){
@@ -319,10 +341,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Setear la clave de acceso que usara
-	 * el usuario que tendra acceso a la base
-	 * de datos.
-	 *
+	 * Seleccionar la clave de acceso
+	 * 
+	 * Setear la clave de acceso que usara el usuario que tendra acceso a la base de datos.
+	 * @access private
 	 * @param string $newPassword
 	 */
 	private function setPassword ($newPassword){
@@ -331,10 +353,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Setear el puerto que se usara
-	 * para conectarse a la base de datos
-	 * sobre el motor
-	 *
+	 * Seleccionar el puerto.
+	 * 
+	 * Setear el puerto que se usara para conectarse a la base de datos sobre el motor de base de datos.
+	 * @access private
 	 * @param integer $newPort
 	 */
 	private function setPort ($newPort){
@@ -343,12 +365,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Setear varios parametros al mismo tiempo
-	 * Los parametros se setean mediante un arreglo
-	 * que tenga las siguientes llaves (Todas o algunas).
-	 *
-	 * database, engine, host, user, password, port
+	 * Seleccionar los paramteros de conexion.
 	 * 
+	 * Setear varios parametros al mismo tiempo los parametros se setean mediante un arreglo que tenga las siguientes llaves (Todas o algunas). Database, engine, host, user, password, port.
+	 * @access private
 	 * @param mixed $arrayParams
 	 */
 	private function setParams ($arrayParams){
@@ -388,8 +408,10 @@ class myActiveRecord {
 	/**
 	 * Valida un atributo de la tabla 
 	 * 
+	 * Valida un atributo para saber si es accesible dentro de la clase.
+	 * @access private
 	 * @param $field
-	 * @return unknown_type
+	 * @return boolean
 	 */
 	private function validateAtt ($field){
 		
@@ -415,8 +437,10 @@ class myActiveRecord {
 	}
 		
 	/**
+	 * Obtener last insert id (postgresql)
+	 * 
 	 * Setea el valor de lastIserId, con el parametro del nombre de la secuencia si aplica
-	 *  
+	 * @access private  
 	 * @return integer
 	 */
 	private function get_LastInsertId (){
@@ -428,17 +452,19 @@ class myActiveRecord {
 		
 		return $this->myact_dbh->lastInsertId($idSeq);	
 	}
+	
 	/**
-	 * Arma una consulta Sql con los parametros asignados
-	 * 
+	 * Buscar registros
+	 *
+	 * Busca los registros asociados a una consulta sql.
+	 * @access private
 	 * @param $strCond
 	 * @param $orderBy
 	 * @param $orderMethod
 	 * @param $intLimit
 	 * @param $offset
-	 * @return unknown_type
+	 * @return mixed
 	 */
-	
 	private function findEngine ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
 		
 		$fCnd = '';
@@ -621,10 +647,12 @@ class myActiveRecord {
 	}
 			
 	/**
-	 * Evalua si una condicion pertenece a una consulta sql
-	 *
-	 * @param unknown_type $strCond
-	 * @return unknown
+	 * Evaluar condicion.
+	 * 
+	 * Evalua si una condicion pertenece a una consulta sql.
+	 * @access private
+	 * @param string $strCond
+	 * @return boolean
 	 */
 	private function evalIfIsQuery ($strCond){
 			
@@ -646,6 +674,8 @@ class myActiveRecord {
 	/**
 	 * Construye el resultado de la consulta sql
 	 * 
+	 * Construye el resultado de una cosunta sql asociada a una tabla o a la base de datos.
+	 * @access private
 	 * @param $rF Fila
 	 * @return object
 	 */
@@ -668,10 +698,12 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Obtiene los campos de una tabla definida para esa tabla
+	 * Obtener campos de una tabla.
 	 * 
+	 * Obtiene los campos en una cadena de una tabla .
+	 * @access private 
 	 * @param $table
-	 * @return unknown_type
+	 * @return string
 	 */
 	private function getStringSqlFields ($table){
 			
@@ -695,11 +727,13 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Evalua la condicion que exite un operador de relacion en find o delete
+	 * Evaluar condicion.
 	 * 
-	 * @param $strCond
-	 * @param $returnSimbol
-	 * @return unknown_type
+	 * Evalua la condicion que exite un operador de relacion en find o delete.
+	 * @access private
+	 * @param $strCond	Condicion
+	 * @param $returnSimbol	Retornar o no 
+	 * @return boolean
 	 */
 	private function evalSimbolInSubQuery ($strCond, $returnSimbol = false){
 			
@@ -721,10 +755,11 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Obtiene la llave primaria de uan tabla basado en la palabra 'id', busca el primer campo de esa tabla
-	 * que tenga la palabra solo 'id' o la primera que contenga 'id'
+	 * Obtener nombre llave primaria.
 	 * 
-	 * @param $tableName
+	 * Obtiene la llave primaria de uan tabla basado en la palabra 'id', busca el primer campo de esa tabla que tenga la palabra solo 'id' o la primera que contenga 'id'.
+	 * @access private
+	 * @param $tableName	Nombre tabla
 	 */
 	private function getPkFromTable ($tableName){
 
@@ -757,10 +792,10 @@ class myActiveRecord {
 	}	
 	
 	/**
-	 * Setea el posfijo que en postgres se usa para
-	 * llamar a una secuencia en especifico
-	 *
-	 * @param string $posFij
+	 * Configurar el posfijo para las secuencias Postgresql.
+	 * 
+	 * Configura el posfijo utilizado para llamar a las secuencias en Postgresql cuando se desea obtener el Last Insert Id de una tabla.
+	 * @param string $posFij	Posfijo
 	 */
 	public function setPosfijSeq ($posFij = ''){
 			
@@ -768,8 +803,9 @@ class myActiveRecord {
 	}
 		
 	/**
-	 * Setea el nombre de la secuencia para que despues de un save pueda ser obtenido su valor
+	 * Configurar el nombre de la secuencia usada en Postgresql.
 	 * 
+	 * Configura el nombre de la secuencia en la tabla para que despues de guardar un registro se pueda obtener el valor de Last Insert Id.
 	 * @param $name	Nombre secuencia
 	 */
 	public function setSeqName($name){
@@ -779,10 +815,10 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Setear comillas automatica en el metodo find
+	 * Configurar comillas automaticas. 
 	 * 
-	 * @param $value
-	 * @return unknown_type
+	 * Configurar si se van a usar o no las comillas automaticas cuando se realizan consultas con el metodo Query. Las comillas automaticas se aplican en cadenas de caracteres alfanumericas.
+	 * @param $value	True o False.
 	 */
 	public function setAutoQuotesInFind ($value){
 		
@@ -790,10 +826,9 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Obtener el valor del nombre
-	 * de la base de datos actual
-	 * para conectarse.
-	 *
+	 * Obtener el nombre de la base de datos.
+	 * 
+	 * Obtiene el nombre de la base de datos actual a la que se esta conectado o se esta intentando conectar.
 	 * @return string
 	 */
 	public function getDatabase (){
@@ -802,10 +837,9 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Obtener el valor del nombre
-	 * del motor de la base de datos 
-	 * actualmente en uso
-	 *
+	 * Obtener el motor de base de datos.
+	 * 
+	 * Obtiene el nombre del motor de la base de datos a la que se esta conectado o se esta intentando conectar.
 	 * @return string
 	 */
 	public function getEngine (){
@@ -814,11 +848,9 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Obtener el valor del nombre
-	 * del servidor o su ip, al
-	 * cual se esta conectado en
-	 * este momento
-	 *
+	 * Obtener el host.
+	 * 
+	 * Obtiene el host (direccion fisica) del motor de la base de datos a la que se esta conectado o se esta intentando conectar.
 	 * @return string
 	 */
 	public function getHost (){
@@ -827,11 +859,9 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Obtener el valor del nombre
-	 * del usuario que en este momento
-	 * se encuentra conectado a la
-	 * base de datos.
-	 *
+	 * Obtener el usuario de la conexion.
+	 * 
+	 * Obtiene el nombre del usuario de la base de datos con el que se esta conectado o se esta intentando conectar.
 	 * @return string
 	 */
 	public function getUser (){
@@ -840,12 +870,9 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Obtener el valor de la clave
-	 * actual que en este momento
-	 * esta siendo usada por el 
-	 * usuario para conectarse a
-	 * la base de datos.
-	 *
+	 * Obtener la clave del usuario.
+	 * 
+	 * Obtiene la clave del nombre de usuario de la base de datos a la que se esta conectado o se esta intentando conectar.
 	 * @return string
 	 */
 	public function getPassword (){
@@ -854,12 +881,9 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Obtener el valor del puerto
-	 * actual que en este momento
-	 * se utiliza para conectarse
-	 * al motor de la base de datos
-	 * via TCP/IP
-	 *
+	 * Obtener numero de puerto.
+	 * 
+	 * Obtiene el numero de puerto del motor de la base de datos a la que se esta conectado o se esta intentando conectar.
 	 * @return integer
 	 */
 	public function getPort (){
@@ -868,11 +892,9 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Obtiene un registro de las
-	 * consulta echas al motor de
-	 * la base de datos. Incluso en
-	 * una transaccion.
-	 *
+	 * Obtener el Log Sql.
+	 * 
+	 * Obtiene un registro de las consulta echas al motor de la base de datos. Incluso en una transaccion.
 	 * @return string
 	 */
 	public function getSqlLog (){
@@ -881,11 +903,10 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Obtiene una cadena con el
-	 * utimo error en una transaccion
-	 * o consulta sql a la base de datos.
+	 * Obtener el Log de Errores Sql.
 	 * 
-	 * @param $HTMLformat	Aplicar formato html a la salida de errores true/false
+	 * Obtiene una cadena con el utimo error en una transaccion o consulta sql a la base de datos.
+	 * @param $HTMLformat	Formato HTML
 	 * @return string
 	 */
 	public function getErrorLog ($HTMLformat = false){
@@ -904,11 +925,9 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Obtiene el numero de registros afectados
-	 * por la utima consulta, insercion, actualizacion
-	 * o eliminacion de registros.
+	 * Obtener numero de registros.
 	 * 
-	 *
+	 * Obtiene el numero de registros afectados por la utima consulta, insercion, actualizacion o eliminacion de registros.
 	 * @return integer
 	 */
 	public function getNumRowsAffected (){
@@ -917,9 +936,9 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Obtiene el numero de campos afectados
-	 * por la ultima consulta.
+	 * Obtener numero de campos.
 	 * 
+	 * Obtiene el numero de campos afectados por la ultima consulta Select.
 	 * @return integer
 	 */
 	public function getNumFieldsAffected (){
@@ -929,12 +948,9 @@ class myActiveRecord {
 	
 
 	/**
-	 * Obtiene el valor del indice
-	 * o llave primaria siempre y cuando
-	 * este sea un campo autoincrmentable 
-	 * o serial del ultimo registro insertado
-	 * en una tabla
-	 *
+	 * Obtener Last Insert Id.
+	 * 
+	 * Obtiene el valor del indice o llave primaria siempre y cuando este sea un campo autoincrmentable o serial del ultimo registro insertado en una tabla.
 	 * @return integer
 	 */
 	public function getLastInsertId (){
@@ -945,7 +961,8 @@ class myActiveRecord {
 	/**
 	 * Obtiene el valor de un atributo
 	 * 
-	 * @param $att Nombre
+	 * Obtiene el ultimo valor asignado a un atributo de la conexion. 
+	 * @param $att Atributo
 	 * @return string
 	 */
 	public function getAtt ($att){
@@ -954,7 +971,26 @@ class myActiveRecord {
 	}
 	
 	/**
-	 * Inicia una transaccion
+	 * Inicia una transaccion.
+	 * 
+	 * Inicia un bloque de transaccion.
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * $myAct = new myActiveRecord;
+	 * 
+	 * $myAct->beginTransaction ();
+	 * 
+	 * $myAct->query("UPDATE table SET field2 = 'value'");
+	 * 
+	 * $myAct->query("DELETE FROM table WHERE field1 = 1");
+	 * 
+	 * $myAct->endTransaction ();
+	 * 
+	 * ?>
+	 * 
+	 * </code>
 	 */
 	public function beginTransaction (){
 		
@@ -968,8 +1004,29 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Finaliza una transaccion
+	 * Finaliza una transaccion.
 	 *  
+	 * Finaliza un bloque de transaccion. Y retorna su exito o no exito.
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * $myAct = new myActiveRecord;
+	 * 
+	 * $myAct->beginTransaction ();
+	 * 
+	 * $myAct->query("UPDATE table SET field2 = 'value'");
+	 * 
+	 * $myAct->query("DELETE FROM table WHERE field1 = 1");
+	 * 
+	 * if ($myAct->endTransaction ())
+	 * 	  echo 'Exito'; 		
+	 * else
+	 * 	  echo $myAct->getErrorLog();
+	 * 
+	 * ?>
+	 * 
+	 * </code> 
 	 * @return boolean
 	 */
 	public function endTransaction (){
@@ -1001,8 +1058,26 @@ class myActiveRecord {
 	
 
 	/**
-	 * Carga una consulta sql desde un archivo fisico
+	 * Cargar un archivo de SQL.
 	 * 
+	 * Carga una consulta sql desde un archivo fisico ademas con la posibilidad de asignar variables dentro de la lectura del archivo.
+	 * <code>
+	 * 
+	 * query.sql
+	 * SELECT * FROM table WHERE id = {id};
+	 * 
+	 * <?php
+	 * $myAct = new myActiveRecord;
+	 * 
+	 * $sql = $myAct->loadSqlFromFile('query.sql',array('id'=>1));
+	 * 
+	 * echo $sql;
+	 * ?>
+	 * 
+	 * Resultado: 
+	 * SELECT * FROM table WHERE id = 1;
+	 * 
+	 * </code> 
 	 * @param $file	Ruta del archivo fisico
 	 * @param $vars	Arreglo de variables a reemplazar
 	 * @return string
@@ -1031,11 +1106,31 @@ class myActiveRecord {
 	
 
 	/**
-	 * Ejecuta una consulta SQL
-	 * Devuelve un arreglo con el resultado de la consulta
+	 * Ejecutar una consulta SQL
 	 * 
-	 *
-	 * @param string $sql
+	 * Ejecuta una consulta SQL a la base de datos y retorna una resultado (objeto) asociado a los registros obtenidos o retorna false en caso de que no haya exito.
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * $myAct = new myActiveRecord();
+	 * 
+	 * if ($res = $myAct->query('SELECT field1,... FROM table'))
+	 * 	  
+	 *    foreach ($res as $row)
+	 *    	
+	 *    	  echo $row->field1.'<br>';
+	 *    
+	 * else
+	 * 
+	 * 	  echo $myAct->getErrorLog();		
+	 * 
+	 * ?>
+	 * 
+	 * </code>
+	 * @param string $sql Consulta SQL
+	 * @param string $saveInLog Guardar en el log
+	 * @return object
 	 */
 	public function query ($sql, $saveInLog = true){
 		
@@ -1109,16 +1204,42 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Trata de encontrar registros de una
-	 * tabla en la base de datos en uso que
-	 * cumplan con determinadas condiciones
-	 * segun campos de la tabla.
+	 * Busca registros que coincidan con el parametro de consulta.
+	 * 
+	 * Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.
+	 * El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o false en caso de no encontrar registros asociados.
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * # Ejemplo 1:
+	 * 
+	 * class usuarios extends myActiveRecord {
+	 * 
+	 * 	public $usuario_id;
+	 * 
+	 * 	public $usuario;
+	 * 
+	 * }
+	 * 
+	 * $usuarios = new usuarios;
+	 * 
+	 * if ($usuarios->find(1))
 	 *
-	 * @param string $strCond
-	 * @param string $orderBy
-	 * @param string $orderMethod
-	 * @param integer $intLimit
-	 * @param integer $offSet
+	 * 	  echo 'Hola '.$usuarios->usuario; 
+	 * 
+	 * else
+	 * 
+	 * 	  echo 'No existe el usuario con el Id 1';
+	 * 
+	 * ?>
+	 * 
+	 * </code>
+	 * @param string $strCond	Condicion o condiciones principales.
+	 * @param string $orderBy	Ordenar por el campo o campos.
+	 * @param string $orderMethod	Metodo de ordenamiento.
+	 * @param integer $intLimit	Limite de registro.
+	 * @param integer $offSet	Cuando aplica un limite de registros obtener desde.
 	 * @return object
 	 */
 	public function find($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = '', $offSet = ''){
@@ -1127,9 +1248,40 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Inserta o Modifica los datos de
-	 * un registro.
+	 * Inserta o Modifica un registro.
 	 *
+	 * El metodo save modificara un registro o insertara uno nuevo. Si lo precede el metodo find y este encuentra un registro que coincida con la busqueda, este lo modificara. En caso contrario lo agregara a la tabla.
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * # Ejemplo 1:
+	 * 
+	 * class usuarios extends myActiveRecord {
+	 * 
+	 * 	public $usuario_id;
+	 * 
+	 * 	public $usuario;
+	 * 
+	 * }
+	 * 
+	 * $usuarios = new usuarios;
+	 * 
+	 * $usuarios->find(1);
+	 *  
+	 * $usuarios->usuario = 'xxx';
+	 * 
+	 * if ($usuarios->save())
+	 * 
+	 * 	  echo 'Cambios guardados.';
+	 * 
+	 * else
+	 * 
+	 * 	  echo $usuarios->getErrorLog();		 
+	 * 
+	 * ?>
+	 * 
+	 * </code>
 	 * @return boolean
 	 */
 	public function save (){
@@ -1202,11 +1354,37 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Trata de borrar registros de una
-	 * tabla si ellos cumplen con unas
-	 * condiciones.
-	 *
-	 * @param string $strCond
+	 * Elimina registros de una tabla.
+	 * 
+	 * Trata de borrar los registros de una tabla si ellos cumplen con las condiciones. La condicion opera de forma identica a el metodo find. El metodo retornara el numero de registros afectados. 
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * # Ejemplo 1:
+	 * 
+	 * class usuarios extends myActiveRecord {
+	 * 
+	 * 	public $usuario_id;
+	 * 
+	 * 	public $usuario;
+	 * 
+	 * }
+	 * 
+	 * $usuarios = new usuarios;
+	 * 
+	 * if ($usuarios->delete(1))
+	 * 
+	 *   echo 'El registro fue eliminado';
+	 *   
+	 * else  
+	 * 
+	 *   echo 'El registro no fue eliminado';
+	 * 
+	 * ?>
+	 * 
+	 * </code>
+	 * @param string $strCond Condicion
 	 * @return integer
 	 */
 	public function delete ($strCond){
@@ -1265,25 +1443,40 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Alias de setPrimaryKey
+	 * Configura la llave primaria de una tabla.
 	 * 
-	 * @param $field Campo Pk
-	 */
-	public function setPk($field){
-
-		$this->setPrimaryKey($field);
-		
-	}
-
-	/**
 	 * Configura una llave primaria para la tabla, si no se suministra se calculara automaticamente.
+	 * <code>
 	 * 
-	 * @param $field	Campo Pk
+	 * <?php
+	 * 
+	 * class usuarios extends myActiveRecord {
+	 *
+	 * 	public $nombre;
+	 * 
+	 *  public $apellido;
+	 *
+	 * }
+	 * 
+	 * $usuarios = new usuarios;
+	 * 
+	 * $usuarios->setPrimaryKey('user_id');
+	 * 
+	 * $usuarios->find(1);
+	 * 
+	 * echo $usuarios->getSqlLog();
+	 * 
+	 * ?>
+	 * 
+	 * Resultado:
+	 * SELECT nombre, apellido FROM usuarios WHERE user_id = 1;
+	 * 
+	 * </code>
+	 * @param	string $field	Nombre llave primaria
 	 */
-	public function setPrimaryKey($field){
+	public function setPrimaryKey($field = ''){
 		
 		$this->tablePk[$this->myact_table] = $field;
-		
 	}
 
 	/**
@@ -1304,8 +1497,6 @@ class myActiveRecord {
 		try {
 			
     		$this->myact_dbh = new PDO($dsn, $user, $password);
-    		
-    		//$this->myact_dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     		
     		$this->successfulConnect = true;
     		
@@ -1329,11 +1520,30 @@ class myActiveRecord {
 	}
 
 	/**
-	 * Despues de intentar abrir una conexion en el constructor
-	 * verifica si esta se pudo abrir o no.
+	 * Verificar la conexion actual.
+	 * 
+	 * Despues de intentar abrir una conexion en el constructor verifica si esta se pudo abrir o no.
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * $myAct = new myActiveRecord('database');
+	 * 
+	 * if ($myAct->isSuccessfulConnect())
+	 * 
+	 * 	  echo 'Conexion exitosa';
+	 *
+	 * else
+	 * 
+	 *    echo $myAct->getErrorLog();
+	 * 
+	 * ?>
+	 * 
+	 * </code> 
 	 * @return boolean
 	 */
 	public function isSuccessfulConnect (){
+		
 		return $this->successfulConnect;
 	}
 	
