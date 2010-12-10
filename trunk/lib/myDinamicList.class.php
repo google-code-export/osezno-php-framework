@@ -1,92 +1,126 @@
 <?php
-
 /**
  * myList
  * 
  * Es la propuesta de osezno-framework cuando se desea implementar una
- * lista dianamica por medio de una consulta sql o una tabla de myActiveRecord.
+ * lista dianamica (grid) por medio de una consulta sql o una tabla de myActiveRecord.
+ *
+ *<code>
+ *
+ *Ejemplo en la definición:
+ *
+ *<?php
+ *
+ *	$myList = new myList('list_1','SELECT * FROM table');
+ *	
+ *	echo $myList->getList();
+ *
+ *?>
+ *
+ *</code>
  *
  * @uses Listas dinamicas
  * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
- *
  */
 class myList  {
 	
 	/**
-	 * Anchura de la tabla que contiene la lista
+	 * Ancho de la lista
+	 * 
+	 * Define el ancho de la lista dinámica en px
 	 * @var integer
 	 */
 	public $width = 1000;
 	
 	/**
-	 * Formato aplicado a la anchura de la tabla que 
-	 * contiene la lista.
+	 * Formato ancho
+	 * 
+	 * Formato aplicado a la anchura de la tabla que contiene la lista.
+	 * @access private
 	 * @var string
 	 */
 	private $formatWidthList = 'px';
 	
 	/**
+	 * Borde entre celdas
+	 * 
 	 * Tamaño del borde de la lista entre celdas
+	 * @access private
 	 * @var integer
 	 */
 	private $borderCellSize = 1;
 	
 	/**
+	 * Distinguir filas
+	 * 
 	 * Usar distincion entre filas
-	 * @var bool
+	 * @access private
+	 * @var boolean
 	 */
 	private $useDistBetwRows = true;
 	
 	/**
 	 * Usar paginacion.
-	 * @var bool
+	 * 
+	 * Usar paginacion en la lista.
+	 * @access private
+	 * @var boolean
 	 */
 	private $usePagination = false;
 	
 	/**
-	 * Numero de registros por pagina cuando la paginacion
-	 * esta activa.
+	 * Registros por pagina.
+	 * 
+	 * Numero de registros por pagina cuando la paginacion esta activa.
+	 * @access private
 	 * @var integer
 	 */
 	private $recordsPerPage;
 	
 	/**
 	 * Numero de registros por pagina cuando el usuario selecciona desde el formulario
+	 * @access private
 	 * @var integer
 	 */
 	private $recordsPerPageForm = 1;
 	
 	/**
 	 * Maxima numero de pagina encontrada
+	 * @access private
 	 * @var integer
 	 */
 	private $maxNumPage = 0;
 	
 	/**
-	 * Numero actual de regla maxima	 
+	 * Numero actual de regla maxima
+	 * @access private	 
 	 * @var integer
 	 */
 	private $numRuleQuery = 0;
 	
 	/**
 	 * Pagina actual cuando la paginacion esta activa.
+	 * @access private
 	 * @var unknown_type
 	 */
 	private $currentPage;
 	
 	/**
-	 * Path subcarpeta dentro de la carpeta principal del proyecto
-	 * que almacena las imagenes generales que se usan en las lista
-	 * dianmicas.
+	 * Path imagenes
 	 * 
+	 * Path subcarpeta dentro de la carpeta principal del proyecto que almacena las imagenes generales que se usan en las lista dianmicas.
+	 * @access private 
 	 * @var string
 	 */
 	private $pathThemes = 'themes/';
 	
 	/**
+	 * Atributos accesibles.
+	 * 
 	 * Nombre de los atributos seteables
+	 * @access private
 	 * @var array
 	 */
 	private $validNomKeys = array (
@@ -117,160 +151,267 @@ class myList  {
 	);	
 	
 	/**
+	 * Tipos de columna
+	 * 
 	 * Tipos de datos que una columna puede ser
+	 * @access private
 	 * @var array
 	 */
 	private $dataTypeColumn = array (
 		'string','numeric','date'
 	);
 	
+	/**
+	 * Tipo de lista
+	 * 
+	 * Define el tipo de lista actual.
+	 * @access private
+	 * @var string
+	 */
 	private $typeList = '';
 	
 	/**
+	 * HTML resultado.
+	 * 
 	 * Hmtl de la lista dinamica
+	 * @access private
 	 * @var string
 	 */
 	private $bufHtml = '';
 	
 	/**
+	 * Objeto conexion
+	 * 
 	 * Objeto de la conexion a BD
+	 * @access private
 	 * @var object
 	 */
 	private $objConn;
 	
 	/**
+	 * Objeto form
+	 * 
 	 * Objeto de formularios
+	 * @access private
 	 * @var object
 	 */
 	private $objForm;
 	
 	/**
+	 * SQL
+	 * 
 	 * Cadena de la consulta SQL
+	 * @access private
 	 * @var string
 	 */
 	private $sql = '';
 	
 	/**
+	 * JS
+	 * 
 	 * Cadena de las funciones JS
+	 * @access private
 	 * @var string
 	 */
 	private $js = '';
 	
 	/**
+	 * SQL result
+	 *  
 	 * Objeto resultado de la consulta SQL
+	 * @access private
 	 * @var array
 	 */
 	private $resSql;
 	
 	/**
+	 * Registros afectados
+	 * 
 	 * Numero de registro afectados por la consulta.
+	 * @access private
 	 * @var integer
 	 */
 	private $numAffectedRows = 0;
 	
 	/**
+	 * Id lista
+	 * 
 	 * Nombre o Id de la lista dinamica
+	 * @access private
 	 * @var string
 	 */
 	private $idList = '';
 	
 	/**
+	 * Alias
+	 * 
 	 * Arreglo que contiene los alias de los campos
+	 * @access private
 	 * @var array
 	 */
 	private $arrayAliasSetInQuery = array ();
 	
 	/**
+	 * Ordenamientos
+	 * 
 	 * Areglo con los ordenamientos de los campos
+	 * @access private
 	 * @var array
 	 */
 	private $arrayOrdMethod = array ();
 	
 	/**
+	 * Subquerys
+	 * 
 	 * Arreglo con las subconsultas que intervienen como reglas.
+	 * @access private
 	 * @var array
 	 */
 	private $arrayWhereRules = array ();
 	
 	/**
 	 * Numero de ordenamiento
+	 * @access private
 	 * @var array
 	 */
 	private $arrayOrdNum = array ();
 	
 	/**
-	 * Arreglo con los anchos determinados para
-	 * cada columna.
+	 * Anchos por columna
+	 * 
+	 * Arreglo con los anchos determinados para cada columna.
+	 * @access private
 	 * @var array
 	 */
 	private $arrayWidthsCols = array ();
 
 	/**
+	 * Eventos
+	 * 
 	 * Arreglo con los eventos en columnas.
+	 * @access private
 	 * @var array
 	 */
 	private $arrayEventOnColumn = array ();
 	
 	/**
 	 * Arreglo con los nombres de las columnas obtenidos
+	 * @access private
 	 * @var array
 	 */
 	private $arrayFieldsOnQuery = array();
 	
 	/**
+	 * Formatos disponibles para exportar
+	 * 
 	 * Arreglo con los tipos de datos en que es posible exportar la lista dinamica
+	 * @access private
+	 * @var array
 	 */
 	private $arrayDataTypeExport = array ('xls'=>false, 'html'=>false, 'pdf'=>false);
 	
 	/**
+	 * Columna evento global
+	 * 
 	 * Nombre de la columna del evento global
+	 * @access private
+	 * @var string
 	 */
 	private $globalEventOnColumn = '';
 	
 	/**
+	 * Eventos globales
+	 * 
 	 * Arreglo con los metodos y nombres que se ejecutaran en el evento global
+	 * @access private
+	 * @var array
 	 */
 	private $globalEventsName = array();
 	
 	/**
-	 * Error de la consulta SQL
+	 * Error SQL
+	 * 
+	 * Ultimo error de la consulta SQL
+	 * @access private
 	 * @var string
 	 */
 	private $errorLog;
 	
 	/**
-	 * Nombre del tema de estilo que usara la lista
+	 * Tema lista
 	 * 
+	 * Nombre del tema de estilo que usara la lista
+	 * @access private
 	 * @var string
 	 */
 	private $themeName = 'default';
 	
 	/**
-	 * Determina si existe un error en la consutla sql
-	 * que se ejecuto previo la construccion de la lista.
+	 * Consulta exitosa
 	 * 
+	 * Determina si existe un error en la consutla sql que se ejecuto previo la construccion de la lista.
+	 * @access private 
 	 * @var bool
 	 */
 	private $successFul = true;
 	
 	/**
-	 * Cadena SQL u Objeto
+	 * Objeto myAct
 	 * 
+	 * Cadena SQL u Objeto
+	 * @access private
 	 * @var string
 	 */
 	private $sqlORobject;
 	
 	/**
 	 * Constructor
-	 * @param $idList	Nombre de la lista
-	 * @param $sqlORobject	SQL o Objeto de metodo
-	 * @return string
+	 * 
+	 * Instancia un nuevo objeto de tipo lista dinamica para que pueda ser mostrada cuando se necesite.
+	 *<code>
+	 *
+	 *Ejemplo 1:
+	 *
+	 *<?php
+	 *
+	 *  $sql = 'SELECT * FROM table';
+	 *  
+ 	 *	$myList = new myList('list_1',$sql);
+ 	 *	
+ 	 *	echo $myList->getList();
+ 	 *	 
+ 	 *?>
+	 *
+	 *Ejemplo 2:
+	 *
+	 *<?php
+	 *
+	 *	class table extends myActiveRecord {
+	 *		
+	 *		public $id;
+	 *
+	 *		public $name;
+	 *
+	 *		public $last_name;
+	 *
+	 *  }
+	 *  
+	 *  $table = new table;
+	 *  
+	 *  $myList = new myList('list_1',$table);
+	 *  
+	 *  echo $myList->getList();
+	 *
+	 *?>
+	 *
+	 *</code> 
+	 * @param string $idList	Nombre de la lista dinamica.
+	 * @param string $sqlORobject	SQL u Objeto tabla.
 	 */
 	public function __construct($idList, $sqlORobject = ''){
 		
 		$this->idList = $idList;
 
-		// Preguntamos si sera una lista de objeto o de consulta personalizada
 		if ($sqlORobject){
 			
 			if (is_object($sqlORobject)){
