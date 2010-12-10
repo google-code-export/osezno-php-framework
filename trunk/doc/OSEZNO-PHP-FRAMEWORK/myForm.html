@@ -1,0 +1,3993 @@
+<html>
+<head>
+<title>Docs For Class myForm</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">OSEZNO-PHP-FRAMEWORK</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                              		  [ <a href="../classtrees_OSEZNO-PHP-FRAMEWORK.html" class="menu">class tree: OSEZNO-PHP-FRAMEWORK</a> ]
+		  [ <a href="../elementindex_OSEZNO-PHP-FRAMEWORK.html" class="menu">index: OSEZNO-PHP-FRAMEWORK</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+      <b>Packages:</b><br />
+              <a href="../li_OSEZNO-PHP-FRAMEWORK.html">OSEZNO-PHP-FRAMEWORK</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myActiveRecord.class.php.html">		myActiveRecord.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myCalendar.class.php.html">		myCalendar.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myController.class.php.html">		myController.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myDinamicList.class.php.html">		myDinamicList.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myExportData.class.php.html">		myExportData.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myForm.class.php.html">		myForm.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myTabs.class.php.html">		myTabs.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_myTime.class.php.html">		myTime.class.php
+		</a><br>
+			<a href="../OSEZNO-PHP-FRAMEWORK/_osezno.class.php.html">		osezno.class.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html">myActiveRecord</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myCal.html">myCal</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myControllerExt.html">myControllerExt</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html">myExportData</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myList.html">myList</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html">myTabs</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/myTime.html">myTime</a><br />
+	    		<a href="../OSEZNO-PHP-FRAMEWORK/osezno.html">osezno</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: myForm</h1>
+Source Location: /myForm.class.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description">myForm</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
+                  </ul>
+
+
+
+
+        
+        
+<h4>Version:</h4>
+<ul>
+  <li>1.6.0</li>
+</ul>
+
+        
+</td>
+
+<td valign="top">
+<h3><a href="#class_vars">Variables</a></h3>
+<ul>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$action">$action</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$border">$border</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$cache_dir">$cache_dir</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$cellPadding">$cellPadding</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$cellSpacing">$cellSpacing</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$cols">$cols</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$enctype">$enctype</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_BasePath">$FCK_editor_BasePath</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Height">$FCK_editor_Height</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Laguage">$FCK_editor_Laguage</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_ToolbarSet">$FCK_editor_ToolbarSet</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Width">$FCK_editor_Width</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_height">$FILE_button_height</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_image_url">$FILE_button_image_url</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_placeholder_id">$FILE_button_placeholder_id</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_width">$FILE_button_width</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_custom_settings">$FILE_custom_settings</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_debug">$FILE_debug</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_debug_handler">$FILE_debug_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_dialog_complete_handler">$FILE_file_dialog_complete_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_dialog_start_handler">$FILE_file_dialog_start_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_post_name">$FILE_file_post_name</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_queued_handler">$FILE_file_queued_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_queue_error_handler">$FILE_file_queue_error_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_queue_limit">$FILE_file_queue_limit</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_types">$FILE_file_types</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_types_description">$FILE_file_types_description</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_file_upload_limit">$FILE_file_upload_limit</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_flash_color">$FILE_flash_color</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_flash_height">$FILE_flash_height</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_flash_url">$FILE_flash_url</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_flash_width">$FILE_flash_width</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_post_params">$FILE_post_params</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_show_max_upload_size_info_in_button">$FILE_show_max_upload_size_info_in_button</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_size_limit">$FILE_size_limit</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_src_img_button">$FILE_src_img_button</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_str_etq_button">$FILE_str_etq_button</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_swfupload_loaded_handler">$FILE_swfupload_loaded_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_upload_complete_handler">$FILE_upload_complete_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_upload_error_handler">$FILE_upload_error_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_upload_progress_handler">$FILE_upload_progress_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_upload_several_files">$FILE_upload_several_files</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_upload_start_handler">$FILE_upload_start_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_upload_success_handler">$FILE_upload_success_handler</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_upload_url">$FILE_upload_url</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$height">$height</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$method">$method</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$name">$name</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$objDisabled">$objDisabled</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$objEventxJ">$objEventxJ</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$objHelps">$objHelps</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$prefAjax">$prefAjax</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$selectStringFirstLabelOption">$selectStringFirstLabelOption</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$selectUseFirstValue">$selectUseFirstValue</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$srcImageCalendarButton">$srcImageCalendarButton</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$strFormFieldSet">$strFormFieldSet</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleClassButtons">$styleClassButtons</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleClassFields">$styleClassFields</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleClassFieldsets">$styleClassFieldsets</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleClassForm">$styleClassForm</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleClassRowSeparator">$styleClassRowSeparator</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleClassTableForm">$styleClassTableForm</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleClassTags">$styleClassTags</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$styleTypeHelp">$styleTypeHelp</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$target">$target</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$useRowSeparator">$useRowSeparator</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$use_cache">$use_cache</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$width">$width</a></li>
+  </ul>
+</td>
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#method__construct">__construct</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddButton">addButton</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddCheckBox">addCheckBox</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddComent">addComent</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddDate">addDate</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddDisabled">addDisabled</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFCKeditor">addFCKeditor</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFile">addFile</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddGroup">addGroup</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddHelp">addHelp</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddHidden">addHidden</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddPassword">addPassword</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddRadioButton">addRadioButton</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddSelect">addSelect</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddTextArea">addTextArea</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddTime">addTime</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddWhiteSpace">addWhiteSpace</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodcheckExistEventJs">checkExistEventJs</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodcheckIfIsDisabled">checkIfIsDisabled</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodcheckIsHelping">checkIsHelping</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetButton">getButton</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetCheckBox">getCheckBox</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetFile">getFile</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetHidden">getHidden</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetPassword">getPassword</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetRadioButton">getRadioButton</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetSelect">getSelect</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetText">getText</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetTextArea">getTextArea</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetTime">getTime</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetTypeElement">getTypeElement</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetValidationError">getValidationError</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodisCached">isCached</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetCache">setCache</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetParamTypeOnEvent">setParamTypeOnEvent</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodshareSpaceForGroups">shareSpaceForGroups</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodshowForm">showForm</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodvalidateForm">validateForm</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#method__toString">__toString</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 18]<br />
+myForm<br /><br /><p>La clase myForm es la forma de interactuar el desarrollador con los formularios.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>version:</b>&nbsp;&nbsp;</td><td>1.6.0</td>
+  </tr>
+  <tr>
+    <td><b>uses:</b>&nbsp;&nbsp;</td><td>Creacion - de formularios</td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+<hr />
+<a name="class_vars"></a>
+<h3>Class Variables</h3>
+<div class="tags">
+	<a name="var$action"></a>
+	<p></p>
+	<h4>$action = <span class="value"></span></h4>
+	<p>[line 311]</p>
+  La ruta del script a la cual va dirigida la informacion.<br /><br /><p>Ejemplo valida.php</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$border"></a>
+	<p></p>
+	<h4>$border = <span class="value">&nbsp;0</span></h4>
+	<p>[line 395]</p>
+  Borde de la tabla, para programadores<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$cache_dir"></a>
+	<p></p>
+	<h4>$cache_dir = <span class="value">&nbsp;'myform_cache/'</span></h4>
+	<p>[line 346]</p>
+  Directorio en donde el formulario sera cacheado<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$cellPadding"></a>
+	<p></p>
+	<h4>$cellPadding = <span class="value">&nbsp;2</span></h4>
+	<p>[line 367]</p>
+  Numero en px de padding en las celdas<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$cellSpacing"></a>
+	<p></p>
+	<h4>$cellSpacing = <span class="value">&nbsp;0</span></h4>
+	<p>[line 374]</p>
+  Numero en px de spacing entre las celdas.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$cols"></a>
+	<p></p>
+	<h4>$cols = <span class="value">&nbsp;2</span></h4>
+	<p>[line 360]</p>
+  Numero de columnas en las que se divira la vista del formulario.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$enctype"></a>
+	<p></p>
+	<h4>$enctype = <span class="value"></span></h4>
+	<p>[line 325]</p>
+  El tipo de datos que va a enviar, usualmente se utiliza para manejar acrchivos.<br /><br /><p>Valores: application/x-www-form-urlencoded, multipart/form-data</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FCK_editor_BasePath"></a>
+	<p></p>
+	<h4>$FCK_editor_BasePath = <span class="value">&nbsp;''</span></h4>
+	<p>[line 853]</p>
+  Ruta base de acceso para encontrar los script del editor  Se necesita para llamar correctamente al FCKeditor  Normalmente se puede localizar en URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/';<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FCK_editor_Height"></a>
+	<p></p>
+	<h4>$FCK_editor_Height = <span class="value">&nbsp;'200'</span></h4>
+	<p>[line 867]</p>
+  Alto del FCKeditor<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FCK_editor_Laguage"></a>
+	<p></p>
+	<h4>$FCK_editor_Laguage = <span class="value">&nbsp;'es'</span></h4>
+	<p>[line 874]</p>
+  Idioma por defecto a mostrar<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FCK_editor_ToolbarSet"></a>
+	<p></p>
+	<h4>$FCK_editor_ToolbarSet = <span class="value">&nbsp;'Default'</span></h4>
+	<p>[line 881]</p>
+  Grupo de barras a seleccionar<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FCK_editor_Width"></a>
+	<p></p>
+	<h4>$FCK_editor_Width = <span class="value">&nbsp;'100%'</span></h4>
+	<p>[line 860]</p>
+  Ancho de FCKeditor<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_button_height"></a>
+	<p></p>
+	<h4>$FILE_button_height = <span class="value">&nbsp;22</span></h4>
+	<p>[line 667]</p>
+  Alto del boton en px en el formulario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_button_image_url"></a>
+	<p></p>
+	<h4>$FILE_button_image_url = <span class="value">&nbsp;'button_file.gif'</span></h4>
+	<p>[line 645]</p>
+  Url de la imagen que por defecto  se va a cargar como base para  dibujar el boton de carga de archivos.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_button_placeholder_id"></a>
+	<p></p>
+	<h4>$FILE_button_placeholder_id = <span class="value">&nbsp;'spanButtonPlaceholder'</span></h4>
+	<p>[line 653]</p>
+  Id del span donde el button  se va a alojar.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_button_width"></a>
+	<p></p>
+	<h4>$FILE_button_width = <span class="value">&nbsp;160</span></h4>
+	<p>[line 660]</p>
+  Ancho del boton en px en el formulario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_custom_settings"></a>
+	<p></p>
+	<h4>$FILE_custom_settings = <span class="value">array()</span></h4>
+	<p>[line 818]</p>
+  Enter description here...<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_debug"></a>
+	<p></p>
+	<h4>$FILE_debug = <span class="value">&nbsp;'false'</span></h4>
+	<p>[line 695]</p>
+  Habilitar el debug o no<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>bool</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_debug_handler"></a>
+	<p></p>
+	<h4>$FILE_debug_handler = <span class="value">&nbsp;'debugHandler'</span></h4>
+	<p>[line 811]</p>
+  Enter description here...<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_dialog_complete_handler"></a>
+	<p></p>
+	<h4>$FILE_file_dialog_complete_handler = <span class="value">&nbsp;'fileDialogComplete'</span></h4>
+	<p>[line 749]</p>
+  Se ejecuta cuando se a echo click sobre el<br /><br /><p>boton aceptar del cuadro de dialogo de los  archivos que van a ser subidos al servidor  Esto generalmente esta haciendo el cargue  automatico de los archivos con &quot;this.startUpload();&quot;</p><p>Parametros que se pasan al evento: (number of files selected, number of files queued)</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_dialog_start_handler"></a>
+	<p></p>
+	<h4>$FILE_file_dialog_start_handler = <span class="value">&nbsp;'fileDialogStart'</span></h4>
+	<p>[line 715]</p>
+  Este evento se dispara inmediatamente antes de que la  ventana de dialogo de seleccion de archivos sea abierta.<br /><br /><p>Sin embargo el evento no va a terminar ni a cerrarse hasta  que la ventana dialogo de seleccion de archivos este sea  cerrada por cancelacion, o aceptacion.</p><p>Parametros que se pasan al evento: Ninguno</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_post_name"></a>
+	<p></p>
+	<h4>$FILE_file_post_name = <span class="value"></span></h4>
+	<p>[line 569]</p>
+  El nombre del campo cuando es enviado  por el metodo POST, The Linux Flash Player ignores this setting.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_queued_handler"></a>
+	<p></p>
+	<h4>$FILE_file_queued_handler = <span class="value">&nbsp;'fileQueued'</span></h4>
+	<p>[line 722]</p>
+  No usar o tener en cuenta este evento.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_queue_error_handler"></a>
+	<p></p>
+	<h4>$FILE_file_queue_error_handler = <span class="value">&nbsp;'fileQueueError'</span></h4>
+	<p>[line 736]</p>
+  Se ejecuta cuando existe o se produjo un<br /><br /><p>error de validacion en la lista seleccionada  de los archivos  que el  usuario selecciono  Por ejemplo para ayudar a validar que el archivo  no sea demasiado grande o que sea del tipo  que se esta parametrizando.</p><p>Parametros que se pasan al evento: (file object, error code, message)</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_queue_limit"></a>
+	<p></p>
+	<h4>$FILE_file_queue_limit = <span class="value">&nbsp;0</span></h4>
+	<p>[line 627]</p>
+  Numero maximo de archivos en  archivos en  cola que pueden  estar, cero es sin limite.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_types"></a>
+	<p></p>
+	<h4>$FILE_file_types = <span class="value">array('*.*')</span></h4>
+	<p>[line 584]</p>
+  Los tipos de archivo que son admisibles<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_types_description"></a>
+	<p></p>
+	<h4>$FILE_file_types_description = <span class="value">&nbsp;'Todos&nbsp;los&nbsp;tipos'</span></h4>
+	<p>[line 592]</p>
+  La descripcion de los tipos de archivo  que se pueden subir al servidor<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_file_upload_limit"></a>
+	<p></p>
+	<h4>$FILE_file_upload_limit = <span class="value">&nbsp;0</span></h4>
+	<p>[line 618]</p>
+  Numero maximo de archivos que  pueden ser subidos, cero es sin limite.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_flash_color"></a>
+	<p></p>
+	<h4>$FILE_flash_color = <span class="value">&nbsp;'FFFFFF'</span></h4>
+	<p>[line 688]</p>
+  Color de piel para el flash.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_flash_height"></a>
+	<p></p>
+	<h4>$FILE_flash_height = <span class="value">&nbsp;'0px'</span></h4>
+	<p>[line 681]</p>
+  Alto de el tamano del flash.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_flash_url"></a>
+	<p></p>
+	<h4>$FILE_flash_url = <span class="value">&nbsp;''</span></h4>
+	<p>[line 636]</p>
+  Url en donde se encuentra el  SWF que permite la carga  de  los archivos al servidor.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_flash_width"></a>
+	<p></p>
+	<h4>$FILE_flash_width = <span class="value">&nbsp;'0px'</span></h4>
+	<p>[line 674]</p>
+  Ancho de el tamano del flash.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_post_params"></a>
+	<p></p>
+	<h4>$FILE_post_params = <span class="value">array()</span></h4>
+	<p>[line 577]</p>
+  The param_object should be a simple JavaScript object.<br /><br /><p>All names and values must be strings</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_show_max_upload_size_info_in_button"></a>
+	<p></p>
+	<h4>$FILE_show_max_upload_size_info_in_button = <span class="value">&nbsp;true</span></h4>
+	<p>[line 610]</p>
+  Setea si se va a mostrar o no informacion de  la capacidad max de subida por archivo en el boton  que abre la ventana de dialogo para el swf_uploader<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>unknown_type</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_size_limit"></a>
+	<p></p>
+	<h4>$FILE_size_limit = <span class="value">&nbsp;2048</span></h4>
+	<p>[line 601]</p>
+  El tamano maximo en kilobytes  para que un archivo pueda ser  subido al  servidor de datos.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_src_img_button"></a>
+	<p></p>
+	<h4>$FILE_src_img_button = <span class="value">&nbsp;''</span></h4>
+	<p>[line 826]</p>
+  Ruta de la imagen que acompaña el boton  examinar para el cargue de los archivos<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_str_etq_button"></a>
+	<p></p>
+	<h4>$FILE_str_etq_button = <span class="value">&nbsp;'Examinar'</span></h4>
+	<p>[line 834]</p>
+  Texto que esta dentro del boton  quen  examina   los   archivos.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_swfupload_loaded_handler"></a>
+	<p></p>
+	<h4>$FILE_swfupload_loaded_handler = <span class="value">&nbsp;'swfuploadLoadedHandler'</span></h4>
+	<p>[line 702]</p>
+  The swfUploadLoaded event is fired by flashReady. It is overridable. When swfUploadLoaded is called it is safe to call SWFUpload methods.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_upload_complete_handler"></a>
+	<p></p>
+	<h4>$FILE_upload_complete_handler = <span class="value">&nbsp;'uploadComplete'</span></h4>
+	<p>[line 804]</p>
+  Este evento siempre se dispara al final de un ciclo de una carga.<br /><br /><p>En este punto la carga esta completa y otra puede comenzar.</p><p>Parametros que se pasan al evento: (file object)</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_upload_error_handler"></a>
+	<p></p>
+	<h4>$FILE_upload_error_handler = <span class="value">&nbsp;'uploadError'</span></h4>
+	<p>[line 783]</p>
+  El evento es uploadError se dispara en cualquier momento  cuando la carga de un archivo se interrumpe o no se completa con éxito.<br /><br /><p>El código de error parámetro indica el tipo de error que se produjo.  El código de error parámetro especifica una constante en SWFUpload.UPLOAD_ERROR.</p><p>Parametros que se pasan al evento: (file object, error code, message)</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_upload_progress_handler"></a>
+	<p></p>
+	<h4>$FILE_upload_progress_handler = <span class="value">&nbsp;'uploadProgress'</span></h4>
+	<p>[line 771]</p>
+  Se produce cuando el listado de los archivos  que actualmente se han seleccionado estan en  proceso de ser subidos al servidor.<br /><br /><p>Parametros que se pasan al evento: (file object, bytes complete, total bytes)</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_upload_several_files"></a>
+	<p></p>
+	<h4>$FILE_upload_several_files = <span class="value">&nbsp;false</span></h4>
+	<p>[line 842]</p>
+  Decidir si por upload se pueden se  leccionar  varios  archivos  o no.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>boolean</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_upload_start_handler"></a>
+	<p></p>
+	<h4>$FILE_upload_start_handler = <span class="value">&nbsp;'uploadStart'</span></h4>
+	<p>[line 760]</p>
+  Funcion que es llamada cuando comienza todo  el cargue completo de los archivos y para que  en cierta forma tambien se pueda hacer automaticamente<br /><br /><p>Parametros que se pasan al evento: (file object)</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_upload_success_handler"></a>
+	<p></p>
+	<h4>$FILE_upload_success_handler = <span class="value">&nbsp;'uploadSuccess'</span></h4>
+	<p>[line 794]</p>
+  Este evento se ejecuta cuando un archivo es subido exitosamente  al servidor, mientras tanto otros archivos pueden seguir siendo  subidos.<br /><br /><p>Parametros que se pasan al evento: (file object, server data)</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$FILE_upload_url"></a>
+	<p></p>
+	<h4>$FILE_upload_url = <span class="value"></span></h4>
+	<p>[line 537]</p>
+  Url del archivo que sube los archivos  al servidor por via post.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$height"></a>
+	<p></p>
+	<h4>$height = <span class="value">&nbsp;'0%'</span></h4>
+	<p>[line 388]</p>
+  Tamano de alto de la tabla que contiene el formulario en porcentaje o px<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$method"></a>
+	<p></p>
+	<h4>$method = <span class="value">&nbsp;'post'</span></h4>
+	<p>[line 304]</p>
+  El metodo que utilizara en el momento de enviar el Formulario.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$name"></a>
+	<p></p>
+	<h4>$name = <span class="value"></span></h4>
+	<p>[line 339]</p>
+  El nombre del formulario con el que se esta interactuando.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$objDisabled"></a>
+	<p></p>
+	<h4>$objDisabled = <span class="value">array()</span></h4>
+	<p>[line 288]</p>
+  Arreglo que contiene los nombres de los objetos que tendran la propiedad Disabled  dentro del formulario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$objEventxJ"></a>
+	<p></p>
+	<h4>$objEventxJ = <span class="value">array()</span></h4>
+	<p>[line 280]</p>
+  Arreglo protegido que almacena los eventos Xajax para los que se le fueron asignados<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$objHelps"></a>
+	<p></p>
+	<h4>$objHelps = <span class="value">array&nbsp;()</span></h4>
+	<p>[line 297]</p>
+  Arreglo que contiene los nombres de los objetos que  estan referenciados como objetos del formulario que  contendran un nivel de ayuda.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>array</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$prefAjax"></a>
+	<p></p>
+	<h4>$prefAjax = <span class="value">&nbsp;''</span></h4>
+	<p>[line 332]</p>
+  Prefijo que usa xajax para llamar a sus funciones<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$selectStringFirstLabelOption"></a>
+	<p></p>
+	<h4>$selectStringFirstLabelOption = <span class="value">&nbsp;'Seleccione...'</span></h4>
+	<p>[line 427]</p>
+  Etiqueta de la primera opcion por select  que se activa solo si $objMyForm-&gt;selectUseFirstValue  es igual a 'true'<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$selectUseFirstValue"></a>
+	<p></p>
+	<h4>$selectUseFirstValue = <span class="value">&nbsp;true</span></h4>
+	<p>[line 404]</p>
+  Permite decidir si se va a usar o no  una opcion en el select que  muestre  un determinada etiqueta como presentacion.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>boolean</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$srcImageCalendarButton"></a>
+	<p></p>
+	<h4>$srcImageCalendarButton = <span class="value">&nbsp;'calendar.gif'</span></h4>
+	<p>[line 411]</p>
+  Ruta de la Imagen que acompana el boton de cada uno de los Controles de calendario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$strFormFieldSet"></a>
+	<p></p>
+	<h4>$strFormFieldSet = <span class="value">&nbsp;''</span></h4>
+	<p>[line 510]</p>
+  Etiqueta del Legend del Fieldset que usara el formulario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleClassButtons"></a>
+	<p></p>
+	<h4>$styleClassButtons = <span class="value">&nbsp;'boton'</span></h4>
+	<p>[line 487]</p>
+  Nombre de la clase que por defecto usan los  los botones del formulario que seran mostrados.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleClassFields"></a>
+	<p></p>
+	<h4>$styleClassFields = <span class="value">&nbsp;'caja'</span></h4>
+	<p>[line 479]</p>
+  Nombre de la clase que por defecto usan los  campos del formulario para ser mostrados.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleClassFieldsets"></a>
+	<p></p>
+	<h4>$styleClassFieldsets = <span class="value">&nbsp;'formulario_fieldset'</span></h4>
+	<p>[line 503]</p>
+  Nombre de la clase que por defecto usan los  fieldsets del formulario.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleClassForm"></a>
+	<p></p>
+	<h4>$styleClassForm = <span class="value">&nbsp;'formulario'</span></h4>
+	<p>[line 444]</p>
+  Nombre de la clase que por defecto usan los formularios<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleClassRowSeparator"></a>
+	<p></p>
+	<h4>$styleClassRowSeparator = <span class="value">&nbsp;'fondo_fila_medio'</span></h4>
+	<p>[line 460]</p>
+  Nombre de la clase que por defecto usan las  filas del medio para los formularios.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleClassTableForm"></a>
+	<p></p>
+	<h4>$styleClassTableForm = <span class="value">&nbsp;'fondo_tabla_form'</span></h4>
+	<p>[line 452]</p>
+  Nombre de la clase que por defecto usan las  tablas que se crean para el formulario.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleClassTags"></a>
+	<p></p>
+	<h4>$styleClassTags = <span class="value">&nbsp;'etiqueta'</span></h4>
+	<p>[line 495]</p>
+  Nombre de la clase que por defecto usan los  loas etiquetas de los campos del formulario que seran mostrados.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$styleTypeHelp"></a>
+	<p></p>
+	<h4>$styleTypeHelp = <span class="value">&nbsp;1</span></h4>
+	<p>[line 471]</p>
+  Tipo del la ayuda que mostrara el help  sobre los campos que se configuraron  previamente.<br /><br /><p>1, 2</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$target"></a>
+	<p></p>
+	<h4>$target = <span class="value">&nbsp;'_self'</span></h4>
+	<p>[line 318]</p>
+  La ventana en donde se abrira la informacion enviada desde ese formulario.<br /><br /><p>Valores: _self, _blank, _parent, _top</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$useRowSeparator"></a>
+	<p></p>
+	<h4>$useRowSeparator = <span class="value">&nbsp;false</span></h4>
+	<p>[line 437]</p>
+  Utilizar o no la fila intermedia de color diferente para  diferenciar visualmente las filas de los campos en un formulario.<br /><br /><p>Nota: Al activar este atributo debe tenerse en cuenta la clase  de estilos que usa por medio de 'styleClassRowSeparator'</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>boolean</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$use_cache"></a>
+	<p></p>
+	<h4>$use_cache = <span class="value">&nbsp;false</span></h4>
+	<p>[line 353]</p>
+  Define si se va a usar o no cache para el formulario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>boolean</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+	<a name="var$width"></a>
+	<p></p>
+	<h4>$width = <span class="value">&nbsp;'98%'</span></h4>
+	<p>[line 381]</p>
+  Tamano de ancho de la tabla que contiene el formulario en porcentaje o px<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>string</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+</div><br />
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="method__construct"></a>
+	<h3>constructor __construct <span class="smalllinenumber">[line 892]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>myForm __construct(
+[
+$name = ''], [string
+$action = ''], [string
+$target = ''], [string
+$enctype = ''], string
+$nomForm, string
+$event)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Constructor de la clase de generacion de formularios<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$nomForm</b>&nbsp;&nbsp;</td>
+        <td>Nombre del formulario</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$event</b>&nbsp;&nbsp;</td>
+        <td>En caso de que el form no tenga Action, entonces el boton realizara este evento</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$action</b>&nbsp;&nbsp;</td>
+        <td>El nombre del script a donde va la informacion</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$target</b>&nbsp;&nbsp;</td>
+        <td>Parametro de apertura de los datos</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$enctype</b>&nbsp;&nbsp;</td>
+        <td>Tipo de informacion que maneja</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddButton"></a>
+	<h3>method addButton <span class="smalllinenumber">[line 1124]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addButton(
+string
+$strName, [string
+$strLabel = ''], [string
+$strSrcImg = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega un boton a la funcionalidad del formulario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strName</b>&nbsp;&nbsp;</td>
+        <td>Nombre del Elemento</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strLabel</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta o valor del Elemento</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strSrcImg</b>&nbsp;&nbsp;</td>
+        <td><p>Ruta de la img que lo acompana</p><p>Nota: Si desea pasar variables adicionales al evento del  boton, debe agregar separado por (:) los valores que necesite</p></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddCheckBox"></a>
+	<h3>method addCheckBox <span class="smalllinenumber">[line 1598]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addCheckBox(
+[string
+$etq = ''], [string
+$name = ''], [char
+$ini_sts = 'N'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega una caja checkBox al formulario, el contenido de esta caja puede  ser evaluado para verificar si es '0' o '1'<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre de checkbox</td>
+      </tr>
+          <tr>
+        <td class="type">char&nbsp;&nbsp;</td>
+        <td><b>$ini_sts</b>&nbsp;&nbsp;</td>
+        <td>Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddComent"></a>
+	<h3>method addComent <span class="smalllinenumber">[line 1539]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addComent(
+integer
+$id, string
+$Coment)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega un comentario en una Fila especifica<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$id</b>&nbsp;&nbsp;</td>
+        <td>Identificador del espacio que va a utilizar, este siempre debe de ser diferente para cada uno</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$Coment</b>&nbsp;&nbsp;</td>
+        <td>Texto que desea mostrar en la fila</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddDate"></a>
+	<h3>method addDate <span class="smalllinenumber">[line 1384]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addDate(
+[string
+$etq = ''], [string
+$prefName = ''], [int
+$iniValA = ''], [int
+$iniValM = ''], [int
+$iniValD = ''], [int
+$YearBack = 100], [int
+$YearFuture = 20])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega conjunto de select para personalizar un campo fecha<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$prefName</b>&nbsp;&nbsp;</td>
+        <td>Prefijo para el nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$iniValA</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial para el ano</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$iniValM</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial del mes</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$iniValD</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial del dia</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$YearBack</b>&nbsp;&nbsp;</td>
+        <td>Cantidad de anos atras para cagar el select, Opcional</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$YearFuture</b>&nbsp;&nbsp;</td>
+        <td>Cantidad de anos a futuro para cagar el select, Opcional</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddDisabled"></a>
+	<h3>method addDisabled <span class="smalllinenumber">[line 1077]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addDisabled(
+string
+$objName)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega la propiedad 'disabled=&quot;disabled&quot;' a el objeto del formulario<br /><br /><p>que se invoque</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$objName</b>&nbsp;&nbsp;</td>
+        <td>id Nombre o id del objeto del formulario al que se le va a agregar la propiedad</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddEvent"></a>
+	<h3>method addEvent <span class="smalllinenumber">[line 982]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addEvent(
+string
+$objName, integer
+$event, string
+$functions, $param1...
+3, $param2...
+4, $param3...
+5)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agregar un evento JavaScript al elemento llamado 'id' que es el elemento que queremos modificar<br /><br /><p>su propiedad de OnClick, OnBlur... etc  Por ejemplo, podemos crear una caja de texto sencilla por medio de  $obj-&gt; addText('Nombre:','nombre'); y despues agregar el siguiente metodo</p><p>$obj-&gt;addEvent('nombre','onchange','function', $param1, $param2...)</p><p>Para que en la obtencion del formulario ese evento sea escrito en la salida HTML</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$objName</b>&nbsp;&nbsp;</td>
+        <td>Nombre o id del objeto del formulario al que se le va a agregar un evento Js</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$event</b>&nbsp;&nbsp;</td>
+        <td>El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$functions</b>&nbsp;&nbsp;</td>
+        <td>El nombre de la funcion o funciones que deseamos llamar al momento de cumplirse el evento</td>
+      </tr>
+          <tr>
+        <td class="type">$param1...&nbsp;&nbsp;</td>
+        <td><b>3</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$param2...&nbsp;&nbsp;</td>
+        <td><b>4</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$param3...&nbsp;&nbsp;</td>
+        <td><b>5</b>&nbsp;&nbsp;</td>
+        <td><p>Valores permitidos (1-&gt;blur, 2-&gt;change, 3-&gt;click, 4-&gt;focus, 5-&gt;mouseout, 6-&gt;OnMouseOver)</p><p>Hasta el momento esta metodo solo aplica para los objetos de formularios que sean  -textarea  -select  -password  -text  -radiobuttons  -checkbox  -buttons</p></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddFCKeditor"></a>
+	<h3>method addFCKeditor <span class="smalllinenumber">[line 1301]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addFCKeditor(
+[string
+$etq = ''], [string
+$name = ''], [string
+$value = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agregar un editor fckeditor al fomulario actual<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo generado por el FCK Editor</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo generado por el FCK Editor</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial del campo generado por el FCK Editor</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddFile"></a>
+	<h3>method addFile <span class="smalllinenumber">[line 1745]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addFile(
+string
+$etq, string
+$name, string
+$upload_url, [string
+$flash_url = ''], [array
+$file_types = ''], [string
+$file_types_description = ''], [integer
+$file_size_limit = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega   un  campo   de  tipo  file  asincronico a el formulario actual.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$upload_url</b>&nbsp;&nbsp;</td>
+        <td>Url del .php que recibe los datos</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$flash_url</b>&nbsp;&nbsp;</td>
+        <td>Url del donde se encuentra ubicado el flash</td>
+      </tr>
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$file_types</b>&nbsp;&nbsp;</td>
+        <td>Arreglo con los tipos de archivos que se pueden subir</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$file_types_description</b>&nbsp;&nbsp;</td>
+        <td>Descripcion de los tipos de archivos que se pueden subir</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$file_size_limit</b>&nbsp;&nbsp;</td>
+        <td>Limite de tamano por archivo que se puede subir</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddGroup"></a>
+	<h3>method addGroup <span class="smalllinenumber">[line 929]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addGroup(
+string
+$idGroup, [string
+$strFieldSet = ''], [array
+$arraystrIdFields = array()], [integer
+$intCols = 2], [boolean
+$useShowHide = false], [string
+$iniVisibilitySts = 'show'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Crea un agrupamiento HTML mediante fieldSet  para los  nombres de  los campos contenidos  dentro del tercer parametro.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$idGroup</b>&nbsp;&nbsp;</td>
+        <td>Identificador interno del fieldSet</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strFieldSet</b>&nbsp;&nbsp;</td>
+        <td>Legend del fieldSet</td>
+      </tr>
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$arraystrIdFields</b>&nbsp;&nbsp;</td>
+        <td>Arreglo de nombre de objetos que seran agrupados</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$intCols</b>&nbsp;&nbsp;</td>
+        <td>Numero de Columnas en el que la tabla se partira</td>
+      </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$useShowHide</b>&nbsp;&nbsp;</td>
+        <td>Usar o no propiedad para mostrar y ocultar las capas</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$iniVisibilitySts</b>&nbsp;&nbsp;</td>
+        <td>Si se activo la propiedad de mostrar y ocultar el fieldset, determinar el estado inicial</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddHelp"></a>
+	<h3>method addHelp <span class="smalllinenumber">[line 1096]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addHelp(
+string
+$objName, string
+$strHelp)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega el elemento a el gurpo de elementos<br /><br /><p>en general de la aplicacion que  contendra  una capa al pasar el mouse sobre el objeto  mostrando una pequeña o determinada descri  pcion del objeto del formulario con el obj  etivo del que un usuario pueda tener un ni  vel de ayuda para saber a que hace referen  cia determinado campo.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$objName</b>&nbsp;&nbsp;</td>
+        <td>Nombre o id del Objeto del formulario al que se le va a agregar la ayuda</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strHelp</b>&nbsp;&nbsp;</td>
+        <td>Contenido de la ayuda</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddHidden"></a>
+	<h3>method addHidden <span class="smalllinenumber">[line 1315]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addHidden(
+[string
+$name = ''], [string
+$value = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega un campo de texto Oculto al formulario<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddPassword"></a>
+	<h3>method addPassword <span class="smalllinenumber">[line 1347]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addPassword(
+[string
+$etq = ''], [string
+$name = ''], [string
+$value = ''], [string
+$size = ''], [string
+$maxlength = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega una caja de texto tipo password<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$size</b>&nbsp;&nbsp;</td>
+        <td>Tamano del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$maxlength</b>&nbsp;&nbsp;</td>
+        <td>Numero maximo de caracteres</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddRadioButton"></a>
+	<h3>method addRadioButton <span class="smalllinenumber">[line 1557]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string addRadioButton(
+[Etiqueta
+$etq = ''], [Valor
+$value = ''], [Grupo
+$name_group = ''], [
+$is_checked = 'N'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega un radio button al formulario en particular.<br /><br /><p>Los grupos de radio buttons se pueden formar y funcionar  siempre y cuando esos radio buttons queden con el mismo  nombre que permita agruparlos.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Id del radio button, se usa para poder agrupar mas adelante</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">Etiqueta&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">Valor&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">Grupo&nbsp;&nbsp;</td>
+        <td><b>$name_group</b>&nbsp;&nbsp;</td>
+        <td>al que pertenece  $name_group</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$is_checked</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddSelect"></a>
+	<h3>method addSelect <span class="smalllinenumber">[line 1641]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addSelect(
+[string
+$etq = ''], [string
+$name = ''], [array
+$value = ''], [
+$selected = ''], [string
+$size = ''], [string
+$truncar_hasta = 0], [
+$multiple = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega una combo desplegable (menu)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial que es un arreglo de la forma especificada</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$size</b>&nbsp;&nbsp;</td>
+        <td>Tamano del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$truncar_hasta</b>&nbsp;&nbsp;</td>
+        <td>Truncar Numero maximo de caracteres al fina</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$selected</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$multiple</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddText"></a>
+	<h3>method addText <span class="smalllinenumber">[line 1218]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addText(
+[string
+$etq = ''], [string
+$name = ''], [string
+$value = ''], [integer
+$size = ''], [integer
+$maxlength = ''], [char
+$validacion_numerica = false], [bool
+$CampoFecha = false], String
+$NameFunctionCallCalendar)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega una caja de texto<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$size</b>&nbsp;&nbsp;</td>
+        <td>Tamano del campo</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$maxlength</b>&nbsp;&nbsp;</td>
+        <td>Numero maximo de caracteres</td>
+      </tr>
+          <tr>
+        <td class="type">char&nbsp;&nbsp;</td>
+        <td><b>$validacion_numerica</b>&nbsp;&nbsp;</td>
+        <td>(S o N)</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$CampoFecha</b>&nbsp;&nbsp;</td>
+        <td>(0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$NameFunctionCallCalendar</b>&nbsp;&nbsp;</td>
+        <td>En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddTextArea"></a>
+	<h3>method addTextArea <span class="smalllinenumber">[line 1270]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addTextArea(
+[string
+$etq = ''], [string
+$name = ''], [string
+$value = ''], [integer
+$cols = ''], [integer
+$rows = ''], [string
+$wrap = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega una area de texto<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$cols</b>&nbsp;&nbsp;</td>
+        <td>Numero de columna</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$rows</b>&nbsp;&nbsp;</td>
+        <td>Numero de fila</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$wrap</b>&nbsp;&nbsp;</td>
+        <td>Clase y tipo de abrigo</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddTime"></a>
+	<h3>method addTime <span class="smalllinenumber">[line 1436]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addTime(
+[string
+$etq = ''], [string
+$prefName = ''], [int
+$iniValH = ''], [int
+$iniValM = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega conjunto de select para personalizar un campo fecha<br /><br /><br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$prefName</b>&nbsp;&nbsp;</td>
+        <td>Prefijo para el nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$iniValH</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial para la Hora</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$iniValM</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial para los minutos</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodaddWhiteSpace"></a>
+	<h3>method addWhiteSpace <span class="smalllinenumber">[line 1528]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addWhiteSpace(
+integer
+$id, [string
+$val_e = ''], [string
+$val_c = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega un espacio en blanco en el lugar que le corresponda<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$id</b>&nbsp;&nbsp;</td>
+        <td>Identificador del espacio, este puede ser un numero consecutivo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$val_e</b>&nbsp;&nbsp;</td>
+        <td>Valor en el momento del cargue dentro del formulario para la etiqueta</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$val_c</b>&nbsp;&nbsp;</td>
+        <td>Valor en el momento del cargue dentro del formulario para el campo</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodcheckExistEventJs"></a>
+	<h3>method checkExistEventJs <span class="smalllinenumber">[line 1950]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void checkExistEventJs(
+string
+$ObjectForm)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Es llamada en la construccion del formulario para averiguar si en elemento de ese formulario esta  ralacionada con un evento xAjax y de esa forma concatenarlo a la salida final del mismo<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$ObjectForm</b>&nbsp;&nbsp;</td>
+        <td>ObjectForm Id del objeto del formulario que el buscara en el arreglo</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodcheckIfIsDisabled"></a>
+	<h3>method checkIfIsDisabled <span class="smalllinenumber">[line 1971]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void checkIfIsDisabled(
+string
+$objName)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Es llamada dentro de la construccion del<br /><br /><p>formulario como un  metodo  que  ayuda a  contruir  los  campos  con  un  atributo  adicional  que  inhabilita  un campo del  formulario  para  que  se  puedan  hacer  eventos sobre el.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$objName</b>&nbsp;&nbsp;</td>
+        <td>objName Id del objeto del formulario que el buscara en el arreglo</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodcheckIsHelping"></a>
+	<h3>method checkIsHelping <span class="smalllinenumber">[line 1989]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void checkIsHelping(
+string
+$objName)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Llamada que dentro de la construccion del  formulario verifica si el objeto que   se  esta construyendo tiene adicionada    una  cadena de ayuda relacionada.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$objName</b>&nbsp;&nbsp;</td>
+        <td>Nombre del objeto del formulario al que esta asociado</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetButton"></a>
+	<h3>method getButton <span class="smalllinenumber">[line 1150]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getButton(
+string
+$strName, [string
+$strLabel = ''], [string
+$strSrcImg = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el html de un boton<br /><br /><p>necesario para ejecutar los  actions en los  formularios  que son creados por los usu  arios.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Nota: Si desea pasar variables adicionales al evento del  boton, debe agregar separado por (:) los valores que necesite</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strName</b>&nbsp;&nbsp;</td>
+        <td>Nombre del boton</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strLabel</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del boton</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strSrcImg</b>&nbsp;&nbsp;</td>
+        <td>Ruta de la img que lo acompana</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetCheckBox"></a>
+	<h3>method getCheckBox <span class="smalllinenumber">[line 1614]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getCheckBox(
+[string
+$name = ''], [char
+$ini_sts = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene una caja checkBox al formulario, el contenido de esta caja puede  ser evaluado para verificar si es '0' o '1'<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre de checkbox</td>
+      </tr>
+          <tr>
+        <td class="type">char&nbsp;&nbsp;</td>
+        <td><b>$ini_sts</b>&nbsp;&nbsp;</td>
+        <td>Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetFile"></a>
+	<h3>method getFile <span class="smalllinenumber">[line 1778]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getFile(
+string
+$name)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el HTML de un campo formulario  tipo File asincronico.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetForm"></a>
+	<h3>method getForm <span class="smalllinenumber">[line 1857]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getForm(
+[integer
+$cols = 2])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el HTML de un formulario previamente configurado<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$cols</b>&nbsp;&nbsp;</td>
+        <td>Numero de columnas que tiene el formulario</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetHidden"></a>
+	<h3>method getHidden <span class="smalllinenumber">[line 1329]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getHidden(
+[string
+$name = ''], [string
+$value = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene un campo Oculto<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetPassword"></a>
+	<h3>method getPassword <span class="smalllinenumber">[line 1363]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getPassword(
+[string
+$name = ''], [string
+$value = ''], [string
+$size = ''], [string
+$maxlength = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene una caja de texto tipo password<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$size</b>&nbsp;&nbsp;</td>
+        <td>Tamano del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$maxlength</b>&nbsp;&nbsp;</td>
+        <td>Numero maximo de caracteres</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetRadioButton"></a>
+	<h3>method getRadioButton <span class="smalllinenumber">[line 1575]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getRadioButton(
+[string
+$value = ''], [string
+$name_group = ''], [
+$is_checked = 'N'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene el html de un radio button<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor por defecto del Radio button</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name_group</b>&nbsp;&nbsp;</td>
+        <td>Nombre del radio o grupo que van a comformarlo</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$is_checked</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetSelect"></a>
+	<h3>method getSelect <span class="smalllinenumber">[line 1691]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getSelect(
+[string
+$name = ''], [array
+$value = ''], [
+$selected = ''], [string
+$size = ''], [string
+$truncar_hasta = 0], [
+$multiple = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene una combo desplegable (menu)<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial que es un arreglo de la forma especificada</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$size</b>&nbsp;&nbsp;</td>
+        <td>Tamano del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$truncar_hasta</b>&nbsp;&nbsp;</td>
+        <td>Truncar Numero maximo de caracteres al fina</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$selected</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$multiple</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetText"></a>
+	<h3>method getText <span class="smalllinenumber">[line 1238]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getText(
+[string
+$name = ''], [string
+$value = ''], [integer
+$size = ''], [integer
+$maxlength = ''], [char
+$validacion_numerica = false], [bool
+$CampoFecha = false], String
+$NameFunctionCallCalendar)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Devuelve una caja de texto<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$size</b>&nbsp;&nbsp;</td>
+        <td>Tamano del campo</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$maxlength</b>&nbsp;&nbsp;</td>
+        <td>Numero maximo de caracteres</td>
+      </tr>
+          <tr>
+        <td class="type">char&nbsp;&nbsp;</td>
+        <td><b>$validacion_numerica</b>&nbsp;&nbsp;</td>
+        <td>(S o N)</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$CampoFecha</b>&nbsp;&nbsp;</td>
+        <td>(0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$NameFunctionCallCalendar</b>&nbsp;&nbsp;</td>
+        <td>En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetTextArea"></a>
+	<h3>method getTextArea <span class="smalllinenumber">[line 1287]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getTextArea(
+[string
+$name = ''], [string
+$value = ''], [integer
+$cols = ''], [integer
+$rows = ''], [string
+$wrap = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene una area de texto<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor incial</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$cols</b>&nbsp;&nbsp;</td>
+        <td>Numero de columna</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$rows</b>&nbsp;&nbsp;</td>
+        <td>Numero de fila</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$wrap</b>&nbsp;&nbsp;</td>
+        <td>Clase y tipo de abrigo</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetTime"></a>
+	<h3>method getTime <span class="smalllinenumber">[line 1483]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getTime(
+[string
+$prefName = ''], [int
+$iniValH = ''], [int
+$iniValM = ''], string
+$etq)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega conjunto de select para personalizar un campo fecha<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$prefName</b>&nbsp;&nbsp;</td>
+        <td>Prefijo para el nombre del campo</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$iniValH</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial para la Hora</td>
+      </tr>
+          <tr>
+        <td class="type">int&nbsp;&nbsp;</td>
+        <td><b>$iniValM</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial para los minutos</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetTypeElement"></a>
+	<h3>method getTypeElement <span class="smalllinenumber">[line 1109]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getTypeElement(
+string
+$objName)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Retorna el tipo de elemento que identificamos  con el nombre del Objeto del Formulario.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$objName</b>&nbsp;&nbsp;</td>
+        <td>Nombre del Objeto</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetValidationError"></a>
+	<h3>method getValidationError <span class="smalllinenumber">[line 911]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void getValidationError(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		*<br /><br /><p>Retornar el error de valicacion devuelto por validateForm</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodisCached"></a>
+	<h3>method isCached <span class="smalllinenumber">[line 1923]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean isCached(
+
+$strNameForm, string
+$strNomForm)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Verifica si un formulario esta o no cacheado<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strNomForm</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$strNameForm</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetCache"></a>
+	<h3>method setCache <span class="smalllinenumber">[line 1939]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setCache(
+[boolean
+$boolUseCache = false], [integer
+$intSeconds = 3600])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configura la cache de el formualario para ser usada  e activa por cada $intSeconds<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$boolUseCache</b>&nbsp;&nbsp;</td>
+        <td>Usar la cache o no</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$intSeconds</b>&nbsp;&nbsp;</td>
+        <td>Numero de segundos en que la cache dura activa</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetParamTypeOnEvent"></a>
+	<h3>method setParamTypeOnEvent <span class="smalllinenumber">[line 949]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setParamTypeOnEvent(
+$paramType
+$paramType)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configura el tipo de parametro que va a ser enviado a la funcion de un  evento, este parametro puede ser tipo 'form' o tipo 'field'<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$paramType&nbsp;&nbsp;</td>
+        <td><b>$paramType</b>&nbsp;&nbsp;</td>
+        <td>Tipo de parametro</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodshareSpaceForGroups"></a>
+	<h3>method shareSpaceForGroups <span class="smalllinenumber">[line 1909]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void shareSpaceForGroups(
+
+$arrayIdGroups, string
+$idGroupingGroups)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrupa grupos de elementos previamente definidos  para dejar un cojunto de grupos en una fila y no  para que queden en filas separadas.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$idGroupingGroups</b>&nbsp;&nbsp;</td>
+        <td>Id del grupo de grupos</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$arrayIdGroups</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodshowForm"></a>
+	<h3>method showForm <span class="smalllinenumber">[line 1847]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void showForm(
+[integer
+$cols = 2])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Imprime el formulario final<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$cols</b>&nbsp;&nbsp;</td>
+        <td>Numero de columnas</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvalidateForm"></a>
+	<h3>method validateForm <span class="smalllinenumber">[line 1813]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>bool validateForm(
+array
+$arrayRequeridos, array
+$FormElements)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtiene informacion de los campos que aun no estan validados  Ejemplo de arrayRequeridos $arrayRequeridos = array ('nombre_campo'=&gt;'Etiqueta campo');  Nota: Preguntar por $this-&gt;validationError para obtener un String de los campos incompletos<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$arrayRequeridos</b>&nbsp;&nbsp;</td>
+        <td>Arreglo de datos que son obligatorios</td>
+      </tr>
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$FormElements</b>&nbsp;&nbsp;</td>
+        <td>Arreglo retornado por $this-&gt;DataFormToArray($dataForm);</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method__toString"></a>
+	<h3>method __toString <span class="smalllinenumber">[line 1838]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string __toString(
+integer
+$cols)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Retorna el objeto del formulario como una cadena String que cumple<br /><br /><p>las veces del metodo getForm, solo que aqui no es posible pasar por  objeto el numero de columnas del formulario. Para hacerlo se debe pre  viamente configurar el el atributo $this-&gt;Cols antes de retornar el  objeto.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$cols</b>&nbsp;&nbsp;</td>
+        <td>Numero de columnas que tiene el formulario</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Thu, 09 Dec 2010 21:58:01 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
