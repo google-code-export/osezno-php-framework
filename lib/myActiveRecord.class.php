@@ -7,7 +7,7 @@
  * objetos del Lenguaje de programacion. Extendiendo la clase a subclases
  * que tengan la informacion de cada una de las tablas a las que se
  * quieran acceder.
- * 
+ *
  * @uses Acceso a bases de datos por medio de objetos de PHP
  * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
