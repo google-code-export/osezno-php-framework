@@ -253,12 +253,12 @@ class myActiveRecord {
 	 * ?>
 	 * 
 	 * </code>
-	 * @param $database	Nombre base de datos.
-	 * @param $user	Usuario de base de datos.
-	 * @param $password	Clave de usuario de base de datos.
-	 * @param $host	Ruta fisica del servidor de base de datos.
-	 * @param $engine Motor de base de datos seleccionado. (mysql o pgsql)	
-	 * @param $port	Puerto de conexion.
+	 * @param string $database	Nombre base de datos.
+	 * @param string $user	Usuario de base de datos.
+	 * @param string $password	Clave de usuario de base de datos.
+	 * @param string $host	Ruta fisica del servidor de base de datos.
+	 * @param string $engine Motor de base de datos seleccionado. (mysql o pgsql)	
+	 * @param string $port	Puerto de conexion.
 	 */
 	public function __construct($database = '', $user = '', $password = '', $host = '', $engine = '', $port = ''){
 
@@ -299,7 +299,7 @@ class myActiveRecord {
 	 * @access private
 	 * @param string $newDatabase
 	 */
-	private  function setDatabase ($newDatabase){
+	private function setDatabase ($newDatabase){
 			
 		$this->myact_database = $newDatabase;
 	}
@@ -410,7 +410,7 @@ class myActiveRecord {
 	 * 
 	 * Valida un atributo para saber si es accesible dentro de la clase.
 	 * @access private
-	 * @param $field
+	 * @param string $field
 	 * @return boolean
 	 */
 	private function validateAtt ($field){
@@ -458,11 +458,11 @@ class myActiveRecord {
 	 *
 	 * Busca los registros asociados a una consulta sql.
 	 * @access private
-	 * @param $strCond
-	 * @param $orderBy
-	 * @param $orderMethod
-	 * @param $intLimit
-	 * @param $offset
+	 * @param string $strCond
+	 * @param string $orderBy
+	 * @param string $orderMethod
+	 * @param integer $intLimit
+	 * @param integer $offset
 	 * @return mixed
 	 */
 	private function findEngine ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
@@ -676,7 +676,7 @@ class myActiveRecord {
 	 * 
 	 * Construye el resultado de una cosunta sql asociada a una tabla o a la base de datos.
 	 * @access private
-	 * @param $rF Fila
+	 * @param object $rF Fila
 	 * @return object
 	 */
 	private function buildRes($rF){
@@ -702,7 +702,7 @@ class myActiveRecord {
 	 * 
 	 * Obtiene los campos en una cadena de una tabla .
 	 * @access private 
-	 * @param $table
+	 * @param string $table
 	 * @return string
 	 */
 	private function getStringSqlFields ($table){
@@ -731,8 +731,8 @@ class myActiveRecord {
 	 * 
 	 * Evalua la condicion que exite un operador de relacion en find o delete.
 	 * @access private
-	 * @param $strCond	Condicion
-	 * @param $returnSimbol	Retornar o no 
+	 * @param string $strCond	Condicion
+	 * @param boolean $returnSimbol	Retornar o no 
 	 * @return boolean
 	 */
 	private function evalSimbolInSubQuery ($strCond, $returnSimbol = false){
@@ -759,7 +759,7 @@ class myActiveRecord {
 	 * 
 	 * Obtiene la llave primaria de uan tabla basado en la palabra 'id', busca el primer campo de esa tabla que tenga la palabra solo 'id' o la primera que contenga 'id'.
 	 * @access private
-	 * @param $tableName	Nombre tabla
+	 * @param string $tableName	Nombre tabla
 	 */
 	private function getPkFromTable ($tableName){
 
@@ -806,9 +806,9 @@ class myActiveRecord {
 	 * Configurar el nombre de la secuencia usada en Postgresql.
 	 * 
 	 * Configura el nombre de la secuencia en la tabla para que despues de guardar un registro se pueda obtener el valor de Last Insert Id.
-	 * @param $name	Nombre secuencia
+	 * @param string $name	Nombre secuencia
 	 */
-	public function setSeqName($name){
+	public function setSeqName($name = ''){
 		
 		if ($name)
 			$this->tableIdSeq[$this->myact_table] = $name;		
@@ -818,7 +818,7 @@ class myActiveRecord {
 	 * Configurar comillas automaticas. 
 	 * 
 	 * Configurar si se van a usar o no las comillas automaticas cuando se realizan consultas con el metodo Query. Las comillas automaticas se aplican en cadenas de caracteres alfanumericas.
-	 * @param $value	True o False.
+	 * @param boolean $value	True o False.
 	 */
 	public function setAutoQuotesInFind ($value){
 		
@@ -906,7 +906,7 @@ class myActiveRecord {
 	 * Obtener el Log de Errores Sql.
 	 * 
 	 * Obtiene una cadena con el utimo error en una transaccion o consulta sql a la base de datos.
-	 * @param $HTMLformat	Formato HTML
+	 * @param boolean $HTMLformat	Formato HTML
 	 * @return string
 	 */
 	public function getErrorLog ($HTMLformat = false){
@@ -956,18 +956,6 @@ class myActiveRecord {
 	public function getLastInsertId (){
 			
 		return $this->lastInserId;
-	}
-	
-	/**
-	 * Obtiene el valor de un atributo
-	 * 
-	 * Obtiene el ultimo valor asignado a un atributo de la conexion. 
-	 * @param $att Atributo
-	 * @return string
-	 */
-	public function getAtt ($att){
-		
-		return $this->$att;
 	}
 	
 	/**
@@ -1078,8 +1066,8 @@ class myActiveRecord {
 	 * SELECT * FROM table WHERE id = 1;
 	 * 
 	 * </code> 
-	 * @param $file	Ruta del archivo fisico
-	 * @param $vars	Arreglo de variables a reemplazar
+	 * @param string $file	Ruta del archivo fisico
+	 * @param array $vars	Arreglo de variables a reemplazar
 	 * @return string
 	 */
 	public function loadSqlFromFile ($file, $vars = array()){
@@ -1129,7 +1117,7 @@ class myActiveRecord {
 	 * 
 	 * </code>
 	 * @param string $sql Consulta SQL
-	 * @param string $saveInLog Guardar en el log
+	 * @param boolean $saveInLog Guardar en el log
 	 * @return object
 	 */
 	public function query ($sql, $saveInLog = true){
@@ -1481,7 +1469,7 @@ class myActiveRecord {
 
 	/**
 	 * Abre la conexion a la base de datos
-	 *
+	 * @access private
 	 * @return resorce
 	 */
 	private function openConecction (){
@@ -1512,7 +1500,7 @@ class myActiveRecord {
 
 	/**
 	 * Cierra la conexion a la base de datos
-	 *
+	 * @access private
 	 */
 	private function closeConecction (){
 			
