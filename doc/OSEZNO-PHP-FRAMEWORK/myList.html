@@ -108,7 +108,6 @@ Source Location: /myDinamicList.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetList">getList</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetNumRowsAffected">getNumRowsAffected</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetQueryForm">getQueryForm</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetVar">getVar</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodisSuccessfulProcess">isSuccessfulProcess</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetAliasInQuery">setAliasInQuery</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetEventOnColumn">setEventOnColumn</a></li>
@@ -117,9 +116,7 @@ Source Location: /myDinamicList.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetPagination">setPagination</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetTheme">setTheme</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetUseOrderMethodOnColumn">setUseOrderMethodOnColumn</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetVar">setVar</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetWidthColumn">setWidthColumn</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodunSetVar">unSetVar</a></li>
   </ul>
 </td>
 
@@ -279,17 +276,17 @@ $sqlORobject = ''])</code>
   </div>
   <hr />
 	<a name="methodgetList"></a>
-	<h3>method getList <span class="smalllinenumber">[line 1382]</span></h3>
+	<h3>method getList <span class="smalllinenumber">[line 1477]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>string getList(
-[$showQueryForm
+[boolean
 $showQueryForm = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene el contenido de la lista dinámica<br /><br /><br /><br />
+		Obtener HTML<br /><br /><p>Obtiene el contenido de la lista dinámica como codigo HTML</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -305,7 +302,7 @@ $showQueryForm = false])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$showQueryForm&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$showQueryForm</b>&nbsp;&nbsp;</td>
         <td>Mostrar formulario de consulta</td>
       </tr>
@@ -315,7 +312,7 @@ $showQueryForm = false])</code>
   </div>
   <hr />
 	<a name="methodgetNumRowsAffected"></a>
-	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1363]</span></h3>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1454]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -324,7 +321,7 @@ $showQueryForm = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Retorna el numero de registros afectados por la anteior consulta.<br /><br /><br /><br />
+		Registros afectados.<br /><br /><p>Retorna el numero de registros afectados por la anteior consulta.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -340,7 +337,7 @@ $showQueryForm = false])</code>
   </div>
   <hr />
 	<a name="methodgetQueryForm"></a>
-	<h3>method getQueryForm <span class="smalllinenumber">[line 1197]</span></h3>
+	<h3>method getQueryForm <span class="smalllinenumber">[line 1283]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -349,7 +346,7 @@ $showQueryForm = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Retorna el formulario filtro de lista por medio de reglas<br /><br /><br /><br />
+		Obtener formulario de filtro<br /><br /><p>Retorna el formulario de filtro para una lista dinámica.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -361,53 +358,11 @@ $showQueryForm = false])</code>
 <br /><br />
 
 	
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodgetVar"></a>
-	<h3>method getVar <span class="smalllinenumber">[line 1312]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>string getVar(
-$name
-$name, [$item
-$item = ''])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Retorna el valor de un atributo de la lista dinamica.<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">$name&nbsp;&nbsp;</td>
-        <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td>Nombre de la variable</td>
-      </tr>
-          <tr>
-        <td class="type">$item&nbsp;&nbsp;</td>
-        <td><b>$item</b>&nbsp;&nbsp;</td>
-        <td>Si se trata de un arreglo el nombre del indice</td>
-      </tr>
-        </table>
-    </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
 	<a name="methodisSuccessfulProcess"></a>
-	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1372]</span></h3>
+	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1465]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -416,7 +371,7 @@ $item = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Indica si la lista se ejecuto correctamente o no<br /><br /><br /><br />
+		Exito en el proceso.<br /><br /><p>Indica si la lista se ejecuto correctamente o no.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -432,19 +387,19 @@ $item = ''])</code>
   </div>
   <hr />
 	<a name="methodsetAliasInQuery"></a>
-	<h3>method setAliasInQuery <span class="smalllinenumber">[line 604]</span></h3>
+	<h3>method setAliasInQuery <span class="smalllinenumber">[line 690]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setAliasInQuery(
-$field
-$field, $alias
+string
+$field, string
 $alias, [$data_type
 $data_type = 'string'])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura un campo en la consulta SQL para  que  le  sea definido un alias y este pueda ser usado en los  demas procesos de busqueda, consulta y ordenamiento.<br /><br /><br /><br />
+		Configurar Alias<br /><br /><p>Configura un campo en la consulta SQL para  que  le sea definido un alias y este pueda ser usado en los demas procesos de busqueda, consulta y ordenamiento.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -460,12 +415,12 @@ $data_type = 'string'])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$field&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td>Nombre del campo</td>
+        <td>Nombre original del campo</td>
       </tr>
           <tr>
-        <td class="type">$alias&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$alias</b>&nbsp;&nbsp;</td>
         <td>Alias del campo</td>
       </tr>
@@ -480,19 +435,51 @@ $data_type = 'string'])</code>
   </div>
   <hr />
 	<a name="methodsetEventOnColumn"></a>
-	<h3>method setEventOnColumn <span class="smalllinenumber">[line 487]</span></h3>
+	<h3>method setEventOnColumn <span class="smalllinenumber">[line 524]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setEventOnColumn(
-$alias
-$alias, $event
-$event, [$confirm_msg
+string
+$alias, strinh
+$event, [string
 $confirm_msg = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura en una columna segun su alias o nombre  un evento que se disparara al hacer click sobre ese  campo en esa columna. El evento recibira como parametro  el valor de la columna y tambien el nombre de la lista dinamica.<br /><br /><br /><br />
+		Configurar evento sobre columna.<br /><br /><p>Configura en una columna segun su alias o nombre un evento que se disparara al hacer click sobre ese campo en esa columna. El evento recibira como parametro el valor de la columna y tambien el nombre de la lista dinamica.  <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;Index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$sql&nbsp;</span>=&nbsp;<span class="src-str">'SELECT&nbsp;id,&nbsp;name,&nbsp;last_name&nbsp;FROM&nbsp;table'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myList.html">myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetEventOnColumn">setEventOnColumn</a><span class="src-sym">(</span><span class="src-str">'id'</span><span class="src-sym">,</span><span class="src-str">'showInfoUser'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">className&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">showInfoUser&nbsp;</span><span class="src-sym">(</span><span class="src-var">$id</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><span class="src-var">$id</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$objclassName&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">className</span><span class="src-sym">(</span><span class="src-var">$objxAjax</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -508,19 +495,19 @@ $confirm_msg = ''])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$alias&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$alias</b>&nbsp;&nbsp;</td>
         <td>Alias o nombre de la columna como la escribio</td>
       </tr>
           <tr>
-        <td class="type">$event&nbsp;&nbsp;</td>
+        <td class="type">strinh&nbsp;&nbsp;</td>
         <td><b>$event</b>&nbsp;&nbsp;</td>
         <td>Nombre del evento que disparara en el handlerEvent</td>
       </tr>
           <tr>
-        <td class="type">$confirm_msg&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$confirm_msg</b>&nbsp;&nbsp;</td>
-        <td>Mensaje de confirmacion</td>
+        <td>Mensaje de confirmacion antes de ejecutar el evento.</td>
       </tr>
         </table>
     </div><br />
@@ -528,19 +515,19 @@ $confirm_msg = ''])</code>
   </div>
   <hr />
 	<a name="methodsetExportData"></a>
-	<h3>method setExportData <span class="smalllinenumber">[line 501]</span></h3>
+	<h3>method setExportData <span class="smalllinenumber">[line 537]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setExportData(
-[$xls
-$xls = true], [$html
-$html = true], [$pdf
+[boolean
+$xls = true], [boolean
+$html = true], [boolean
 $pdf = true])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura la posibilidad de que en una lista dinamica  se le permita descargar la consulta actual en un formato  seleccionable.<br /><br /><br /><br />
+		Habilitar exportar datos.<br /><br /><p>Configura la posibilidad de que en una lista dinamica se le permita descargar la consulta actual en un formato seleccionable.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -556,17 +543,17 @@ $pdf = true])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$xls&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$xls</b>&nbsp;&nbsp;</td>
         <td>Formato xls</td>
       </tr>
           <tr>
-        <td class="type">$html&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$html</b>&nbsp;&nbsp;</td>
         <td>Formato html</td>
       </tr>
           <tr>
-        <td class="type">$pdf&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$pdf</b>&nbsp;&nbsp;</td>
         <td>Formato pdf</td>
       </tr>
@@ -576,18 +563,69 @@ $pdf = true])</code>
   </div>
   <hr />
 	<a name="methodsetGlobalEventOnColumn"></a>
-	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 518]</span></h3>
+	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 608]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setGlobalEventOnColumn(
-$alias
-$alias, [$events
+string
+$alias, [string
 $events = array ()])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura un unico evento global en una lista dinamica sobre columna definida  para que los registros marcados se vean afectados por dicho evento o eventos. El evento  programado recibira en un arreglo los registros seleccionados de dicha columna.<br /><br /><br /><br />
+		Configurar evento global.<br /><br /><p>Configura un unico evento global en una lista dinamica sobre columna definida para que los registros marcados se vean afectados por dicho evento o eventos. El evento programado recibira en un arreglo los registros seleccionados de dicha columna. <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;Index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$sql&nbsp;</span>=&nbsp;<span class="src-str">'SELECT&nbsp;id,&nbsp;name,&nbsp;last_name&nbsp;FROM&nbsp;table'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myList.html">myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Configuramos&nbsp;dos&nbsp;posibles&nbsp;opciones&nbsp;en&nbsp;el&nbsp;evento&nbsp;global.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetGlobalEventOnColumn">setGlobalEventOnColumn</a><span class="src-sym">(</span><span class="src-str">'id'</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'deleteRecord'</span>=&gt;<span class="src-str">'Eliminar'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'updateRecord'</span>=&gt;<span class="src-str">'Actualizar'</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Definimos&nbsp;los&nbsp;eventos.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">className&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Cada&nbsp;metodo&nbsp;definido&nbsp;recibira&nbsp;un&nbsp;arreglo&nbsp;con&nbsp;los&nbsp;ids&nbsp;de&nbsp;los&nbsp;registros&nbsp;seleccionados.&nbsp;En&nbsp;este&nbsp;caso&nbsp;se&nbsp;utilizo&nbsp;el&nbsp;valor&nbsp;de&nbsp;la&nbsp;columna&nbsp;'id'</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">deleteRecord&nbsp;</span><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><a href="http://www.php.net/var_export">var_export</a><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">,</span><span class="src-id">true</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">updateRecord&nbsp;</span><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><a href="http://www.php.net/var_export">var_export</a><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">,</span><span class="src-id">true</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$objclassName&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">className</span><span class="src-sym">(</span><span class="src-var">$objxAjax</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -603,14 +641,14 @@ $events = array ()])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$alias&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$alias</b>&nbsp;&nbsp;</td>
         <td>Alias o nombre de la columna del que tomara el valor</td>
       </tr>
           <tr>
-        <td class="type">$events&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$events</b>&nbsp;&nbsp;</td>
-        <td>Array con los nombres y etiquetas de evento que ejecutara el handlerEvent</td>
+        <td>Array con los etiquetas y nombres de eventos que ejecutara el handlerEvent</td>
       </tr>
         </table>
     </div><br />
@@ -618,18 +656,18 @@ $events = array ()])</code>
   </div>
   <hr />
 	<a name="methodsetPagination"></a>
-	<h3>method setPagination <span class="smalllinenumber">[line 454]</span></h3>
+	<h3>method setPagination <span class="smalllinenumber">[line 457]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setPagination(
-[$use
-$use = true], [$rows
+[boolean
+$use = true], [integer
 $rows = 20])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura una paginacion sobre la lista dinamica.<br /><br /><br /><br />
+		Configura una paginación.<br /><br /><p>Configura una paginacion sobre la lista dinamica.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -645,14 +683,14 @@ $rows = 20])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$use&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$use</b>&nbsp;&nbsp;</td>
-        <td>Activa o inactiva la paginacion de la lista dinamica</td>
+        <td>Activa o inactiva la paginación de la lista dinámica.</td>
       </tr>
           <tr>
-        <td class="type">$rows&nbsp;&nbsp;</td>
+        <td class="type">integer&nbsp;&nbsp;</td>
         <td><b>$rows</b>&nbsp;&nbsp;</td>
-        <td>Numero de registro a mostrar por pagina.</td>
+        <td>Número de registro a mostrar por pagina.</td>
       </tr>
         </table>
     </div><br />
@@ -660,20 +698,23 @@ $rows = 20])</code>
   </div>
   <hr />
 	<a name="methodsetTheme"></a>
-	<h3>method setTheme <span class="smalllinenumber">[line 439]</span></h3>
+	<h3>method setTheme <span class="smalllinenumber">[line 441]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void setTheme(
-[$theme
+		<code>string setTheme(
+[string
 $theme = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Selecciona un tema de estilos para las lista dinamica.<br /><br /><br /><br />
+		Seleccionar un tema<br /><br /><p>Selecciona un tema de estilos para las lista dinamica. Si no se especifica uno, se toma el configurado a nivel de la aplicacion y el metodo retorna el tema en uso.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Tema en uso</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -686,7 +727,7 @@ $theme = ''])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$theme&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$theme</b>&nbsp;&nbsp;</td>
         <td>Nombre del tema</td>
       </tr>
@@ -696,17 +737,17 @@ $theme = ''])</code>
   </div>
   <hr />
 	<a name="methodsetUseOrderMethodOnColumn"></a>
-	<h3>method setUseOrderMethodOnColumn <span class="smalllinenumber">[line 620]</span></h3>
+	<h3>method setUseOrderMethodOnColumn <span class="smalllinenumber">[line 704]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setUseOrderMethodOnColumn(
-$alias
+string
 $alias)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura si una columna va a tener una propiedad especial  que le permitira a esta ser ordenada en forma ascendente o  descendente o simplemente no ser organizada.<br /><br /><br /><br />
+		Configurar ordenamiento<br /><br /><p>Configura si una columna va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -722,57 +763,9 @@ $alias)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$alias&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$alias</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodsetVar"></a>
-	<h3>method setVar <span class="smalllinenumber">[line 1332]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void setVar(
-$name
-$name, $val
-$val, [$item
-$item = ''])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Configura una variable de la lista<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">$name&nbsp;&nbsp;</td>
-        <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td>Nombre de la variable</td>
-      </tr>
-          <tr>
-        <td class="type">$val&nbsp;&nbsp;</td>
-        <td><b>$val</b>&nbsp;&nbsp;</td>
-        <td>Nuevo valor</td>
-      </tr>
-          <tr>
-        <td class="type">$item&nbsp;&nbsp;</td>
-        <td><b>$item</b>&nbsp;&nbsp;</td>
-        <td>Si te trata de un arreglo el nombre del indice</td>
+        <td>Nombre del campo o alias en su lugar</td>
       </tr>
         </table>
     </div><br />
@@ -780,18 +773,18 @@ $item = ''])</code>
   </div>
   <hr />
 	<a name="methodsetWidthColumn"></a>
-	<h3>method setWidthColumn <span class="smalllinenumber">[line 470]</span></h3>
+	<h3>method setWidthColumn <span class="smalllinenumber">[line 473]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setWidthColumn(
-$alias
-$alias, $witdh
+string
+$alias, integer
 $witdh)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura manualmente un acho determinado  para cada columna de la lista dinamica.<br /><br /><br /><br />
+		Configurar ancho em columna.<br /><br /><p>Configura manualmente un acho determinado para cada columna de la lista dinamica.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -807,56 +800,14 @@ $witdh)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$alias&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$alias</b>&nbsp;&nbsp;</td>
-        <td>Nombre de la columna</td>
+        <td>Nombre de la columna o alias</td>
       </tr>
           <tr>
-        <td class="type">$witdh&nbsp;&nbsp;</td>
+        <td class="type">integer&nbsp;&nbsp;</td>
         <td><b>$witdh</b>&nbsp;&nbsp;</td>
         <td>Ancho de la columna en PX o %</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodunSetVar"></a>
-	<h3>method unSetVar <span class="smalllinenumber">[line 1345]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void unSetVar(
-$name
-$name, $item
-$item)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Borra una variable de la lista<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">$name&nbsp;&nbsp;</td>
-        <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td>Nombre de la variable</td>
-      </tr>
-          <tr>
-        <td class="type">$item&nbsp;&nbsp;</td>
-        <td><b>$item</b>&nbsp;&nbsp;</td>
-        <td>Si se trata de un arreglo el nombre del indice</td>
       </tr>
         </table>
     </div><br />
@@ -867,7 +818,7 @@ $item)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Fri, 10 Dec 2010 16:35:52 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Sat, 11 Dec 2010 12:04:49 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

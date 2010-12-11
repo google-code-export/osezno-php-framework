@@ -432,9 +432,11 @@ class myList  {
 	}
 	
 	/**
-	 * Selecciona un tema de estilos para las lista dinamica.
+	 * Seleccionar un tema
 	 * 
-	 * @param $theme Nombre del tema
+	 * Selecciona un tema de estilos para las lista dinamica. Si no se especifica uno, se toma el configurado a nivel de la aplicacion y el metodo retorna el tema en uso.
+	 * @param string $theme Nombre del tema
+	 * @return string Tema en uso
 	 */
 	public function setTheme ($theme = ''){
 		
@@ -446,10 +448,11 @@ class myList  {
 	}
 
 	/**
-	 * Configura una paginacion sobre la lista dinamica.
+	 * Configura una paginación.
 	 * 
-	 * @param $use		Activa o inactiva la paginacion de la lista dinamica			
-	 * @param $rows 	Numero de registro a mostrar por pagina.
+	 * Configura una paginacion sobre la lista dinamica.
+	 * @param boolean $use	Activa o inactiva la paginación de la lista dinámica.			
+	 * @param integer $rows Número de registro a mostrar por pagina.
 	 */
 	public function setPagination ($use = true, $rows = 20){
 		
@@ -461,11 +464,11 @@ class myList  {
 	}
 	
 	/**
-	 * Configura manualmente un acho determinado
-	 * para cada columna de la lista dinamica.
+	 * Configurar ancho em columna.
 	 * 
-	 * @param $alias	Nombre de la columna
-	 * @param $witdh	Ancho de la columna en PX o %
+	 * Configura manualmente un acho determinado para cada columna de la lista dinamica.
+	 * @param string $alias	Nombre de la columna o alias
+	 * @param integer $witdh	Ancho de la columna en PX o %
 	 */
 	public function setWidthColumn ($alias, $witdh){
 		
@@ -475,14 +478,48 @@ class myList  {
 	}
 	
 	/**
-	 * Configura en una columna segun su alias o nombre
-	 * un evento que se disparara al hacer click sobre ese
-	 * campo en esa columna. El evento recibira como parametro
-	 * el valor de la columna y tambien el nombre de la lista dinamica.
+	 * Configurar evento sobre columna.
 	 * 
-	 * @param $alias	Alias o nombre de la columna como la escribio
-	 * @param $event	Nombre del evento que disparara en el handlerEvent
-	 * @param $confirm_msg	Mensaje de confirmacion
+	 * Configura en una columna segun su alias o nombre un evento que se disparara al hacer click sobre ese campo en esa columna. El evento recibira como parametro el valor de la columna y tambien el nombre de la lista dinamica.
+	 * <code>
+	 * 
+	 * Ejemplo:
+	 * 
+	 * Index.php
+	 * <?php
+	 *
+	 * $sql = 'SELECT id, name, last_name FROM table';
+	 *  
+ 	 * $myList = new myList('list_1',$sql);
+ 	 *	
+ 	 * $myList->setEventOnColumn('id','showInfoUser');
+ 	 *
+ 	 * echo $myList->getList();
+	 * 
+	 * ?>
+	 * 
+	 * handlerEvent.php
+	 * <?php
+	 * 
+ 	 * class className extends myController {
+ 	 * 
+ 	 * 		public function showInfoUser ($id){
+ 	 * 
+ 	 * 			$this->alert($id);
+ 	 * 
+ 	 * 			return $this->response;
+ 	 * 		}
+ 	 * 
+ 	 * }
+ 	 *   
+ 	 * $objclassName = new className($objxAjax);
+ 	 *  
+	 * ?>
+	 * 
+	 * </code>
+	 * @param string $alias	Alias o nombre de la columna como la escribio
+	 * @param strinh $event	Nombre del evento que disparara en el handlerEvent
+	 * @param string $confirm_msg	Mensaje de confirmacion antes de ejecutar el evento.
 	 */
 	public function setEventOnColumn ($alias, $event, $confirm_msg = ''){
 		
@@ -490,13 +527,12 @@ class myList  {
 	}
 	
 	/**
-	 * Configura la posibilidad de que en una lista dinamica 
-	 * se le permita descargar la consulta actual en un formato
-	 * seleccionable.
+	 * Habilitar exportar datos.
 	 * 
-	 * @param $xls		Formato xls
-	 * @param $html		Formato html
-	 * @param $pdf		Formato pdf
+	 * Configura la posibilidad de que en una lista dinamica se le permita descargar la consulta actual en un formato seleccionable.
+	 * @param boolean $xls	Formato xls
+	 * @param boolean $html	Formato html
+	 * @param boolean $pdf	Formato pdf
 	 */
 	public function setExportData ($xls = true, $html = true, $pdf = true){
 
@@ -508,12 +544,66 @@ class myList  {
 	}
 	
 	/**
-	 * Configura un unico evento global en una lista dinamica sobre columna definida
-	 * para que los registros marcados se vean afectados por dicho evento o eventos. El evento 
-	 * programado recibira en un arreglo los registros seleccionados de dicha columna.
+	 * Configurar evento global.
 	 * 
-	 * @param $alias	Alias o nombre de la columna del que tomara el valor
-	 * @param $events	Array con los nombres y etiquetas de evento que ejecutara el handlerEvent
+	 * Configura un unico evento global en una lista dinamica sobre columna definida para que los registros marcados se vean afectados por dicho evento o eventos. El evento programado recibira en un arreglo los registros seleccionados de dicha columna.
+	 *<code>
+	 *
+	 * Ejemplo:
+	 * 
+	 * Index.php
+	 * <?php
+	 *
+	 * $sql = 'SELECT id, name, last_name FROM table';
+	 *  
+ 	 * $myList = new myList('list_1',$sql);
+ 	 *
+ 	 * # Configuramos dos posibles opciones en el evento global.
+ 	 * 	
+ 	 * $myList->setGlobalEventOnColumn('id',array(
+ 	 * 
+ 	 * 	'deleteRecord'=>'Eliminar',
+ 	 * 
+ 	 * 	'updateRecord'=>'Actualizar'
+ 	 * 
+ 	 * ));
+ 	 *
+ 	 * echo $myList->getList();
+	 * 
+	 * ?>
+	 * 
+	 * handlerEvent.php
+	 * <?php
+	 * 
+	 * # Definimos los eventos.
+	 * 
+ 	 * class className extends myController {
+ 	 * 
+ 	 *      # Cada metodo definido recibira un arreglo con los ids de los registros seleccionados. En este caso se utilizo el valor de la columna 'id'
+ 	 *      
+ 	 * 		public function deleteRecord ($items){
+ 	 * 
+ 	 * 			$this->alert(var_export($items,true));
+ 	 * 
+ 	 * 			return $this->response;
+ 	 * 		}
+ 	 * 
+ 	 * 		public function updateRecord ($items){
+ 	 * 
+ 	 * 			$this->alert(var_export($items,true));
+ 	 * 
+ 	 * 			return $this->response;
+ 	 * 		}
+ 	 * 
+ 	 * }
+ 	 *   
+ 	 * $objclassName = new className($objxAjax);
+ 	 *  
+	 * ?>
+	 *
+	 *</code> 
+	 * @param string $alias	Alias o nombre de la columna del que tomara el valor
+	 * @param string $events	Array con los etiquetas y nombres de eventos que ejecutara el handlerEvent
 	 */
 	public function setGlobalEventOnColumn ($alias, $events = array ()){
 		
@@ -539,8 +629,7 @@ class myList  {
 	}
 	
 	/**
-	 * Obtiene la parte de la consulta correspondiente
-	 * a condiciones cuando fueron aplicadas en el filtro.
+	 * Obtiene la parte de la consulta correspondiente a condiciones cuando fueron aplicadas en el filtro.
 	 * @return string
 	 */
 	private function getSqlPartWhere (){
@@ -563,9 +652,7 @@ class myList  {
 	}
 	
 	/**
-	 * Obtiene una cadena de texto que le indica a la consulta sql
-	 * principal como debe organizar el resultado de la consulta.
-	 * 
+	 * Obtiene una cadena de texto que le indica a la consulta sql principal como debe organizar el resultado de la consulta.
 	 * @return string
 	 */
 	private function getSqlPartOrderBy (){
@@ -593,12 +680,11 @@ class myList  {
 	}
 	
 	/**
-	 * Configura un campo en la consulta SQL para  que  le
-	 * sea definido un alias y este pueda ser usado en los
-	 * demas procesos de busqueda, consulta y ordenamiento.
+	 * Configurar Alias
 	 * 
-	 * @param $field Nombre del campo
-	 * @param $alias Alias del campo
+	 * Configura un campo en la consulta SQL para  que  le sea definido un alias y este pueda ser usado en los demas procesos de busqueda, consulta y ordenamiento.
+	 * @param string $field Nombre original del campo
+	 * @param string $alias Alias del campo
 	 * @param $data_type El tipo de dato para dar un trato especial en cada caso (string, numeric, date)
 	 */
 	public function setAliasInQuery ($field, $alias, $data_type = 'string'){
@@ -607,15 +693,13 @@ class myList  {
 			$data_type = 'string';
 		
 		$this->arrayAliasSetInQuery[$field] = htmlentities($alias).'::'.$data_type;
-		
 	}
 	
 	/**
-	 * Configura si una columna va a tener una propiedad especial 
-	 * que le permitira a esta ser ordenada en forma ascendente o
-	 * descendente o simplemente no ser organizada.
+	 * Configurar ordenamiento 
 	 * 
-	 * @param $alias
+	 * Configura si una columna va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada.
+	 * @param string $alias Nombre del campo o alias en su lugar
 	 */
 	public function setUseOrderMethodOnColumn ($alias){
 		
@@ -1191,7 +1275,9 @@ class myList  {
 	}
 	
 	/**
-	 * Retorna el formulario filtro de lista por medio de reglas
+	 * Obtener formulario de filtro
+	 * 
+	 * Retorna el formulario de filtro para una lista dinámica.
 	 * @return string
 	 */
 	public function getQueryForm (){
@@ -1305,6 +1391,7 @@ class myList  {
 	
 	/**
 	 * Retorna el valor de un atributo de la lista dinamica.
+	 * @ignore
 	 * @param $name	Nombre de la variable
 	 * @param $item	Si se trata de un arreglo el nombre del indice
 	 * @return string
@@ -1325,6 +1412,7 @@ class myList  {
 
 	/**
 	 * Configura una variable de la lista
+	 * @ignore
 	 * @param $name	Nombre de la variable
 	 * @param $val	Nuevo valor
 	 * @param $item	Si te trata de un arreglo el nombre del indice
@@ -1339,6 +1427,7 @@ class myList  {
 	
 	/**
 	 * Borra una variable de la lista
+	 * @ignore
 	 * @param $name Nombre de la variable
 	 * @param $item	Si se trata de un arreglo el nombre del indice
 	 */
@@ -1357,6 +1446,8 @@ class myList  {
 	}
 
 	/**
+	 * Registros afectados.
+	 * 
 	 * Retorna el numero de registros afectados por la anteior consulta.
 	 * @return integer
 	 */
@@ -1366,7 +1457,9 @@ class myList  {
 	}
 	
 	/**
-	 * Indica si la lista se ejecuto correctamente o no
+	 * Exito en el proceso.
+	 * 
+	 * Indica si la lista se ejecuto correctamente o no.
 	 * @return boolean
 	 */
 	public function isSuccessfulProcess (){
@@ -1375,8 +1468,10 @@ class myList  {
 	}
 	
 	/**
-	 * Obtiene el contenido de la lista dinámica
-	 * @param $showQueryForm	Mostrar formulario de consulta
+	 * Obtener HTML
+	 * 
+	 * Obtiene el contenido de la lista dinámica como codigo HTML
+	 * @param boolean $showQueryForm	Mostrar formulario de consulta
 	 * @return string
 	 */
 	public function getList ($showQueryForm = false){
