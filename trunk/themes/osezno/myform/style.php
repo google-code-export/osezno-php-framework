@@ -21,6 +21,7 @@
 }
 
 .fondo_fila_medio {
+	background-color:#FFFFC0;
 }
 
 .caja {
