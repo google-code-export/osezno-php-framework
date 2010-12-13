@@ -7,22 +7,14 @@ require ($pathfckEditor);
 /**
  * myForm
  *
- * La clase myForm es la forma de interactuar el desarrollador con los formularios.
+ * La clase myForm permite al desarrollador crear/generar diferentes formas de formularios.
  *
  * @uses Creacion de formularios
  * @package OSEZNO-PHP-FRAMEWORK
  * @version 1.6.0
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
- * 
  */
 class myForm {
-
-	/**
-	 * Version de la clase
-	 *
-	 * @var string
-	 */
-	private $version = '1.6.2';
 
 	/**
 	 * En caso de que el form no tenga action, hacer esto.
@@ -297,115 +289,129 @@ class myForm {
 	protected $objHelps = array ();
 
 	/**
+	 * Metodo (method) del formulario.
+	 * 
 	 * El metodo que utilizara en el momento de enviar el Formulario.
-	 *
 	 * @var string
 	 */
 	public $method = 'post';
 	
 	/**
-	 * La ruta del script a la cual va dirigida la informacion.
-	 * Ejemplo valida.php
+	 * Accion (action) del formulario.
+	 * 
+	 * La ruta del script que procesara los datos. 
 	 * @var string
 	 */
 	public $action;
 
 	/**
-	 * La ventana en donde se abrira la informacion enviada desde ese formulario.
-	 * Valores: _self, _blank, _parent, _top
+	 * Objetivo (target) del formulario.
+	 * 
+	 * La ventana en donde se abrira la informacion enviada desde ese formulario. (_self, _blank, _parent, _top)
 	 * @var string
 	 */
 	public $target = '_self';
 
 	/**
-	 * El tipo de datos que va a enviar, usualmente se utiliza para manejar acrchivos.
-	 * Valores: application/x-www-form-urlencoded, multipart/form-data
+	 * Tipo MIME (Enctype) del formulario.
+	 * 
+	 * El tipo de datos que va a enviar, usualmente se utiliza para manejar acrchivos. (application/x-www-form-urlencoded, multipart/form-data)
 	 * @var string
 	 */
 	public $enctype;
 
 	/**
-	 * Prefijo que usa xajax para llamar a sus funciones
-	 *
+	 * Prefijo xajax.
+	 * 
+	 * Prefijo que usa xajax para llamar a sus funciones.
 	 * @var string
 	 */
 	public $prefAjax = '';
 
 	/**
+	 * Nombre (name) del formulario.
+	 * 
 	 * El nombre del formulario con el que se esta interactuando.
-	 *
 	 * @var string
 	 */
 	public $name;
 
 	/**
-	 * Directorio en donde el formulario sera cacheado
-	 *
+	 * Directorio cache.
+	 * 
+	 * Directorio en donde el formulario sera cacheado si la opcion esta habilitada.
 	 * @var string
 	 */
 	public $cache_dir = 'myform_cache/';
 
 	/**
-	 * Define si se va a usar o no cache para el formulario
-	 *
+	 * Usar cache.
+	 * 
+	 * Define si se va a usar o no cache para el formulario.
 	 * @var boolean
 	 */
 	public $use_cache = false;
 
 	/**
-	 * Numero de columnas en las que se divira la vista del formulario.
-	 *
+	 * Columnas.
+	 * 	 
+	 * Numero de columnas en las que se divira la vista del formulario. Un campo sera ubicado en cada columna.
 	 * @var integer
 	 */
 	public $cols = 2;
 
 	/**
-	 * Numero en px de padding en las celdas
-	 *
+	 * Anchura interior de celda.
+	 * 
+	 * Anchura interior de una celda, en este caso para el formulario.
 	 * @var integer
 	 */
 	public $cellPadding = 2;
 
 	/**
-	 * Numero en px de spacing entre las celdas.
-	 *
+	 * Espacio entre celdas.
+	 * 
+	 * Espacion interior entre celdas, en este caso para el formulario.
 	 * @var integer
 	 */
 	public $cellSpacing = 0;
 
 	/**
-	 * Tamano de ancho de la tabla que contiene el formulario en porcentaje o px
-	 *
+	 * Ancho de formulario.
+	 * 
+	 * Tamano de ancho de la tabla que contiene el formulario en porcentaje o px.
 	 * @var string
 	 */
 	public $width = '98%';
 
 	/**
-	 * Tamano de alto de la tabla que contiene el formulario en porcentaje o px
-	 *
+	 * Alto de formulario.
+	 * 
+	 * Tamano de alto de la tabla que contiene el formulario en porcentaje o px.
 	 * @var string
 	 */
 	public $height = '0%';
 
 	/**
-	 * Borde de la tabla, para programadores
-	 *
+	 * Borde de tabla.
+	 * 
+	 * Borde de la tabla que contiene el formulario.
 	 * @var integer
 	 */
 	public $border = 0;
 
 	/**
-	 * Permite decidir si se va a usar o no
-	 * una opcion en el select que  muestre
-	 * un determinada etiqueta como presentacion.
-	 *
+	 * Usar pirmer valor en campos tipo select.
+	 * 
+	 * Permite decidir si se va a usar o no una opcion en el select que  muestre un etiqueta por defecto como presentacion segun el idioma que utilize.
 	 * @var boolean
 	 */
 	public $selectUseFirstValue = true;
 
 	/**
-	 * Ruta de la Imagen que acompana el boton de cada uno de los Controles de calendario
-	 *
+	 * SRC imagen boton calendario.
+	 * 
+	 * Ruta de la Imagen que acompana el boton de cada uno de los Controles de calendario.
 	 * @var string
 	 */
 	public $srcImageCalendarButton  = 'calendar.gif';
@@ -418,93 +424,90 @@ class myForm {
 	private $pathImages;
 	
 	/**
-	 * Etiqueta de la primera opcion por select
-	 * que se activa solo si $objMyForm->selectUseFirstValue
-	 * es igual a 'true'
-	 *
+	 * Etiqueta primer opcion en campos tipo SELECT
+	 * 
+	 * Etiqueta de la primera opcion por select que se activa solo si $objMyForm->selectUseFirstValue es igual a 'true'.
 	 * @var string
 	 */
 	public $selectStringFirstLabelOption = 'Seleccione...';
 
 	/**
-	 * Utilizar o no la fila intermedia de color diferente para
-	 * diferenciar visualmente las filas de los campos en un formulario.
-	 * Nota: Al activar este atributo debe tenerse en cuenta la clase
-	 * de estilos que usa por medio de 'styleClassRowSeparator'
-	 *
+	 * Usar distincion de filas.
+	 * 
+	 * Utilizar o no la fila intermedia de color diferente para diferenciar visualmente las filas de los campos en un formulario.
+	 * Nota: Al activar este atributo debe tenerse en cuenta la clase de estilos que usa por medio de 'styleClassRowSeparator'
 	 * @var boolean
 	 */
 	public $useRowSeparator = false;
 	
 	/**
-	 * Nombre de la clase que por defecto usan los formularios
+	 * Clase CSS Formularios
 	 * 
+	 * Nombre de la clase que por defecto usan los formularios.
 	 * @var string
 	 */
 	public $styleClassForm = 'formulario';
 	
 	/**
-	 * Nombre de la clase que por defecto usan las
-	 * tablas que se crean para el formulario.
-	 *
+	 * Clase CSS tabla formulario.
+	 * 
+	 * Nombre de la clase que por defecto usan las tablas que se crean para el formulario.
 	 * @var string
 	 */
 	public $styleClassTableForm = 'fondo_tabla_form';
 
 	/**
-	 * Nombre de la clase que por defecto usan las
-	 * filas del medio para los formularios.
-	 *
+	 * Clase CSS filas intermedias.
+	 * 
+	 * Nombre de la clase que por defecto usan las filas del medio para los formularios cuando $myForm->useRowSeparator es true.
 	 * @var string
 	 */
 	public $styleClassRowSeparator = 'fondo_fila_medio';
 
 	/**
-	 * Tipo del la ayuda que mostrara el help
-	 * sobre los campos que se configuraron
-	 * previamente.
-	 *
-	 * 1, 2
-	 *
+	 * Clase CSS Ayudas tipo.
+	 * 
+	 * Tipo del la ayuda que mostrara el help sobre los campos que se configuraron previamente (1 ó 2).
 	 * @var integer
 	 */
 	public $styleTypeHelp = 1;
 
 	/**
-	 * Nombre de la clase que por defecto usan los
-	 * campos del formulario para ser mostrados.
-	 *
+	 * Clase CSS Campos.
+	 * 
+	 * Nombre de la clase que por defecto usan los campos del formulario para ser mostrados.
 	 * @var string
 	 */
 	public $styleClassFields = 'caja';
 
 	/**
-	 * Nombre de la clase que por defecto usan los
-	 * los botones del formulario que seran mostrados.
-	 *
+	 * Clase CSS Botones.
+	 * 
+	 * Nombre de la clase que por defecto usan los los botones del formulario que seran mostrados.
 	 * @var string
 	 */
 	public $styleClassButtons = 'boton';
 
 	/**
-	 * Nombre de la clase que por defecto usan los
-	 * loas etiquetas de los campos del formulario que seran mostrados.
-	 *
+	 * Clase CSS etiquetas.
+	 * 
+	 * Nombre de la clase que por defecto usan los las etiquetas de los campos del formulario que seran mostrados.
 	 * @var string
 	 */
 	public $styleClassTags = 'etiqueta';
 
 	/**
-	 * Nombre de la clase que por defecto usan los
-	 * fieldsets del formulario.
-	 *
+	 * Clase CSS Fieldset.
+	 * 
+	 * Nombre de la clase que por defecto usan los fieldsets del formulario.
 	 * @var string
 	 */
 	public $styleClassFieldsets = 'formulario_fieldset';
 
 	/**
-	 * Etiqueta del Legend del Fieldset que usara el formulario
-	 *
+	 * Etiqueta Legend formulario.
+	 * 
+	 * Etiqueta del Legend del Fieldset que usara el formulario.
 	 * @var string
 	 */
 	public $strFormFieldSet = '';
@@ -529,314 +532,292 @@ class myForm {
 	 */
 
 	/**
-	 * Url del archivo que sube los archivos
-	 * al servidor por via post.
-	 *
+	 * Url file_upload.
+	 * 
+	 * Url del script que procesa las peticiones de envio de archivos al servidor cuando exite un campo tipo file.
 	 * @var string
 	 */
 	public $FILE_upload_url;
-	# Un ejemplo de el script que sube los datos puede ser ...
-	# - Inicio
-	//   // Si se pretende conservar el ID de la sesion actual, se hace con un parametro GET
-	//    if(isset($_GET['SessionID'])){
-	//       // session_id devuelve el ID de la sesion actual, o setea el ID de la nueva sesion
-	//      session_id(trim($_GET['SessionID']));
-	//    }
-	//   // Si se requiere iniciar sesion
-	//   //session_start();
-	//   // Decidimos donde vamos a poner el Archivo que subimos
-	//   $folder_destino = $_SERVER['DOCUMENT_ROOT']."/".$_FILES['Filedata']['name'];
-	//   // Intentamos mover el archivo al directorio destino
-	//   if (@move_uploaded_file($_FILES['Filedata']['tmp_name'],$folder_destino)){
-	//      // Aqui se movio
-	//	  header('HTTP/1.1 200 OK');
-	//      // Si el envio falla
-	//   }else {
-	//	  // Reportar el error
-	//	  header('HTTP/1.1 404 Not Found');
-	//	  // Guardar el error en un archivo
-	//	  error_log("Error al intentar enviar archivo: ".$_FILES['Filedata']['name'].' '.date("Y-m-d")."\n",3,"logs.txt");
-	//   }
-	//   print 'ok!';
-	# - Fin
 
 	/**
-	 * El nombre del campo cuando es enviado
-	 * por el metodo POST, The Linux Flash Player ignores this setting.
-	 *
+	 * Nombre campo File.
+	 * 
+	 * El nombre del campo cuando es enviado por el metodo POST, The Linux Flash Player ignores this setting.
 	 * @var string
 	 */
 	public $FILE_file_post_name;
 
 	/**
-	 * The param_object should be a simple JavaScript object.
-	 * All names and values must be strings
-	 *
+	 * Parametros post agregados. 
+	 * 
+	 * Post params on file object. The param_object should be a simple JavaScript object. All names and values must be strings.
 	 * @var string
 	 */
 	public $FILE_post_params = array();
 
 	/**
-	 * Los tipos de archivo que son admisibles
-	 *
+	 * Extensiones admitidas. 
+	 * 
+	 * Los tipos de archivo que son admisibles al seleccionarlos.
+	 * <code>
+	 * 
+	 * Ejemplo:
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * # Admitir solo archivos con extesión PHP y TXT
+	 * $myForm->FILE_file_types = array('*.php','*.txt');
+	 * 
+	 * ?>
+	 * 
+	 * </code>
 	 * @var array
 	 */
 	public $FILE_file_types = array('*.*');
 
 	/**
-	 * La descripcion de los tipos de archivo
-	 * que se pueden subir al servidor
-	 *
+	 * Descripción de admisión de tipos de archivo.
+	 * 
+	 * La descripcion de los tipos de archivo que se pueden subir al servidor, esta etiqueta aparecera en el cuadro de dialogo de seleccion de archivos.
 	 * @var string
 	 */
 	public $FILE_file_types_description = 'Todos los tipos';
 
 	/**
-	 * El tamano maximo en kilobytes
-	 * para que un archivo pueda ser
-	 * subido al  servidor de datos.
-	 *
+	 * Tamaño maximo en Kb.
+	 * 
+	 * El tamano maximo en kilobytes para que un archivo pueda ser subido al  servidor de datos.
 	 * @var integer
 	 */
 	public $FILE_size_limit = 2048;
 
 	/**
-	 * Setea si se va a mostrar o no informacion de 
-	 * la capacidad max de subida por archivo en el boton
-	 * que abre la ventana de dialogo para el swf_uploader
-	 *
-	 * @var unknown_type
+	 * Mostrar informacion de tamaña maximo de subida.
+	 * 
+	 * Setea si se va a mostrar o no informacion de la capacidad max de subida por archivo en el boton que abre la ventana de dialogo para el swf_uploader.
+	 * @var boolean
 	 */
 	public $FILE_show_max_upload_size_info_in_button = true;
 
 	/**
-	 * Numero maximo de archivos que
-	 * pueden ser subidos, cero es sin limite.
-	 *
+	 * Numero maximo de archivos por intento a subir.
+	 * 
+	 * Numero maximo de archivos que pueden ser subidos en un intento (cero es sin limite).
 	 * @var integer
 	 */
 	public $FILE_file_upload_limit = 0;
 
 	/**
-	 * Numero maximo de archivos en
-	 * archivos en  cola que pueden
-	 * estar, cero es sin limite.
-	 *
+	 * Numero maximo de archivos en cola.
+	 * 
+	 * Numero maximo de archivos en archivos en  cola que pueden estar (cero es sin limite).
 	 * @var integer
 	 */
 	public $FILE_file_queue_limit = 0;
 
 	/**
-	 * Url en donde se encuentra el
-	 * SWF que permite la carga  de
-	 * los archivos al servidor.
-	 *
+	 * Url flash.
+	 * 
+	 * Url en donde se encuentra el SWF que permite la carga  de los archivos al servidor.
 	 * @var string
 	 */
 	public $FILE_flash_url = '';
 	
 	/**
-	 * Url de la imagen que por defecto 
-	 * se va a cargar como base para
-	 * dibujar el boton de carga de archivos.
+	 * SRC Imagen boton seleccionar/subir archivos.
 	 * 
+	 * SRC de la imagen que por defecto se va a cargar como base para dibujar el boton de carga de archivos.
 	 * @var string
 	 */
 	public $FILE_button_image_url = 'button_file.gif';
 	
 	/**
-	 * Id del span donde el button
-	 * se va a alojar.
+	 * Id DIV
 	 * 
+	 * Id del span donde el button se va a alojar.
 	 * @var string
 	 */
 	public $FILE_button_placeholder_id = 'spanButtonPlaceholder';
 	
 	/**
-	 * Ancho del boton en px en el formulario
+	 * Ancho boton.
 	 * 
+	 * Ancho del boton en px en el formulario.
 	 * @var integer
 	 */
 	public $FILE_button_width = 160;
 	
 	/**
-	 * Alto del boton en px en el formulario
+	 * Alto boton.
 	 * 
+	 * Alto del boton en px en el formulario.
 	 * @var integer
 	 */
 	public $FILE_button_height = 22;
 	
 	/**
+	 * Ancho Flash.
+	 * 
 	 * Ancho de el tamano del flash.
-	 *
 	 * @var string
 	 */
 	public $FILE_flash_width = '0px';
 
 	/**
+	 * Alto flash.
+	 * 
 	 * Alto de el tamano del flash.
-	 *
 	 * @var string
 	 */
 	public $FILE_flash_height = '0px';
 
 	/**
-	 * Color de piel para el flash.
-	 *
+	 * Color fondo flash.
+	 * 
+	 * Color de fondo para el flash.
 	 * @var string
 	 */
 	public $FILE_flash_color = 'FFFFFF';
 
 	/**
+	 * Debug
+	 * 
 	 * Habilitar el debug o no
-	 *
-	 * @var bool
+	 * @var boolean
 	 */
 	public $FILE_debug = 'false';
 
 	/**
+	 * swfuploadLoadedHandler
+	 * 
 	 * The swfUploadLoaded event is fired by flashReady. It is overridable. When swfUploadLoaded is called it is safe to call SWFUpload methods.
-	 *
 	 * @var string
 	 */
 	public $FILE_swfupload_loaded_handler = 'swfuploadLoadedHandler';
 
 	/**
-	 * Este evento se dispara inmediatamente antes de que la
-	 * ventana de dialogo de seleccion de archivos sea abierta.
-	 * Sin embargo el evento no va a terminar ni a cerrarse hasta
-	 * que la ventana dialogo de seleccion de archivos este sea
-	 * cerrada por cancelacion, o aceptacion. 
-	 *
-	 * Parametros que se pasan al evento: Ninguno 
-	 *  
+	 * fileDialogStart
+	 * 
+	 * Este evento se dispara inmediatamente antes de que la ventana de dialogo de seleccion de archivos sea abierta.
+	 * Sin embargo el evento no va a terminar ni a cerrarse hasta que la ventana dialogo de seleccion de archivos este sea cerrada por cancelacion, o aceptacion. 
 	 * @var string
 	 */
 	public $FILE_file_dialog_start_handler = 'fileDialogStart';
 
 	/**
+	 * fileQueued
+	 * 
 	 * No usar o tener en cuenta este evento.
-	 *
 	 * @var string
 	 */
 	public $FILE_file_queued_handler = 'fileQueued';
 
 	/**
-	 * Se ejecuta cuando existe o se produjo un
-	 * error de validacion en la lista seleccionada
-	 * de los archivos  que el  usuario selecciono
-	 * Por ejemplo para ayudar a validar que el archivo
-	 * no sea demasiado grande o que sea del tipo
-	 * que se esta parametrizando.
-	 *
-	 * Parametros que se pasan al evento: (file object, error code, message)
+	 * fileQueueError
 	 * 
+	 * Se ejecuta cuando existe o se produjo un error de validacion en la lista seleccionada de los archivos  que el  usuario selecciono.
+	 * Por ejemplo para ayudar a validar que el archivo no sea demasiado grande o que sea del tipo que se esta parametrizando.
+	 * Parametros que se pasan al evento: (file object, error code, message)
 	 * @var string
 	 */
 	public $FILE_file_queue_error_handler = 'fileQueueError';
 
 	/**
-	 * Se ejecuta cuando se a echo click sobre el
-	 * boton aceptar del cuadro de dialogo de los
-	 * archivos que van a ser subidos al servidor
-	 * Esto generalmente esta haciendo el cargue
-	 * automatico de los archivos con "this.startUpload();"
-	 *
-	 * Parametros que se pasan al evento: (number of files selected, number of files queued)
+	 * fileDialogComplete
 	 * 
+	 * Se ejecuta cuando se a echo click sobre el boton aceptar del cuadro de dialogo de los archivos que van a ser subidos al servidor.
+	 * Esto generalmente esta haciendo el cargue automatico de los archivos con "this.startUpload();"
+	 * Parametros que se pasan al evento: (number of files selected, number of files queued)
 	 * @var string
 	 */
 	public $FILE_file_dialog_complete_handler = 'fileDialogComplete';
 
 	/**
-	 * Funcion que es llamada cuando comienza todo
-	 * el cargue completo de los archivos y para que
-	 * en cierta forma tambien se pueda hacer automaticamente
-	 *
-	 * Parametros que se pasan al evento: (file object)
+	 * uploadStart
 	 * 
+	 * Funcion que es llamada cuando comienza todo el cargue completo de los archivos y para que en cierta forma tambien se pueda hacer automaticamente.
+	 * Parametros que se pasan al evento: (file object)
 	 * @var string
 	 */
 	public $FILE_upload_start_handler = 'uploadStart';
 
 	/**
-	 * Se produce cuando el listado de los archivos
-	 * que actualmente se han seleccionado estan en
-	 * proceso de ser subidos al servidor.
-	 *
-	 * Parametros que se pasan al evento: (file object, bytes complete, total bytes)
+	 * uploadProgress
 	 * 
+	 * Se produce cuando el listado de los archivos que actualmente se han seleccionado estan en proceso de ser subidos al servidor.
+	 * Parametros que se pasan al evento: (file object, bytes complete, total bytes)
 	 * @var string
 	 */
 	public $FILE_upload_progress_handler = 'uploadProgress';
 
 	/**
-	 * El evento es uploadError se dispara en cualquier momento
-	 * cuando la carga de un archivo se interrumpe o no se completa con éxito. 
+	 * uploadError
+	 * 
+	 * El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con éxito. 
 	 * El código de error parámetro indica el tipo de error que se produjo. 
 	 * El código de error parámetro especifica una constante en SWFUpload.UPLOAD_ERROR.
-	 * 
 	 * Parametros que se pasan al evento: (file object, error code, message)
-	 * 
 	 * @var string
 	 */
 	public $FILE_upload_error_handler = 'uploadError';
 
 	/**
-	 * Este evento se ejecuta cuando un archivo es subido exitosamente
-	 * al servidor, mientras tanto otros archivos pueden seguir siendo
-	 * subidos.
-	 *
+	 * uploadSuccess
+	 * 
+	 * Este evento se ejecuta cuando un archivo es subido exitosamente al servidor, mientras tanto otros archivos pueden seguir siendo subidos.
 	 * Parametros que se pasan al evento: (file object, server data)
-	 *  
 	 * @var string
 	 */
 	public $FILE_upload_success_handler = 'uploadSuccess';
 
 	/**
+	 * uploadComplete
+	 * 
 	 * Este evento siempre se dispara al final de un ciclo de una carga.
 	 * En este punto la carga esta completa y otra puede comenzar.
-	 *
 	 * Parametros que se pasan al evento: (file object)
-	 * 
 	 * @var string
 	 */
 	public $FILE_upload_complete_handler = 'uploadComplete';
 
 	/**
-	 * Enter description here...
-	 *
+	 * debugHandler
+	 * 
+	 * debugHandler
 	 * @var string
 	 */
 	public $FILE_debug_handler = 'debugHandler';
 
 	/**
-	 * Enter description here...
+	 * FILE_custom_settings
 	 *
+	 * FILE_custom_settings	
 	 * @var array
 	 */
 	public $FILE_custom_settings = array();
 
 	/**
-	 * Ruta de la imagen que acompaña el boton
-	 * examinar para el cargue de los archivos
-	 *
+	 * SRC Imagen boton
+	 * 
+	 * Ruta de la imagen que acompaña el boton examinar para el cargue de los archivos
+	 * @deprecated
 	 * @var string
 	 */
 	public $FILE_src_img_button = '';
 
 	/**
-	 * Texto que esta dentro del boton
-	 * quen  examina   los   archivos.
-	 *
+	 * Texto boton.
+	 * 
+	 * Texto que esta dentro del boton quen  examina   los   archivos.
 	 * @var string
 	 */
 	public $FILE_str_etq_button = 'Examinar';
 
 	/**
-	 * Decidir si por upload se pueden se
-	 * leccionar  varios  archivos  o no.
-	 *
+	 * Multiples archivos.
+	 * 
+	 * Decidir si por upload se pueden se leccionar  varios  archivos  o no.
 	 * @var boolean
 	 */
 	public $FILE_upload_several_files = false;
@@ -1780,8 +1761,11 @@ class myForm {
 
 		$buf.='<span id="spanButtonPlaceholder">';
 		
+		/**
+		 * Deprecated
 		if ($this->FILE_src_img_button)
 		   $buf.='<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
+		 */  
 		
 		$maxInfoSize = '';   
 	    if ($this->FILE_show_max_upload_size_info_in_button){
@@ -2196,11 +2180,10 @@ class myForm {
 		$buf = ''."\n";
 
 		$buf .= '<!--'."\n";
-		$buf .= 'OSEZNO FRAMEWORK'."\n";
+		$buf .= 'OSEZNO PHP FRAMEWORK'."\n";
 		$buf .= 'Generado con la clase para la creacion de Formularios myForm.class.php'."\n";
 		$buf .= 'Nombre de Formulario: '.$this->name.''."\n";
-		$buf .= 'Autor: Jose Ignacio Gutierrez Guzman -  joselitohacker@yahoo.es'."\n";
-		$buf .= 'Version de la Clase:'.$this->version."\n";
+		$buf .= 'Autor: José Ignacio Gutiérrez Guzmán <http://www.osezno-framework.org/joselitohacker/>'."\n";
 		$buf .= '-->'."\n";
 
 		if ($this->useAddFile)
@@ -2268,9 +2251,12 @@ class myForm {
 
 					//$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
 					$bufTemp .= '<span id="spanButtonPlaceholder">';
-
+					
+					/**
+					 *	Deprecated 
 					if ($this->FILE_src_img_button)
 						$bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
+					*/	
 
 					$maxInfoSize = '';   
 	    			if ($this->FILE_show_max_upload_size_info_in_button){

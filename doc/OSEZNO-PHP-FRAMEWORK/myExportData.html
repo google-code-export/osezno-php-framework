@@ -74,16 +74,21 @@ Source Location: /myExportData.class.php<br /><br />
 
 <h3><a href="#class_details">Class Overview</a></h3>
 <pre></pre><br />
-<div class="description"></div><br /><br />
+<div class="description">myExportData</div><br /><br />
 <h4>Author(s):</h4>
 <ul>
           <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
-      </ul>
+                  </ul>
 
 
 
 
-    
+        
+        
+<h4>Version:</h4>
+<ul>
+  <li>0.1</li>
+</ul>
 
         
 </td>
@@ -96,6 +101,7 @@ Source Location: /myExportData.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html#method__construct">__construct</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html#methodgetError">getError</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html#methodgetResult">getResult</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html#methodsetWidthInColumn">setWidthInColumn</a></li>
   </ul>
 </td>
 
@@ -115,13 +121,19 @@ Source Location: /myExportData.class.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 8]<br />
-<br /><br />
+[line 13]<br />
+myExportData<br /><br /><p>La clase myExportData ayuda con algunos procedimientos de consultas SQL cuando se requiere obtener un archivo en un formato especifico con elresultado de la consulta.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><b>author:</b>&nbsp;&nbsp;</td><td>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>version:</b>&nbsp;&nbsp;</td><td>0.1</td>
+  </tr>
+  <tr>
+    <td><b>uses:</b>&nbsp;&nbsp;</td><td>Exportar - cosultas SQL</td>
   </tr>
 </table>
 </div>
@@ -136,20 +148,63 @@ Source Location: /myExportData.class.php<br /><br />
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 69]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 137]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>string __construct(
-$sql
-$sql, [$format
-$format = 'html'], [$filePath
-$filePath = ''], [$id_list
-$idList = ''])</code>
+		<code>boolean __construct(
+string
+$sql, [string
+$format = 'html'], [string
+$filePath = ''], [
+$idList = ''], string
+$id_list)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Exportar datos desde una consulta.<br /><br /><br /><br />
+		Exportar datos desde una consulta.<br /><br /><p>Contructor de la clase que incia tambien el proceso para la generacion de la consulta sql a exportar.</p><p><ol><li><div class="src-line">Ejemplo&nbsp;1:&nbsp;Salida&nbsp;a&nbsp;un&nbsp;archivo&nbsp;físico:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html">myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;fiel1,&nbsp;field2,&nbsp;field3&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'pdf'</span><span class="src-sym">,</span><span class="src-str">'/var/www/html/project/report/report.pdf'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Cuando&nbsp;generamos&nbsp;un&nbsp;archivo&nbsp;en&nbsp;formato&nbsp;PDF&nbsp;es&nbsp;prescindible&nbsp;ajustar&nbsp;el&nbsp;tamaño&nbsp;de&nbsp;las&nbsp;columnas&nbsp;pues&nbsp;no&nbsp;es&nbsp;posible&nbsp;calcular&nbsp;su&nbsp;valor&nbsp;automaticamente.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'fiel1'</span><span class="src-sym">,</span><span class="src-num">100</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'field2'</span><span class="src-sym">,</span><span class="src-num">150</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'field3'</span><span class="src-sym">,</span><span class="src-num">200</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html#methodgetResult">getResult</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">Ejemplo&nbsp;2:&nbsp;Salida&nbsp;a&nbsp;un&nbsp;archivo&nbsp;descargable:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html">myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'xls'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$xls&nbsp;</span>=&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html#methodgetResult">getResult</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-type:&nbsp;application/x-msexcel'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;file.xls&quot;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-Length:&nbsp;'</span>.<a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$xls</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/strstr">strstr</a><span class="src-sym">(</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">&quot;HTTP_USER_AGENT&quot;</span><span class="src-sym">]</span><span class="src-sym">,&nbsp;</span><span class="src-str">&quot;MSIE&quot;</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">'Pragma:&nbsp;private'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">'Cache-control:&nbsp;private,&nbsp;must-revalidate'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$xls</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -165,24 +220,29 @@ $idList = ''])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$sql&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$sql</b>&nbsp;&nbsp;</td>
         <td>Consulta SQL</td>
       </tr>
           <tr>
-        <td class="type">$format&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$format</b>&nbsp;&nbsp;</td>
-        <td>Formato de archivo</td>
+        <td>Formato de archivo (pdf,xls,html)</td>
       </tr>
           <tr>
-        <td class="type">$filePath&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$filePath</b>&nbsp;&nbsp;</td>
         <td>Guardar en archivo fisico</td>
       </tr>
           <tr>
-        <td class="type">$id_list&nbsp;&nbsp;</td>
-        <td><b>$idList</b>&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$id_list</b>&nbsp;&nbsp;</td>
         <td>Nombre de lista dinamica</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$idList</b>&nbsp;&nbsp;</td>
+        <td></td>
       </tr>
         </table>
     </div><br />
@@ -190,7 +250,7 @@ $idList = ''])</code>
   </div>
   <hr />
 	<a name="methodgetError"></a>
-	<h3>method getError <span class="smalllinenumber">[line 270]</span></h3>
+	<h3>method getError <span class="smalllinenumber">[line 359]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -199,7 +259,15 @@ $idList = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene el ultimo error generado<br /><br /><br /><br />
+		Obtener error.<br /><br /><p>Obtiene el ultimo error generado en caso de que la generacion del archivo no haya sido exitosa o la consulta sql sea erronea.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html">myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'xls'</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myExportData.html#methodgetError">getError</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -215,7 +283,7 @@ $idList = ''])</code>
   </div>
   <hr />
 	<a name="methodgetResult"></a>
-	<h3>method getResult <span class="smalllinenumber">[line 306]</span></h3>
+	<h3>method getResult <span class="smalllinenumber">[line 410]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -224,7 +292,7 @@ $idList = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene el resultado dado<br /><br /><br /><br />
+		Obtiene archivo o resultado.<br /><br /><p>Devuelve el resultado de la consulta SQL mediante un archivo.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -238,12 +306,54 @@ $idList = ''])</code>
 	
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
+  <hr />
+	<a name="methodsetWidthInColumn"></a>
+	<h3>method setWidthInColumn <span class="smalllinenumber">[line 371]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setWidthInColumn(
+string
+$name, integer
+$width)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar ancho de culumna.<br /><br /><p>Sobre un salida PDF permite definir el ancho que usara una determinada columna en numero de pixeles.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$width</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
 </div><br />
 
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 11 Dec 2010 12:04:50 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Mon, 13 Dec 2010 17:54:02 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

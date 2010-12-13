@@ -56,6 +56,12 @@
  		
  		$myForm->width = 400;
  		
+ 		
+ 		
+ 		$myForm->addFile('Archivo:','file','upload.php');
+ 		
+ 		$myForm->useRowSeparator = true;
+ 		
  		return $myForm->getForm(2);
  	}
  	
@@ -104,7 +110,7 @@
  		
  		$myTabs->addTab('Agregar','indexForm.php');
  		
- 		return $myTabs->getTabsHtml('Registros');
+ 		return $myTabs->getTabsHtml('Agregar');
  	}
  	
 
