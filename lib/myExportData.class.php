@@ -1,20 +1,27 @@
 <?php
 
 /**
+ * myExportData
  * 
- * @package OSEZNO-PHP-FRAMEWORK 
+ * La clase myExportData ayuda con algunos procedimientos de consultas SQL cuando se requiere obtener un archivo en un formato especifico con elresultado de la consulta.
+ *  
+ * @uses Exportar cosultas SQL 
+ * @package OSEZNO-PHP-FRAMEWORK
+ * @version 0.1 
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 class myExportData {
 	
 	/**
 	 * Objeto de conexion DB
+	 * @access private
 	 * @var object
 	 */
 	private $myAct;
 	
 	/**
 	 * Formatos validos de resultado
+	 * @access private
 	 * @var array
 	 */
 	private $arValidFormat = array (
@@ -23,48 +30,109 @@ class myExportData {
 	
 	/**
 	 * Formato de resultado
+	 * @access private
 	 * @var string
 	 */
 	private $format = '';
 
 	/**
 	 * Informacion del ultimo error al exportar
+	 * @access private
 	 * @var string
 	 */
 	private $error = '';
 	
 	/**
 	 * Ruta del archivo de salida
+	 * @access private
 	 * @var string
 	 */
 	private $filePath = '';
 	
 	/**
 	 * Resultado de la consulta sql
+	 * @access private
 	 * @var object
 	 */
 	private $resSql;
 	
 	/**
 	 * El resultado en texto puro
+	 * @access private
 	 * @var string
 	 */
 	private $resText = '';
 	
 	/**
 	 * Id de la lista dinamica asociada si existe
+	 * @access private
 	 * @var string
 	 */
 	private $idList = '';
 	
 	/**
+	 * Anchos de columnas PDF
+	 * @access private 
+	 * @var array
+	 */
+	private $width = array();
+	
+	/**
 	 * Exportar datos desde una consulta.
 	 * 
-	 * @param $sql	Consulta SQL
-	 * @param $format	Formato de archivo
-	 * @param $filePath	Guardar en archivo fisico
-	 * @param $id_list	Nombre de lista dinamica
-	 * @return string
+	 * Contructor de la clase que incia tambien el proceso para la generacion de la consulta sql a exportar.
+	 * 
+	 *<code>
+	 *
+	 *Ejemplo 1: Salida a un archivo físico:
+	 *
+	 *<?php
+	 *	
+ 	 *	$myExport = new myExportData('SELECT fiel1, field2, field3 FROM table','pdf','/var/www/html/project/report/report.pdf');
+ 	 *	
+	 *	# Cuando generamos un archivo en formato PDF es prescindible ajustar el tamaño de las columnas pues no es posible calcular su valor automaticamente.
+ 	 *
+	 *	$myExport->setWidth('fiel1',100);
+	 *
+	 *	$myExport->setWidth('field2',150);
+	 *
+	 *	$myExport->setWidth('field3',200);
+	 *
+	 *	$myExport->getResult();
+	 *
+	 *?>
+	 *
+	 *Ejemplo 2: Salida a un archivo descargable:
+	 *
+	 *<?php
+	 *
+	 *	$myExport = new myExportData('SELECT * FROM table','xls');	
+	 *
+	 *	$xls = $myExport->getResult();
+	 *
+	 *	header ('Content-type: application/x-msexcel');
+	 *
+	 *	header ('Content-Disposition: attachment; filename="file.xls"');
+	 *
+	 *	header ('Content-Length: '.strlen($xls));
+	 *
+	 *	if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")){
+	 *
+	 *		header('Pragma: private');
+	 *
+	 *		header('Cache-control: private, must-revalidate');
+	 *	}	
+ 	 *
+	 *	echo $xls;
+	 *
+ 	 *?>
+	 *
+	 *</code> 
+	 * @param string 	$sql	Consulta SQL
+	 * @param string	$format	Formato de archivo (pdf,xls,html)
+	 * @param string	$filePath	Guardar en archivo fisico
+	 * @param string	$id_list	Nombre de lista dinamica
+	 * @return boolean
 	 */
 	public function __construct($sql, $format = 'html', $filePath = '', $idList = ''){
 		
@@ -96,6 +164,7 @@ class myExportData {
 	
 	/**
 	 * Contruye el resultado segun el tipo de archivo
+	 * @access private
 	 * @return string
 	 */
 	private function buildResult (){
@@ -138,7 +207,11 @@ class myExportData {
 					if (!$swTl){
 						
 						foreach ($row as $key => $val){
-							$widthCol = 40;
+							
+							if(isset($this->width[$key])){
+								$widthCol = $this->width[$key];
+							}else
+								$widthCol = 40;
 						
 							if (isset($arWidth[$key])){
 								$widthCol = $arWidth[$key];
@@ -157,7 +230,10 @@ class myExportData {
 					
 					foreach ($row as $key => $val){
 						
-						$widthCol = 40;
+						if(isset($this->width[$key])){
+							$widthCol = $this->width[$key];
+						}else
+							$widthCol = 40;
 						
 						if (isset($arWidth[$key])){
 							$widthCol = $arWidth[$key];
@@ -264,7 +340,20 @@ class myExportData {
 	}
 	
 	/**
-	 * Obtiene el ultimo error generado
+	 * Obtener error.
+	 * 
+	 * Obtiene el ultimo error generado en caso de que la generacion del archivo no haya sido exitosa o la consulta sql sea erronea.
+	 * <code>
+	 * 
+	 * <?php
+	 * 
+	 * if (!$myExport = new myExportData('SELECT * FROM table','xls')){
+	 * 
+	 * 		echo $myExport->getError();
+	 * }
+	 * 
+	 * ?>
+	 * </code>
 	 * @return string
 	 */
 	public function getError (){
@@ -273,7 +362,20 @@ class myExportData {
 	}
 	
 	/**
-	 * Construye el archivo de salida 
+	 * Configurar ancho de culumna.
+	 * 
+	 * Sobre un salida PDF permite definir el ancho que usara una determinada columna en numero de pixeles.
+	 * @param string $name
+	 * @param integer $width
+	 */
+	public function setWidthInColumn($name, $width){
+		
+		$this->width[$name] = $width;
+	}
+	
+	/**
+	 * Construye el archivo de salida
+	 * @access private 
 	 * @return file
 	 */
 	private function buildFileOut (){
@@ -300,7 +402,9 @@ class myExportData {
 	}
 	
 	/**
-	 * Obtiene el resultado dado
+	 * Obtiene archivo o resultado.
+	 * 
+	 * Devuelve el resultado de la consulta SQL mediante un archivo.
 	 * @return string
 	 */
 	public function getResult (){
