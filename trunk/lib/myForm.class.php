@@ -915,17 +915,16 @@ class myForm {
 	}
 
 	/**
-	 * Agrega una caja de texto
+	 * Agregar caja de texto
 	 *
-	 * @param string  $etq       Etiqueta del campo
-	 * @param string  $name      Nombre del campo
-	 * @param string  $value     Valor incial
-	 * @param integer $size      Tamano del campo
-	 * @param integer $maxlength Numero maximo de caracteres
-	 * @param char    $validacion_numerica (S o N)
-	 * @param bool    $CampoFecha (0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha
-	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
-	 *
+	 * Agrega una caja de texto que sera mostrada cuando se obtenga el contenido del formulario.
+	 * @param string  $etq Etiqueta
+	 * @param string  $name Nombre
+	 * @param string  $value Valor
+	 * @param integer $size Tamano
+	 * @param integer $maxlength Maximo numero de caracteres
+	 * @param boolean $validacion_numerica Validar
+	 * @param boolean $CampoFecha Campo fecha (funcionalidad)
 	 */
 	public function addText($etq = '', $name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
 		$name     = $this->getColspanRowspan($name);
@@ -936,14 +935,15 @@ class myForm {
 	}
 		
 	/**
-	 * Agrega una combo desplegable (menu)
+	 * Agregar campo select
 	 *
-	 * @param string $etq       	Etiqueta del campo
-	 * @param string $name      	Nombre del campo
-	 * @param array  $value     	Valor incial que es un arreglo de la forma especificada
-	 * @param string $size      	Tamano del campo
-	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
-	 *
+	 * Agrega un campo de unica seleccion con los valores por parametro
+	 * @param string $etq Etiqueta
+	 * @param string $name Nombre
+	 * @param array  $value	Valor incial que es un arreglo de la forma especificada
+	 * @param string $selected Valor seleccionado por defecto
+	 * @param string $size Tamano (Cantidad de opciones que muestra)
+	 * @param string $truncar_hasta Truncar Numero maximo de caracteres por opcion
 	 */
 	public function addSelect($etq = '', $name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
 		$name = $this->getColspanRowspan($name);
