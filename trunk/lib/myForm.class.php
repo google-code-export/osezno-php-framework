@@ -98,14 +98,6 @@ class myForm {
 	private $counterRadiosForThisForm = 0;
 
 	/**
-	 * Guarda informacion sobre los campos de un formulario que
-	 * aun no se encuentra validado.
-	 *
-	 * @var string
-	 */
-	private $validationError = '';	
-
-	/**
 	 * Es un copia de los elementos que dentro del formulario deben ser obligatorios llenar
 	 *
 	 * @var array
@@ -825,53 +817,89 @@ class myForm {
 	# Atributos de inicio de configuracion para el editor FCKeditor
 
 	/**
-	 * Ruta base de acceso para encontrar los script del editor
-	 * Se necesita para llamar correctamente al FCKeditor
-	 * Normalmente se puede localizar en URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/';
-	 *
+	 * Ruta fisica Editor
+	 * 
+	 * Ruta base de acceso para encontrar los script del editor.
+	 * Se calcula automaticamente en el contructor.
+	 * El valor por defecto es URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/'.
 	 * @var string
 	 */
 	public $FCK_editor_BasePath = '';
 
 	/**
-	 * Ancho de FCKeditor
+	 * Ancho FCKeditor
 	 *
+	 * Ancho del FCKeditor
 	 * @var string
 	 */
 	public $FCK_editor_Width  = '100%';
 
 	/**
-	 * Alto del FCKeditor
+	 * Alto FCKeditor
 	 *
+	 * Alto del FCKeditor
 	 * @var string
 	 */
 	public $FCK_editor_Height = '200';
 
 	/**
-	 * Idioma por defecto a mostrar
+	 * Idioma FCKeditor
 	 *
+	 * Idioma por defecto en el FCKeditor
 	 * @var string
 	 */
 	public $FCK_editor_Laguage = 'es';
 
 	/**
-	 * Grupo de barras a seleccionar
-	 *
+	 * Barra herramientas FCKeditor
+	 * 
+	 * Grupo de barras a seleccionar para el FCKeditor
 	 * @var string
 	 */
 	public $FCK_editor_ToolbarSet = 'Default';
 
 	/**
-	 * Constructor de la clase de generacion de formularios
-	 *
-	 * @param string  $nomForm  	Nombre del formulario
-	 * @param string  $event 		En caso de que el form no tenga Action, entonces el boton realizara este evento
-	 * @param string  $action   	El nombre del script a donde va la informacion
-	 * @param string  $target   	Parametro de apertura de los datos
-	 * @param string  $enctype  	Tipo de informacion que maneja
+	 * Constructor
+	 * 
+	 * Inicia la creación de un formulario para mas adelante poder definir campos dentro de el.
+	 * <code>
+	 * 
+	 * Ejemplo 1:
+	 * Formulario simple.
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form_name');
+	 * 
+	 * echo $myForm->getForm();
+	 * 
+	 * ?>
+	 * Salida HTML:
+	 * <form method="post" onsubmit="return false" name="editar" id="editar" target="_self">
+	 * </form>
+	 * 
+	 * Ejemplo 2:
+	 * Formulario a un script.
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form_name','process.php');
+	 * 
+	 * echo $myForm->getForm();
+	 * 
+	 * ?>
+	 * Salida HTML:
+	 * <form action="process.php" method="post" name="editar" id="editar" target="_self">
+	 * </form>	
+	 * 
+	 * </code>
+	 * @param string  $nomForm  Nombre del formulario.
+	 * @param string  $action   Action del formulario.
+	 * @param string  $target   Target del formulario.
+	 * @param string  $enctype  Tipo MIME del formulario.
 	 */
 	public function __construct($name = '', $action = '', $target = '', $enctype = ''){
 
+		$this->FCK_editor_BasePath = URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/';
+		
 		$this->pathImages =  '/themes/'.THEME_NAME.'/myform/';
 		
 		$this->name = $name;
@@ -886,14 +914,525 @@ class myForm {
 			$this->enctype = $enctype;
 	}
 
-	/***
-	 * Retornar el error de valicacion devuelto por validateForm
+	/**
+	 * Agrega una caja de texto
+	 *
+	 * @param string  $etq       Etiqueta del campo
+	 * @param string  $name      Nombre del campo
+	 * @param string  $value     Valor incial
+	 * @param integer $size      Tamano del campo
+	 * @param integer $maxlength Numero maximo de caracteres
+	 * @param char    $validacion_numerica (S o N)
+	 * @param bool    $CampoFecha (0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha
+	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
+	 *
 	 */
-	public function getValidationError (){	
+	public function addText($etq = '', $name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
+		$name     = $this->getColspanRowspan($name);
+		$Cadena   = 'text'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$validacion_numerica.$this->Separador.$CampoFecha;
 		
-		return $this->validationError; 
+		$this->Objects['field'][$name] = $Cadena;
+		$this->arrayFormElementType[$name] = 'text';
 	}
 		
+	/**
+	 * Agrega una combo desplegable (menu)
+	 *
+	 * @param string $etq       	Etiqueta del campo
+	 * @param string $name      	Nombre del campo
+	 * @param array  $value     	Valor incial que es un arreglo de la forma especificada
+	 * @param string $size      	Tamano del campo
+	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
+	 *
+	 */
+	public function addSelect($etq = '', $name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
+		$name = $this->getColspanRowspan($name);
+		$buf  = '';
+		if (is_array ($value)){
+			if ($this->selectUseFirstValue)
+				$buf .= "".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
+			
+			$selectedIsArray = false;
+			if (is_array($selected)){
+			   $selectedIsArray = true;
+			}
+			
+			foreach ($value as $id => $value){
+				$sel = '';
+				if (!$selectedIsArray){
+				   if (!strcmp($id,$selected)){
+				   	  $sel = ' selected';
+				   }
+				}else{
+				   if (in_array($id,$selected)){
+				      $sel = ' selected';
+				   }					
+				}
+				
+				if ($truncar_hasta)
+					$value = substr($value,0,$truncar_hasta);
+					
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
+			}
+			
+			$buf .= "\t\t".'</select>'."\n";
+			$value = $buf;
+		}
+		$maxlength = '';
+
+		$Cadena   = 'select'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$multiple;
+		$this->Objects['field'][$name] = $Cadena;
+
+		$this->arrayFormElementType[$name] = 'select';
+	}
+
+	/**
+	 * Agrega una caja checkBox al formulario, el contenido de esta caja puede
+	 * ser evaluado para verificar si es '0' o '1'
+	 *
+	 * @param string $etq       Etiqueta del campo
+	 * @param string $name      Nombre de checkbox
+	 * @param char   $ini_sts   Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado
+	 *
+	 */
+	public function addCheckBox($etq = '', $name = '', $ini_sts = 'N'){
+		$name = $this->getColspanRowspan($name);
+		$Cadena = 'checkbox'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$ini_sts;
+		$this->Objects['field'][$name] = $Cadena;
+		$this->arrayFormElementType[$name] = 'checkbox';
+
+	}
+
+	/**
+	 * Agrega un radio button al formulario en particular.
+	 * Los grupos de radio buttons se pueden formar y funcionar
+	 * siempre y cuando esos radio buttons queden con el mismo
+	 * nombre que permita agruparlos.
+	 *
+	 * @param Etiqueta $etq
+	 * @param Valor    $value
+	 * @param Grupo al que pertenece  $name_group
+	 * @return string Id del radio button, se usa para poder agrupar mas adelante
+	 */
+	public function addRadioButton($etq = '', $value = '', $name_group = '', $is_checked = 'N'){
+		$name = '_'.$this->counterRadiosForThisForm+=1;
+
+		//$name = $this->getColspanRowspan($name);
+		$Cadena = 'radiobutton'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$name_group.$this->Separador.$is_checked;
+		$this->Objects['field'][$name] = $Cadena;
+		$this->arrayFormElementType[$name] = 'radiobutton';
+			
+		return $name;
+	}
+	
+	/**
+	 * Agrega una caja de texto tipo password
+	 *
+	 * @param string $etq       Etiqueta del campo
+	 * @param string $name      Nombre del campo
+	 * @param string $value     Valor incial
+	 * @param string $size      Tamano del campo
+	 * @param string $maxlength Numero maximo de caracteres
+	 *
+	 */
+	public function addPassword($etq = '', $name = '', $value = '', $size = '', $maxlength = ''){
+		$name     = $this->getColspanRowspan($name);
+		$Cadena   = 'password'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength;
+		$this->Objects['field'][$name] = $Cadena;
+		$this->arrayFormElementType[$name] = 'password';
+	}	
+
+	/**
+	 * Agrega una area de texto
+	 *
+	 * @param string  $etq       Etiqueta del campo
+	 * @param string  $name      Nombre del campo
+	 * @param string  $value     Valor incial
+	 * @param integer $cols      Numero de columna
+	 * @param integer $rows      Numero de fila
+	 * @param string  $wrap      Clase y tipo de abrigo
+	 *
+	 */
+	public function addTextArea($etq = '', $name = '', $value = '', $cols = '', $rows = '', $wrap = ''){
+		$name     = $this->getColspanRowspan($name);
+		$Cadena   = 'textarea'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$cols.$this->Separador.$rows.$this->Separador.$wrap;
+		$this->Objects['field'][$name] = $Cadena;
+		$this->arrayFormElementType[$name] = 'textarea';
+	}
+
+	/**
+	 * Agrega un campo de texto Oculto al formulario
+	 *
+	 * @param string $name      Nombre del campo
+	 * @param string $value     Valor incial
+	 *
+	 */
+	public function addHidden($name = '', $value = ''){
+		$name     = $this->getColspanRowspan($name);
+		$Cadena   = 'hidden'.$this->Separador.$name.$this->Separador.$value;
+		$this->Objects['field'][$name] = $Cadena;
+		$this->arrayFormElementType[$name] = 'hidden';
+	}
+		
+	/**
+	 * Agrega   un  campo   de  tipo  file
+	 * asincronico a el formulario actual.
+	 *
+	 * @param string  $etq                     Etiqueta del campo
+	 * @param string  $name                    Nombre del campo
+	 * @param string  $upload_url              Url del .php que recibe los datos
+	 * @param string  $flash_url               Url del donde se encuentra ubicado el flash
+	 * @param array   $file_types              Arreglo con los tipos de archivos que se pueden subir
+	 * @param string  $file_types_description  Descripcion de los tipos de archivos que se pueden subir
+	 * @param integer $file_size_limit         Limite de tamano por archivo que se puede subir
+	 */
+	public function addFile ($etq, $name, $upload_url, $flash_url = '', $file_types = '', $file_types_description = '', $file_size_limit = ''){
+		
+		if (!$flash_url)
+			$flash_url = $GLOBALS['urlProject'].'/swf/swfupload.swf';
+		
+		$name = $this->getColspanRowspan($name);
+		if ($file_types && is_array($file_types))
+		$this->FILE_file_types = $file_types;
+			
+		if ($file_types_description)
+		$this->FILE_file_types_description = $file_types_description;
+			
+		if (intval($file_size_limit))
+		$this->FILE_size_limit = $file_size_limit;
+
+		$this->FILE_upload_url = $upload_url;
+		$this->FILE_flash_url  = $flash_url;
+
+		$Cadena   = 'file'.$this->Separador.htmlentities($etq).$this->Separador.$name;
+		$this->Objects['field'][$name] = $Cadena;
+		$this->uploaderIdArray[] = $name;
+
+		$this->arrayFormElementType[$name] = 'file';
+		$this->useAddFile = true;
+	}
+
+	/**
+	 * Agregar un editor fckeditor al fomulario actual
+	 *
+	 * @param string  $etq            Etiqueta del campo generado por el FCK Editor
+	 * @param string  $name           Nombre del campo generado por el FCK Editor
+	 * @param string  $value          Valor inicial del campo generado por el FCK Editor
+	 * @param integer $width          Ancho
+	 * @param integer $height         Alto
+	 * @param string  $toolbarset     Juego de barra de herramientas
+	 */
+	public function addFCKeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = 'Default'){
+		
+		if ($width)
+			$this->FCK_editor_Width = $width;
+			
+		if ($height)
+			$this->FCK_editor_Height = $height;
+			
+		if ($toolbarset)
+			$this->FCK_editor_ToolbarSet = $toolbarset;
+			
+		$name     = $this->getColspanRowspan($name);
+		$Cadena   = 'fckeditor'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
+		$this->Objects['field'][$name] = $Cadena;
+		$this->arrayFormElementType[$name] = 'fckeditor';
+	}
+		
+	/**
+	 * Agrega un comentario en una Fila especifica
+	 * @param integer $id Identificador del espacio que va a utilizar, este siempre debe de ser diferente para cada uno
+	 * @param string  $Coment Texto que desea mostrar en la fila
+	 */
+	public function addComent ($id, $Coment){
+		$id     = $this->getColspanRowspan($id);
+		$Cadena = 'coment'.$this->Separador.$id.$this->Separador.$Coment;
+		$this->Objects['field']['coment_'.$id] = $Cadena;
+		$this->arrayFormElementType[$id] = 'coment';
+	}
+
+	/**
+	 * Agrega un espacio en blanco en el lugar que le corresponda
+	 *
+	 * @param integer $id    Identificador del espacio, este puede ser un numero consecutivo
+	 * @param string  $val_e Valor en el momento del cargue dentro del formulario para la etiqueta
+	 * @param string  $val_c Valor en el momento del cargue dentro del formulario para el campo
+	 */
+	public function addWhiteSpace ($id, $val_e = '', $val_c = ''){
+		$id = $this->getColspanRowspan($id);
+		$this->Objects['field']['whitespace_'.$id] = 'whitespace'.$this->Separador.$id.$this->Separador.htmlentities($val_e).$this->Separador.$val_c;
+		$this->arrayFormElementType[$id] = 'whitespace';
+	}
+	
+	/**
+	 * Agrega un boton a la funcionalidad del formulario
+	 *
+	 * @param string $strName    Nombre del Elemento
+	 * @param string $strLabel   Etiqueta o valor del Elemento
+	 * @param string $strSrcImg  Ruta de la img que lo acompana
+	 * 
+	 * Nota: Si desea pasar variables adicionales al evento del
+	 * boton, debe agregar separado por (:) los valores que necesite
+	 * 
+	 */
+	public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
+		$this->arrayButtonList[] = array('strName'    =>  $strName,
+                                         'strLabel'   =>  htmlentities($strLabel));
+		
+		$count = count($this->arrayButtonList);
+		
+		if ($strSrcImg)
+		   $this->arrayButtonList[($count-1)]['strSrcImg'] = $GLOBALS['urlProject'].$this->pathImages.$strSrcImg;  
+	}
+
+	/**
+	 * Devuelve una caja de texto
+	 *
+	 * @param string $name       Nombre del campo
+	 * @param string $value      Valor incial
+	 * @param integer $size      Tamano del campo
+	 * @param integer $maxlength Numero maximo de caracteres
+	 * @param char    $validacion_numerica (S o N)
+	 * @param bool    $CampoFecha (0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha
+	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
+	 *
+	 */
+	public function getText($name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
+		$this->arrayFormElementType[$name] = 'text';
+		$keypress = '';
+		$Disabled = '';
+		$LauncherCalendar = '';
+
+		if ($validacion_numerica)
+			$keypress = ' onKeyPress="return OnlyNum(event)"';
+
+		if ($CampoFecha){
+			$LauncherCalendar = '<button '.$this->checkIfIsDisabled($name).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.getElementById(\''.$name.'\').value, \''.$name.'\', \''.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+			$LauncherCalendar .= '<div id="div_trigger_'.$name.'" name="div_trigger_'.$name.'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden"></div>';
+			
+			$Disabled = 'readonly';
+		}
+			
+		$buf ='<input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="text" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" '.$Disabled.' maxlength="'. $maxlength.'"'.$keypress.'  '.$this->checkExistEventJs($name).'>'.$LauncherCalendar.''."\n";
+			
+		return $buf;
+	}
+	
+	/**
+	 * Obtiene una combo desplegable (menu)
+	 *
+	 * @param string $name          Nombre del campo
+	 * @param array  $value         Valor incial que es un arreglo de la forma especificada
+	 * @param string $size          Tamano del campo
+	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
+	 *
+	 */
+	public  function getSelect($name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
+		$buf = '';
+		$string_multiple = '';
+		if ($multiple)
+		$string_multiple = ' multiple';
+		$buf.= "\t\t".'<select '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" name="'.$name.'" id="'.$name.'"'.$string_multiple.' size="'.$size.'" '.$this->checkExistEventJs($name).'>'."\n";
+			
+		if (is_array ($value)){
+			if ($this->selectUseFirstValue)
+			$buf .= "\t\t".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
+
+			$selectedIsArray = false;
+			if (is_array($selected)){
+			   $selectedIsArray = true;
+			}	
+			
+			foreach ($value as $id => $value){
+				$sel = '';
+				if (!$selectedIsArray){
+				   if (!strcmp($id,$selected)){
+				   	  $sel = ' selected';
+				   }
+				}else{
+				   if (in_array($id,$selected)){
+				      $sel = ' selected';
+				   }					
+				}
+				
+				if ($truncar_hasta)
+					$value = substr($value,0,$truncar_hasta);
+					
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
+			}
+
+			$buf .= '</select>'."\n";
+		}
+
+		$this->arrayFormElementType[$name] = 'select';
+
+		return $buf;
+	}
+	
+	/**
+	 * Obtiene una caja checkBox al formulario, el contenido de esta caja puede
+	 * ser evaluado para verificar si es '0' o '1'
+	 *
+	 * @param string $name      Nombre de checkbox
+	 * @param char   $ini_sts   Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado
+	 *
+	 */
+	public function getCheckBox($name = '', $ini_sts = false){
+		$buf = '';
+
+		$cheked = '';
+		if ($ini_sts == true){
+			$cheked = 'checked';
+		}
+
+		$onEvent = $this->checkExistEventJs($name);
+		
+		$buf .= '<input '.$onEvent.' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$name.'" id="'.$name.'"  '.$cheked.' '.$this->checkIfIsDisabled($name).'>'."\n";
+		
+		$this->arrayFormElementType[$name] = 'checkbox';
+
+		return $buf;
+	}
+	
+	/**
+	 * Obtiene el html de un radio button
+	 *
+	 * @param string $value Valor por defecto del Radio button
+	 * @param string $name_group Nombre del radio o grupo que van a comformarlo
+	 * @return string
+	 */
+	public function getRadioButton ($value = '', $name_group = '', $is_checked = 'N'){
+		$buf = '';
+
+		$checked = '';
+		if ($is_checked=='S')
+		$checked = 'checked="checked"';
+
+		$buf .= '<input '.$this->checkExistEventJs($name_group).' '.$this->checkIsHelping($name_group).' '.$this->checkIfIsDisabled($name_group).' type="radio" name="'.$name_group.'" id="'.$name_group.'_'.$value.'" value="'.$value.'" class="'.$this->styleClassFields.'" '.$checked.'>';
+		unset($this->objEventxJ[$name_group]);
+		$this->arrayFormElementType[$name_group] = 'radiobutton';
+
+		return $buf;
+	}	
+		
+	/**
+	 * Obtiene una caja de texto tipo password
+	 *
+	 * @param string $name      Nombre del campo
+	 * @param string $value     Valor incial
+	 * @param string $size      Tamano del campo
+	 * @param string $maxlength Numero maximo de caracteres
+	 *
+	 */
+	public function getPassword($name = '', $value = '', $size = '', $maxlength = ''){
+
+		$buf = '';
+		$buf ='<input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="password" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" maxlength="'. $maxlength.'" '.$this->checkExistEventJs($name).'>'."\n";
+		$this->arrayFormElementType[$name] = 'password';
+			
+		return $buf;		
+	}
+		
+	/**
+	 * Obtiene una area de texto
+	 *
+	 * @param string  $name      Nombre del campo
+	 * @param string  $value     Valor incial
+	 * @param integer $cols      Numero de columna
+	 * @param integer $rows      Numero de fila
+	 * @param string  $wrap      Clase y tipo de abrigo
+	 *
+	 */
+	public function getTextArea($name = '', $value = '', $cols = '', $rows = '', $wrap = ''){
+		$buf = '';
+		$buf.=''.''.'<textarea '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" name="'.$name.'" id="'.$name.'" cols="'.$cols.'" rows="'.$rows.'" wrap="'.$wrap.'" '.$this->checkExistEventJs($name).' '.$this->checkIfIsDisabled($name).'>'.$value.'</textarea>'."\n";
+		$this->arrayFormElementType[$name] = 'textarea';
+		return $buf;
+	}
+
+	/**
+	 * Obtiene un campo Oculto
+	 *
+	 * @param string $name      Nombre del campo
+	 * @param string $value     Valor incial
+	 *
+	 */
+	public function getHidden($name = '', $value = ''){
+		$buf = '';
+		$buf = '<input type="hidden" id="'.$name.'" name="'.$name.'" value="'.$value.'">'."\n";
+		$this->arrayFormElementType[$name] = 'hidden';
+
+		return $buf;
+	}
+
+	/**
+	 * Obtiene el HTML de un campo formulario
+	 * tipo File asincronico.
+	 *
+	 * @param string $name Nombre del campo
+	 * @return string
+	 */
+	public function getFile ($name){
+		$buf = '';
+
+		$buf.='<span id="spanButtonPlaceholder">';
+		
+		/**
+		 * Deprecated
+		if ($this->FILE_src_img_button)
+		   $buf.='<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
+		 */  
+		
+		$maxInfoSize = '';   
+	    if ($this->FILE_show_max_upload_size_info_in_button){
+	    	if ($this->FILE_size_limit<1024){
+	           $maxFileSizeUpload = '('.$this->FILE_size_limit.' Kb)';
+	    	}else if ($this->FILE_size_limit<1048576){
+	    	   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1024,2).' Mb)';
+	    	}else{
+      		   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1048576,2).' Gb)';
+	    	}
+	       $maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
+	    }	   
+		   
+		$buf.= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
+		$this->arrayFormElementType[$name] = 'file';
+
+		return $buf;
+	}
+	
+	/**
+	 * Obtiene el html de un boton
+	 * necesario para ejecutar los
+	 * actions en los  formularios
+	 * que son creados por los usu
+	 * arios.
+	 *
+	 * @param string $strName    Nombre del boton
+	 * @param string $strLabel   Etiqueta del boton
+	 * @param string $strSrcImg  Ruta de la img que lo acompana
+	 * @return string
+	 * 
+	 * Nota: Si desea pasar variables adicionales al evento del
+	 * boton, debe agregar separado por (:) los valores que necesite	 
+	 *  
+	 */
+	public function getButton ($strName, $strLabel = '', $strSrcImg = ''){
+		$buf = '';
+		$strMixedParams = '';
+		
+		$buf.='<button '.$this->checkIfIsDisabled($strName).' '.$this->checkIsHelping($strName).' value="'.strip_tags($strLabel).'" class="'.$this->styleClassButtons.'" type="button" name="'.$strName.'" id="'.$strName.'" ';
+		$buf .= $this->checkExistEventJs($strName).'>';
+
+		$buf .= '<table border="0" cellspacing="0" cellpadding="0"><tr>';
+		
+		if ($strSrcImg)
+			$buf .= '<td><img style="padding-right: 2px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0"></td>';
+			
+		$buf.='<td class="boton_font">'.$strLabel.'</td></tr></table></button>';
+
+		return $buf;
+	}	
 
 	/**
 	 * Crea un agrupamiento HTML mediante fieldSet
@@ -919,17 +1458,6 @@ class myForm {
 		);
 
 		$this->arrayFormElementsShown = array_merge($this->arrayFormElementsShown, $arraystrIdFields);
-	}
-	
-	/**
-	 * Configura el tipo de parametro que va a ser enviado a la funcion de un
-	 * evento, este parametro puede ser tipo 'form' o tipo 'field'
-	 * 
-	 * @param $paramType	Tipo de parametro
-	 */
-	public function setParamTypeOnEvent ($paramType){
-		
-		$this->paramTypeOnEvent = $paramType;
 	}
 	
 	/**
@@ -1051,6 +1579,17 @@ class myForm {
 	}
 	
 	/**
+	 * Configura el tipo de parametro que va a ser enviado a la funcion de un
+	 * evento, este parametro puede ser tipo 'form' o tipo 'field'
+	 * 
+	 * @param $paramType	Tipo de parametro
+	 */
+	public function setParamTypeOnEvent ($paramType){
+		
+		$this->paramTypeOnEvent = $paramType;
+	}	
+		
+	/**
 	 * Agrega la propiedad 'disabled="disabled"' a el objeto del formulario
 	 * que se invoque
 	 * @param string id Nombre o id del objeto del formulario al que se le va a agregar la propiedad
@@ -1060,7 +1599,7 @@ class myForm {
 			$this->objDisabled[$objName] = $objName;
 		}
 	}
-
+	
 	/**
 	 * Agrega el elemento a el gurpo de elementos
 	 * en general de la aplicacion que  contendra
@@ -1079,6 +1618,44 @@ class myForm {
 			$this->objHelps[$objName] = str_replace("'","\\'",str_replace('"',"'",htmlentities($strHelp)));
 		}
 	}
+	
+	/**
+	 * Agrupa grupos de elementos previamente definidos
+	 * para dejar un cojunto de grupos en una fila y no
+	 * para que queden en filas separadas.
+	 *
+	 * @param string $idGroupingGroups Id del grupo de grupos
+	 */
+	public function shareSpaceForGroups ($arrayIdGroups){
+		$this->arrayGroupsIdInShareSpace[] = array('arrayIdGroups' => $arrayIdGroups);
+	}
+
+	/**
+	 * Configura la cache de el formualario para ser usada
+	 * e activa por cada $intSeconds
+	 *
+	 * @param boolean $boolUseCache  Usar la cache o no
+	 * @param integer $intSeconds    Numero de segundos en que la cache dura activa
+	 */
+	public function setCache ($boolUseCache = false, $intSeconds = 3600){
+		$this->use_cache = $boolUseCache;
+		$this->cache_int_seconds_time = $intSeconds;
+	}
+	
+	/**
+	 * Verifica si un formulario esta o no cacheado
+	 *
+	 * @param string $strNomForm
+	 * @return boolean
+	 */
+	public function isCached ($strNameForm){
+		$return = false;
+			
+		if (file_exists($this->cache_dir.$strNameForm.session_id().$this->cache_ext_file));
+			$return = true;
+
+		return $return;
+	}
 
 	/**
 	 * Retorna el tipo de elemento que identificamos
@@ -1089,725 +1666,7 @@ class myForm {
 	 */
 	public function getTypeElement($objName){
 		return $this->arrayFormElementType[$objName];
-	}
-
-	/**
-	 * Agrega un boton a la funcionalidad del formulario
-	 *
-	 * @param string $strName    Nombre del Elemento
-	 * @param string $strLabel   Etiqueta o valor del Elemento
-	 * @param string $strSrcImg  Ruta de la img que lo acompana
-	 * 
-	 * Nota: Si desea pasar variables adicionales al evento del
-	 * boton, debe agregar separado por (:) los valores que necesite
-	 * 
-	 */
-	public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
-		$this->arrayButtonList[] = array('strName'    =>  $strName,
-                                         'strLabel'   =>  htmlentities($strLabel));
-		
-		$count = count($this->arrayButtonList);
-		
-		if ($strSrcImg)
-		   $this->arrayButtonList[($count-1)]['strSrcImg'] = $GLOBALS['urlProject'].$this->pathImages.$strSrcImg;  
-	}
-
-	/**
-	 * Obtiene el html de un boton
-	 * necesario para ejecutar los
-	 * actions en los  formularios
-	 * que son creados por los usu
-	 * arios.
-	 *
-	 * @param string $strName    Nombre del boton
-	 * @param string $strLabel   Etiqueta del boton
-	 * @param string $strSrcImg  Ruta de la img que lo acompana
-	 * @return string
-	 * 
-	 * Nota: Si desea pasar variables adicionales al evento del
-	 * boton, debe agregar separado por (:) los valores que necesite	 
-	 *  
-	 */
-	public function getButton ($strName, $strLabel = '', $strSrcImg = ''){
-		$buf = '';
-		$strMixedParams = '';
-		
-		$buf.='<button '.$this->checkIfIsDisabled($strName).' '.$this->checkIsHelping($strName).' value="'.strip_tags($strLabel).'" class="'.$this->styleClassButtons.'" type="button" name="'.$strName.'" id="'.$strName.'" ';
-		/*
-		if ($jsFunction){
-			
-			if (stripos($jsFunction,':')!==false){
-				
-		  		$mixedExtParams = array();
-		  		
-		  		
-		  		$intCountPrm = count($mixedExtParams = split(':',$jsFunction));
-		  		$i = 0;
-		  		
-		  		foreach ($mixedExtParams as $param){
-					
-		  			if (!$i)
-					   $jsFunction = $param; 	
-		  			
-		  			if ($jsFunction!=$param){
-		  				if (!is_numeric($param))
-							$strMixedParams .= '\''.$param.'\'';
-						else	
-							$strMixedParams .= $param;
-		  			}
-		  			
-		  			if (($i+1)<$intCountPrm){
-						$strMixedParams .= ',';
-		  			}
-		  			
-					$i++;					  			
-		  		}
-		  		
-		  	}
-			
-			if (strpos($jsFunction,'closeWindow'))
-				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'"';
-			else
-				$buf .= ' onclick="'.$this->prefAjax.$jsFunction.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\') '.$strMixedParams.')"';
-		}
-		*/	
-		$buf .= $this->checkExistEventJs($strName).'>';
-
-		$buf .= '<table border="0" cellspacing="0" cellpadding="0"><tr>';
-		
-		if ($strSrcImg)
-			$buf .= '<td><img style="padding-right: 2px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0"></td>';
-			
-		$buf.='<td class="boton_font">'.$strLabel.'</td></tr></table></button>';
-
-		return $buf;
-	}
-
-	/**
-	 * Agrega una caja de texto
-	 *
-	 * @param string  $etq       Etiqueta del campo
-	 * @param string  $name      Nombre del campo
-	 * @param string  $value     Valor incial
-	 * @param integer $size      Tamano del campo
-	 * @param integer $maxlength Numero maximo de caracteres
-	 * @param char    $validacion_numerica (S o N)
-	 * @param bool    $CampoFecha (0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha
-	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
-	 *
-	 */
-	public function addText($etq = '', $name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
-		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'text'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$validacion_numerica.$this->Separador.$CampoFecha;
-		
-		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'text';
-	}
-
-	/**
-	 * Devuelve una caja de texto
-	 *
-	 * @param string $name       Nombre del campo
-	 * @param string $value      Valor incial
-	 * @param integer $size      Tamano del campo
-	 * @param integer $maxlength Numero maximo de caracteres
-	 * @param char    $validacion_numerica (S o N)
-	 * @param bool    $CampoFecha (0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha
-	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
-	 *
-	 */
-	public function getText($name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
-		$this->arrayFormElementType[$name] = 'text';
-		$keypress = '';
-		$Disabled = '';
-		$LauncherCalendar = '';
-
-		if ($validacion_numerica)
-			$keypress = ' onKeyPress="return OnlyNum(event)"';
-
-		if ($CampoFecha){
-			$LauncherCalendar = '<button '.$this->checkIfIsDisabled($name).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.getElementById(\''.$name.'\').value, \''.$name.'\', \''.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
-			$LauncherCalendar .= '<div id="div_trigger_'.$name.'" name="div_trigger_'.$name.'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden"></div>';
-			
-			$Disabled = 'readonly';
-		}
-			
-		$buf ='<input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="text" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" '.$Disabled.' maxlength="'. $maxlength.'"'.$keypress.'  '.$this->checkExistEventJs($name).'>'.$LauncherCalendar.''."\n";
-			
-		return $buf;
-	}
-
-	/**
-	 * Agrega una area de texto
-	 *
-	 * @param string  $etq       Etiqueta del campo
-	 * @param string  $name      Nombre del campo
-	 * @param string  $value     Valor incial
-	 * @param integer $cols      Numero de columna
-	 * @param integer $rows      Numero de fila
-	 * @param string  $wrap      Clase y tipo de abrigo
-	 *
-	 */
-	public function addTextArea($etq = '', $name = '', $value = '', $cols = '', $rows = '', $wrap = ''){
-		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'textarea'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$cols.$this->Separador.$rows.$this->Separador.$wrap;
-		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'textarea';
-	}
-
-	/**
-	 * Obtiene una area de texto
-	 *
-	 * @param string  $name      Nombre del campo
-	 * @param string  $value     Valor incial
-	 * @param integer $cols      Numero de columna
-	 * @param integer $rows      Numero de fila
-	 * @param string  $wrap      Clase y tipo de abrigo
-	 *
-	 */
-	public function getTextArea($name = '', $value = '', $cols = '', $rows = '', $wrap = ''){
-		$buf = '';
-		$buf.=''.''.'<textarea '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" name="'.$name.'" id="'.$name.'" cols="'.$cols.'" rows="'.$rows.'" wrap="'.$wrap.'" '.$this->checkExistEventJs($name).' '.$this->checkIfIsDisabled($name).'>'.$value.'</textarea>'."\n";
-		$this->arrayFormElementType[$name] = 'textarea';
-		return $buf;
-	}
-
-	/**
-	 * Agregar un editor fckeditor al fomulario actual
-	 *
-	 * @param string  $etq            Etiqueta del campo generado por el FCK Editor
-	 * @param string  $name           Nombre del campo generado por el FCK Editor
-	 * @param string  $value          Valor inicial del campo generado por el FCK Editor
-	 */
-	public function addFCKeditor ($etq = '', $name = '', $value = ''){
-		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'fckeditor'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
-		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'fckeditor';
-	}
-
-	/**
-	 * Agrega un campo de texto Oculto al formulario
-	 *
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 *
-	 */
-	public function addHidden($name = '', $value = ''){
-		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'hidden'.$this->Separador.$name.$this->Separador.$value;
-		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'hidden';
-	}
-
-	/**
-	 * Obtiene un campo Oculto
-	 *
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 *
-	 */
-	public function getHidden($name = '', $value = ''){
-		$buf = '';
-		$buf = '<input type="hidden" id="'.$name.'" name="'.$name.'" value="'.$value.'">'."\n";
-		$this->arrayFormElementType[$name] = 'hidden';
-
-		return $buf;
-	}
-
-	/**
-	 * Agrega una caja de texto tipo password
-	 *
-	 * @param string $etq       Etiqueta del campo
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 * @param string $size      Tamano del campo
-	 * @param string $maxlength Numero maximo de caracteres
-	 *
-	 */
-	public function addPassword($etq = '', $name = '', $value = '', $size = '', $maxlength = ''){
-		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'password'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength;
-		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'password';
-	}
-
-	/**
-	 * Obtiene una caja de texto tipo password
-	 *
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 * @param string $size      Tamano del campo
-	 * @param string $maxlength Numero maximo de caracteres
-	 *
-	 */
-	public function getPassword($name = '', $value = '', $size = '', $maxlength = ''){
-
-		$buf = '';
-		$buf ='<input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="password" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" maxlength="'. $maxlength.'" '.$this->checkExistEventJs($name).'>'."\n";
-		$this->arrayFormElementType[$name] = 'password';
-			
-		return $buf;		
-	}
-
-	/**
-	 * Agrega conjunto de select para personalizar un campo fecha
-	 *
-	 * @param string $etq        Etiqueta del campo
-	 * @param string $prefName   Prefijo para el nombre del campo
-	 * @param int    $iniValA    Valor inicial para el ano
-	 * @param int    $iniValM    Valor inicial del mes
-	 * @param int    $iniValD    Valor inicial del dia
-	 * @param int    $YearBack   Cantidad de anos atras para cagar el select, Opcional
-	 * @param int    $YearFuture Cantidad de anos a futuro para cagar el select, Opcional
-	 *
-	 */
-	public function addDate ($etq = '', $prefName = '', $iniValA = '', $iniValM = '', $iniValD = '', $YearBack = 100, $YearFuture = 20){
-		$prefName = $this->getColspanRowspan($prefName);
-		$arrMsese = array("1"  => "Enero",       "2" => "Febrero",
-                          "3"  => "Marzo",       "4" => "Abril", 
-                          "5"  => "Mayo",        "6" => "Junio", 
-                          "7"  => "Julio",       "8" => "Agosto", 
-                          "9"  => "Septiembre", "10" => "Octubre", 
-                          "11" => "Noviembre",  "12" => "Dicembre");
-
-		$strY = '';
-		$selected = '';
-		for ($i = (date("Y")-$YearBack); $i < (date("Y")+$YearFuture); $i++){
-			if ($iniValA == $i)
-			$selected = ' selected';
-			else
-			$selected = '';
-			$strY .= "\t\t".'<option value="'.$i.'"'.$selected.' class="'.$this->styleClassFields.'">'.$i.'</option>'."\n";
-		}
-
-		$strM = '';
-		for ($i = 0, $keys = array_keys($arrMsese); $i < count($arrMsese); $i++){
-			if ($iniValM == $keys[$i])
-			$selected = ' selected';
-			else
-			$selected = '';
-			$strM .= "\t\t".'<option value="'.$keys[$i].'"'.$selected.' class="'.$this->styleClassFields.'">'.$arrMsese[$keys[$i]].'</option>'."\n";
-		}
-
-
-		$strD = '';
-		for ($i = 1; $i <= 31; $i++){
-			if ($iniValD == $i)
-			$selected = ' selected';
-			else
-			$selected = '';
-			$strD .= "\t\t".'<option value="'.$i.'"'.$selected.' class="'.$this->styleClassFields.'">'.$i.'</option>'."\n";
-		}
-
-		$Cadena = 'date'.$this->Separador.htmlentities($etq).$this->Separador.$prefName.$this->Separador.$strY.$this->Separador.$strM.$this->Separador.$strD;
-		$this->Objects['field'][$prefName] = $Cadena;
-		$this->arrayFormElementType[$prefName] = 'date';
-	}
-
-	/**
-	 * Agrega conjunto de select para personalizar un campo fecha
-	 *
-	 * @param string $etq        Etiqueta del campo
-	 * @param string $prefName   Prefijo para el nombre del campo
-	 * @param int    $iniValH    Valor inicial para la Hora
-	 * @param int    $iniValM    Valor inicial para los minutos
-	 *
-	 */
-	function addTime ($etq = '', $prefName = '', $iniValH = '', $iniValM = ''){
-		$prefName = $this->getColspanRowspan($prefName);
-		$strH = '';
-		$selected = '';
-		for ($i = 0; $i < 24; $i++){
-			if ($iniValH == $i)
-			$selected = ' selected';
-			else
-			$selected = '';
-
-			if ($i<10)
-			$label='0';
-			else
-			$label='';
-
-			$strH .= "\t\t".'<option value="'.$i.'"'.$selected.'>'.$label.$i.'</option>'."\n";
-		}
-
-		$strM = '';
-		for ($i = 0; $i < 60; $i+=5){
-			if ($iniValM == $i)
-			$selected = ' selected';
-			else
-			$selected = '';
-
-			if ($i<10)
-			$label = '0';
-			else
-			$label = '';
-
-			$strM .= "\t\t".'<option value="'.$i.'"'.$selected.'>'.$label.$i.'</option>'."\n";
-		}
-
-		$Cadena = 'time'.$this->Separador.htmlentities($etq).$this->Separador.$prefName.$this->Separador.$strH.$this->Separador.$strM;
-		$this->Objects['field'][$prefName] = $Cadena;
-		$this->arrayFormElementType[$prefName] = 'time';
-	}
-
-	/**
-	 * Agrega conjunto de select para personalizar un campo fecha
-	 *
-	 * @param string $etq        Etiqueta del campo
-	 * @param string $prefName   Prefijo para el nombre del campo
-	 * @param int    $iniValH    Valor inicial para la Hora
-	 * @param int    $iniValM    Valor inicial para los minutos
-	 *
-	 */
-	public function getTime ($prefName = '', $iniValH = '', $iniValM = ''){
-		$strH = "\t\t".'<select '.$this->checkIsHelping($prefName).' name="'.$prefName.'_H" size="1" class="'.$this->styleClassFields.'">'."\n";
-		$selected = '';
-		for ($i = 0; $i < 24; $i++){
-			if ($iniValH == $i)
-			$selected = ' selected';
-			else
-			$selected = '';
-
-			if ($i<10)
-			$label='0';
-			else
-			$label='';
-
-			$strH .= "\t\t".'<option value="'.$i.'"'.$selected.'>'.$label.$i.'</option>'."\n";
-		}
-		$strH .= "\t\t".'</select>'."\n";
-
-		$strM = "\t\t".'<select '.$this->checkIsHelping($prefName).' name="'.$prefName.'_M" size="1" class="'.$this->styleClassFields.'">'."\n";
-		for ($i = 0; $i < 60; $i+=1){
-			if ($iniValM == $i)
-			$selected = ' selected';
-			else
-			$selected = '';
-
-			if ($i<10)
-			$label = '0';
-			else
-			$label = '';
-
-			$strM .= "\t\t".'<option value="'.$i.'"'.$selected.'>'.$label.$i.'</option>'."\n";
-		}
-		$strM .= "\t\t".'</select>'."\n";
-		$this->arrayFormElementType[$prefName] = 'time';
-
-		return $strH.':'.$strM;
-	}
-
-	/**
-	 * Agrega un espacio en blanco en el lugar que le corresponda
-	 *
-	 * @param integer $id    Identificador del espacio, este puede ser un numero consecutivo
-	 * @param string  $val_e Valor en el momento del cargue dentro del formulario para la etiqueta
-	 * @param string  $val_c Valor en el momento del cargue dentro del formulario para el campo
-	 */
-	public function addWhiteSpace ($id, $val_e = '', $val_c = ''){
-		$id = $this->getColspanRowspan($id);
-		$this->Objects['field']['whitespace_'.$id] = 'whitespace'.$this->Separador.$id.$this->Separador.htmlentities($val_e).$this->Separador.$val_c;
-		$this->arrayFormElementType[$id] = 'whitespace';
-	}
-
-	/**
-	 * Agrega un comentario en una Fila especifica
-	 * @param integer $id Identificador del espacio que va a utilizar, este siempre debe de ser diferente para cada uno
-	 * @param string  $Coment Texto que desea mostrar en la fila
-	 */
-	public function addComent ($id, $Coment){
-		$id     = $this->getColspanRowspan($id);
-		$Cadena = 'coment'.$this->Separador.$id.$this->Separador.$Coment;
-		$this->Objects['field']['coment_'.$id] = $Cadena;
-		$this->arrayFormElementType[$id] = 'coment';
-	}
-
-	/**
-	 * Agrega un radio button al formulario en particular.
-	 * Los grupos de radio buttons se pueden formar y funcionar
-	 * siempre y cuando esos radio buttons queden con el mismo
-	 * nombre que permita agruparlos.
-	 *
-	 * @param Etiqueta $etq
-	 * @param Valor    $value
-	 * @param Grupo al que pertenece  $name_group
-	 * @return string Id del radio button, se usa para poder agrupar mas adelante
-	 */
-	public function addRadioButton($etq = '', $value = '', $name_group = '', $is_checked = 'N'){
-		$name = '_'.$this->counterRadiosForThisForm+=1;
-
-		//$name = $this->getColspanRowspan($name);
-		$Cadena = 'radiobutton'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$name_group.$this->Separador.$is_checked;
-		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'radiobutton';
-			
-		return $name;
-	}
-
-	/**
-	 * Obtiene el html de un radio button
-	 *
-	 * @param string $value Valor por defecto del Radio button
-	 * @param string $name_group Nombre del radio o grupo que van a comformarlo
-	 * @return string
-	 */
-	public function getRadioButton ($value = '', $name_group = '', $is_checked = 'N'){
-		$buf = '';
-
-		$checked = '';
-		if ($is_checked=='S')
-		$checked = 'checked="checked"';
-
-		$buf .= '<input '.$this->checkExistEventJs($name_group).' '.$this->checkIsHelping($name_group).' '.$this->checkIfIsDisabled($name_group).' type="radio" name="'.$name_group.'" id="'.$name_group.'_'.$value.'" value="'.$value.'" class="'.$this->styleClassFields.'" '.$checked.'>';
-		unset($this->objEventxJ[$name_group]);
-		$this->arrayFormElementType[$name_group] = 'radiobutton';
-
-		return $buf;
-	}
-
-	/**
-	 * Agrega una caja checkBox al formulario, el contenido de esta caja puede
-	 * ser evaluado para verificar si es '0' o '1'
-	 *
-	 * @param string $etq       Etiqueta del campo
-	 * @param string $name      Nombre de checkbox
-	 * @param char   $ini_sts   Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado
-	 *
-	 */
-	public function addCheckBox($etq = '', $name = '', $ini_sts = 'N'){
-		$name = $this->getColspanRowspan($name);
-		$Cadena = 'checkbox'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$ini_sts;
-		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'checkbox';
-
-	}
-
-	/**
-	 * Obtiene una caja checkBox al formulario, el contenido de esta caja puede
-	 * ser evaluado para verificar si es '0' o '1'
-	 *
-	 * @param string $name      Nombre de checkbox
-	 * @param char   $ini_sts   Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado
-	 *
-	 */
-	public function getCheckBox($name = '', $ini_sts = false){
-		$buf = '';
-
-		$cheked = '';
-		if ($ini_sts == true){
-			$cheked = 'checked';
-		}
-
-		$onEvent = $this->checkExistEventJs($name);
-		
-		$buf .= '<input '.$onEvent.' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$name.'" id="'.$name.'"  '.$cheked.' '.$this->checkIfIsDisabled($name).'>'."\n";
-		
-		$this->arrayFormElementType[$name] = 'checkbox';
-
-		return $buf;
-	}
-
-	/**
-	 * Agrega una combo desplegable (menu)
-	 *
-	 * @param string $etq       	Etiqueta del campo
-	 * @param string $name      	Nombre del campo
-	 * @param array  $value     	Valor incial que es un arreglo de la forma especificada
-	 * @param string $size      	Tamano del campo
-	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
-	 *
-	 */
-	public function addSelect($etq = '', $name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
-		$name = $this->getColspanRowspan($name);
-		$buf  = '';
-		if (is_array ($value)){
-			if ($this->selectUseFirstValue)
-				$buf .= "".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
-			
-			$selectedIsArray = false;
-			if (is_array($selected)){
-			   $selectedIsArray = true;
-			}
-			
-			foreach ($value as $id => $value){
-				$sel = '';
-				if (!$selectedIsArray){
-				   if (!strcmp($id,$selected)){
-				   	  $sel = ' selected';
-				   }
-				}else{
-				   if (in_array($id,$selected)){
-				      $sel = ' selected';
-				   }					
-				}
-				
-				if ($truncar_hasta)
-					$value = substr($value,0,$truncar_hasta);
-					
-				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
-			}
-			
-			$buf .= "\t\t".'</select>'."\n";
-			$value = $buf;
-		}
-		$maxlength = '';
-
-		$Cadena   = 'select'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$size.$this->Separador.$maxlength.$this->Separador.$multiple;
-		$this->Objects['field'][$name] = $Cadena;
-
-		$this->arrayFormElementType[$name] = 'select';
-	}
-
-	/**
-	 * Obtiene una combo desplegable (menu)
-	 *
-	 * @param string $name          Nombre del campo
-	 * @param array  $value         Valor incial que es un arreglo de la forma especificada
-	 * @param string $size          Tamano del campo
-	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
-	 *
-	 */
-	public  function getSelect($name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
-		$buf = '';
-		$string_multiple = '';
-		if ($multiple)
-		$string_multiple = ' multiple';
-		$buf.= "\t\t".'<select '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" name="'.$name.'" id="'.$name.'"'.$string_multiple.' size="'.$size.'" '.$this->checkExistEventJs($name).'>'."\n";
-			
-		if (is_array ($value)){
-			if ($this->selectUseFirstValue)
-			$buf .= "\t\t".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
-
-			$selectedIsArray = false;
-			if (is_array($selected)){
-			   $selectedIsArray = true;
-			}	
-			
-			foreach ($value as $id => $value){
-				$sel = '';
-				if (!$selectedIsArray){
-				   if (!strcmp($id,$selected)){
-				   	  $sel = ' selected';
-				   }
-				}else{
-				   if (in_array($id,$selected)){
-				      $sel = ' selected';
-				   }					
-				}
-				
-				if ($truncar_hasta)
-					$value = substr($value,0,$truncar_hasta);
-					
-				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
-			}
-
-			$buf .= '</select>'."\n";
-		}
-
-		$this->arrayFormElementType[$name] = 'select';
-
-		return $buf;
-	}
-
-	/**
-	 * Agrega   un  campo   de  tipo  file
-	 * asincronico a el formulario actual.
-	 *
-	 * @param string  $etq                     Etiqueta del campo
-	 * @param string  $name                    Nombre del campo
-	 * @param string  $upload_url              Url del .php que recibe los datos
-	 * @param string  $flash_url               Url del donde se encuentra ubicado el flash
-	 * @param array   $file_types              Arreglo con los tipos de archivos que se pueden subir
-	 * @param string  $file_types_description  Descripcion de los tipos de archivos que se pueden subir
-	 * @param integer $file_size_limit         Limite de tamano por archivo que se puede subir
-	 */
-	public function addFile ($etq, $name, $upload_url, $flash_url = '', $file_types = '', $file_types_description = '', $file_size_limit = ''){
-		
-		if (!$flash_url)
-			$flash_url = $GLOBALS['urlProject'].'/swf/swfupload.swf';
-		
-		$name = $this->getColspanRowspan($name);
-		if ($file_types && is_array($file_types))
-		$this->FILE_file_types = $file_types;
-			
-		if ($file_types_description)
-		$this->FILE_file_types_description = $file_types_description;
-			
-		if (intval($file_size_limit))
-		$this->FILE_size_limit = $file_size_limit;
-
-		$this->FILE_upload_url = $upload_url;
-		$this->FILE_flash_url  = $flash_url;
-
-		$Cadena   = 'file'.$this->Separador.htmlentities($etq).$this->Separador.$name;
-		$this->Objects['field'][$name] = $Cadena;
-		$this->uploaderIdArray[] = $name;
-
-		$this->arrayFormElementType[$name] = 'file';
-		$this->useAddFile = true;
-	}
-
-	/**
-	 * Obtiene el HTML de un campo formulario
-	 * tipo File asincronico.
-	 *
-	 * @param string $name Nombre del campo
-	 * @return string
-	 */
-	public function getFile ($name){
-		$buf = '';
-
-		$buf.='<span id="spanButtonPlaceholder">';
-		
-		/**
-		 * Deprecated
-		if ($this->FILE_src_img_button)
-		   $buf.='<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
-		 */  
-		
-		$maxInfoSize = '';   
-	    if ($this->FILE_show_max_upload_size_info_in_button){
-	    	if ($this->FILE_size_limit<1024){
-	           $maxFileSizeUpload = '('.$this->FILE_size_limit.' Kb)';
-	    	}else if ($this->FILE_size_limit<1048576){
-	    	   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1024,2).' Mb)';
-	    	}else{
-      		   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1048576,2).' Gb)';
-	    	}
-	       $maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
-	    }	   
-		   
-		$buf.= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
-		$this->arrayFormElementType[$name] = 'file';
-
-		return $buf;
-	}
-
-	/**
-	 * Obtiene informacion de los campos que aun no estan validados
-	 * Ejemplo de arrayRequeridos $arrayRequeridos = array ('nombre_campo'=>'Etiqueta campo');
-	 * Nota: Preguntar por $this->validationError para obtener un String de los campos incompletos
-	 *
-	 * @param array $arrayRequeridos Arreglo de datos que son obligatorios
-	 * @param array $FormElements 	 Arreglo retornado por $this->DataFormToArray($dataForm);
-	 * @return bool
-	 */
-	public function validateForm($arrayRequeridos, $FormElements){
-		$this->arrayRequiredFiled = $arrayRequeridos;
-
-		$valido= true;
-		$llavesRequeridos = array_keys($arrayRequeridos);
-		for ($i=0;$i<count($arrayRequeridos);$i++){
-			if (!trim($FormElements[$llavesRequeridos[$i]])){
-				$valido = false;
-				$this->validationError .= '* '.$arrayRequeridos[$llavesRequeridos[$i]]."\n";
-			}
-
-		}
-		return $valido;
-	}
+	}	
 	
 	/**
 	 * Retorna el objeto del formulario como una cadena String que cumple
@@ -1821,15 +1680,6 @@ class myForm {
 	 */
 	public function __toString (){
 		return $this->getForm();
-	}
-
-	/**
-	 * Imprime el formulario final
-	 *
-	 * @param integer $cols Numero de columnas
-	 */
-	public function showForm($cols = 2){
-		print $this->getForm($cols);
 	}
 
 	/**
@@ -1882,49 +1732,16 @@ class myForm {
 		
 		return $fileContenido;
 	}
-
+	
 	/**
-	 * Agrupa grupos de elementos previamente definidos
-	 * para dejar un cojunto de grupos en una fila y no
-	 * para que queden en filas separadas.
+	 * Imprime el formulario final
 	 *
-	 * @param string $idGroupingGroups Id del grupo de grupos
+	 * @param integer $cols Numero de columnas
 	 */
-	public function shareSpaceForGroups ($arrayIdGroups){
-		$this->arrayGroupsIdInShareSpace[] = array('arrayIdGroups' => $arrayIdGroups);
+	public function showForm($cols = 2){
+		print $this->getForm($cols);
 	}
-
-	/*
-	 * Cache de los formularios
-	 */
-
-	/**
-	 * Verifica si un formulario esta o no cacheado
-	 *
-	 * @param string $strNomForm
-	 * @return boolean
-	 */
-	public function isCached ($strNameForm){
-		$return = false;
-			
-		if (file_exists($this->cache_dir.$strNameForm.session_id().$this->cache_ext_file));
-			$return = true;
-
-		return $return;
-	}
-
-	/**
-	 * Configura la cache de el formualario para ser usada
-	 * e activa por cada $intSeconds
-	 *
-	 * @param boolean $boolUseCache  Usar la cache o no
-	 * @param integer $intSeconds    Numero de segundos en que la cache dura activa
-	 */
-	public function setCache ($boolUseCache = false, $intSeconds = 3600){
-		$this->use_cache = $boolUseCache;
-		$this->cache_int_seconds_time = $intSeconds;
-	}
-
+		
 	/**
 	 * Es llamada en la construccion del formulario para averiguar si en elemento de ese formulario esta
 	 * ralacionada con un evento xAjax y de esa forma concatenarlo a la salida final del mismo
@@ -2310,12 +2127,6 @@ class myForm {
 					 */					
 					
 					break;
-				case 'date':
-					$bufTemp = '';
-					$bufTemp .= '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld '.$this->checkIsHelping($campos_f[2]).'>'."\n\t\t".'<select class="'.$this->styleClassFields.'" name="'.$campos_f[2].'_Y" id="'.$campos_f[2].'_Y" '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[3].'</select>/'."\t\t\n\t\t".'<select class="'.$this->styleClassFields.'" name="'.$campos_f[2].'_M" id="'.$campos_f[2].'_M" '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[4].'</select>/'."\t\t\n\t\t".'<select class="'.$this->styleClassFields.'" name="'.$campos_f[2].'_D" id="'.$campos_f[2].'_D" '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[5].'</select></td>'."\n";
-
-					$this->arrayFormElements[$campos_f[2]] = $bufTemp;
-					break;
 				case 'whitespace':
 					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq><div name="e_'.$campos_f[1].'" id="e_'.$campos_f[1].'">'.$campos_f[2].'</div></td><td rowSpanFld colSpanFld widthFld class="'.$this->styleClassFields.'"><div name="c_'.$campos_f[1].'" id="c_'.$campos_f[1].'">'.$campos_f[3].'</div></td>'."\n";
 					break;
@@ -2334,12 +2145,6 @@ class myForm {
 					$onEvent = $this->checkExistEventJs($campos_f[2]);
 						
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq '.$onClickTag.' class="'.$this->styleClassTags.'"  widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$onEvent.' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$campos_f[2].'" id="'.$campos_f[2].'" '.$cheked.' '.$this->checkIfIsDisabled($campos_f[2]).'>'.'</td>'."\n";
-					break;
-				case 'time':
-					$bufTemp = '';
-					$bufTemp .= '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld '.$this->checkIsHelping($campos_f[2]).' widthFld>'."\n\t\t".'<select class="'.$this->styleClassFields.'" name="'.$campos_f[2].'_H" id="'.$campos_f[2].'_H" size="1" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[3].'</select>:'."\n\t\t".'<select class="'.$this->styleClassFields.'" name="'.$campos_f[2].'_M" id="'.$campos_f[2].'_M" size="1" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[4].'</select>'.'</td>'."\n";
-
-					$this->arrayFormElements[$campos_f[2]] = $bufTemp;
 					break;
 				case 'radiobutton':
 
