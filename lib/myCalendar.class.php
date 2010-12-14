@@ -157,13 +157,11 @@ class myCal {
 			
 		$objMyForm->addEvent('cal_month',
 				'onchange',
-				'MYFORM_calOnChange',
-			array($update));
+				'MYFORM_calOnChange',$update);
 			
 		$objMyForm->addEvent('cal_year',
 				'onchange',
-				'MYFORM_calOnChange',
-			array($update));
+				'MYFORM_calOnChange',$update);
 			
 		$htm .= '<tr>';
 				

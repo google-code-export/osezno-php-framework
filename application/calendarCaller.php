@@ -10,6 +10,8 @@
 	
  	if (!$_GET['date'])
  		$_GET['date'] = date('Y-m-d');
+ 	else if (!preg_match('/\d{4}-\d{2}-\d{2}/', $_GET['date'])) 
+ 			$_GET['date'] = date('Y-m-d');
  	
  	list($nA, $nM, $nD) = explode ('-',$_GET['date']);
  	
