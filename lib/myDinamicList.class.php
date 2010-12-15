@@ -1382,9 +1382,9 @@ class myList  {
 		
 		$htble .= '</tr></table>';
 		
-		$objMyForm->addComent('options',$htble);
+		$objMyForm->addComment('options',$htble);
 		
-		$objMyForm->addComent('rule_for','<div class="form_rule_for_list" id="rule_for_'.$this->idList.'"></div>');
+		$objMyForm->addComment('rule_for','<div class="form_rule_for_list" id="rule_for_'.$this->idList.'"></div>');
 		
 		return $objMyForm->getForm(1);
 	}

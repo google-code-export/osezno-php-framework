@@ -874,7 +874,7 @@ class myForm {
 	 * 
 	 * ?>
 	 * Salida HTML:
-	 * <form method="post" onsubmit="return false" name="editar" id="editar" target="_self">
+	 * <form onsubmit="return false" method="post" name="editar" id="editar" target="_self">
 	 * </form>
 	 * 
 	 * Ejemplo 2:
@@ -887,7 +887,7 @@ class myForm {
 	 * 
 	 * ?>
 	 * Salida HTML:
-	 * <form action="process.php" method="post" name="editar" id="editar" target="_self">
+	 * <form onsubmit="return false" action="process.php" method="post" name="editar" id="editar" target="_self">
 	 * </form>	
 	 * 
 	 * </code>
@@ -987,15 +987,15 @@ class myForm {
 	}
 
 	/**
-	 * Agrega una caja checkBox al formulario, el contenido de esta caja puede
-	 * ser evaluado para verificar si es '0' o '1'
-	 *
-	 * @param string $etq       Etiqueta del campo
-	 * @param string $name      Nombre de checkbox
-	 * @param char   $ini_sts   Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado
+	 * Agrega una caja de selección.
+	 * 
+	 * Agrega una caja de selección al formulario, el contenido de esta caja puede ser evaluado para verificar si es true o false
+	 * @param string $etq Etiqueta del campo
+	 * @param string $name Nombre de checkbox
+	 * @param boolean $ini_sts  Marcado por defecto o no (false ó true)
 	 *
 	 */
-	public function addCheckBox($etq = '', $name = '', $ini_sts = 'N'){
+	public function addCheckBox($etq = '', $name = '', $ini_sts = false){
 		$name = $this->getColspanRowspan($name);
 		$Cadena = 'checkbox'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$ini_sts;
 		$this->Objects['field'][$name] = $Cadena;
@@ -1004,17 +1004,20 @@ class myForm {
 	}
 
 	/**
-	 * Agrega un radio button al formulario en particular.
+	 * Agrega un botón de opción.
+	 * 
+	 * Agrega un botón de opcion al formulario en particular.
 	 * Los grupos de radio buttons se pueden formar y funcionar
 	 * siempre y cuando esos radio buttons queden con el mismo
 	 * nombre que permita agruparlos.
 	 *
-	 * @param Etiqueta $etq
-	 * @param Valor    $value
-	 * @param Grupo al que pertenece  $name_group
+	 * @param string $etq Etiqueta 
+	 * @param string $value Valor
+	 * @param string $name_group Grupo al que pertenece
+	 * @param boolean $is_checked Marcado por defecto o no (false ó true)
 	 * @return string Id del radio button, se usa para poder agrupar mas adelante
 	 */
-	public function addRadioButton($etq = '', $value = '', $name_group = '', $is_checked = 'N'){
+	public function addRadioButton($etq = '', $value = '', $name_group = '', $is_checked = false){
 		$name = '_'.$this->counterRadiosForThisForm+=1;
 
 		//$name = $this->getColspanRowspan($name);
@@ -1026,14 +1029,14 @@ class myForm {
 	}
 	
 	/**
-	 * Agrega una caja de texto tipo password
-	 *
-	 * @param string $etq       Etiqueta del campo
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 * @param string $size      Tamano del campo
+	 * Agrega una caja de texto tipo contraseña.
+	 * 
+	 * Agrega una caja de texto tipo contraseña al formulario.
+	 * @param string $etq Etiqueta del campo
+	 * @param string $name Nombre del campo
+	 * @param string $value Valor incial
+	 * @param string $size Tamano del campo
 	 * @param string $maxlength Numero maximo de caracteres
-	 *
 	 */
 	public function addPassword($etq = '', $name = '', $value = '', $size = '', $maxlength = ''){
 		$name     = $this->getColspanRowspan($name);
@@ -1045,13 +1048,13 @@ class myForm {
 	/**
 	 * Agrega una area de texto
 	 *
-	 * @param string  $etq       Etiqueta del campo
-	 * @param string  $name      Nombre del campo
-	 * @param string  $value     Valor incial
-	 * @param integer $cols      Numero de columna
-	 * @param integer $rows      Numero de fila
-	 * @param string  $wrap      Clase y tipo de abrigo
-	 *
+	 * Agrega una area de texto al formulario.
+	 * @param string $etq Etiqueta del campo
+	 * @param string $name Nombre del campo
+	 * @param string $value Valor incial
+	 * @param integer $cols Numero de columnas
+	 * @param integer $rows Numero de filas
+	 * @param string $wrap Clase y tipo de abrigo
 	 */
 	public function addTextArea($etq = '', $name = '', $value = '', $cols = '', $rows = '', $wrap = ''){
 		$name     = $this->getColspanRowspan($name);
@@ -1061,11 +1064,11 @@ class myForm {
 	}
 
 	/**
-	 * Agrega un campo de texto Oculto al formulario
+	 * Agrega un campo tipo oculto
 	 *
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 *
+	 * Agrega un campo oculto al formulario.
+	 * @param string $name Nombre del campo
+	 * @param string $value Valor incial
 	 */
 	public function addHidden($name = '', $value = ''){
 		$name     = $this->getColspanRowspan($name);
@@ -1075,21 +1078,64 @@ class myForm {
 	}
 		
 	/**
-	 * Agrega   un  campo   de  tipo  file
-	 * asincronico a el formulario actual.
+	 * 
+	 * Agrega un campo de tipo archivo.
 	 *
-	 * @param string  $etq                     Etiqueta del campo
-	 * @param string  $name                    Nombre del campo
-	 * @param string  $upload_url              Url del .php que recibe los datos
-	 * @param string  $flash_url               Url del donde se encuentra ubicado el flash
-	 * @param array   $file_types              Arreglo con los tipos de archivos que se pueden subir
-	 * @param string  $file_types_description  Descripcion de los tipos de archivos que se pueden subir
-	 * @param integer $file_size_limit         Limite de tamano por archivo que se puede subir
+	 * Agrega un campo de tipo archivo al formulario.
+	 * Los campos de tipo archivo no dependen del manejo general de los otros campos
+	 * pues estos trabajan independientemente con base en un control de tipo flash
+	 * que con la ayuda de un script procesa el contenido del archivo.
+	 * 
+	 * Ejemplo:
+	 * <code>
+	 * 
+	 * index.php
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * $myForm->addFile('Seleccione archivo(s):','archivo','upload.php');
+	 * 
+	 * echo $myForm->getForm(1);
+	 * 
+	 * ?>
+	 * 
+	 * upload.php 
+	 * <?php
+	 *  
+	 *  // Creamos o abrimos un archivo de registro 
+	 * 	$x = fopen('log.txt','a');
+	 *  
+	 *  // Validamos que el archivo(s) se haya(n) copiado
+	 *  if (move_uploaded_file($_FILES['Filedata']['tmp_name'],'files/'.$_FILES['Filedata']['name'])){
+	 *	
+	 *     fwrite($x,'Archivo subido y copiado de '.$_FILES['Filedata']['tmp_name'].' a '.$_FILES['Filedata']['name']."\r\n");
+	 *	
+	 *  }else{
+	 *	
+	 *     fwrite($x,'Problemas al copiar el archivo '.$_FILES['Filedata']['name']."\r\n");
+	 *	
+	 *  }
+	 *
+	 * //Cerramos el archivo de registro y finalizamos ala ejecución del script.
+	 * fclose($x);
+ 	 * exit(0);
+	 * 
+	 * // En este script, copiamos el/los archivo(s) seleccionados de la carpeta temporal a una final llamada 'files' que esta ubicada a nivel del script.
+	 * 
+	 * ?>
+	 * </code>
+	 * 
+	 * @param string $etq Etiqueta del campo
+	 * @param string $name del campo
+	 * @param string $upload_url Url del archivo php que recibe los datos
+	 * @param array  $file_types Arreglo con los tipos de archivos que se pueden subir
+	 * @param string $file_types_description  Descripcion de los tipos de archivos que se pueden subir
+	 * @param integer $file_size_limit Limite de tamano por archivo que se puede subir
 	 */
-	public function addFile ($etq, $name, $upload_url, $flash_url = '', $file_types = '', $file_types_description = '', $file_size_limit = ''){
+	public function addFile ($etq, $name, $upload_url, $file_types = '', $file_types_description = '', $file_size_limit = ''){
 		
-		if (!$flash_url)
-			$flash_url = $GLOBALS['urlProject'].'/swf/swfupload.swf';
+		$flash_url = $GLOBALS['urlProject'].'/swf/swfupload.swf';
 		
 		$name = $this->getColspanRowspan($name);
 		if ($file_types && is_array($file_types))
@@ -1113,14 +1159,62 @@ class myForm {
 	}
 
 	/**
-	 * Agregar un editor fckeditor al fomulario actual
+	 * Agregar un fckeditor.
 	 *
-	 * @param string  $etq            Etiqueta del campo generado por el FCK Editor
-	 * @param string  $name           Nombre del campo generado por el FCK Editor
-	 * @param string  $value          Valor inicial del campo generado por el FCK Editor
-	 * @param integer $width          Ancho
-	 * @param integer $height         Alto
-	 * @param string  $toolbarset     Juego de barra de herramientas
+	 * Agrega un fckeditor al formulario actual.
+	 * Un FCKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
+	 * Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.
+	 * Por el momento cuando declaramos un campo de este tipo solo es posible obtener su contenido si el action del formulario esta definido.
+	 * Ejemplo:
+	 * <code>
+	 * 
+	 * index.php
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form1','procesarForm.php');
+	 * 
+	 * $myForm->addFCKeditor ('Contenido:','contenido');
+	 * 
+	 * $myForm->addButton('btn1','Enviar');
+ 	 *	
+ 	 * $myForm->addEvent('btn1','onclick','dataSend');
+	 * 
+	 * echo $myForm->fgetForm(1);
+	 * 
+	 * ?>
+	 * 
+	 * handlerEvent.php
+	 * <?php
+	 * 
+	 * class events extends myController {
+     *  
+     *    public function dataSend ($dataForm){
+     *		  
+     *        // Forzamos el envio del formulario al action definido.
+     *        $this->script('form1.submit()');
+     * 
+     *        return $this->response;
+     *    }
+     *   
+     * }
+     * 
+	 * ?>
+	 *  
+	 * procesarForm.php
+	 * <?php
+	 * 
+	 * // Imprimos el contenido del formulario.
+	 * var_export($_POST);
+	 * 
+	 * ?>
+	 * 
+	 * </code>
+	 * @param string  $etq Etiqueta del campo generado por el FCK Editor
+	 * @param string  $name Nombre del campo generado por el FCK Editor
+	 * @param string  $value Valor inicial del campo generado por el FCK Editor
+	 * @param integer $width Ancho
+	 * @param integer $height Alto
+	 * @param string  $toolbarset Juego de barra de herramientas
 	 */
 	public function addFCKeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = 'Default'){
 		
@@ -1140,11 +1234,13 @@ class myForm {
 	}
 		
 	/**
-	 * Agrega un comentario en una Fila especifica
-	 * @param integer $id Identificador del espacio que va a utilizar, este siempre debe de ser diferente para cada uno
+	 * Agrega un comentario.
+	 * 
+	 * Agrega un comentario escrito para complementar con informacion un formulario.
+	 * @param string $id Identificador del comentario que va a utilizar
 	 * @param string  $Coment Texto que desea mostrar en la fila
 	 */
-	public function addComent ($id, $Coment){
+	public function addComment ($id, $Coment){
 		$id     = $this->getColspanRowspan($id);
 		$Cadena = 'coment'.$this->Separador.$id.$this->Separador.$Coment;
 		$this->Objects['field']['coment_'.$id] = $Cadena;
@@ -1152,15 +1248,22 @@ class myForm {
 	}
 
 	/**
-	 * Agrega un espacio en blanco en el lugar que le corresponda
+	 * Agrega un espacio en blanco. 
 	 *
-	 * @param integer $id    Identificador del espacio, este puede ser un numero consecutivo
+	 * En ocaciones los campos no son suficientes para incluir datos en un formulario. El metodo addFreeObject permite agregar un objeto creado por el usuario.
+	 * <code>
+	 * Ejemplo:
+	 * 
+	 * 
+	 * 
+	 * </code>
+	 * @param string $id Identificador del espacio
 	 * @param string  $val_e Valor en el momento del cargue dentro del formulario para la etiqueta
 	 * @param string  $val_c Valor en el momento del cargue dentro del formulario para el campo
 	 */
-	public function addWhiteSpace ($id, $val_e = '', $val_c = ''){
+	public function addFreeObject ($id, $etq = '', $value = ''){
 		$id = $this->getColspanRowspan($id);
-		$this->Objects['field']['whitespace_'.$id] = 'whitespace'.$this->Separador.$id.$this->Separador.htmlentities($val_e).$this->Separador.$val_c;
+		$this->Objects['field']['whitespace_'.$id] = 'whitespace'.$this->Separador.$id.$this->Separador.htmlentities($etq).$this->Separador.$value;
 		$this->arrayFormElementType[$id] = 'whitespace';
 	}
 	
@@ -2005,19 +2108,18 @@ class myForm {
 
 		if ($this->useAddFile)
 		  $buf .= $this->getJavaScriptSWFUploader();
-		
 
 		$this->cols = $cols;
 
 		$buf .= '<form ';
 
+		$buf.= 'onsubmit="'.$this->onSubmitAction.'" ';
+		
 		if ($this->action)
 			$buf .= 'action="'.$this->action.'" ';
-
+				
+			
 		$buf.= 'method="'.$this->method.'" ';
-
-		if(!$this->action)
-			$buf.= 'onsubmit="'.$this->onSubmitAction.'" ';
 
 		if ($this->enctype)
 			$buf.='enctype= "'.$this->enctype.'" ';
@@ -2136,9 +2238,8 @@ class myForm {
 				case 'checkbox':
 					
 					$cheked = '';
-					if ($campos_f[3] == true){
+					if ($campos_f[3] == true)
 						$cheked = 'checked';
-					}
 
 					$onClickTag   = 'onclick="checkear(\''.$campos_f[2].'\')"';
 						
@@ -2149,8 +2250,8 @@ class myForm {
 				case 'radiobutton':
 
 					$cheked = '';
-					if ($campos_f[5] == 'S')
-					$cheked = 'checked';
+					if ($campos_f[5] == true)
+						$cheked = 'checked';
 
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[4]).' class="'.$this->styleClassFields.'" type="radio" name="'.$campos_f[4].'" id="'.$campos_f[4].'_'.$campos_f[3].'" value="'.$campos_f[3].'" '.$this->checkExistEventJs($campos_f[4]).' '.$this->checkIfIsDisabled($campos_f[4]).' '.$cheked.'></td>'."\n";
 					break;
