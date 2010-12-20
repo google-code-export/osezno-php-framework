@@ -1,48 +1,39 @@
 <?php
   /**
-   * @package OSEZNO PHP FRAMEWORK
-   * @copyright 2007-2011
-   * @version: 0.1
-   * @author: Oscar Eduardo Aldana 
-   * @author: José Ignacio Gutiérrez Guzmán
+   * Configuración del proyecto.
    * 
-   * developer@osezno-framework.org
+   * @author: Oscar Eduardo Aldana <oscar.aldana@osezno-framework.org>
+   * @author: José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
    */
 
-
   /**
-   * Carpeta de projecto ubicada dentro de la caperta publica www
-   * Ej: osezno-framework/ 
+   * Carpeta de projecto ubicada dentro de la caperta publica www. Ej: osezno-framework/
+   * @var string 
    */
   $baseFolder = 'osezno-framework/';  
-
   
-  /**********************************************************
-   * 				   DISEÑO Y VISTA  	                    *
-   **********************************************************/  
+  # Diseño y Vista  
   
   /**
-   * Idioma que se va a usar en las etiquetas de los objetos
+   * Idioma que se va a usar en las etiquetas de los objetos.
    * @var string 
    */
   $lang = 'spanish';
   
   /**
-   * Tema actual de estilos
+   * Tema actual de estilos.
    * @var string
    */
   $theme = 'osezno';
 
   /**
-   * Nombre de la carpeta donde se llaman todas las plantillas,
-   * esta carpeta por defecto esta en la raiz del proyecto.
+   * Nombre de la carpeta donde se llaman todas las plantillas, esta carpeta por defecto esta en la raiz del proyecto.
    * @var string
    */
   $templateBaseFolder = 'templates/';
   
   /**
-   * Nivel de manejo de errores,
-   * E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL | E_DEPRECATED (> 5.3.0) 
+   * Nivel de manejo de errores, E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL | E_DEPRECATED (> 5.3.0) 
    * @var string
    */
   if (version_compare(PHP_VERSION, '5.3.0') >= 0)
@@ -51,16 +42,13 @@
   	error_reporting(E_ALL);
   
   
-  /**********************************************************
-   * 				  VARIABLES DE SESION	                *
-   **********************************************************/
+  # Variables de sesión
   
   /**
-   * Nombre de la carpeta que guarda las sesiones,
-   * esta carpeta por defecto esta en la raiz del proyecto.
+   * Nombre de la carpeta que guarda las sesiones, esta carpeta por defecto esta en la raiz del proyecto.
    * @var string
    */
-  $sessionNameFolder = 'sesiones';
+  $sessionNameFolder = 'sesiones/';
   
   /**
    * Nombre de cookie referencia de las sesiones de OszenO framework.
@@ -69,15 +57,12 @@
   $sessionName = 'OSEZNO_FRAMEWORK';
   
   /**
-   * Caducidad en segundos en cache para la sesion.
+   * Caducidad en segundos en cache para la sesión.
    * @var string
    */
   $sessionCacheExpire = 3600;
 
-  
-  /**********************************************************
-   * 				CONEXION BASE DE DATOS	                *
-   **********************************************************/
+  # Conexion a base de datos.
   
   /**
    * Nombre de base de datos.
@@ -98,13 +83,13 @@
   $host = 'localhost';
   
   /**
-   * Nombre de usuario para conexion.
+   * Nombre de usuario para conexion a base de datos.
    * @var string
    */
   $user = 'root';
   
   /**
-   * Contraseña de usuario para conexión.
+   * Contraseña de usuario para conexión a base de datos.
    * @var string
    */
   $password = '';
@@ -115,33 +100,26 @@
    */
   $port = 3306;
   
+  /**
+   * No tocar si no es necesario hasta el final del archivo
+   */
   
-  /**
-   * ¡¡¡ATENCION!!!
-   *  
-   * Configuraciones especificas 
-   * para OseznO framework
-   * 
-   * No tocar si no es necesario
-   * 
-   */
-
-  /**
-   * Parametros de conexion a base de datos por defecto
-   */
+  # Parametros de conexion a base de datos por defecto
   global $MYACTIVERECORD_PARAMS;
   
   $GLOBALS['MYACTIVERECORD_PARAMS']['database'] = $database;
+
   $GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= $engine;
+  
   $GLOBALS['MYACTIVERECORD_PARAMS']['host'] 	= $host;
+  
   $GLOBALS['MYACTIVERECORD_PARAMS']['user'] 	= $user;
+  
   $GLOBALS['MYACTIVERECORD_PARAMS']['password'] = $password; 
+  
   $GLOBALS['MYACTIVERECORD_PARAMS']['port'] 	= $port;
   
-  
-  /**
-   * Si la pagina fue accedida desde https cambiamos las urls de el framework
-   */ 
+  # Si la pagina fue accedida desde https cambiamos las urls de el framework
   $http = 'http://';
   if (isset($_SERVER['HTTPS'])){
   	$http = 'https://';
@@ -150,24 +128,16 @@
   global $folderProject;
   $GLOBALS['folderProject'] = str_replace('//','/',$_SERVER['DOCUMENT_ROOT'].'/'.$baseFolder);
 
-  /**
-   * Se van a  guardar todas las sesiones en la siguiente carpeta
-   */
+  # Se van a  guardar todas las sesiones en la siguiente carpeta
   session_save_path ($GLOBALS['folderProject'].$sessionNameFolder); 
 
-  /**
-   * Cambiamos el nombre de la cookie
-   */
+  # Cambiamos el nombre de la cookie
   session_name($sessionName);  
   
-  /**
-   * Permitir al sistema usar sesiones para Usar listas dinamicas
-   */
+  # Permitir al sistema usar sesiones para Usar listas dinamicas
   session_start();
   
-  /**
-   * La caducidad de la sesion esta definida en la siguiente linea en numero de segundos 
-   */
+  # La caducidad de la sesion esta definida en la siguiente linea en numero de segundos 
   session_cache_expire ($sessionCacheExpire);
   
   require_once $GLOBALS['folderProject'].'lib/plugin/packages/xajax/xajax_core/xajax.inc.php';
@@ -199,97 +169,56 @@
   global $urlProject;
   $GLOBALS['urlProject'] = $http.$httpHost;
   
-  /**
-   * Lang en uso
-   */
+  # Lang en uso
   define ('LANG',			$lang,true);
   
-  /**
-   * Nombre del tema de hojas de estilos que usara el framework
-   */
+  # Nombre del tema de hojas de estilos que usara el framework
   define ('THEME_NAME',		$theme,true);
   
-  /**
-   * Ruta donde se encuentran las plantillas de Osezno  [*]
-   */
+  # Ruta donde se encuentran las plantillas de Osezno
   define ('PATH_TEMPLATES', $GLOBALS['folderProject'].$templateBaseFolder,true);
   
-  /**
-   * Ruta tipo url en donde se almacenan los scripts js de xAjax
-   */
+  # Ruta tipo url en donde se almacenan los scripts js de xAjax
   define ('URL_JS_XJX',     $http.$httpHost.'/lib/plugin/packages/xajax/',true);
   
-  /**
-   * Ruta tipo url donde se descarga el js de funciones
-   */
+  # Ruta tipo url donde se descarga el js de funciones
   define ('URL_JS_FCN',     $http.$httpHost.'/javascript/MyFunctions.js',true);
 
-  /**
-   * 
-   */
+  # Ruta tipo Url archivo js para ventanas modales.
   define ('URL_JS_MW',      $http.$httpHost.'/javascript/myModalWindow.js',true);
   
-  /**
-   * Ruta tipo url donde se descarga el js de wz tooltip
-   */
+  # Ruta tipo url donde se descarga el js de wz tooltip
   define ('URL_JS_TT',       $http.$httpHost.'/javascript/wz_tooltip.js',true);
   
-  /**
-   * Ruta tipo url donde se descarga el js de wz tooltip como plugin adicional para ayudas esilo bocadillo 
-   */ 
+  # Ruta tipo url donde se descarga el js de wz tooltip como plugin adicional para ayudas esilo bocadillo 
   define ('URL_JS_TB',       $http.$httpHost."/javascript/tip_balloon.js",true);  
   
-  /**
-   * Ruta tipo url donde se descarga el js de funciones de SWF
-   */
+  # Ruta tipo url donde se descarga el js de funciones de SWF
   define ('URL_SWF_FCN',     $http.$httpHost."/javascript/swfupload.js",true);
   
-  /**
-   * Ruta tipo url donde se encuentra el js de handlers de SWF
-   */
+  # Ruta tipo url donde se encuentra el js de handlers de SWF
   define ('URL_SWF_HLD',     $http.$httpHost.'/javascript/handlers.js',true);
   
-  /**
-   * Ruta tipo url donde se encuentra el js de myList
-   */
+  # Ruta tipo url donde se encuentra el js de myList
   define ('URL_JS_ML',       $http.$httpHost.'/javascript/myList.js',true);
 
-  /**
-   * Ruta tipo url donde se encuentra el js de myTabs
-   */
+  # Ruta tipo url donde se encuentra el js de myTabs
   define ('URL_JS_MT',       $http.$httpHost.'/javascript/myTabs.js',true);
     
-  /**
-   * Ruta tipo url donde se encuentra el js de myCalendar
-   */
+  # Ruta tipo url donde se encuentra el js de myCalendar
   define ('URL_JS_MC',       $http.$httpHost.'/javascript/myCalendar.js',true);
   
-  /**
-   * Ruta tipo url donde se descarga el favicon del proyecto
-   */
+  # Ruta tipo url donde se descarga el favicon del proyecto
   define ('URL_FAV_ICON',    $http.$httpHost.'/favicon.ico',true);
 
-  /**
-   * Ruta tipo url donde se encuentra la base del proyecto
-   */
+  # Ruta tipo url donde se encuentra la base del proyecto
   define ('URL_BASE_PROJECT',$http.$httpHost);
 
-  /**
-   * Para la siguiente constante de configuracion...
-   * Nota: No olvide que myForm.class.php y myDinamicList.class.php tienen ambas
-   * un atributo llamado 'prefAjax', si usted piensa modificar esta constante; debe
-   * tambien modificar los atributos de estas dos clases.
-   */
-
-  /**
-   * Prefijo que usa xAjax para llamar a los metodos y funciones que reciben sus datos
-   */
+  # Prefijo que usa xAjax para llamar a los metodos y funciones que reciben sus datos
   define ('XAJAX_WRAPPER_PREFIX','',true);
   
-  /**
-   * OseznO php framework Version
-   */
-  define ('FRAMEWORK_VERSION','0.1.5',true);
+  # Osezno php framework versión
+  define ('FRAMEWORK_VERSION','0.1',true);
 
   $objxAjax = new xajax();
   

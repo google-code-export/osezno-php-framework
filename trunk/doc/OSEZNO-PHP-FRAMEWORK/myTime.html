@@ -77,7 +77,7 @@ Source Location: /myTime.class.php<br /><br />
 <div class="description">myTime</div><br /><br />
 <h4>Author(s):</h4>
 <ul>
-          <li><p>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</p><p>Ultima actualizacion: 30 Enero 2007</p><p>Control de Cambios:</p></li>
+          <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
                   </ul>
 
 
@@ -93,15 +93,6 @@ Source Location: /myTime.class.php<br /><br />
         
 </td>
 
-<td valign="top">
-<h3><a href="#class_vars">Variables</a></h3>
-<ul>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myTime.html#var$endTime">$endTime</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myTime.html#var$microsegPassed">$microsegPassed</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myTime.html#var$result_intDecimals">$result_intDecimals</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myTime.html#var$startTime">$startTime</a></li>
-  </ul>
-</td>
 
 
 <td valign="top">
@@ -128,90 +119,37 @@ Source Location: /myTime.class.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 15]<br />
-myTime<br /><br /><br /><br />
+[line 26]<br />
+myTime<br /><br /><p>Controlar tiempo de ejecucion de scripts.  <ol><li><div class="src-line">&nbsp;Ejemplo&nbsp;de&nbsp;utilización:</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myTime&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myTime.html">myTime</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myTime</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTime.html#methodtimeStart">timeStart</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<a href="http://www.php.net/sleep">sleep</a><span class="src-sym">(</span><span class="src-num">5</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myTime</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTime.html#methodtimeEnd">timeEnd</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><b>author:</b>&nbsp;&nbsp;</td><td><p>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</p><p>Ultima actualizacion: 30 Enero 2007</p><p>Control de Cambios:</p></td>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</td>
   </tr>
   <tr>
     <td><b>version:</b>&nbsp;&nbsp;</td><td>0.1</td>
   </tr>
   <tr>
-    <td><b>uses:</b>&nbsp;&nbsp;</td><td>Manejo - de Tiempo y fechas</td>
+    <td><b>uses:</b>&nbsp;&nbsp;</td><td>Manejo - de tiempo (fechas)</td>
   </tr>
 </table>
 </div>
 </div><br /><br />
 <div class="top">[ <a href="#top">Top</a> ]</div><br />
 
-<hr />
-<a name="class_vars"></a>
-<h3>Class Variables</h3>
-<div class="tags">
-	<a name="var$endTime"></a>
-	<p></p>
-	<h4>$endTime = <span class="value"></span></h4>
-	<p>[line 18]</p>
-  
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$microsegPassed"></a>
-	<p></p>
-	<h4>$microsegPassed = <span class="value"></span></h4>
-	<p>[line 19]</p>
-  
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$result_intDecimals"></a>
-	<p></p>
-	<h4>$result_intDecimals = <span class="value">&nbsp;10</span></h4>
-	<p>[line 20]</p>
-  
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$startTime"></a>
-	<p></p>
-	<h4>$startTime = <span class="value"></span></h4>
-	<p>[line 17]</p>
-  
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-</div><br />
 
 <hr />
 <a name="class_methods"></a>
@@ -220,16 +158,16 @@ myTime<br /><br /><br /><br />
 
   <hr />
 	<a name="methodtimeEnd"></a>
-	<h3>method timeEnd <span class="smalllinenumber">[line 28]</span></h3>
+	<h3>method timeEnd <span class="smalllinenumber">[line 55]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void timeEnd(
+		<code>integer timeEnd(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Detiene el contador de tiempo.<br /><br /><p>Detiene el contador de tiempo.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -245,16 +183,16 @@ myTime<br /><br /><br /><br />
   </div>
   <hr />
 	<a name="methodtimeStart"></a>
-	<h3>method timeStart <span class="smalllinenumber">[line 22]</span></h3>
+	<h3>method timeStart <span class="smalllinenumber">[line 42]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void timeStart(
+		<code>integer timeStart(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Inicia el contador de tiempo.<br /><br /><p>Inicia el contador de tiempo.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -273,7 +211,7 @@ myTime<br /><br /><br /><br />
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Mon, 20 Dec 2010 16:35:02 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Mon, 20 Dec 2010 17:56:29 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
