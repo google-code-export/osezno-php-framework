@@ -1,7 +1,8 @@
 <?php
 /**
  * oszeno.class.php
- * @uses Metodos y atributos propios del proyecto
+ * 
+ * @uses Metodos y atributos propios del proyecto, llamado plantillas.
  * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>

@@ -121,6 +121,7 @@ function responseAHAH(pageElement, errorMessage, tab) {
 /**
  * Activa una pestaña
  * @param tabActive	Id de la pestaña
+ * @param from	Iniciar desde id
  * @param countTabs	Numero de pestañas 
  * @param urlActive	Url a la que apunta la pestaña
  * @param idDiv	Id del div a modificar el contenido 
