@@ -55,7 +55,7 @@ class myForm {
 	 *
 	 * @var string
 	 */
-	private $cache_ext_file = '';
+	private $cache_ext_file = '.mfc';
 
 	/**
 	 * Numero de segundos en que la cache de un documento de mantendra
@@ -900,7 +900,7 @@ class myForm {
 
 		$this->FCK_editor_BasePath = URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/';
 		
-		$this->pathImages =  '/themes/'.THEME_NAME.'/myform/';
+		$this->pathImages =  'themes/'.THEME_NAME.'/myform/';
 		
 		$this->name = $name;
 
@@ -935,7 +935,7 @@ class myForm {
 	}
 		
 	/**
-	 * Agregar campo select
+	 * Agregar campo de unica seleccion
 	 *
 	 * Agrega un campo de unica seleccion con los valores por parametro
 	 * @param string $etq Etiqueta
@@ -944,6 +944,7 @@ class myForm {
 	 * @param string $selected Valor seleccionado por defecto
 	 * @param string $size Tamano (Cantidad de opciones que muestra)
 	 * @param string $truncar_hasta Truncar Numero maximo de caracteres por opcion
+	 * @param boolean $multiple Es un campo de seleccion multiple.
 	 */
 	public function addSelect($etq = '', $name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
 		$name = $this->getColspanRowspan($name);
@@ -1135,7 +1136,7 @@ class myForm {
 	 */
 	public function addFile ($etq, $name, $upload_url, $file_types = '', $file_types_description = '', $file_size_limit = ''){
 		
-		$flash_url = $GLOBALS['urlProject'].'/swf/swfupload.swf';
+		$flash_url = $GLOBALS['urlProject'].'swf/swfupload.swf';
 		
 		$name = $this->getColspanRowspan($name);
 		if ($file_types && is_array($file_types))
@@ -1254,10 +1255,17 @@ class myForm {
 	 * <code>
 	 * Ejemplo:
 	 * 
+	 * $myForm = new myForm ('form1');
 	 * 
+	 * $object = '<img src="logo.gif">';
+	 * 
+	 * # Dentro del valor del objeto podemos agregar el valor que queramos. 
+	 * $myForm->addFreeObject('fo1','Imagen',$object);
+	 * 
+	 * echo $myForm->getForm();
 	 * 
 	 * </code>
-	 * @param string $id Identificador del espacio
+	 * @param string $id Identificador del objeto libre
 	 * @param string  $val_e Valor en el momento del cargue dentro del formulario para la etiqueta
 	 * @param string  $val_c Valor en el momento del cargue dentro del formulario para el campo
 	 */
@@ -1268,15 +1276,13 @@ class myForm {
 	}
 	
 	/**
-	 * Agrega un boton a la funcionalidad del formulario
-	 *
-	 * @param string $strName    Nombre del Elemento
-	 * @param string $strLabel   Etiqueta o valor del Elemento
-	 * @param string $strSrcImg  Ruta de la img que lo acompana
+	 * Agrega un boton.
 	 * 
-	 * Nota: Si desea pasar variables adicionales al evento del
-	 * boton, debe agregar separado por (:) los valores que necesite
-	 * 
+	 * Agrega un boton a la salida del formulario. Los botones normalmente encapsulan algun evento del usuario, por ejemplo guardar algun dato o hacer una consulta.
+	 * Para agregar un evento a un boton y hacerlo funcional pruebe el metodo addEvent.
+	 * @param string $strName Nombre del Elemento
+	 * @param string $strLabel Etiqueta o valor del Elemento
+	 * @param string $strSrcImg Nombre de la imagen que lo acompaña.
 	 */
 	public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
 		$this->arrayButtonList[] = array('strName'    =>  $strName,
@@ -1289,16 +1295,16 @@ class myForm {
 	}
 
 	/**
-	 * Devuelve una caja de texto
+	 * Retorna el HTML de una caja de texto.
 	 *
-	 * @param string $name       Nombre del campo
-	 * @param string $value      Valor incial
-	 * @param integer $size      Tamano del campo
+	 * Retorna el HTML de una caja de texto que puede ser usado en cualquier parte de un script.
+	 * Opera de identica forma al metodo addText solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
+	 * @param string $name Nombre del campo
+	 * @param string $value Valor incial
+	 * @param integer $size Tamano del campo
 	 * @param integer $maxlength Numero maximo de caracteres
-	 * @param char    $validacion_numerica (S o N)
-	 * @param bool    $CampoFecha (0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha
-	 * @param String  $NameFunctionCallCalendar En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar
-	 *
+	 * @param boolean $validacion_numerica
+	 * @param boolean $CampoFecha Muestra un boton en el campo que facilita la seleccion de una fecha
 	 */
 	public function getText($name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
 		$this->arrayFormElementType[$name] = 'text';
@@ -1322,13 +1328,16 @@ class myForm {
 	}
 	
 	/**
-	 * Obtiene una combo desplegable (menu)
-	 *
-	 * @param string $name          Nombre del campo
-	 * @param array  $value         Valor incial que es un arreglo de la forma especificada
-	 * @param string $size          Tamano del campo
-	 * @param string $truncar_hasta Truncar Numero maximo de caracteres al fina
-	 *
+	 * Obtiene campo de unica seleccion.
+	 * 
+	 * Obtiene un campo de unica seleccion con los valores por parametro.
+	 * Opera de identica forma al metodo addSelect solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
+	 * @param string $name Nombre
+	 * @param array  $value Valor
+	 * @param string $selected Valor seleccionado por defecto
+	 * @param string $size Tamano del campo
+	 * @param string $truncar_hasta Truncar Numero maximo de caracteres por opcion
+	 * @param boolean $multiple Es un campo de seleccion multiple.
 	 */
 	public  function getSelect($name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
 		$buf = '';
@@ -1373,12 +1382,12 @@ class myForm {
 	}
 	
 	/**
-	 * Obtiene una caja checkBox al formulario, el contenido de esta caja puede
-	 * ser evaluado para verificar si es '0' o '1'
-	 *
-	 * @param string $name      Nombre de checkbox
-	 * @param char   $ini_sts   Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado
-	 *
+	 * Obtiene un caja de seleccion.
+	 * 
+	 * Obtiene el HTML de una caja de seleccion al formulario.
+	 * Opera de identica forma al metodo addCheckBox solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
+	 * @param string $name Nombre de checkbox.
+	 * @param boolean $ini_sts Estado inicial del Check en la carga del formulario. (True o False).
 	 */
 	public function getCheckBox($name = '', $ini_sts = false){
 		$buf = '';
@@ -1398,17 +1407,19 @@ class myForm {
 	}
 	
 	/**
-	 * Obtiene el html de un radio button
-	 *
+	 * Obtiene un botón de opción.
+	 * 
+	 * Opera de identica forma al metodo addRadioButton solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
 	 * @param string $value Valor por defecto del Radio button
 	 * @param string $name_group Nombre del radio o grupo que van a comformarlo
+	 * @param boolean $is_checked Estado inicial del boton de selección. (true o false)
 	 * @return string
 	 */
-	public function getRadioButton ($value = '', $name_group = '', $is_checked = 'N'){
+	public function getRadioButton ($value = '', $name_group = '', $is_checked = false){
 		$buf = '';
 
 		$checked = '';
-		if ($is_checked=='S')
+		if ($is_checked==true)
 		$checked = 'checked="checked"';
 
 		$buf .= '<input '.$this->checkExistEventJs($name_group).' '.$this->checkIsHelping($name_group).' '.$this->checkIfIsDisabled($name_group).' type="radio" name="'.$name_group.'" id="'.$name_group.'_'.$value.'" value="'.$value.'" class="'.$this->styleClassFields.'" '.$checked.'>';
@@ -1421,11 +1432,11 @@ class myForm {
 	/**
 	 * Obtiene una caja de texto tipo password
 	 *
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 * @param string $size      Tamano del campo
+	 * Opera de identica forma al metodo addPassword solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
+	 * @param string $name Nombre del campo
+	 * @param string $value Valor incial
+	 * @param string $size Tamano del campo
 	 * @param string $maxlength Numero maximo de caracteres
-	 *
 	 */
 	public function getPassword($name = '', $value = '', $size = '', $maxlength = ''){
 
@@ -1438,13 +1449,13 @@ class myForm {
 		
 	/**
 	 * Obtiene una area de texto
-	 *
-	 * @param string  $name      Nombre del campo
-	 * @param string  $value     Valor incial
-	 * @param integer $cols      Numero de columna
-	 * @param integer $rows      Numero de fila
-	 * @param string  $wrap      Clase y tipo de abrigo
-	 *
+	 * 
+	 * Opera de identica forma al metodo addTextArea solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
+	 * @param string  $name  Nombre del campo
+	 * @param string  $value Valor incial
+	 * @param integer $cols Numero de columna
+	 * @param integer $rows Numero de fila
+	 * @param string  $wrap Clase y tipo de abrigo
 	 */
 	public function getTextArea($name = '', $value = '', $cols = '', $rows = '', $wrap = ''){
 		$buf = '';
@@ -1456,9 +1467,9 @@ class myForm {
 	/**
 	 * Obtiene un campo Oculto
 	 *
-	 * @param string $name      Nombre del campo
-	 * @param string $value     Valor incial
-	 *
+	 * Opera de identica forma al metodo addHidden solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
+	 * @param string $name Nombre del campo
+	 * @param string $value Valor incial
 	 */
 	public function getHidden($name = '', $value = ''){
 		$buf = '';
@@ -1469,15 +1480,29 @@ class myForm {
 	}
 
 	/**
-	 * Obtiene el HTML de un campo formulario
-	 * tipo File asincronico.
+	 * Obtiene el HTML de un campo formulario tipo File asincronico.
 	 *
+	 * Opera de identica forma al metodo addFile solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
 	 * @param string $name Nombre del campo
 	 * @return string
 	 */
-	public function getFile ($name){
+	public function getFile ($name, $upload_url, $file_types = '', $file_types_description = '', $file_size_limit = ''){
 		$buf = '';
 
+		$flash_url = $GLOBALS['urlProject'].'swf/swfupload.swf';
+		
+		if ($file_types && is_array($file_types))
+		$this->FILE_file_types = $file_types;
+		
+		if ($file_types_description)
+		$this->FILE_file_types_description = $file_types_description;
+		
+		if (intval($file_size_limit))
+		$this->FILE_size_limit = $file_size_limit;
+		
+		$this->FILE_upload_url = $upload_url;
+		$this->FILE_flash_url  = $flash_url;
+		
 		$buf.='<span id="spanButtonPlaceholder">';
 		
 		/**
@@ -1501,24 +1526,18 @@ class myForm {
 		$buf.= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
 		$this->arrayFormElementType[$name] = 'file';
 
-		return $buf;
+		return $this->getJavaScriptSWFUploader().$buf;
 	}
 	
 	/**
-	 * Obtiene el html de un boton
-	 * necesario para ejecutar los
-	 * actions en los  formularios
-	 * que son creados por los usu
-	 * arios.
+	 * Obtiene un botón.
 	 *
-	 * @param string $strName    Nombre del boton
-	 * @param string $strLabel   Etiqueta del boton
-	 * @param string $strSrcImg  Ruta de la img que lo acompana
+	 * Obtiene el codigo HTML. Los botones normalmente encapsulan algun evento del usuario, por ejemplo guardar algun dato o hacer una consulta.
+	 * Para agregar un evento a un boton y hacerlo funcional pruebe el metodo addEvent antes de obtener el botón. 
+	 * @param string $strName  Nombre del boton.
+	 * @param string $strLabel Etiqueta del boton.
+	 * @param string $strSrcImg  Nombre de la imagen que lo acompaña.
 	 * @return string
-	 * 
-	 * Nota: Si desea pasar variables adicionales al evento del
-	 * boton, debe agregar separado por (:) los valores que necesite	 
-	 *  
 	 */
 	public function getButton ($strName, $strLabel = '', $strSrcImg = ''){
 		$buf = '';
@@ -1538,10 +1557,41 @@ class myForm {
 	}	
 
 	/**
-	 * Crea un agrupamiento HTML mediante fieldSet
-	 * para los  nombres de  los campos contenidos
-	 * dentro del tercer parametro.
-	 *
+	 * Agregar un agrupamiento.
+	 * 
+	 * Crea un agrupamiento HTML mediante fieldSet para los  nombres de  los campos seleccionados.
+	 * Cuando un formulario tiene demasiados campos es posible organizar el formulario de tal forma que
+	 * se vea un poco mejor organizado, clasificando los campos por tipos que hacia la vista del usuario
+	 * le sea permitido mas facilmente ir hacia ellos. Por ejemplo podriamos agrupar los datos personales
+	 * de los datos no personales de un formulario de lectura de datos de un cliente bancario.
+	 * 
+	 * <code>
+	 * 
+	 * Ejemplo:
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * $myForm->addText('Nombre:','nom');
+	 * 
+	 * $myForm->addText('Apellido:','ape');
+	 * 
+	 * $myForm->addCheckBox('Futbol:','fut');
+	 * 
+	 * $myForm->addCheckBox('Tenis:','tns');
+	 * 
+	 * // Agrupamos en un fieldset los campos que pertenecen a esta categoria.
+	 * $myForm->addGroup('gp1','Datos personales',array('nom','ape'));
+	 * 
+	 * // Agrupamos en un fieldset los campos que pertenecen a esta categoria. 
+	 * $myForm->addGroup('gp2','Deportes que practica',array('fut','tns'));
+	 *  
+	 * echo $myForm->getForm();
+	 * 
+	 * ?>
+	 * 
+	 * </code>
+	 * 
 	 * @param string  $idGroup Identificador interno del fieldSet
 	 * @param string  $strFieldSet Legend del fieldSet
 	 * @param array   $arraystrIdFields Arreglo de nombre de objetos que seran agrupados
@@ -1564,32 +1614,66 @@ class myForm {
 	}
 	
 	/**
-	 * Agregar un evento JavaScript al elemento llamado 'id' que es el elemento que queremos modificar
-	 * su propiedad de OnClick, OnBlur... etc
-	 * Por ejemplo, podemos crear una caja de texto sencilla por medio de
-	 * $obj-> addText('Nombre:','nombre'); y despues agregar el siguiente metodo
-	 *
-	 * $obj->addEvent('nombre','onchange','function', $param1, $param2...)
-	 *
-	 * Para que en la obtencion del formulario ese evento sea escrito en la salida HTML
-	 *
-	 * @param string  $objName   Nombre o id del objeto del formulario al que se le va a agregar un evento Js
-	 * @param integer $event     El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento
+	 * Agrega un evento al objeto.
+	 * 
+	 * Agrega un evento JavaScript que sera administrado por la clase myController al id relacionado al objeto del formulario.
+	 * <code>
+	 * 
+	 * index.php
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * $myForm->addText('Nombre:','nom');
+	 * 
+	 * $myForm->addButton('btn1','Enviar');
+	 * 
+	 * // Es posible definir 1 o mas eventos sobre un objeto del formulario. 
+	 * // Para definir mas de un evento se puede asociar en un arreglo los nombres de los eventos que queremos ejecutar.  
+	 * $myForm->addEvent('btn1','onclick','onClickEvent');
+	 *  
+	 * // Los eventos pueden ayudar a validar cierto tipo de información.
+	 * $myForm->addEvent('nom','onchange','onChangeEvent');
+	 *  
+	 * $myForm->getForm(1);
+	 * 
+	 * ?>
+	 * 
+	 * handlerEvent.php
+	 * <?php
+	 * 
+	 *  class events extends myController {
+     *    
+     *    // Los eventos se declaran en el handlerEvent en donde se codifican por separado. 
+     *    
+     *    public function onClickEvent ($dataForm){
+     *		  
+     *		  $this->alert('Su nombre es:'.$dataForm['nom']);
+     * 
+     *        return $this->response;
+     *    }
+     *   
+     *    public function onChangeEvent ($dataForm){
+     *    
+     *    	  if (strlen($dataForm['nom'])<4){
+     *    
+     *            $this->alert('Su nombre es demasiado corto');
+     *    	  }
+     *    
+     *        return $this->response;
+     *    }
+     *   
+     *  }
+	 * 
+	 * ?>
+	 * 
+	 * </code>
+	 * @param string  $objName   Nombre o id del objeto del formulario al que se le va a agregar un evento. El objeto debe ser textarea, select, password, text, radiobutton, checkbox o button para que sea posible agregar el evento.  
+	 * @param integer $event     El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento. (1 ó onblur, 2 ó onchange, 3 ó onclick, 4 ó onfocus, 5 ó onmouseout, 6 ó onmouseover)
 	 * @param string  $functions El nombre de la funcion o funciones que deseamos llamar al momento de cumplirse el evento
 	 * @param $param1...
 	 * @param $param2...
 	 * @param $param3...
-	 *
-	 * Valores permitidos (1->blur, 2->change, 3->click, 4->focus, 5->mouseout, 6->OnMouseOver)
-	 *
-	 * Hasta el momento esta metodo solo aplica para los objetos de formularios que sean
-	 * -textarea
-	 * -select
-	 * -password
-	 * -text
-	 * -radiobuttons
-	 * -checkbox
-	 * -buttons
 	 */
 	public function addEvent($objName,$event,$functions){
 		
@@ -1682,20 +1766,90 @@ class myForm {
 	}
 	
 	/**
-	 * Configura el tipo de parametro que va a ser enviado a la funcion de un
-	 * evento, este parametro puede ser tipo 'form' o tipo 'field'
+	 * Configura tipo de parametro sobre eventos.
 	 * 
-	 * @param $paramType	Tipo de parametro
+	 * Configura el tipo de parametro que va a ser enviado a la funcion de un evento, 
+	 * este parametro puede ser tipo 'global' o tipo 'field'.
+	 * 'form' enviara los datos del formulario asociado al objeto, mientras que 'field' el valor del objeto en el evento.
+	 * 
+	 * Ejemplo:
+	 *<code>
+	 * 
+	 *index.php
+	 *<?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * $myForm->addText('Nombre:','nom');
+	 * 
+	 * $myForm->addButton('btn1','Enviar');
+	 *
+	 * $myForm->setParamTypeOnEvent('field');
+	 * 
+	 * $myForm->addEvent('nom','onchange','onChangeEvent');
+	 *
+	 * $myForm->setParamTypeOnEvent('global');
+	 * 
+	 * $myForm->addEvent('btn1','onclick','onClickEvent'); 
+	 *  
+	 * $myForm->getForm(1);
+	 * 
+	 *?>
+	 * 
+	 *handlerEvent.php
+	 *<?php
+	 * 
+	 *  class events extends myController {
+     *    
+     *    public function onClickEvent ($dataForm){
+     *		  
+     *		  $this->alert('Su nombre es:'.$dataForm['nom']);
+     * 
+     *        return $this->response;
+     *    }
+     *   
+     *    public function onChangeEvent ($nom){
+     *    
+     *    	  $this->alert('Su nombre es:'.$nom);
+     *    
+     *        return $this->response;
+     *    }
+     *   
+     *  }
+	 * 
+	 *?>
+	 * 
+	 *</code>
+	 * @param string $paramType	Tipo de parametro ('global' o 'field')
 	 */
 	public function setParamTypeOnEvent ($paramType){
 		
-		$this->paramTypeOnEvent = $paramType;
+		$typeParams = array('global','field');
+		
+		if (in_array($paramType,$typeParams))
+			$this->paramTypeOnEvent = $paramType;
 	}	
 		
 	/**
-	 * Agrega la propiedad 'disabled="disabled"' a el objeto del formulario
-	 * que se invoque
-	 * @param string id Nombre o id del objeto del formulario al que se le va a agregar la propiedad
+	 * Desabilita un objeto.
+	 * 
+	 * Agrega la propiedad 'disabled="disabled"' a el objeto del formulario que se invoque.
+	 	 *<code>
+	 * 
+	 *index.php
+	 *<?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * $myForm->addText('Nombre:','nom');
+	 * 
+	 * $myForm->addDisabled('nom');
+	 * 
+	 * $myForm->getForm(1);
+	 * 
+	 *?>
+	 *</code>
+	 * @param string $objName id Nombre o id del objeto
 	 */
 	public function addDisabled ($objName){
 		if (!in_array($objName, $this->objDisabled)){
@@ -1704,16 +1858,10 @@ class myForm {
 	}
 	
 	/**
-	 * Agrega el elemento a el gurpo de elementos
-	 * en general de la aplicacion que  contendra
-	 * una capa al pasar el mouse sobre el objeto
-	 * mostrando una pequeña o determinada descri
-	 * pcion del objeto del formulario con el obj
-	 * etivo del que un usuario pueda tener un ni
-	 * vel de ayuda para saber a que hace referen
-	 * cia determinado campo.
-	 *
-	 * @param string $objName Nombre o id del Objeto del formulario al que se le va a agregar la ayuda
+	 * Agrega un tip informativo.
+	 * 
+	 * Agrega un tip informativo sobre el objeto al pasar el puntero del mouse sobre él.
+	 * @param string $objName Nombre o id del Objeto
 	 * @param string $strHelp Contenido de la ayuda
 	 */
 	public function addHelp ($objName, $strHelp){
@@ -1723,123 +1871,61 @@ class myForm {
 	}
 	
 	/**
-	 * Agrupa grupos de elementos previamente definidos
-	 * para dejar un cojunto de grupos en una fila y no
-	 * para que queden en filas separadas.
+	 * Agrupa fieldsets declarados previamente con myForm::addGroup
+	 * 
+	 * Agrupa grupos de elementos previamente definidos para dejar un cojunto de grupos en una fila y no queden en filas separadas.
+	 * <code>
+	 * 
+	 * Ejemplo:
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * $myForm->addText('Nombre:','nom');
+	 * 
+	 * $myForm->addText('Apellido:','ape');
+	 * 
+	 * $myForm->addCheckBox('Futbol:','fut');
+	 * 
+	 * $myForm->addCheckBox('Tenis:','tns');
+	 * 
+	 * $myForm->addGroup('gp1','Datos personales',array('nom','ape'));
+	 * 
+	 * $myForm->addGroup('gp2','Deportes que practica',array('fut','tns'));
 	 *
+	 * $myForm->groupGroups(array('gp1','gp2'));
+	 *  
+	 * echo $myForm->getForm();
+	 * 
+	 * ?>
+	 * 
+	 * </code>
 	 * @param string $idGroupingGroups Id del grupo de grupos
 	 */
-	public function shareSpaceForGroups ($arrayIdGroups){
+	public function groupGroups ($arrayIdGroups){
+		
 		$this->arrayGroupsIdInShareSpace[] = array('arrayIdGroups' => $arrayIdGroups);
 	}
-
-	/**
-	 * Configura la cache de el formualario para ser usada
-	 * e activa por cada $intSeconds
-	 *
-	 * @param boolean $boolUseCache  Usar la cache o no
-	 * @param integer $intSeconds    Numero de segundos en que la cache dura activa
-	 */
-	public function setCache ($boolUseCache = false, $intSeconds = 3600){
-		$this->use_cache = $boolUseCache;
-		$this->cache_int_seconds_time = $intSeconds;
-	}
 	
 	/**
-	 * Verifica si un formulario esta o no cacheado
-	 *
-	 * @param string $strNomForm
-	 * @return boolean
-	 */
-	public function isCached ($strNameForm){
-		$return = false;
-			
-		if (file_exists($this->cache_dir.$strNameForm.session_id().$this->cache_ext_file));
-			$return = true;
-
-		return $return;
-	}
-
-	/**
-	 * Retorna el tipo de elemento que identificamos
-	 * con el nombre del Objeto del Formulario.
-	 *
-	 * @param string $objName Nombre del Objeto
-	 * @return string
-	 */
-	public function getTypeElement($objName){
-		return $this->arrayFormElementType[$objName];
-	}	
-	
-	/**
-	 * Retorna el objeto del formulario como una cadena String que cumple
-	 * las veces del metodo getForm, solo que aqui no es posible pasar por
-	 * objeto el numero de columnas del formulario. Para hacerlo se debe pre
-	 * viamente configurar el el atributo $this->Cols antes de retornar el
-	 * objeto.
-	 *
-	 * @param integer $cols Numero de columnas que tiene el formulario
-	 * @return string
-	 */
-	public function __toString (){
-		return $this->getForm();
-	}
-
-	/**
-	 * Obtiene el HTML de un formulario previamente configurado
-	 *
-	 * @param integer $cols Numero de columnas que tiene el formulario
+	 * Obtiene el formulario.
+	 * 
+	 * Obtiene el HTML de un formulario previamente configurado.
+	 * @param integer $cols Numero de columnas que tendra el formulario.
 	 * @return string
 	 */
 	public function getForm($cols = 2){
 		
-		if ($cols)
-			$this->cols = $cols;
-
-		$buf = '';
-		if ($this->use_cache){
-			if (file_exists($this->cache_dir)){
-				
-				if (file_exists($fileForm = $this->cache_dir.$this->name.'___DATA___'.$this->cache_int_seconds_time.$this->cache_ext_file)){
-					$arrayNomForm = split( '___', strrev($fileForm));
-
-					list($H,$i,$s) = split(':',date("H:i:s",filemtime($fileForm)));
-					$timeStampSecCreated = ($H*3600)+($i*60)+$s;
-					
-					list($H,$i,$s) = split(':',date("H:i:s"));
-					$timeStampSecNow     = ($H*3600)+($i*60)+$s;
-
-					if (($difer = $timeStampSecNow-$timeStampSecCreated)<= ($cacheSeconds = intval(strrev($arrayNomForm[0])))){
-						$fileGestor = fopen($fileForm,'r');
-						$fileContenido = fread($fileGestor,filesize($fileForm));
-						fclose($fileGestor);
-					}else{
-						$fileGestor = fopen($fileForm,'w');
-						fwrite($fileGestor,$fileContenido = $this->compileForm($this->cols));
-						fclose($fileGestor);
-					}
-
-				}else{
-					$fileGestor = fopen($fileForm,'w');
-					fwrite($fileGestor,$fileContenido = $this->compileForm($this->cols));
-					fclose($fileGestor);
-				}
-				
-			}else{
-				mkdir ($this->cache_dir,0777);
-			}
+		$this->cols = $cols;
 			
-		}else{
-			$fileContenido = $this->compileForm($this->cols);
-		}
-		
-		return $fileContenido;
+		return $this->compileForm($this->cols);
 	}
 	
 	/**
-	 * Imprime el formulario final
-	 *
-	 * @param integer $cols Numero de columnas
+	 * Imprime el formulario final.
+	 * 
+	 * Imprime el formulario final.
+	 * @param integer $cols Numero de columnas que tendra el formulario.
 	 */
 	public function showForm($cols = 2){
 		print $this->getForm($cols);

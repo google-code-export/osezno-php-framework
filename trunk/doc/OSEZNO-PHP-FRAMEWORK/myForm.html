@@ -174,11 +174,12 @@ Source Location: /myForm.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#method__construct">__construct</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddButton">addButton</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddCheckBox">addCheckBox</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddComent">addComent</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddComment">addComment</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddDisabled">addDisabled</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFCKeditor">addFCKeditor</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFile">addFile</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFreeObject">addFreeObject</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddGroup">addGroup</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddHelp">addHelp</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddHidden">addHidden</a></li>
@@ -187,7 +188,6 @@ Source Location: /myForm.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddSelect">addSelect</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddTextArea">addTextArea</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddWhiteSpace">addWhiteSpace</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodcheckExistEventJs">checkExistEventJs</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodcheckIfIsDisabled">checkIfIsDisabled</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodcheckIsHelping">checkIsHelping</a></li>
@@ -201,13 +201,9 @@ Source Location: /myForm.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetSelect">getSelect</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetText">getText</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetTextArea">getTextArea</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetTypeElement">getTypeElement</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodisCached">isCached</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetCache">setCache</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgroupGroups">groupGroups</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetParamTypeOnEvent">setParamTypeOnEvent</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodshareSpaceForGroups">shareSpaceForGroups</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodshowForm">showForm</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#method__toString">__toString</a></li>
   </ul>
 </td>
 
@@ -1927,7 +1923,7 @@ $nomForm)</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
 <li><div class="src-line">&nbsp;Salida&nbsp;HTML:</div></li>
-<li><div class="src-line">&nbsp;&lt;form&nbsp;method=&quot;post&quot;&nbsp;onsubmit=&quot;return&nbsp;false&quot;&nbsp;name=&quot;editar&quot;&nbsp;id=&quot;editar&quot;&nbsp;target=&quot;_self&quot;&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;form&nbsp;onsubmit=&quot;return&nbsp;false&quot;&nbsp;method=&quot;post&quot;&nbsp;name=&quot;editar&quot;&nbsp;id=&quot;editar&quot;&nbsp;target=&quot;_self&quot;&gt;</div></li>
 <li><div class="src-line">&nbsp;&lt;/form&gt;</div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;Ejemplo&nbsp;2:</div></li>
@@ -1940,7 +1936,7 @@ $nomForm)</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
 <li><div class="src-line">&nbsp;Salida&nbsp;HTML:</div></li>
-<li><div class="src-line">&nbsp;&lt;form&nbsp;action=&quot;process.php&quot;&nbsp;method=&quot;post&quot;&nbsp;name=&quot;editar&quot;&nbsp;id=&quot;editar&quot;&nbsp;target=&quot;_self&quot;&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;form&nbsp;onsubmit=&quot;return&nbsp;false&quot;&nbsp;action=&quot;process.php&quot;&nbsp;method=&quot;post&quot;&nbsp;name=&quot;editar&quot;&nbsp;id=&quot;editar&quot;&nbsp;target=&quot;_self&quot;&gt;</div></li>
 <li><div class="src-line">&nbsp;&lt;/form&gt;</div></li>
 </ol></p><br /><br /><br />
 <h4>Tags:</h4>
@@ -1988,7 +1984,7 @@ $nomForm)</code>
   </div>
   <hr />
 	<a name="methodaddButton"></a>
-	<h3>method addButton <span class="smalllinenumber">[line 1178]</span></h3>
+	<h3>method addButton <span class="smalllinenumber">[line 1287]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2000,7 +1996,7 @@ $strSrcImg = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega un boton a la funcionalidad del formulario<br /><br /><br /><br />
+		Agrega un boton.<br /><br /><p>Agrega un boton a la salida del formulario. Los botones normalmente encapsulan algun evento del usuario, por ejemplo guardar algun dato o hacer una consulta.  Para agregar un evento a un boton y hacerlo funcional pruebe el metodo addEvent.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2028,7 +2024,7 @@ $strSrcImg = ''])</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$strSrcImg</b>&nbsp;&nbsp;</td>
-        <td><p>Ruta de la img que lo acompana</p><p>Nota: Si desea pasar variables adicionales al evento del  boton, debe agregar separado por (:) los valores que necesite</p></td>
+        <td>Nombre de la imagen que lo acompaña.</td>
       </tr>
         </table>
     </div><br />
@@ -2036,19 +2032,19 @@ $strSrcImg = ''])</code>
   </div>
   <hr />
 	<a name="methodaddCheckBox"></a>
-	<h3>method addCheckBox <span class="smalllinenumber">[line 998]</span></h3>
+	<h3>method addCheckBox <span class="smalllinenumber">[line 999]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void addCheckBox(
 [string
 $etq = ''], [string
-$name = ''], [char
-$ini_sts = 'N'])</code>
+$name = ''], [boolean
+$ini_sts = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega una caja checkBox al formulario, el contenido de esta caja puede  ser evaluado para verificar si es '0' o '1'<br /><br /><br /><br />
+		Agrega una caja de selección.<br /><br /><p>Agrega una caja de selección al formulario, el contenido de esta caja puede ser evaluado para verificar si es true o false</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2074,28 +2070,28 @@ $ini_sts = 'N'])</code>
         <td>Nombre de checkbox</td>
       </tr>
           <tr>
-        <td class="type">char&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$ini_sts</b>&nbsp;&nbsp;</td>
-        <td>Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado</td>
+        <td>Marcado por defecto o no (false ó true)</td>
       </tr>
         </table>
     </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodaddComent"></a>
-	<h3>method addComent <span class="smalllinenumber">[line 1147]</span></h3>
+	<a name="methodaddComment"></a>
+	<h3>method addComment <span class="smalllinenumber">[line 1244]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void addComent(
-integer
+		<code>void addComment(
+string
 $id, string
 $Coment)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega un comentario en una Fila especifica<br /><br /><br /><br />
+		Agrega un comentario.<br /><br /><p>Agrega un comentario escrito para complementar con informacion un formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2111,9 +2107,9 @@ $Coment)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">integer&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$id</b>&nbsp;&nbsp;</td>
-        <td>Identificador del espacio que va a utilizar, este siempre debe de ser diferente para cada uno</td>
+        <td>Identificador del comentario que va a utilizar</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
@@ -2126,7 +2122,7 @@ $Coment)</code>
   </div>
   <hr />
 	<a name="methodaddDisabled"></a>
-	<h3>method addDisabled <span class="smalllinenumber">[line 1597]</span></h3>
+	<h3>method addDisabled <span class="smalllinenumber">[line 1854]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2136,7 +2132,19 @@ $objName)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega la propiedad 'disabled=&quot;disabled&quot;' a el objeto del formulario<br /><br /><p>que se invoque</p><br /><br /><br />
+		Desabilita un objeto.<br /><br /><p>Agrega la propiedad 'disabled=&quot;disabled&quot;' a el objeto del formulario que se invoque. <ol><li><div class="src-line">index.php</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Nombre:'</span><span class="src-sym">,</span><span class="src-str">'nom'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddDisabled">addDisabled</a><span class="src-sym">(</span><span class="src-str">'nom'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2154,7 +2162,7 @@ $objName)</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$objName</b>&nbsp;&nbsp;</td>
-        <td>id Nombre o id del objeto del formulario al que se le va a agregar la propiedad</td>
+        <td>id Nombre o id del objeto</td>
       </tr>
         </table>
     </div><br />
@@ -2162,7 +2170,7 @@ $objName)</code>
   </div>
   <hr />
 	<a name="methodaddEvent"></a>
-	<h3>method addEvent <span class="smalllinenumber">[line 1491]</span></h3>
+	<h3>method addEvent <span class="smalllinenumber">[line 1678]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2177,7 +2185,54 @@ $functions, $param1...
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agregar un evento JavaScript al elemento llamado 'id' que es el elemento que queremos modificar<br /><br /><p>su propiedad de OnClick, OnBlur... etc  Por ejemplo, podemos crear una caja de texto sencilla por medio de  $obj-&gt; addText('Nombre:','nombre'); y despues agregar el siguiente metodo</p><p>$obj-&gt;addEvent('nombre','onchange','function', $param1, $param2...)</p><p>Para que en la obtencion del formulario ese evento sea escrito en la salida HTML</p><br /><br /><br />
+		Agrega un evento al objeto.<br /><br /><p>Agrega un evento JavaScript que sera administrado por la clase myController al id relacionado al objeto del formulario.  <ol><li><div class="src-line">&nbsp;index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Nombre:'</span><span class="src-sym">,</span><span class="src-str">'nom'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddButton">addButton</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'Enviar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Es&nbsp;posible&nbsp;definir&nbsp;1&nbsp;o&nbsp;mas&nbsp;eventos&nbsp;sobre&nbsp;un&nbsp;objeto&nbsp;del&nbsp;formulario.</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Para&nbsp;definir&nbsp;mas&nbsp;de&nbsp;un&nbsp;evento&nbsp;se&nbsp;puede&nbsp;asociar&nbsp;en&nbsp;un&nbsp;arreglo&nbsp;los&nbsp;nombres&nbsp;de&nbsp;los&nbsp;eventos&nbsp;que&nbsp;queremos&nbsp;ejecutar.</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'onclick'</span><span class="src-sym">,</span><span class="src-str">'onClickEvent'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Los&nbsp;eventos&nbsp;pueden&nbsp;ayudar&nbsp;a&nbsp;validar&nbsp;cierto&nbsp;tipo&nbsp;de&nbsp;información.</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a><span class="src-sym">(</span><span class="src-str">'nom'</span><span class="src-sym">,</span><span class="src-str">'onchange'</span><span class="src-sym">,</span><span class="src-str">'onChangeEvent'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">events&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Los&nbsp;eventos&nbsp;se&nbsp;declaran&nbsp;en&nbsp;el&nbsp;handlerEvent&nbsp;en&nbsp;donde&nbsp;se&nbsp;codifican&nbsp;por&nbsp;separado.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">onClickEvent&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><span class="src-str">'Su&nbsp;nombre&nbsp;es:'</span>.<span class="src-var">$dataForm</span><span class="src-sym">[</span><span class="src-str">'nom'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">onChangeEvent&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">[</span><span class="src-str">'nom'</span><span class="src-sym">]</span><span class="src-sym">)</span>&lt;<span class="src-num">4</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><span class="src-str">'Su&nbsp;nombre&nbsp;es&nbsp;demasiado&nbsp;corto'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2195,12 +2250,12 @@ $functions, $param1...
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$objName</b>&nbsp;&nbsp;</td>
-        <td>Nombre o id del objeto del formulario al que se le va a agregar un evento Js</td>
+        <td>Nombre o id del objeto del formulario al que se le va a agregar un evento. El objeto debe ser textarea, select, password, text, radiobutton, checkbox o button para que sea posible agregar el evento.</td>
       </tr>
           <tr>
         <td class="type">integer&nbsp;&nbsp;</td>
         <td><b>$event</b>&nbsp;&nbsp;</td>
-        <td>El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento</td>
+        <td>El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento. (1 ó onblur, 2 ó onchange, 3 ó onclick, 4 ó onfocus, 5 ó onmouseout, 6 ó onmouseover)</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
@@ -2220,7 +2275,7 @@ $functions, $param1...
           <tr>
         <td class="type">$param3...&nbsp;&nbsp;</td>
         <td><b>5</b>&nbsp;&nbsp;</td>
-        <td><p>Valores permitidos (1-&gt;blur, 2-&gt;change, 3-&gt;click, 4-&gt;focus, 5-&gt;mouseout, 6-&gt;OnMouseOver)</p><p>Hasta el momento esta metodo solo aplica para los objetos de formularios que sean  -textarea  -select  -password  -text  -radiobuttons  -checkbox  -buttons</p></td>
+        <td></td>
       </tr>
         </table>
     </div><br />
@@ -2228,7 +2283,7 @@ $functions, $param1...
   </div>
   <hr />
 	<a name="methodaddFCKeditor"></a>
-	<h3>method addFCKeditor <span class="smalllinenumber">[line 1125]</span></h3>
+	<h3>method addFCKeditor <span class="smalllinenumber">[line 1220]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2243,7 +2298,46 @@ $toolbarset = 'Default'])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agregar un editor fckeditor al fomulario actual<br /><br /><br /><br />
+		Agregar un fckeditor.<br /><br /><p>Agrega un fckeditor al formulario actual.  Un FCKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.  Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.  Por el momento cuando declaramos un campo de este tipo solo es posible obtener su contenido si el action del formulario esta definido.  Ejemplo:  <ol><li><div class="src-line">&nbsp;index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">,</span><span class="src-str">'procesarForm.php'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFCKeditor">addFCKeditor</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Contenido:'</span><span class="src-sym">,</span><span class="src-str">'contenido'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddButton">addButton</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'Enviar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'onclick'</span><span class="src-sym">,</span><span class="src-str">'dataSend'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><span class="src-id">fgetForm</span><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">events&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">dataSend&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Forzamos&nbsp;el&nbsp;envio&nbsp;del&nbsp;formulario&nbsp;al&nbsp;action&nbsp;definido.</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">script</span><span class="src-sym">(</span><span class="src-str">'form1.submit()'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;procesarForm.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Imprimos&nbsp;el&nbsp;contenido&nbsp;del&nbsp;formulario.</span></div></li>
+<li><div class="src-line">&nbsp;<a href="http://www.php.net/var_export">var_export</a><span class="src-sym">(</span><span class="src-var">$_POST</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2294,7 +2388,7 @@ $toolbarset = 'Default'])</code>
   </div>
   <hr />
 	<a name="methodaddFile"></a>
-	<h3>method addFile <span class="smalllinenumber">[line 1089]</span></h3>
+	<h3>method addFile <span class="smalllinenumber">[line 1137]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2302,15 +2396,49 @@ $toolbarset = 'Default'])</code>
 string
 $etq, string
 $name, string
-$upload_url, [string
-$flash_url = ''], [array
+$upload_url, [array
 $file_types = ''], [string
 $file_types_description = ''], [integer
 $file_size_limit = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega   un  campo   de  tipo  file  asincronico a el formulario actual.<br /><br /><br /><br />
+		Agrega un campo de tipo archivo.<br /><br /><p>Agrega un campo de tipo archivo al formulario.  Los campos de tipo archivo no dependen del manejo general de los otros campos  pues estos trabajan independientemente con base en un control de tipo flash  que con la ayuda de un script procesa el contenido del archivo.</p><p>Ejemplo:  <ol><li><div class="src-line">&nbsp;index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFile">addFile</a><span class="src-sym">(</span><span class="src-str">'Seleccione&nbsp;archivo(s):'</span><span class="src-sym">,</span><span class="src-str">'archivo'</span><span class="src-sym">,</span><span class="src-str">'upload.php'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;upload.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-comm">//&nbsp;Creamos&nbsp;o&nbsp;abrimos&nbsp;un&nbsp;archivo&nbsp;de&nbsp;registro</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$x&nbsp;</span>=&nbsp;<a href="http://www.php.net/fopen">fopen</a><span class="src-sym">(</span><span class="src-str">'log.txt'</span><span class="src-sym">,</span><span class="src-str">'a'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-comm">//&nbsp;Validamos&nbsp;que&nbsp;el&nbsp;archivo(s)&nbsp;se&nbsp;haya(n)&nbsp;copiado</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/move_uploaded_file">move_uploaded_file</a><span class="src-sym">(</span><span class="src-var">$_FILES</span><span class="src-sym">[</span><span class="src-str">'Filedata'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'tmp_name'</span><span class="src-sym">]</span><span class="src-sym">,</span><span class="src-str">'files/'</span>.<span class="src-var">$_FILES</span><span class="src-sym">[</span><span class="src-str">'Filedata'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'name'</span><span class="src-sym">]</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/fwrite">fwrite</a><span class="src-sym">(</span><span class="src-var">$x</span><span class="src-sym">,</span><span class="src-str">'Archivo&nbsp;subido&nbsp;y&nbsp;copiado&nbsp;de&nbsp;'</span>.<span class="src-var">$_FILES</span><span class="src-sym">[</span><span class="src-str">'Filedata'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'tmp_name'</span><span class="src-sym">]</span>.<span class="src-str">'&nbsp;a&nbsp;'</span>.<span class="src-var">$_FILES</span><span class="src-sym">[</span><span class="src-str">'Filedata'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'name'</span><span class="src-sym">]</span>.<span class="src-str">&quot;\r\n&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-sym">}</span><span class="src-key">else</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/fwrite">fwrite</a><span class="src-sym">(</span><span class="src-var">$x</span><span class="src-sym">,</span><span class="src-str">'Problemas&nbsp;al&nbsp;copiar&nbsp;el&nbsp;archivo&nbsp;'</span>.<span class="src-var">$_FILES</span><span class="src-sym">[</span><span class="src-str">'Filedata'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'name'</span><span class="src-sym">]</span>.<span class="src-str">&quot;\r\n&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//Cerramos&nbsp;el&nbsp;archivo&nbsp;de&nbsp;registro&nbsp;y&nbsp;finalizamos&nbsp;ala&nbsp;ejecución&nbsp;del&nbsp;script.</span></div></li>
+<li><div class="src-line">&nbsp;<a href="http://www.php.net/fclose">fclose</a><span class="src-sym">(</span><span class="src-var">$x</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">exit</span><span class="src-sym">(</span><span class="src-num">0</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;En&nbsp;este&nbsp;script,&nbsp;copiamos&nbsp;el/los&nbsp;archivo(s)&nbsp;seleccionados&nbsp;de&nbsp;la&nbsp;carpeta&nbsp;temporal&nbsp;a&nbsp;una&nbsp;final&nbsp;llamada&nbsp;'files'&nbsp;que&nbsp;esta&nbsp;ubicada&nbsp;a&nbsp;nivel&nbsp;del&nbsp;script.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2333,17 +2461,12 @@ $file_size_limit = ''])</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td>Nombre del campo</td>
+        <td>del campo</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$upload_url</b>&nbsp;&nbsp;</td>
-        <td>Url del .php que recibe los datos</td>
-      </tr>
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$flash_url</b>&nbsp;&nbsp;</td>
-        <td>Url del donde se encuentra ubicado el flash</td>
+        <td>Url del archivo php que recibe los datos</td>
       </tr>
           <tr>
         <td class="type">array&nbsp;&nbsp;</td>
@@ -2365,8 +2488,78 @@ $file_size_limit = ''])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodaddFreeObject"></a>
+	<h3>method addFreeObject <span class="smalllinenumber">[line 1272]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addFreeObject(
+string
+$id, [
+$etq = ''], [
+$value = ''], string
+$val_e, string
+$val_c)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agrega un espacio en blanco.<br /><br /><p>En ocaciones los campos no son suficientes para incluir datos en un formulario. El metodo addFreeObject permite agregar un objeto creado por el usuario.  <ol><li><div class="src-line">&nbsp;<span class="src-id">Ejemplo</span>:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a>&nbsp;</span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$object&nbsp;</span>=&nbsp;<span class="src-str">'&lt;img&nbsp;src=&quot;logo.gif&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Dentro&nbsp;del&nbsp;valor&nbsp;del&nbsp;objeto&nbsp;podemos&nbsp;agregar&nbsp;el&nbsp;valor&nbsp;que&nbsp;queramos.</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFreeObject">addFreeObject</a><span class="src-sym">(</span><span class="src-str">'fo1'</span><span class="src-sym">,</span><span class="src-str">'Imagen'</span><span class="src-sym">,</span><span class="src-var">$object</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$id</b>&nbsp;&nbsp;</td>
+        <td>Identificador del objeto libre</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$val_e</b>&nbsp;&nbsp;</td>
+        <td>Valor en el momento del cargue dentro del formulario para la etiqueta</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$val_c</b>&nbsp;&nbsp;</td>
+        <td>Valor en el momento del cargue dentro del formulario para el campo</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodaddGroup"></a>
-	<h3>method addGroup <span class="smalllinenumber">[line 1449]</span></h3>
+	<h3>method addGroup <span class="smalllinenumber">[line 1602]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2381,7 +2574,29 @@ $iniVisibilitySts = 'show'])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Crea un agrupamiento HTML mediante fieldSet  para los  nombres de  los campos contenidos  dentro del tercer parametro.<br /><br /><br /><br />
+		Agregar un agrupamiento.<br /><br /><p>Crea un agrupamiento HTML mediante fieldSet para los  nombres de  los campos seleccionados.  Cuando un formulario tiene demasiados campos es posible organizar el formulario de tal forma que  se vea un poco mejor organizado, clasificando los campos por tipos que hacia la vista del usuario  le sea permitido mas facilmente ir hacia ellos. Por ejemplo podriamos agrupar los datos personales  de los datos no personales de un formulario de lectura de datos de un cliente bancario.</p><p><ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Nombre:'</span><span class="src-sym">,</span><span class="src-str">'nom'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Apellido:'</span><span class="src-sym">,</span><span class="src-str">'ape'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddCheckBox">addCheckBox</a><span class="src-sym">(</span><span class="src-str">'Futbol:'</span><span class="src-sym">,</span><span class="src-str">'fut'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddCheckBox">addCheckBox</a><span class="src-sym">(</span><span class="src-str">'Tenis:'</span><span class="src-sym">,</span><span class="src-str">'tns'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Agrupamos&nbsp;en&nbsp;un&nbsp;fieldset&nbsp;los&nbsp;campos&nbsp;que&nbsp;pertenecen&nbsp;a&nbsp;esta&nbsp;categoria.</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddGroup">addGroup</a><span class="src-sym">(</span><span class="src-str">'gp1'</span><span class="src-sym">,</span><span class="src-str">'Datos&nbsp;personales'</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'nom'</span><span class="src-sym">,</span><span class="src-str">'ape'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Agrupamos&nbsp;en&nbsp;un&nbsp;fieldset&nbsp;los&nbsp;campos&nbsp;que&nbsp;pertenecen&nbsp;a&nbsp;esta&nbsp;categoria.</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddGroup">addGroup</a><span class="src-sym">(</span><span class="src-str">'gp2'</span><span class="src-sym">,</span><span class="src-str">'Deportes&nbsp;que&nbsp;practica'</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'fut'</span><span class="src-sym">,</span><span class="src-str">'tns'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2432,7 +2647,7 @@ $iniVisibilitySts = 'show'])</code>
   </div>
   <hr />
 	<a name="methodaddHelp"></a>
-	<h3>method addHelp <span class="smalllinenumber">[line 1616]</span></h3>
+	<h3>method addHelp <span class="smalllinenumber">[line 1867]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2443,7 +2658,7 @@ $strHelp)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega el elemento a el gurpo de elementos<br /><br /><p>en general de la aplicacion que  contendra  una capa al pasar el mouse sobre el objeto  mostrando una pequeña o determinada descri  pcion del objeto del formulario con el obj  etivo del que un usuario pueda tener un ni  vel de ayuda para saber a que hace referen  cia determinado campo.</p><br /><br /><br />
+		Agrega un tip informativo.<br /><br /><p>Agrega un tip informativo sobre el objeto al pasar el puntero del mouse sobre él.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2461,7 +2676,7 @@ $strHelp)</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$objName</b>&nbsp;&nbsp;</td>
-        <td>Nombre o id del Objeto del formulario al que se le va a agregar la ayuda</td>
+        <td>Nombre o id del Objeto</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
@@ -2474,7 +2689,7 @@ $strHelp)</code>
   </div>
   <hr />
 	<a name="methodaddHidden"></a>
-	<h3>method addHidden <span class="smalllinenumber">[line 1070]</span></h3>
+	<h3>method addHidden <span class="smalllinenumber">[line 1074]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2485,7 +2700,7 @@ $value = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega un campo de texto Oculto al formulario<br /><br /><br /><br />
+		Agrega un campo tipo oculto<br /><br /><p>Agrega un campo oculto al formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2516,7 +2731,7 @@ $value = ''])</code>
   </div>
   <hr />
 	<a name="methodaddPassword"></a>
-	<h3>method addPassword <span class="smalllinenumber">[line 1038]</span></h3>
+	<h3>method addPassword <span class="smalllinenumber">[line 1042]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2530,7 +2745,7 @@ $maxlength = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega una caja de texto tipo password<br /><br /><br /><br />
+		Agrega una caja de texto tipo contraseña.<br /><br /><p>Agrega una caja de texto tipo contraseña al formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2576,20 +2791,20 @@ $maxlength = ''])</code>
   </div>
   <hr />
 	<a name="methodaddRadioButton"></a>
-	<h3>method addRadioButton <span class="smalllinenumber">[line 1017]</span></h3>
+	<h3>method addRadioButton <span class="smalllinenumber">[line 1021]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>string addRadioButton(
-[Etiqueta
-$etq = ''], [Valor
-$value = ''], [Grupo
-$name_group = ''], [
-$is_checked = 'N'])</code>
+[string
+$etq = ''], [string
+$value = ''], [string
+$name_group = ''], [boolean
+$is_checked = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega un radio button al formulario en particular.<br /><br /><p>Los grupos de radio buttons se pueden formar y funcionar  siempre y cuando esos radio buttons queden con el mismo  nombre que permita agruparlos.</p><br /><br /><br />
+		Agrega un botón de opción.<br /><br /><p>Agrega un botón de opcion al formulario en particular.  Los grupos de radio buttons se pueden formar y funcionar  siempre y cuando esos radio buttons queden con el mismo  nombre que permita agruparlos.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2608,24 +2823,24 @@ $is_checked = 'N'])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">Etiqueta&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$etq</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Etiqueta</td>
       </tr>
           <tr>
-        <td class="type">Valor&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Valor</td>
       </tr>
           <tr>
-        <td class="type">Grupo&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name_group</b>&nbsp;&nbsp;</td>
-        <td>al que pertenece  $name_group</td>
+        <td>Grupo al que pertenece</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$is_checked</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Marcado por defecto o no (false ó true)</td>
       </tr>
         </table>
     </div><br />
@@ -2633,7 +2848,7 @@ $is_checked = 'N'])</code>
   </div>
   <hr />
 	<a name="methodaddSelect"></a>
-	<h3>method addSelect <span class="smalllinenumber">[line 948]</span></h3>
+	<h3>method addSelect <span class="smalllinenumber">[line 949]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2644,12 +2859,12 @@ $name = ''], [array
 $value = ''], [string
 $selected = ''], [string
 $size = ''], [string
-$truncar_hasta = 0], [
+$truncar_hasta = 0], [boolean
 $multiple = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agregar campo select<br /><br /><p>Agrega un campo de unica seleccion con los valores por parametro</p><br /><br /><br />
+		Agregar campo de unica seleccion<br /><br /><p>Agrega un campo de unica seleccion con los valores por parametro</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2695,9 +2910,9 @@ $multiple = false])</code>
         <td>Truncar Numero maximo de caracteres por opcion</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$multiple</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Es un campo de seleccion multiple.</td>
       </tr>
         </table>
     </div><br />
@@ -2777,7 +2992,7 @@ $CampoFecha = false])</code>
   </div>
   <hr />
 	<a name="methodaddTextArea"></a>
-	<h3>method addTextArea <span class="smalllinenumber">[line 1056]</span></h3>
+	<h3>method addTextArea <span class="smalllinenumber">[line 1060]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2792,7 +3007,7 @@ $wrap = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega una area de texto<br /><br /><br /><br />
+		Agrega una area de texto<br /><br /><p>Agrega una area de texto al formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -2825,12 +3040,12 @@ $wrap = ''])</code>
           <tr>
         <td class="type">integer&nbsp;&nbsp;</td>
         <td><b>$cols</b>&nbsp;&nbsp;</td>
-        <td>Numero de columna</td>
+        <td>Numero de columnas</td>
       </tr>
           <tr>
         <td class="type">integer&nbsp;&nbsp;</td>
         <td><b>$rows</b>&nbsp;&nbsp;</td>
-        <td>Numero de fila</td>
+        <td>Numero de filas</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
@@ -2842,56 +3057,8 @@ $wrap = ''])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodaddWhiteSpace"></a>
-	<h3>method addWhiteSpace <span class="smalllinenumber">[line 1161]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void addWhiteSpace(
-integer
-$id, [string
-$val_e = ''], [string
-$val_c = ''])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Agrega un espacio en blanco en el lugar que le corresponda<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">integer&nbsp;&nbsp;</td>
-        <td><b>$id</b>&nbsp;&nbsp;</td>
-        <td>Identificador del espacio, este puede ser un numero consecutivo</td>
-      </tr>
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$val_e</b>&nbsp;&nbsp;</td>
-        <td>Valor en el momento del cargue dentro del formulario para la etiqueta</td>
-      </tr>
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$val_c</b>&nbsp;&nbsp;</td>
-        <td>Valor en el momento del cargue dentro del formulario para el campo</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
 	<a name="methodcheckExistEventJs"></a>
-	<h3>method checkExistEventJs <span class="smalllinenumber">[line 1751]</span></h3>
+	<h3>method checkExistEventJs <span class="smalllinenumber">[line 1940]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2927,7 +3094,7 @@ $ObjectForm)</code>
   </div>
   <hr />
 	<a name="methodcheckIfIsDisabled"></a>
-	<h3>method checkIfIsDisabled <span class="smalllinenumber">[line 1772]</span></h3>
+	<h3>method checkIfIsDisabled <span class="smalllinenumber">[line 1961]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2963,7 +3130,7 @@ $objName)</code>
   </div>
   <hr />
 	<a name="methodcheckIsHelping"></a>
-	<h3>method checkIsHelping <span class="smalllinenumber">[line 1790]</span></h3>
+	<h3>method checkIsHelping <span class="smalllinenumber">[line 1979]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2999,7 +3166,7 @@ $objName)</code>
   </div>
   <hr />
 	<a name="methodgetButton"></a>
-	<h3>method getButton <span class="smalllinenumber">[line 1420]</span></h3>
+	<h3>method getButton <span class="smalllinenumber">[line 1542]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3011,13 +3178,10 @@ $strSrcImg = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene el html de un boton<br /><br /><p>necesario para ejecutar los  actions en los  formularios  que son creados por los usu  arios.</p><br /><br /><br />
+		Obtiene un botón.<br /><br /><p>Obtiene el codigo HTML. Los botones normalmente encapsulan algun evento del usuario, por ejemplo guardar algun dato o hacer una consulta.  Para agregar un evento a un boton y hacerlo funcional pruebe el metodo addEvent antes de obtener el botón.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>return:</b>&nbsp;&nbsp;</td><td>Nota: Si desea pasar variables adicionales al evento del  boton, debe agregar separado por (:) los valores que necesite</td>
-  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -3032,17 +3196,17 @@ $strSrcImg = ''])</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$strName</b>&nbsp;&nbsp;</td>
-        <td>Nombre del boton</td>
+        <td>Nombre del boton.</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$strLabel</b>&nbsp;&nbsp;</td>
-        <td>Etiqueta del boton</td>
+        <td>Etiqueta del boton.</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$strSrcImg</b>&nbsp;&nbsp;</td>
-        <td>Ruta de la img que lo acompana</td>
+        <td>Nombre de la imagen que lo acompaña.</td>
       </tr>
         </table>
     </div><br />
@@ -3050,18 +3214,18 @@ $strSrcImg = ''])</code>
   </div>
   <hr />
 	<a name="methodgetCheckBox"></a>
-	<h3>method getCheckBox <span class="smalllinenumber">[line 1280]</span></h3>
+	<h3>method getCheckBox <span class="smalllinenumber">[line 1392]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void getCheckBox(
 [string
-$name = ''], [char
+$name = ''], [boolean
 $ini_sts = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene una caja checkBox al formulario, el contenido de esta caja puede  ser evaluado para verificar si es '0' o '1'<br /><br /><br /><br />
+		Obtiene un caja de seleccion.<br /><br /><p>Obtiene el HTML de una caja de seleccion al formulario.  Opera de identica forma al metodo addCheckBox solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3079,12 +3243,12 @@ $ini_sts = false])</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td>Nombre de checkbox</td>
+        <td>Nombre de checkbox.</td>
       </tr>
           <tr>
-        <td class="type">char&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$ini_sts</b>&nbsp;&nbsp;</td>
-        <td>Estado inicial del Check en la carga del formulario. N = No chequeado, S = Chequeado</td>
+        <td>Estado inicial del Check en la carga del formulario. (True o False).</td>
       </tr>
         </table>
     </div><br />
@@ -3092,17 +3256,21 @@ $ini_sts = false])</code>
   </div>
   <hr />
 	<a name="methodgetFile"></a>
-	<h3>method getFile <span class="smalllinenumber">[line 1375]</span></h3>
+	<h3>method getFile <span class="smalllinenumber">[line 1489]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>string getFile(
 string
-$name)</code>
+$name, 
+$upload_url, [
+$file_types = ''], [
+$file_types_description = ''], [
+$file_size_limit = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene el HTML de un campo formulario  tipo File asincronico.<br /><br /><br /><br />
+		Obtiene el HTML de un campo formulario tipo File asincronico.<br /><br /><p>Opera de identica forma al metodo addFile solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3122,13 +3290,33 @@ $name)</code>
         <td><b>$name</b>&nbsp;&nbsp;</td>
         <td>Nombre del campo</td>
       </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$upload_url</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$file_types</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$file_types_description</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$file_size_limit</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
         </table>
     </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
 	<a name="methodgetForm"></a>
-	<h3>method getForm <span class="smalllinenumber">[line 1691]</span></h3>
+	<h3>method getForm <span class="smalllinenumber">[line 1917]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3138,7 +3326,7 @@ $cols = 2])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene el HTML de un formulario previamente configurado<br /><br /><br /><br />
+		Obtiene el formulario.<br /><br /><p>Obtiene el HTML de un formulario previamente configurado.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3156,7 +3344,7 @@ $cols = 2])</code>
           <tr>
         <td class="type">integer&nbsp;&nbsp;</td>
         <td><b>$cols</b>&nbsp;&nbsp;</td>
-        <td>Numero de columnas que tiene el formulario</td>
+        <td>Numero de columnas que tendra el formulario.</td>
       </tr>
         </table>
     </div><br />
@@ -3164,7 +3352,7 @@ $cols = 2])</code>
   </div>
   <hr />
 	<a name="methodgetHidden"></a>
-	<h3>method getHidden <span class="smalllinenumber">[line 1360]</span></h3>
+	<h3>method getHidden <span class="smalllinenumber">[line 1474]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3175,7 +3363,7 @@ $value = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene un campo Oculto<br /><br /><br /><br />
+		Obtiene un campo Oculto<br /><br /><p>Opera de identica forma al metodo addHidden solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3206,7 +3394,7 @@ $value = ''])</code>
   </div>
   <hr />
 	<a name="methodgetPassword"></a>
-	<h3>method getPassword <span class="smalllinenumber">[line 1327]</span></h3>
+	<h3>method getPassword <span class="smalllinenumber">[line 1441]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3219,7 +3407,7 @@ $maxlength = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene una caja de texto tipo password<br /><br /><br /><br />
+		Obtiene una caja de texto tipo password<br /><br /><p>Opera de identica forma al metodo addPassword solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3260,19 +3448,19 @@ $maxlength = ''])</code>
   </div>
   <hr />
 	<a name="methodgetRadioButton"></a>
-	<h3>method getRadioButton <span class="smalllinenumber">[line 1304]</span></h3>
+	<h3>method getRadioButton <span class="smalllinenumber">[line 1418]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>string getRadioButton(
 [string
 $value = ''], [string
-$name_group = ''], [
-$is_checked = 'N'])</code>
+$name_group = ''], [boolean
+$is_checked = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene el html de un radio button<br /><br /><br /><br />
+		Obtiene un botón de opción.<br /><br /><p>Opera de identica forma al metodo addRadioButton solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3298,9 +3486,9 @@ $is_checked = 'N'])</code>
         <td>Nombre del radio o grupo que van a comformarlo</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$is_checked</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Estado inicial del boton de selección. (true o false)</td>
       </tr>
         </table>
     </div><br />
@@ -3308,22 +3496,22 @@ $is_checked = 'N'])</code>
   </div>
   <hr />
 	<a name="methodgetSelect"></a>
-	<h3>method getSelect <span class="smalllinenumber">[line 1230]</span></h3>
+	<h3>method getSelect <span class="smalllinenumber">[line 1342]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void getSelect(
 [string
 $name = ''], [array
-$value = ''], [
+$value = ''], [string
 $selected = ''], [string
 $size = ''], [string
-$truncar_hasta = 0], [
+$truncar_hasta = 0], [boolean
 $multiple = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene una combo desplegable (menu)<br /><br /><br /><br />
+		Obtiene campo de unica seleccion.<br /><br /><p>Obtiene un campo de unica seleccion con los valores por parametro.  Opera de identica forma al metodo addSelect solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3341,12 +3529,17 @@ $multiple = false])</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td>Nombre del campo</td>
+        <td>Nombre</td>
       </tr>
           <tr>
         <td class="type">array&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
-        <td>Valor incial que es un arreglo de la forma especificada</td>
+        <td>Valor</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$selected</b>&nbsp;&nbsp;</td>
+        <td>Valor seleccionado por defecto</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
@@ -3356,17 +3549,12 @@ $multiple = false])</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$truncar_hasta</b>&nbsp;&nbsp;</td>
-        <td>Truncar Numero maximo de caracteres al fina</td>
+        <td>Truncar Numero maximo de caracteres por opcion</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$selected</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$multiple</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Es un campo de seleccion multiple.</td>
       </tr>
         </table>
     </div><br />
@@ -3374,7 +3562,7 @@ $multiple = false])</code>
   </div>
   <hr />
 	<a name="methodgetText"></a>
-	<h3>method getText <span class="smalllinenumber">[line 1200]</span></h3>
+	<h3>method getText <span class="smalllinenumber">[line 1309]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3383,14 +3571,13 @@ $multiple = false])</code>
 $name = ''], [string
 $value = ''], [integer
 $size = ''], [integer
-$maxlength = ''], [char
-$validacion_numerica = false], [bool
-$CampoFecha = false], String
-$NameFunctionCallCalendar)</code>
+$maxlength = ''], [boolean
+$validacion_numerica = false], [boolean
+$CampoFecha = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Devuelve una caja de texto<br /><br /><br /><br />
+		Retorna el HTML de una caja de texto.<br /><br /><p>Retorna el HTML de una caja de texto que puede ser usado en cualquier parte de un script.  Opera de identica forma al metodo addText solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3426,19 +3613,14 @@ $NameFunctionCallCalendar)</code>
         <td>Numero maximo de caracteres</td>
       </tr>
           <tr>
-        <td class="type">char&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$validacion_numerica</b>&nbsp;&nbsp;</td>
-        <td>(S o N)</td>
+        <td></td>
       </tr>
           <tr>
-        <td class="type">bool&nbsp;&nbsp;</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$CampoFecha</b>&nbsp;&nbsp;</td>
-        <td>(0 o 1) Muestra un boton en el campo que facilita la seleccion de una fecha</td>
-      </tr>
-          <tr>
-        <td class="type">String&nbsp;&nbsp;</td>
-        <td><b>$NameFunctionCallCalendar</b>&nbsp;&nbsp;</td>
-        <td>En caso de que $CampoFecha sea 1, debe pasarse como parametro el nombre de la funcion que abrira el calendar</td>
+        <td>Muestra un boton en el campo que facilita la seleccion de una fecha</td>
       </tr>
         </table>
     </div><br />
@@ -3446,7 +3628,7 @@ $NameFunctionCallCalendar)</code>
   </div>
   <hr />
 	<a name="methodgetTextArea"></a>
-	<h3>method getTextArea <span class="smalllinenumber">[line 1346]</span></h3>
+	<h3>method getTextArea <span class="smalllinenumber">[line 1460]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3460,7 +3642,7 @@ $wrap = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene una area de texto<br /><br /><br /><br />
+		Obtiene una area de texto<br /><br /><p>Opera de identica forma al metodo addTextArea solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3505,175 +3687,41 @@ $wrap = ''])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodgetTypeElement"></a>
-	<h3>method getTypeElement <span class="smalllinenumber">[line 1667]</span></h3>
+	<a name="methodgroupGroups"></a>
+	<h3>method groupGroups <span class="smalllinenumber">[line 1905]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>string getTypeElement(
-string
-$objName)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Retorna el tipo de elemento que identificamos  con el nombre del Objeto del Formulario.<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$objName</b>&nbsp;&nbsp;</td>
-        <td>Nombre del Objeto</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodisCached"></a>
-	<h3>method isCached <span class="smalllinenumber">[line 1651]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>boolean isCached(
-
-$strNameForm, string
-$strNomForm)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Verifica si un formulario esta o no cacheado<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$strNomForm</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$strNameForm</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodsetCache"></a>
-	<h3>method setCache <span class="smalllinenumber">[line 1640]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void setCache(
-[boolean
-$boolUseCache = false], [integer
-$intSeconds = 3600])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Configura la cache de el formualario para ser usada  e activa por cada $intSeconds<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">boolean&nbsp;&nbsp;</td>
-        <td><b>$boolUseCache</b>&nbsp;&nbsp;</td>
-        <td>Usar la cache o no</td>
-      </tr>
-          <tr>
-        <td class="type">integer&nbsp;&nbsp;</td>
-        <td><b>$intSeconds</b>&nbsp;&nbsp;</td>
-        <td>Numero de segundos en que la cache dura activa</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodsetParamTypeOnEvent"></a>
-	<h3>method setParamTypeOnEvent <span class="smalllinenumber">[line 1587]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void setParamTypeOnEvent(
-$paramType
-$paramType)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Configura el tipo de parametro que va a ser enviado a la funcion de un  evento, este parametro puede ser tipo 'form' o tipo 'field'<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">$paramType&nbsp;&nbsp;</td>
-        <td><b>$paramType</b>&nbsp;&nbsp;</td>
-        <td>Tipo de parametro</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodshareSpaceForGroups"></a>
-	<h3>method shareSpaceForGroups <span class="smalllinenumber">[line 1629]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void shareSpaceForGroups(
+		<code>void groupGroups(
 
 $arrayIdGroups, string
 $idGroupingGroups)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrupa grupos de elementos previamente definidos  para dejar un cojunto de grupos en una fila y no  para que queden en filas separadas.<br /><br /><br /><br />
+		Agrupa fieldsets declarados previamente con myForm::addGroup<br /><br /><p>Agrupa grupos de elementos previamente definidos para dejar un cojunto de grupos en una fila y no queden en filas separadas.  <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Nombre:'</span><span class="src-sym">,</span><span class="src-str">'nom'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Apellido:'</span><span class="src-sym">,</span><span class="src-str">'ape'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddCheckBox">addCheckBox</a><span class="src-sym">(</span><span class="src-str">'Futbol:'</span><span class="src-sym">,</span><span class="src-str">'fut'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddCheckBox">addCheckBox</a><span class="src-sym">(</span><span class="src-str">'Tenis:'</span><span class="src-sym">,</span><span class="src-str">'tns'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddGroup">addGroup</a><span class="src-sym">(</span><span class="src-str">'gp1'</span><span class="src-sym">,</span><span class="src-str">'Datos&nbsp;personales'</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'nom'</span><span class="src-sym">,</span><span class="src-str">'ape'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddGroup">addGroup</a><span class="src-sym">(</span><span class="src-str">'gp2'</span><span class="src-sym">,</span><span class="src-str">'Deportes&nbsp;que&nbsp;practica'</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'fut'</span><span class="src-sym">,</span><span class="src-str">'tns'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgroupGroups">groupGroups</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'gp1'</span><span class="src-sym">,</span><span class="src-str">'gp2'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3703,8 +3751,87 @@ $idGroupingGroups)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodsetParamTypeOnEvent"></a>
+	<h3>method setParamTypeOnEvent <span class="smalllinenumber">[line 1825]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setParamTypeOnEvent(
+string
+$paramType)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configura tipo de parametro sobre eventos.<br /><br /><p>Configura el tipo de parametro que va a ser enviado a la funcion de un evento,  este parametro puede ser tipo 'global' o tipo 'field'.  'form' enviara los datos del formulario asociado al objeto, mientras que 'field' el valor del objeto en el evento.</p><p>Ejemplo: <ol><li><div class="src-line">index.php</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Nombre:'</span><span class="src-sym">,</span><span class="src-str">'nom'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddButton">addButton</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'Enviar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetParamTypeOnEvent">setParamTypeOnEvent</a><span class="src-sym">(</span><span class="src-str">'field'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a><span class="src-sym">(</span><span class="src-str">'nom'</span><span class="src-sym">,</span><span class="src-str">'onchange'</span><span class="src-sym">,</span><span class="src-str">'onChangeEvent'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetParamTypeOnEvent">setParamTypeOnEvent</a><span class="src-sym">(</span><span class="src-str">'global'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'onclick'</span><span class="src-sym">,</span><span class="src-str">'onClickEvent'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">handlerEvent.php</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">events&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">onClickEvent&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><span class="src-str">'Su&nbsp;nombre&nbsp;es:'</span>.<span class="src-var">$dataForm</span><span class="src-sym">[</span><span class="src-str">'nom'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">onChangeEvent&nbsp;</span><span class="src-sym">(</span><span class="src-var">$nom</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><span class="src-str">'Su&nbsp;nombre&nbsp;es:'</span>.<span class="src-var">$nom</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$paramType</b>&nbsp;&nbsp;</td>
+        <td>Tipo de parametro ('global' o 'field')</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodshowForm"></a>
-	<h3>method showForm <span class="smalllinenumber">[line 1741]</span></h3>
+	<h3>method showForm <span class="smalllinenumber">[line 1930]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3714,7 +3841,7 @@ $cols = 2])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Imprime el formulario final<br /><br /><br /><br />
+		Imprime el formulario final.<br /><br /><p>Imprime el formulario final.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -3732,43 +3859,7 @@ $cols = 2])</code>
           <tr>
         <td class="type">integer&nbsp;&nbsp;</td>
         <td><b>$cols</b>&nbsp;&nbsp;</td>
-        <td>Numero de columnas</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="method__toString"></a>
-	<h3>method __toString <span class="smalllinenumber">[line 1681]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>string __toString(
-integer
-$cols)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Retorna el objeto del formulario como una cadena String que cumple<br /><br /><p>las veces del metodo getForm, solo que aqui no es posible pasar por  objeto el numero de columnas del formulario. Para hacerlo se debe pre  viamente configurar el el atributo $this-&gt;Cols antes de retornar el  objeto.</p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">integer&nbsp;&nbsp;</td>
-        <td><b>$cols</b>&nbsp;&nbsp;</td>
-        <td>Numero de columnas que tiene el formulario</td>
+        <td>Numero de columnas que tendra el formulario.</td>
       </tr>
         </table>
     </div><br />
@@ -3779,7 +3870,7 @@ $cols)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 14 Dec 2010 17:19:46 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Mon, 20 Dec 2010 15:26:33 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
