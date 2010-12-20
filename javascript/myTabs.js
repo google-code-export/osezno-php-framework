@@ -123,15 +123,16 @@ function responseAHAH(pageElement, errorMessage, tab) {
  * @param tabActive	Id de la pestaña
  * @param countTabs	Numero de pestañas 
  * @param urlActive	Url a la que apunta la pestaña
+ * @param idDiv	Id del div a modificar el contenido 
  * @return
  */
-function makeactive(tabActive, countTabs, urlActive) { 
+function makeactive(tabActive, from, countTabs, urlActive, idDiv) { 
 		
-		for (var i=0;i<countTabs;i++){
+		for (var i=from;i<(from+countTabs);i++){
 			document.getElementById("tab"+i).className = '';
 		}
 
 		document.getElementById(tabActive).className = 'current'; 
 		
-		callAHAH(urlActive, 'content_tab', '', '','tab'+i, 'makeactive'); 
+		callAHAH(urlActive, idDiv, '', '','tab'+i, 'makeactive'); 
 }
