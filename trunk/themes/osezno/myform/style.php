@@ -62,6 +62,15 @@
 	font-weight: bold;
 }
 
+.comentario {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-align: left;
+	vertical-align: middle;
+	font-weight: normal;
+}
+
 .formulario_fieldset {
 	font-family: Verdana, Arial,Helvetica, sans-serif;
 	font-size: 10px;

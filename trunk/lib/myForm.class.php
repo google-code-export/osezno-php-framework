@@ -239,6 +239,13 @@ class myForm {
 	private $arrayEventsDefined = array();
 	
 	/**
+	 * Elementos que reciben trato especial al aplicar colspan
+	 * 
+	 * @var array
+	 */
+	private $arrayTypeElemSpecial = array ('textarea','button','coment');
+	
+	/**
 	 * Arreglo de los campos tipo 'FILE' que estan registrados
 	 * dentro del formulario para ser mostrados
 	 *
@@ -261,7 +268,7 @@ class myForm {
 	 *
 	 * @var array
 	 */
-	protected $objEventxJ = array();
+	private $objEventxJ = array();
 
 	/**
 	 * Arreglo que contiene los nombres de los objetos que tendran la propiedad Disabled
@@ -269,7 +276,7 @@ class myForm {
 	 *
 	 * @var array
 	 */
-	protected $objDisabled = array();
+	private $objDisabled = array();
 
 	/**
 	 * Arreglo que contiene los nombres de los objetos que
@@ -278,7 +285,7 @@ class myForm {
 	 *
 	 * @var array
 	 */
-	protected $objHelps = array ();
+	private $objHelps = array ();
 
 	/**
 	 * Metodo (method) del formulario.
@@ -483,11 +490,19 @@ class myForm {
 	/**
 	 * Clase CSS etiquetas.
 	 * 
-	 * Nombre de la clase que por defecto usan los las etiquetas de los campos del formulario que seran mostrados.
+	 * Nombre de la clase que por defecto usan las etiquetas de los campos del formulario que seran mostrados.
 	 * @var string
 	 */
 	public $styleClassTags = 'etiqueta';
 
+	/**
+	 * Clase CSS comentarios.
+	 * 
+	 * Nombre de la clase que por defecto usan los comentarios dentro del formulario.
+	 * @var string
+	 */
+	public $styleClassComments = 'comentario';
+	
 	/**
 	 * Clase CSS Fieldset.
 	 * 
@@ -918,6 +933,23 @@ class myForm {
 	 * Agregar caja de texto
 	 *
 	 * Agrega una caja de texto que sera mostrada cuando se obtenga el contenido del formulario.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'.
+	 * <code>
+	 * Ejemplo:
+	 * <?php
+	 * 
+	 * $myForm = new myForm('form1');
+	 * 
+	 * $myForm->addText('Nombre:','nom');
+	 *
+	 * # Un nombre de objeto seguido de un ':valor_numerico' significa la asignacion de un valor numerico al atributo colspan de este objeto en el formulario.
+	 * 
+	 * $myForm->addText('Apellido:','ape:2');
+	 * 
+	 * echo $myForm->getForm();
+	 * 
+	 * ?>
+	 * </code>
 	 * @param string  $etq Etiqueta
 	 * @param string  $name Nombre
 	 * @param string  $value Valor
@@ -938,6 +970,7 @@ class myForm {
 	 * Agregar campo de unica seleccion
 	 *
 	 * Agrega un campo de unica seleccion con los valores por parametro
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * @param string $etq Etiqueta
 	 * @param string $name Nombre
 	 * @param array  $value	Valor incial que es un arreglo de la forma especificada
@@ -991,6 +1024,7 @@ class myForm {
 	 * Agrega una caja de selección.
 	 * 
 	 * Agrega una caja de selección al formulario, el contenido de esta caja puede ser evaluado para verificar si es true o false
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * @param string $etq Etiqueta del campo
 	 * @param string $name Nombre de checkbox
 	 * @param boolean $ini_sts  Marcado por defecto o no (false ó true)
@@ -1011,6 +1045,7 @@ class myForm {
 	 * Los grupos de radio buttons se pueden formar y funcionar
 	 * siempre y cuando esos radio buttons queden con el mismo
 	 * nombre que permita agruparlos.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 *
 	 * @param string $etq Etiqueta 
 	 * @param string $value Valor
@@ -1033,6 +1068,7 @@ class myForm {
 	 * Agrega una caja de texto tipo contraseña.
 	 * 
 	 * Agrega una caja de texto tipo contraseña al formulario.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText() 
 	 * @param string $etq Etiqueta del campo
 	 * @param string $name Nombre del campo
 	 * @param string $value Valor incial
@@ -1050,6 +1086,7 @@ class myForm {
 	 * Agrega una area de texto
 	 *
 	 * Agrega una area de texto al formulario.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * @param string $etq Etiqueta del campo
 	 * @param string $name Nombre del campo
 	 * @param string $value Valor incial
@@ -1068,6 +1105,7 @@ class myForm {
 	 * Agrega un campo tipo oculto
 	 *
 	 * Agrega un campo oculto al formulario.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * @param string $name Nombre del campo
 	 * @param string $value Valor incial
 	 */
@@ -1086,6 +1124,7 @@ class myForm {
 	 * Los campos de tipo archivo no dependen del manejo general de los otros campos
 	 * pues estos trabajan independientemente con base en un control de tipo flash
 	 * que con la ayuda de un script procesa el contenido del archivo.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * 
 	 * Ejemplo:
 	 * <code>
@@ -1166,6 +1205,7 @@ class myForm {
 	 * Un FCKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
 	 * Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.
 	 * Por el momento cuando declaramos un campo de este tipo solo es posible obtener su contenido si el action del formulario esta definido.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * Ejemplo:
 	 * <code>
 	 * 
@@ -1238,6 +1278,7 @@ class myForm {
 	 * Agrega un comentario.
 	 * 
 	 * Agrega un comentario escrito para complementar con informacion un formulario.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * @param string $id Identificador del comentario que va a utilizar
 	 * @param string  $Coment Texto que desea mostrar en la fila
 	 */
@@ -1252,6 +1293,7 @@ class myForm {
 	 * Agrega un espacio en blanco. 
 	 *
 	 * En ocaciones los campos no son suficientes para incluir datos en un formulario. El metodo addFreeObject permite agregar un objeto creado por el usuario.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * <code>
 	 * Ejemplo:
 	 * 
@@ -1280,18 +1322,23 @@ class myForm {
 	 * 
 	 * Agrega un boton a la salida del formulario. Los botones normalmente encapsulan algun evento del usuario, por ejemplo guardar algun dato o hacer una consulta.
 	 * Para agregar un evento a un boton y hacerlo funcional pruebe el metodo addEvent.
+	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 * @param string $strName Nombre del Elemento
 	 * @param string $strLabel Etiqueta o valor del Elemento
 	 * @param string $strSrcImg Nombre de la imagen que lo acompaña.
 	 */
 	public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
-		$this->arrayButtonList[] = array('strName'    =>  $strName,
-                                         'strLabel'   =>  htmlentities($strLabel));
-		
-		$count = count($this->arrayButtonList);
 		
 		if ($strSrcImg)
-		   $this->arrayButtonList[($count-1)]['strSrcImg'] = $GLOBALS['urlProject'].$this->pathImages.$strSrcImg;  
+		   $strSrcImg = $GLOBALS['urlProject'].$this->pathImages.$strSrcImg;
+		
+		$name     = $this->getColspanRowspan($strName);
+		
+		$Cadena   = 'button'.$this->Separador.$name.$this->Separador.htmlentities($strLabel).$this->Separador.$strSrcImg;
+		
+		$this->Objects['field'][$name] = $Cadena;
+		
+		$this->arrayFormElementType[$name] = 'button';
 	}
 
 	/**
@@ -1307,16 +1354,22 @@ class myForm {
 	 * @param boolean $CampoFecha Muestra un boton en el campo que facilita la seleccion de una fecha
 	 */
 	public function getText($name = '', $value = '', $size = '', $maxlength = '', $validacion_numerica = false, $CampoFecha = false){
+		
 		$this->arrayFormElementType[$name] = 'text';
+		
 		$keypress = '';
+		
 		$Disabled = '';
+		
 		$LauncherCalendar = '';
 
 		if ($validacion_numerica)
 			$keypress = ' onKeyPress="return OnlyNum(event)"';
 
 		if ($CampoFecha){
+			
 			$LauncherCalendar = '<button '.$this->checkIfIsDisabled($name).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.getElementById(\''.$name.'\').value, \''.$name.'\', \''.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+			
 			$LauncherCalendar .= '<div id="div_trigger_'.$name.'" name="div_trigger_'.$name.'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden"></div>';
 			
 			$Disabled = 'readonly';
@@ -1340,29 +1393,40 @@ class myForm {
 	 * @param boolean $multiple Es un campo de seleccion multiple.
 	 */
 	public  function getSelect($name = '', $value = '', $selected ='', $size = '', $truncar_hasta = 0, $multiple = false){
+		
 		$buf = '';
+		
 		$string_multiple = '';
+		
 		if ($multiple)
-		$string_multiple = ' multiple';
+			$string_multiple = ' multiple';
+			
 		$buf.= "\t\t".'<select '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" name="'.$name.'" id="'.$name.'"'.$string_multiple.' size="'.$size.'" '.$this->checkExistEventJs($name).'>'."\n";
 			
 		if (is_array ($value)){
+			
 			if ($this->selectUseFirstValue)
-			$buf .= "\t\t".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
+				$buf .= "\t\t".'<option value="">'.htmlentities($this->selectStringFirstLabelOption).'</option>'."\n";
 
 			$selectedIsArray = false;
+			
 			if (is_array($selected)){
 			   $selectedIsArray = true;
 			}	
 			
 			foreach ($value as $id => $value){
 				$sel = '';
+				
 				if (!$selectedIsArray){
+					
 				   if (!strcmp($id,$selected)){
+				   	
 				   	  $sel = ' selected';
 				   }
 				}else{
+					
 				   if (in_array($id,$selected)){
+				   	
 				      $sel = ' selected';
 				   }					
 				}
@@ -1671,9 +1735,10 @@ class myForm {
 	 * @param string  $objName   Nombre o id del objeto del formulario al que se le va a agregar un evento. El objeto debe ser textarea, select, password, text, radiobutton, checkbox o button para que sea posible agregar el evento.  
 	 * @param integer $event     El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento. (1 ó onblur, 2 ó onchange, 3 ó onclick, 4 ó onfocus, 5 ó onmouseout, 6 ó onmouseover)
 	 * @param string  $functions El nombre de la funcion o funciones que deseamos llamar al momento de cumplirse el evento
-	 * @param $param1...
-	 * @param $param2...
-	 * @param $param3...
+	 * @param string $param1 Parametro número 1...
+	 * @param string $param2 Parametro número 2...
+	 * @param string $param3 Parametro número 3...
+	 * ...
 	 */
 	public function addEvent($objName,$event,$functions){
 		
@@ -1937,7 +2002,7 @@ class myForm {
 	 *
 	 * @param string  ObjectForm Id del objeto del formulario que el buscara en el arreglo
 	 */
-	protected function checkExistEventJs($ObjectForm){
+	private function checkExistEventJs($ObjectForm){
 		$return = '';
 		$array_keys = array_keys ($this->objEventxJ);
 
@@ -1958,7 +2023,7 @@ class myForm {
 	 *
 	 * @param string  objName Id del objeto del formulario que el buscara en el arreglo
 	 */
-	protected function checkIfIsDisabled ($objName){
+	private function checkIfIsDisabled ($objName){
 		$disabledStr = ' disabled="disabled"';
 		$return = '';
 		if (in_array($objName,$this->objDisabled)){
@@ -1976,7 +2041,7 @@ class myForm {
 	 *
 	 * @param string $objName Nombre del objeto del formulario al que esta asociado
 	 */
-	protected function checkIsHelping ($objName){
+	private function checkIsHelping ($objName){
 		
 		$return = '';
 		
@@ -2229,21 +2294,31 @@ class myForm {
 		# Creamos cada uno de los Objetos HTML con el objetivo de que mas adelante sean procesados en: Grupos, o Independientemente. 
 			
 		if (count($this->Objects)){	
-		$ObjectKeys = array_keys($this->Objects);
-		$countObjects = count($this->Objects['field']);
+		   $ObjectKeys = array_keys($this->Objects);
+		
+		   $countObjects = count($this->Objects['field']);
+		
 		for($j=0, $objKeysFields = array_keys($this->Objects['field']); $j < $countObjects; $j++){
+			
 			$campos_f = split ($this->Separador,$this->Objects['field'][$objKeysFields[$j]]);
+			
 			switch ($campos_f[0]){
+				
 				case 'text':// Ok colSpan
+					
 					$keypress = '';
+					
 					if ($campos_f[6])
 						$keypress = ' onKeyPress="return OnlyNum(event)"';
 
 					$Disabled = '';
+					
 					$LauncherCalendar = '';
 
 					if ($campos_f[7]){
+						
 						$LauncherCalendar = '<button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+						
 						$LauncherCalendar .= '<div id="div_trigger_'.$campos_f[2].'" name="div_trigger_'.$campos_f[2].'" class="calmain" style="position:absolute;height:300px;width:300px;visibility:hidden">h</div>';
 						 
 						$Disabled = 'readonly';
@@ -2252,9 +2327,11 @@ class myForm {
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="text" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" '.$Disabled.' maxlength="'.$campos_f[5].'"'.$keypress.''.$this->checkExistEventJs($campos_f[2]).''.$this->checkIfIsDisabled($campos_f[2]).'>'.$LauncherCalendar.'</td>'."\n";
 					break;
 				case 'password':
+					
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="password" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" maxlength="'.$campos_f[5].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'></td>'."\n";
 					break;
 				case 'file':
+					
 					$bufTemp = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld>';
 
 					//$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
@@ -2266,47 +2343,68 @@ class myForm {
 						$bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
 					*/	
 
-					$maxInfoSize = '';   
+					$maxInfoSize = '';
+					   
 	    			if ($this->FILE_show_max_upload_size_info_in_button){
+	    				
 	    				if ($this->FILE_size_limit<1024){
+	    					
 	           				$maxFileSizeUpload = '('.$this->FILE_size_limit.' Kb)';
+	           				
 	    				}else if ($this->FILE_size_limit<1048576){
+	    					
 	    	   				$maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1024,2).' Mb)';
+	    	   				
 	    				}else{
+	    					
       		   				$maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1048576,2).' Gb)';
 	    				}
+	    				
 	       				$maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
 	    			}	   
 					
 					//$bufTemp .= $this->FILE_str_etq_button.$maxInfoSize.'</button><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
 					$bufTemp .= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
+					
 					$bufTemp .= '</td>'."\n";
 
 					$this->arrayFormElements[$campos_f[2]] = $bufTemp;
 					break;
 				case 'select':
+					
 					$multiple = '';
+					
 					if ($campos_f[6])
-					$multiple = ' multiple';
+						$multiple = ' multiple';
+						
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld>'."\n\t\t".'<select '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" name="'.$campos_f[2].'" id="'.$campos_f[2].'"'.$multiple.' size="'.$campos_f[4].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'>'."\n\t\t".$campos_f[3]."\t\t".'</td>'."\n";
 					break;
 				case 'hidden':
+					
 					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq colSpanEtq widthEtq>'.'<input type="hidden" name="'.$campos_f[1].'" id="'.$campos_f[1].'" value="'.$campos_f[2].'">'.'</td><td rowSpanFld colSpanFld widthFld>'."&nbsp;".'</td>'."\n";
 					break;
 				case 'textarea':
+					
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq style="text-align:center" colSpanEtq  class="'.$this->styleClassTags.'">'.$campos_f[1].'<br>'.
-                    ''.'<textarea '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" name="'.$campos_f[2].'" id="'.$campos_f[2].'" cols="'.$campos_f[4].'" rows="'.$campos_f[5].'" wrap="'.$campos_f[6].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[3].'</textarea></td>'."\n";					 
+                    ''.'<textarea '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" name="'.$campos_f[2].'" id="'.$campos_f[2].'" cols="'.$campos_f[4].'" rows="'.$campos_f[5].'" wrap="'.$campos_f[6].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[3].'</textarea></td>'."\n";
+										 
 					break;
 				case 'fckeditor':
+					
 					$oFCKeditor = new FCKeditor($campos_f[2]) ;
+					
 					$oFCKeditor->BasePath = $this->FCK_editor_BasePath;
+					
 					$oFCKeditor->Value = $campos_f[3];
 
 					$oFCKeditor->Width  = $this->FCK_editor_Width;
+					
 					$oFCKeditor->Height = $this->FCK_editor_Height;
 
 					$oFCKeditor->Config['AutoDetectLanguage']	= false ;
+					
 					$oFCKeditor->Config['DefaultLanguage']    = $this->FCK_editor_Laguage;
+					
 					$oFCKeditor->ToolbarSet  = $this->FCK_editor_ToolbarSet;
 
 					$this->arrayFormElements[$campos_f[2]] = ''.'<td rowSpanEtq '.$this->checkIsHelping($campos_f[2]).' style="text-align:center" colSpanEtq class="'.$this->styleClassTags.'">'.$campos_f[1]."<br>".$oFCKeditor->CreateHtml().'</td>'."\n";
@@ -2319,10 +2417,12 @@ class myForm {
 					
 					break;
 				case 'whitespace':
+					
 					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq><div name="e_'.$campos_f[1].'" id="e_'.$campos_f[1].'">'.$campos_f[2].'</div></td><td rowSpanFld colSpanFld widthFld class="'.$this->styleClassFields.'"><div name="c_'.$campos_f[1].'" id="c_'.$campos_f[1].'">'.$campos_f[3].'</div></td>'."\n";
 					break;
 				case 'coment':
-					$this->arrayFormElements[$campos_f[1]] = '<td widthEtq rowSpanEtq class="'.$this->styleClassTags.'" colSpanEtq>'.$campos_f[2].'</td>';
+					
+					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq class="'.$this->styleClassComments.'" colSpanEtq>'.$campos_f[2].'</td>';
 					break;
 				case 'checkbox':
 					
@@ -2339,11 +2439,30 @@ class myForm {
 				case 'radiobutton':
 
 					$cheked = '';
+					
 					if ($campos_f[5] == true)
 						$cheked = 'checked';
 
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[4]).' class="'.$this->styleClassFields.'" type="radio" name="'.$campos_f[4].'" id="'.$campos_f[4].'_'.$campos_f[3].'" value="'.$campos_f[3].'" '.$this->checkExistEventJs($campos_f[4]).' '.$this->checkIfIsDisabled($campos_f[4]).' '.$cheked.'></td>'."\n";
 					break;
+				case 'button':
+					
+					$bufButton = '<button '.$this->checkIsHelping($campos_f[1]).' '.$this->checkIfIsDisabled($campos_f[1]).' value="'.trim(strip_tags($campos_f[2])).'" class="'.$this->styleClassButtons.'" type="submit" name="'.$campos_f[1].'" id="'.$campos_f[1].'" '.$this->checkExistEventJs($campos_f[1]);
+			
+					$bufButton .= '>';
+
+					$bufButton .= '<table border="0" cellpadding="0" cellspacing="0"><tr>';
+			
+					if ($campos_f[3])
+						$bufButton .= '<td><img style="padding-right: 2px;" src="'.$campos_f[3].'" border="0"></td>';
+
+					$bufButton .= '<td class="boton_font">'.$campos_f[2].'</td></tr></table>';
+
+					$bufButton .= '</button>';
+					
+					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq style="text-align:center" colSpanEtq>'.$bufButton.'</td>';
+					
+					break;	
 			}
 		}
 		}
@@ -2351,123 +2470,141 @@ class myForm {
 		 * Creamos el HTML de cada unos de lo grupos que agrupan campos
 		 */
 		$countArrayGroups = count($this->arrayGroups);
+		
 		for ($kAgrupa = 0; $kAgrupa < $countArrayGroups; $kAgrupa++){
+			
 			$bufHTMLgroup = '';
+			
 			$bufHTMLgroup.= '';
 			
 			$hrefUseShowHideIni = '';
+			
 			$hrefUseShowHideEnd = '';
+			
 			$styleDivFieldSet = '';
 			
 			if ($this->arrayGroups[$kAgrupa]['useShowHide']){
 				
 				$hrefUseShowHideIni = '<a href="javascript:void(MostrarEsconderFieldSet(\''.$this->arrayGroups[$kAgrupa]['idGroup'].'\'))">';
+				
 				$hrefUseShowHideEnd = '</a>';
 				
 				switch ($this->arrayGroups[$kAgrupa]['iniVisibilitySts']){
+					
 					case 'show':
+						
 						$styleDivFieldSet = ' style="display:\'\';"';
 						break;
+						
 					case 'hide':
+						
 						$styleDivFieldSet = ' style="display: none;"';
 						break;
 				}
 			}
 			
 			$bufHTMLgroup .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$hrefUseShowHideIni.$this->arrayGroups[$kAgrupa]['strFieldSet'].$hrefUseShowHideEnd.'</legend>'."\n";
+			
 			$bufHTMLgroup .= '<div name="'.$this->arrayGroups[$kAgrupa]['idGroup'].'" id="'.$this->arrayGroups[$kAgrupa]['idGroup'].'"'.$styleDivFieldSet.'>'."\n";
 			
-			//  Preguntamos si el grupo en proceso es un arreglo de elementos
+			#  Preguntamos si el grupo en proceso es un arreglo de elementos
+			
 			if (is_array($this->arrayGroups[$kAgrupa])){
+				
 				$bufHTMLgroup .= '<table class="'.$this->styleClassTableForm.'" border="'.$this->border.'" align="center" cellpadding="'.$this->cellPadding.'" cellspacing="'.$this->cellSpacing.'" valign="top" width="100%">'."\n";
+				
 				$kCamposDe = count($this->arrayGroups[$kAgrupa]['arraystrIdFields']);
-				// Calculamos cuantos filas y columna tendra este marco
+				
+				# Calculamos cuantos filas y columna tendra este marco
+				
 				$widthCol = intval(100/($this->arrayGroups[$kAgrupa]['intColsByGroup']*2));
+				
 				# Numero de filas
+				
 				$cantCamposInGroup = count($this->arrayGroups[$kAgrupa]['arraystrIdFields']);
 
 				$iTemp = 0;
+				
 				$numColSpan = 0;
+				
 				$cantTr = 0;
+				
 				$sumNumColSpan = 0;
+				
 				for ($i = 0; $i < $cantCamposInGroup; $i++){
 						
 					$nameField = $this->arrayGroups[$kAgrupa]['arraystrIdFields'][$i];
 
 					if (!(($iTemp)%$this->arrayGroups[$kAgrupa]['intColsByGroup']) || !$iTemp){
+						
 						$htmlUseRowSeparator = '';
+						
 						if ($this->useRowSeparator){
+							
 							if (!(($cantTr+2)%2))
-							$htmlUseRowSeparator = 'class = "'.$this->styleClassRowSeparator.'"';
+							   $htmlUseRowSeparator = 'class = "'.$this->styleClassRowSeparator.'"';
 						}
 							
 						$bufHTMLgroup .= "\t".'<tr '.$htmlUseRowSeparator.'>'."\n";
+						
 						$cantTr++;
 					}
 
 					if (isset($this->arrayFormElementsColspan[$nameField])){
+						
 						if($this->arrayFormElementsColspan[$nameField]){
+							
 							$numColSpan = $this->arrayFormElementsColspan[$nameField];
+							
 							$iTemp += $numColSpan;
+							
 							$sumNumColSpan += $numColSpan;
 						}else{
 							$numColSpan = 0;
+							
 							$iTemp++;
+							
 							$sumNumColSpan ++;
 						}
 					}else{
 						$numColSpan = 0;
+						
 						$iTemp++;
+						
 						$sumNumColSpan ++;
 					}
 					
 						
 					$attObj = $this->arrayFormElementType[$nameField];
+					
 					if ($numColSpan){
-						switch($attObj){
-							case 'textarea':
-								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+						
+						if (in_array($attObj,$this->arrayTypeElemSpecial)){
+							
+							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.($numColSpan*2).'"','colspan="'.($numColSpan*2).'"','',''),$this->arrayFormElements[$nameField]);
-								break;
-							/**
-							 * TODO: Para revision
-							 */	
-							case 'coment':
-								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-								                  array('width="'.intval(($widthCol*$numColSpan)*2).'%"','','colspan="'.($numColSpan*2).'"','colspan="'.($numColSpan*2).'"','',''),$this->arrayFormElements[$nameField]);								
-								break;
-							/**
-							 * TODO: Para revision
-							 */		
-							default:
-								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+						}else{
+							
+							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.$numColSpan.'"','colspan="'.$numColSpan.'"','',''),$this->arrayFormElements[$nameField]);
-								break;
 						}
+						
 					}else{
-						switch($attObj){
-							case 'textarea':
-								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+						
+						if (in_array($attObj,$this->arrayTypeElemSpecial)){
+							
+							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','colspan="2"','colspan="2"','',''),$this->arrayFormElements[$nameField]);
-								break;
-							/**
-							 * TODO: Para revision
-							 */	
-							case 'coment':
-								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-								                  array ('width="'.intval($widthCol*2).'%"','','','','',''),$this->arrayFormElements[$nameField]);								
-								break;
-							/**
-							 * TODO: Para revision
-							 */		
-							default:
-								$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+						}else{
+							
+							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 								                  array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','','','',''),$this->arrayFormElements[$nameField]);
-								break;
 						}
+						
 					}
 						
 					if (!(($iTemp)%$this->arrayGroups[$kAgrupa]['intColsByGroup']) && $iTemp){
+						
 						$bufHTMLgroup .= "\t".'</tr>'."\n";
 					}
 				}
@@ -2476,7 +2613,9 @@ class myForm {
 				$tdFaltan = ($cantTr*$this->arrayGroups[$kAgrupa]['intColsByGroup'])-$sumNumColSpan;
 
 				if ($tdFaltan){
+					
 					for ($i = 0; $i < $tdFaltan; $i++){
+						
 						$bufHTMLgroup .= "\t\t".'<td class="'.$this->styleClassTags.'">&nbsp;</td><td class="'.$this->styleClassTags.'">&nbsp;</td>'."\n";
 					}
 					$bufHTMLgroup .= "\t".'</tr>'."\n";
@@ -2484,11 +2623,13 @@ class myForm {
 
 
 				$bufHTMLgroup .= '</table>'."\n";
+				
 			}else{
 				$bufHTMLgroup .= '';
 			}
 			
 			$bufHTMLgroup .= '</div>'."\n";
+			
 			$bufHTMLgroup .= '</fieldset>'."\n\n";
 			
 			$this->arrayGroupsElementsHTML[$this->arrayGroups[$kAgrupa]['idGroup']] = $bufHTMLgroup;
@@ -2499,153 +2640,167 @@ class myForm {
 		 * grupos de campos para poder dividirlos.
 		 */
 		$countarrayGroupsIdInShareSpace = count ($this->arrayGroupsIdInShareSpace);
+		
 		$arrayKeysGroupingGroups  = array_keys($this->arrayGroupsIdInShareSpace);
+		
 		for ($i=0;$i<$countarrayGroupsIdInShareSpace;$i++){
+			
 			// Pregunta de seguridad
 			if (is_array($arrayGroupsIdInShareSpace = $this->arrayGroupsIdInShareSpace[$arrayKeysGroupingGroups[$i]]['arrayIdGroups'])){
+				
 				$buf .= '<table width="100%" border="'.$this->border.'" cellspacing="0">'."\n";
+				
 				$buf .= '<tr>'."\n";
+				
 				for ($j=0;$j<count($arrayGroupsIdInShareSpace);$j++){
+					
 					$buf.='<td width="'.intval(100/count($arrayGroupsIdInShareSpace)).'%">'.$this->arrayGroupsElementsHTML[$arrayGroupsIdInShareSpace[$j]].'</td>'."\n";
+					
 					$this->arrayGroupsShown[]=$arrayGroupsIdInShareSpace[$j];
 				}
+				
 				$buf .= '</tr>'."\n";
+				
 				$buf .= '</table>'."\n";
 			}
 		}
 
-		/**
-		 * Mostrar cada uno de los grupos que no han sido mostrados
-		 */
+		
+		# Mostrar cada uno de los grupos que no han sido mostrados
+
 		for ($i=0;$i<$countArrayGroups;$i++){
+			
 			if (!in_array($this->arrayGroups[$i]['idGroup'],$this->arrayGroupsShown)){
+				
 				$buf .= $this->arrayGroupsElementsHTML[$this->arrayGroups[$i]['idGroup']];
+				
 				$this->arrayGroupsShown[]=$this->arrayGroups[$i]['idGroup'];
 			}
 		}
 
-		// Calculamos los Id de los objectos definidos del formulario que no han sido definidos
+		# Calculamos los Id de los objectos definidos del formulario que no han sido definidos
+		
 		$countArrayFormElements = count($this->arrayFormElements);
+		
 		$arrayKeysFormElements = array_keys($this->arrayFormElements);
+		
 		for ($i=0;$i<$countArrayFormElements;$i++){
+			
 			if (!in_array($arrayKeysFormElements[$i],$this->arrayFormElementsShown)){
+				
 				$this->arrayFormElementsToShow[] = $arrayKeysFormElements[$i];
 			}
 		}
 
-		// Imprimimos los elementos del formulario restantes
+		# Imprimimos los elementos del formulario restantes
+		
 		$buf .= '<table border="'.$this->border.'" align="center" cellpadding="'.$this->cellPadding.'" cellspacing="'.$this->cellSpacing.'" valign="top" width="'.$this->width.'" height="'.$this->height.'">'."\n";
+		
 		$widthCol = intval(100/($this->cols*2));
+		
 		$cantCamposToShow = count($this->arrayFormElementsToShow);
 
 		$iTemp = 0;
+		
 		$numColSpan = 0;
+		
 		$cantTr = 0;
+		
 		$sumNumColSpan = 0;
+		
 		for ($i = 0; $i < $cantCamposToShow; $i++){
 				
 			$nameField = $this->arrayFormElementsToShow[$i];
 
 			if (!(($iTemp)%$this->cols) || !$iTemp){
+				
 				$htmlUseRowSeparator = '';
+				
 				if ($this->useRowSeparator){
+					
 					if (!(($cantTr+2)%2))
-					$htmlUseRowSeparator = ' class = "'.$this->styleClassRowSeparator.'"';
+						$htmlUseRowSeparator = ' class = "'.$this->styleClassRowSeparator.'"';
 				}
 					
 				$buf .= "\t".'<tr'.$htmlUseRowSeparator.'>'."\n";
+				
 				$cantTr++;
 			}
 
 			if (isset($this->arrayFormElementsColspan[$nameField])){
+				
 				if($this->arrayFormElementsColspan[$nameField]){
+					
 					$numColSpan = $this->arrayFormElementsColspan[$nameField];
+					
 					$iTemp += $numColSpan;
+					
 					$sumNumColSpan += $numColSpan;
+					
 				}else{
 					$numColSpan = 0;
+					
 					$iTemp++;
+					
 					$sumNumColSpan ++;
 				}
 			}else{
 				$numColSpan = 0;
+				
 				$iTemp++;
+				
 				$sumNumColSpan ++;
 			}
 				
 			$attObj = $this->arrayFormElementType[$nameField];
+			
 			if ($numColSpan){
-				switch($attObj){
-					case 'textarea':
-						$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+				
+				if (in_array($attObj,$this->arrayTypeElemSpecial)){
+					
+					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 						         array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.($numColSpan*2).'"','colspan="'.($numColSpan*2).'"','',''),$this->arrayFormElements[$nameField]);
-						break;
-					default:
-						$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+				}else{
+					
+					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 						         array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.$numColSpan.'"','colspan="'.$numColSpan.'"','',''),$this->arrayFormElements[$nameField]);
-						break;
 				}
+				
 			}else{
-				switch($attObj){
-					case 'textarea':
-						$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+				
+				if (in_array($attObj,$this->arrayTypeElemSpecial)){
+					
+					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 						         array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','colspan="2"','colspan="2"','',''),$this->arrayFormElements[$nameField]);
-						break;
-					default:
-						$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
+				}else{
+					
+					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
 						         array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','','','',''),$this->arrayFormElements[$nameField]);
-						break;
 				}
+				
 			}
 			
 			if (!(($iTemp)%$this->cols) && $iTemp){
+				
 				$buf .= "\t".'</tr>'."\n";
 			}
 
 		}
 
 		$tdFaltan = ($cantTr*$this->cols)-$sumNumColSpan;
+		
 		if ($tdFaltan){
+			
 			for ($i = 0; $i < $tdFaltan; $i++){
+				
 				$buf .= "\t\t".'<td class="'.$this->styleClassTags.'">&nbsp;</td><td class="'.$this->styleClassTags.'">&nbsp;</td>'."\n";
 			}
+			
 			$buf .= "\t".'</tr>'."\n";
 		}
 
 		$buf .= '</table>'."\n";
-
-		$buf .= '<table border="'.$this->border.'" align="center" width="'.$this->width.'">'."\n";
-		$buf .= '<tr>';
-
-		$countArrayButtonList = count ($this->arrayButtonList);
-		$intWidth = 100;
 		
-		if ($countArrayButtonList)
-			$intWidth = $intWidth / ($countArrayButtonList);
-			
-		$strMixedParams = '';
-			
-		// Para mostrar los demas botones
-		for ($j = 0; $j < $countArrayButtonList; $j++){
-			$buf .= '<td align="center" style="text-align:center" width="'.$intWidth.'%">';
-
-			$buf .= '<button '.$this->checkIsHelping($this->arrayButtonList[$j]['strName']).' '.$this->checkIfIsDisabled($this->arrayButtonList[$j]['strName']).' value="'.trim(strip_tags($this->arrayButtonList[$j]['strLabel'])).'" class="'.$this->styleClassButtons.'" type="submit" name="'.$this->arrayButtonList[$j]['strName'].'" id="'.$this->arrayButtonList[$j]['strName'].'" '.$this->checkExistEventJs($this->arrayButtonList[$j]['strName']);
-			
-			$buf .= '>';
-
-			$buf.='<table border="0" cellpadding="0" cellspacing="0"><tr>';
-			
-			if (isset($this->arrayButtonList[$j]['strSrcImg']))
-				$buf .= '<td><img style="padding-right: 2px;" src="'.$this->arrayButtonList[$j]['strSrcImg'].'" border="0"></td>';
-
-			$buf.='<td class="boton_font">'.$this->arrayButtonList[$j]['strLabel'].'</td></tr></table>';
-
-			$buf.='</button></td>';
-		}
-
-		$buf .='</tr>';
-		$buf .= '</table>'."\n";
-
 		if (strlen($this->strFormFieldSet))
 			$buf .= '</fieldset>'."\n";
 			
