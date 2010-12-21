@@ -1,12 +1,13 @@
 <?php
 /**
- * oszeno.class.php
+ * osezno.class.php
+ * 
+ * Asignación de areas de trabajo en plantillas. Llamado a javascripts, estilos. Configuración de tema.
  * 
  * @uses Metodos y atributos propios del proyecto, llamado plantillas.
  * @package OSEZNO-PHP-FRAMEWORK
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
- *
  */	
 class osezno {
   	
@@ -67,10 +68,10 @@ class osezno {
   	private $objxAjax;
   	
   	/**
-  	 * Contructor de la clase
-  	 * Define caracteristicas iniciales del proyecto
-  	 * para que este pueda comenzar a ser usado
+  	 * Contructor de la clase.
   	 *
+  	 * Constructor de la clase. En cada modulo nuevo ya viene declarado.
+  	 * @param object $objxAjax Objeto xajax
   	 */
   	public function __construct($objxAjax = ''){
   		
@@ -212,17 +213,19 @@ class osezno {
   	}
   	
   	/**
-  	 * Setea el nombre del tema de estilos que se va a usar en todo el framework
+  	 * Configura el tema de estilos para el framework.
   	 * 
-  	 * @param $theme	Nombre del tema
+  	 * Configura el tema de estilos para el framework. Puede cambiar el tema general de estilos en el archivo de configuracion del proyecto.
+  	 * @param string $theme	Nombre del tema
   	 */
   	public function setTheme ($theme){
   		$this->theme = $theme;
   	}
   	
 	/**
-	 * Obtiene la ruta fisica del proyecto
+	 * Obtiene la ruta fisica del proyecto.
 	 *
+	 * Obtiene la ruta fisica del proyecto.
 	 * @return string
 	 */
   	public function getPathProject (){
@@ -230,8 +233,9 @@ class osezno {
   	}
   	
   	/**
-  	 * Obtiene la url base del proyecto
+  	 * Obtiene la url base del proyecto.
   	 *
+  	 * Obtiene la url base del proyecto.
   	 * @return string
   	 */
   	public function getUrlProject (){
@@ -239,19 +243,21 @@ class osezno {
   	}
   	
   	/**
-  	 * Configura la ruta fisica donde se encuentran las plantillas
+  	 * Configura la ruta fisica donde se encuentran las plantillas.
   	 *
-  	 * @param string $newpath
+  	 * Configura la ruta fisica donde se encuentran las plantillas.
+  	 * @param string $newpath Nueva ruta
   	 */
   	public function setPathFolderTemplates ($newpath){
   		$this->pathFolderTemplates = $newpath; 
   	}
   	
   	/**
-  	 * Asigna un contenido de usuario a una area de la plantilla
-  	 *
-  	 * @param string $nameRef
-  	 * @param string $cont
+  	 * Asigna un contenido a una plantilla.
+  	 * 
+  	 * Asigna a una area de la plantilla definida el contenido que quiera.
+  	 * @param string $nameRef Nombre del area
+  	 * @param string $cont	Contenido
   	 */
   	public function assign ($nameRef,$cont){
   		$this->arrayAssignAreas['{'.$nameRef.'}'] = $cont;
@@ -288,9 +294,10 @@ class osezno {
   	}
   	
   	/**
-  	 * Muestra la plantilla seleccionada
+  	 * Muestra la plantilla seleccionada.
   	 *
-  	 * @param string $strNameTemplate
+  	 * Muestra la plantilla seleccionada. En caso de no encontrar la plantilla devuelve un error.
+  	 * @param string $strNameTemplate Nombre de plantilla.
   	 */
   	public function call_template ($strNameTemplate){
   		
@@ -330,6 +337,7 @@ class osezno {
   		}else{
   			
   			$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.MSG_TEMPLATE_NO_FOUND.'&nbsp;&quot;'.$strNameTemplate.'&quot;<br><br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b> '.MSG_TEMPLATE_NO_FOUND_DET.'&nbsp;&quot;'.$this->pathFolderTemplates.'&quot;</div></div>';
+  			
   			die ($this->arrayAssignAreasHead['css_errors'].$msgError);
   		}
   		
