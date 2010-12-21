@@ -1977,15 +1977,24 @@ class myForm {
 	 * @param string $objName Nombre del objeto del formulario al que esta asociado
 	 */
 	protected function checkIsHelping ($objName){
+		
 		$return = '';
+		
 		$arrayKeysObjHelps = array_keys ($this->objHelps);
+		
 		if (in_array($objName,$arrayKeysObjHelps)){
+			
 			switch ($this->styleTypeHelp){
+				
 				case 1:
+					
 					$return = ' onmouseover="getElementById(\''.$objName.'\').style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\',BALLOON, true, ABOVE, true, FADEIN, 300, FADEOUT, 300)" ';//
+					
 					break;
 				case 2:
+					
 					$return = ' onmouseover="getElementById(\''.$objName.'\').style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\')" ';//
+					
 					break;
 			}
 		}
@@ -2188,7 +2197,7 @@ class myForm {
 		$buf .= '<!--'."\n";
 		$buf .= 'OSEZNO PHP FRAMEWORK'."\n";
 		$buf .= 'Generado con la clase para la creacion de Formularios myForm.class.php'."\n";
-		$buf .= 'Nombre de Formulario: '.$this->name.''."\n";
+		$buf .= 'Formulario: '.$this->name.''."\n";
 		$buf .= 'Autor: José Ignacio Gutiérrez Guzmán <http://www.osezno-framework.org/joselitohacker/>'."\n";
 		$buf .= '-->'."\n";
 
@@ -2217,13 +2226,7 @@ class myForm {
 		if (strlen($this->strFormFieldSet))
 			$buf .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$this->strFormFieldSet.'</legend>'."\n";
 		
-		
-		/**
-		 * Creamos cada uno de los Objetos HTML
-		 * con el objetivo de que mas adelante sean procesados en:
-		 * Grupos, o Independientemente. No olvidar que los grupos
-		 * pueden ser reagrupados en super grupos.
-		 */
+		# Creamos cada uno de los Objetos HTML con el objetivo de que mas adelante sean procesados en: Grupos, o Independientemente. 
 			
 		if (count($this->Objects)){	
 		$ObjectKeys = array_keys($this->Objects);

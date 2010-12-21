@@ -74,7 +74,7 @@ Source Location: /osezno.class.php<br /><br />
 
 <h3><a href="#class_details">Class Overview</a></h3>
 <pre></pre><br />
-<div class="description">oszeno.class.php</div><br /><br />
+<div class="description">osezno.class.php</div><br /><br />
 <h4>Author(s):</h4>
 <ul>
           <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
@@ -124,8 +124,8 @@ Source Location: /osezno.class.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 11]<br />
-oszeno.class.php<br /><br /><br /><br />
+[line 12]<br />
+osezno.class.php<br /><br /><p>Asignación de areas de trabajo en plantillas. Llamado a javascripts, estilos. Configuración de tema.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -151,17 +151,17 @@ oszeno.class.php<br /><br /><br /><br />
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 75]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 76]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>osezno __construct(
-[
+[object
 $objxAjax = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Contructor de la clase<br /><br /><p>Define caracteristicas iniciales del proyecto  para que este pueda comenzar a ser usado</p><br /><br /><br />
+		Contructor de la clase.<br /><br /><p>Constructor de la clase. En cada modulo nuevo ya viene declarado.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -177,9 +177,9 @@ $objxAjax = ''])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">object&nbsp;&nbsp;</td>
         <td><b>$objxAjax</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Objeto xajax</td>
       </tr>
         </table>
     </div><br />
@@ -187,7 +187,7 @@ $objxAjax = ''])</code>
   </div>
   <hr />
 	<a name="methodassign"></a>
-	<h3>method assign <span class="smalllinenumber">[line 256]</span></h3>
+	<h3>method assign <span class="smalllinenumber">[line 262]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -198,7 +198,7 @@ $cont)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Asigna un contenido de usuario a una area de la plantilla<br /><br /><br /><br />
+		Asigna un contenido a una plantilla.<br /><br /><p>Asigna a una area de la plantilla definida el contenido que quiera.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -216,12 +216,12 @@ $cont)</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$nameRef</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Nombre del area</td>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$cont</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Contenido</td>
       </tr>
         </table>
     </div><br />
@@ -229,7 +229,7 @@ $cont)</code>
   </div>
   <hr />
 	<a name="methodcall_template"></a>
-	<h3>method call_template <span class="smalllinenumber">[line 295]</span></h3>
+	<h3>method call_template <span class="smalllinenumber">[line 302]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -239,7 +239,7 @@ $strNameTemplate)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Muestra la plantilla seleccionada<br /><br /><br /><br />
+		Muestra la plantilla seleccionada.<br /><br /><p>Muestra la plantilla seleccionada. En caso de no encontrar la plantilla devuelve un error.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -257,7 +257,7 @@ $strNameTemplate)</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$strNameTemplate</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Nombre de plantilla.</td>
       </tr>
         </table>
     </div><br />
@@ -265,7 +265,7 @@ $strNameTemplate)</code>
   </div>
   <hr />
 	<a name="methodgetPathProject"></a>
-	<h3>method getPathProject <span class="smalllinenumber">[line 228]</span></h3>
+	<h3>method getPathProject <span class="smalllinenumber">[line 231]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -274,7 +274,7 @@ $strNameTemplate)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene la ruta fisica del proyecto<br /><br /><br /><br />
+		Obtiene la ruta fisica del proyecto.<br /><br /><p>Obtiene la ruta fisica del proyecto.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -290,7 +290,7 @@ $strNameTemplate)</code>
   </div>
   <hr />
 	<a name="methodgetUrlProject"></a>
-	<h3>method getUrlProject <span class="smalllinenumber">[line 237]</span></h3>
+	<h3>method getUrlProject <span class="smalllinenumber">[line 241]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -299,7 +299,7 @@ $strNameTemplate)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Obtiene la url base del proyecto<br /><br /><br /><br />
+		Obtiene la url base del proyecto.<br /><br /><p>Obtiene la url base del proyecto.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -315,7 +315,7 @@ $strNameTemplate)</code>
   </div>
   <hr />
 	<a name="methodsetPathFolderTemplates"></a>
-	<h3>method setPathFolderTemplates <span class="smalllinenumber">[line 246]</span></h3>
+	<h3>method setPathFolderTemplates <span class="smalllinenumber">[line 251]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -325,7 +325,7 @@ $newpath)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configura la ruta fisica donde se encuentran las plantillas<br /><br /><br /><br />
+		Configura la ruta fisica donde se encuentran las plantillas.<br /><br /><p>Configura la ruta fisica donde se encuentran las plantillas.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -343,7 +343,7 @@ $newpath)</code>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$newpath</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Nueva ruta</td>
       </tr>
         </table>
     </div><br />
@@ -351,17 +351,17 @@ $newpath)</code>
   </div>
   <hr />
 	<a name="methodsetTheme"></a>
-	<h3>method setTheme <span class="smalllinenumber">[line 219]</span></h3>
+	<h3>method setTheme <span class="smalllinenumber">[line 221]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setTheme(
-$theme
+string
 $theme)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Setea el nombre del tema de estilos que se va a usar en todo el framework<br /><br /><br /><br />
+		Configura el tema de estilos para el framework.<br /><br /><p>Configura el tema de estilos para el framework. Puede cambiar el tema general de estilos en el archivo de configuracion del proyecto.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -377,7 +377,7 @@ $theme)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">$theme&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$theme</b>&nbsp;&nbsp;</td>
         <td>Nombre del tema</td>
       </tr>
@@ -390,7 +390,7 @@ $theme)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Mon, 20 Dec 2010 17:56:29 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Tue, 21 Dec 2010 09:43:17 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
