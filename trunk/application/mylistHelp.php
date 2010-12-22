@@ -5,7 +5,7 @@
 	$objOsezno = new osezno($objxAjax);
  
  	$objOsezno->setPathFolderTemplates('../lang/help_mylist/');
-	
+
+ 	echo $objOsezno->call_template(LANG.'.tpl');
  	
- 	echo $objOsezno->call_template('spanish.tpl');
 ?>
