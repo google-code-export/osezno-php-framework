@@ -152,7 +152,7 @@ class myTabs{
 		$html .= '</ul></div></td></tr><tr><td><div id="'.$idDiv.'"></div></td></tr></table>';
 		
 		if ($tabDefa)
-			$html .= '<script type="text/javascript">makeactive(\'tab'.$idTabDef.'\','.($from).','.($i).',\''.$this->arrayTabs[$tabDefa].'\',\''.$idDiv.'\')</script>';
+			$html .= '<script type="text/javascript">makeactive(\'tab'.$idTabDef.'\','.($from).','.$couAr.',\''.$this->arrayTabs[$tabDefa].'\',\''.$idDiv.'\')</script>';
 		
 		$GLOBALS['OF_TABS_ID_SEC'] = $i+1;	
 			

@@ -31,6 +31,14 @@
 	vertical-align: middle;
 }
 
+select.caja {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	vertical-align: middle;
+	width:100px;
+}
+
 .caja_required {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
@@ -51,6 +59,8 @@
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #000000;
+	align: center;
+	text-align: center;
 }
 
 .etiqueta {

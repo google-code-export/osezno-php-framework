@@ -23,8 +23,8 @@
 						<td valign="top" height="90%">
 							<table width="100%" height="100%" border="0" cellpadign="0" cellspacing="0" border="0">
 								<tr>
-									<td width="15%" align="center" valign="middle"><div class="{class_div_img}"></div></td>
-		   							<td width="85%" valign="middle"><div class="cont_msg_box">{cont_msg_box}</div></td>
+									<td width="20%" align="center" valign="middle"><div class="{class_div_img}"></div></td>
+		   							<td width="80%" valign="middle"><div class="cont_msg_box">{cont_msg_box}</div></td>
 								</tr>
 							</table>
 						</td>
