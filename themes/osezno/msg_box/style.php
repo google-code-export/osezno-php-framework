@@ -129,7 +129,7 @@
 .tit_msg_box {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
-	font-weight:bold;
+	font-weight:normal;
 	font-style:none;
 	text-decoration: none;
 	text-align:left;
@@ -140,7 +140,7 @@
 /** Contenido del texto del messagebox **/
 .cont_msg_box {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
+	font-size: 13px;
 	text-decoration: none;
 	text-align:justify;
 	vertical-align:middle;
@@ -153,7 +153,6 @@
 	color: #000033;
 	text-align: center;
 	vertical-align: middle;
-	padding-right: 10px;
-	padding-left: 10px;
 	text-decoration: none;
+	width: 100px;
 }

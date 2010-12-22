@@ -806,12 +806,12 @@ class myController extends myControllerExt {
 	 * 
 	 * 		public function sendFormData ($formData){
 	 * 			
-	 * 			# En un arreglo definimos los eventos. Donde la llave es el evento y el valor es la etiqueta. 
-	 * 			# Si la llave no es definida, el evento por defecto sera closeModalWindow.
+	 * 			# En un arreglo definimos los eventos. Donde la llave es la Etiqueta del botón y el valor es el evento que va a llamar. 
+	 * 			# Si la llave no es definida, el valor sera tomado como la etiqueta del boton y el evento por defecto sera closeModalWindow.
 	 * 			# Del parametro número 4 al numero 8 puede enviar variables tipo caracter, numericas o arreglos.
 	 * 			# Los parametros enviados seran recibidos por el evento definido.
 	 * 	
-	 * 			$events = array ('acceptSendFormData'=>'Aceptar','Cancelar');			
+	 * 			$events = array ('Aceptar'=>'acceptSendFormData','Cancelar');			
 	 * 
 	 * 			$this->messageBox('Los datos fueron enviados','info',$events, $formData);	
 	 * 			
@@ -841,7 +841,7 @@ class myController extends myControllerExt {
 	 * @param4 array/string $param4 Parametro 4
 	 * @param5 array/string $param5 Parametro 5
 	 */	
-	public function messageBox($msg = '', $iconMsg = '', $mixedButtons = array(), $param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = ''){
+	public function messageBox($msg = '', $iconMsg = 'info', $mixedButtons = array(), $param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = ''){
 		
 		$arrImg = array (
 			'critical'=>'img_critical',
@@ -852,23 +852,24 @@ class myController extends myControllerExt {
 			'user'=>'img_user',
 			'warning'=>'img_warning'
 		);
-		
-		if (!isset($arrImg[$iconMsg]))
-			$iconMsg = 'img_info';
+
+		if (isset($arrImg[$iconMsg]))
+			$iconMsg = $arrImg[$iconMsg];
 		else
-			$iconMsg = $arrImg[$iconMsg];	
+			$iconMsg = $arrImg['info'];		
+			
 		
 		$file = $GLOBALS['folderProject'].'/themes/'.THEME_NAME.'/msg_box/message_box.tpl';
 
 		if (!$this->widthMessageBox)
-		  $width = 450;
+		  $width = 400;
 		else  
 		  $width = $this->widthMessageBox;
 				  
 		if (!$this->heightMessageBox){
              $height = intval(strlen($msg)/55)*23;
                  if ($height<100)
-                   $height = 200;
+                   $height = 170;
 		}else
 		  $height = $this->heightMessageBox;		
 

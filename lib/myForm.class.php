@@ -243,7 +243,7 @@ class myForm {
 	 * 
 	 * @var array
 	 */
-	private $arrayTypeElemSpecial = array ('textarea','button','coment');
+	private $arrayTypeElemSpecial = array ('textarea','button','coment','fckeditor');
 	
 	/**
 	 * Arreglo de los campos tipo 'FILE' que estan registrados
@@ -1610,7 +1610,7 @@ class myForm {
 		$buf.='<button '.$this->checkIfIsDisabled($strName).' '.$this->checkIsHelping($strName).' value="'.strip_tags($strLabel).'" class="'.$this->styleClassButtons.'" type="button" name="'.$strName.'" id="'.$strName.'" ';
 		$buf .= $this->checkExistEventJs($strName).'>';
 
-		$buf .= '<table border="0" cellspacing="0" cellpadding="0"><tr>';
+		$buf .= '<table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>';
 		
 		if ($strSrcImg)
 			$buf .= '<td><img style="padding-right: 2px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0"></td>';
@@ -2451,7 +2451,7 @@ class myForm {
 			
 					$bufButton .= '>';
 
-					$bufButton .= '<table border="0" cellpadding="0" cellspacing="0"><tr>';
+					$bufButton .= '<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr>';
 			
 					if ($campos_f[3])
 						$bufButton .= '<td><img style="padding-right: 2px;" src="'.$campos_f[3].'" border="0"></td>';
