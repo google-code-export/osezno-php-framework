@@ -765,7 +765,7 @@ $idNewElement)</code>
   </div>
   <hr />
 	<a name="methoderrorBox"></a>
-	<h3>method errorBox <span class="smalllinenumber">[line 941]</span></h3>
+	<h3>method errorBox <span class="smalllinenumber">[line 942]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1126,7 +1126,7 @@ $idNewElement)</code>
 		<code>void messageBox(
 [string
 $msg = ''], [string
-$iconMsg = ''], [array
+$iconMsg = 'info'], [array
 $mixedButtons = array()], [
 $param1 = ''], [
 $param2 = ''], [
@@ -1147,12 +1147,12 @@ $param5 = ''])</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">sendFormData&nbsp;</span><span class="src-sym">(</span><span class="src-var">$formData</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;En&nbsp;un&nbsp;arreglo&nbsp;definimos&nbsp;los&nbsp;eventos.&nbsp;Donde&nbsp;la&nbsp;llave&nbsp;es&nbsp;el&nbsp;evento&nbsp;y&nbsp;el&nbsp;valor&nbsp;es&nbsp;la&nbsp;etiqueta.</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Si&nbsp;la&nbsp;llave&nbsp;no&nbsp;es&nbsp;definida,&nbsp;el&nbsp;evento&nbsp;por&nbsp;defecto&nbsp;sera&nbsp;closeModalWindow.</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;En&nbsp;un&nbsp;arreglo&nbsp;definimos&nbsp;los&nbsp;eventos.&nbsp;Donde&nbsp;la&nbsp;llave&nbsp;es&nbsp;la&nbsp;Etiqueta&nbsp;del&nbsp;botón&nbsp;y&nbsp;el&nbsp;valor&nbsp;es&nbsp;el&nbsp;evento&nbsp;que&nbsp;va&nbsp;a&nbsp;llamar.</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Si&nbsp;la&nbsp;llave&nbsp;no&nbsp;es&nbsp;definida,&nbsp;el&nbsp;valor&nbsp;sera&nbsp;tomado&nbsp;como&nbsp;la&nbsp;etiqueta&nbsp;del&nbsp;boton&nbsp;y&nbsp;el&nbsp;evento&nbsp;por&nbsp;defecto&nbsp;sera&nbsp;closeModalWindow.</span></div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Del&nbsp;parametro&nbsp;número&nbsp;4&nbsp;al&nbsp;numero&nbsp;8&nbsp;puede&nbsp;enviar&nbsp;variables&nbsp;tipo&nbsp;caracter,&nbsp;numericas&nbsp;o&nbsp;arreglos.</span></div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Los&nbsp;parametros&nbsp;enviados&nbsp;seran&nbsp;recibidos&nbsp;por&nbsp;el&nbsp;evento&nbsp;definido.</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$events&nbsp;</span>=&nbsp;<span class="src-key">array&nbsp;</span><span class="src-sym">(</span><span class="src-str">'acceptSendFormData'</span>=&gt;<span class="src-str">'Aceptar'</span><span class="src-sym">,</span><span class="src-str">'Cancelar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$events&nbsp;</span>=&nbsp;<span class="src-key">array&nbsp;</span><span class="src-sym">(</span><span class="src-str">'Aceptar'</span>=&gt;<span class="src-str">'acceptSendFormData'</span><span class="src-sym">,</span><span class="src-str">'Cancelar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">messageBox</span><span class="src-sym">(</span><span class="src-str">'Los&nbsp;datos&nbsp;fueron&nbsp;enviados'</span><span class="src-sym">,</span><span class="src-str">'info'</span><span class="src-sym">,</span><span class="src-var">$events</span><span class="src-sym">,&nbsp;</span><span class="src-var">$formData</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -1352,7 +1352,7 @@ $effect = ''])</code>
   </div>
   <hr />
 	<a name="methodMYFORM_validate"></a>
-	<h3>method MYFORM_validate <span class="smalllinenumber">[line 1042]</span></h3>
+	<h3>method MYFORM_validate <span class="smalllinenumber">[line 1043]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1421,7 +1421,7 @@ $requiredFields)</code>
   </div>
   <hr />
 	<a name="methodMYLIST_reload"></a>
-	<h3>method MYLIST_reload <span class="smalllinenumber">[line 1492]</span></h3>
+	<h3>method MYLIST_reload <span class="smalllinenumber">[line 1493]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1457,7 +1457,7 @@ $idList)</code>
   </div>
   <hr />
 	<a name="methodnotificationWindow"></a>
-	<h3>method notificationWindow <span class="smalllinenumber">[line 959]</span></h3>
+	<h3>method notificationWindow <span class="smalllinenumber">[line 960]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2210,7 +2210,7 @@ $varReturn)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 21 Dec 2010 16:58:09 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Thu, 23 Dec 2010 14:59:11 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
