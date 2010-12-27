@@ -127,8 +127,12 @@ class myTabs{
 	 */
 	public function getTabsHtml($tabDefa = ''){
 		
+		$script = '';
+		
 		$html = '';
 
+		$script .= "\n".'<script type="text/javascript">'."\n";
+		
 		$html .= '<table width="100%" border="0"><tr><td><div id="div_tab"><ul>';
 		
 		$from = $i = $GLOBALS['OF_TABS_ID_SEC'];
@@ -140,6 +144,8 @@ class myTabs{
 		$idDiv = 'content_tab_'.$i;
 		
 		foreach ($this->arrayTabs as $etqTab => $urlTab){
+			
+			$script .= "\t".'var myTab'.etqFormat($etqTab).' = new Array(\'tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\');'."\n";
 			
 			$html .= '<li id="tab'.$i.'"><span onclick="makeactive(\'tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\')">'.$etqTab.'</span></li>';
 			
@@ -156,9 +162,11 @@ class myTabs{
 		
 		$GLOBALS['OF_TABS_ID_SEC'] = $i+1;	
 			
-		return $html;
+		$script .= '</script>'."\n";
+		
+		return $script.$html;
 	}
-
+	
 }
 
 ?>

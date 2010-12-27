@@ -1487,7 +1487,7 @@ class myController extends myControllerExt {
 	/**
 	 * Recarga una lista dinamica.
 	 * 
-	 * Refresca los datos contenidos de una lista dinamica previamente declarada y actuamente mostrada.
+	 * Refresca los datos contenidos de una lista dinamica previamente declarada en su ubicación actual u original.
 	 * @param string $idList Id de la lista a refrescar su contenido
 	 */
 	public function MYLIST_reload($idList){
@@ -1504,6 +1504,18 @@ class myController extends myControllerExt {
 		}else
 			$this->messageBox(MSG_ERROR_IDLIST_NOTDEFINED,'critical');	
 		
+	}
+	
+	/**
+	 * Activa una pestaña creada
+	 * 
+	 * Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña.
+	 * @param string $tabName Nombre de la pestaña
+	 * @param string $newUrl Permite asignar contenido desde una nueva Url
+	 */
+	public function MYTAB_makeActive($tabName, $newUrl = ''){
+		
+		$this->script("changeActiveTab(myTab".etqFormat($tabName).",'".$newUrl."')");
 	}
 	
 }
