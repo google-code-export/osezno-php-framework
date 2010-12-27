@@ -10,6 +10,7 @@ var idFuncion = new Array();
 
 var counter = new Array();
 
+var allTabs = new Array();
 
 function cancelQuery (tab){
 	
@@ -137,3 +138,19 @@ function makeactive(tabActive, from, countTabs, urlActive, idDiv) {
 		
 		callAHAH(urlActive, idDiv, '', '','tab'+i, 'makeactive'); 
 }
+
+/**
+ * Cambia la pestaña activa actual
+ * @param etq
+ * @param newUrl
+ * @return
+ */ 
+function changeActiveTab (etq, newUrl){
+	
+	if (newUrl)
+		etq[3] = newUrl;
+	
+	makeactive(etq[0], etq[1], etq[2], etq[3], etq[4]);
+	
+}
+ 

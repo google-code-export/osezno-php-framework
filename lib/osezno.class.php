@@ -345,4 +345,24 @@ class osezno {
   	}
   	
   }
+  
+  /**
+   * Da un formato a un etiqueta para crear un javascript legible
+   * @param string $etq Nombre de la etiqueta
+   * @return string
+   */
+   function etqFormat ($etq){
+		
+	$etq = strtolower($etq);
+    	
+	$tildes = array("á","é","í","ó","ú","ä","ë","ï","ö","ü","à","è","ì","ò","ù","ñ"," ",",",".",";",":","¡","!","¿","?",'"');
+    
+	$replac = array("a","e","i","o","u","a","e","i","o","u","a","e","i","o","u","n","","","","","","","","","",'');
+    	
+    $etq = str_replace($tildes,$replac,$etq); 
+		
+    return $etq;
+   }
+  
+  
 ?>
