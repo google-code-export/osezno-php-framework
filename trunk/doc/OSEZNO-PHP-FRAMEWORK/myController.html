@@ -132,6 +132,7 @@ Source Location: /myController.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myController.html#methodmodalWindowFromUrl">modalWindowFromUrl</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myController.html#methodMYFORM_validate">MYFORM_validate</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myController.html#methodMYLIST_reload">MYLIST_reload</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myController.html#methodMYTAB_makeActive">MYTAB_makeActive</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myController.html#methodnotificationWindow">notificationWindow</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myController.html#methodprepend">prepend</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myController.html#methodredirect">redirect</a></li>
@@ -1431,7 +1432,7 @@ $idList)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Recarga una lista dinamica.<br /><br /><p>Refresca los datos contenidos de una lista dinamica previamente declarada y actuamente mostrada.</p><br /><br /><br />
+		Recarga una lista dinamica.<br /><br /><p>Refresca los datos contenidos de una lista dinamica previamente declarada en su ubicación actual u original.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -1450,6 +1451,48 @@ $idList)</code>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$idList</b>&nbsp;&nbsp;</td>
         <td>Id de la lista a refrescar su contenido</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodMYTAB_makeActive"></a>
+	<h3>method MYTAB_makeActive <span class="smalllinenumber">[line 1516]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void MYTAB_makeActive(
+string
+$tabName, [string
+$newUrl = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Activa una pestaña creada<br /><br /><p>Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$tabName</b>&nbsp;&nbsp;</td>
+        <td>Nombre de la pestaña</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$newUrl</b>&nbsp;&nbsp;</td>
+        <td>Permite asignar contenido desde una nueva Url</td>
       </tr>
         </table>
     </div><br />
@@ -2210,7 +2253,7 @@ $varReturn)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 23 Dec 2010 14:59:11 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Wed, 29 Dec 2010 12:16:54 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
