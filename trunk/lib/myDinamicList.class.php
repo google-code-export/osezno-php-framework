@@ -468,12 +468,12 @@ class myList  {
 	 * 
 	 * Configura manualmente un acho determinado para cada columna de la lista dinamica.
 	 * @param string $alias	Nombre de la columna o alias
-	 * @param integer $witdh	Ancho de la columna en PX o %
+	 * @param integer $width	Ancho de la columna en PX o %
 	 */
-	public function setWidthColumn ($alias, $witdh){
+	public function setWidthColumn ($alias, $width){
 		
-		if (is_int($witdh))
-			$this->arrayWidthsCols[$alias] = $witdh;
+		if (is_int($width))
+			$this->arrayWidthsCols[$alias] = $width;
 		
 	}
 	

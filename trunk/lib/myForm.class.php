@@ -2263,7 +2263,7 @@ class myForm {
 		$buf .= 'OSEZNO PHP FRAMEWORK'."\n";
 		$buf .= 'Generado con la clase para la creacion de Formularios myForm.class.php'."\n";
 		$buf .= 'Formulario: '.$this->name.''."\n";
-		$buf .= 'Autor: José Ignacio Gutiérrez Guzmán <http://www.osezno-framework.org/joselitohacker/>'."\n";
+		$buf .= 'Autor: Jose Ignacio Gutierrez Guzman <http://www.osezno-framework.org/joselitohacker/>'."\n";
 		$buf .= '-->'."\n";
 
 		if ($this->useAddFile)
