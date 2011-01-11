@@ -1283,7 +1283,7 @@ class myController extends myControllerExt {
 					
 					$data = $arAlsInQry[$field];
 					
-					list($etq,$data_type) = explode('::',$data);
+					//list($etq,$data_type) = explode('::',$data);
 				}else
 					$data = $field;
 					
@@ -1388,6 +1388,8 @@ class myController extends myControllerExt {
 					
 		$myList = new myList($idList);
 		
+		$arAlInQry = $myList->getVar('arrayAliasSetInQuery');
+		
 		$numRules = $myList->getVar('numRuleQuery');
 		
 		for ($i=1;$i<=$numRules;$i++){
@@ -1427,10 +1429,14 @@ class myController extends myControllerExt {
 							
 					}
 					
-					$sqlRule .= $datForm['logic_'.$i].' '.$datForm['field_'.$i].' '.$this->myDinamicListRel[$datForm['relation_'.$i]].' ';
+					$fieldQuery = '"'.$datForm['field_'.$i].'"';
 					
+					if (isset($arAlInQry[$datForm['field_'.$i]]))
+						$fieldQuery = $arAlInQry[$datForm['field_'.$i]];
+					
+					$sqlRule .= $datForm['logic_'.$i].' '.$fieldQuery.' '.''.$this->myDinamicListRel[$datForm['relation_'.$i]].' ';
 			
-					$sqlRule .= $val;
+					$sqlRule .= ''.$val;
 					
 					$myList->setVar('arrayWhereRules',$sqlRule,$i);
 					

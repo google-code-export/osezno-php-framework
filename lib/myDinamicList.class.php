@@ -151,17 +151,6 @@ class myList  {
 	);	
 	
 	/**
-	 * Tipos de columna
-	 * 
-	 * Tipos de datos que una columna puede ser
-	 * @access private
-	 * @var array
-	 */
-	private $dataTypeColumn = array (
-		'string','numeric','date'
-	);
-	
-	/**
 	 * Tipo de lista
 	 * 
 	 * Define el tipo de lista actual.
@@ -474,6 +463,8 @@ class myList  {
 		
 		if (is_int($width))
 			$this->arrayWidthsCols[$alias] = $width;
+		else
+			$this->arrayWidthsCols[$alias] = intval($width);
 		
 	}
 	
@@ -637,7 +628,11 @@ class myList  {
 		$sqlWhere = '';
 		
 		if (count($this->arrayWhereRules)){
-			$sqlWhere = ' WHERE ';
+			
+			if (strpos($this->sql, 'WHERE')!==false)
+				$sqlWhere = ' WHERE ';
+			else
+				$sqlWhere = ' AND ';	
 			
 			$rules = '';
 			
@@ -669,7 +664,7 @@ class myList  {
 					if (!$sqlPart)
 						$sqlPart = ' ORDER BY ';
 				
-					$sqlPart .= $column.' '.$method.', ';
+					$sqlPart .= '"'.$column.'" '.$method.', ';
 				}
 			}
 		}
@@ -683,16 +678,37 @@ class myList  {
 	 * Configurar Alias
 	 * 
 	 * Configura un campo en la consulta SQL para  que  le sea definido un alias y este pueda ser usado en los demas procesos de busqueda, consulta y ordenamiento.
-	 * @param string $field Nombre original del campo
-	 * @param string $alias Alias del campo
-	 * @param $data_type El tipo de dato para dar un trato especial en cada caso (string, numeric, date)
+	 * <code>
+	 * 
+	 * query.sql
+	 * 
+	 * SELECT lpad(CAST(ident as varchar),4,'0') as Identification, nom as User FROM users
+	 * 
+	 * <?php
+	 * 
+	 * // En ocaciones necesitamos aplicar funciones SQL sobre campos de una consulta.
+	 * 
+	 * // Para evitar problemas a la hora de aplicar funcionalidades de listas dinamicas (ordenamientos y filtros) guardamos el nombre del campo original sobre el alias creado. 
+	 * 
+	 * $myAct = new myActiveRecord();
+	 * 
+	 * $myList = new myList ('idents',$myAct->loadSqlFromFile('query.sql'));
+	 * 
+	 * $myList->setAliasInQuery('Identification','lpad(CAST(ident as varchar),4,\'0\')');
+	 * 
+	 * echo $myList->getList(true);
+	 * 
+	 * // Lo anterior ayuda a aplicar correctamente un filtro o un ordenamiento sobre el campo 'Identification'.
+	 * 
+	 * ?>
+	 * 
+	 * </code>
+	 * @param string $field Nombre del campo en la consulta (Alias)
+	 * @param string $alias Nombre real compuesto en la consulta
 	 */
-	public function setAliasInQuery ($field, $alias, $data_type = 'string'){
+	public function setAliasInQuery ($field, $realName){
 		
-		if (!in_array($data_type,$this->dataTypeColumn))
-			$data_type = 'string';
-		
-		$this->arrayAliasSetInQuery[$field] = htmlentities($alias).'::'.$data_type;
+		$this->arrayAliasSetInQuery[$field] = $realName;
 	}
 	
 	/**
@@ -889,14 +905,15 @@ class myList  {
 				
 				$buf .=  "\n".'<table border="0" width="'.$this->width.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 			
-				foreach ($this->arrayWidthsCols as $col => $wid)
+				foreach ($this->arrayWidthsCols as $col => $wid){
 					$totWid -= $wid;
+				}
 			
 				if ($totWid)	
 					$widByCol	= $totWid / ($getNumFldsAftd - count($this->arrayWidthsCols)); 
-		
+				
 				$sw = false;
-		
+				
 				$rows = $this->resSql;
 			
 				$buf .=  "\n".'<table border="0" width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0" id="table_'.$this->idList.'">'."\n";
@@ -990,7 +1007,7 @@ class myList  {
 							
 									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td width="" style="text-align:center">'; 
 							
-									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($this->returnLabelTitle($key)).'</a>';
+									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($key).'</a>';
 
 									$bufHead.='</td><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td></tr></table>';
 							
@@ -1004,7 +1021,7 @@ class myList  {
 									
 									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td align="center">';
 									
-									$bufHead.='<font class="column_title">'.ucwords($this->returnLabelTitle($key)).'</font>';
+									$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
 							
 									$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
 
@@ -1081,7 +1098,7 @@ class myList  {
 								$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.ucwords($this->returnLabelTitle($key)).'</a>';
 							
 							}else
-								$buf.=$val.'';	
+								$buf.=htmlentities($val).'';	
 					
 							if ($firsVal && $this->globalEventOnColumn){
 								
