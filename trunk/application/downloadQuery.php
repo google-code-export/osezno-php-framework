@@ -18,7 +18,11 @@
  		$arWrRls = $objList->getVar('arrayWhereRules');
  		
 		if (count($arWrRls)){
-			$sqlWhere = ' WHERE ';
+			
+			if (strpos($sql, 'WHERE')!==false)
+				$sqlWhere = ' WHERE ';
+			else
+				$sqlWhere = ' AND ';
 			
 			$rules = '';
 			
@@ -44,7 +48,7 @@
 					if (!$sqlOrder)
 						$sqlOrder = ' ORDER BY ';
 				
-					$sqlOrder .= $column.' '.$method.', ';
+					$sqlOrder .= '"'.$column.'" '.$method.', ';
 				}
 			}
 		}
