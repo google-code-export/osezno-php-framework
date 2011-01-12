@@ -216,9 +216,6 @@ class myExportData {
 							if (isset($arWidth[$key])){
 								$widthCol = $arWidth[$key];
 							}
-
-							if (isset($arAli[$key]))
-								list($key,$data_type) = explode('::',$arAli[$key]);
 							
 							$pdf->Cell(($widthCol/6),3,ucwords(strtolower($key)),1,0,'C',false);
 						}
@@ -291,9 +288,6 @@ class myExportData {
 						
  							$out .= '<td '.$widthCol.' align="center" '.$bg.'>';
 
- 							if (isset($arAli[$key]))
-								list($key,$data_type) = explode('::',$arAli[$key]);
- 							
  							$out .= ucwords(strtolower($key));
  			
  							$out .= '</td>';

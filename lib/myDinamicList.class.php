@@ -694,7 +694,7 @@ class myList  {
 	 * 
 	 * $myList = new myList ('idents',$myAct->loadSqlFromFile('query.sql'));
 	 * 
-	 * $myList->setAliasInQuery('Identification','lpad(CAST(ident as varchar),4,\'0\')');
+	 * $myList->setRealNameInQuery('Identification','lpad(CAST(ident as varchar),4,\'0\')');
 	 * 
 	 * echo $myList->getList(true);
 	 * 
@@ -703,10 +703,10 @@ class myList  {
 	 * ?>
 	 * 
 	 * </code>
-	 * @param string $field Nombre del campo en la consulta (Alias)
+	 * @param string $field Nombre del campo en la consulta o Alias
 	 * @param string $alias Nombre real compuesto en la consulta
 	 */
-	public function setAliasInQuery ($field, $realName){
+	public function setRealNameInQuery ($field, $realName){
 		
 		$this->arrayAliasSetInQuery[$field] = $realName;
 	}
@@ -785,23 +785,6 @@ class myList  {
 				break;
 			}
 
-		}
-		
-		return $return;
-	}
-	
-	/**
-	 * Retorna el alias del campo en la consulta si previamente fue definido
-	 * 
-	 * @param $title	Campo en la consulta
-	 * @return string
-	 */
-	private function returnLabelTitle ($title){
-		
-		$return = $title;
-		
-		if (isset($this->arrayAliasSetInQuery[$title])){
-			list($return, $data_type) = explode ('::',$this->arrayAliasSetInQuery[$title]);
 		}
 		
 		return $return;
@@ -1007,7 +990,7 @@ class myList  {
 							
 									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td width="" style="text-align:center">'; 
 							
-									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.ucwords($key).'</a>';
+									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.htmlentities(ucwords($key)).'</a>';
 
 									$bufHead.='</td><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td></tr></table>';
 							
@@ -1021,7 +1004,7 @@ class myList  {
 									
 									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td align="center">';
 									
-									$bufHead.='<font class="column_title">'.ucwords($key).'</font>';
+									$bufHead.='<font class="column_title">'.htmlentities(ucwords($key)).'</font>';
 							
 									$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
 
@@ -1095,7 +1078,7 @@ class myList  {
 								if ($strMsg)
 									$strMsg = ' onClick="return confirm(\''.$strMsg.'\')"';
 							
-								$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.ucwords($this->returnLabelTitle($key)).'</a>';
+								$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.ucwords($key).'</a>';
 							
 							}else
 								$buf.=htmlentities($val).'';	

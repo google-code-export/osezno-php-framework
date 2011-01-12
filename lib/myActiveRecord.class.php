@@ -916,7 +916,7 @@ class myActiveRecord {
 		if (trim($GLOBALS['OF_SQL_LOG_ERROR'])){
 			
 			if ($HTMLformat)
-				$error = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.$GLOBALS['OF_SQL_LOG'].'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.$GLOBALS['OF_SQL_LOG_ERROR'].'</div></div>';
+				$error = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.htmlentities($GLOBALS['OF_SQL_LOG']).'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.htmlentities($GLOBALS['OF_SQL_LOG_ERROR']).'</div></div>';
 			else 
 				$error = trim($GLOBALS['OF_SQL_LOG_ERROR']);
 		}
@@ -1099,21 +1099,41 @@ class myActiveRecord {
 	 * Ejecuta una consulta SQL a la base de datos y retorna una resultado (objeto) asociado a los registros obtenidos o retorna false en caso de que no haya exito.
 	 * <code>
 	 * 
+	 * Ejemplo 1:
 	 * <?php
+	 * 
+	 * // Obtener varios resultados
 	 * 
 	 * $myAct = new myActiveRecord();
 	 * 
-	 * if ($res = $myAct->query('SELECT field1,... FROM table'))
+	 * if ($res = $myAct->query('SELECT field1,... FROM table')){
 	 * 	  
 	 *    foreach ($res as $row)
 	 *    	
 	 *    	  echo $row->field1.'<br>';
 	 *    
-	 * else
+	 * }else
 	 * 
 	 * 	  echo $myAct->getErrorLog();		
 	 * 
 	 * ?>
+	 * 
+	 * Ejemplo 2:
+	 * <?php
+	 * 
+	 * // Obtener un resultado
+	 * 
+	 * $myAct = new myActiveRecord();
+	 * 
+	 * if ($res = $myAct->query('SELECT field1,... FROM table WHERE id = 1'))
+	 * 	  
+	 *    echo $res->field1.'<br>';
+	 *    
+	 * else
+	 * 
+	 * 	  echo $myAct->getErrorLog();		
+	 * 
+	 * ?> 
 	 * 
 	 * </code>
 	 * @param string $sql Consulta SQL
@@ -1145,7 +1165,9 @@ class myActiveRecord {
 			
 			# Establecer nombre de secuencia automaticamente en Pgsql
 			if (!isset($this->tableIdSeq[$this->myact_table]))
+			
 				if ($this->getEngine()=='pgsql')
+				
 					$this->tableIdSeq[$this->myact_table] = $this->myact_table.'_'.$this->tablePk[$this->myact_table].$this->posFijSeq;			
 			
 			$this->num_rows = $this->myact_dbh->exec($sql);
@@ -1162,7 +1184,11 @@ class myActiveRecord {
 		}else{
 			
 			# Select / No se afectan en transacciones
+			
+			$objReturn;
+			
 			$array = array();
+			
 			$resQuery = $this->myact_dbh->query($sql);
 		
 			if (!$resQuery){
@@ -1179,14 +1205,23 @@ class myActiveRecord {
 
 				foreach ($resQuery as $row){
 					
+					if (!$this->num_rows)
+					
+						$objReturn = $this->buildRes($row);
+					
 					$array[] = $this->buildRes($row);
 					
 					$this->num_rows++;	
-				}	
-				
+				}
+
 			}
 		
-			return $array;
+			if ($this->num_rows == 1)
+			
+				return $objReturn;
+			else
+				
+				return $array;
 		}
 		
 	}
