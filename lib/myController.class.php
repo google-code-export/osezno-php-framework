@@ -1180,9 +1180,9 @@ class myController extends myControllerExt {
 				$myList->setVar($nameVar,'DESC',$alias);
 			break;
 			case 'DESC':
-				$myList->setVar($nameVar,'',$alias);
-				
 				$myList->unSetVar('arrayOrdNum',$alias);
+				
+				$myList->unSetVar($nameVar,$alias);
 			break;
 			case '':
 				$myList->setVar($nameVar,'ASC',$alias);
@@ -1191,7 +1191,7 @@ class myController extends myControllerExt {
 			break;
 		}
 		
-		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
+		//$this->alert(var_export($_SESSION['prdLst'][$idList]['arrayOrdMethod'],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
