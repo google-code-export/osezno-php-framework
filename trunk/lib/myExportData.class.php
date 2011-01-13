@@ -78,6 +78,13 @@ class myExportData {
 	private $width = array();
 	
 	/**
+	 * Campos a ocultar en la consulta SQL
+	 * @access private  
+	 * @var array
+	 */
+	private $arrFieldHiden = array ();
+	
+	/**
 	 * Exportar datos desde una consulta.
 	 * 
 	 * Contructor de la clase que incia tambien el proceso para la generacion de la consulta sql a exportar.
@@ -136,6 +143,15 @@ class myExportData {
 	 */
 	public function __construct($sql, $format = 'html', $filePath = '', $idList = ''){
 		
+		$numArg = func_num_args();
+ 		
+ 		if ($numArg == 5){
+ 			
+ 			$arrFieldHiden = func_get_arg(4);
+
+ 			$this->arrFieldHiden = explode(',',$arrFieldHiden);
+ 		}
+ 		
 		$success = true; 
 		
 		$this->format = $format;
@@ -204,10 +220,43 @@ class myExportData {
 				
 				foreach ($this->resSql as $row){
 					
+					// Titles
 					if (!$swTl){
 						
+						$intTitl = 1;
+						
 						foreach ($row as $key => $val){
+
+							if (in_array($intTitl,$this->arrFieldHiden)){
 							
+								if(isset($this->width[$key])){
+									$widthCol = $this->width[$key];
+								}else
+									$widthCol = 40;
+						
+								if (isset($arWidth[$key])){
+									$widthCol = $arWidth[$key];
+								}
+							
+								$pdf->Cell(($widthCol/6),3,ucwords(strtolower($key)),1,0,'C',false);
+							
+							}
+							
+							$intTitl++;
+							
+						}
+
+						$pdf->Ln();
+						
+						$swTl = 1;
+					}
+					
+					$intTitl = 1;
+					
+					foreach ($row as $key => $val){
+						
+						if (in_array($intTitl,$this->arrFieldHiden)){
+						
 							if(isset($this->width[$key])){
 								$widthCol = $this->width[$key];
 							}else
@@ -216,31 +265,16 @@ class myExportData {
 							if (isset($arWidth[$key])){
 								$widthCol = $arWidth[$key];
 							}
-							
-							$pdf->Cell(($widthCol/6),3,ucwords(strtolower($key)),1,0,'C',false);
-						}
-
-						$pdf->Ln();
 						
-						$swTl = 1;
-					}
-					
-					foreach ($row as $key => $val){
+							$align = 'L';
+							if (is_numeric($val))
+								$align = 'R';
 						
-						if(isset($this->width[$key])){
-							$widthCol = $this->width[$key];
-						}else
-							$widthCol = 40;
+							$pdf->Cell(($widthCol/6),3,$val,1,0,$align);
 						
-						if (isset($arWidth[$key])){
-							$widthCol = $arWidth[$key];
 						}
 						
-						$align = 'L';
-						if (is_numeric($val))
-							$align = 'R';
-						
-						$pdf->Cell(($widthCol/6),3,$val,1,0,$align);
+						$intTitl++;
 						
 					}
 					$pdf->Ln();
@@ -274,23 +308,32 @@ class myExportData {
 					
 				foreach ($this->resSql as $row){
  			
+					// Titles
 					if (!$swTl){
 						
 						$out .= '<tr>';
  			
+						$intTitl = 1;
+						
  						foreach ($row as $key => $val){
 
- 							$widthCol = '';
+ 							if (in_array($intTitl,$this->arrFieldHiden)){
+ 							
+ 								$widthCol = '';
 						
-							if (isset($arWidth[$key])){
-								$widthCol = 'width="'.$arWidth[$key].'"';
-							}
+								if (isset($arWidth[$key])){
+									$widthCol = 'width="'.$arWidth[$key].'"';
+								}
 						
- 							$out .= '<td '.$widthCol.' align="center" '.$bg.'>';
+ 								$out .= '<td '.$widthCol.' align="center" '.$bg.'>';
 
- 							$out .= ucwords(strtolower($key));
+ 								$out .= ucwords(strtolower($key));
  			
- 							$out .= '</td>';
+ 								$out .= '</td>';
+ 							
+ 							}
+ 							
+ 							$intTitl++;
  						}
  			
  						$out .= '</tr>';
@@ -300,18 +343,24 @@ class myExportData {
 					
  					$out .= '<tr>';
  			
+ 					$intTitl = 1;
+ 					
  					foreach ($row as $key => $val){
 
- 						$align = 'left';
-						if (is_numeric($val))
-							$align = 'right';
+ 						if (in_array($intTitl,$this->arrFieldHiden)){
  						
+ 							$align = 'left';
+							if (is_numeric($val))
+								$align = 'right';
  						
- 						$out .= '<td '.$bg.' align="'.$align.'">';
+ 							$out .= '<td '.$bg.' align="'.$align.'">';
  				
- 						$out .= $val;
+ 							$out .= $val;
  			
- 						$out .= '</td>';
+ 							$out .= '</td>';
+ 						}
+ 						
+ 						$intTitl++;
  					}
  			
  					$out .= '</tr>';

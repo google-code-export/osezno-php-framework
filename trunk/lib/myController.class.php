@@ -1210,9 +1210,59 @@ class myController extends myControllerExt {
 	 * @param $idList	Id lista
 	 */
 	public function MYLIST_exportData ($datForm, $format, $idList){
-
+		
+		$heigthBase = 155;
+		
+		$this->notificationWindow('Seleccione los campos a mostrar en el archivo y presione ok.',5,'ok');
+		
+		$myForm = new myForm('export_data_select_fields_'.$idList);
+		
+		$myList = new myList($idList);
+		
+		$arFldOnQry = $myList->getVar('arrayFieldsOnQuery');
+		
+		$i = 1;
+		
+		foreach ($arFldOnQry as $field){
+			
+			$myForm->addCheckBox($field,'field_'.$i,true);
+			
+			$i++;
+		}
+		
+		$myForm->addButton('button_export_data','','download.gif');
+		
+		$myForm->addEvent('button_export_data','onclick','MYLIST_exportDataOk', $format, $idList, $datForm['not_pg_'.$idList], $i);
+		
+		if (($i/3)>3){
+			
+			$heigthBase += ((($i/3)-3)*15);
+		}
+		
+		$this->modalWindow($myForm->getForm(3),'Campos a mostrar',450,$heigthBase);
+		
+		return $this->response;
+	}
+	
+	/**
+	 * Acepta los campos seleccionados y envia a ejecucion la descarga del archivo
+	 * @ignore
+	 * @param $datForm Datos de form	
+	 * @return
+	 */
+	public function MYLIST_exportDataOk ($datForm, $format, $idList, $not_pg, $count){
+		
+		$cadFields = '';
+		
+		for ($i=1;$i<$count;$i++){
+			
+			if ($datForm['field_'.$i])
+			
+				$cadFields .= $i.',';
+		}
+		
 		$usepg = 'f';
-		if ($datForm['not_pg_'.$idList]){
+		if ($not_pg){
 			$usepg = 't';
 		}
 		
@@ -1220,9 +1270,12 @@ class myController extends myControllerExt {
 		
 		if (!$error){
 			
-			$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg;
+			$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
+			
 			$this->redirect($url);
 		}
+		
+		$this->closeModalWindow();
 		
 		return $this->response;
 	}
