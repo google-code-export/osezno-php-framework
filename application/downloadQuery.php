@@ -77,7 +77,7 @@
  		
  		$xlsOut = $htmlOut = $pdfOut = '';
  		
- 		$export = new myExportData($sql,$_GET['format'],'',$idList);
+ 		$export = new myExportData($sql,$_GET['format'],'',$idList,$_GET['fields']);
  		
 		switch ($_GET['format']){
 			
