@@ -132,6 +132,7 @@ class myList  {
 		'sql',
 		'arrayAliasSetInQuery',
 		'arrayOrdMethod',
+		'useOrderMethod',
 		'arrayOrdNum',
 		'themeName',
 		'arrayWidthsCols',
@@ -243,11 +244,18 @@ class myList  {
 	/**
 	 * Ordenamientos
 	 * 
-	 * Areglo con los ordenamientos de los campos
+	 * Areglo con los metodos de ordenamiento por campo de la consulta
 	 * @access private
 	 * @var array
 	 */
 	private $arrayOrdMethod = array ();
+	
+	/**
+	 * Usar o no ordenamiento automatico en la lista dinamica
+	 * @access private
+	 * @var boolean
+	 */
+	private $useOrderMethod = false;
 	
 	/**
 	 * Subquerys
@@ -714,13 +722,12 @@ class myList  {
 	/**
 	 * Configurar ordenamiento 
 	 * 
-	 * Configura si una columna va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada.
-	 * @param string $alias Nombre del campo o alias en su lugar
+	 * Configura si la lista dinamica va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada en cada columna.
+	 * @param boolean $use Activar o Inactivar 
 	 */
-	public function setUseOrderMethodOnColumn ($alias){
+	public function setUseOrderMethod ($use){
 		
-		$this->arrayOrdMethod[$alias] = '';
-		
+		$this->useOrderMethod = $use;
 	}
 	
 	/**
@@ -966,9 +973,12 @@ class myList  {
 								}else
 									$htmlGlobal = '&nbsp;';	
 								
-								if (isset($this->arrayOrdMethod[$key])){
+								if ($this->useOrderMethod && !isset($this->arrayEventOnColumn[$key])){
 								
-									$orderBy = $this->arrayOrdMethod[$key];
+									$orderBy = '';
+									
+									if (isset($this->arrayOrdMethod[$key]))
+										$orderBy = $this->arrayOrdMethod[$key];
 								
 									$styleName = 'cell_title';
 								
@@ -1009,6 +1019,7 @@ class myList  {
 									$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
 
 									$bufHead.='</td>';
+									
 								}
 							
 							}
