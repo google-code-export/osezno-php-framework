@@ -1364,12 +1364,10 @@ class myList  {
 			
 		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','pdf.gif').'</td>';
 		
-		$objMyForm->addHelp('not_pg_'.$this->idList,LABEL_HELP_USELIMIT_RULE_FORM);
-		
 		if (!$anyBut)
 			$objMyForm->addDisabled('not_pg_'.$this->idList);
 		
-		$htble .= '<td width="10%" align="left" class="'.$objMyForm->styleClassTags.'">'.LABEL_USELIMIT_RULE_FORM.':'.$objMyForm->getCheckBox('not_pg_'.$this->idList,true).'</td>';
+		$htble .= '<td width="10%">&nbsp;</td>';
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		

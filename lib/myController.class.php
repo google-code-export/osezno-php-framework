@@ -1211,11 +1211,13 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_exportData ($datForm, $format, $idList){
 		
-		$heigthBase = 155;
+		$arrFields = array();
 		
-		$this->notificationWindow('Seleccione los campos a mostrar en el archivo y presione ok.',5,'ok');
+		$this->notificationWindow(MSG_SELECT_FIELD_TO_SHOW, 8,'ok');
 		
 		$myForm = new myForm('export_data_select_fields_'.$idList);
+		
+		$myForm->selectUseFirstValue = false;
 		
 		$myList = new myList($idList);
 		
@@ -1225,21 +1227,32 @@ class myController extends myControllerExt {
 		
 		foreach ($arFldOnQry as $field){
 			
-			$myForm->addCheckBox($field,'field_'.$i,true);
+			$arrFields['field_'.$i] = $field;
 			
 			$i++;
 		}
 		
-		$myForm->addButton('button_export_data','','download.gif');
+		$myForm->border = 0;
 		
-		$myForm->addEvent('button_export_data','onclick','MYLIST_exportDataOk', $format, $idList, $datForm['not_pg_'.$idList], $i);
+		$myForm->styleTypeHelp = 2;
 		
-		if (($i/3)>3){
-			
-			$heigthBase += ((($i/3)-3)*15);
-		}
+		$myForm->styleClassFields = 'select_fields_to_show';
 		
-		$this->modalWindow($myForm->getForm(3),'Campos a mostrar',450,$heigthBase);
+		$myForm->addHelp('fields_export',LABEL_HELP_SELECT_FILEDS_TOSHOW);
+		
+		$myForm->addComment('cm1:2','<div align="center">'.$myForm->getSelect('fields_export',$arrFields,NULL,8,0,true).'</center>');
+		
+		$myForm->styleClassFields = 'caja';
+		
+		$myForm->addHelp('not_pg_'.$idList,LABEL_HELP_USELIMIT_RULE_FORM);
+		
+		$myForm->addCheckBox(LABEL_USELIMIT_RULE_FORM.':','not_pg_'.$idList,true);
+		
+		$myForm->addButton('button_export_data',LABEL_BUTTON_DOWNLOAD_FILE_EXPORT,'ok.gif');
+		
+		$myForm->addEvent('button_export_data','onclick','MYLIST_exportDataOk', $format, $idList, $i);
+		
+		$this->modalWindow($myForm->getForm(2),TITLE_MWINDOW_FILEDS_TO_SHOW,220,222,2);
 		
 		return $this->response;
 	}
@@ -1250,32 +1263,38 @@ class myController extends myControllerExt {
 	 * @param $datForm Datos de form	
 	 * @return
 	 */
-	public function MYLIST_exportDataOk ($datForm, $format, $idList, $not_pg, $count){
+	public function MYLIST_exportDataOk ($datForm, $format, $idList, $count){
+
+		$cadFields = '';		
 		
-		$cadFields = '';
-		
-		for ($i=1;$i<$count;$i++){
+		foreach ($datForm['fields_export'] as $id => $nomField){
 			
-			if ($datForm['field_'.$i])
-			
-				$cadFields .= $i.',';
+			$cadFields .= ($id+1).',';
 		}
 		
 		$usepg = 'f';
-		if ($not_pg){
+		if ($datForm['not_pg_'.$idList]){
 			$usepg = 't';
 		}
 		
 		$error = '';
+		
+		if (!$cadFields){
+			
+			$this->notificationWindow(MSG_FAILED_SELECT_FIELD_TO_SHOW,5,'error');
+			
+			$error = true;
+		}
+		
 		
 		if (!$error){
 			
 			$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
 			
 			$this->redirect($url);
+			
+			$this->closeModalWindow();
 		}
-		
-		$this->closeModalWindow();
 		
 		return $this->response;
 	}
