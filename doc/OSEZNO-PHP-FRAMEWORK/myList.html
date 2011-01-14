@@ -109,13 +109,13 @@ Source Location: /myDinamicList.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetNumRowsAffected">getNumRowsAffected</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetQueryForm">getQueryForm</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodisSuccessfulProcess">isSuccessfulProcess</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetAliasInQuery">setAliasInQuery</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetEventOnColumn">setEventOnColumn</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetExportData">setExportData</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetGlobalEventOnColumn">setGlobalEventOnColumn</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetPagination">setPagination</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery">setRealNameInQuery</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetTheme">setTheme</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetUseOrderMethodOnColumn">setUseOrderMethodOnColumn</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetUseOrderMethod">setUseOrderMethod</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetWidthColumn">setWidthColumn</a></li>
   </ul>
 </td>
@@ -201,7 +201,7 @@ myList<br /><br /><p>Es la propuesta de osezno-framework cuando se desea impleme
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 411]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 408]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -276,7 +276,7 @@ $sqlORobject = ''])</code>
   </div>
   <hr />
 	<a name="methodgetList"></a>
-	<h3>method getList <span class="smalllinenumber">[line 1477]</span></h3>
+	<h3>method getList <span class="smalllinenumber">[line 1486]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -312,7 +312,7 @@ $showQueryForm = false])</code>
   </div>
   <hr />
 	<a name="methodgetNumRowsAffected"></a>
-	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1454]</span></h3>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1463]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -337,7 +337,7 @@ $showQueryForm = false])</code>
   </div>
   <hr />
 	<a name="methodgetQueryForm"></a>
-	<h3>method getQueryForm <span class="smalllinenumber">[line 1283]</span></h3>
+	<h3>method getQueryForm <span class="smalllinenumber">[line 1294]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -362,7 +362,7 @@ $showQueryForm = false])</code>
   </div>
   <hr />
 	<a name="methodisSuccessfulProcess"></a>
-	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1465]</span></h3>
+	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1474]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -386,56 +386,8 @@ $showQueryForm = false])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodsetAliasInQuery"></a>
-	<h3>method setAliasInQuery <span class="smalllinenumber">[line 690]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void setAliasInQuery(
-string
-$field, string
-$alias, [$data_type
-$data_type = 'string'])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Configurar Alias<br /><br /><p>Configura un campo en la consulta SQL para  que  le sea definido un alias y este pueda ser usado en los demas procesos de busqueda, consulta y ordenamiento.</p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td>Nombre original del campo</td>
-      </tr>
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$alias</b>&nbsp;&nbsp;</td>
-        <td>Alias del campo</td>
-      </tr>
-          <tr>
-        <td class="type">$data_type&nbsp;&nbsp;</td>
-        <td><b>$data_type</b>&nbsp;&nbsp;</td>
-        <td>El tipo de dato para dar un trato especial en cada caso (string, numeric, date)</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
 	<a name="methodsetEventOnColumn"></a>
-	<h3>method setEventOnColumn <span class="smalllinenumber">[line 524]</span></h3>
+	<h3>method setEventOnColumn <span class="smalllinenumber">[line 523]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -515,7 +467,7 @@ $confirm_msg = ''])</code>
   </div>
   <hr />
 	<a name="methodsetExportData"></a>
-	<h3>method setExportData <span class="smalllinenumber">[line 537]</span></h3>
+	<h3>method setExportData <span class="smalllinenumber">[line 536]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -563,7 +515,7 @@ $pdf = true])</code>
   </div>
   <hr />
 	<a name="methodsetGlobalEventOnColumn"></a>
-	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 608]</span></h3>
+	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 607]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -656,7 +608,7 @@ $events = array ()])</code>
   </div>
   <hr />
 	<a name="methodsetPagination"></a>
-	<h3>method setPagination <span class="smalllinenumber">[line 457]</span></h3>
+	<h3>method setPagination <span class="smalllinenumber">[line 454]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -697,8 +649,77 @@ $rows = 20])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodsetRealNameInQuery"></a>
+	<h3>method setRealNameInQuery <span class="smalllinenumber">[line 717]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setRealNameInQuery(
+string
+$field, 
+$realName, string
+$alias)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar Alias<br /><br /><p>Configura un campo en la consulta SQL para  que  le sea definido un alias y este pueda ser usado en los demas procesos de busqueda, consulta y ordenamiento.  <ol><li><div class="src-line">&nbsp;query.sql</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;SELECT&nbsp;lpad(CAST(ident&nbsp;as&nbsp;varchar),4,'0')&nbsp;as&nbsp;Identification,&nbsp;nom&nbsp;as&nbsp;User&nbsp;FROM&nbsp;users</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;En&nbsp;ocaciones&nbsp;necesitamos&nbsp;aplicar&nbsp;funciones&nbsp;SQL&nbsp;sobre&nbsp;campos&nbsp;de&nbsp;una&nbsp;consulta.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Para&nbsp;evitar&nbsp;problemas&nbsp;a&nbsp;la&nbsp;hora&nbsp;de&nbsp;aplicar&nbsp;funcionalidades&nbsp;de&nbsp;listas&nbsp;dinamicas&nbsp;(ordenamientos&nbsp;y&nbsp;filtros)&nbsp;guardamos&nbsp;el&nbsp;nombre&nbsp;del&nbsp;campo&nbsp;original&nbsp;sobre&nbsp;el&nbsp;alias&nbsp;creado.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html">myActiveRecord</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myList.html">myList</a>&nbsp;</span><span class="src-sym">(</span><span class="src-str">'idents'</span><span class="src-sym">,</span><span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><span class="src-id">loadSqlFromFile</span><span class="src-sym">(</span><span class="src-str">'query.sql'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery">setRealNameInQuery</a><span class="src-sym">(</span><span class="src-str">'Identification'</span><span class="src-sym">,</span><span class="src-str">'lpad(CAST(ident&nbsp;as&nbsp;varchar),4,\'0\')'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Lo&nbsp;anterior&nbsp;ayuda&nbsp;a&nbsp;aplicar&nbsp;correctamente&nbsp;un&nbsp;filtro&nbsp;o&nbsp;un&nbsp;ordenamiento&nbsp;sobre&nbsp;el&nbsp;campo&nbsp;'Identification'.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$field</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo en la consulta o Alias</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$alias</b>&nbsp;&nbsp;</td>
+        <td>Nombre real compuesto en la consulta</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$realName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodsetTheme"></a>
-	<h3>method setTheme <span class="smalllinenumber">[line 441]</span></h3>
+	<h3>method setTheme <span class="smalllinenumber">[line 438]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -736,18 +757,18 @@ $theme = ''])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodsetUseOrderMethodOnColumn"></a>
-	<h3>method setUseOrderMethodOnColumn <span class="smalllinenumber">[line 704]</span></h3>
+	<a name="methodsetUseOrderMethod"></a>
+	<h3>method setUseOrderMethod <span class="smalllinenumber">[line 728]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void setUseOrderMethodOnColumn(
-string
-$alias)</code>
+		<code>void setUseOrderMethod(
+boolean
+$use)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configurar ordenamiento<br /><br /><p>Configura si una columna va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada.</p><br /><br /><br />
+		Configurar ordenamiento<br /><br /><p>Configura si la lista dinamica va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada en cada columna.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -763,9 +784,9 @@ $alias)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$alias</b>&nbsp;&nbsp;</td>
-        <td>Nombre del campo o alias en su lugar</td>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$use</b>&nbsp;&nbsp;</td>
+        <td>Activar o Inactivar</td>
       </tr>
         </table>
     </div><br />
@@ -773,7 +794,7 @@ $alias)</code>
   </div>
   <hr />
 	<a name="methodsetWidthColumn"></a>
-	<h3>method setWidthColumn <span class="smalllinenumber">[line 473]</span></h3>
+	<h3>method setWidthColumn <span class="smalllinenumber">[line 470]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -818,7 +839,7 @@ $width)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 29 Dec 2010 12:16:57 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 14 Jan 2011 16:47:31 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
