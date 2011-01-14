@@ -291,7 +291,7 @@ $port = ''])</code>
   </div>
   <hr />
 	<a name="methoddelete"></a>
-	<h3>method delete <span class="smalllinenumber">[line 1378]</span></h3>
+	<h3>method delete <span class="smalllinenumber">[line 1413]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -391,7 +391,7 @@ $strCond)</code>
   </div>
   <hr />
 	<a name="methodfind"></a>
-	<h3>method find <span class="smalllinenumber">[line 1233]</span></h3>
+	<h3>method find <span class="smalllinenumber">[line 1268]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -760,7 +760,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodisSuccessfulConnect"></a>
-	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1533]</span></h3>
+	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1568]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -853,7 +853,7 @@ $vars = array()])</code>
   </div>
   <hr />
 	<a name="methodquery"></a>
-	<h3>method query <span class="smalllinenumber">[line 1123]</span></h3>
+	<h3>method query <span class="smalllinenumber">[line 1143]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -864,15 +864,35 @@ $saveInLog = true])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Ejecutar una consulta SQL<br /><br /><p>Ejecuta una consulta SQL a la base de datos y retorna una resultado (objeto) asociado a los registros obtenidos o retorna false en caso de que no haya exito.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+		Ejecutar una consulta SQL<br /><br /><p>Ejecuta una consulta SQL a la base de datos y retorna una resultado (objeto) asociado a los registros obtenidos o retorna false en caso de que no haya exito.  <ol><li><div class="src-line">&nbsp;Ejemplo&nbsp;1:</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Obtener&nbsp;varios&nbsp;resultados</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html">myActiveRecord</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$res&nbsp;</span>=&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;field1,...&nbsp;FROM&nbsp;table'</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$res&nbsp;</span>=&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;field1,...&nbsp;FROM&nbsp;table'</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$res&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$row</span><span class="src-sym">)</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$row</span><span class="src-sym">-&gt;</span><span class="src-id">field1</span>.<span class="src-str">'&lt;br&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span><span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetErrorLog">getErrorLog</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;Ejemplo&nbsp;2:</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Obtener&nbsp;un&nbsp;resultado</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html">myActiveRecord</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$res&nbsp;</span>=&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;field1,...&nbsp;FROM&nbsp;table&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;1'</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$res</span><span class="src-sym">-&gt;</span><span class="src-id">field1</span>.<span class="src-str">'&lt;br&gt;'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -910,7 +930,7 @@ $saveInLog = true])</code>
   </div>
   <hr />
 	<a name="methodsave"></a>
-	<h3>method save <span class="smalllinenumber">[line 1275]</span></h3>
+	<h3>method save <span class="smalllinenumber">[line 1310]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1034,7 +1054,7 @@ $posFij = ''])</code>
   </div>
   <hr />
 	<a name="methodsetPrimaryKey"></a>
-	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1465]</span></h3>
+	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1500]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1131,7 +1151,7 @@ $name = ''])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 29 Dec 2010 12:16:53 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 14 Jan 2011 16:47:27 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
