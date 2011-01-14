@@ -39,6 +39,14 @@ select.caja {
 	width:100px;
 }
 
+.select_fields_to_show {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	vertical-align: middle;
+	width:150px;
+}
+
 .caja_required {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
