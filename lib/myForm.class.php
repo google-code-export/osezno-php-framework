@@ -1006,7 +1006,7 @@ class myForm {
 				if ($truncar_hasta)
 					$value = substr($value,0,$truncar_hasta);
 					
-				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.htmlentities($value).'</option>'."\n";
 			}
 			
 			$buf .= "\t\t".'</select>'."\n";
@@ -2503,7 +2503,7 @@ class myForm {
 				}
 			}
 			
-			$bufHTMLgroup .= '<fieldset><legend class="'.$this->styleClassFieldsets.'">'.$hrefUseShowHideIni.$this->arrayGroups[$kAgrupa]['strFieldSet'].$hrefUseShowHideEnd.'</legend>'."\n";
+			$bufHTMLgroup .= '<fieldset style="width:'.$this->width.'"><legend class="'.$this->styleClassFieldsets.'">'.$hrefUseShowHideIni.$this->arrayGroups[$kAgrupa]['strFieldSet'].$hrefUseShowHideEnd.'</legend>'."\n";
 			
 			$bufHTMLgroup .= '<div name="'.$this->arrayGroups[$kAgrupa]['idGroup'].'" id="'.$this->arrayGroups[$kAgrupa]['idGroup'].'"'.$styleDivFieldSet.'>'."\n";
 			
