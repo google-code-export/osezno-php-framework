@@ -1506,9 +1506,7 @@ class myController extends myControllerExt {
 					if (isset($arAlInQry[$datForm['field_'.$i]]))
 						$fieldQuery = $arAlInQry[$datForm['field_'.$i]];
 					
-					$sqlRule .= $datForm['logic_'.$i].' '.$fieldQuery.' '.''.$this->myDinamicListRel[$datForm['relation_'.$i]].' ';
-			
-					$sqlRule .= ''.$val;
+					$sqlRule = $datForm['logic_'.$i].' '.$fieldQuery.' '.''.$this->myDinamicListRel[$datForm['relation_'.$i]].' '.$val;
 					
 					$myList->setVar('arrayWhereRules',$sqlRule,$i);
 					

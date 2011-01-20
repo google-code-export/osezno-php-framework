@@ -561,9 +561,9 @@ class myList  {
  	 * 	
  	 * $myList->setGlobalEventOnColumn('id',array(
  	 * 
- 	 * 	'deleteRecord'=>'Eliminar',
+ 	 * 	'Eliminar'=>'deleteRecord',
  	 * 
- 	 * 	'updateRecord'=>'Actualizar'
+ 	 * 	'Actualizar'=>'updateRecord'
  	 * 
  	 * ));
  	 *
@@ -635,20 +635,24 @@ class myList  {
 		
 		$sqlWhere = '';
 		
+		$lastIsOr = false;
+		
 		if (count($this->arrayWhereRules)){
 			
-			if (strpos($this->sql, 'WHERE')!==false)
-				$sqlWhere = ' WHERE ';
+			if (strpos($this->sql, ' WHERE ')!==false)
+				$sqlWhere = ' WHERE (';
 			else
-				$sqlWhere = ' AND ';	
+				$sqlWhere = ' AND (';
 			
 			$rules = '';
 			
 			foreach ($this->arrayWhereRules as $id => $rule){
+				
 				$rules .= $rule.' ';
+
 			}
 		
-			$sqlWhere .= substr($rules, 3);
+			$sqlWhere .= substr($rules, 3).')';
 		}
 		
 		return $sqlWhere;
@@ -857,7 +861,7 @@ class myList  {
 			$this->objConn = new myActiveRecord();
 			
 			$sql = $this->sql.''.$this->getSqlPartWhere().''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
-
+			
 			if ($this->objConn->isSuccessfulConnect())
 				$this->resSql = $this->objConn->query($sql);
 			

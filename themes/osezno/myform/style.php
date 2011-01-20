@@ -47,12 +47,28 @@ select.caja {
 	width:150px;
 }
 
+.select_calendar {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	vertical-align: middle;
+}
+
 .caja_required {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	color: #000000;
 	background-color:#FFD7D7;
 	vertical-align: middle;
+}
+
+select.caja_required {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	background-color:#FFD7D7;
+	vertical-align: middle;
+	width:100px;
 }
 
 .boton {
