@@ -155,6 +155,8 @@ class myCal {
 			
 		$objMyForm->selectUseFirstValue = false;
 			
+		$objMyForm->styleClassFields = 'select_calendar';
+		
 		$objMyForm->addEvent('cal_month',
 				'onchange',
 				'MYFORM_calOnChange',$update);
