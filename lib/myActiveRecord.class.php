@@ -598,11 +598,10 @@ class myActiveRecord {
 			
 			if ($this->num_rows == 1){
 				
-				foreach ($rF as $row)
-					foreach ($row as $etq => $value){
-						
-						$this->$etq = $value;
-					}
+				foreach ($rF as $etq => $value){
+					
+					$this->$etq = $value;
+				}
 					
 			}else{
 				//TODO:
@@ -625,10 +624,8 @@ class myActiveRecord {
 			$rF = $this->query($sql);
 
 			if ($this->num_rows){
-
-				$this->keyFinded = $strCond;
 				
-				$rF = $rF[0];
+				$this->keyFinded = $strCond;
 				
 				foreach ($rF as $etq => $val){
 					
@@ -640,6 +637,8 @@ class myActiveRecord {
 						}
 					}
 				}
+				
+				
 			}
 		}
 						
