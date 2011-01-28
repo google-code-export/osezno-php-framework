@@ -640,9 +640,10 @@ class myList  {
 		if (count($this->arrayWhereRules)){
 			
 			if (strpos($this->sql, ' WHERE ')!==false)
-				$sqlWhere = ' WHERE (';
-			else
+			
 				$sqlWhere = ' AND (';
+			else
+				$sqlWhere = ' WHERE (';
 			
 			$rules = '';
 			
