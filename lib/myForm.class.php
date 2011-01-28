@@ -123,6 +123,7 @@ class myForm {
 	 * @var array
 	 */
 	private $arrayAttributesToReplaceInRow = array(
+		//'widthCell',
 		'widthEtq',
 		'widthFld',
 		'colSpanEtq',
@@ -2460,7 +2461,7 @@ class myForm {
 
 					$bufButton .= '</button>';
 					
-					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq style="text-align:center" colSpanEtq>'.$bufButton.'</td>';
+					$this->arrayFormElements[$campos_f[1]] = '<td widthCell rowSpanEtq style="text-align:center" colSpanEtq>'.$bufButton.'</td>';
 					
 					break;	
 			}
@@ -2648,13 +2649,15 @@ class myForm {
 			// Pregunta de seguridad
 			if (is_array($arrayGroupsIdInShareSpace = $this->arrayGroupsIdInShareSpace[$arrayKeysGroupingGroups[$i]]['arrayIdGroups'])){
 				
-				$buf .= '<table width="100%" border="'.$this->border.'" cellspacing="0">'."\n";
+				$buf .= '<table width="'.$this->width.'" border="'.$this->border.'" cellspacing="0">'."\n";
 				
 				$buf .= '<tr>'."\n";
 				
-				for ($j=0;$j<count($arrayGroupsIdInShareSpace);$j++){
+				$countArGpIdInShSp = count($arrayGroupsIdInShareSpace);
+				
+				for ($j=0;$j<$countArGpIdInShSp;$j++){
 					
-					$buf.='<td width="'.intval(100/count($arrayGroupsIdInShareSpace)).'%">'.$this->arrayGroupsElementsHTML[$arrayGroupsIdInShareSpace[$j]].'</td>'."\n";
+					$buf.='<td width="'.intval(100/count($arrayGroupsIdInShareSpace)).'%" align="center">'.str_replace('width:'.$this->width.'','width:'.(($this->width/$countArGpIdInShSp)-17),$this->arrayGroupsElementsHTML[$arrayGroupsIdInShareSpace[$j]]).'</td>'."\n";
 					
 					$this->arrayGroupsShown[]=$arrayGroupsIdInShareSpace[$j];
 				}
