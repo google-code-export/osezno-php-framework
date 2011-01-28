@@ -664,19 +664,24 @@ class myList  {
 	 */
 	private function getSqlPartOrderBy (){
 
-		$sqlPart = '';
+		$sqlPart = '';;
 		
-		$arr = $this->getVar('arrayOrdMethod');
+		if ($this->arrayOrdMethod!==false){
 		
-		if ($arr!==false){
-		
-			foreach ($arr as $column => $method){
+			foreach ($this->arrayOrdMethod as $column => $method){
+				
+				if (!$sqlPart)
+					$sqlPart = ' ORDER BY ';;
+				
 				if ($method){
 				
-					if (!$sqlPart)
-						$sqlPart = ' ORDER BY ';
-				
-					$sqlPart .= '"'.$column.'" '.$method.', ';
+					if (isset($this->arrayAliasSetInQuery[$column]))	
+						
+						$sqlPart .= ''.$this->arrayAliasSetInQuery[$column].' '.$method.', ';
+						
+					else
+
+						$sqlPart .= '"'.$column.'" '.$method.', ';
 				}
 			}
 		}

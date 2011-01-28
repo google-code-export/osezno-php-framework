@@ -1191,7 +1191,7 @@ class myController extends myControllerExt {
 			break;
 		}
 		
-		//$this->alert(var_export($_SESSION['prdLst'][$idList]['arrayOrdMethod'],true));
+		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
 		
 		$this->assign($idList,'innerHTML',$myList->getList());
 		
