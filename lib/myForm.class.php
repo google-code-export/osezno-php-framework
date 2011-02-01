@@ -123,7 +123,7 @@ class myForm {
 	 * @var array
 	 */
 	private $arrayAttributesToReplaceInRow = array(
-		//'widthCell',
+		'widthCell',
 		'widthEtq',
 		'widthFld',
 		'colSpanEtq',
@@ -1055,7 +1055,7 @@ class myForm {
 	 * @return string Id del radio button, se usa para poder agrupar mas adelante
 	 */
 	public function addRadioButton($etq = '', $value = '', $name_group = '', $is_checked = false){
-		$name = '_'.$this->counterRadiosForThisForm+=1;
+		$name = $name_group.'_'.$this->counterRadiosForThisForm+=1;
 
 		//$name = $this->getColspanRowspan($name);
 		$Cadena = 'radiobutton'.$this->Separador.htmlentities($etq).$this->Separador.$name.$this->Separador.$value.$this->Separador.$name_group.$this->Separador.$is_checked;
@@ -1484,8 +1484,9 @@ class myForm {
 		$buf = '';
 
 		$checked = '';
+		
 		if ($is_checked==true)
-		$checked = 'checked="checked"';
+			$checked = 'checked="checked"';
 
 		$buf .= '<input '.$this->checkExistEventJs($name_group).' '.$this->checkIsHelping($name_group).' '.$this->checkIfIsDisabled($name_group).' type="radio" name="'.$name_group.'" id="'.$name_group.'_'.$value.'" value="'.$value.'" class="'.$this->styleClassFields.'" '.$checked.'>';
 		unset($this->objEventxJ[$name_group]);
@@ -2457,7 +2458,7 @@ class myForm {
 					if ($campos_f[3])
 						$bufButton .= '<td><img style="padding-right: 2px;" src="'.$campos_f[3].'" border="0"></td>';
 
-					$bufButton .= '<td class="boton_font">'.$campos_f[2].'</td></tr></table>';
+					$bufButton .= '<td class="boton_font">ss'.str_replace(' ','&nbsp;',$campos_f[2]).'</td></tr></table>';
 
 					$bufButton .= '</button>';
 					
@@ -2583,11 +2584,23 @@ class myForm {
 						if (in_array($attObj,$this->arrayTypeElemSpecial)){
 							
 							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-								                  array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.($numColSpan*2).'"','colspan="'.($numColSpan*2).'"','',''),$this->arrayFormElements[$nameField]);
+								                  array('width="'.intval($widthCol*$numColSpan).'%"',
+								                  		'width="'.intval($widthCol*$numColSpan).'%"',
+								                  		'width="'.intval($widthCol*$numColSpan).'%"',
+								                  		'colspan="'.($numColSpan*2).'"',
+								                  		'colspan="'.($numColSpan*2).'"',
+								                  		'',
+								                  		''),$this->arrayFormElements[$nameField]);
 						}else{
 							
 							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-								                  array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.$numColSpan.'"','colspan="'.$numColSpan.'"','',''),$this->arrayFormElements[$nameField]);
+								                  array('',
+								                  		'width="'.intval($widthCol*$numColSpan).'%"',
+								                  		'width="'.intval($widthCol*$numColSpan).'%"',
+								                  		'colspan="'.$numColSpan.'"',
+								                  		'colspan="'.$numColSpan.'"',
+								                  		'',
+								                  		''),$this->arrayFormElements[$nameField]);
 						}
 						
 					}else{
@@ -2595,11 +2608,22 @@ class myForm {
 						if (in_array($attObj,$this->arrayTypeElemSpecial)){
 							
 							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-								                  array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','colspan="2"','colspan="2"','',''),$this->arrayFormElements[$nameField]);
+								                  array('width="'.intval($widthCol*2).'%"',
+								                  		'width="'.intval($widthCol).'%"',
+								                  		'width="'.intval($widthCol).'%"',
+								                  		'colspan="2"','colspan="2"',
+								                  		'',
+								                  		''),$this->arrayFormElements[$nameField]);
 						}else{
 							
 							$bufHTMLgroup .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-								                  array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','','','',''),$this->arrayFormElements[$nameField]);
+								                  array('',
+								                  		'width="'.intval($widthCol).'%"',
+								                  		'width="'.intval($widthCol).'%"',
+								                  		'',
+								                  		'',
+								                  		'',
+								                  		''),$this->arrayFormElements[$nameField]);
 						}
 						
 					}
@@ -2762,11 +2786,25 @@ class myForm {
 				if (in_array($attObj,$this->arrayTypeElemSpecial)){
 					
 					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-						         array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.($numColSpan*2).'"','colspan="'.($numColSpan*2).'"','',''),$this->arrayFormElements[$nameField]);
+						         array(
+						         	'',
+						         	'width="'.intval($widthCol*$numColSpan).'%"',
+						         	'width="'.intval($widthCol*$numColSpan).'%"',
+						         	'colspan="'.($numColSpan*2).'"',
+						         	'colspan="'.($numColSpan*2).'"',
+						         	'',
+						         	''),$this->arrayFormElements[$nameField]);
 				}else{
 					
 					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-						         array('width="'.intval($widthCol*$numColSpan).'%"','width="'.intval($widthCol*$numColSpan).'%"','colspan="'.$numColSpan.'"','colspan="'.$numColSpan.'"','',''),$this->arrayFormElements[$nameField]);
+						         array(
+						         	'',
+						         	'width="'.intval($widthCol*$numColSpan).'%"',
+						         	'width="'.intval($widthCol*$numColSpan).'%"',
+						         	'colspan="'.$numColSpan.'"',
+						         	'colspan="'.$numColSpan.'"',
+						         	'',
+						         	''),$this->arrayFormElements[$nameField]);
 				}
 				
 			}else{
@@ -2774,11 +2812,25 @@ class myForm {
 				if (in_array($attObj,$this->arrayTypeElemSpecial)){
 					
 					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-						         array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','colspan="2"','colspan="2"','',''),$this->arrayFormElements[$nameField]);
+						         array(
+						         	'width="'.intval($widthCol*2).'%"',
+						         	'width="'.intval($widthCol).'%"',
+						         	'width="'.intval($widthCol).'%"',
+						         	'colspan="2"',
+						         	'colspan="2"',
+						         	'',
+						         	''),$this->arrayFormElements[$nameField]);
 				}else{
 					
 					$buf .=  "\t\t".str_replace($this->arrayAttributesToReplaceInRow,
-						         array('width="'.intval($widthCol).'%"','width="'.intval($widthCol).'%"','','','',''),$this->arrayFormElements[$nameField]);
+						         array(
+						         	'',
+						         	'width="'.intval($widthCol).'%"',
+						         	'width="'.intval($widthCol).'%"',
+						         	'',
+						         	'',
+						         	'',
+						         	''),$this->arrayFormElements[$nameField]);
 				}
 				
 			}
