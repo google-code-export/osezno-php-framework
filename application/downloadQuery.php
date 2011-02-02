@@ -19,10 +19,10 @@
  		
 		if (count($arWrRls)){
 			
-			if (strpos($sql, 'WHERE')!==false)
-				$sqlWhere = ' WHERE ';
+			if (stripos($sql, ' WHERE ')!==false)
+				$sqlWhere = ' AND (';
 			else
-				$sqlWhere = ' AND ';
+				$sqlWhere = ' WHERE (';
 			
 			$rules = '';
 			
@@ -30,7 +30,7 @@
 				$rules .= $rule.' ';
 			}
 		
-			$sqlWhere .= substr($rules, 3);
+			$sqlWhere .= substr($rules, 3).')';
 		}
  		
  		/**

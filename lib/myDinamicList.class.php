@@ -914,14 +914,14 @@ class myList  {
 				
 				$sw = false;
 				
-				$rows = $this->resSql;
-			
 				$buf .=  "\n".'<table border="0" width="100%" cellspacing="'.$this->borderCellSize.'" cellpadding="0" id="table_'.$this->idList.'">'."\n";
 
 				$i = 0;
 		
 				$classTd = 'td_default';
 		
+				$rows = $this->resSql;
+				
 				foreach ($rows as $row){
 
 					if ($this->useDistBetwRows){
@@ -931,9 +931,8 @@ class myList  {
 							$classTd = 'td_middle';
 					}
 			
-					/**
-			 	 	 * Titulos de las columnas
-			 	 	 */		
+			 	 	# Titulos de las columnas
+			 	 	 		
 					if (!$sw){
 				
 						$this->arrayFieldsOnQuery = array();
@@ -953,7 +952,6 @@ class myList  {
 							$arrayOrdNum[$nom] = $cOrd;
 						
 							$cOrd++;
-						 
 						}
 					
 						$this->firsKey = true;

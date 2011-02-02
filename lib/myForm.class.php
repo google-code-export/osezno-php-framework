@@ -2458,7 +2458,7 @@ class myForm {
 					if ($campos_f[3])
 						$bufButton .= '<td><img style="padding-right: 2px;" src="'.$campos_f[3].'" border="0"></td>';
 
-					$bufButton .= '<td class="boton_font">ss'.str_replace(' ','&nbsp;',$campos_f[2]).'</td></tr></table>';
+					$bufButton .= '<td class="boton_font">'.str_replace(' ','&nbsp;',$campos_f[2]).'</td></tr></table>';
 
 					$bufButton .= '</button>';
 					
