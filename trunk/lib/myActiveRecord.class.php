@@ -622,12 +622,12 @@ class myActiveRecord {
 			}
 			
 			$rF = $this->query($sql);
-
+			
 			if ($this->num_rows){
 				
 				$this->keyFinded = $strCond;
 				
-				foreach ($rF as $etq => $val){
+				foreach ($rF[0] as $etq => $val){
 					
 					if (is_string($etq)){
 						
@@ -1117,23 +1117,6 @@ class myActiveRecord {
 	 * 
 	 * ?>
 	 * 
-	 * Ejemplo 2:
-	 * <?php
-	 * 
-	 * // Obtener un resultado
-	 * 
-	 * $myAct = new myActiveRecord();
-	 * 
-	 * if ($res = $myAct->query('SELECT field1,... FROM table WHERE id = 1'))
-	 * 	  
-	 *    echo $res->field1.'<br>';
-	 *    
-	 * else
-	 * 
-	 * 	  echo $myAct->getErrorLog();		
-	 * 
-	 * ?> 
-	 * 
 	 * </code>
 	 * @param string $sql Consulta SQL
 	 * @param boolean $saveInLog Guardar en el log
@@ -1182,7 +1165,7 @@ class myActiveRecord {
 			
 		}else{
 			
-			# Select / No se afectan en transacciones
+			# Select / No se afectan en transacciones, no afectan las busquedas
 			
 			$objReturn;
 			
@@ -1204,10 +1187,6 @@ class myActiveRecord {
 
 				foreach ($resQuery as $row){
 					
-					if (!$this->num_rows)
-					
-						$objReturn = $this->buildRes($row);
-					
 					$array[] = $this->buildRes($row);
 					
 					$this->num_rows++;	
@@ -1215,12 +1194,7 @@ class myActiveRecord {
 
 			}
 		
-			if ($this->num_rows == 1)
-			
-				return $objReturn;
-			else
-				
-				return $array;
+			return $array;
 		}
 		
 	}
