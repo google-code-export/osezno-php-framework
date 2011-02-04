@@ -41,6 +41,8 @@ function selectDate (date, update){
 	padre = div.parentNode;
 	
 	padre.removeChild(div);
+	
+	countId -= 2;
 }
 
 
