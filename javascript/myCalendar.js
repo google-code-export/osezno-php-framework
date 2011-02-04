@@ -1,4 +1,4 @@
-var countId=null;
+var countIdCall=null;
 var nc = (document.layers) ? true:false
 var ie = (document.all) ? true:false
 var n6 = (document.getElementById) ? true:false
@@ -32,7 +32,8 @@ function CalTamVentana() {
 
 function selectDate (date, update){
 	
-	document.getElementById(update).value  = date;
+	if (document.getElementById(update))
+		document.getElementById(update).value  = date;
 	
 	var callId = 'div_trigger_'+update;
 	
@@ -42,14 +43,14 @@ function selectDate (date, update){
 	
 	padre.removeChild(div);
 	
-	countId -= 2;
+	countIdCall -= 2;
 }
 
 
 function addCalendarWindow (value, update, idtrigger){
 
-	if (!countId)
-		countId = 0;
+	if (!countIdCall)
+		countIdCall = countId;
 	
 	var callId = 'div_trigger_'+idtrigger;
 	
@@ -59,7 +60,7 @@ function addCalendarWindow (value, update, idtrigger){
 	
 	if(!div){
 	    
-		countId += 2;
+		countIdCall += 2;
 		
 		var pos = getAbsolutePosition(document.getElementById(update));
 		
@@ -71,7 +72,7 @@ function addCalendarWindow (value, update, idtrigger){
 	
 		miCapa.style.position = 'absolute';
 	
-		miCapa.style.zIndex = countId;
+		miCapa.style.zIndex = countIdCall;
 		
 		miCapa.style.top = pos.y+20;
 		
@@ -87,7 +88,7 @@ function addCalendarWindow (value, update, idtrigger){
 		
 		padre.removeChild(div);
 
-		countId -= 2;
+		countIdCall -= 2;
 	}
 	
 }
