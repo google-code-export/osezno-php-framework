@@ -61,6 +61,7 @@ class myCal {
 		$arrMonth = array ();
 			
 		foreach ($this->arrMonth as $id => $month){
+			
 			$arrMonth[$nDp.'_'.$id.'_'.$nA] = $month;				
 		}
 			
@@ -68,12 +69,14 @@ class myCal {
 		 * Construimos un arreglo de datos para los años
 		 */
 		for ($aIni=($nA-5);$aIni<($nA+5);$aIni++){
+			
 			$this->arrYears[$nDp.'_'.$nM.'_'.$aIni] = $aIni;
 		} 			
 			
 		$objMyForm = new myForm;
 
-		$iniCell = '<td class="cellday">';
+		$iniCell = '<td class="cellday" onmouseover="this.className=\'cellday_over\'" onmouseout="this.className=\'cellday\'" {onclick}>';
+		
 		$endCell = '</td>';
 			
 		$htm = '';		
@@ -86,6 +89,7 @@ class myCal {
 			$htm .= '<td class="celldays">'.CAL_WK_LABEL.'</td>';
 			
 		foreach ($this->arrDsem as $id => $le){
+			
 			$htm .= '<td class="celldays">'.$le.'</td>';
 		}
 			
@@ -95,6 +99,12 @@ class myCal {
 			
 		$nD = 1;
 			
+		$cDpm = 1;
+		
+		$fNdf = 0;
+		
+		$cDam = 0;
+		
 		$toShow = true;
 			
 		while ($nD <= $nDmax){
@@ -104,7 +114,9 @@ class myCal {
 				$w = date('N',mktime(0,0,0,$nM,$nD,$nA));
 					
 				if ($w==1||!$sw){
+					
 					$htm .= '<tr>';
+					
 					$sw = true;
 						
 					$htm .= '<td class="cell_week">'.$nSem.'</td>';
@@ -115,42 +127,59 @@ class myCal {
 					if ($w==$id){
 							
 						$nMsh = $nM;
+						
 						if ($nM<10)
 							$nMsh = '0'.$nM;
 								
-						$nDsh = $nD; 	
+						$nDsh = $nD;
+						
 						if ($nD<10)
 							$nDsh = '0'.$nD;
 							
-						$iniA = '<a href="#" class="celldays_a" onclick="selectDate(\''.
+						if (!$fNdf)	
+							$fNdf = $id;
+							 
+						$onclick = 	'onclick="selectDate(\''.
 							$nA.'-'.
 							$nMsh.'-'.
 							$nDsh.'\',\''.
-							$update.'\')">';
+							$update.'\')"';
+							
+						$iniA = '<a href="javascript:;" class="celldays_a" '.$onclick.'>';
 							
 						$endA = '</a>';
 							
 						if (($nM.$nD.$nA)==date('mjY'))
-							$htm .= '<td class="cellday_today">'.$iniA.
+							$htm .= '<td class="cellday_today" '.$onclick.'>'.$iniA.
 								$nD.
 								$endA.$endCell;
 						else
-							$htm .= $iniCell.$iniA.
+							$htm .= str_replace('{onclick}',$onclick,$iniCell).$iniA.
 								$nD.
 								$endA.$endCell;
-						$nD++;	
+						$nD++;
+						
 					}else{
 						
-						$htm .= $iniCell.'&nbsp;'.$endCell;
+						if (!$cDam){
+							
+							$cDam = date('t',mktime(0,0,0,($nM),0,$nA)) - ($w-2);
+						}
+						
+						$htm .= $iniCell.'<div class="cell_other_days">'.$cDam.'</div>'.$endCell;
+						
+						$cDam++;
 					}
 						
 				}else{
-				  $htm .= $iniCell.'&nbsp;'.$endCell;
+				  $htm .= $iniCell.'<div class="cell_other_days">'.$cDpm.'</div>'.$endCell;
+				  
+				  $cDpm++;
 				}
 			}
 			$nSem = intval(date('W',mktime(0,0,0,$nM,$nD,$nA)));
 		}
-			
+		
 		$objMyForm->setParamTypeOnEvent('field');
 			
 		$objMyForm->selectUseFirstValue = false;

@@ -34,19 +34,58 @@ function selectDate (date, update){
 	
 	document.getElementById(update).value  = date;
 	
-	document.getElementById('div_trigger_'+update).style.visibility  = 'hidden';
+	var callId = 'div_trigger_'+update;
 	
+	var div = document.getElementById(callId);
+	
+	padre = div.parentNode;
+	
+	padre.removeChild(div);
 }
 
+
 function addCalendarWindow (value, update, idtrigger){
+
+	if (!countId)
+		countId = 0;
+	
+	var callId = 'div_trigger_'+idtrigger;
 	
 	var strUrlCalendar = '../calendarCaller.php?date='+value+'&update='+update;
 	
-	if (document.getElementById('div_trigger_'+idtrigger).style.visibility=='visible')
-		document.getElementById('div_trigger_'+idtrigger).style.visibility  = 'hidden';
-	else{	
-		document.getElementById('div_trigger_'+idtrigger).style.visibility  = 'visible';
+	var div = document.getElementById(callId);
 	
-		callUrlAsin(strUrlCalendar+'&div=div_trigger_'+idtrigger, 'div_trigger_'+idtrigger);
+	if(!div){
+	    
+		countId += 2;
+		
+		var pos = getAbsolutePosition(document.getElementById(update));
+		
+		var miCapa = document.createElement('DIV');
+		
+		miCapa.id = callId;
+	
+		document.body.appendChild(miCapa);
+	
+		miCapa.style.position = 'absolute';
+	
+		miCapa.style.zIndex = countId;
+		
+		miCapa.style.top = pos.y+20;
+		
+		miCapa.style.left = pos.x;
+
+		miCapa.className = 'calmain';
+
+		callUrlAsin(strUrlCalendar+'&div=div_trigger_'+idtrigger, 'div_trigger_'+idtrigger);		
+    	
+	}else{  
+		
+		padre = div.parentNode;
+		
+		padre.removeChild(div);
+
+		countId -= 2;
 	}
+	
 }
