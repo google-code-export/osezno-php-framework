@@ -639,7 +639,7 @@ class myList  {
 		
 		if (count($this->arrayWhereRules)){
 			
-			if (stripos($this->sql, ' WHERE ')!==false)
+			if (stripos($this->sql, 'WHERE')!==false)
 			
 				$sqlWhere = ' AND (';
 			else
