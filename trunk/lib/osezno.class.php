@@ -329,10 +329,13 @@ class osezno {
   			/**
   		 	 * Areas de OseznO
   		 	 */
-  			$newContent = str_ireplace('</head>', $this->getAllHead().'</head>', $newContent);
+  			if (!isset($_GET['no_load_xajax'])){
+  				
+  				$newContent = str_ireplace('</head>', $this->getAllHead().'</head>', $newContent);
   			
-  			$newContent = str_ireplace('</body>', $this->getAllBody().'</body>', $newContent);
-  		
+  				$newContent = str_ireplace('</body>', $this->getAllBody().'</body>', $newContent);
+  			}
+  			
   			$newContent = preg_replace('(\\{+[0-9a-zA-Z_]+\\})','',$newContent);
   		}else{
   			
@@ -341,7 +344,7 @@ class osezno {
   			die ($this->arrayAssignAreasHead['css_errors'].$msgError);
   		}
   		
-  		echo $newContent;;
+  		echo $newContent;
   	}
   	
   }

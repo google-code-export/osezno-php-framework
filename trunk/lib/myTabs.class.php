@@ -145,6 +145,11 @@ class myTabs{
 		
 		foreach ($this->arrayTabs as $etqTab => $urlTab){
 			
+			if (stripos($urlTab,'?'))
+			   $urlTab.='&no_load_xajax=true';
+			else   
+			   $urlTab.='?no_load_xajax=true';
+			
 			$script .= "\t".'var myTab'.etqFormat($etqTab).' = new Array(\'tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\');'."\n";
 			
 			$html .= '<li id="tab'.$i.'"><span onclick="makeactive(\'tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\')">'.$etqTab.'</span></li>';
