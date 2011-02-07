@@ -629,7 +629,7 @@ class myController extends myControllerExt {
 	 */	
 	public function closeWindow (){
 		
-		$this->response->script('window.close()');	
+		$this->response->script('closeModalWindow()');	
 	}
 
    /**
