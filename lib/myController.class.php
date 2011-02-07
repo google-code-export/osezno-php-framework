@@ -202,6 +202,8 @@ class myController extends myControllerExt {
 	 */
 	public function __construct($objxAjax){
 		
+		global $MYCONTROLLER_REGISTERED_FUNCTIONS;
+  
 		require_once 'plugin/packages/xajax/xajax_core/xajaxResponse.inc.php';
 		
 		$this->response = new xajaxResponse();
@@ -214,8 +216,14 @@ class myController extends myControllerExt {
 			
 			if (!in_array($method,$this->arrayInvalidMethods)){
 				
-		       $this->xajaxObject->registerFunction(array($method, $this, $method));
+				if (!isset($GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'][$method])){
+		       
+					$this->xajaxObject->registerFunction(array($method, $this, $method));
+					
+					$GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'][$method] = $method; 
+				}
 
+		       
 			}
 			
 		}
