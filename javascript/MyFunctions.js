@@ -227,8 +227,8 @@ function responseCallUrl(pageElement) {
 var nc = (document.layers) ? true:false
 var ie = (document.all) ? true:false
 var n6 = (document.getElementById) ? true:false
-var posicion;
-var nueva_posicion;
+var arrayNotiWindNuPos = new Array();
+var arrayNotiWindPos = new Array();
 var aux=1;
 var tam;
 var absol;
@@ -258,7 +258,7 @@ function createNotificationWindow (strNotification, intSecDuration, type){
     
     var endPoint = checkPoint+70;
     
-	var pofFijNW = aleatorio(1, 1000);
+	var pofFijNW = aleatorio(1, 10000);
 	
 	var miCapa = document.createElement('DIV');
 	
@@ -292,7 +292,9 @@ function createNotificationWindow (strNotification, intSecDuration, type){
 }
  	
 function mueveNotificationWindow(idElement, ini,pos){ 
-	posicion=ini;     
+	
+	arrayNotiWindPos[idElement]=ini;
+	
    	tam=1;  
  	if ((ini>pos) && ((ini-pos)<10))
  	 tam=ini-pos;
@@ -303,23 +305,24 @@ function mueveNotificationWindow(idElement, ini,pos){
  	if ((ini<pos) && ((pos-ini)<10))
  	 tam=1;	  
 	if (ini<pos)
-	 nueva_posicion=posicion+tam					
+		arrayNotiWindNuPos[idElement]=arrayNotiWindPos[idElement]+tam					
  	else if (ini>pos)
- 	 nueva_posicion=posicion-tam						
+ 		arrayNotiWindNuPos[idElement]=arrayNotiWindPos[idElement]-tam						
 	else
-	 nueva_posicion=pos;	  
+		arrayNotiWindNuPos[idElement]=pos;	  
 	
 	aux=pos;	  
-	if(nueva_posicion!=pos){
+	if(arrayNotiWindNuPos[idElement]!=pos){
       if(ie) 
-        document.all[idElement].style.top=nueva_posicion;
+        document.all[idElement].style.top=arrayNotiWindNuPos[idElement];
       else if(nc) 
-        document.layers[idElement].top=nueva_posicion;
+        document.layers[idElement].top=arrayNotiWindNuPos[idElement];
       else if(n6) 
-        document.getElementById(idElement).style.top=nueva_posicion;          
+        document.getElementById(idElement).style.top=arrayNotiWindNuPos[idElement];          
       
-      posicion=nueva_posicion;
-      setTimeout("mueveNotificationWindow('"+idElement+"',posicion,aux)",10);
+      arrayNotiWindPos[idElement]=arrayNotiWindNuPos[idElement];
+      
+      setTimeout("mueveNotificationWindow('"+idElement+"',"+arrayNotiWindPos[idElement]+","+aux+")",10);
      }
 }
 
