@@ -794,7 +794,7 @@ class myController extends myControllerExt {
 	 */
 	public function closeMessageBox (){
 
-		$this->response->script('xajax.closeWindow()');
+		$this->response->script('closeModalWindow()');
 	}
 	
 	/**
