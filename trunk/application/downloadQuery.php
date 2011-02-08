@@ -19,7 +19,7 @@
  		
 		if (count($arWrRls)){
 			
-			if (stripos($sql, ' WHERE ')!==false)
+			if (stripos($sql, 'WHERE')!==false)
 				$sqlWhere = ' AND (';
 			else
 				$sqlWhere = ' WHERE (';
