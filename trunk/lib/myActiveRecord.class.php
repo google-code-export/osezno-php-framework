@@ -598,7 +598,7 @@ class myActiveRecord {
 			
 			if ($this->num_rows == 1){
 				
-				foreach ($rF as $etq => $value){
+				foreach ($rF[0] as $etq => $value){
 					
 					$this->$etq = $value;
 				}
