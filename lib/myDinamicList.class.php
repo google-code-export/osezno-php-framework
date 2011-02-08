@@ -1225,11 +1225,11 @@ class myList  {
 				
 					case 'button':
 						
-						$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
+						//$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
 						
 						$objMyForm->addEvent($this->idList.$id,'onclick','MYLIST_page',$this->idList,$attr[1]);
 						
-						$buf .= $objMyForm->getButton($this->idList.$id,$htmlBut);					
+						$buf .= $objMyForm->getButton($this->idList.$id,'','../../'.$this->themeName.'/mylist/'.$id.'.gif');					
 					break;
 					case 'field':
 						

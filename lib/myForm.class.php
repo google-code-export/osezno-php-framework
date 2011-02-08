@@ -1613,9 +1613,9 @@ class myForm {
 		$buf .= '<table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>';
 		
 		if ($strSrcImg)
-			$buf .= '<td><img style="padding-right: 2px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0"></td>';
+			$buf .= '<td align="right"><img style="padding-right: 2px; vertical-align: middle;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0"></td>';
 			
-		$buf.='<td class="boton_font">'.$strLabel.'</td></tr></table></button>';
+		$buf.='<td class="boton_font">'.str_replace(' ','&nbsp;',$strLabel).'</td></tr></table></button>';
 
 		return $buf;
 	}	
@@ -2452,7 +2452,7 @@ class myForm {
 					$bufButton .= '<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr>';
 			
 					if ($campos_f[3])
-						$bufButton .= '<td><img style="padding-right: 2px;" src="'.$campos_f[3].'" border="0"></td>';
+						$bufButton .= '<td align="right"><img style="padding-right: 2px;" src="'.$campos_f[3].'" border="0"></td>';
 
 					$bufButton .= '<td class="boton_font">'.str_replace(' ','&nbsp;',$campos_f[2]).'</td></tr></table>';
 
