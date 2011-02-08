@@ -38,6 +38,10 @@
 	padding-bottom:1px;
 	padding-right:1px;
 	width:98%;
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #039;
 }
 
 /**

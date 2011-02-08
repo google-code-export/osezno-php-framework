@@ -71,6 +71,16 @@ class myList  {
 	private $usePagination = false;
 	
 	/**
+	 * Usar Sql Debug
+	 * 
+	 * Habilita la impresion del sql en pantalla para
+	 * analizar a medida que se aplican diferentes
+	 * acciones sobre la lista dinamica.
+	 * @var boolean
+	 */
+	private $useSqlDebug = false;
+	
+	/**
 	 * Registros por pagina.
 	 * 
 	 * Numero de registros por pagina cuando la paginacion esta activa.
@@ -148,7 +158,8 @@ class myList  {
 		'arrayWhereRules',
 		'arrayDataTypeExport',
 		'globalEventOnColumn',
-		'globalEventsName'
+		'globalEventsName',
+		'useSqlDebug'
 	);	
 	
 	/**
@@ -458,6 +469,19 @@ class myList  {
 		$this->recordsPerPage = $rows;
 		
 		$this->currentPage = 0;
+	}
+	
+	/**
+	 * Habilita una debud para Sql.
+	 * 
+	 * Muestra en pantalla junto a la lista dinamica, un registro de los
+	 * cambios sobre la consulta sql que se van produciendo a medida que
+	 * se aplican filtros y ordenamientos.
+	 * @param boolean $use Activa o inactiva el debug
+	 */
+	public function setSqlDebug ($use = true){
+		
+		$this->useSqlDebug = $use;
 	}
 	
 	/**
@@ -838,9 +862,12 @@ class myList  {
 					
 					$subSqlF .= $field;
 
+					$this->setRealNameInQuery($field,$field);
+					
 					if ($iCounter<$countFields)
-			   			$subSqlF .= ', ';
-
+			   			
+						$subSqlF .= ', ';
+						
 					$iCounter++;
 				}
 				
@@ -894,6 +921,13 @@ class myList  {
 		$return = $bufHead = $cadParam = '';
 		
 		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
+		
+		if ($this->useSqlDebug){
+		
+			$buf .= '<div style="text-align:left" class="form_cont_filter"><b>Sql:&nbsp;</b>'.$sql.'<br>';
+			
+			$buf .= '<b>Registros:&nbsp;</b>'.$this->numAffectedRows.'</div><br>';
+		}
 		
 		if (!$this->successFul){
 			
