@@ -382,7 +382,7 @@ class myForm {
 	 * Tamano de ancho de la tabla que contiene el formulario en porcentaje o px.
 	 * @var string
 	 */
-	public $width = '98%';
+	public $width = '97%';
 
 	/**
 	 * Alto de formulario.
@@ -1258,7 +1258,7 @@ class myForm {
 	 * @param integer $height Alto
 	 * @param string  $toolbarset Juego de barra de herramientas
 	 */
-	public function addFCKeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = 'Default'){
+	public function addFCKeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = ''){
 		
 		if ($width)
 			$this->FCK_editor_Width = $width;

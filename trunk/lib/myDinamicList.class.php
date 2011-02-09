@@ -881,7 +881,7 @@ class myList  {
 				
 				$this->objConn = new myActiveRecord();
 		
-				$this->sql = $this->sqlORobject;
+				$sql = $this->sql = $this->sqlORobject;
 			}
 			
 			if ($this->objConn->isSuccessfulConnect())
@@ -924,7 +924,7 @@ class myList  {
 		
 		if ($this->useSqlDebug){
 		
-			$buf .= '<div style="text-align:left" class="form_cont_filter"><b>Sql:&nbsp;</b>'.$sql.'<br>';
+			$buf .= '<div style="text-align:left" class="form_cont_filter"><b>Sql:&nbsp;</b>'.htmlentities($sql).'<br>';
 			
 			$buf .= '<b>Registros:&nbsp;</b>'.$this->numAffectedRows.'</div><br>';
 		}
