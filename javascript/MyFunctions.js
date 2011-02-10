@@ -435,7 +435,7 @@ function GetArray(){
 	return ar;
 }
 
-function GetDataForm (form){
+function GetDataForm (form, objCKEditor, arrInstances){
       
 	  var buf = '';
 	
@@ -447,12 +447,23 @@ function GetDataForm (form){
     	  
          for (i=0; i<document.forms[form].elements.length; i++){
               
-              if (isArray(document.forms[form].elements[i].name)) 
-                  alert (document.forms[form].elements[i].name);
-               
               var option = document.forms[form].elements[i].type;
                
               switch (option){
+              	 case 'textarea':
+              		 
+              		 if (arrInstances){
+              			
+              			 if (arrInstances[document.forms[form].elements[i].name])
+              				 form_elements[document.forms[form].elements[i].name] = objCKEditor[document.forms[form].elements[i].name].getData();
+              			
+              		 }else{
+              			 
+              			form_elements[document.forms[form].elements[i].name] = document.forms[form].elements[i].value;
+              			
+              		 }
+              		 
+              	 break;
                  case 'checkbox':
                     var checkbox_value = document.forms[form].elements[i].checked;
                     form_elements[document.forms[form].elements[i].name] = checkbox_value;
