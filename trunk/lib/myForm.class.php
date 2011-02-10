@@ -1,8 +1,7 @@
 <?php
 
-$pathfckEditor = 'plugin/editors/fck_editor/fckeditor.php';
-require ($pathfckEditor);
-
+	$pathckEditor = 'plugin/editors/ck_editor/ckeditor.php';
+	require ($pathckEditor);
 
 /**
  * myForm
@@ -244,7 +243,14 @@ class myForm {
 	 * 
 	 * @var array
 	 */
-	private $arrayTypeElemSpecial = array ('textarea','button','coment','fckeditor');
+	private $arrayTypeElemSpecial = array ('textarea','button','coment','ckeditor');
+	
+	/**
+	 * Instancias creadas de CKEditor
+	 * 
+	 * @var array
+	 */
+	private $arrayCKEditorInstances = array();
 	
 	/**
 	 * Arreglo de los campos tipo 'FILE' que estan registrados
@@ -830,49 +836,49 @@ class myForm {
 	 */
 	public $FILE_upload_several_files = false;
 
-	# Atributos de inicio de configuracion para el editor FCKeditor
+	# Atributos de inicio de configuracion para el editor CKeditor
 
 	/**
 	 * Ruta fisica Editor
 	 * 
 	 * Ruta base de acceso para encontrar los script del editor.
 	 * Se calcula automaticamente en el contructor.
-	 * El valor por defecto es URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/'.
+	 * El valor por defecto es URL_BASE_PROJECT.'/lib/plugin/editors/ck_editor/'.
 	 * @var string
 	 */
-	public $FCK_editor_BasePath = '';
+	public $CK_editor_BasePath = '';
 
 	/**
-	 * Ancho FCKeditor
+	 * Ancho CKeditor
 	 *
-	 * Ancho del FCKeditor
+	 * Ancho del CKeditor
 	 * @var string
 	 */
-	public $FCK_editor_Width  = '100%';
+	public $CK_editor_Width  = '100%';
 
 	/**
-	 * Alto FCKeditor
+	 * Alto CKeditor
 	 *
-	 * Alto del FCKeditor
+	 * Alto del CKeditor
 	 * @var string
 	 */
-	public $FCK_editor_Height = '200';
+	public $CK_editor_Height = '200';
 
 	/**
-	 * Idioma FCKeditor
+	 * Idioma CKeditor
 	 *
-	 * Idioma por defecto en el FCKeditor
+	 * Idioma por defecto en el CKeditor
 	 * @var string
 	 */
-	public $FCK_editor_Laguage = 'es';
+	public $CK_editor_Laguage = 'es';
 
 	/**
-	 * Barra herramientas FCKeditor
+	 * Barra herramientas CKeditor
 	 * 
-	 * Grupo de barras a seleccionar para el FCKeditor
+	 * Grupo de barras a seleccionar para el CKeditor
 	 * @var string
 	 */
-	public $FCK_editor_ToolbarSet = 'Default';
+	public $CK_editor_ToolbarSet = 'Default';
 
 	/**
 	 * Constructor
@@ -914,7 +920,7 @@ class myForm {
 	 */
 	public function __construct($name = '', $action = '', $target = '', $enctype = ''){
 
-		$this->FCK_editor_BasePath = URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/';
+		$this->CK_editor_BasePath = URL_BASE_PROJECT.'/lib/plugin/editors/ck_editor/';
 		
 		$this->pathImages =  'themes/'.THEME_NAME.'/myform/';
 		
@@ -1200,10 +1206,10 @@ class myForm {
 	}
 
 	/**
-	 * Agregar un fckeditor.
+	 * Agregar un ckeditor.
 	 *
-	 * Agrega un fckeditor al formulario actual.
-	 * Un FCKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
+	 * Agrega un ckeditor al formulario actual.
+	 * Un CKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
 	 * Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.
 	 * Por el momento cuando declaramos un campo de este tipo solo es posible obtener su contenido si el action del formulario esta definido.
 	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
@@ -1215,7 +1221,7 @@ class myForm {
 	 * 
 	 * $myForm = new myForm('form1','procesarForm.php');
 	 * 
-	 * $myForm->addFCKeditor ('Contenido:','contenido');
+	 * $myForm->addCKeditor ('Contenido:','contenido');
 	 * 
 	 * $myForm->addButton('btn1','Enviar');
  	 *	
@@ -1258,21 +1264,23 @@ class myForm {
 	 * @param integer $height Alto
 	 * @param string  $toolbarset Juego de barra de herramientas
 	 */
-	public function addFCKeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = ''){
+	public function addCKeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = ''){
+		
+		$this->arrayCKEditorInstances[] = $name;
 		
 		if ($width)
-			$this->FCK_editor_Width = $width;
+			$this->CK_editor_Width = $width;
 			
 		if ($height)
-			$this->FCK_editor_Height = $height;
+			$this->CK_editor_Height = $height;
 			
 		if ($toolbarset)
-			$this->FCK_editor_ToolbarSet = $toolbarset;
+			$this->CK_editor_ToolbarSet = $toolbarset;
 			
 		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'fckeditor'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
+		$Cadena   = 'ckeditor'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
 		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'fckeditor';
+		$this->arrayFormElementType[$name] = 'ckeditor';
 	}
 		
 	/**
@@ -1796,11 +1804,22 @@ class myForm {
 			for($i=0;$i<$cantFinctions;$i++){
 				
 				switch ($this->paramTypeOnEvent){
+					
 					case 'global':
-						$this->objEventxJ[$objName] .= $this->prefAjax.$functions[$i].'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\''.')';
+						
+						$this->objEventxJ[$objName] .= $this->prefAjax.$functions[$i].'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\'';
+						
+						if (count($this->arrayCKEditorInstances))
+							
+							$this->objEventxJ[$objName] .= ', CKEDITOR.instances, CKEditorInstances';
+						
+						$this->objEventxJ[$objName] .= ')';
+						
 					break;
 					case 'field':
+						
 						$this->objEventxJ[$objName] .= $this->prefAjax.$functions[$i].'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
+						
 					break;
 				}
  		
@@ -1816,10 +1835,19 @@ class myForm {
 		}else{
 			
 			switch ($this->paramTypeOnEvent){
+				
 				case 'global':
-					$this->objEventxJ[$objName] .= $this->prefAjax.$functions.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\''.')';
+					
+					$this->objEventxJ[$objName] .= $this->prefAjax.$functions.'('.$this->jsFunctionSubmitFormOnEvent.'(\''.$this->name.'\'';
+					
+					if (count($this->arrayCKEditorInstances))
+							
+						$this->objEventxJ[$objName] .= ', CKEDITOR.instances, CKEditorInstances';
+					
+					$this->objEventxJ[$objName] .= ')';
 				break;
 				case 'field':
+					
 					$this->objEventxJ[$objName] .= $this->prefAjax.$functions.'('.$this->jsFunctionSubmitFieldOnEvent.'(this.value)';
 				break;
 			}
@@ -2259,6 +2287,22 @@ class myForm {
 		
 		$buf = ''."\n";
 
+		if (count($this->arrayCKEditorInstances)){
+			
+			$buf .= '<script type=\'text/javascript\'>'."\n";
+			
+			$buf .= "\t".'var CKEditorInstances = new Object();'."\n";
+			
+			foreach ($this->arrayCKEditorInstances as $instance){
+			
+				$buf .= "\t".'CKEditorInstances["'.$instance.'"] = "'.$instance.'";'."\n";
+			}
+			
+			$buf .= '</script>'."\n";
+		}
+		
+		
+		
 		$buf .= '<!--'."\n";
 		$buf .= 'OSEZNO PHP FRAMEWORK'."\n";
 		$buf .= 'Generado con la clase para la creacion de Formularios myForm.class.php'."\n";
@@ -2387,25 +2431,23 @@ class myForm {
                     ''.'<textarea '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" name="'.$campos_f[2].'" id="'.$campos_f[2].'" cols="'.$campos_f[4].'" rows="'.$campos_f[5].'" wrap="'.$campos_f[6].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[3].'</textarea></td>'."\n";
 										 
 					break;
-				case 'fckeditor':
+				case 'ckeditor':
 					
-					$oFCKeditor = new FCKeditor($campos_f[2]) ;
+					$oCKeditor = new CKeditor();
 					
-					$oFCKeditor->BasePath = $this->FCK_editor_BasePath;
+					$events = array();
 					
-					$oFCKeditor->Value = $campos_f[3];
+					$config = array();
+					
+					$oCKeditor->returnOutput = true;
+					
+					$oCKeditor->basePath = $this->CK_editor_BasePath;
+					
+					$oCKeditor->config['width']  = $this->CK_editor_Width;
+					
+					$oCKeditor->config['height'] = $this->CK_editor_Height;
 
-					$oFCKeditor->Width  = $this->FCK_editor_Width;
-					
-					$oFCKeditor->Height = $this->FCK_editor_Height;
-
-					$oFCKeditor->Config['AutoDetectLanguage']	= false ;
-					
-					$oFCKeditor->Config['DefaultLanguage']    = $this->FCK_editor_Laguage;
-					
-					$oFCKeditor->ToolbarSet  = $this->FCK_editor_ToolbarSet;
-
-					$this->arrayFormElements[$campos_f[2]] = ''.'<td rowSpanEtq '.$this->checkIsHelping($campos_f[2]).' style="text-align:center" colSpanEtq class="'.$this->styleClassTags.'">'.$campos_f[1]."<br>".$oFCKeditor->CreateHtml().'</td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = ''.'<td rowSpanEtq '.$this->checkIsHelping($campos_f[2]).' style="text-align:center" colSpanEtq class="'.$this->styleClassTags.'">'.$campos_f[1]."<br>".$oCKeditor->editor($campos_f[2],$campos_f[3],$events,$config).'</td>'."\n";
 					break;
 				case 'mylist':
 
