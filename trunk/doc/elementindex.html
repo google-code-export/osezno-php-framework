@@ -70,8 +70,6 @@
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddDisabled">myForm::addDisabled()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Desabilita un objeto.</dd>
 							<dt><b>addEvent</b></dt>
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">myForm::addEvent()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agrega un evento al objeto.</dd>
-							<dt><b>addFCKeditor</b></dt>
-				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFCKeditor">myForm::addFCKeditor()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agregar un fckeditor.</dd>
 							<dt><b>addFile</b></dt>
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFile">myForm::addFile()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agrega un campo de tipo archivo.</dd>
 							<dt><b>addFreeObject</b></dt>
@@ -96,6 +94,8 @@
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">myForm::addText()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agregar caja de texto</dd>
 							<dt><b>addTextArea</b></dt>
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddTextArea">myForm::addTextArea()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agrega una area de texto</dd>
+							<dt><b>addWYSIWYGeditor</b></dt>
+				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddWYSIWYGeditor">myForm::addWYSIWYGeditor()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agregar un editor WYSIWYG.</dd>
 							<dt><b>alert</b></dt>
 				<dd>in file myController.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myController.html#methodalert">myController::alert()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Muestra una alerta.</dd>
 							<dt><b>append</b></dt>
@@ -182,16 +182,6 @@
 	<div>
 		<h2>f</h2>
 		<dl>
-							<dt><b>$FCK_editor_BasePath</b></dt>
-				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_BasePath">myForm::$FCK_editor_BasePath</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Ruta fisica Editor</dd>
-							<dt><b>$FCK_editor_Height</b></dt>
-				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Height">myForm::$FCK_editor_Height</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Alto FCKeditor</dd>
-							<dt><b>$FCK_editor_Laguage</b></dt>
-				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Laguage">myForm::$FCK_editor_Laguage</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Idioma FCKeditor</dd>
-							<dt><b>$FCK_editor_ToolbarSet</b></dt>
-				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_ToolbarSet">myForm::$FCK_editor_ToolbarSet</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Barra herramientas FCKeditor</dd>
-							<dt><b>$FCK_editor_Width</b></dt>
-				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Width">myForm::$FCK_editor_Width</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Ancho FCKeditor</dd>
 							<dt><b>$FILE_button_height</b></dt>
 				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_height">myForm::$FILE_button_height</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Alto boton.</dd>
 							<dt><b>$FILE_button_image_url</b></dt>
@@ -562,6 +552,8 @@
 				<dd>in file myController.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myController.html#methodsetReturnValue">myController::setReturnValue()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Stores a value that will be passed back as part of the response.</dd>
 							<dt><b>setSeqName</b></dt>
 				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodsetSeqName">myActiveRecord::setSeqName()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Configurar el nombre de la secuencia usada en Postgresql.</dd>
+							<dt><b>setSqlDebug</b></dt>
+				<dd>in file myDinamicList.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myList.html#methodsetSqlDebug">myList::setSqlDebug()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Habilita una debud para Sql.</dd>
 							<dt><b>setTheme</b></dt>
 				<dd>in file myDinamicList.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myList.html#methodsetTheme">myList::setTheme()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Seleccionar un tema</dd>
 							<dt><b>setTheme</b></dt>
@@ -572,6 +564,8 @@
 				<dd>in file myDinamicList.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myList.html#methodsetWidthColumn">myList::setWidthColumn()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Configurar ancho em columna.</dd>
 							<dt><b>setWidthInColumn</b></dt>
 				<dd>in file myExportData.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myExportData.html#methodsetWidthInColumn">myExportData::setWidthInColumn()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Configurar ancho de culumna.</dd>
+							<dt><b>setWYSIWYGeditorToUse</b></dt>
+				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetWYSIWYGeditorToUse">myForm::setWYSIWYGeditorToUse()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Configura el editor WYSIWYG a usar en el formulario.</dd>
 							<dt><b>showForm</b></dt>
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodshowForm">myForm::showForm()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Imprime el formulario final.</dd>
 							<dt><b>sleep</b></dt>
@@ -651,7 +645,7 @@
 	<a href="elementindex.html#top">top</a><br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 20 Jan 2011 18:00:19 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 11 Feb 2011 13:51:31 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

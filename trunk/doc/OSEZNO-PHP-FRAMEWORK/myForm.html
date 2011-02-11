@@ -103,11 +103,6 @@ Source Location: /myForm.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$cellSpacing">$cellSpacing</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$cols">$cols</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$enctype">$enctype</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_BasePath">$FCK_editor_BasePath</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Height">$FCK_editor_Height</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Laguage">$FCK_editor_Laguage</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_ToolbarSet">$FCK_editor_ToolbarSet</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FCK_editor_Width">$FCK_editor_Width</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_height">$FILE_button_height</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_image_url">$FILE_button_image_url</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#var$FILE_button_placeholder_id">$FILE_button_placeholder_id</a></li>
@@ -175,7 +170,6 @@ Source Location: /myForm.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddComment">addComment</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddDisabled">addDisabled</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a></li>
-    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFCKeditor">addFCKeditor</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFile">addFile</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFreeObject">addFreeObject</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddGroup">addGroup</a></li>
@@ -186,6 +180,7 @@ Source Location: /myForm.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddSelect">addSelect</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">addText</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddTextArea">addTextArea</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddWYSIWYGeditor">addWYSIWYGeditor</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetButton">getButton</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetCheckBox">getCheckBox</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetFile">getFile</a></li>
@@ -198,6 +193,7 @@ Source Location: /myForm.class.php<br /><br />
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetTextArea">getTextArea</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodgroupGroups">groupGroups</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetParamTypeOnEvent">setParamTypeOnEvent</a></li>
+    <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodsetWYSIWYGeditorToUse">setWYSIWYGeditorToUse</a></li>
     <li><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodshowForm">showForm</a></li>
   </ul>
 </td>
@@ -218,7 +214,7 @@ Source Location: /myForm.class.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 17]<br />
+[line 16]<br />
 myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar diferentes formas de formularios.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -244,7 +240,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$action"></a>
 	<p></p>
 	<h4>$action = <span class="value"></span></h4>
-	<p>[line 304]</p>
+	<p>[line 328]</p>
   Accion (action) del formulario.<br /><br /><p>La ruta del script que procesara los datos.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -268,7 +264,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$border"></a>
 	<p></p>
 	<h4>$border = <span class="value">&nbsp;0</span></h4>
-	<p>[line 400]</p>
+	<p>[line 424]</p>
   Borde de tabla.<br /><br /><p>Borde de la tabla que contiene el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -292,7 +288,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cache_dir"></a>
 	<p></p>
 	<h4>$cache_dir = <span class="value">&nbsp;'myform_cache/'</span></h4>
-	<p>[line 344]</p>
+	<p>[line 368]</p>
   Directorio cache.<br /><br /><p>Directorio en donde el formulario sera cacheado si la opcion esta habilitada.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -316,7 +312,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cellPadding"></a>
 	<p></p>
 	<h4>$cellPadding = <span class="value">&nbsp;2</span></h4>
-	<p>[line 368]</p>
+	<p>[line 392]</p>
   Anchura interior de celda.<br /><br /><p>Anchura interior de una celda, en este caso para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -340,7 +336,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cellSpacing"></a>
 	<p></p>
 	<h4>$cellSpacing = <span class="value">&nbsp;0</span></h4>
-	<p>[line 376]</p>
+	<p>[line 400]</p>
   Espacio entre celdas.<br /><br /><p>Espacion interior entre celdas, en este caso para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -364,7 +360,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cols"></a>
 	<p></p>
 	<h4>$cols = <span class="value">&nbsp;2</span></h4>
-	<p>[line 360]</p>
+	<p>[line 384]</p>
   Columnas.<br /><br /><p>Numero de columnas en las que se divira la vista del formulario. Un campo sera ubicado en cada columna.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -388,128 +384,8 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$enctype"></a>
 	<p></p>
 	<h4>$enctype = <span class="value"></span></h4>
-	<p>[line 320]</p>
+	<p>[line 344]</p>
   Tipo MIME (Enctype) del formulario.<br /><br /><p>El tipo de datos que va a enviar, usualmente se utiliza para manejar acrchivos. (application/x-www-form-urlencoded, multipart/form-data)</p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>string</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$FCK_editor_BasePath"></a>
-	<p></p>
-	<h4>$FCK_editor_BasePath = <span class="value">&nbsp;''</span></h4>
-	<p>[line 842]</p>
-  Ruta fisica Editor<br /><br /><p>Ruta base de acceso para encontrar los script del editor.  Se calcula automaticamente en el contructor.  El valor por defecto es URL_BASE_PROJECT.'/lib/plugin/editors/fck_editor/'.</p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>string</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$FCK_editor_Height"></a>
-	<p></p>
-	<h4>$FCK_editor_Height = <span class="value">&nbsp;'200'</span></h4>
-	<p>[line 858]</p>
-  Alto FCKeditor<br /><br /><p>Alto del FCKeditor</p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>string</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$FCK_editor_Laguage"></a>
-	<p></p>
-	<h4>$FCK_editor_Laguage = <span class="value">&nbsp;'es'</span></h4>
-	<p>[line 866]</p>
-  Idioma FCKeditor<br /><br /><p>Idioma por defecto en el FCKeditor</p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>string</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$FCK_editor_ToolbarSet"></a>
-	<p></p>
-	<h4>$FCK_editor_ToolbarSet = <span class="value">&nbsp;'Default'</span></h4>
-	<p>[line 874]</p>
-  Barra herramientas FCKeditor<br /><br /><p>Grupo de barras a seleccionar para el FCKeditor</p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>string</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$FCK_editor_Width"></a>
-	<p></p>
-	<h4>$FCK_editor_Width = <span class="value">&nbsp;'100%'</span></h4>
-	<p>[line 850]</p>
-  Ancho FCKeditor<br /><br /><p>Ancho del FCKeditor</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -532,7 +408,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_button_height"></a>
 	<p></p>
 	<h4>$FILE_button_height = <span class="value">&nbsp;22</span></h4>
-	<p>[line 664]</p>
+	<p>[line 688]</p>
   Alto boton.<br /><br /><p>Alto del boton en px en el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -556,7 +432,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_button_image_url"></a>
 	<p></p>
 	<h4>$FILE_button_image_url = <span class="value">&nbsp;'button_file.gif'</span></h4>
-	<p>[line 640]</p>
+	<p>[line 664]</p>
   SRC Imagen boton seleccionar/subir archivos.<br /><br /><p>SRC de la imagen que por defecto se va a cargar como base para dibujar el boton de carga de archivos.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -580,7 +456,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_button_placeholder_id"></a>
 	<p></p>
 	<h4>$FILE_button_placeholder_id = <span class="value">&nbsp;'spanButtonPlaceholder'</span></h4>
-	<p>[line 648]</p>
+	<p>[line 672]</p>
   Id DIV<br /><br /><p>Id del span donde el button se va a alojar.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -604,7 +480,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_button_width"></a>
 	<p></p>
 	<h4>$FILE_button_width = <span class="value">&nbsp;160</span></h4>
-	<p>[line 656]</p>
+	<p>[line 680]</p>
   Ancho boton.<br /><br /><p>Ancho del boton en px en el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -628,7 +504,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_custom_settings"></a>
 	<p></p>
 	<h4>$FILE_custom_settings = <span class="value">array()</span></h4>
-	<p>[line 805]</p>
+	<p>[line 829]</p>
   FILE_custom_settings<br /><br /><p>FILE_custom_settings</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -652,7 +528,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_debug"></a>
 	<p></p>
 	<h4>$FILE_debug = <span class="value">&nbsp;'false'</span></h4>
-	<p>[line 696]</p>
+	<p>[line 720]</p>
   Debug<br /><br /><p>Habilitar el debug o no</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -676,7 +552,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_debug_handler"></a>
 	<p></p>
 	<h4>$FILE_debug_handler = <span class="value">&nbsp;'debugHandler'</span></h4>
-	<p>[line 797]</p>
+	<p>[line 821]</p>
   debugHandler<br /><br /><p>debugHandler</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -700,7 +576,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_dialog_complete_handler"></a>
 	<p></p>
 	<h4>$FILE_file_dialog_complete_handler = <span class="value">&nbsp;'fileDialogComplete'</span></h4>
-	<p>[line 741]</p>
+	<p>[line 765]</p>
   fileDialogComplete<br /><br /><p>Se ejecuta cuando se a echo click sobre el boton aceptar del cuadro de dialogo de los archivos que van a ser subidos al servidor.  Esto generalmente esta haciendo el cargue automatico de los archivos con &quot;this.startUpload();&quot;  Parametros que se pasan al evento: (number of files selected, number of files queued)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -724,7 +600,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_dialog_start_handler"></a>
 	<p></p>
 	<h4>$FILE_file_dialog_start_handler = <span class="value">&nbsp;'fileDialogStart'</span></h4>
-	<p>[line 713]</p>
+	<p>[line 737]</p>
   fileDialogStart<br /><br /><p>Este evento se dispara inmediatamente antes de que la ventana de dialogo de seleccion de archivos sea abierta.  Sin embargo el evento no va a terminar ni a cerrarse hasta que la ventana dialogo de seleccion de archivos este sea cerrada por cancelacion, o aceptacion.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -748,7 +624,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_post_name"></a>
 	<p></p>
 	<h4>$FILE_file_post_name = <span class="value"></span></h4>
-	<p>[line 555]</p>
+	<p>[line 579]</p>
   Nombre campo File.<br /><br /><p>El nombre del campo cuando es enviado por el metodo POST, The Linux Flash Player ignores this setting.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -772,7 +648,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_queued_handler"></a>
 	<p></p>
 	<h4>$FILE_file_queued_handler = <span class="value">&nbsp;'fileQueued'</span></h4>
-	<p>[line 721]</p>
+	<p>[line 745]</p>
   fileQueued<br /><br /><p>No usar o tener en cuenta este evento.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -796,7 +672,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_queue_error_handler"></a>
 	<p></p>
 	<h4>$FILE_file_queue_error_handler = <span class="value">&nbsp;'fileQueueError'</span></h4>
-	<p>[line 731]</p>
+	<p>[line 755]</p>
   fileQueueError<br /><br /><p>Se ejecuta cuando existe o se produjo un error de validacion en la lista seleccionada de los archivos  que el  usuario selecciono.  Por ejemplo para ayudar a validar que el archivo no sea demasiado grande o que sea del tipo que se esta parametrizando.  Parametros que se pasan al evento: (file object, error code, message)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -820,7 +696,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_queue_limit"></a>
 	<p></p>
 	<h4>$FILE_file_queue_limit = <span class="value">&nbsp;0</span></h4>
-	<p>[line 624]</p>
+	<p>[line 648]</p>
   Numero maximo de archivos en cola.<br /><br /><p>Numero maximo de archivos en archivos en  cola que pueden estar (cero es sin limite).</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -844,7 +720,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_types"></a>
 	<p></p>
 	<h4>$FILE_file_types = <span class="value">array('*.*')</span></h4>
-	<p>[line 584]</p>
+	<p>[line 608]</p>
   Extensiones admitidas.<br /><br /><p>Los tipos de archivo que son admisibles al seleccionarlos.  <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -877,7 +753,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_types_description"></a>
 	<p></p>
 	<h4>$FILE_file_types_description = <span class="value">&nbsp;'Todos&nbsp;los&nbsp;tipos'</span></h4>
-	<p>[line 592]</p>
+	<p>[line 616]</p>
   Descripción de admisión de tipos de archivo.<br /><br /><p>La descripcion de los tipos de archivo que se pueden subir al servidor, esta etiqueta aparecera en el cuadro de dialogo de seleccion de archivos.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -901,7 +777,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_file_upload_limit"></a>
 	<p></p>
 	<h4>$FILE_file_upload_limit = <span class="value">&nbsp;0</span></h4>
-	<p>[line 616]</p>
+	<p>[line 640]</p>
   Numero maximo de archivos por intento a subir.<br /><br /><p>Numero maximo de archivos que pueden ser subidos en un intento (cero es sin limite).</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -925,7 +801,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_flash_color"></a>
 	<p></p>
 	<h4>$FILE_flash_color = <span class="value">&nbsp;'FFFFFF'</span></h4>
-	<p>[line 688]</p>
+	<p>[line 712]</p>
   Color fondo flash.<br /><br /><p>Color de fondo para el flash.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -949,7 +825,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_flash_height"></a>
 	<p></p>
 	<h4>$FILE_flash_height = <span class="value">&nbsp;'0px'</span></h4>
-	<p>[line 680]</p>
+	<p>[line 704]</p>
   Alto flash.<br /><br /><p>Alto de el tamano del flash.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -973,7 +849,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_flash_url"></a>
 	<p></p>
 	<h4>$FILE_flash_url = <span class="value">&nbsp;''</span></h4>
-	<p>[line 632]</p>
+	<p>[line 656]</p>
   Url flash.<br /><br /><p>Url en donde se encuentra el SWF que permite la carga  de los archivos al servidor.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -997,7 +873,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_flash_width"></a>
 	<p></p>
 	<h4>$FILE_flash_width = <span class="value">&nbsp;'0px'</span></h4>
-	<p>[line 672]</p>
+	<p>[line 696]</p>
   Ancho Flash.<br /><br /><p>Ancho de el tamano del flash.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1021,7 +897,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_post_params"></a>
 	<p></p>
 	<h4>$FILE_post_params = <span class="value">array()</span></h4>
-	<p>[line 563]</p>
+	<p>[line 587]</p>
   Parametros post agregados.<br /><br /><p>Post params on file object. The param_object should be a simple JavaScript object. All names and values must be strings.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1045,7 +921,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_show_max_upload_size_info_in_button"></a>
 	<p></p>
 	<h4>$FILE_show_max_upload_size_info_in_button = <span class="value">&nbsp;true</span></h4>
-	<p>[line 608]</p>
+	<p>[line 632]</p>
   Mostrar informacion de tamaña maximo de subida.<br /><br /><p>Setea si se va a mostrar o no informacion de la capacidad max de subida por archivo en el boton que abre la ventana de dialogo para el swf_uploader.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1069,7 +945,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_size_limit"></a>
 	<p></p>
 	<h4>$FILE_size_limit = <span class="value">&nbsp;2048</span></h4>
-	<p>[line 600]</p>
+	<p>[line 624]</p>
   Tamaño maximo en Kb.<br /><br /><p>El tamano maximo en kilobytes para que un archivo pueda ser subido al  servidor de datos.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1093,7 +969,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_src_img_button"></a>
 	<p></p>
 	<h4>$FILE_src_img_button = <span class="value">&nbsp;''</span></h4>
-	<p>[line 814]</p>
+	<p>[line 838]</p>
   SRC Imagen boton<br /><br /><p>Ruta de la imagen que acompaña el boton examinar para el cargue de los archivos</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1120,7 +996,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_str_etq_button"></a>
 	<p></p>
 	<h4>$FILE_str_etq_button = <span class="value">&nbsp;'Examinar'</span></h4>
-	<p>[line 822]</p>
+	<p>[line 846]</p>
   Texto boton.<br /><br /><p>Texto que esta dentro del boton quen  examina   los   archivos.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1144,7 +1020,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_swfupload_loaded_handler"></a>
 	<p></p>
 	<h4>$FILE_swfupload_loaded_handler = <span class="value">&nbsp;'swfuploadLoadedHandler'</span></h4>
-	<p>[line 704]</p>
+	<p>[line 728]</p>
   swfuploadLoadedHandler<br /><br /><p>The swfUploadLoaded event is fired by flashReady. It is overridable. When swfUploadLoaded is called it is safe to call SWFUpload methods.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1168,7 +1044,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_upload_complete_handler"></a>
 	<p></p>
 	<h4>$FILE_upload_complete_handler = <span class="value">&nbsp;'uploadComplete'</span></h4>
-	<p>[line 789]</p>
+	<p>[line 813]</p>
   uploadComplete<br /><br /><p>Este evento siempre se dispara al final de un ciclo de una carga.  En este punto la carga esta completa y otra puede comenzar.  Parametros que se pasan al evento: (file object)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1192,7 +1068,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_upload_error_handler"></a>
 	<p></p>
 	<h4>$FILE_upload_error_handler = <span class="value">&nbsp;'uploadError'</span></h4>
-	<p>[line 770]</p>
+	<p>[line 794]</p>
   uploadError<br /><br /><p>El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con éxito.  El código de error parámetro indica el tipo de error que se produjo.  El código de error parámetro especifica una constante en SWFUpload.UPLOAD_ERROR.  Parametros que se pasan al evento: (file object, error code, message)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1216,7 +1092,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_upload_progress_handler"></a>
 	<p></p>
 	<h4>$FILE_upload_progress_handler = <span class="value">&nbsp;'uploadProgress'</span></h4>
-	<p>[line 759]</p>
+	<p>[line 783]</p>
   uploadProgress<br /><br /><p>Se produce cuando el listado de los archivos que actualmente se han seleccionado estan en proceso de ser subidos al servidor.  Parametros que se pasan al evento: (file object, bytes complete, total bytes)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1240,7 +1116,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_upload_several_files"></a>
 	<p></p>
 	<h4>$FILE_upload_several_files = <span class="value">&nbsp;false</span></h4>
-	<p>[line 830]</p>
+	<p>[line 854]</p>
   Multiples archivos.<br /><br /><p>Decidir si por upload se pueden se leccionar  varios  archivos  o no.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1264,7 +1140,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_upload_start_handler"></a>
 	<p></p>
 	<h4>$FILE_upload_start_handler = <span class="value">&nbsp;'uploadStart'</span></h4>
-	<p>[line 750]</p>
+	<p>[line 774]</p>
   uploadStart<br /><br /><p>Funcion que es llamada cuando comienza todo el cargue completo de los archivos y para que en cierta forma tambien se pueda hacer automaticamente.  Parametros que se pasan al evento: (file object)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1288,7 +1164,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_upload_success_handler"></a>
 	<p></p>
 	<h4>$FILE_upload_success_handler = <span class="value">&nbsp;'uploadSuccess'</span></h4>
-	<p>[line 779]</p>
+	<p>[line 803]</p>
   uploadSuccess<br /><br /><p>Este evento se ejecuta cuando un archivo es subido exitosamente al servidor, mientras tanto otros archivos pueden seguir siendo subidos.  Parametros que se pasan al evento: (file object, server data)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1312,7 +1188,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_upload_url"></a>
 	<p></p>
 	<h4>$FILE_upload_url = <span class="value"></span></h4>
-	<p>[line 547]</p>
+	<p>[line 571]</p>
   Url file_upload.<br /><br /><p>Url del script que procesa las peticiones de envio de archivos al servidor cuando exite un campo tipo file.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1336,7 +1212,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$height"></a>
 	<p></p>
 	<h4>$height = <span class="value">&nbsp;'0%'</span></h4>
-	<p>[line 392]</p>
+	<p>[line 416]</p>
   Alto de formulario.<br /><br /><p>Tamano de alto de la tabla que contiene el formulario en porcentaje o px.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1360,7 +1236,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$method"></a>
 	<p></p>
 	<h4>$method = <span class="value">&nbsp;'post'</span></h4>
-	<p>[line 296]</p>
+	<p>[line 320]</p>
   Metodo (method) del formulario.<br /><br /><p>El metodo que utilizara en el momento de enviar el Formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1384,7 +1260,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$name"></a>
 	<p></p>
 	<h4>$name = <span class="value"></span></h4>
-	<p>[line 336]</p>
+	<p>[line 360]</p>
   Nombre (name) del formulario.<br /><br /><p>El nombre del formulario con el que se esta interactuando.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1408,7 +1284,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$prefAjax"></a>
 	<p></p>
 	<h4>$prefAjax = <span class="value">&nbsp;''</span></h4>
-	<p>[line 328]</p>
+	<p>[line 352]</p>
   Prefijo xajax.<br /><br /><p>Prefijo que usa xajax para llamar a sus funciones.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1432,7 +1308,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$selectStringFirstLabelOption"></a>
 	<p></p>
 	<h4>$selectStringFirstLabelOption = <span class="value">&nbsp;'Seleccione...'</span></h4>
-	<p>[line 431]</p>
+	<p>[line 455]</p>
   Etiqueta primer opcion en campos tipo SELECT<br /><br /><p>Etiqueta de la primera opcion por select que se activa solo si $objMyForm-&gt;selectUseFirstValue es igual a 'true'.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1456,7 +1332,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$selectUseFirstValue"></a>
 	<p></p>
 	<h4>$selectUseFirstValue = <span class="value">&nbsp;true</span></h4>
-	<p>[line 408]</p>
+	<p>[line 432]</p>
   Usar pirmer valor en campos tipo select.<br /><br /><p>Permite decidir si se va a usar o no una opcion en el select que  muestre un etiqueta por defecto como presentacion segun el idioma que utilize.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1480,7 +1356,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$srcImageCalendarButton"></a>
 	<p></p>
 	<h4>$srcImageCalendarButton = <span class="value">&nbsp;'calendar.gif'</span></h4>
-	<p>[line 416]</p>
+	<p>[line 440]</p>
   SRC imagen boton calendario.<br /><br /><p>Ruta de la Imagen que acompana el boton de cada uno de los Controles de calendario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1504,7 +1380,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$strFormFieldSet"></a>
 	<p></p>
 	<h4>$strFormFieldSet = <span class="value">&nbsp;''</span></h4>
-	<p>[line 520]</p>
+	<p>[line 544]</p>
   Etiqueta Legend formulario.<br /><br /><p>Etiqueta del Legend del Fieldset que usara el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1528,7 +1404,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassButtons"></a>
 	<p></p>
 	<h4>$styleClassButtons = <span class="value">&nbsp;'boton'</span></h4>
-	<p>[line 488]</p>
+	<p>[line 512]</p>
   Clase CSS Botones.<br /><br /><p>Nombre de la clase que por defecto usan los los botones del formulario que seran mostrados.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1552,7 +1428,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassComments"></a>
 	<p></p>
 	<h4>$styleClassComments = <span class="value">&nbsp;'comentario'</span></h4>
-	<p>[line 504]</p>
+	<p>[line 528]</p>
   Clase CSS comentarios.<br /><br /><p>Nombre de la clase que por defecto usan los comentarios dentro del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1576,7 +1452,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassFields"></a>
 	<p></p>
 	<h4>$styleClassFields = <span class="value">&nbsp;'caja'</span></h4>
-	<p>[line 480]</p>
+	<p>[line 504]</p>
   Clase CSS Campos.<br /><br /><p>Nombre de la clase que por defecto usan los campos del formulario para ser mostrados.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1600,7 +1476,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassFieldsets"></a>
 	<p></p>
 	<h4>$styleClassFieldsets = <span class="value">&nbsp;'formulario_fieldset'</span></h4>
-	<p>[line 512]</p>
+	<p>[line 536]</p>
   Clase CSS Fieldset.<br /><br /><p>Nombre de la clase que por defecto usan los fieldsets del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1624,7 +1500,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassForm"></a>
 	<p></p>
 	<h4>$styleClassForm = <span class="value">&nbsp;'formulario'</span></h4>
-	<p>[line 448]</p>
+	<p>[line 472]</p>
   Clase CSS Formularios<br /><br /><p>Nombre de la clase que por defecto usan los formularios.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1648,7 +1524,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassRowSeparator"></a>
 	<p></p>
 	<h4>$styleClassRowSeparator = <span class="value">&nbsp;'fondo_fila_medio'</span></h4>
-	<p>[line 464]</p>
+	<p>[line 488]</p>
   Clase CSS filas intermedias.<br /><br /><p>Nombre de la clase que por defecto usan las filas del medio para los formularios cuando $myForm-&gt;useRowSeparator es true.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1672,7 +1548,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassTableForm"></a>
 	<p></p>
 	<h4>$styleClassTableForm = <span class="value">&nbsp;'fondo_tabla_form'</span></h4>
-	<p>[line 456]</p>
+	<p>[line 480]</p>
   Clase CSS tabla formulario.<br /><br /><p>Nombre de la clase que por defecto usan las tablas que se crean para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1696,7 +1572,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassTags"></a>
 	<p></p>
 	<h4>$styleClassTags = <span class="value">&nbsp;'etiqueta'</span></h4>
-	<p>[line 496]</p>
+	<p>[line 520]</p>
   Clase CSS etiquetas.<br /><br /><p>Nombre de la clase que por defecto usan las etiquetas de los campos del formulario que seran mostrados.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1720,7 +1596,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleTypeHelp"></a>
 	<p></p>
 	<h4>$styleTypeHelp = <span class="value">&nbsp;1</span></h4>
-	<p>[line 472]</p>
+	<p>[line 496]</p>
   Clase CSS Ayudas tipo.<br /><br /><p>Tipo del la ayuda que mostrara el help sobre los campos que se configuraron previamente (1 ó 2).</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1744,7 +1620,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$target"></a>
 	<p></p>
 	<h4>$target = <span class="value">&nbsp;'_self'</span></h4>
-	<p>[line 312]</p>
+	<p>[line 336]</p>
   Objetivo (target) del formulario.<br /><br /><p>La ventana en donde se abrira la informacion enviada desde ese formulario. (_self, _blank, _parent, _top)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1768,7 +1644,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$useRowSeparator"></a>
 	<p></p>
 	<h4>$useRowSeparator = <span class="value">&nbsp;false</span></h4>
-	<p>[line 440]</p>
+	<p>[line 464]</p>
   Usar distincion de filas.<br /><br /><p>Utilizar o no la fila intermedia de color diferente para diferenciar visualmente las filas de los campos en un formulario.  Nota: Al activar este atributo debe tenerse en cuenta la clase de estilos que usa por medio de 'styleClassRowSeparator'</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1792,7 +1668,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$use_cache"></a>
 	<p></p>
 	<h4>$use_cache = <span class="value">&nbsp;false</span></h4>
-	<p>[line 352]</p>
+	<p>[line 376]</p>
   Usar cache.<br /><br /><p>Define si se va a usar o no cache para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1815,8 +1691,8 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<div class="top">[ <a href="#top">Top</a> ]</div><br />
 	<a name="var$width"></a>
 	<p></p>
-	<h4>$width = <span class="value">&nbsp;'98%'</span></h4>
-	<p>[line 384]</p>
+	<h4>$width = <span class="value">&nbsp;'97%'</span></h4>
+	<p>[line 408]</p>
   Ancho de formulario.<br /><br /><p>Tamano de ancho de la tabla que contiene el formulario en porcentaje o px.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -1846,7 +1722,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 914]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 938]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1931,7 +1807,7 @@ $nomForm)</code>
   </div>
   <hr />
 	<a name="methodaddButton"></a>
-	<h3>method addButton <span class="smalllinenumber">[line 1330]</span></h3>
+	<h3>method addButton <span class="smalllinenumber">[line 1349]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1979,7 +1855,7 @@ $strSrcImg = ''])</code>
   </div>
   <hr />
 	<a name="methodaddCheckBox"></a>
-	<h3>method addCheckBox <span class="smalllinenumber">[line 1033]</span></h3>
+	<h3>method addCheckBox <span class="smalllinenumber">[line 1057]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2027,7 +1903,7 @@ $ini_sts = false])</code>
   </div>
   <hr />
 	<a name="methodaddComment"></a>
-	<h3>method addComment <span class="smalllinenumber">[line 1285]</span></h3>
+	<h3>method addComment <span class="smalllinenumber">[line 1304]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2069,7 +1945,7 @@ $Coment)</code>
   </div>
   <hr />
 	<a name="methodaddDisabled"></a>
-	<h3>method addDisabled <span class="smalllinenumber">[line 1919]</span></h3>
+	<h3>method addDisabled <span class="smalllinenumber">[line 1957]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2117,7 +1993,7 @@ $objName)</code>
   </div>
   <hr />
 	<a name="methodaddEvent"></a>
-	<h3>method addEvent <span class="smalllinenumber">[line 1743]</span></h3>
+	<h3>method addEvent <span class="smalllinenumber">[line 1761]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2229,113 +2105,8 @@ $param3)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodaddFCKeditor"></a>
-	<h3>method addFCKeditor <span class="smalllinenumber">[line 1260]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void addFCKeditor(
-[string
-$etq = ''], [string
-$name = ''], [string
-$value = ''], [integer
-$width = ''], [integer
-$height = ''], [string
-$toolbarset = 'Default'])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Agregar un fckeditor.<br /><br /><p>Agrega un fckeditor al formulario actual.  Un FCKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.  Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.  Por el momento cuando declaramos un campo de este tipo solo es posible obtener su contenido si el action del formulario esta definido.  Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()  Ejemplo:  <ol><li><div class="src-line">&nbsp;index.php</div></li>
-<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">,</span><span class="src-str">'procesarForm.php'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddFCKeditor">addFCKeditor</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Contenido:'</span><span class="src-sym">,</span><span class="src-str">'contenido'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddButton">addButton</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'Enviar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'onclick'</span><span class="src-sym">,</span><span class="src-str">'dataSend'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><span class="src-id">fgetForm</span><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
-<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">events&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a>&nbsp;<span class="src-sym">{</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">dataSend&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Forzamos&nbsp;el&nbsp;envio&nbsp;del&nbsp;formulario&nbsp;al&nbsp;action&nbsp;definido.</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">script</span><span class="src-sym">(</span><span class="src-str">'form1.submit()'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;procesarForm.php</div></li>
-<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Imprimos&nbsp;el&nbsp;contenido&nbsp;del&nbsp;formulario.</span></div></li>
-<li><div class="src-line">&nbsp;<a href="http://www.php.net/var_export">var_export</a><span class="src-sym">(</span><span class="src-var">$_POST</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
-</ol></p><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$etq</b>&nbsp;&nbsp;</td>
-        <td>Etiqueta del campo generado por el FCK Editor</td>
-      </tr>
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td>Nombre del campo generado por el FCK Editor</td>
-      </tr>
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$value</b>&nbsp;&nbsp;</td>
-        <td>Valor inicial del campo generado por el FCK Editor</td>
-      </tr>
-          <tr>
-        <td class="type">integer&nbsp;&nbsp;</td>
-        <td><b>$width</b>&nbsp;&nbsp;</td>
-        <td>Ancho</td>
-      </tr>
-          <tr>
-        <td class="type">integer&nbsp;&nbsp;</td>
-        <td><b>$height</b>&nbsp;&nbsp;</td>
-        <td>Alto</td>
-      </tr>
-          <tr>
-        <td class="type">string&nbsp;&nbsp;</td>
-        <td><b>$toolbarset</b>&nbsp;&nbsp;</td>
-        <td>Juego de barra de herramientas</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
 	<a name="methodaddFile"></a>
-	<h3>method addFile <span class="smalllinenumber">[line 1176]</span></h3>
+	<h3>method addFile <span class="smalllinenumber">[line 1200]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2436,7 +2207,7 @@ $file_size_limit = ''])</code>
   </div>
   <hr />
 	<a name="methodaddFreeObject"></a>
-	<h3>method addFreeObject <span class="smalllinenumber">[line 1314]</span></h3>
+	<h3>method addFreeObject <span class="smalllinenumber">[line 1333]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2506,7 +2277,7 @@ $val_c)</code>
   </div>
   <hr />
 	<a name="methodaddGroup"></a>
-	<h3>method addGroup <span class="smalllinenumber">[line 1666]</span></h3>
+	<h3>method addGroup <span class="smalllinenumber">[line 1684]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2594,7 +2365,7 @@ $iniVisibilitySts = 'show'])</code>
   </div>
   <hr />
 	<a name="methodaddHelp"></a>
-	<h3>method addHelp <span class="smalllinenumber">[line 1932]</span></h3>
+	<h3>method addHelp <span class="smalllinenumber">[line 1970]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2636,7 +2407,7 @@ $strHelp)</code>
   </div>
   <hr />
 	<a name="methodaddHidden"></a>
-	<h3>method addHidden <span class="smalllinenumber">[line 1112]</span></h3>
+	<h3>method addHidden <span class="smalllinenumber">[line 1136]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2678,7 +2449,7 @@ $value = ''])</code>
   </div>
   <hr />
 	<a name="methodaddPassword"></a>
-	<h3>method addPassword <span class="smalllinenumber">[line 1078]</span></h3>
+	<h3>method addPassword <span class="smalllinenumber">[line 1102]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2738,7 +2509,7 @@ $maxlength = ''])</code>
   </div>
   <hr />
 	<a name="methodaddRadioButton"></a>
-	<h3>method addRadioButton <span class="smalllinenumber">[line 1056]</span></h3>
+	<h3>method addRadioButton <span class="smalllinenumber">[line 1080]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2795,7 +2566,7 @@ $is_checked = false])</code>
   </div>
   <hr />
 	<a name="methodaddSelect"></a>
-	<h3>method addSelect <span class="smalllinenumber">[line 982]</span></h3>
+	<h3>method addSelect <span class="smalllinenumber">[line 1006]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2867,7 +2638,7 @@ $multiple = false])</code>
   </div>
   <hr />
 	<a name="methodaddText"></a>
-	<h3>method addText <span class="smalllinenumber">[line 961]</span></h3>
+	<h3>method addText <span class="smalllinenumber">[line 985]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2953,7 +2724,7 @@ $CampoFecha = false])</code>
   </div>
   <hr />
 	<a name="methodaddTextArea"></a>
-	<h3>method addTextArea <span class="smalllinenumber">[line 1097]</span></h3>
+	<h3>method addTextArea <span class="smalllinenumber">[line 1121]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3018,8 +2789,104 @@ $wrap = ''])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodaddWYSIWYGeditor"></a>
+	<h3>method addWYSIWYGeditor <span class="smalllinenumber">[line 1277]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void addWYSIWYGeditor(
+[string
+$etq = ''], [string
+$name = ''], [string
+$value = ''], [integer
+$width = ''], [integer
+$height = ''], [string
+$toolbarset = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Agregar un editor WYSIWYG.<br /><br /><p>Agrega un editor WYSIWYG al formulario actual.  Un editor WYSIWYG es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.  Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.  Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()</p><p>Nota Importante: Cuando se selecciona 'ck_editor' como editor WYSIWYG este no podra ser mostrado correctamente en contenido de ventanas modales o pestañas.</p><p>Ejemplo:  <ol><li><div class="src-line">&nbsp;index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html">myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><span class="src-id">addCKeditor&nbsp;</span><span class="src-sym">(</span><span class="src-str">'Contenido:'</span><span class="src-sym">,</span><span class="src-str">'contenido'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddButton">addButton</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'Enviar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddEvent">addEvent</a><span class="src-sym">(</span><span class="src-str">'btn1'</span><span class="src-sym">,</span><span class="src-str">'onclick'</span><span class="src-sym">,</span><span class="src-str">'dataSend'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><span class="src-id">fgetForm</span><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">events&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myController.html">myController</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">dataSend&nbsp;</span><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">script</span><span class="src-sym">(</span><span class="src-var">$dataForm</span><span class="src-sym">[</span><span class="src-str">'contenido'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$etq</b>&nbsp;&nbsp;</td>
+        <td>Etiqueta del campo generado por el CKEditor</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo generado por el CKEditor</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Valor inicial del campo generado por el CKEditor</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$width</b>&nbsp;&nbsp;</td>
+        <td>Ancho</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$height</b>&nbsp;&nbsp;</td>
+        <td>Alto</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$toolbarset</b>&nbsp;&nbsp;</td>
+        <td>Juego de barra de herramientas</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodgetButton"></a>
-	<h3>method getButton <span class="smalllinenumber">[line 1606]</span></h3>
+	<h3>method getButton <span class="smalllinenumber">[line 1624]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3067,7 +2934,7 @@ $strSrcImg = ''])</code>
   </div>
   <hr />
 	<a name="methodgetCheckBox"></a>
-	<h3>method getCheckBox <span class="smalllinenumber">[line 1456]</span></h3>
+	<h3>method getCheckBox <span class="smalllinenumber">[line 1473]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3109,7 +2976,7 @@ $ini_sts = false])</code>
   </div>
   <hr />
 	<a name="methodgetFile"></a>
-	<h3>method getFile <span class="smalllinenumber">[line 1553]</span></h3>
+	<h3>method getFile <span class="smalllinenumber">[line 1571]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3169,7 +3036,7 @@ $file_size_limit = ''])</code>
   </div>
   <hr />
 	<a name="methodgetForm"></a>
-	<h3>method getForm <span class="smalllinenumber">[line 1982]</span></h3>
+	<h3>method getForm <span class="smalllinenumber">[line 2020]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3205,7 +3072,7 @@ $cols = 2])</code>
   </div>
   <hr />
 	<a name="methodgetHidden"></a>
-	<h3>method getHidden <span class="smalllinenumber">[line 1538]</span></h3>
+	<h3>method getHidden <span class="smalllinenumber">[line 1556]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3247,7 +3114,7 @@ $value = ''])</code>
   </div>
   <hr />
 	<a name="methodgetPassword"></a>
-	<h3>method getPassword <span class="smalllinenumber">[line 1505]</span></h3>
+	<h3>method getPassword <span class="smalllinenumber">[line 1523]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3301,7 +3168,7 @@ $maxlength = ''])</code>
   </div>
   <hr />
 	<a name="methodgetRadioButton"></a>
-	<h3>method getRadioButton <span class="smalllinenumber">[line 1482]</span></h3>
+	<h3>method getRadioButton <span class="smalllinenumber">[line 1499]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3349,7 +3216,7 @@ $is_checked = false])</code>
   </div>
   <hr />
 	<a name="methodgetSelect"></a>
-	<h3>method getSelect <span class="smalllinenumber">[line 1395]</span></h3>
+	<h3>method getSelect <span class="smalllinenumber">[line 1412]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3415,7 +3282,7 @@ $multiple = false])</code>
   </div>
   <hr />
 	<a name="methodgetText"></a>
-	<h3>method getText <span class="smalllinenumber">[line 1356]</span></h3>
+	<h3>method getText <span class="smalllinenumber">[line 1375]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3481,7 +3348,7 @@ $CampoFecha = false])</code>
   </div>
   <hr />
 	<a name="methodgetTextArea"></a>
-	<h3>method getTextArea <span class="smalllinenumber">[line 1524]</span></h3>
+	<h3>method getTextArea <span class="smalllinenumber">[line 1542]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3541,7 +3408,7 @@ $wrap = ''])</code>
   </div>
   <hr />
 	<a name="methodgroupGroups"></a>
-	<h3>method groupGroups <span class="smalllinenumber">[line 1970]</span></h3>
+	<h3>method groupGroups <span class="smalllinenumber">[line 2008]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3605,7 +3472,7 @@ $idGroupingGroups)</code>
   </div>
   <hr />
 	<a name="methodsetParamTypeOnEvent"></a>
-	<h3>method setParamTypeOnEvent <span class="smalllinenumber">[line 1890]</span></h3>
+	<h3>method setParamTypeOnEvent <span class="smalllinenumber">[line 1928]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3683,8 +3550,44 @@ $paramType)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodsetWYSIWYGeditorToUse"></a>
+	<h3>method setWYSIWYGeditorToUse <span class="smalllinenumber">[line 2043]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setWYSIWYGeditorToUse(
+string
+$editor_name)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configura el editor WYSIWYG a usar en el formulario.<br /><br /><p>Configura el editor WYSIWYG a usar dentro del formulario.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$editor_name</b>&nbsp;&nbsp;</td>
+        <td>Nombre del editor a usar de los disponibles CKEditor(ck_editor)</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodshowForm"></a>
-	<h3>method showForm <span class="smalllinenumber">[line 1995]</span></h3>
+	<h3>method showForm <span class="smalllinenumber">[line 2033]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3723,7 +3626,7 @@ $cols = 2])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 20 Jan 2011 18:00:25 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 11 Feb 2011 13:51:37 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
