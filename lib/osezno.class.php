@@ -147,7 +147,7 @@ class osezno {
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_mylist']     
-		= '<link href="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/mylist/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mylist/'.
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mylist/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mylist/'.
 		'" rel="stylesheet" type="text/css" />';
 		
 		$this->arrayAssignAreasHead['string_css_myform']     
