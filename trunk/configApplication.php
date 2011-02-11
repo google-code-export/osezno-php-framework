@@ -179,37 +179,37 @@
   define ('PATH_TEMPLATES', $GLOBALS['folderProject'].$templateBaseFolder,true);
   
   # Ruta tipo url en donde se almacenan los scripts js de xAjax
-  define ('URL_JS_XJX',     $http.$httpHost.'/lib/plugin/packages/xajax/',true);
+  define ('URL_JS_XJX',     $http.$httpHost.'lib/plugin/packages/xajax/',true);
   
   # Ruta tipo url donde se descarga el js de funciones
-  define ('URL_JS_FCN',     $http.$httpHost.'/javascript/MyFunctions.js',true);
+  define ('URL_JS_FCN',     $http.$httpHost.'javascript/MyFunctions.js',true);
 
   # Ruta tipo Url archivo js para ventanas modales.
-  define ('URL_JS_MW',      $http.$httpHost.'/javascript/myModalWindow.js',true);
+  define ('URL_JS_MW',       $http.$httpHost.'javascript/myModalWindow.js',true);
   
   # Ruta tipo url donde se descarga el js de wz tooltip
-  define ('URL_JS_TT',       $http.$httpHost.'/javascript/wz_tooltip.js',true);
+  define ('URL_JS_TT',       $http.$httpHost.'javascript/wz_tooltip.js',true);
   
   # Ruta tipo url donde se descarga el js de wz tooltip como plugin adicional para ayudas esilo bocadillo 
-  define ('URL_JS_TB',       $http.$httpHost."/javascript/tip_balloon.js",true);  
+  define ('URL_JS_TB',       $http.$httpHost."javascript/tip_balloon.js",true);  
   
   # Ruta tipo url donde se descarga el js de funciones de SWF
-  define ('URL_SWF_FCN',     $http.$httpHost."/javascript/swfupload.js",true);
+  define ('URL_SWF_FCN',     $http.$httpHost."javascript/swfupload.js",true);
   
   # Ruta tipo url donde se encuentra el js de handlers de SWF
-  define ('URL_SWF_HLD',     $http.$httpHost.'/javascript/handlers.js',true);
+  define ('URL_SWF_HLD',     $http.$httpHost.'javascript/handlers.js',true);
   
   # Ruta tipo url donde se encuentra el js de myList
-  define ('URL_JS_ML',       $http.$httpHost.'/javascript/myList.js',true);
+  define ('URL_JS_ML',       $http.$httpHost.'javascript/myList.js',true);
 
   # Ruta tipo url donde se encuentra el js de myTabs
-  define ('URL_JS_MT',       $http.$httpHost.'/javascript/myTabs.js',true);
+  define ('URL_JS_MT',       $http.$httpHost.'javascript/myTabs.js',true);
     
   # Ruta tipo url donde se encuentra el js de myCalendar
-  define ('URL_JS_MC',       $http.$httpHost.'/javascript/myCalendar.js',true);
+  define ('URL_JS_MC',       $http.$httpHost.'javascript/myCalendar.js',true);
   
   # Ruta tipo url donde se descarga el favicon del proyecto
-  define ('URL_FAV_ICON',    $http.$httpHost.'/favicon.ico',true);
+  define ('URL_FAV_ICON',    $http.$httpHost.'favicon.ico',true);
 
   # Ruta tipo url donde se encuentra la base del proyecto
   define ('URL_BASE_PROJECT',$http.$httpHost);

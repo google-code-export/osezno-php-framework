@@ -295,6 +295,23 @@ class myForm {
 	private $objHelps = array ();
 
 	/**
+	 * Editor WYSIWYG que se va a usar.
+	 * 
+	 * @var string
+	 */
+	private $WYSIWYG_type = 'ck_editor';
+	
+	/**
+	 * Listado de editores disponibles para usar.
+	 * 
+	 * @var array
+	 */
+	private $WYSIWYGtypeEditorAvailable = array(
+	
+		'ck_editor'=>'ckeditor.php'
+	);
+	
+	/**
 	 * Metodo (method) del formulario.
 	 * 
 	 * El metodo que utilizara en el momento de enviar el Formulario.
@@ -846,31 +863,31 @@ class myForm {
 	 * El valor por defecto es URL_BASE_PROJECT.'/lib/plugin/editors/ck_editor/'.
 	 * @var string
 	 */
-	public $CK_editor_BasePath = '';
+	private $WYSIWYG_editor_BasePath = '';
 
 	/**
-	 * Ancho CKeditor
+	 * Ancho WYSIWYG
 	 *
-	 * Ancho del CKeditor
+	 * Ancho del WYSIWYG
 	 * @var string
 	 */
-	public $CK_editor_Width  = '100%';
+	private $WYSIWYG_editor_Width  = '100%';
 
 	/**
-	 * Alto CKeditor
+	 * Alto WYSIWYG
 	 *
-	 * Alto del CKeditor
+	 * Alto del WYSIWYG
 	 * @var string
 	 */
-	public $CK_editor_Height = '200';
+	private $WYSIWYG_editor_Height = '200';
 
 	/**
-	 * Idioma CKeditor
+	 * Idioma WYSIWYG
 	 *
-	 * Idioma por defecto en el CKeditor
+	 * Idioma por defecto en el WYSIWYG
 	 * @var string
 	 */
-	public $CK_editor_Laguage = 'es';
+	private $WYSIWYG_editor_Laguage = 'es';
 
 	/**
 	 * Barra herramientas CKeditor
@@ -878,7 +895,7 @@ class myForm {
 	 * Grupo de barras a seleccionar para el CKeditor
 	 * @var string
 	 */
-	public $CK_editor_ToolbarSet = 'Default';
+	private $WYSIWYG_editor_ToolbarSet = 'Default';
 
 	/**
 	 * Constructor
@@ -920,7 +937,7 @@ class myForm {
 	 */
 	public function __construct($name = '', $action = '', $target = '', $enctype = ''){
 
-		$this->CK_editor_BasePath = URL_BASE_PROJECT.'lib/plugin/editors/ck_editor/';
+		$this->WYSIWYG_editor_BasePath = URL_BASE_PROJECT.'lib/plugin/editors/'.$this->WYSIWYG_type.'/';
 		
 		$this->pathImages =  'themes/'.THEME_NAME.'/myform/';
 		
@@ -1206,14 +1223,14 @@ class myForm {
 	}
 
 	/**
-	 * Agregar un ckeditor.
+	 * Agregar un editor WYSIWYG.
 	 *
-	 * Agrega un ckeditor al formulario actual.
-	 * Un CKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
+	 * Agrega un editor WYSIWYG al formulario actual.
+	 * Un editor WYSIWYG es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
 	 * Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.
 	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 	 *
-	 * Nota Importante: El objeto CKeditor no sera mostrado correctamente desde ventanas modales.
+	 * Nota Importante: Cuando se selecciona 'ck_editor' como editor WYSIWYG este no podra ser mostrado correctamente en contenido de ventanas modales o pestañas.
 	 * 
 	 * Ejemplo:
 	 * <code>
@@ -1257,7 +1274,7 @@ class myForm {
 	 * @param integer $height Alto
 	 * @param string  $toolbarset Juego de barra de herramientas
 	 */
-	public function addCKeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = ''){
+	public function addWYSIWYGeditor ($etq = '', $name = '', $value = '', $width = '', $height = '', $toolbarset = ''){
 		
 		$this->arrayCKEditorInstances[] = $name;
 		
@@ -1271,9 +1288,9 @@ class myForm {
 			$this->CK_editor_ToolbarSet = $toolbarset;
 			
 		$name     = $this->getColspanRowspan($name);
-		$Cadena   = 'ckeditor'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
+		$Cadena   = 'WYSIWYG'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
 		$this->Objects['field'][$name] = $Cadena;
-		$this->arrayFormElementType[$name] = 'ckeditor';
+		$this->arrayFormElementType[$name] = 'WYSIWYG';
 	}
 		
 	/**
@@ -2016,6 +2033,19 @@ class myForm {
 	public function showForm($cols = 2){
 		print $this->getForm($cols);
 	}
+	
+	/**
+	 * Configura el editor WYSIWYG a usar en el formulario.
+	 * 
+	 * Configura el editor WYSIWYG a usar dentro del formulario.
+	 * @param string $editor_name Nombre del editor a usar de los disponibles CKEditor(ck_editor)
+	 */
+	public function setWYSIWYGeditorToUse ($editor_name){
+		
+		if (isset($this->WYSIWYGtypeEditorAvailable[$editor_name]))
+			
+			$this->WYSIWYG_type = $editor_name;
+	}
 		
 	/**
 	 * Es llamada en la construccion del formulario para averiguar si en elemento de ese formulario esta
@@ -2424,23 +2454,31 @@ class myForm {
                     ''.'<textarea '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" name="'.$campos_f[2].'" id="'.$campos_f[2].'" cols="'.$campos_f[4].'" rows="'.$campos_f[5].'" wrap="'.$campos_f[6].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'>'.$campos_f[3].'</textarea></td>'."\n";
 										 
 					break;
-				case 'ckeditor':
+				case 'WYSIWYG':
 					
-					$oCKeditor = new CKeditor();
+					switch ($this->WYSIWYG_type){
+						
+						case 'ck_editor':
+							
+							$oCKeditor = new CKeditor();
+							
+							$events = array();
 					
-					$events = array();
+							$config = array();
 					
-					$config = array();
+							$oCKeditor->returnOutput = true;
 					
-					$oCKeditor->returnOutput = true;
+							$oCKeditor->basePath = $this->WYSIWYG_editor_BasePath;
 					
-					$oCKeditor->basePath = $this->CK_editor_BasePath;
+							$oCKeditor->config['width']  = $this->WYSIWYG_editor_Width;
 					
-					$oCKeditor->config['width']  = $this->CK_editor_Width;
-					
-					$oCKeditor->config['height'] = $this->CK_editor_Height;
+							$oCKeditor->config['height'] = $this->WYSIWYG_editor_Height;
 
-					$this->arrayFormElements[$campos_f[2]] = ''.'<td rowSpanEtq '.$this->checkIsHelping($campos_f[2]).' style="text-align:center" colSpanEtq class="'.$this->styleClassTags.'">'.$campos_f[1]."<br>".$oCKeditor->editor($campos_f[2],$campos_f[3],$events,$config).'</td>'."\n";
+							$this->arrayFormElements[$campos_f[2]] = ''.'<td rowSpanEtq '.$this->checkIsHelping($campos_f[2]).' style="text-align:center" colSpanEtq class="'.$this->styleClassTags.'">'.$campos_f[1]."<br>".$oCKeditor->editor($campos_f[2],$campos_f[3],$events,$config).'</td>'."\n";
+							
+						break;
+					}
+					
 					break;
 				case 'mylist':
 
