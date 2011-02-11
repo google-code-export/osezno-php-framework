@@ -2473,6 +2473,37 @@ class myForm {
 							$oCKeditor->config['width']  = $this->WYSIWYG_editor_Width;
 					
 							$oCKeditor->config['height'] = $this->WYSIWYG_editor_Height;
+							
+							$oCKeditor->config['toolbar_Basic'] = array(
+							
+								array('Preview','ShowBlocks'),
+									
+								array('Cut','Copy','Paste','PasteText','PasteFromWord'),
+									
+								array('Find','Replace'),
+									
+								array('Bold','Italic','Underline','Strike','-','Subscript','Superscript'),
+									
+								array('NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'),
+									
+								array('JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'),
+									
+								array('BidiLtr', 'BidiRtl'),
+									
+								array('Link','Unlink','Anchor'),
+									
+								array('Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe'),
+									
+								array('Format','Font','FontSize'),
+									
+								array('TextColor','BGColor'),
+								
+								array('About')
+							);
+							
+							$oCKeditor->config['toolbar'] = 'Basic';
+							
+							$oCKeditor->config['skin'] = 'kama';
 
 							$this->arrayFormElements[$campos_f[2]] = ''.'<td rowSpanEtq '.$this->checkIsHelping($campos_f[2]).' style="text-align:center" colSpanEtq class="'.$this->styleClassTags.'">'.$campos_f[1]."<br>".$oCKeditor->editor($campos_f[2],$campos_f[3],$events,$config).'</td>'."\n";
 							
