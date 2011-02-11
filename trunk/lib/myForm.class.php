@@ -920,7 +920,7 @@ class myForm {
 	 */
 	public function __construct($name = '', $action = '', $target = '', $enctype = ''){
 
-		$this->CK_editor_BasePath = URL_BASE_PROJECT.'/lib/plugin/editors/ck_editor/';
+		$this->CK_editor_BasePath = URL_BASE_PROJECT.'lib/plugin/editors/ck_editor/';
 		
 		$this->pathImages =  'themes/'.THEME_NAME.'/myform/';
 		
@@ -1211,15 +1211,17 @@ class myForm {
 	 * Agrega un ckeditor al formulario actual.
 	 * Un CKeditor es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
 	 * Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.
-	 * Por el momento cuando declaramos un campo de este tipo solo es posible obtener su contenido si el action del formulario esta definido.
 	 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
+	 *
+	 * Nota Importante: El objeto CKeditor no sera mostrado correctamente desde ventanas modales.
+	 * 
 	 * Ejemplo:
 	 * <code>
 	 * 
 	 * index.php
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form1','procesarForm.php');
+	 * $myForm = new myForm('form1');
 	 * 
 	 * $myForm->addCKeditor ('Contenido:','contenido');
 	 * 
@@ -1238,8 +1240,7 @@ class myForm {
      *  
      *    public function dataSend ($dataForm){
      *		  
-     *        // Forzamos el envio del formulario al action definido.
-     *        $this->script('form1.submit()');
+     *        $this->script($dataForm['contenido']);
      * 
      *        return $this->response;
      *    }
@@ -1247,19 +1248,11 @@ class myForm {
      * }
      * 
 	 * ?>
-	 *  
-	 * procesarForm.php
-	 * <?php
-	 * 
-	 * // Imprimos el contenido del formulario.
-	 * var_export($_POST);
-	 * 
-	 * ?>
 	 * 
 	 * </code>
-	 * @param string  $etq Etiqueta del campo generado por el FCK Editor
-	 * @param string  $name Nombre del campo generado por el FCK Editor
-	 * @param string  $value Valor inicial del campo generado por el FCK Editor
+	 * @param string  $etq Etiqueta del campo generado por el CKEditor
+	 * @param string  $name Nombre del campo generado por el CKEditor
+	 * @param string  $value Valor inicial del campo generado por el CKEditor
 	 * @param integer $width Ancho
 	 * @param integer $height Alto
 	 * @param string  $toolbarset Juego de barra de herramientas
