@@ -892,7 +892,7 @@ class myController extends myControllerExt {
 		  
 			foreach($mixedButtons as $etq=>$action){
 
-				if (!$etq){
+				if (!is_numeric($etq)){
 					$etq = $action;
 					$action = '';
 				}
