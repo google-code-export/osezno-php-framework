@@ -1279,13 +1279,13 @@ class myForm {
 		$this->arrayCKEditorInstances[] = $name;
 		
 		if ($width)
-			$this->CK_editor_Width = $width;
+			$this->WYSIWYG_editor_Width = $width;
 			
 		if ($height)
-			$this->CK_editor_Height = $height;
+			$this->WYSIWYG_editor_Height = $height;
 			
 		if ($toolbarset)
-			$this->CK_editor_ToolbarSet = $toolbarset;
+			$this->WYSIWYG_editor_ToolbarSet = $toolbarset;
 			
 		$name     = $this->getColspanRowspan($name);
 		$Cadena   = 'WYSIWYG'.$this->Separador.$etq.$this->Separador.$name.$this->Separador.$value;
