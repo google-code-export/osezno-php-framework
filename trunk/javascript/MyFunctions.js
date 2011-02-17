@@ -391,15 +391,15 @@ function OnlyNum(event)
             }
          }
          
-function OpenWindowForm (NAME, WIDTH, HEIGHT, URL){
-   var urlToGo
+function OpenWindowForm (NAME, WIDTH, HEIGHT, URL, ANCHOR){
+   
+	var urlToGo;
 
    if (URL.lastIndexOf ("?") > 0){
-      urlToGo = URL+'&width='+WIDTH+'&height='+HEIGHT
-      }
-   else{
-      urlToGo = URL+'?width='+WIDTH+'&height='+HEIGHT
-      }
+      urlToGo = URL+'&width='+WIDTH+'&height='+HEIGHT+'#'+ANCHOR;
+   }else{
+      urlToGo = URL+'?width='+WIDTH+'&height='+HEIGHT+'#'+ANCHOR;
+   }
 
    mywindow= window.open (urlToGo,NAME,"resizable=1,menubar=1,location=0,status=0,scrollbars=1,width="+WIDTH+",height="+HEIGHT+"");
 }

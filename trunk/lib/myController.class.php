@@ -637,7 +637,7 @@ class myController extends myControllerExt {
 	 */	
 	public function closeWindow (){
 		
-		$this->response->script('closeModalWindow()');	
+		$this->response->script('window.close()');	
 	}
 
    /**
@@ -648,9 +648,11 @@ class myController extends myControllerExt {
  	* @param string $strUrl Url que desea abrir. 
  	* @param integer $widthWindow Ancho de la ventana.
  	* @param integer $heightWindow Alto de la ventana.
- 	* @param mixed $mixedGetParams Arreglo de datos con llaves y valores que pueden pasados como parametros o variables GET.    
+ 	* @param mixed $mixedGetParams Arreglo de datos con llaves y valores que pueden pasados como parametros o variables GET.
+ 	* @param string $anchor Nombre ancla
  	*/
-	public function window ($strNomWindow, $strUrl, $widthWindow = '400', $heightWindow = '300', $mixedGetParams = ''){
+	public function window ($strNomWindow, $strUrl, $widthWindow = '400', $heightWindow = '300', $mixedGetParams = '', $anchor = ''){
+		
 		if (is_array($mixedGetParams)){
 				   
 		    $countGet = count($mixedGetParams);	
@@ -671,8 +673,8 @@ class myController extends myControllerExt {
 			else   
 			   $strUrl.='?'.$strGet;
 		}
-				
-		$js = 'OpenWindowForm (\''.$strNomWindow.'\', \''.$widthWindow.'\', \''.$heightWindow.'\', \''.$strUrl.'\')';
+		
+		$js = 'OpenWindowForm (\''.$strNomWindow.'\', \''.$widthWindow.'\', \''.$heightWindow.'\', \''.$strUrl.'\', \''.$anchor.'\')';
 		$this->response->script($js);
 	}
 	
