@@ -919,7 +919,7 @@ class myList  {
 		
 		$return = $bufHead = $cadParam = '';
 		
-		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
+		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'" style="text-align:center;">'."\n";
 		
 		if ($this->useSqlDebug){
 		
@@ -936,7 +936,7 @@ class myList  {
 			
 			if ($this->numAffectedRows){
 				
-				$buf .=  "\n".'<table border="0" width="'.$this->width.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
+				$buf .=  "\n".'<table border="0" width="'.$this->width.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0" align="center"><tr><td class="list">'."\n";
 			
 				foreach ($this->arrayWidthsCols as $col => $wid){
 					$totWid -= $wid;
