@@ -2,7 +2,7 @@
 
 	$pathckEditor = 'plugin/editors/ck_editor/ckeditor.php';
 	require ($pathckEditor);
-
+	
 /**
  * myForm
  *
@@ -2462,6 +2462,15 @@ class myForm {
 							
 							$oCKeditor = new CKeditor();
 							
+							/*
+							$oCKeditor->config['filebrowserBrowseUrl'] = '/ckfinder/ckfinder.html';
+							$oCKeditor->config['filebrowserImageBrowseUrl'] = '/ckfinder/ckfinder.html?type=Images';
+ 							$oCKeditor->config['filebrowserFlashBrowseUrl'] = '/ckfinder/ckfinder.html?type=Flash';
+ 							$oCKeditor->config['filebrowserUploadUrl'] = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
+ 							$oCKeditor->config['filebrowserImageUploadUrl'] = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
+ 							$oCKeditor->config['filebrowserFlashUploadUrl'] = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+							*/
+							
 							$events = array();
 					
 							$config = array();
@@ -2492,7 +2501,7 @@ class myForm {
 									
 								array('Link','Unlink','Anchor'),
 									
-								array('Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe'),
+								array('Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'),
 									
 								array('Format','Font','FontSize'),
 									
