@@ -1165,7 +1165,7 @@ class myList  {
 			
 		}	
 
-		$buf .= '<div  style="width:'.$this->width.''.$this->formatWidthList.'" id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
+		$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
 		$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%"><tr><td align="left" width="33%">';
 		
@@ -1229,7 +1229,7 @@ class myList  {
 			
 			$objMyForm->addHelp($this->idList.'_back_page','&nbsp;'.GOTO_BACK_PAGE.'&nbsp;');
 			
-			$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="250"><tr>';
+			$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="350"><tr>';
 
 			if ($this->currentPage == 0){
 				
