@@ -688,7 +688,7 @@ class myActiveRecord {
 				
 				if (!is_numeric($name)){
 					
-					$cloThis->$name = $value;
+					$cloThis->$name = utf8_encode($value);
 				}
 			}
 		}
@@ -1306,7 +1306,7 @@ class myActiveRecord {
 						if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
 							$sql .= 'NULL, ';
 						else
-							$sql .= '\''.addslashes($this->$field).'\', ';
+							$sql .= '\''.addslashes(utf8_decode($this->$field)).'\', ';
 					}
 				
 				}
@@ -1333,7 +1333,7 @@ class myActiveRecord {
 						$sqlValues .= $this->$field.', ';
 					}else{
 							
-						$sqlValues .= '\''.addslashes($this->$field).'\', ';
+						$sqlValues .= '\''.addslashes(utf8_decode($this->$field)).'\', ';
 					}
 						
 				}

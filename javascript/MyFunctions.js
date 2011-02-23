@@ -489,7 +489,7 @@ function GetDataForm (form, objCKEditor, arrInstances){
                   case 'submit':
                   break;
            	      default:
-                     form_elements[document.forms[form].elements[i].name] = document.forms[form].elements[i].value;                     
+                     form_elements[document.forms[form].elements[i].name] = document.forms[form].elements[i].value;
                   break;
               }
               
