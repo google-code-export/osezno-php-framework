@@ -94,47 +94,47 @@ class osezno {
 		$this->arrayAssignAreasHead['string_js_common']
 		 = '<script type="text/javascript" src="'.
 		 URL_JS_FCN.
-		 '"></script>';
+		 '" charset="utf-8"></script>';
 		
 		$this->arrayAssignAreasHead['string_js_mw']
 		 = '<script type="text/javascript" src="'.
 		 URL_JS_MW.
-		 '"></script>';		 
+		 '" charset="utf-8"></script>';		 
 		 
 		$this->arrayAssignAreasHead['string_js_swf_hld']
 		= '<script type="text/javascript" src="'.
 		URL_SWF_HLD.
-		'"></script>';
+		'" charset="utf-8"></script>';
 		 
 		$this->arrayAssignAreasHead['string_js_swf_fcn']
 		= '<script type="text/javascript" src="'.
 		URL_SWF_FCN.
-		'"></script>';
+		'" charset="utf-8"></script>';
 		 
 		$this->arrayAssignAreasHead['string_js_mylist']
 		= '<script type="text/javascript" src="'.
 		URL_JS_ML.
-		'"></script>';
+		'" charset="utf-8"></script>';
 		
 		$this->arrayAssignAreasHead['string_js_mytabs']
 		= '<script type="text/javascript" src="'.
 		URL_JS_MT.
-		'"></script>';
+		'" charset="utf-8"></script>';
 		
 		$this->arrayAssignAreasHead['string_js_mycalendar']
 		= '<script type="text/javascript" src="'.
 		URL_JS_MC.
-		'"></script>';
+		'" charset="utf-8"></script>';
 		
 		$this->arrayAssignAreasBody['string_js_tooltip']
 		= '<script type="text/javascript" src="'.
 		URL_JS_TT.
-		'"></script>';
+		'" charset="utf-8"></script>';
 		
 		$this->arrayAssignAreasBody['string_js_balloon']
 		= '<script type="text/javascript" src="'.
 		URL_JS_TB.
-		'"></script>';
+		'"  charset="utf-8"></script>';
 		
 		$this->arrayAssignAreasBody['string_js_resize']
 		= '<script type="text/javascript">window.onresize=Resize;</script>';

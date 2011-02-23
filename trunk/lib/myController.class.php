@@ -1493,7 +1493,7 @@ class myController extends myControllerExt {
 							foreach ($vals as $nVals){
 								
 								if (!is_numeric($nVals))
-									$nVals = '\''.$nVals.'\'';
+									$nVals = '\''.utf8_decode($nVals).'\'';
 								
 								$nVal .= $nVals.',';
 							}
@@ -1502,12 +1502,12 @@ class myController extends myControllerExt {
 						
 					}else if (in_array($datForm['relation_'.$i],array('like','notlike'))){
 						
-						$val = '\''.$val.'\'';
+						$val = '\''.utf8_decode($val).'\'';
 						
 					}else{
 						
 						if (!is_numeric($val))
-							$val = '\''.$val.'\'';
+							$val = '\''.utf8_decode($val).'\'';
 							
 					}
 					

@@ -894,8 +894,9 @@ class myList  {
 			
 			$sql = $this->sql.''.$this->getSqlPartWhere().''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
 			
-			if ($this->objConn->isSuccessfulConnect())
+			if ($this->objConn->isSuccessfulConnect()){
 				$this->resSql = $this->objConn->query($sql);
+			}
 			
 		}
 
@@ -919,7 +920,7 @@ class myList  {
 		
 		$return = $bufHead = $cadParam = '';
 		
-		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'" style="text-align:center;">'."\n";
+		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
 		
 		if ($this->useSqlDebug){
 		
@@ -936,7 +937,7 @@ class myList  {
 			
 			if ($this->numAffectedRows){
 				
-				$buf .=  "\n".'<table border="0" width="'.$this->width.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0" align="center"><tr><td class="list">'."\n";
+				$buf .=  "\n".'<table border="0" width="'.$this->width.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0"><tr><td class="list">'."\n";
 			
 				foreach ($this->arrayWidthsCols as $col => $wid){
 					$totWid -= $wid;
@@ -1133,7 +1134,7 @@ class myList  {
 								$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.ucwords($key).'</a>';
 							
 							}else
-								$buf.=htmlentities($val).'';	
+								$buf.=($val).'';	
 					
 							if ($firsVal && $this->globalEventOnColumn){
 								
@@ -1165,7 +1166,7 @@ class myList  {
 			
 		}	
 
-		$buf .= '<div id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
+		$buf .= '<div  style="width:'.$this->width.''.$this->formatWidthList.'" id="pag_'.$this->idList.'" name="pag_'.$this->idList.'">'."\n";
 		
 		$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="100%"><tr><td align="left" width="33%">';
 		
@@ -1229,7 +1230,7 @@ class myList  {
 			
 			$objMyForm->addHelp($this->idList.'_back_page','&nbsp;'.GOTO_BACK_PAGE.'&nbsp;');
 			
-			$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="350"><tr>';
+			$buf .= '<table cellspacing="0" cellpadding="0" border="0" align="center" width="250"><tr>';
 
 			if ($this->currentPage == 0){
 				
