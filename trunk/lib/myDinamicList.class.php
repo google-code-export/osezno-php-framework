@@ -920,7 +920,7 @@ class myList  {
 		
 		$return = $bufHead = $cadParam = '';
 		
-		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'">'."\n";
+		$buf .= '<div id="'.$this->idList.'" name="'.$this->idList.'" style="text-align:center;>'."\n";
 		
 		if ($this->useSqlDebug){
 		
