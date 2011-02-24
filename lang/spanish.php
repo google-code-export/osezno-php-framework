@@ -28,6 +28,7 @@
 	define('LABEL_RELATION_OPTAND_ADD_RULE_FORM','Y');
 	define('LABEL_RELATION_OPTOR_ADD_RULE_FORM','O');
 	define('LABEL_FIELD_LIST_ADD_RULE_FORM','Campo');
+	define('LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM','Sensible a Mayuscula y Minusculas');
 	define('LABEL_FIELD_VALUE_ADD_RULE_FORM','Valor');
 	define('LABEL_HELP_APPLY_RULE_FORM','Aplicar filtro');
 	define('LABEL_HELP_REM_RULE_FORM','Remover');
