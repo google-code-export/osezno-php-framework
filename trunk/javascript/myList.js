@@ -8,6 +8,39 @@ var overRowClass   = 'td_over';
 var colSelected    = 'cell_content_selected';
 
 /**
+ * Habilita Case Sensitive sobre una regla en el filtro
+ * 
+ * @param data
+ * @param idCS
+ * @param idRule
+ */
+function MYLIST_caseSensitiveCheckBox (data, idCS, idRule){
+	
+	var arRules = new Array('like','in','equal','different','notin','notlike');
+	
+	var have = false;
+	
+	for(a=0;a<arRules.length; a++){
+		
+		if (arRules[a] == data[idRule]){
+			have = true;
+			break;
+		}
+		
+	}
+	
+	if (!have){
+		
+		document.getElementById(idCS).disabled = true;
+		
+	}else{
+		
+		document.getElementById(idCS).disabled = false;
+	}
+	
+}
+
+/**
  * Hace un simple check sobre el objeto seleccionado
  * 
  * @param data

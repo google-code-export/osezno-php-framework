@@ -159,8 +159,16 @@ class myList  {
 		'arrayDataTypeExport',
 		'globalEventOnColumn',
 		'globalEventsName',
-		'useSqlDebug'
+		'useSqlDebug',
+		'engineDb'
 	);	
+	
+	/**
+	 * Motor de base de datos que usa.
+	 * 
+	 * @var string
+	 */
+	private $engineDb = '';
 	
 	/**
 	 * Tipo de lista
@@ -883,9 +891,14 @@ class myList  {
 				$sql = $this->sql = $this->sqlORobject;
 			}
 			
-			if ($this->objConn->isSuccessfulConnect())
+			if ($this->objConn->isSuccessfulConnect()){
+				
 				$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
-			
+				
+			}
+
+			$this->engineDb = $this->objConn->getEngine();
+				
 		}else{
 			
 			$this->restVarsSess();

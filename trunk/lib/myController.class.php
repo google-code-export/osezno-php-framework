@@ -177,6 +177,29 @@ class myController extends myControllerExt {
 			'notlike'=>'NOT LIKE'
 			
 		);
+		
+	/**
+	 * Palabras clave case sensitive.
+	 * 
+	 * @var mixed
+	 */	
+	private $myDinamicListCSkW = array(
+		
+		'pgsql'=>'UPPER',
+	
+		'mysql'=>'UPPER'
+	);	
+	
+	/**
+	 * Palabras clave no tildes
+	 * 
+	 * @var mixed
+	 */
+	private $myDinamicListAcentkW = array(
+		
+		'pgsql'=>'TO_ASCII'
+	
+	);	
 	
 	/**
 	 * Alto en PX de un Messsage Box
@@ -1346,7 +1369,7 @@ class myController extends myControllerExt {
 		
 		$objMyForm->addHelp('logic_'.$numRuleQuery,LABEL_LOGIC_FIELD_ADD_RULE_FORM);
 		
-		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect(
+		$html .= '<td width="15%" align="center">'.$objMyForm->getSelect(
 			'logic_'.$numRuleQuery,
 			array(
 				'AND'=>LABEL_RELATION_OPTAND_ADD_RULE_FORM,
@@ -1375,17 +1398,23 @@ class myController extends myControllerExt {
 		
 		$objMyForm->addHelp('field_'.$numRuleQuery, LABEL_FIELD_LIST_ADD_RULE_FORM);
 		
-		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
+		$html .= '<td width="15%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
 			
 		$spaCha = '&nbsp;';
+
+		$objMyForm->addEvent('relation_'.$numRuleQuery, 'onchange', 'MYLIST_caseSensitiveCheckBox','case_sensitive_'.$numRuleQuery, 'relation_'.$numRuleQuery);
 		
 		$objMyForm->addHelp('relation_'.$numRuleQuery,LABEL_RELATION_FIELD_ADD_RULE_FORM);
 		
-		$html .= '<td width="18%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$this->myDinamicListRel).'</td>';
-		
+		$html .= '<td width="15%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$this->myDinamicListRel).'</td>';
+
 		$objMyForm->addHelp('value_'.$numRuleQuery,LABEL_FIELD_VALUE_ADD_RULE_FORM);
 		
-		$html .= '<td width="18%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).'</td>';
+		$html .= '<td width="15%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).'</td>';
+		
+		$objMyForm->addHelp('case_sensitive_'.$numRuleQuery,LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM);
+		
+		$html .= '<td width="15%" align="center">'.$objMyForm->getCheckBox('case_sensitive_'.$numRuleQuery).'</td>';
 		
 		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
 
@@ -1403,8 +1432,20 @@ class myController extends myControllerExt {
 		
 		$this->append('rule_for_'.$idList,'innerHTML',$html);
 		
+		$chkPref = 'case_sensitive_';
+		
+		$len = strlen($chkPref);
+		
 		foreach ($datForm as $id => $value){
-			$this->assign($id,'value',$value);
+			
+			if (!strcmp(substr($id, 0, $len), $chkPref)){
+				
+				if ($datForm[$id])
+
+					$this->assign($id,'checked',true);
+			
+			}else
+				$this->assign($id,'value',$value);
 		}
 		
 		$this->script("blockFirstElementForm('".$idForm."')");
@@ -1462,6 +1503,9 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_applyRuleQuery ($datForm, $idList){
 		
+		// Tildes / Case Sensitive
+		$kwNa = $kwCs = '';
+		
 		$someValues = false;
 		
 		$someNullValues = false;
@@ -1469,6 +1513,16 @@ class myController extends myControllerExt {
 		$sqlRule = '';
 					
 		$myList = new myList($idList);
+
+		$engineDb = $myList->getVar('engineDb');
+		
+		if (isset($this->myDinamicListCSkW[$engineDb]))
+			
+			$kwCs = $this->myDinamicListCSkW[$engineDb];
+		
+		if (isset($this->myDinamicListAcentkW[$engineDb]))
+		
+			$kwNa = $this->myDinamicListAcentkW[$engineDb]; 
 		
 		$arAlInQry = $myList->getVar('arrayAliasSetInQuery');
 		
@@ -1516,7 +1570,19 @@ class myController extends myControllerExt {
 					if (isset($arAlInQry[$datForm['field_'.$i]]))
 						$fieldQuery = $arAlInQry[$datForm['field_'.$i]];
 					
-					$sqlRule = $datForm['logic_'.$i].' '.$fieldQuery.' '.''.$this->myDinamicListRel[$datForm['relation_'.$i]].' '.$val;
+					$sqlRule = $datForm['logic_'.$i].' ';
+					
+					if (!$datForm['case_sensitive_'.$i])
+						$sqlRule .= $kwNa.'('.$kwCs.'('.$fieldQuery.'))';
+					else
+						$sqlRule .= $fieldQuery;	
+						
+					$sqlRule .= ' '.''.$this->myDinamicListRel[$datForm['relation_'.$i]].' ';
+					
+					if (!$datForm['case_sensitive_'.$i])
+						$sqlRule .= $kwNa.'('.$kwCs.'('.$val.'))';
+					else
+						$sqlRule .= $val;	
 					
 					$myList->setVar('arrayWhereRules',$sqlRule,$i);
 					
