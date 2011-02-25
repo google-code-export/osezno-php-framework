@@ -1256,13 +1256,34 @@ class myController extends myControllerExt {
 		
 		$arFldOnQry = $myList->getVar('arrayFieldsOnQuery');
 		
+		$arEvnOnQry = $myList->getVar('arrayEventOnColumn');
+		
+		$nomImg = '';
+		
+		switch ($format){
+			case 'xls':
+				$nomImg = 'excel';
+			break;
+			
+			case 'pdf':
+				$nomImg = 'pdf';
+			break;
+			
+			case 'html':
+				$nomImg = 'html';
+			break; 
+		}
+		
 		$i = 1;
 		
 		foreach ($arFldOnQry as $field){
 			
-			$arrFields['field_'.$i] = $field;
+			if (!isset($arEvnOnQry[$field])){
+				
+				$arrFields['field_'.$i] = $field;
 			
-			$i++;
+				$i++;
+			}
 		}
 		
 		$myForm->border = 0;
@@ -1281,7 +1302,7 @@ class myController extends myControllerExt {
 		
 		$myForm->addCheckBox(LABEL_USELIMIT_RULE_FORM.':','not_pg_'.$idList,true);
 		
-		$myForm->addButton('button_export_data',LABEL_BUTTON_DOWNLOAD_FILE_EXPORT,'ok.gif');
+		$myForm->addButton('button_export_data',LABEL_BUTTON_DOWNLOAD_FILE_EXPORT,$nomImg.'.gif');
 		
 		$myForm->addEvent('button_export_data','onclick','MYLIST_exportDataOk', $format, $idList, $i);
 		
@@ -1369,7 +1390,7 @@ class myController extends myControllerExt {
 		
 		$objMyForm->addHelp('logic_'.$numRuleQuery,LABEL_LOGIC_FIELD_ADD_RULE_FORM);
 		
-		$html .= '<td width="15%" align="center">'.$objMyForm->getSelect(
+		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect(
 			'logic_'.$numRuleQuery,
 			array(
 				'AND'=>LABEL_RELATION_OPTAND_ADD_RULE_FORM,
@@ -1398,7 +1419,7 @@ class myController extends myControllerExt {
 		
 		$objMyForm->addHelp('field_'.$numRuleQuery, LABEL_FIELD_LIST_ADD_RULE_FORM);
 		
-		$html .= '<td width="15%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
+		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
 			
 		$spaCha = '&nbsp;';
 
@@ -1406,18 +1427,16 @@ class myController extends myControllerExt {
 		
 		$objMyForm->addHelp('relation_'.$numRuleQuery,LABEL_RELATION_FIELD_ADD_RULE_FORM);
 		
-		$html .= '<td width="15%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$this->myDinamicListRel).'</td>';
+		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$this->myDinamicListRel).'</td>';
 
 		$objMyForm->addHelp('value_'.$numRuleQuery,LABEL_FIELD_VALUE_ADD_RULE_FORM);
-		
-		$html .= '<td width="15%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).'</td>';
-		
+
 		$objMyForm->addHelp('case_sensitive_'.$numRuleQuery,LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM);
 		
-		$html .= '<td width="15%" align="center">'.$objMyForm->getCheckBox('case_sensitive_'.$numRuleQuery).'</td>';
-		
-		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
+		$html .= '<td width="20%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).$objMyForm->getCheckBox('case_sensitive_'.$numRuleQuery).'</td>';
 
+		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
+		
 		$objMyForm->addEvent($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',$idList,$numRuleQuery);
 		
 		$html .= '<td align="center">'.
