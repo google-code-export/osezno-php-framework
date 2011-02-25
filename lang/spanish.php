@@ -47,6 +47,8 @@
 	define('LABEL_HELP_USELIMIT_RULE_FORM','Aplicar limite de registros');
 	define('LABEL_HELP_SELECT_FILEDS_TOSHOW','Seleccione los campos que desea mostrar en el archivo.');
 	
+	define('MSG_FAILED_SHOW_FILTER_MUST_PROVIDE_REAL_NAME','Debe especificar al menos un campo con <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery"><font style="font-size: 14px;">alias</font></a>.');
+	define('MSG_FAILED_ORDER_BY_FIELD_MUST_PROVIDE_REAL_NAME','Debe especificar un <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery"><font style="font-size: 14px;">alias</font></a> para este campo.');
 	define('MSG_FAILED_SELECT_FIELD_TO_SHOW','Debe seleccionar al menos un campo a mostrar.');
 	define('MSG_SELECT_FIELD_TO_SHOW','Seleccione los campos a mostrar en el archivo y presione <b>'.LABEL_BUTTON_DOWNLOAD_FILE_EXPORT.'</b>.');
 	define('MSG_APPLY_RULES_ALL_VALUES_NULL','Debe escribir al menos un valor.');
