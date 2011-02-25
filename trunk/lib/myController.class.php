@@ -1206,31 +1206,38 @@ class myController extends myControllerExt {
 		
 		$myList = new myList($idList);
 		
-		$nameVar = 'arrayOrdMethod';
+		$arAlsSetInQ = $myList->getVar('arrayAliasSetInQuery');
+		
+		if (isset($arAlsSetInQ[$alias])){
 
-		switch ($myList->getVar($nameVar,$alias)){
-			case 'ASC':
-				$myList->setVar($nameVar,'DESC',$alias);
-			break;
-			case 'DESC':
-				$myList->unSetVar('arrayOrdNum',$alias);
+			$nameVar = 'arrayOrdMethod';
+			
+			switch ($myList->getVar($nameVar,$alias)){
+				case 'ASC':
+					$myList->setVar($nameVar,'DESC',$alias);
+				break;
+				case 'DESC':
+					$myList->unSetVar('arrayOrdNum',$alias);
 				
-				$myList->unSetVar($nameVar,$alias);
-			break;
-			case '':
-				$myList->setVar($nameVar,'ASC',$alias);
+					$myList->unSetVar($nameVar,$alias);
+				break;
+				case '':
+					$myList->setVar($nameVar,'ASC',$alias);
 				
-				$myList->setVar('arrayOrdNum',$alias,$alias);
-			break;
-		}
+					$myList->setVar('arrayOrdNum',$alias,$alias);
+				break;
+			}
+		
+			$this->assign($idList,'innerHTML',$myList->getList());
+		
+			$js = 'clearRowsMarked();'."\n";
+		
+			$this->script($js);
+			
+		}else
+			$this->notificationWindow(MSG_FAILED_ORDER_BY_FIELD_MUST_PROVIDE_REAL_NAME, 4, 'warning');
 		
 		//$this->alert(var_export($_SESSION['prdLst'][$idList],true));
-		
-		$this->assign($idList,'innerHTML',$myList->getList());
-		
-		$js = 'clearRowsMarked();'."\n";
-		
-		$this->script($js);
 		
 		return $this->response;
 	}
@@ -1374,100 +1381,106 @@ class myController extends myControllerExt {
 		
 		$objList = new myList($idList);
 		
-		$arFldOnQry = $objList->getVar('arrayFieldsOnQuery');
-		
-		$arEvnOnClm = $objList->getVar('arrayEventOnColumn');
-		
-		$arAlsInQry = $objList->getVar('arrayAliasSetInQuery');		
-		
-		$objList->setVar('numRuleQuery',$numRuleQuery = $objList->getVar('numRuleQuery')+1);
+		$arAlsInQry = $objList->getVar('arrayAliasSetInQuery');
 
-		$html = '<table border="0" id="rule_gp_'.$idList.'_'.$numRuleQuery.'" width="100%" cellpadding="0" cellspacing="0">';
+		if (count($arAlsInQry)){
+
+			$arFldOnQry = $objList->getVar('arrayFieldsOnQuery');
 		
-		$html .= '<tr>';
+			$arEvnOnClm = $objList->getVar('arrayEventOnColumn');
 		
-		$html .= '<td width="10%" align="center"><div id="status_'.$idList.'_'.$numRuleQuery.'" class="rule_cancel" id=""></div></td>';
+			$objList->setVar('numRuleQuery',$numRuleQuery = $objList->getVar('numRuleQuery')+1);
+
+			$html = '<table border="0" id="rule_gp_'.$idList.'_'.$numRuleQuery.'" width="100%" cellpadding="0" cellspacing="0">';
 		
-		$objMyForm->addHelp('logic_'.$numRuleQuery,LABEL_LOGIC_FIELD_ADD_RULE_FORM);
+			$html .= '<tr>';
 		
-		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect(
-			'logic_'.$numRuleQuery,
-			array(
-				'AND'=>LABEL_RELATION_OPTAND_ADD_RULE_FORM,
+			$html .= '<td width="10%" align="center"><div id="status_'.$idList.'_'.$numRuleQuery.'" class="rule_cancel" id=""></div></td>';
+		
+			$objMyForm->addHelp('logic_'.$numRuleQuery,LABEL_LOGIC_FIELD_ADD_RULE_FORM);
+		
+			$html .= '<td width="20%" align="center">'.$objMyForm->getSelect(
+				'logic_'.$numRuleQuery,
+				array(
+					'AND'=>LABEL_RELATION_OPTAND_ADD_RULE_FORM,
 			
-				'OR'=>LABEL_RELATION_OPTOR_ADD_RULE_FORM)
-			).'</td>';
+					'OR'=>LABEL_RELATION_OPTOR_ADD_RULE_FORM)
+				).'</td>';
 		
 		
-		foreach ($arFldOnQry as $field){
+			foreach ($arFldOnQry as $field){
 			
-			if (!isset($arEvnOnClm[$field])){
+				if (!isset($arEvnOnClm[$field]) && isset($arAlsInQry[$field])){
 				
-				$etq = $field;
+					$etq = $field;
 				
-				if (isset($arAlsInQry[$field])){
+					if (isset($arAlsInQry[$field])){
 					
-					$data = $arAlsInQry[$field];
+						$data = $arAlsInQry[$field];
 					
-					//list($etq,$data_type) = explode('::',$data);
-				}else
-					$data = $field;
+						//list($etq,$data_type) = explode('::',$data);
+					}else
+						$data = $field;
 					
-				$arFields[$field] = $etq;
+					$arFields[$field] = $etq;
+				}
 			}
-		}
 		
-		$objMyForm->addHelp('field_'.$numRuleQuery, LABEL_FIELD_LIST_ADD_RULE_FORM);
+			$objMyForm->addHelp('field_'.$numRuleQuery, LABEL_FIELD_LIST_ADD_RULE_FORM);
 		
-		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
+			$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('field_'.$numRuleQuery,$arFields).'</td>';	
 			
-		$spaCha = '&nbsp;';
+			$spaCha = '&nbsp;';
 
-		$objMyForm->addEvent('relation_'.$numRuleQuery, 'onchange', 'MYLIST_caseSensitiveCheckBox','case_sensitive_'.$numRuleQuery, 'relation_'.$numRuleQuery);
+			$objMyForm->addEvent('relation_'.$numRuleQuery, 'onchange', 'MYLIST_caseSensitiveCheckBox','case_sensitive_'.$numRuleQuery, 'relation_'.$numRuleQuery);
 		
-		$objMyForm->addHelp('relation_'.$numRuleQuery,LABEL_RELATION_FIELD_ADD_RULE_FORM);
+			$objMyForm->addHelp('relation_'.$numRuleQuery,LABEL_RELATION_FIELD_ADD_RULE_FORM);
 		
-		$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$this->myDinamicListRel).'</td>';
+			$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('relation_'.$numRuleQuery,$this->myDinamicListRel).'</td>';
 
-		$objMyForm->addHelp('value_'.$numRuleQuery,LABEL_FIELD_VALUE_ADD_RULE_FORM);
+			$objMyForm->addHelp('value_'.$numRuleQuery,LABEL_FIELD_VALUE_ADD_RULE_FORM);
 
-		$objMyForm->addHelp('case_sensitive_'.$numRuleQuery,LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM);
+			$objMyForm->addHelp('case_sensitive_'.$numRuleQuery,LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM);
 		
-		$html .= '<td width="20%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).$objMyForm->getCheckBox('case_sensitive_'.$numRuleQuery).'</td>';
+			$html .= '<td width="20%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).$objMyForm->getCheckBox('case_sensitive_'.$numRuleQuery).'</td>';
 
-		$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
+			$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
 		
-		$objMyForm->addEvent($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',$idList,$numRuleQuery);
+			$objMyForm->addEvent($idList.'_remove_rule_'.$numRuleQuery,'onclick','MYLIST_removeRuleQuery',$idList,$numRuleQuery);
 		
-		$html .= '<td align="center">'.
+			$html .= '<td align="center">'.
 		
 			$objMyForm->getButton($idList.'_remove_rule_'.$numRuleQuery,NULL,'remove.gif').
 			
-		'</td>';
+			'</td>';
 		
-		$html .= '</tr>';
+			$html .= '</tr>';
 		
-		$html .= '</table>';
+			$html .= '</table>';
 		
-		$this->append('rule_for_'.$idList,'innerHTML',$html);
+			$this->append('rule_for_'.$idList,'innerHTML',$html);
 		
-		$chkPref = 'case_sensitive_';
+			$chkPref = 'case_sensitive_';
 		
-		$len = strlen($chkPref);
+			$len = strlen($chkPref);
 		
-		foreach ($datForm as $id => $value){
+			foreach ($datForm as $id => $value){
 			
-			if (!strcmp(substr($id, 0, $len), $chkPref)){
+				if (!strcmp(substr($id, 0, $len), $chkPref)){
 				
-				if ($datForm[$id])
+					if ($datForm[$id])
 
-					$this->assign($id,'checked',true);
+						$this->assign($id,'checked',true);
 			
-			}else
-				$this->assign($id,'value',$value);
-		}
+				}else
+					$this->assign($id,'value',$value);
+			}
 		
-		$this->script("blockFirstElementForm('".$idForm."')");
+			$this->script("blockFirstElementForm('".$idForm."')");
+			
+		}else 
+			$this->notificationWindow(MSG_FAILED_SHOW_FILTER_MUST_PROVIDE_REAL_NAME,4,'warning');
+		
 		
 		return $this->response;
 	}
