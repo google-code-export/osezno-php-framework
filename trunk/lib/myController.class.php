@@ -1109,7 +1109,7 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_help ($datForm){
 		
-		$this->window('help_list','../mylistHelp.php',350,630);
+		$this->modalWindowFromUrl('../mylistHelp.php?no_load_xajax=true',TITLE_WINDOW_HELP_MYLIST,350,630);
 		
 		return $this->response;
 	}
