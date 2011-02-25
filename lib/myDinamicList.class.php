@@ -1102,7 +1102,7 @@ class myList  {
 			
 					$buf.='id="tr_'.$this->idList.'_'.$i.'" ';
 			
-					$buf.='onclick="markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\', '.$getNumFldsAftd.', \''.$nmCheck.'\')" ';
+					$buf.='onDblClick="markRow(this, \''.$classTd.'\',\''.substr($cadParam,0,-1).'\', '.$getNumFldsAftd.', \''.$nmCheck.'\')" ';
 			
 					$buf.='onmouseover="onRow(this, '.$getNumFldsAftd.')" ';
 			
@@ -1441,6 +1441,8 @@ class myList  {
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'ok.gif').'</td>';
 		
 		$objMyForm->addEvent('help_'.$this->idList,'onclick','MYLIST_help');
+		
+		$objMyForm->addHelp('help_'.$this->idList, TITLE_WINDOW_HELP_MYLIST);
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','help.gif').'</td>';
 		
