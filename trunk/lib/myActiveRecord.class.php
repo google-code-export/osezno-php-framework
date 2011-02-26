@@ -467,182 +467,187 @@ class myActiveRecord {
 	 */
 	private function findEngine ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
 		
-		$fCnd = '';
+		if ($this->myact_table != 'myActiveRecord'){
 		
-		$sql = '';
+			$fCnd = '';
 		
-		$subSqlF = '';
+			$sql = '';
 		
-		$iCounter = 1;
+			$subSqlF = '';
 		
-		foreach ($this->classVars as $var => $val){
-			
-			if (!in_array($var,$this->arrayInvalidAtt)){
-				
-				$subSqlF .= $var;
-
-			   	$subSqlF .= ', ';
-
-				$iCounter++;
-			}
-		}
-		
-		$sql .= 'SELECT '.substr($subSqlF,0,-2).' FROM '.$this->myact_table;
-		
-		$results = '';
-		
-		# Condicion compuesta, condicion sencilla
-		if ( $this->evalIfIsQuery($strCond) || !$strCond){
-			
 			$iCounter = 1;
-
-			if ($strCond)
-			   $sql .= ' WHERE ';
-
-			$cCond = count($strCond = explode(
-					'&',$strCond));
+		
+			foreach ($this->classVars as $var => $val){
 			
-			foreach ($strCond as $cnd){
+				if (!in_array($var,$this->arrayInvalidAtt)){
 				
-				# TODO: Evaluar si viene una sentencia booleana
-				$smblRel = $this->evalSimbolInSubQuery($cnd,true);
-				
-				if ($smblRel)
-					list ($fCnd, $vCnd) = explode($smblRel,$cnd);
-				
-				if (trim($fCnd) && $vCnd){
+					$subSqlF .= $var;
 
-					if ($this->autoQuoteOnFind){
+			   		$subSqlF .= ', ';
+
+					$iCounter++;
+				}
+			}
+		
+			$sql .= 'SELECT '.substr($subSqlF,0,-2).' FROM '.$this->myact_table;
+		
+			$results = '';
+		
+			# Condicion compuesta, condicion sencilla
+			if ( $this->evalIfIsQuery($strCond) || !$strCond){
+
+				$keyFinded = '';
+			
+				$iCounter = 1;
+
+				if ($strCond)
+			   		$sql .= ' WHERE ';
+
+				$cCond = count($strCond = explode('&',$strCond));
+			
+				foreach ($strCond as $cnd){
+				
+					# TODO: Evaluar si viene una sentencia booleana
+					$smblRel = $this->evalSimbolInSubQuery($cnd,true);
+				
+					if ($smblRel)
+						list ($fCnd, $vCnd) = explode($smblRel,$cnd);
+				
+					if (trim($fCnd) && $vCnd){
+
+						if ($this->autoQuoteOnFind){
 						
-						if (is_numeric(trim($vCnd))){
+							if (is_numeric(trim($vCnd))){
 							
-							$sql .= $fCnd.$smblRel.
-							' '.trim($vCnd);
+								$keyFinded .= $fCnd.$smblRel.' '.trim($vCnd);
 
+							}else{
+							
+								$keyFinded .= $fCnd.$smblRel." '".trim($vCnd)."'";
+							}
 						}else{
-							
-							$sql .= $fCnd.$smblRel.
-							" '".trim($vCnd)."'";
-						}
-					}else{
 						
-						$sql .= $fCnd.$smblRel.
-							' '.trim($vCnd).'';
-					}
+							$keyFinded .= $fCnd.$smblRel.' '.trim($vCnd).'';
+						}
 
-				}else{
-					
-					$sql .= ' '.trim($cnd);
-				}
-					
-				if ($iCounter<$cCond)
-				   $sql .= ' AND';
-					
-				$iCounter ++;
-			}
-			
-			if ($orderBy){
-				
-				if (is_bool($orderBy)){
-					
-					$sql .= ' ORDER BY '.$this->tablePk[$this->myact_table].' ';
-					
-				}else{
-					
-					if (is_array($orderBy)){
-						
-						if (count($orderBy)){
-							
-							$sqlOrderBy = '';
-							
-							$cute = false;
-							
-							foreach ($orderBy as $field => $method){
-							
-								if ($method){
-									
-									$sqlOrderBy .= ' '.$field.' '.$method.', ';
-									
-									$cute = true;
-								}	
-							}
-						
-							if ($cute){
-								$sql .= ' ORDER BY '.substr($sqlOrderBy,0,-2);	
-							}
-							
-						}
-						
 					}else{
+					
+						$keyFinded .= ' '.trim($cnd);
+					}
+					
+					if ($iCounter<$cCond)
+				   		$keyFinded .= ' AND';
+					
+					$iCounter ++;
+				}
+			
+				$sql .= $keyFinded;
+			
+				if ($orderBy){
+				
+					if (is_bool($orderBy)){
+					
+						$sql .= ' ORDER BY '.$this->tablePk[$this->myact_table].' ';
+					
+					}else{
+					
+						if (is_array($orderBy)){
 						
-						$sql .= ' ORDER BY '.$orderBy;
+							if (count($orderBy)){
+							
+								$sqlOrderBy = '';
+							
+								$cute = false;
+							
+								foreach ($orderBy as $field => $method){
+							
+									if ($method){
+									
+										$sqlOrderBy .= ' '.$field.' '.$method.', ';
+									
+										$cute = true;
+									}	
+								}
 						
-						if ($orderMethod)
-				   			$sql .= ' '.$orderMethod;
+								if ($cute){
+									$sql .= ' ORDER BY '.substr($sqlOrderBy,0,-2);	
+								}
+							
+							}
+						
+						}else{
+						
+							$sql .= ' ORDER BY '.$orderBy;
+						
+							if ($orderMethod)
+				   				$sql .= ' '.$orderMethod;
+						}
 					}
 				}
-			}
 			
-			if ($intLimit){
+				if ($intLimit){
 				
-				$sql .= ' LIMIT '.$intLimit.'';
+					$sql .= ' LIMIT '.$intLimit.'';
 				
-				if ($offset){
+					if ($offset){
 				
-					$sql .= ' OFFSET '.$offset.'';
+						$sql .= ' OFFSET '.$offset.'';
+					}
+					
 				}
-					
-			}
 			
-			$rF = $this->query($sql);
+				$rF = $this->query($sql);
 			
-			if ($this->num_rows == 1){
+				if ($this->num_rows == 1){
 				
-				foreach ($rF[0] as $etq => $value){
+					foreach ($rF[0] as $etq => $value){
 					
-					$this->$etq = $value;
+						$this->$etq = $value;
+					}
+				
+					$this->keyFinded = $keyFinded;
+					
+				}else{
+					//TODO:
+
 				}
-					
+				
 			}else{
-				//TODO:
 
-			}
+				if ($strCond){
 				
-		}else{
-
-			if ($strCond){
-				
-				if ($this->autoQuoteOnFind){
+					if ($this->autoQuoteOnFind){
 					
-					if (is_string($strCond))
-						$strCond = '\''.$strCond.'\'';
+						if (is_string($strCond))
+							$strCond = '\''.$strCond.'\'';
+					}
+				
+					$sql .= ' WHERE '.$this->tablePk[$this->myact_table].' = '.$strCond;
 				}
-				
-				$sql .= ' WHERE '.$this->tablePk[$this->myact_table].' = '.$strCond;
-			}
 			
-			$rF = $this->query($sql);
+				$rF = $this->query($sql);
 			
-			if ($this->num_rows){
+				if ($this->num_rows){
 				
-				$this->keyFinded = $strCond;
+					$this->keyFinded = $strCond;
 				
-				foreach ($rF[0] as $etq => $val){
+					foreach ($rF[0] as $etq => $val){
 					
-					if (is_string($etq)){
+						if (is_string($etq)){
 						
-						if (!in_array($etq,$this->arrayInvalidAtt)){
+							if (!in_array($etq,$this->arrayInvalidAtt)){
 							
-							$this->$etq = $val;
+								$this->$etq = $val;
+							}
 						}
 					}
+				
+				
 				}
-				
-				
 			}
-		}
 						
-		return $rF;
+			return $rF;
+		}
 	}
 			
 	/**
@@ -1203,12 +1208,13 @@ class myActiveRecord {
 	 * Busca registros que coincidan con el parametro de consulta.
 	 * 
 	 * Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.
-	 * El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o false en caso de no encontrar registros asociados.
+	 * Nota 1: El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.
+	 * Nota 2: El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.
+	 * Nota 3: EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.
+	 * Nota 4: Es posible agregar mas de una condicion utilizando los operadores de comparacion ('<>','<=','>=', '!=','>', '<','=', '!') y el conector lógico & (AND) 
 	 * <code>
 	 * 
 	 * <?php
-	 * 
-	 * # Ejemplo 1:
 	 * 
 	 * class usuarios extends myActiveRecord {
 	 * 
@@ -1216,17 +1222,33 @@ class myActiveRecord {
 	 * 
 	 * 	public $usuario;
 	 * 
+	 *  public $apellido;
+	 * 
 	 * }
+	 * 
+	 * # Ejemplo 1 Condición única:
 	 * 
 	 * $usuarios = new usuarios;
 	 * 
-	 * if ($usuarios->find(1))
+	 * if ($usuarios->find(1)) 
 	 *
 	 * 	  echo 'Hola '.$usuarios->usuario; 
 	 * 
 	 * else
 	 * 
 	 * 	  echo 'No existe el usuario con el Id 1';
+	 * 
+	 * # Ejemplo 2 Condición compuesta:
+	 * 
+	 * $apellido = 'ortegon';
+	 * 
+	 * if ($usuarios->find('usuario=jose & apellido='.$apellido)) 
+	 *
+	 * 	  echo 'Hola '.$usuarios->usuario; 
+	 * 
+	 * else
+	 * 
+	 * 	  echo 'No existe el usuario';
 	 * 
 	 * ?>
 	 * 
@@ -1247,6 +1269,7 @@ class myActiveRecord {
 	 * Inserta o Modifica un registro.
 	 *
 	 * El metodo save modificara un registro o insertara uno nuevo. Si lo precede el metodo find y este encuentra un registro que coincida con la busqueda, este lo modificara. En caso contrario lo agregara a la tabla.
+	 * Por seguridad el metodo Save solo actualizara el regitro cuando la busqueda anterior solo haya devuelto un regitro.
 	 * <code>
 	 * 
 	 * <?php
@@ -1313,7 +1336,10 @@ class myActiveRecord {
 				
 			}
 
-			$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->myact_table].' = '.$this->keyFinded;
+			if ($this->evalSimbolInSubQuery($this->keyFinded))
+				$sql = substr($sql,0,-2).' WHERE '.$this->keyFinded;
+			else
+				$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->myact_table].' = '.$this->keyFinded;
 
 			$this->query($sql);
 			
