@@ -1208,10 +1208,10 @@ class myActiveRecord {
 	 * Busca registros que coincidan con el parametro de consulta.
 	 * 
 	 * Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.
-	 * Nota 1: El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.
-	 * Nota 2: El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.
-	 * Nota 3: EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.
-	 * Nota 4: Es posible agregar mas de una condicion utilizando los operadores de comparacion ('<>','<=','>=', '!=','>', '<','=', '!') y el conector lógico & (AND) 
+	 * [Nota 1:] El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.
+	 * [Nota 2:] El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.
+	 * [Nota 3:] EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.
+	 * [Nota 4:] Es posible agregar mas de una condición utilizando los operadores de comparacion ('<>','<=','>=', '!=','>', '<','=', '!') y el conector lógico & (AND) Ver ejemplo 2. 
 	 * <code>
 	 * 
 	 * <?php

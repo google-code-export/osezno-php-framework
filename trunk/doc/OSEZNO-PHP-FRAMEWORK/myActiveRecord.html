@@ -253,7 +253,7 @@ $port = ''])</code>
   </div>
   <hr />
 	<a name="methodbeginTransaction"></a>
-	<h3>method beginTransaction <span class="smalllinenumber">[line 982]</span></h3>
+	<h3>method beginTransaction <span class="smalllinenumber">[line 987]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -291,7 +291,7 @@ $port = ''])</code>
   </div>
   <hr />
 	<a name="methoddelete"></a>
-	<h3>method delete <span class="smalllinenumber">[line 1386]</span></h3>
+	<h3>method delete <span class="smalllinenumber">[line 1412]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -350,7 +350,7 @@ $strCond)</code>
   </div>
   <hr />
 	<a name="methodendTransaction"></a>
-	<h3>method endTransaction <span class="smalllinenumber">[line 1019]</span></h3>
+	<h3>method endTransaction <span class="smalllinenumber">[line 1024]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -391,7 +391,7 @@ $strCond)</code>
   </div>
   <hr />
 	<a name="methodfind"></a>
-	<h3>method find <span class="smalllinenumber">[line 1241]</span></h3>
+	<h3>method find <span class="smalllinenumber">[line 1263]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -405,9 +405,7 @@ $offSet = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Busca registros que coincidan con el parametro de consulta.<br /><br /><p>Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.  El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o false en caso de no encontrar registros asociados.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1:</span></div></li>
+		Busca registros que coincidan con el parametro de consulta.<br /><br /><p>Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.  [Nota 1:] El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.  [Nota 2:] El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.  [Nota 3:] EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.  [Nota 4:] Es posible agregar mas de una condición utilizando los operadores de comparacion ('&lt;&gt;','&lt;=','&gt;=', '!=','&gt;', '&lt;','=', '!') y el conector lógico &amp; (AND) Ver ejemplo 2.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">usuarios&nbsp;</span><span class="src-key">extends&nbsp;</span><a href="../OSEZNO-PHP-FRAMEWORK/myActiveRecord.html">myActiveRecord</a>&nbsp;<span class="src-sym">{</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -415,7 +413,11 @@ $offSet = ''])</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$usuario</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$apellido</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1&nbsp;Condición&nbsp;única:</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$usuarios&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">usuarios</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -426,6 +428,18 @@ $offSet = ''])</code>
 <li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'No&nbsp;existe&nbsp;el&nbsp;usuario&nbsp;con&nbsp;el&nbsp;Id&nbsp;1'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;2&nbsp;Condición&nbsp;compuesta:</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$apellido&nbsp;</span>=&nbsp;<span class="src-str">'ortegon'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">find</span><span class="src-sym">(</span><span class="src-str">'usuario=jose&nbsp;&amp;&nbsp;apellido='</span>.<span class="src-var">$apellido</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'Hola&nbsp;'</span>.<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">usuario</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'No&nbsp;existe&nbsp;el&nbsp;usuario'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
 </ol></p><br /><br /><br />
@@ -474,7 +488,7 @@ $offSet = ''])</code>
   </div>
   <hr />
 	<a name="methodgetDatabase"></a>
-	<h3>method getDatabase <span class="smalllinenumber">[line 833]</span></h3>
+	<h3>method getDatabase <span class="smalllinenumber">[line 838]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -499,7 +513,7 @@ $offSet = ''])</code>
   </div>
   <hr />
 	<a name="methodgetEngine"></a>
-	<h3>method getEngine <span class="smalllinenumber">[line 844]</span></h3>
+	<h3>method getEngine <span class="smalllinenumber">[line 849]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -524,7 +538,7 @@ $offSet = ''])</code>
   </div>
   <hr />
 	<a name="methodgetErrorLog"></a>
-	<h3>method getErrorLog <span class="smalllinenumber">[line 911]</span></h3>
+	<h3>method getErrorLog <span class="smalllinenumber">[line 916]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -560,7 +574,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetHost"></a>
-	<h3>method getHost <span class="smalllinenumber">[line 855]</span></h3>
+	<h3>method getHost <span class="smalllinenumber">[line 860]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -585,7 +599,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetLastInsertId"></a>
-	<h3>method getLastInsertId <span class="smalllinenumber">[line 955]</span></h3>
+	<h3>method getLastInsertId <span class="smalllinenumber">[line 960]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -610,7 +624,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetNumFieldsAffected"></a>
-	<h3>method getNumFieldsAffected <span class="smalllinenumber">[line 943]</span></h3>
+	<h3>method getNumFieldsAffected <span class="smalllinenumber">[line 948]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -635,7 +649,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetNumRowsAffected"></a>
-	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 932]</span></h3>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 937]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -660,7 +674,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetPassword"></a>
-	<h3>method getPassword <span class="smalllinenumber">[line 877]</span></h3>
+	<h3>method getPassword <span class="smalllinenumber">[line 882]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -685,7 +699,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetPort"></a>
-	<h3>method getPort <span class="smalllinenumber">[line 888]</span></h3>
+	<h3>method getPort <span class="smalllinenumber">[line 893]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -710,7 +724,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetSqlLog"></a>
-	<h3>method getSqlLog <span class="smalllinenumber">[line 899]</span></h3>
+	<h3>method getSqlLog <span class="smalllinenumber">[line 904]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -735,7 +749,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetUser"></a>
-	<h3>method getUser <span class="smalllinenumber">[line 866]</span></h3>
+	<h3>method getUser <span class="smalllinenumber">[line 871]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -760,7 +774,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodisSuccessfulConnect"></a>
-	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1541]</span></h3>
+	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1567]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -798,7 +812,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodloadSqlFromFile"></a>
-	<h3>method loadSqlFromFile <span class="smalllinenumber">[line 1072]</span></h3>
+	<h3>method loadSqlFromFile <span class="smalllinenumber">[line 1077]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -853,7 +867,7 @@ $vars = array()])</code>
   </div>
   <hr />
 	<a name="methodquery"></a>
-	<h3>method query <span class="smalllinenumber">[line 1125]</span></h3>
+	<h3>method query <span class="smalllinenumber">[line 1130]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -913,7 +927,7 @@ $saveInLog = true])</code>
   </div>
   <hr />
 	<a name="methodsave"></a>
-	<h3>method save <span class="smalllinenumber">[line 1283]</span></h3>
+	<h3>method save <span class="smalllinenumber">[line 1306]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -922,7 +936,7 @@ $saveInLog = true])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Inserta o Modifica un registro.<br /><br /><p>El metodo save modificara un registro o insertara uno nuevo. Si lo precede el metodo find y este encuentra un registro que coincida con la busqueda, este lo modificara. En caso contrario lo agregara a la tabla.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+		Inserta o Modifica un registro.<br /><br /><p>El metodo save modificara un registro o insertara uno nuevo. Si lo precede el metodo find y este encuentra un registro que coincida con la busqueda, este lo modificara. En caso contrario lo agregara a la tabla.  Por seguridad el metodo Save solo actualizara el regitro cuando la busqueda anterior solo haya devuelto un regitro.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1:</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -965,7 +979,7 @@ $saveInLog = true])</code>
   </div>
   <hr />
 	<a name="methodsetAutoQuotesInFind"></a>
-	<h3>method setAutoQuotesInFind <span class="smalllinenumber">[line 822]</span></h3>
+	<h3>method setAutoQuotesInFind <span class="smalllinenumber">[line 827]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1001,7 +1015,7 @@ $value)</code>
   </div>
   <hr />
 	<a name="methodsetPosfijSeq"></a>
-	<h3>method setPosfijSeq <span class="smalllinenumber">[line 799]</span></h3>
+	<h3>method setPosfijSeq <span class="smalllinenumber">[line 804]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1037,7 +1051,7 @@ $posFij = ''])</code>
   </div>
   <hr />
 	<a name="methodsetPrimaryKey"></a>
-	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1473]</span></h3>
+	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1499]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1095,7 +1109,7 @@ $field = ''])</code>
   </div>
   <hr />
 	<a name="methodsetSeqName"></a>
-	<h3>method setSeqName <span class="smalllinenumber">[line 810]</span></h3>
+	<h3>method setSeqName <span class="smalllinenumber">[line 815]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1134,7 +1148,7 @@ $name = ''])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 26 Feb 2011 12:53:26 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Sat, 26 Feb 2011 13:06:50 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
