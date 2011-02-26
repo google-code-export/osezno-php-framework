@@ -1,35 +1,8 @@
 <html>
 <head>
-<style type="text/css">
-.tit {
-	font-size:14px;
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	text-align: justify;
-}
-.conte {
-	font-size:10px;
-	font-family:Arial, Helvetica, sans-serif;
-}
-.help_content {
-	border-radius: 10px 10px 10px 10px;
-	-moz-border-radius: 10px 10px 10px 10px;
-    background-clip: border-box;
-	background-color:#FFFFCC;
-	font-style: normal;
-	text-decoration: none;
-	border-color:gray;
-	border-width: 1px;
-	border-style: solid;
-	padding-left:10px;
-	padding-top:1px;	
-	padding-bottom:1px;
-	padding-right:10px;
-}
-</style>
 </head>
 <body>
-<div class="help_content">
+<div style="background-color:#FFFFCC;padding:10px;border-width: 1px;border-style: solid;font-style: normal;border-color:gray;padding-top:1px;padding-bottom:1px;">
 <p><b><u>TIPOS DE UNI&Oacute;N L&Oacute;GICA:</u></b></p>
 <p><b>Y:</b><span class="conte"> La uni&oacute;n l&oacute;gica Y (AND) trabaja uniendo dos o mas filtros cuando cuando las condiciones entre estos filtros se cumplan en cada una.</span></p>
 <p><b>O:</b><span class="conte"> La uni&oacute;n l&oacute;gica O (OR) trabaja uniendo dos o mas filtros cuando las condiciones entre estos filtros se cumpla en al menos una de ellas.</span><br>
