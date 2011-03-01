@@ -974,6 +974,8 @@ class myController extends myControllerExt {
 	 */
 	public function errorBox ($error, $detail = ''){
 		
+		$htmDet = '';
+		
 		if ($detail)
 			$htmDet = '<br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b>&nbsp;'.$detail.'</div>';
 		
