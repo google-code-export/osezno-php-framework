@@ -1040,6 +1040,8 @@ class myActiveRecord {
 				$GLOBALS['OF_SQL_LOG'] .='ROLLBACK;'."\n";
 				
 				$this->myact_dbh->rollBack();
+				
+				$sucsess = false;
 			}
 			
 			$GLOBALS['OF_IN_TRANSACCTION'] = false;
