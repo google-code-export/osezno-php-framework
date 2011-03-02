@@ -1030,7 +1030,7 @@ class myForm {
 				if ($truncar_hasta)
 					$value = substr($value,0,$truncar_hasta);
 					
-				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.htmlentities($value).'</option>'."\n";
+				$buf .= "\t\t".'<option value="'.$id.'"'.$sel.'>'.$value.'</option>'."\n";
 			}
 			
 			$buf .= "\t\t".'</select>'."\n";
