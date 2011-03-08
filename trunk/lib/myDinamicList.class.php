@@ -1282,12 +1282,14 @@ class myList  {
 						
 						//$objMyForm->addEvent($this->idList.$id,'onChange','myListPage',array($this->idList,$attr[1]));
 						
-						$buf .= $objMyForm->getText($this->idList.$id,$attr[0],3,NULL,true);
+						$objMyForm->addHelp($this->idList.$id,'&nbsp;'.LABEL_HELP_PAGACT_FORM.' <b>'.$attr[0].'</b>'.'&nbsp;');
+						
+						$buf .= $objMyForm->getText($this->idList.$id,$attr[0],1,NULL,true);
 						
 					break;
 					case 'select':
 						
-						$objMyForm->addHelp($this->idList.$id,LABEL_HELP_CHPAG_SELECT_FORM);
+						$objMyForm->addHelp($this->idList.$id,'&nbsp;'.LABEL_HELP_CHPAG_SELECT_FORM.'&nbsp;');
 						
 						$objMyForm->addEvent($this->idList.$id,'onchange','MYLIST_chPag',$this->idList);
 						
@@ -1309,6 +1311,7 @@ class myList  {
 		$this->bufHtml =  str_replace('{bufHead}',$bufHead,$buf);
 		
 		if ($showQueryForm && $this->successFul)
+		
 			$this->bufHtml = $this->buildQueryForm().$this->bufHtml;
 		
 		# Registramos las variables que se han usado
@@ -1376,8 +1379,6 @@ class myList  {
 		 */
 		$objMyForm->styleTypeHelp = 2;
 		
-		$objMyForm->addHelp('add_rule_'.$this->idList,LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
-		
 		$objMyForm->addDisabled('cancel_query_'.$this->idList);
 		
 		$objMyForm->addDisabled('save_query_'.$this->idList);
@@ -1385,6 +1386,17 @@ class myList  {
 		$htble .= '<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr>';
 		
 		$anyBut = false;
+
+		$objMyForm->addHelp('pdf_'.$this->idList,LABEL_HELP_PDF_BUTTON_FORM);
+		
+		if (!$this->arrayDataTypeExport['pdf'])
+			$objMyForm->addDisabled('pdf_'.$this->idList);
+		else
+			$anyBut = true;	
+		
+		$objMyForm->addEvent('pdf_'.$this->idList,'onclick','MYLIST_exportData','pdf',$this->idList);	
+			
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','pdf.gif').'</td>';		
 		
 		$objMyForm->addHelp('xls_'.$this->idList,LABEL_HELP_EXCEL_BUTTON_FORM);
 		
@@ -1406,18 +1418,7 @@ class myList  {
 		
 		$objMyForm->addEvent('html_'.$this->idList,'onclick','MYLIST_exportData','html',$this->idList);	
 			
-		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','html.gif').'</td>';
-		
-		$objMyForm->addHelp('pdf_'.$this->idList,LABEL_HELP_PDF_BUTTON_FORM);
-		
-		if (!$this->arrayDataTypeExport['pdf'])
-			$objMyForm->addDisabled('pdf_'.$this->idList);
-		else
-			$anyBut = true;	
-		
-		$objMyForm->addEvent('pdf_'.$this->idList,'onclick','MYLIST_exportData','pdf',$this->idList);	
-			
-		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('pdf_'.$this->idList,'','pdf.gif').'</td>';
+		$htble .= '<td width="10%" align="left">'.$objMyForm->getButton('html_'.$this->idList,'','html.gif').'</td>';		
 		
 		if (!$anyBut)
 			$objMyForm->addDisabled('not_pg_'.$this->idList);
@@ -1428,23 +1429,29 @@ class myList  {
 		
 		$htble .= '<td width="10%">&nbsp;</td>';
 		
-		$htble .= '<td width="10%">&nbsp;</td>';
+		$objMyForm->addEvent('help_'.$this->idList,'onclick','MYLIST_help');
 		
-		$objMyForm->addEvent('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',$this->idList);
+		$objMyForm->addHelp('help_'.$this->idList, TITLE_WINDOW_HELP_MYLIST);
 		
-		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','find.gif').'</td>';
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','help.gif').'</td>';
 
+		$objMyForm->addHelp($this->idList.'_reload_list',LABEL_HELP_RELOAD_LIST_FORM);
+		
+		$objMyForm->addEvent($this->idList.'_reload_list','onclick','MYLIST_reload',$this->idList);
+		
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_reload_list',NULL,'reload.gif').'</td>';
+		
 		$objMyForm->addHelp($this->idList.'_apply_rule',LABEL_HELP_APPLY_RULE_FORM);
 
 		$objMyForm->addEvent($this->idList.'_apply_rule','onclick','MYLIST_applyRuleQuery',$this->idList);
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton($this->idList.'_apply_rule',NULL,'ok.gif').'</td>';
 		
-		$objMyForm->addEvent('help_'.$this->idList,'onclick','MYLIST_help');
+		$objMyForm->addHelp('add_rule_'.$this->idList,LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
 		
-		$objMyForm->addHelp('help_'.$this->idList, TITLE_WINDOW_HELP_MYLIST);
+		$objMyForm->addEvent('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',$this->idList);
 		
-		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('help_'.$this->idList,'','help.gif').'</td>';
+		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','find.gif').'</td>';
 		
 		$htble .= '</tr></table>';
 		
