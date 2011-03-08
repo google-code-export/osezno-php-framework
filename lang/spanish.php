@@ -30,27 +30,29 @@
 	define('LABEL_FIELD_LIST_ADD_RULE_FORM','Campo');
 	define('LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM','Sensible a May&uacute;sculas y Min&uacute;sculas');
 	define('LABEL_FIELD_VALUE_ADD_RULE_FORM','Valor');
+	define('LABEL_HELP_RELOAD_LIST_FORM','Actualizar datos');
 	define('LABEL_HELP_APPLY_RULE_FORM','Aplicar filtros');
 	define('LABEL_HELP_REM_RULE_FORM','Remover este filtro');
 	define('LABEL_USELIMIT_RULE_FORM','Límite');
 	define('LABEL_BUTTON_DOWNLOAD_FILE_EXPORT','Exportar');
 	define('LABEL_FIRST_OPT_SELECT_GLOBAL_ACTION','Seleccione...');
 	define('TITLE_WINDOW_HELP_MYLIST','Ayuda listas din&aacute;micas');
-	define('TITLE_MWINDOW_FILEDS_TO_SHOW','Campos a mostrar.');
+	define('TITLE_MWINDOW_FILEDS_TO_SHOW','Campos a exportar');
 	
 	define('LABEL_HELP_SELECT_GLOBAL_ACTION','Seleccione una opci&oacute;n');
 	define('LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM','Agregar filtro');
 	define('LABEL_HELP_EXCEL_BUTTON_FORM','Exportar a Excel.');
 	define('LABEL_HELP_HTML_BUTTON_FORM','Exportar a Html.');
 	define('LABEL_HELP_PDF_BUTTON_FORM','Exportar a Pdf.');
+	define('LABEL_HELP_PAGACT_FORM','P&aacute;gina actual:');
 	define('LABEL_HELP_CHPAG_SELECT_FORM','Registros por p&aacute;gina.');
 	define('LABEL_HELP_USELIMIT_RULE_FORM','Aplicar limite de registros');
-	define('LABEL_HELP_SELECT_FILEDS_TOSHOW','Seleccione los campos que desea mostrar en el archivo.');
+	define('LABEL_HELP_SELECT_FILEDS_TOSHOW','Seleccione (<b>Ctrl + Click</b>) los campos que desea mostrar en el archivo.');
 	
 	define('MSG_FAILED_SHOW_FILTER_MUST_PROVIDE_REAL_NAME','Debe especificar al menos un campo con <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery"><font style="font-size: 14px;">alias</font></a>.');
 	define('MSG_FAILED_ORDER_BY_FIELD_MUST_PROVIDE_REAL_NAME','Debe especificar un <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery"><font style="font-size: 14px;">alias</font></a> para este campo.');
 	define('MSG_FAILED_SELECT_FIELD_TO_SHOW','Debe seleccionar al menos un campo a mostrar.');
-	define('MSG_SELECT_FIELD_TO_SHOW','Seleccione los campos a mostrar en el archivo y presione <b>'.LABEL_BUTTON_DOWNLOAD_FILE_EXPORT.'</b>.');
+	define('MSG_SELECT_FIELD_TO_SHOW','Seleccione (<b>Ctrl + Click</b>) los campos que desea mostrar en el archivo.');
 	define('MSG_APPLY_RULES_ALL_VALUES_NULL','Debe escribir al menos un valor.');
 	define('MSG_RESTART_QUERY_LIST','La consulta ha sido reiniciada');
 	define('MSG_QUERY_FORM_OK','Filtro aplicado.');

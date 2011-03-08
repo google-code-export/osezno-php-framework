@@ -1255,6 +1255,8 @@ class myController extends myControllerExt {
 		
 		$arrFields = array();
 		
+		$arrSelects = array();
+		
 		$this->notificationWindow(MSG_SELECT_FIELD_TO_SHOW, 8,'ok');
 		
 		$myForm = new myForm('export_data_select_fields_'.$idList);
@@ -1290,9 +1292,11 @@ class myController extends myControllerExt {
 			if (!isset($arEvnOnQry[$field])){
 				
 				$arrFields['field_'.$i] = $field;
-			
-				$i++;
+				
+				$arrSelects[] = 'field_'.$i;
 			}
+			
+			$i++;
 		}
 		
 		$myForm->border = 0;
@@ -1303,7 +1307,7 @@ class myController extends myControllerExt {
 		
 		$myForm->addHelp('fields_export',LABEL_HELP_SELECT_FILEDS_TOSHOW);
 		
-		$myForm->addComment('cm1:2','<div align="center">'.$myForm->getSelect('fields_export',$arrFields,NULL,8,0,true).'</center>');
+		$myForm->addComment('cm1:2','<div align="center">'.$myForm->getSelect('fields_export',$arrFields,$arrSelects,8,0,true).'</center>');
 		
 		$myForm->styleClassFields = 'caja';
 		
@@ -1330,13 +1334,17 @@ class myController extends myControllerExt {
 
 		$cadFields = '';		
 		
-		foreach ($datForm['fields_export'] as $id => $nomField){
+		foreach ($datForm['fields_export'] as $nomField){
 			
-			$cadFields .= ($id+1).',';
+			list ($x, $id ) = explode('_',$nomField);
+			
+			$cadFields .= $id.',';
 		}
 		
 		$usepg = 'f';
+		
 		if ($datForm['not_pg_'.$idList]){
+			
 			$usepg = 't';
 		}
 		
@@ -1348,7 +1356,6 @@ class myController extends myControllerExt {
 			
 			$error = true;
 		}
-		
 		
 		if (!$error){
 			
@@ -1678,6 +1685,13 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_reload($idList){
 		
+		if (!is_string($idList)){
+
+			$args = func_get_args();
+			
+			$idList = $args[1];
+		}	
+
 		if (isset($_SESSION['prdLst'][$idList])){
 			
 			$myList = new myList($idList);
@@ -1687,9 +1701,12 @@ class myController extends myControllerExt {
 			$js = 'clearRowsMarked();'."\n";
 		
 			$this->script($js);
+
 		}else
-			$this->messageBox(MSG_ERROR_IDLIST_NOTDEFINED,'critical');	
+			$this->messageBox(MSG_ERROR_IDLIST_NOTDEFINED,'critical');
 		
+			
+		return $this->response;
 	}
 	
 	/**
