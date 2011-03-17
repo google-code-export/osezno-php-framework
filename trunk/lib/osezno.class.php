@@ -170,6 +170,10 @@ class osezno {
 		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mytabs/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mytabs/'.
 		'" rel="stylesheet" type="text/css" />';
 		
+		$this->arrayAssignAreasHead['string_css_callback_xajax']     
+		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/callback_xajax/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/callback_xajax/'.
+		'" rel="stylesheet" type="text/css" />';
+		
 		$cssErrors = 
 '.error {
 	border-radius: 10px 10px 10px 10px;

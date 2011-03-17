@@ -23,23 +23,13 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 	
 	document.body.appendChild(capaBase);
 	
-	capaBase.style.background = colorBg;
-	
-	capaBase.style.position = 'absolute';
+	capaBase.className = 'blocker_mw';
 	
 	capaBase.style.zIndex = countId+1;
-	capaBase.style.top  = 0;
-	capaBase.style.left = 0;
 	
 	capaBase.style.height = arrayPageSize[1];
 	capaBase.style.width = arrayPageSize[0];
- 	
-	if (navigator.appVersion.indexOf("MSIE")!=-1){
-		capaBase.style.filter = "alpha(opacity=" + opacity + ")";
-	}else{
-		capaBase.style.opacity = ( opacity / 100 );
-	}	
-	
+
 	var capaModalWindow = document.createElement('DIV');
 	capaModalWindow.id = 'modalWindow'+countId;
 	
