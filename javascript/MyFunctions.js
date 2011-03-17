@@ -131,38 +131,22 @@ function responseCallUrl(pageElement) {
      miCapa.id = 'notification';
      
      document.body.appendChild(miCapa);
-
- 	 if (navigator.appVersion.indexOf("MSIE")!=-1){
-		miCapa.style.filter = "alpha(opacity=0)";
-	 }else{
-		miCapa.style.opacity = 0;
-	 }     
      
+ 	 miCapa.className = 'blocker';
+ 	 
      miCapa.style.color = '#000000';
-     miCapa.style.backgroundColor = '#FFFFFF';
-     miCapa.style.position = 'absolute';
-     
-	 miCapa.style.zIndex = 5000;
-	 miCapa.style.top    = 0;
-	 miCapa.style.left   = 0;
 	 miCapa.style.width	 = (arrayPageSize[0] + 'px');	 
 	 miCapa.style.height = (arrayPageSize[1] + 'px');
-	 miCapa.style.display='block';
 	 
      var miImagen = document.createElement('DIV');
      miImagen.id = 'imagen_notificacion';
      
+     miImagen.className = 'blocker_image';
+     
      document.body.appendChild(miImagen);
 
-	 miImagen.style.position = 'absolute';
-
-	 miImagen.style.zIndex = 5001;
 	 miImagen.style.top    = ((arrayPageSize[3]/2)+arrayScrollPos[1])-12;
 	 miImagen.style.left   = (arrayPageSize[2]/2)-20;
-	 miImagen.style.width  = '25px';
-	 miImagen.style.height = '40px';
-
-	 miImagen.innerHTML = '<img id="loader_image" src="../../javascript/img/common/loader.gif">';
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {

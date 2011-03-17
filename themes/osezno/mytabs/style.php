@@ -3,7 +3,7 @@
 #div_tab {
   float:left;
   width:100%;
-  background:#DAE0D2 url("<?php echo $_GET['path_img']; ?>bg.gif") repeat-x bottom;
+  background:url("<?php echo $_GET['path_img']; ?>bg.gif") repeat-x bottom;
   font-size:93%;
   line-height:normal;
 }
