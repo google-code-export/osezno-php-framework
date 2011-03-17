@@ -269,7 +269,17 @@ class myForm {
 	 * @var bool
 	 */
 	private $useAddFile = false;
-			
+
+
+	/**
+	 * Verifica si un objeto tipo file ha sido
+	 * agregado al formulario despues de haber
+	 * cargado la pagina.
+	 *
+	 * @var bool
+	 */
+	public $useAddFileAfterLoad = false;
+
 	/**
 	 * Arreglo protegido que almacena los eventos Xajax para los que se le fueron asignados
 	 *
@@ -1219,7 +1229,9 @@ class myForm {
 		$this->uploaderIdArray[] = $name;
 
 		$this->arrayFormElementType[$name] = 'file';
-		$this->useAddFile = true;
+		
+                if(!$this->useAddFileAfterLoad)
+                    $this->useAddFile = true;
 	}
 
 	/**
@@ -2245,6 +2257,135 @@ class myForm {
 		return $JS;
 	}
 
+
+	/**
+	 * Obtener el javascript necesario para
+	 * imprimirlo en la pagina despues de haber cargado la pagina
+	 * para el cargar la configuracion del SWFUploader
+	 *
+	 */
+	public function getJavaScriptSWFUploaderAfterLoad ($nameFunction){
+		$JS = '';
+
+		$JS.= 'var swfu=""'."\n";
+		$JS.= 'function '.$nameFunction.'(){'."\n";
+                $JS.= 'var settings = {'."\n";
+
+		$JS.= '// Backend Settings'."\n";
+		$JS.= "\t".'upload_url : "'.$this->FILE_upload_url.'",'."\n";
+
+		if (count($this->FILE_file_post_name)){
+			$JS.= 'post_params : {'."\n";
+			$swf_file_post_name_Keys = array_keys($this->FILE_file_post_name);
+			for ($i=0;$i<count($this->FILE_file_post_name);$i++){
+				$JS.= '"'.$swf_file_post_name_Keys[$i].'" : "'.$this->FILE_file_post_name[$swf_file_post_name_Keys[$i]].'"';
+				if ($i!=(count($this->FILE_file_post_name)-1))
+				$JS.= ',';
+			}
+			$JS.= "\n".'},'."\n";
+		}
+
+
+		$JS.= '// File Upload Settings '."\n";
+		$JS.= "\t".'file_size_limit: "'.$this->FILE_size_limit.'",'."\n";
+		$JS.= "\t".'file_types : "';
+		for ($i=0;$i<count($this->FILE_file_types);$i++){
+			$JS.= "".''.$this->FILE_file_types[$i].'';
+			if ($i!=(count($this->FILE_file_types)-1))
+			$JS.= ';';
+		}
+		$JS.= '",'."\n";
+		$JS.= "\t".'file_types_description: "'.$this->FILE_file_types_description.'",'."\n";
+		$JS.= "\t".'file_upload_limit: '.$this->FILE_file_upload_limit.','."\n";
+		$JS.= "\t".'file_queue_limit: '.$this->FILE_file_queue_limit.','."\n";
+
+		$JS.= '//Event Handler Settings - these functions as defined in Handlers.js'."\n";
+		$JS.= '//The handlers are not part of SWFUpload but are part of my website and control how'."\n";
+		$JS.= '//my website reacts to the SWFUpload events.'."\n";
+		$JS.= "\t".'file_queue_error_handler: '.$this->FILE_file_queue_error_handler.','."\n";
+		$JS.= "\t".'file_dialog_complete_handler: '.$this->FILE_file_dialog_complete_handler.','."\n";
+		$JS.= "\t".'upload_progress_handler: '.$this->FILE_upload_progress_handler.','."\n";
+		$JS.= "\t".'upload_error_handler: '.$this->FILE_upload_error_handler.','."\n";
+		$JS.= "\t".'upload_success_handler: '.$this->FILE_upload_success_handler.','."\n";
+		$JS.= "\t".'upload_complete_handler: '.$this->FILE_upload_complete_handler.','."\n";
+		$JS.= "\t".'swfupload_loaded_handler: '.$this->FILE_swfupload_loaded_handler.','."\n";
+		$JS.= "\t".'file_dialog_start_handler: '.$this->FILE_file_dialog_start_handler.','."\n";
+		$JS.= "\t".'file_queued_handler: '.$this->FILE_file_queued_handler.','."\n";
+		//$JS.= 'upload_start_handler: '.$this->FILE_upload_start_handler.','."\n";
+		//$JS.= 'debug_handler: '.$this->FILE_debug_handler.','."\n";
+
+		$JS.= '// Button Settings'."\n";
+		$JS.= "\t".'button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,'."\n";
+		$JS.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
+
+
+		$JS.= "\t".'button_image_url : "'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_button_image_url.'",'."\n";
+		$JS.= "\t".'button_placeholder_id : "'.$this->FILE_button_placeholder_id.'",'."\n";
+		$JS.= "\t".'button_width: '.$this->FILE_button_width.','."\n";
+		$JS.= "\t".'button_height: '.$this->FILE_button_height.','."\n";
+
+		if ($this->FILE_upload_several_files == true)
+			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILES,'."\n";
+		else
+			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILE,'."\n";
+
+		$JS.= "\t".'button_text : \'<span class="btnText">'.$this->FILE_str_etq_button.' ';
+
+		/**
+		 * Deprecated
+		if ($this->FILE_src_img_button)
+			$JS.= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
+		*/
+
+		$maxInfoSize = '';
+		$maxFileSizeUpload = '';
+
+	    if ($this->FILE_show_max_upload_size_info_in_button){
+	    	if ($this->FILE_size_limit<1024){
+	    		$maxFileSizeUpload = $this->FILE_size_limit.' Kb';
+	    	}else if ($this->FILE_size_limit<1048576){
+	    	   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1024,2).' Mb';
+	    	}else{
+      		   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1048576,2).' Gb';
+	    	}
+	       	$maxInfoSize = '('.$maxFileSizeUpload.')';
+	    }
+
+
+		$JS.= $maxInfoSize.'</span>\','."\n";
+		$JS.= "\t".'button_text_style : ".btnText { text-align: center; font-size: 9; font-weight: bold; font-family: MS Shell Dlg; }",'."\n";
+		$JS.= "\t".'button_text_top_padding : 3,'."\n";
+		$JS.= "\t".'button_text_left_padding : 0,'."\n";
+
+		$JS.= '//Flash Settings'."\n";
+		$JS.= "\t".'flash_url: "'.$this->FILE_flash_url.'",'."\n";
+		$JS.= "\t".'flash_width: "'.$this->FILE_flash_width.'",'."\n";
+		$JS.= "\t".'flash_height: "'.$this->FILE_flash_height.'",'."\n";
+		$JS.= "\t".'flash_color: "#'.$this->FILE_flash_color.'",'."\n";
+
+		$JS.= '//Debug Settings'."\n";
+		$JS.= "\t".'debug: '.$this->FILE_debug.''."\n";
+
+		//$JS.= 'file_post_name : "'.$this->FILE_file_post_name.'",'."\n";
+		/*
+		 $JS.= 'custom_settings : {'."\n";
+		 $swf_custom_settings_Keys = array_keys($this->FILE_custom_settings);
+		 for ($i=0;$i<count($this->FILE_custom_settings);$i++){
+		 $JS.= ''.$swf_custom_settings_Keys[$i].' : "'.$this->FILE_custom_settings[$swf_custom_settings_Keys[$i]].'"';
+		 if ($i!=(count($this->FILE_custom_settings)-1))
+		 $JS.= ',';
+		 }
+		 $JS.= '}'."\n";
+		 */
+		$JS.= '};'."\n";
+		$JS.= 'swfu = new SWFUpload(settings);';
+		$JS.= '}';
+        
+		$JS.= ''.$nameFunction.'();';
+
+		return $JS;
+	}
+
 	/**
 	 * Dentro de la llamada de contruccion del  Formulario
 	 * pregunta si ese nombre de campo tiene dentro  de el
@@ -2333,8 +2474,11 @@ class myForm {
 		$buf .= 'Autor: Jose Ignacio Gutierrez Guzman <http://www.osezno-framework.org/joselitohacker/>'."\n";
 		$buf .= '-->'."\n";
 
-		if ($this->useAddFile)
+		if ($this->useAddFile && !$this->useAddFileAfterLoad){
+		
 		  $buf .= $this->getJavaScriptSWFUploader();
+        }
+                
 
 		$this->cols = $cols;
 
