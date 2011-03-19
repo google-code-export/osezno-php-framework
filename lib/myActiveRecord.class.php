@@ -1055,6 +1055,7 @@ class myActiveRecord {
 	 * Cargar un archivo de SQL.
 	 * 
 	 * Carga una consulta sql desde un archivo fisico ademas con la posibilidad de asignar variables dentro de la lectura del archivo.
+	 * En caso de no encontrar el archivo retorna FALSE.
 	 * <code>
 	 * 
 	 * query.sql
@@ -1078,22 +1079,28 @@ class myActiveRecord {
 	 */
 	public function loadSqlFromFile ($file, $vars = array()){
 
-		$link = fopen($file,'r');
+		$link = @fopen($file,'r');
+
+		$sql = false;
 		
-  		$sql = fread($link, filesize($file));
-  		
-  		fclose($link);
-  		
-  		foreach ($vars as $var => $val){
-  			
-  			unset($vars[$var]);
-  			
-  			$vars['{'.$var.'}'] = $val;
-  		}
+		if ($link){
 		
-  		$keys = array_keys($vars);
+  			$sql = fread($link, filesize($file));
   		
-  		$sql = str_ireplace ( $keys, $vars, $sql);
+  			fclose($link);
+  		
+  			foreach ($vars as $var => $val){
+  			
+  				unset($vars[$var]);
+  			
+  				$vars['{'.$var.'}'] = $val;
+  			}
+		
+  			$keys = array_keys($vars);
+  		
+  			$sql = str_ireplace ( $keys, $vars, $sql);
+  		
+		}
   		
   		return $sql;
 	}
