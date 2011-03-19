@@ -1,5 +1,16 @@
 @CHARSET "ISO-8859-1";
 
+/** Capa que bloquea otros contenidos **/
+.blocker_mw {
+	background-color:#FFFFFF;
+	position: absolute;
+	display:block;
+	top:0;
+	left:0;
+	opacity:0.5;
+	filter:alpha(opacity=50)
+}
+
 /** Boton cerrar **/
 .buttom_close_mw {
 	background-image: url('<?php echo $_GET['path_img']; ?>button-close.gif');
