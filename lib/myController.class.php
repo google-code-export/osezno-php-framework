@@ -701,15 +701,16 @@ class myController extends myControllerExt {
 		$this->response->script($js);
 	}
 	
-	
 	/**
-	 * Cierra una venta modal
+	 * Cierra la ultima ventana modal abierta o las N ultimas ventanas modales abiertas. Tambien afecta los messageBox abiertos.
 	 * 
-	 * Cierra la ultima ventana modal abierta.
+	 * @param integer $number_of_windows Numero de ventanas que quiere cerrar
 	 */
-	public function closeModalWindow (){
+	public function closeModalWindow ($number_of_windows = 1){
 		
-		$this->response->script('closeModalWindow()');
+		for($i=0;$i<=$number_of_windows;$i++)
+		
+			$this->response->script('closeModalWindow()');
 	}
 
 	/**
@@ -819,7 +820,7 @@ class myController extends myControllerExt {
 	 */
 	public function closeMessageBox (){
 
-		$this->response->script('closeModalWindow()');
+		$this->closeModalWindow();
 	}
 	
 	/**
