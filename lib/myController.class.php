@@ -708,7 +708,7 @@ class myController extends myControllerExt {
 	 */
 	public function closeModalWindow ($number_of_windows = 1){
 		
-		for($i=0;$i<=$number_of_windows;$i++)
+		for($i=0;$i<$number_of_windows;$i++)
 		
 			$this->response->script('closeModalWindow()');
 	}
