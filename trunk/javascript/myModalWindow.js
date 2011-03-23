@@ -51,18 +51,26 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 function closeModalWindow (){
 	
 	var idElementBase = 'capaBase'+countId;
-    var vcp = document.getElementById(idElementBase);
+	
+	if (document.getElementById(idElementBase)){
+	
+		var vcp = document.getElementById(idElementBase);
 
-    var padreVcp = vcp.parentNode;
-	padreVcp.removeChild(vcp);
+		var padreVcp = vcp.parentNode;
+		
+		padreVcp.removeChild(vcp);
     
-	var idElementWindow = 'modalWindow'+countId;
-    var vmw = document.getElementById(idElementWindow);
+		var idElementWindow = 'modalWindow'+countId;
+		
+		var vmw = document.getElementById(idElementWindow);
 
-    var hijoVmw = vmw.parentNode;
-    hijoVmw.removeChild(vmw);
+		var hijoVmw = vmw.parentNode;
+		
+		hijoVmw.removeChild(vmw);
     
-    countId -= 1;
+		countId -= 1;
+	}
+	
 }
 
 
