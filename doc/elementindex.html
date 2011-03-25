@@ -89,7 +89,7 @@
 							<dt><b>addSelect</b></dt>
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddSelect">myForm::addSelect()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agregar campo de unica seleccion</dd>
 							<dt><b>addTab</b></dt>
-				<dd>in file myTabs.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myTabs.html#methodaddTab">myTabs::addTab()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agrega una pestaña a a la salida.</dd>
+				<dd>in file myTabs.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myTabs.html#methodaddTab">myTabs::addTab()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agrega una pestaña a la salida.</dd>
 							<dt><b>addText</b></dt>
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodaddText">myForm::addText()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Agregar caja de texto</dd>
 							<dt><b>addTextArea</b></dt>
@@ -141,7 +141,7 @@
 							<dt><b>closeMessageBox</b></dt>
 				<dd>in file myController.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myController.html#methodcloseMessageBox">myController::closeMessageBox()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Cierra un messageBox</dd>
 							<dt><b>closeModalWindow</b></dt>
-				<dd>in file myController.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myController.html#methodcloseModalWindow">myController::closeModalWindow()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Cierra una venta modal</dd>
+				<dd>in file myController.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myController.html#methodcloseModalWindow">myController::closeModalWindow()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Cierra la ultima ventana modal abierta o las N ultimas ventanas modales abiertas. Tambien afecta los messageBox abiertos.</dd>
 							<dt><b>closeWindow</b></dt>
 				<dd>in file myController.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myController.html#methodcloseWindow">myController::closeWindow()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Cierra una ventana.</dd>
 							<dt><b>create</b></dt>
@@ -278,6 +278,8 @@
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetHidden">myForm::getHidden()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtiene un campo Oculto</dd>
 							<dt><b>getHost</b></dt>
 				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetHost">myActiveRecord::getHost()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener el host.</dd>
+							<dt><b>getJavaScriptSWFUploaderAfterLoad</b></dt>
+				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetJavaScriptSWFUploaderAfterLoad">myForm::getJavaScriptSWFUploaderAfterLoad()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener el javascript necesario para</dd>
 							<dt><b>getLastInsertId</b></dt>
 				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetLastInsertId">myActiveRecord::getLastInsertId()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener Last Insert Id.</dd>
 							<dt><b>getList</b></dt>
@@ -285,13 +287,13 @@
 							<dt><b>getNumFieldsAffected</b></dt>
 				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetNumFieldsAffected">myActiveRecord::getNumFieldsAffected()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener numero de campos.</dd>
 							<dt><b>getNumRowsAffected</b></dt>
-				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetNumRowsAffected">myActiveRecord::getNumRowsAffected()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener numero de registros.</dd>
-							<dt><b>getNumRowsAffected</b></dt>
 				<dd>in file myDinamicList.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myList.html#methodgetNumRowsAffected">myList::getNumRowsAffected()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Registros afectados.</dd>
-							<dt><b>getPassword</b></dt>
-				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetPassword">myActiveRecord::getPassword()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener la clave del usuario.</dd>
+							<dt><b>getNumRowsAffected</b></dt>
+				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetNumRowsAffected">myActiveRecord::getNumRowsAffected()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener numero de registros.</dd>
 							<dt><b>getPassword</b></dt>
 				<dd>in file myForm.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#methodgetPassword">myForm::getPassword()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtiene una caja de texto tipo password</dd>
+							<dt><b>getPassword</b></dt>
+				<dd>in file myActiveRecord.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/myActiveRecord.html#methodgetPassword">myActiveRecord::getPassword()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtener la clave del usuario.</dd>
 							<dt><b>getPathProject</b></dt>
 				<dd>in file osezno.class.php, method <a href="OSEZNO-PHP-FRAMEWORK/osezno.html#methodgetPathProject">osezno::getPathProject()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Obtiene la ruta fisica del proyecto.</dd>
 							<dt><b>getPort</b></dt>
@@ -592,6 +594,8 @@
 	<div>
 		<h2>u</h2>
 		<dl>
+							<dt><b>$useAddFileAfterLoad</b></dt>
+				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$useAddFileAfterLoad">myForm::$useAddFileAfterLoad</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Verifica si un objeto tipo file ha sido  agregado al formulario despues de haber  cargado la pagina.</dd>
 							<dt><b>$useRowSeparator</b></dt>
 				<dd>in file myForm.class.php, variable <a href="OSEZNO-PHP-FRAMEWORK/myForm.html#var$useRowSeparator">myForm::$useRowSeparator</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Usar distincion de filas.</dd>
 							<dt><b>$use_cache</b></dt>
@@ -645,7 +649,7 @@
 	<a href="elementindex.html#top">top</a><br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 26 Feb 2011 13:06:50 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Thu, 24 Mar 2011 20:42:10 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
