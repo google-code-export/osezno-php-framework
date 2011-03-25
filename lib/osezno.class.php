@@ -338,9 +338,11 @@ class osezno {
   				$newContent = str_ireplace('</head>', $this->getAllHead().'</head>', $newContent);
   			
   				$newContent = str_ireplace('</body>', $this->getAllBody().'</body>', $newContent);
+  			
   			}
   			
   			$newContent = preg_replace('(\\{+[0-9a-zA-Z_]+\\})','',$newContent);
+  			
   		}else{
   			
   			$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.MSG_TEMPLATE_NO_FOUND.'&nbsp;&quot;'.$strNameTemplate.'&quot;<br><br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b> '.MSG_TEMPLATE_NO_FOUND_DET.'&nbsp;&quot;'.$this->pathFolderTemplates.'&quot;</div></div>';

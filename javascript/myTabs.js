@@ -96,28 +96,18 @@ function responseAHAH(pageElement, errorMessage, tab) {
          
          document.getElementById(pageElement).innerHTML = output;
          
-         
-         if (navigator.appVersion.indexOf("MSIE")!=-1){
+       } else {
+    	   
+    	 output = req[tab].responseText;
+    	   
+    	 document.getElementById(pageElement).innerHTML = errorMessage+"\n"+output;
         	 
-         }else{
-        	 
-        		 var el = document.getElementById('imagen_notificacion_1');
-        	 
-        		 if(el){
-        			 var padre = el.parentNode;
-        			 padre.removeChild(el);
-        		 }
-         }
-                  
-         
-         } else {
-        	 document.getElementById(pageElement).innerHTML = errorMessage+"\n"+output;
-        	 
-         }
-      }
+       }
+ 
+   }
    
    
-  }
+ }
 
 /**
  * Activa una pestaña
@@ -125,13 +115,15 @@ function responseAHAH(pageElement, errorMessage, tab) {
  * @param from	Iniciar desde id
  * @param countTabs	Numero de pestañas 
  * @param urlActive	Url a la que apunta la pestaña
- * @param idDiv	Id del div a modificar el contenido 
+ * @param idDiv	Id del div a modificar el contenido
+ * @param idDiv	Id del grupo de pestañas  
  * @return
  */
-function makeactive(tabActive, from, countTabs, urlActive, idDiv) { 
+function makeactive(tabActive, from, countTabs, urlActive, idDiv, idTabs) { 
 		
 		for (var i=from;i<(from+countTabs);i++){
-			document.getElementById("tab"+i).className = '';
+			
+			document.getElementById(idTabs+"_tab"+i).className = '';
 		}
 
 		document.getElementById(tabActive).className = 'current'; 
@@ -145,12 +137,12 @@ function makeactive(tabActive, from, countTabs, urlActive, idDiv) {
  * @param newUrl
  * @return
  */ 
-function changeActiveTab (etq, newUrl){
+function changeActiveTab (objTab, newUrl){
 	
-	if (newUrl)
-		etq[3] = newUrl;
-	
-	makeactive(etq[0], etq[1], etq[2], etq[3], etq[4]);
+		if (newUrl)
+			objTab[3] = newUrl;
+
+		makeactive(objTab[0], objTab[1], objTab[2], objTab[3], objTab[4], objTab[5]);
 	
 }
  

@@ -20,6 +20,8 @@ class myTabs{
 	 */
 	private $arrayTabs = array ();
 
+	private $id_tabs = '';
+	
 	/**
 	 * Contrucctor de la clase.
 	 * 
@@ -29,15 +31,25 @@ class myTabs{
 	 * Ejemplo:
 	 * <?php
 	 * 
-	 * $myTabs = new myTabs;
+	 * $myTabs = new myTabs('grupo_opciones_1');
 	 * 
 	 * echo $myTabs->getTabsHtml();
 	 * 
 	 * ?>
 	 * 
 	 * </code> 
+	 * @param string $id_tabs Nombre del grupo de pestañas.
 	 */
-	public function __construct(){
+	public function __construct($id_tabs = ''){
+		
+		if (!$id_tabs){
+		
+			$id_tabs = 'n';
+			
+			$id_tabs .= rand(0, 100000);
+		}
+		
+		$this->id_tabs = $id_tabs;
 		
 		if (!isset($GLOBALS['OF_TABS_ID_SEC'])){
 			
@@ -48,21 +60,22 @@ class myTabs{
 	}
 	
 	/**
-	 * Agrega una pestaña a a la salida.
+	 * Agrega una pestaña a la salida.
 	 * 
 	 * Se encarga de agregar nuevas pestanas a la salida HTML.
+	 * Si se apunta a un script este debe estar al mismo nivel si se quieren preservar los eventos declarados.
+	 * Un archivo HTML puede incluirse desde cualquier ruta publica del servidor.
 	 * <code>
 	 * 
 	 * Ejemplo:
+	 * 
 	 * <?php
 	 * 
 	 * $myTabs = new myTabs;
 	 * 
-	 * // a.php y b.html estan contenidas dentro del modulo.
-	 * 
 	 * $myTabs->addTab('Opción A','a.php');
 	 * 
-	 * $myTabs->addTab('Opción B','b.html');
+	 * $myTabs->addTab('Opción B','../b.html');
 	 *   
 	 * echo $myTabs->getTabsHtml();
 	 * 
@@ -98,7 +111,7 @@ class myTabs{
 	 * 
 	 * include 'handlerEvent.php';
 	 * 
-	 * $myTabsA = new myTabs;
+	 * $myTabsA = new myTabs('primergrupo');
 	 * 
 	 * $myTabsA->addTab('Opción A','a.php');
 	 * 
@@ -133,7 +146,7 @@ class myTabs{
 
 		$script .= "\n".'<script type="text/javascript">'."\n";
 		
-		$html .= '<table width="100%" border="0"><tr><td><div id="div_tab"><ul>';
+		$html .= '<table width="100%" border="0"><tr><td><div id="div_tab"><ul>'."\n";
 		
 		$from = $i = $GLOBALS['OF_TABS_ID_SEC'];
 		
@@ -141,29 +154,33 @@ class myTabs{
 		
 		$idTabDef = '';
 
-		$idDiv = 'content_tab_'.$i;
+		$idDiv = $this->id_tabs.'_content_tab_'.$i;
 		
 		foreach ($this->arrayTabs as $etqTab => $urlTab){
 			
 			if (stripos($urlTab,'?'))
+			
 			   $urlTab.='&no_load_xajax=true';
-			else   
+			else
+			   
 			   $urlTab.='?no_load_xajax=true';
 			
-			$script .= "\t".'var myTab'.etqFormat($etqTab).' = new Array(\'tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\');'."\n";
+			$script .= "\t".'var '.$this->id_tabs.'_myTab'.etqFormat($etqTab).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\', \''.$this->id_tabs.'\');'."\n";
 			
-			$html .= '<li id="tab'.$i.'"><span onclick="makeactive(\'tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\')">'.$etqTab.'</span></li>';
+			$html .= '<li id="'.$this->id_tabs.'_tab'.$i.'"><span onclick="makeactive(\''.$this->id_tabs.'_tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\', \''.$this->id_tabs.'\')">'.$etqTab.'</span></li>'."\n";
 			
 			if ($tabDefa == $etqTab)
+			
 				$idTabDef = $i;
 			
 			$i++;
 		}
 	
-		$html .= '</ul></div></td></tr><tr><td><div id="'.$idDiv.'"></div></td></tr></table>';
+		$html .= '</ul></div></td></tr><tr><td><div id="'.$idDiv.'"></div></td></tr></table>'."\n";
 		
 		if ($tabDefa)
-			$html .= '<script type="text/javascript" charset="UTF-8">makeactive(\'tab'.$idTabDef.'\','.($from).','.$couAr.',\''.$this->arrayTabs[$tabDefa].'\',\''.$idDiv.'\');</script>';
+		
+			$html .= '<script type="text/javascript" charset="UTF-8">makeactive(\''.$this->id_tabs.'_tab'.$idTabDef.'\','.($from).','.$couAr.',\''.$this->arrayTabs[$tabDefa].'\',\''.$idDiv.'\', \''.$this->id_tabs.'\');</script>'."\n";
 		
 		$GLOBALS['OF_TABS_ID_SEC'] = $i+1;	
 			
