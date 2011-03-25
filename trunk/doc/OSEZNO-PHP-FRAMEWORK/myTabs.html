@@ -147,19 +147,20 @@ myTabs<br /><br /><br /><br />
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 40]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 43]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>myTabs __construct(
-)</code>
+[string
+$id_tabs = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
 		Contrucctor de la clase.<br /><br /><p>Contrucctor de la clase.  <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-var">$myTabs&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html">myTabs</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myTabs&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html">myTabs</a></span><span class="src-sym">(</span><span class="src-str">'grupo_opciones_1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myTabs</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html#methodgetTabsHtml">getTabsHtml</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -176,11 +177,21 @@ myTabs<br /><br /><br /><br />
 <br /><br />
 
 	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$id_tabs</b>&nbsp;&nbsp;</td>
+        <td>Nombre del grupo de pestañas.</td>
+      </tr>
+        </table>
+    </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
 	<a name="methodaddTab"></a>
-	<h3>method addTab <span class="smalllinenumber">[line 75]</span></h3>
+	<h3>method addTab <span class="smalllinenumber">[line 88]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -191,16 +202,15 @@ $urlTab)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Agrega una pestaña a a la salida.<br /><br /><p>Se encarga de agregar nuevas pestanas a la salida HTML.  <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+		Agrega una pestaña a la salida.<br /><br /><p>Se encarga de agregar nuevas pestanas a la salida HTML.  Si se apunta a un script este debe estar al mismo nivel si se quieren preservar los eventos declarados.  Un archivo HTML puede incluirse desde cualquier ruta publica del servidor.  <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$myTabs&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html">myTabs</a></span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;a.php&nbsp;y&nbsp;b.html&nbsp;estan&nbsp;contenidas&nbsp;dentro&nbsp;del&nbsp;modulo.</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$myTabs</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html#methodaddTab">addTab</a><span class="src-sym">(</span><span class="src-str">'Opción&nbsp;A'</span><span class="src-sym">,</span><span class="src-str">'a.php'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-var">$myTabs</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html#methodaddTab">addTab</a><span class="src-sym">(</span><span class="src-str">'Opción&nbsp;B'</span><span class="src-sym">,</span><span class="src-str">'b.html'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myTabs</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html#methodaddTab">addTab</a><span class="src-sym">(</span><span class="src-str">'Opción&nbsp;B'</span><span class="src-sym">,</span><span class="src-str">'../b.html'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myTabs</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html#methodgetTabsHtml">getTabsHtml</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -236,7 +246,7 @@ $urlTab)</code>
   </div>
   <hr />
 	<a name="methodgetTabsHtml"></a>
-	<h3>method getTabsHtml <span class="smalllinenumber">[line 128]</span></h3>
+	<h3>method getTabsHtml <span class="smalllinenumber">[line 141]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -261,7 +271,7 @@ $tabDefa = ''])</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-inc">include&nbsp;</span><span class="src-str">'handlerEvent.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-var">$myTabsA&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html">myTabs</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myTabsA&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html">myTabs</a></span><span class="src-sym">(</span><span class="src-str">'primergrupo'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$myTabsA</span><span class="src-sym">-&gt;</span><a href="../OSEZNO-PHP-FRAMEWORK/myTabs.html#methodaddTab">addTab</a><span class="src-sym">(</span><span class="src-str">'Opción&nbsp;A'</span><span class="src-sym">,</span><span class="src-str">'a.php'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -313,7 +323,7 @@ $tabDefa = ''])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 26 Feb 2011 13:06:57 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Thu, 24 Mar 2011 20:42:19 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

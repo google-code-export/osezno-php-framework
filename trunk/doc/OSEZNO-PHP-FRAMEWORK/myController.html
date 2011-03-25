@@ -583,7 +583,7 @@ $propertyElement)</code>
   </div>
   <hr />
 	<a name="methodcloseMessageBox"></a>
-	<h3>method closeMessageBox <span class="smalllinenumber">[line 820]</span></h3>
+	<h3>method closeMessageBox <span class="smalllinenumber">[line 830]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -608,16 +608,17 @@ $propertyElement)</code>
   </div>
   <hr />
 	<a name="methodcloseModalWindow"></a>
-	<h3>method closeModalWindow <span class="smalllinenumber">[line 710]</span></h3>
+	<h3>method closeModalWindow <span class="smalllinenumber">[line 709]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void closeModalWindow(
-)</code>
+[integer
+$number_of_windows = 1])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Cierra una venta modal<br /><br /><p>Cierra la ultima ventana modal abierta.</p><br /><br /><br />
+		Cierra la ultima ventana modal abierta o las N ultimas ventanas modales abiertas. Tambien afecta los messageBox abiertos.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -629,6 +630,16 @@ $propertyElement)</code>
 <br /><br />
 
 	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$number_of_windows</b>&nbsp;&nbsp;</td>
+        <td>Numero de ventanas que quiere cerrar</td>
+      </tr>
+        </table>
+    </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
@@ -766,7 +777,7 @@ $idNewElement)</code>
   </div>
   <hr />
 	<a name="methoderrorBox"></a>
-	<h3>method errorBox <span class="smalllinenumber">[line 975]</span></h3>
+	<h3>method errorBox <span class="smalllinenumber">[line 1018]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1120,14 +1131,14 @@ $idNewElement)</code>
   </div>
   <hr />
 	<a name="methodmessageBox"></a>
-	<h3>method messageBox <span class="smalllinenumber">[line 877]</span></h3>
+	<h3>method messageBox <span class="smalllinenumber">[line 887]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void messageBox(
 [string
 $msg = ''], [string
-$iconMsg = 'info'], [array
+$iconMsg = 'warning'], [array
 $mixedButtons = array()], [
 $param1 = ''], [
 $param2 = ''], [
@@ -1233,7 +1244,7 @@ $param5 = ''])</code>
   </div>
   <hr />
 	<a name="methodmodalWindow"></a>
-	<h3>method modalWindow <span class="smalllinenumber">[line 742]</span></h3>
+	<h3>method modalWindow <span class="smalllinenumber">[line 752]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1293,7 +1304,7 @@ $effect = ''])</code>
   </div>
   <hr />
 	<a name="methodmodalWindowFromUrl"></a>
-	<h3>method modalWindowFromUrl <span class="smalllinenumber">[line 725]</span></h3>
+	<h3>method modalWindowFromUrl <span class="smalllinenumber">[line 726]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1353,7 +1364,7 @@ $effect = ''])</code>
   </div>
   <hr />
 	<a name="methodMYFORM_validate"></a>
-	<h3>method MYFORM_validate <span class="smalllinenumber">[line 1076]</span></h3>
+	<h3>method MYFORM_validate <span class="smalllinenumber">[line 1121]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1422,7 +1433,7 @@ $requiredFields)</code>
   </div>
   <hr />
 	<a name="methodMYLIST_reload"></a>
-	<h3>method MYLIST_reload <span class="smalllinenumber">[line 1677]</span></h3>
+	<h3>method MYLIST_reload <span class="smalllinenumber">[line 1729]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1458,18 +1469,19 @@ $idList)</code>
   </div>
   <hr />
 	<a name="methodMYTAB_makeActive"></a>
-	<h3>method MYTAB_makeActive <span class="smalllinenumber">[line 1700]</span></h3>
+	<h3>method MYTAB_makeActive <span class="smalllinenumber">[line 1763]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void MYTAB_makeActive(
 string
 $tabName, [string
+$idTabs = ''], [string
 $newUrl = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Activa una pestaña creada<br /><br /><p>Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña.</p><br /><br /><br />
+		Activa una pestaña creada<br /><br /><p>Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña y del ID del grupo que se declaro en myTabs::_contruct.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -1491,6 +1503,11 @@ $newUrl = ''])</code>
       </tr>
           <tr>
         <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$idTabs</b>&nbsp;&nbsp;</td>
+        <td>Nombre grupo de pestañas</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$newUrl</b>&nbsp;&nbsp;</td>
         <td>Permite asignar contenido desde una nueva Url</td>
       </tr>
@@ -1500,7 +1517,7 @@ $newUrl = ''])</code>
   </div>
   <hr />
 	<a name="methodnotificationWindow"></a>
-	<h3>method notificationWindow <span class="smalllinenumber">[line 993]</span></h3>
+	<h3>method notificationWindow <span class="smalllinenumber">[line 1038]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2259,7 +2276,7 @@ $varReturn)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 26 Feb 2011 13:06:51 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Thu, 24 Mar 2011 20:42:12 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
