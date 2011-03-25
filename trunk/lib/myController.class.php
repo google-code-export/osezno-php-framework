@@ -725,7 +725,16 @@ class myController extends myControllerExt {
 	 */
 	public function modalWindowFromUrl ($url = '', $title = '', $width = 200, $height = 200, $effect = ''){
 		
+		$this->includeScriptOnce($url);
+		
 		$this->modalWindow('', $title, $width, $height, $effect);
+		
+		$strGet = 'no_load_xajax=true';
+		
+		if (stripos($url,'?'))
+		   $url.='&'.$strGet;
+		else   
+		   $url.='?'.$strGet;
 		
 		$this->response->script('callUrlAsin("'.$url.'","'.$this->idLastMWopen.'_work")');
 	}
@@ -875,22 +884,39 @@ class myController extends myControllerExt {
 	 * @param4 array/string $param4 Parametro 4
 	 * @param5 array/string $param5 Parametro 5
 	 */	
-	public function messageBox($msg = '', $iconMsg = 'info', $mixedButtons = array(), $param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = ''){
+	public function messageBox($msg = '', $iconMsg = 'warning', $mixedButtons = array(), $param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = ''){
 		
-		$arrImg = array (
-			'critical'=>'img_critical',
-			'error'=>'img_error',
-			'help'=>'img_help',
-			'info'=>'img_info',
-			'list'=>'img_list',
-			'user'=>'img_user',
-			'warning'=>'img_warning'
+		$arrInfoImg = array (
+		
+			'critical'	=>	array('img_critical',MSGBOX_TITLE_CRITICAL),
+		
+			'error'		=>	array('img_error',MSGBOX_TITLE_ERROR),
+		
+			'help'		=>	array('img_help',MSGBOX_TITLE_HELP),
+		
+			'info'		=>	array('img_info',MSGBOX_TITLE),
+		
+			'list'		=>	array('img_list',MSGBOX_TITLE_LIST),
+		
+			'user'		=>	array('img_user',MSGBOX_TITLE_USER),
+		
+			'warning'	=>	array('img_warning',MSGBOX_TITLE_WARNING)
 		);
 
-		if (isset($arrImg[$iconMsg]))
-			$iconMsg = $arrImg[$iconMsg];
-		else
-			$iconMsg = $arrImg['info'];		
+		$msgMsg = '';
+		
+		if (isset($arrInfoImg[strtolower($iconMsg)])){
+
+			$icon = $arrInfoImg[strtolower($iconMsg)][0];
+			
+			$msgMsg  = $arrInfoImg[strtolower($iconMsg)][1];
+			
+		}else{
+			
+			$icon = $arrInfoImg['warning'][0];
+			
+			$msgMsg = $arrInfoImg['warning'][1];
+		}		
 			
 		
 		$file = $GLOBALS['folderProject'].'/themes/'.THEME_NAME.'/msg_box/message_box.tpl';
@@ -901,9 +927,12 @@ class myController extends myControllerExt {
 		  $width = $this->widthMessageBox;
 				  
 		if (!$this->heightMessageBox){
+			
              $height = intval(strlen($msg)/55)*23;
+             
                  if ($height<100)
-                   $height = 170;
+                 
+                   	$height = 170;
 		}else
 		  $height = $this->heightMessageBox;		
 
@@ -914,12 +943,15 @@ class myController extends myControllerExt {
 		$objMyForm->styleClassButtons = $this->class_name_msg_buttons;
 		
 		$primerButton = '';
+		
 		if (count($mixedButtons)){
 		  
 			foreach($mixedButtons as $etq=>$action){
 
 				if (is_numeric($etq)){
+					
 					$etq = $action;
+					
 					$action = '';
 				}
 				
@@ -930,7 +962,8 @@ class myController extends myControllerExt {
 
 		  		$objMyForm->addEvent($nameButton,'onclick',$action, $param1, $param2, $param3, $param4, $param5);
 		  	
-		  		$frm .= str_ireplace('GetDataForm(\'\'),','',$objMyForm->getButton($nameButton,$etq));	
+		  		$frm .= str_ireplace('GetDataForm(\'\'),','',$objMyForm->getButton($nameButton,$etq));
+		  			
 		  		$frm .= '&nbsp;&nbsp;&nbsp;';
 				  	
 		 		if (!$primerButton)
@@ -948,14 +981,23 @@ class myController extends myControllerExt {
 		}
 
 		$arRepl = array (
-			'{titl_msg}'=>MSGBOX_TITLE,
+		
+			'{titl_msg}'=>$msgMsg,
+		
 			'{height_msg_box}'=>$height,
+		
 			'{width_msg_box}'=>$width,
+		
 			'{cont_msg_box}'=>str_replace("\n",'<br>',$msg),
-			'{class_div_img}'=>$iconMsg,
+		
+			'{class_div_img}'=>$icon,
+		
 			'{cont_form}'=>$frm,
+		
 			'{width_area}'=>($width-21),
+		
 			'{height_area}'=>($height-52),
+		
 			'{height_main}'=>($height-52),
 		);		
 		
@@ -1713,13 +1755,22 @@ class myController extends myControllerExt {
 	/**
 	 * Activa una pestaña creada
 	 * 
-	 * Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña.
+	 * Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña y del ID del grupo que se declaro en myTabs::_contruct.
 	 * @param string $tabName Nombre de la pestaña
+	 * @param string $idTabs Nombre grupo de pestañas
 	 * @param string $newUrl Permite asignar contenido desde una nueva Url
 	 */
-	public function MYTAB_makeActive($tabName, $newUrl = ''){
+	public function MYTAB_makeActive($tabName, $idTabs = '', $newUrl = ''){
 		
-		$this->script("changeActiveTab(myTab".etqFormat($tabName).",'".$newUrl."')");
+		if ($idTabs){
+		
+			$script = "changeActiveTab(".$idTabs."_myTab".etqFormat($tabName).",'".$newUrl."')";
+			
+			$this->script($script);
+			
+		}else 
+			$this->notificationWindow(MSG_FAILED_MAKE_ACTIVE_TAB,3,'warning');
+			
 	}
 	
 }

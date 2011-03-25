@@ -49,7 +49,8 @@
 	define('LABEL_HELP_USELIMIT_RULE_FORM','Aplicar limite de registros');
 	define('LABEL_HELP_SELECT_FILEDS_TOSHOW','Seleccione (<b>Ctrl + Click</b>) los campos que desea mostrar en el archivo.');
 	
-	define('MSG_FAILED_SHOW_FILTER_MUST_PROVIDE_REAL_NAME','Debe especificar al menos un campo con <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery"><font style="font-size: 14px;">alias</font></a>.');
+	define('MSG_FAILED_MAKE_ACTIVE_TAB','Debe especificar un <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myController.html#methodMYTAB_makeActive" target="_blank"><font style="font-size: 14px;">ID de grupo</font></a>.');
+	define('MSG_FAILED_SHOW_FILTER_MUST_PROVIDE_REAL_NAME','Debe especificar al menos un campo con <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery" target="_blank"><font style="font-size: 14px;">alias</font></a>.');
 	define('MSG_FAILED_ORDER_BY_FIELD_MUST_PROVIDE_REAL_NAME','Debe especificar un <a href="http://www.osezno-framework.org/doc/OSEZNO-PHP-FRAMEWORK/myList.html#methodsetRealNameInQuery"><font style="font-size: 14px;">alias</font></a> para este campo.');
 	define('MSG_FAILED_SELECT_FIELD_TO_SHOW','Debe seleccionar al menos un campo a mostrar.');
 	define('MSG_SELECT_FIELD_TO_SHOW','Seleccione (<b>Ctrl + Click</b>) los campos que desea mostrar en el archivo.');
@@ -72,6 +73,13 @@
 	 * Message box / Errores
 	 */
 	define('MSGBOX_TITLE','Informaci&oacute;n del sistema');
+	define('MSGBOX_TITLE_CRITICAL','Error critico del sistema');
+	define('MSGBOX_TITLE_ERROR','Error del sistema');
+	define('MSGBOX_TITLE_HELP','Ayuda del sistema');
+	define('MSGBOX_TITLE_LIST','Informaci&oacute;n de registros');
+	define('MSGBOX_TITLE_USER','Informaci&oacute;n de usuarios');
+	define('MSGBOX_TITLE_WARNING','Alerta del sistema');
+	
 	define('MSGBOX_STR_UNI_BUTTON','Aceptar');
 	
 	define('ERROR_DET_LABEL','Detalle del error');
