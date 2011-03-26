@@ -350,7 +350,7 @@ class osezno {
   			die ($this->arrayAssignAreasHead['css_errors'].$msgError);
   		}
   		
-  		echo $newContent;
+  		echo utf8_decode($newContent);
   	}
   	
   }
