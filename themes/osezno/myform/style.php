@@ -10,10 +10,10 @@
 	border-color:gray;
 	border-width: 1px;
 	border-style: solid;
-	padding-left:1px;
-	padding-top:1px;	
-	padding-bottom:1px;
-	padding-right:1px;
+	padding-left:0px;
+	padding-top:0px;	
+	padding-bottom:0px;
+	padding-right:0px;
 }
 
 
@@ -36,7 +36,7 @@ select.caja {
 	font-size: 11px;
 	color: #000000;
 	vertical-align: middle;
-	width:100px;
+	width:150px;
 }
 
 .select_fields_to_show {
@@ -68,15 +68,24 @@ select.caja_required {
 	color: #000000;
 	background-color:#FFD7D7;
 	vertical-align: middle;
-	width:100px;
+	width:150px;
+}
+
+.boton_cal {
+	height:22px;
+	padding-bottom:0px;
+	padding-top:0px;
+	padding-left:1px;
+	padding-right:1px;
 }
 
 .boton {
-	height:28px;
+	height:25px;
 	padding-bottom:0px;
 	padding-top:0px;
-	padding-left:0px;
-	padding-right:0px;
+	padding-left:1px;
+	padding-right:1px;
+	font-size: 10px;
 }
 
 .boton_font {
@@ -89,7 +98,7 @@ select.caja_required {
 
 .etiqueta {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 11px;
+	font-size: 10px;
 	color: #000000;
 	text-align: right;
 	vertical-align: middle;
@@ -105,11 +114,22 @@ select.caja_required {
 	font-weight: normal;
 }
 
+/**
+ * Legend fielset
+ **/
 .formulario_fieldset {
-	font-family: Verdana, Arial,Helvetica, sans-serif;
-	font-size: 10px;
-	font-weight:bold ;
-	text-transform: uppercase;
-	padding: 3px;
-	text-align: center;
+	font-family: Arial,Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	text-align:left;
+	color:#000000;
+}
+
+fieldset {
+	margin-top:0px;
+	padding-bottom:5px;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+	-moz-border-radius: 9px;
 }

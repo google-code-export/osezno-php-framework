@@ -1399,12 +1399,12 @@ class myForm {
 
 		if ($CampoFecha){
 			
-			$LauncherCalendar = '<button '.$this->checkIfIsDisabled($name).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.getElementById(\''.$name.'\').value, \''.$name.'\', \''.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+			$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($name).' type="button" class="boton_cal" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.getElementById(\''.$name.'\').value, \''.$name.'\', \''.$name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
 			
 			$Disabled = 'readonly';
 		}
 			
-		$buf ='<input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="text" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" '.$Disabled.' maxlength="'. $maxlength.'"'.$keypress.'  '.$this->checkExistEventJs($name).'>'.$LauncherCalendar.''."\n";
+		$buf ='<table cellpadding="0" border="0" cellspacing="0"><tr><td><input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="text" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" '.$Disabled.' maxlength="'. $maxlength.'"'.$keypress.'  '.$this->checkExistEventJs($name).'></td>'.$LauncherCalendar.'</tr></table>'."\n";
 			
 		return $buf;
 	}
@@ -2528,12 +2528,12 @@ class myForm {
 
 					if ($campos_f[7]){
 						
-						$LauncherCalendar = '<button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="'.$this->styleClassFields.'" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button>';
+						$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="boton_cal" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.getElementById(\''.$campos_f[2].'\').value, \''.$campos_f[2].'\', \''.$campos_f[2].'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
 						
 						$Disabled = 'readonly';
 					}
 						
-					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="text" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" '.$Disabled.' maxlength="'.$campos_f[5].'"'.$keypress.''.$this->checkExistEventJs($campos_f[2]).''.$this->checkIfIsDisabled($campos_f[2]).'>'.$LauncherCalendar.'</td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><table cellpadding="0" border="0" cellspacing="0"><tr><td><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="text" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" '.$Disabled.' maxlength="'.$campos_f[5].'"'.$keypress.''.$this->checkExistEventJs($campos_f[2]).''.$this->checkIfIsDisabled($campos_f[2]).'></td>'.$LauncherCalendar.'</tr></table></td>'."\n";
 					break;
 				case 'password':
 					
