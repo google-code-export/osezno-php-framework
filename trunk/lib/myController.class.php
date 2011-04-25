@@ -1494,7 +1494,7 @@ class myController extends myControllerExt {
 
 			$objMyForm->addHelp('case_sensitive_'.$numRuleQuery,LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM);
 		
-			$html .= '<td width="20%" align="center">'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).$objMyForm->getCheckBox('case_sensitive_'.$numRuleQuery).'</td>';
+			$html .= '<td width="20%" align="center"><table cellpadding="0" border="0" cellspacing="0"><tr><td>'.$objMyForm->getText('value_'.$numRuleQuery,NULL,12).'</td><td>'.$objMyForm->getCheckBox('case_sensitive_'.$numRuleQuery).'</td></tr></table></td>';
 
 			$objMyForm->addHelp($idList.'_remove_rule_'.$numRuleQuery,LABEL_HELP_REM_RULE_FORM);
 		
