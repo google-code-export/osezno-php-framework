@@ -1421,22 +1421,22 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_addRuleQuery ($datForm, $idList){
 		
-		$arFields = array();
-		
-		$objMyForm = new myForm($idForm = $idList.'QueryForm');
-		
-		$objMyForm->cellPadding = 0;
-		
-		$objMyForm->styleTypeHelp = 2;
-		
-		$objMyForm->selectUseFirstValue = false;
-		
 		$objList = new myList($idList);
 		
 		$arAlsInQry = $objList->getVar('arrayAliasSetInQuery');
 
 		if (count($arAlsInQry)){
 
+			$objMyForm = new myForm($idForm = $idList.'QueryForm');
+		
+			$objMyForm->cellPadding = 0;
+		
+			$objMyForm->styleTypeHelp = 2;
+		
+			$objMyForm->selectUseFirstValue = false;
+			
+			$arFields = array();
+			
 			$arFldOnQry = $objList->getVar('arrayFieldsOnQuery');
 		
 			$arEvnOnClm = $objList->getVar('arrayEventOnColumn');
@@ -1469,8 +1469,7 @@ class myController extends myControllerExt {
 					if (isset($arAlsInQry[$field])){
 					
 						$data = $arAlsInQry[$field];
-					
-						//list($etq,$data_type) = explode('::',$data);
+
 					}else
 						$data = $field;
 					
@@ -1653,7 +1652,7 @@ class myController extends myControllerExt {
 					
 					if (isset($arAlInQry[$datForm['field_'.$i]]))
 						$fieldQuery = $arAlInQry[$datForm['field_'.$i]];
-					
+
 					$sqlRule = $datForm['logic_'.$i].' ';
 					
 					if (!$datForm['case_sensitive_'.$i])
