@@ -1419,7 +1419,7 @@ class myController extends myControllerExt {
 	 * @param $idList	Id lista
 	 * @return string
 	 */
-	public function MYLIST_addRuleQuery ($datForm, $idList){
+	public function MYLIST_addRuleQuery ($datForm, $idList, $showFirstRule){
 		
 		$objList = new myList($idList);
 		
@@ -1527,7 +1527,9 @@ class myController extends myControllerExt {
 					$this->assign($id,'value',$value);
 			}
 		
-			$this->script("blockFirstElementForm('".$idForm."')");
+			if (!$showFirstRule)
+			
+				$this->script("blockFirstElementForm('".$idForm."')");
 			
 		}else 
 			$this->notificationWindow(MSG_FAILED_SHOW_FILTER_MUST_PROVIDE_REAL_NAME,4,'warning');

@@ -1482,7 +1482,7 @@ class myList  {
 		
 		$objMyForm->addHelp('add_rule_'.$this->idList,LABEL_HELP_ADD_RULE_QUERY_BUTTON_FORM);
 		
-		$objMyForm->addEvent('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',$this->idList);
+		$objMyForm->addEvent('add_rule_'.$this->idList,'onclick','MYLIST_addRuleQuery',$this->idList,$showFirstRule);
 		
 		$htble .= '<td width="10%" align="right">'.$objMyForm->getButton('add_rule_'.$this->idList,'','find.gif').'</td>';
 		
