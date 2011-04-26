@@ -164,6 +164,37 @@ class myList  {
 	);	
 	
 	/**
+	 * Tipos de filtro
+	 * 
+	 * Relacion en filtros sql
+	 * @access private
+	 * @var mixed
+	 */
+	private $myDinamicListRel = array(		
+	
+			'like'=>'LIKE',
+	
+			'in'=>'IN',
+			
+			'greater_than'=>'>',
+		
+			'greater_equal_than'=>'>=',
+		
+			'equal'=>'=',
+
+			'different'=>'<>',
+	
+			'less_than'=>'<',
+		
+			'less_equal_than'=>'<=',
+			
+			'notin'=>'NOT IN',
+	
+			'notlike'=>'NOT LIKE'
+			
+		);
+		
+	/**
 	 * Motor de base de datos que usa.
 	 * 
 	 * @var string
@@ -843,9 +874,10 @@ class myList  {
 	/**
 	 * Construye la lista dinamica
 	 * @param $showQueryForm	Mostrar formulario de consulta
+	 * @param $showFirstRule	Mostrar primera regla de formulario de consulta
 	 * @return unknown_type
 	 */
-	private function buildList ($showQueryForm){
+	private function buildList ($showQueryForm, $showFirstRule){
 		
 		$buf = '';
 		
@@ -1312,7 +1344,7 @@ class myList  {
 		
 		if ($showQueryForm && $this->successFul)
 		
-			$this->bufHtml = $this->buildQueryForm().$this->bufHtml;
+			$this->bufHtml = $this->buildQueryForm($showFirstRule).$this->bufHtml;
 		
 		# Registramos las variables que se han usado
 		$this->regAttClass(get_class_vars(get_class($this)));
@@ -1347,18 +1379,19 @@ class myList  {
 	 * Obtener formulario de filtro
 	 * 
 	 * Retorna el formulario de filtro para una lista dinámica.
+	 * @param boolean $showFirstRule	Mostrar primera regla/filtro al iniciar.
 	 * @return string
 	 */
-	public function getQueryForm (){
+	public function getQueryForm ($showFirstRule = false){
 		
-		return $this->buildQueryForm();
+		return $this->buildQueryForm($showFirstRule);
 	}
 	
 	/**
 	 * Construye el Html del formulario de consulta
 	 * @return string
 	 */
-	private function buildQueryForm (){
+	private function buildQueryForm ($showFirstRule){
 		
 		$arFields = array();
 		
@@ -1457,9 +1490,97 @@ class myList  {
 		
 		$objMyForm->addComment('options',$htble);
 		
-		$objMyForm->addComment('rule_for','<div class="form_rule_for_list" id="rule_for_'.$this->idList.'"></div>');
+		$htmFirstRule = '';
+		
+		if ($showFirstRule)
+
+			$htmFirstRule = $this->getFirstRuleOnQueryForm();
+		
+		$objMyForm->addComment('rule_for','<div class="form_rule_for_list" id="rule_for_'.$this->idList.'">'.$htmFirstRule.'</div>');
 		
 		return $objMyForm->getForm(1);
+	}
+	
+	private function getFirstRuleOnQueryForm (){
+		
+		$html = '';
+		
+		if (count($this->arrayAliasSetInQuery)){
+
+			$arFields = array();
+			
+			$objMyForm = new myForm($idForm = $this->idList.'QueryForm');
+			
+			$objMyForm->cellPadding = 0;
+		
+			$objMyForm->styleTypeHelp = 2;
+		
+			$objMyForm->selectUseFirstValue = false;
+			
+			$this->numRuleQuery += 1;
+			
+			$html .= '<table border="0" id="rule_gp_'.$this->idList.'_'.$this->numRuleQuery.'" width="100%" cellpadding="0" cellspacing="0">';
+			
+			$html .= '<tr>';
+			
+			$html .= '<td width="10%" align="center"><div id="status_'.$this->idList.'_'.$this->numRuleQuery.'" class="rule_cancel" id=""></div></td>';
+			
+			$objMyForm->addHelp('logic_'.$this->numRuleQuery,LABEL_LOGIC_FIELD_ADD_RULE_FORM);
+			
+			$html .= '<td width="20%" align="center">'.$objMyForm->getHidden('logic_'.$this->numRuleQuery,'AND').'</td>';
+				
+			foreach ($this->arrayFieldsOnQuery as $field){
+			
+				if (!isset($this->arrayEventOnColumn[$field]) && isset($this->arrayAliasSetInQuery[$field])){
+				
+					$etq = $field;
+				
+					if (isset($this->arrayAliasSetInQuery[$field])){
+					
+						$data = $this->arrayAliasSetInQuery[$field];
+					
+					}else
+						$data = $field;
+					
+					$arFields[$field] = $etq;
+				}
+			}
+			
+			$objMyForm->addHelp('field_'.$this->numRuleQuery, LABEL_FIELD_LIST_ADD_RULE_FORM);
+				
+			$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('field_'.$this->numRuleQuery,$arFields).'</td>';
+
+			$spaCha = '&nbsp;';
+			
+			$objMyForm->addEvent('relation_'.$this->numRuleQuery, 'onchange', 'MYLIST_caseSensitiveCheckBox','case_sensitive_'.$this->numRuleQuery, 'relation_'.$this->numRuleQuery);
+			
+			$objMyForm->addHelp('relation_'.$this->numRuleQuery,LABEL_RELATION_FIELD_ADD_RULE_FORM);
+			
+			$html .= '<td width="20%" align="center">'.$objMyForm->getSelect('relation_'.$this->numRuleQuery,$this->myDinamicListRel).'</td>';
+			
+			$objMyForm->addHelp('value_'.$this->numRuleQuery,LABEL_FIELD_VALUE_ADD_RULE_FORM);
+			
+			$objMyForm->addHelp('case_sensitive_'.$this->numRuleQuery,LABEL_CASE_SENSITIVE_LIST_ADD_RULE_FORM);
+			
+			$html .= '<td width="20%" align="center"><table cellpadding="0" border="0" cellspacing="0"><tr><td>'.$objMyForm->getText('value_'.$this->numRuleQuery,NULL,12).'</td><td>'.$objMyForm->getCheckBox('case_sensitive_'.$this->numRuleQuery).'</td></tr></table></td>';
+
+			$objMyForm->addHelp($this->idList.'_remove_rule_'.$this->numRuleQuery,LABEL_HELP_REM_RULE_FORM);
+			
+			$objMyForm->addEvent($this->idList.'_remove_rule_'.$this->numRuleQuery,'onclick','MYLIST_removeRuleQuery',$this->idList,$this->numRuleQuery);
+			
+			$html .= '<td align="center">'.
+			
+			$objMyForm->getButton($this->idList.'_remove_rule_'.$this->numRuleQuery,NULL,'remove.gif').
+			
+			'</td>';
+			
+			$html .= '</tr>';
+			
+			$html .= '</table>';
+		} 
+		
+		
+		return $html;
 	}
 	
 	/**
@@ -1545,11 +1666,12 @@ class myList  {
 	 * 
 	 * Obtiene el contenido de la lista dinámica como codigo HTML
 	 * @param boolean $showQueryForm	Mostrar formulario de consulta
+	 * @param boolean $showFirstRule	Mostrar primera regla a aplicar si el formulario de consulta se va a usar
 	 * @return string
 	 */
-	public function getList ($showQueryForm = false){
+	public function getList ($showQueryForm = false, $showFirstRule = false){
 		
-		$this->buildList($showQueryForm);
+		$this->buildList($showQueryForm, $showFirstRule);
 		
 		return $this->bufHtml;
 	}
