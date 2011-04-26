@@ -68,9 +68,11 @@ class myCal {
 		/**
 		 * Construimos un arreglo de datos para los años
 		 */
-		for ($aIni=($nA-5);$aIni<($nA+5);$aIni++){
+		for ($aIni=($nA-30);$aIni<($nA+5);$aIni++){
 			
-			$this->arrYears[$nDp.'_'.$nM.'_'.$aIni] = $aIni;
+			if ($aIni>=1902)
+			
+				$this->arrYears[$nDp.'_'.$nM.'_'.$aIni] = $aIni;
 		} 			
 			
 		$objMyForm = new myForm;
@@ -193,13 +195,20 @@ class myCal {
 		$objMyForm->addEvent('cal_year',
 				'onchange',
 				'MYFORM_calOnChange',$update);
-			
+
+		$objMyForm->addEvent('close_call',
+				'onclick', 
+				'closeCalendarWindow', $update);
+		
 		$htm .= '<tr>';
 				
 		$htm .= '<td colspan="8" class="cell_control">'.
-				$objMyForm->getSelect('cal_month',$arrMonth,$nDp.'_'.$nM.'_'.$nA).
-				' - '.
-				$objMyForm->getSelect('cal_year',$this->arrYears,$nDp.'_'.$nM.'_'.$nA).
+				
+				'<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>'.
+				'<td>'.$objMyForm->getSelect('cal_month',$arrMonth,$nDp.'_'.$nM.'_'.$nA).'</td>'.
+				'<td>'.$objMyForm->getSelect('cal_year',$this->arrYears,$nDp.'_'.$nM.'_'.$nA).'</td>'.
+				'<td align="right">'.$objMyForm->getButton('close_call','X').'</td>'.	
+				'</tr></table>'.
 				'</td>';
 					
 		$htm .= '</tr>';
