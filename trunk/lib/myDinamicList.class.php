@@ -160,7 +160,8 @@ class myList  {
 		'globalEventOnColumn',
 		'globalEventsName',
 		'useSqlDebug',
-		'engineDb'
+		'engineDb',
+		'numAffectedRows'
 	);	
 	
 	/**
@@ -1505,7 +1506,7 @@ class myList  {
 		
 		$html = '';
 		
-		if (count($this->arrayAliasSetInQuery)){
+		if (count($this->arrayAliasSetInQuery) && $this->numAffectedRows){
 
 			$arFields = array();
 			
@@ -1642,7 +1643,7 @@ class myList  {
 	/**
 	 * Registros afectados.
 	 * 
-	 * Retorna el numero de registros afectados por la anteior consulta.
+	 * Retorna el numero de registros afectados por la anterior consulta.
 	 * @return integer
 	 */
 	public function getNumRowsAffected(){
