@@ -1513,15 +1513,17 @@ class myForm {
 	 * @return string
 	 */
 	public function getRadioButton ($value = '', $name_group = '', $is_checked = false){
+		
 		$buf = '';
 
 		$checked = '';
 		
 		if ($is_checked==true)
+		
 			$checked = 'checked="checked"';
 
 		$buf .= '<input '.$this->checkExistEventJs($name_group).' '.$this->checkIsHelping($name_group).' '.$this->checkIfIsDisabled($name_group).' type="radio" name="'.$name_group.'" id="'.$name_group.'_'.$value.'" value="'.$value.'" class="'.$this->styleClassFields.'" '.$checked.'>';
-		unset($this->objEventxJ[$name_group]);
+
 		$this->arrayFormElementType[$name_group] = 'radiobutton';
 
 		return $buf;
@@ -1778,7 +1780,7 @@ class myForm {
 		
 		$buf = '';
 		
-		$array_eJs = array (
+		$array_eJs = array(
 		1 => ' OnBlur',      'onblur' =>      ' OnBlur',
 		2 => ' OnChange',    'onchange' =>    ' OnChange',
 		3 => ' OnClick',     'onclick' =>     ' OnClick',
