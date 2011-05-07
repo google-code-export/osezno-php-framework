@@ -1625,7 +1625,7 @@ class myController extends myControllerExt {
 
 				$val = trim($datForm['value_'.$i]);
 				 
-				if ($val){
+				if (strlen($val)){
 					
 					$someValues = true;
 					
@@ -1663,14 +1663,14 @@ class myController extends myControllerExt {
 
 					$sqlRule = $datForm['logic_'.$i].' ';
 					
-					if (!$datForm['case_sensitive_'.$i])
+					if (strlen($datForm['case_sensitive_'.$i]))
 						$sqlRule .= $kwNa.'('.$kwCs.'('.$fieldQuery.'))';
 					else
 						$sqlRule .= $fieldQuery;	
 						
 					$sqlRule .= ' '.''.$this->myDinamicListRel[$datForm['relation_'.$i]].' ';
 					
-					if (!$datForm['case_sensitive_'.$i])
+					if (strlen($datForm['case_sensitive_'.$i]))
 						$sqlRule .= $kwNa.'('.$kwCs.'('.$val.'))';
 					else
 						$sqlRule .= $val;	

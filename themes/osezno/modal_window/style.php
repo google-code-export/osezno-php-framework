@@ -1,3 +1,4 @@
+<?php header ('Content-type: text/css'); ?> 
 @CHARSET "ISO-8859-1";
 
 /** Capa que bloquea otros contenidos **/
@@ -7,8 +8,8 @@
 	display:block;
 	top:0;
 	left:0;
-	opacity:0.5;
-	filter:alpha(opacity=50)
+	<?php if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE) echo 'filter:alpha(opacity=50);'; 	
+	 else echo 'opacity:0.5;'; ?>
 }
 
 /** Boton cerrar **/
@@ -71,11 +72,9 @@
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
 	font-weight:bold;
-	font-style:none;
 	text-decoration: none;
 	text-align:left;
 	color:#53A0FF;
-	text-shadow:#333333;
 }
 
 /** Contenido del texto del modal window **/
@@ -85,3 +84,4 @@
 	text-decoration: none;
 	text-align:justify;
 }
+

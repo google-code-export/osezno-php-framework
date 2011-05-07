@@ -1,3 +1,6 @@
+<?php header ('Content-type: text/css'); ?> 
+@CHARSET "ISO-8859-1";
+
 /**
  * Info
  */
