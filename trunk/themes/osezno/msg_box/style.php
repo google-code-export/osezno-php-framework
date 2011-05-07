@@ -1,3 +1,4 @@
+<?php header ('Content-type: text/css'); ?> 
 @CHARSET "ISO-8859-1";
 
 /** Imagen msg_box_critical.gif **/
@@ -130,11 +131,9 @@
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 15px;
 	font-weight:normal;
-	font-style:none;
 	text-decoration: none;
 	text-align:left;
 	color:#666666;
-	text-shadow:#333333;
 }
 
 /** Contenido del texto del messagebox **/

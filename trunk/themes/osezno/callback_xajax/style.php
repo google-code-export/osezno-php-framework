@@ -1,3 +1,4 @@
+<?php header ('Content-type: text/css'); ?> 
 @CHARSET "ISO-8859-1";
 
 /** on call **/
@@ -7,9 +8,9 @@
 	display:block;
 	top:0;
 	left:0;
-	z-index:5000;	
-	opacity:0;
-	filter:alpha(opacity=0)
+	z-index:5000;
+	<?php if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE) echo 'filter:alpha(opacity=0);'; 	
+	 else echo 'opacity:0;'; ?>
 }
 
 /** on call image **/

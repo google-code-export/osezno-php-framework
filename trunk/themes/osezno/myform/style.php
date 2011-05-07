@@ -1,3 +1,4 @@
+<?php header ('Content-type: text/css'); ?> 
 @CHARSET "ISO-8859-1";
 
 .formulario {
@@ -92,7 +93,6 @@ select.caja_required {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #000000;
-	align: center;
 	text-align: center;
 }
 
