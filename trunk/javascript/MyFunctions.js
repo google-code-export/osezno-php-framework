@@ -145,8 +145,8 @@ function responseCallUrl(pageElement) {
      
      document.body.appendChild(miImagen);
 
-	 miImagen.style.top    = ((arrayPageSize[3]/2)+arrayScrollPos[1])-12;
-	 miImagen.style.left   = (arrayPageSize[2]/2)-20;
+	 miImagen.style.top    = (((arrayPageSize[3]/2)+arrayScrollPos[1])-12)+'px';
+	 miImagen.style.left   = ((arrayPageSize[2]/2)-20)+'px';
   }
 
   xajax.callback.global.beforeResponseProcessing = function() {
@@ -258,7 +258,7 @@ function createNotificationWindow (strNotification, intSecDuration, type){
 	
 	miCapa.style.top = startPoint;
 	
-	miCapa.style.left = 10;
+	miCapa.style.left = 10+'px';
 	
 	miCapa.className = 'notification_'+type;
 	
@@ -298,11 +298,11 @@ function mueveNotificationWindow(idElement, ini,pos){
 	aux=pos;	  
 	if(arrayNotiWindNuPos[idElement]!=pos){
       if(ie) 
-        document.all[idElement].style.top=arrayNotiWindNuPos[idElement];
+        document.all[idElement].style.top=arrayNotiWindNuPos[idElement]+'px';
       else if(nc) 
-        document.layers[idElement].top=arrayNotiWindNuPos[idElement];
+        document.layers[idElement].top=arrayNotiWindNuPos[idElement]+'px';
       else if(n6) 
-        document.getElementById(idElement).style.top=arrayNotiWindNuPos[idElement];          
+        document.getElementById(idElement).style.top=arrayNotiWindNuPos[idElement]+'px';          
       
       arrayNotiWindPos[idElement]=arrayNotiWindNuPos[idElement];
       
