@@ -728,7 +728,7 @@ class myList  {
 	 */
 	private function getSqlPartOrderBy (){
 
-		$sqlPart = '';;
+		$sqlPart = '';
 		
 		if ($this->arrayOrdMethod!==false){
 		
@@ -940,13 +940,14 @@ class myList  {
 				
 				$this->objConn = new myActiveRecord();
 		
-				$sql = $this->sql = $this->sqlORobject;
+				$this->sql = $this->sqlORobject;
+				
+				$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit(); 
 			}
 			
 			if ($this->objConn->isSuccessfulConnect()){
 				
-				$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartLimit());
-				
+				$this->resSql = $this->objConn->query ($this->sql);
 			}
 
 			$this->engineDb = $this->objConn->getEngine();
@@ -960,6 +961,7 @@ class myList  {
 			$sql = $this->sql.''.$this->getSqlPartWhere().''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
 			
 			if ($this->objConn->isSuccessfulConnect()){
+				
 				$this->resSql = $this->objConn->query($sql);
 			}
 			
