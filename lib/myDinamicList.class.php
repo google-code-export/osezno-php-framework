@@ -796,11 +796,30 @@ class myList  {
 	 * Configurar ordenamiento 
 	 * 
 	 * Configura si la lista dinamica va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada en cada columna.
-	 * @param boolean $use Activar o Inactivar 
+	 * @param boolean $use Activar o Inactivar
+	 * @param string $defaultColumn	Nombre de la columna que se mostrara ordenada al cargar la lista dinamica.
+	 * @param string $defaultMethod	Metodo de ordenamiento que usara la columna a ordenar ASC o DESC. 
 	 */
-	public function setUseOrderMethod ($use){
+	public function setUseOrderMethod ($use, $defaultColumn = '', $defaultMethod = 'ASC'){
+
+		$default = 'ASC';
+		
+		$methods = array('ASC','DESC');
 		
 		$this->useOrderMethod = $use;
+
+		if ($defaultColumn){
+		
+			$this->arrayOrdNum[$defaultColumn] = $defaultColumn;
+			
+			if (in_array(strtoupper($defaultMethod),$methods))
+			
+				$this->arrayOrdMethod[$defaultColumn]=strtoupper($defaultMethod);
+		
+			else
+			
+				$this->arrayOrdMethod[$defaultColumn]=$default;
+		}
 	}
 	
 	/**

@@ -1638,6 +1638,7 @@ class myController extends myControllerExt {
 							foreach ($vals as $nVals){
 								
 								if (!is_numeric($nVals))
+								
 									$nVals = '\''.utf8_decode($nVals).'\'';
 								
 								$nVal .= $nVals.',';
@@ -1652,6 +1653,7 @@ class myController extends myControllerExt {
 					}else{
 						
 						if (!is_numeric($val))
+						
 							$val = '\''.utf8_decode($val).'\'';
 							
 					}
@@ -1659,21 +1661,32 @@ class myController extends myControllerExt {
 					$fieldQuery = '"'.$datForm['field_'.$i].'"';
 					
 					if (isset($arAlInQry[$datForm['field_'.$i]]))
+					
 						$fieldQuery = $arAlInQry[$datForm['field_'.$i]];
 
 					$sqlRule = $datForm['logic_'.$i].' ';
 					
-					if (strlen($datForm['case_sensitive_'.$i]))
-						$sqlRule .= $kwNa.'('.$kwCs.'('.$fieldQuery.'))';
-					else
-						$sqlRule .= $fieldQuery;	
+					if (!is_numeric($val)){
+						
+						if (!$datForm['case_sensitive_'.$i])
+						
+							$sqlRule .= $kwNa.'('.$kwCs.'('.$fieldQuery.'))';
+						else
+							$sqlRule .= $fieldQuery;
+					}else
+							$sqlRule .= $fieldQuery;			
 						
 					$sqlRule .= ' '.''.$this->myDinamicListRel[$datForm['relation_'.$i]].' ';
 					
-					if (strlen($datForm['case_sensitive_'.$i]))
-						$sqlRule .= $kwNa.'('.$kwCs.'('.$val.'))';
-					else
-						$sqlRule .= $val;	
+					if (!is_numeric($val)){
+						
+						if (!$datForm['case_sensitive_'.$i])
+						
+							$sqlRule .= $kwNa.'('.$kwCs.'('.$val.'))';
+						else
+							$sqlRule .= $val;
+					}else
+						$sqlRule .= $val;
 					
 					$myList->setVar('arrayWhereRules',$sqlRule,$i);
 					
