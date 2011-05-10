@@ -940,14 +940,12 @@ class myList  {
 				
 				$this->objConn = new myActiveRecord();
 		
-				$this->sql = $this->sqlORobject;
-				
-				$sql = $this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit(); 
+				$sql = $this->sql = $this->sqlORobject;
 			}
 			
 			if ($this->objConn->isSuccessfulConnect()){
 				
-				$this->resSql = $this->objConn->query ($this->sql);
+				$this->resSql = $this->objConn->query ($this->sql.''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit());
 			}
 
 			$this->engineDb = $this->objConn->getEngine();
