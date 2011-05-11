@@ -409,11 +409,9 @@ function GetArray(){
 	
 	ar = new Array();
 	
-	frag = new Array();
-	
-	for (var i=0;i<arguments.length;i++){
-		frag = arguments[i].split(':::');
-		ar[frag[0]] = frag[1];
+	for (var i=0;i<arguments.length;i+=2){
+		
+		ar[arguments[i]] = arguments[i+1];
 	}
 	
 	return ar;
