@@ -1802,7 +1802,25 @@ class myForm {
  					
  					foreach (func_get_arg($i) as $key => $value){
  						
- 						$buf .= '\''.$key.':::'.$value.'\', ';
+ 						$buf .= '\''.$key.'\', ';
+ 						
+ 						if (is_array($value)){
+ 						
+ 							$buf .= 'GetArray(  ';
+ 							
+ 							foreach ($value as $key_arr => $value_arr){
+ 								
+ 								$buf .= '\''.$key_arr.'\', ';
+ 								
+ 								$buf .= '\''.addslashes(str_replace('"',"'",$value_arr)).'\', ';
+ 								
+ 							}
+ 							
+ 							$buf = substr($buf,0,-2).'), ';
+ 							
+ 						}else
+ 							$buf .= '\''.addslashes(str_replace('"',"'",$value)).'\', ';
+ 							
  					}
  					
  					$buf = substr($buf,0,-2).'), ';

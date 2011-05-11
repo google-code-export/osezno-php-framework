@@ -963,7 +963,7 @@ class myController extends myControllerExt {
 		  		$objMyForm->addEvent($nameButton,'onclick',$action, $param1, $param2, $param3, $param4, $param5);
 		  	
 		  		$frm .= str_ireplace('GetDataForm(\'\'),','',$objMyForm->getButton($nameButton,$etq));
-		  			
+		  		
 		  		$frm .= '&nbsp;&nbsp;&nbsp;';
 				  	
 		 		if (!$primerButton)
