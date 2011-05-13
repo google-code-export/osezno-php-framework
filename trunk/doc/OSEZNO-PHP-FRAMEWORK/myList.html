@@ -3,11 +3,11 @@
 <title>Docs For Class myList</title>
 <link rel="stylesheet" type="text/css" href="../media/style.css">
 </head>
+<div style="top:0px;position:absolute;"><img src="../media/head.jpg"></div>
 <body>
-
 <table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
   <tr>
-    <td class="header_top">OSEZNO-PHP-FRAMEWORK</td>
+    <td class="header_top">Documentaci&oacute;n<!-- OSEZNO-PHP-FRAMEWORK --></td>
   </tr>
   <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
   <tr>
@@ -202,7 +202,7 @@ myList<br /><br /><p>Es la propuesta de osezno-framework cuando se desea impleme
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 427]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 459]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -277,13 +277,14 @@ $sqlORobject = ''])</code>
   </div>
   <hr />
 	<a name="methodgetList"></a>
-	<h3>method getList <span class="smalllinenumber">[line 1550]</span></h3>
+	<h3>method getList <span class="smalllinenumber">[line 1692]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>string getList(
 [boolean
-$showQueryForm = false])</code>
+$showQueryForm = false], [boolean
+$showFirstRule = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -307,13 +308,18 @@ $showQueryForm = false])</code>
         <td><b>$showQueryForm</b>&nbsp;&nbsp;</td>
         <td>Mostrar formulario de consulta</td>
       </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$showFirstRule</b>&nbsp;&nbsp;</td>
+        <td>Mostrar primera regla a aplicar si el formulario de consulta se va a usar</td>
+      </tr>
         </table>
     </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
 	<a name="methodgetNumRowsAffected"></a>
-	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1527]</span></h3>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1668]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -322,7 +328,7 @@ $showQueryForm = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Registros afectados.<br /><br /><p>Retorna el numero de registros afectados por la anteior consulta.</p><br /><br /><br />
+		Registros afectados.<br /><br /><p>Retorna el numero de registros afectados por la anterior consulta.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -338,12 +344,13 @@ $showQueryForm = false])</code>
   </div>
   <hr />
 	<a name="methodgetQueryForm"></a>
-	<h3>method getQueryForm <span class="smalllinenumber">[line 1352]</span></h3>
+	<h3>method getQueryForm <span class="smalllinenumber">[line 1405]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>string getQueryForm(
-)</code>
+[boolean
+$showFirstRule = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -359,11 +366,21 @@ $showQueryForm = false])</code>
 <br /><br />
 
 	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$showFirstRule</b>&nbsp;&nbsp;</td>
+        <td>Mostrar primera regla/filtro al iniciar.</td>
+      </tr>
+        </table>
+    </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
 	<a name="methodisSuccessfulProcess"></a>
-	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1538]</span></h3>
+	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1679]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -388,7 +405,7 @@ $showQueryForm = false])</code>
   </div>
   <hr />
 	<a name="methodsetEventOnColumn"></a>
-	<h3>method setEventOnColumn <span class="smalllinenumber">[line 555]</span></h3>
+	<h3>method setEventOnColumn <span class="smalllinenumber">[line 587]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -468,7 +485,7 @@ $confirm_msg = ''])</code>
   </div>
   <hr />
 	<a name="methodsetExportData"></a>
-	<h3>method setExportData <span class="smalllinenumber">[line 568]</span></h3>
+	<h3>method setExportData <span class="smalllinenumber">[line 600]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -516,7 +533,7 @@ $pdf = true])</code>
   </div>
   <hr />
 	<a name="methodsetGlobalEventOnColumn"></a>
-	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 639]</span></h3>
+	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 671]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -609,7 +626,7 @@ $events = array ()])</code>
   </div>
   <hr />
 	<a name="methodsetPagination"></a>
-	<h3>method setPagination <span class="smalllinenumber">[line 473]</span></h3>
+	<h3>method setPagination <span class="smalllinenumber">[line 505]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -651,7 +668,7 @@ $rows = 20])</code>
   </div>
   <hr />
 	<a name="methodsetRealNameInQuery"></a>
-	<h3>method setRealNameInQuery <span class="smalllinenumber">[line 758]</span></h3>
+	<h3>method setRealNameInQuery <span class="smalllinenumber">[line 790]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -720,7 +737,7 @@ $alias)</code>
   </div>
   <hr />
 	<a name="methodsetSqlDebug"></a>
-	<h3>method setSqlDebug <span class="smalllinenumber">[line 490]</span></h3>
+	<h3>method setSqlDebug <span class="smalllinenumber">[line 522]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -756,7 +773,7 @@ $use = true])</code>
   </div>
   <hr />
 	<a name="methodsetTheme"></a>
-	<h3>method setTheme <span class="smalllinenumber">[line 457]</span></h3>
+	<h3>method setTheme <span class="smalllinenumber">[line 489]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -795,13 +812,15 @@ $theme = ''])</code>
   </div>
   <hr />
 	<a name="methodsetUseOrderMethod"></a>
-	<h3>method setUseOrderMethod <span class="smalllinenumber">[line 769]</span></h3>
+	<h3>method setUseOrderMethod <span class="smalllinenumber">[line 803]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void setUseOrderMethod(
 boolean
-$use)</code>
+$use, [string
+$defaultColumn = ''], [string
+$defaultMethod = 'ASC'])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -825,13 +844,23 @@ $use)</code>
         <td><b>$use</b>&nbsp;&nbsp;</td>
         <td>Activar o Inactivar</td>
       </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$defaultColumn</b>&nbsp;&nbsp;</td>
+        <td>Nombre de la columna que se mostrara ordenada al cargar la lista dinamica.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$defaultMethod</b>&nbsp;&nbsp;</td>
+        <td>Metodo de ordenamiento que usara la columna a ordenar ASC o DESC.</td>
+      </tr>
         </table>
     </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
 	<a name="methodsetWidthColumn"></a>
-	<h3>method setWidthColumn <span class="smalllinenumber">[line 502]</span></h3>
+	<h3>method setWidthColumn <span class="smalllinenumber">[line 534]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -876,7 +905,7 @@ $width)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 24 Mar 2011 20:42:14 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 13 May 2011 17:29:18 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

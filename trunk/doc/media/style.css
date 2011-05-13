@@ -29,7 +29,7 @@ a:hover
 
 a.menu
 {
-  color:              #36C;
+  color:              #5BA6DF;
   background-color:   transparent;
 }
 
@@ -41,23 +41,24 @@ td
 td.header_top
 {
   color:              #ffffff;
-  background-color:   #5BA6DF;
   font-size:          16pt;
   font-weight:        bold;
   text-align:         right;
   padding:            10px;
+  height: 90px;
+  background-image:  url('http://localhost/osezno-framework/templates/osezno/head_repeat.jpg');
 }
 
 td.header_line
 {
-  color:              #ffffff;
-  background-color:   #333366;
+  color:              #FFFFFF;
+  background-color:   #FFFFFF;
 }
 
 td.header_menu
 {
-  color:              #ffffff;
-  background-color:   #B1FE56;
+  color:              #5BA6DF;
+  background-color:   #FFFFFF;
   font-size:          8pt;
   text-align:         right;
   padding:            2px;
