@@ -243,7 +243,7 @@ class myForm {
 	 * 
 	 * @var array
 	 */
-	private $arrayTypeElemSpecial = array ('textarea','button','coment','ckeditor');
+	private $arrayTypeElemSpecial = array ('textarea','button','coment','WYSIWYG');
 	
 	/**
 	 * Instancias creadas de CKEditor
