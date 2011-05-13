@@ -2707,7 +2707,7 @@ class myForm {
 					break;
 				case 'coment':
 					
-					$this->arrayFormElements[$campos_f[1]] = '<td rowSpanEtq class="'.$this->styleClassComments.'" colSpanEtq>'.$campos_f[2].'</td>';
+					$this->arrayFormElements[$campos_f[1]] = '<td widthCell rowSpanEtq class="'.$this->styleClassComments.'" colSpanEtq>'.$campos_f[2].'</td>';
 					break;
 				case 'checkbox':
 					
