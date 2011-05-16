@@ -270,7 +270,7 @@ class myExportData {
 							if (is_numeric($val))
 								$align = 'R';
 						
-							$pdf->Cell(($widthCol/6),3,$val,1,0,$align);
+							$pdf->Cell(($widthCol/6),3,utf8_decode($val),1,0,$align);
 						
 						}
 						
@@ -355,7 +355,7 @@ class myExportData {
  						
  							$out .= '<td '.$bg.' align="'.$align.'">';
  				
- 							$out .= $val;
+ 							$out .= utf8_decode($val);
  			
  							$out .= '</td>';
  						}
