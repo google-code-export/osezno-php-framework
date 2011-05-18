@@ -2,7 +2,6 @@
   /**
    * Configuración del proyecto.
    * 
-   * @author: Oscar Eduardo Aldana <oscar.aldana@osezno-framework.org>
    * @author: José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
    */
 
