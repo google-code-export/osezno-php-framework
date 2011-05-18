@@ -3,7 +3,6 @@
    * @package OSEZNO PHP FRAMEWORK
    * @copyright 2007-2011  
    * @version: 0.1
-   * @author: Oscar Eduardo Aldana 
    * @author: José Ignacio Gutiérrez Guzmán
    * 
    * developer@osezno-framework.org
