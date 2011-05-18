@@ -2483,7 +2483,7 @@ class myForm {
 			
 			foreach ($this->arrayCKEditorInstances as $instance){
 			
-				$buf .= "\t".'CKEditorInstances["'.$instance.'"] = "'.$instance.'";'."\n";
+				$buf .= "\t".'CKEditorInstances["'.$this->getColspanRowspan($instance).'"] = "'.$this->getColspanRowspan($instance).'";'."\n";
 			}
 			
 			$buf .= '</script>'."\n";
