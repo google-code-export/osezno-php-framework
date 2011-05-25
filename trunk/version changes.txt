@@ -1,0 +1,1 @@
+- Por formulario se admiten multiples llamados o nuevas instancias de addFile.
