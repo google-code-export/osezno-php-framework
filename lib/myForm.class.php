@@ -552,126 +552,6 @@ class myForm {
 	 * @var string
 	 */
 	public $strFormFieldSet = '';
-
-	/**
-	 * Parametros de Configuracion del SWFUpload
-	 * 
-	 * Recordar que cuando se anuncia o se hace llamado 
-	 * a file object que puede ser pasado como parametro 
-	 * a un evento este trae informacion del archivo
-	 * que se esta intentando subir al servidor.
-	 * 
-	 * id : string,			    // SWFUpload file id, used for starting or cancelling and upload
-	 * index : number,			// The index of this file for use in getFile(i)
-	 * name : string,			// The file name. The path is not included.
-	 * size : number,			// The file size in bytes
-	 * type : string,			// The file type as reported by the client operating system
-	 * creationdate : Date,		// The date the file was created
-	 * modificationdate : Date,	// The date the file was last modified
-	 * filestatus : number,		// The file's current status. Use SWFUpload.FILE_STATUS to interpret the value.
-	 * 
-	 */
-
-	/**
-	 * Url file_upload.
-	 * 
-	 * Url del script que procesa las peticiones de envio de archivos al servidor cuando exite un campo tipo file.
-	 * @var string
-	 */
-	public $FILE_upload_url;
-
-	/**
-	 * Nombre campo File.
-	 * 
-	 * El nombre del campo cuando es enviado por el metodo POST, The Linux Flash Player ignores this setting.
-	 * @var string
-	 */
-	public $FILE_file_post_name;
-
-	/**
-	 * Parametros post agregados. 
-	 * 
-	 * Post params on file object. The param_object should be a simple JavaScript object. All names and values must be strings.
-	 * @var string
-	 */
-	public $FILE_post_params = array();
-
-	/**
-	 * Extensiones admitidas. 
-	 * 
-	 * Los tipos de archivo que son admisibles al seleccionarlos.
-	 * <code>
-	 * 
-	 * Ejemplo:
-	 * <?php
-	 * 
-	 * $myForm = new myForm('form1');
-	 * 
-	 * # Admitir solo archivos con extesión PHP y TXT
-	 * $myForm->FILE_file_types = array('*.php','*.txt');
-	 * 
-	 * ?>
-	 * 
-	 * </code>
-	 * @var array
-	 */
-	public $FILE_file_types = array('*.*');
-
-	/**
-	 * Descripción de admisión de tipos de archivo.
-	 * 
-	 * La descripcion de los tipos de archivo que se pueden subir al servidor, esta etiqueta aparecera en el cuadro de dialogo de seleccion de archivos.
-	 * @var string
-	 */
-	public $FILE_file_types_description = 'Todos los tipos';
-
-	/**
-	 * Tamaño maximo en Kb.
-	 * 
-	 * El tamano maximo en kilobytes para que un archivo pueda ser subido al  servidor de datos.
-	 * @var integer
-	 */
-	public $FILE_size_limit = 2048;
-
-	/**
-	 * Mostrar informacion de tamaña maximo de subida.
-	 * 
-	 * Setea si se va a mostrar o no informacion de la capacidad max de subida por archivo en el boton que abre la ventana de dialogo para el swf_uploader.
-	 * @var boolean
-	 */
-	public $FILE_show_max_upload_size_info_in_button = true;
-
-	/**
-	 * Numero maximo de archivos por intento a subir.
-	 * 
-	 * Numero maximo de archivos que pueden ser subidos en un intento (cero es sin limite).
-	 * @var integer
-	 */
-	public $FILE_file_upload_limit = 0;
-
-	/**
-	 * Numero maximo de archivos en cola.
-	 * 
-	 * Numero maximo de archivos en archivos en  cola que pueden estar (cero es sin limite).
-	 * @var integer
-	 */
-	public $FILE_file_queue_limit = 0;
-
-	/**
-	 * Url flash.
-	 * 
-	 * Url en donde se encuentra el SWF que permite la carga  de los archivos al servidor.
-	 * @var string
-	 */
-	public $FILE_flash_url = '';
-	
-	/**
-	 * SRC Imagen boton seleccionar/subir archivos.
-	 * 
-	 * SRC de la imagen que por defecto se va a cargar como base para dibujar el boton de carga de archivos.
-	 * @var string
-	 */
-	public $FILE_button_image_url = 'button_file.gif';
 	
 	/**
 	 * Id DIV
@@ -682,187 +562,171 @@ class myForm {
 	public $FILE_button_placeholder_id = 'spanButtonPlaceholder';
 	
 	/**
-	 * Ancho boton.
+	 * Atributos seteados en cada obeto tipo file,
 	 * 
-	 * Ancho del boton en px en el formulario.
-	 * @var integer
-	 */
-	public $FILE_button_width = 160;
-	
-	/**
-	 * Alto boton.
-	 * 
-	 * Alto del boton en px en el formulario.
-	 * @var integer
-	 */
-	public $FILE_button_height = 22;
-	
-	/**
-	 * Ancho Flash.
-	 * 
-	 * Ancho de el tamano del flash.
-	 * @var string
-	 */
-	public $FILE_flash_width = '0px';
-
-	/**
-	 * Alto flash.
-	 * 
-	 * Alto de el tamano del flash.
-	 * @var string
-	 */
-	public $FILE_flash_height = '0px';
-
-	/**
-	 * Color fondo flash.
-	 * 
-	 * Color de fondo para el flash.
-	 * @var string
-	 */
-	public $FILE_flash_color = 'FFFFFF';
-
-	/**
-	 * Debug
-	 * 
-	 * Habilitar el debug o no
-	 * @var boolean
-	 */
-	public $FILE_debug = 'false';
-
-	/**
-	 * swfuploadLoadedHandler
-	 * 
-	 * The swfUploadLoaded event is fired by flashReady. It is overridable. When swfUploadLoaded is called it is safe to call SWFUpload methods.
-	 * @var string
-	 */
-	public $FILE_swfupload_loaded_handler = 'swfuploadLoadedHandler';
-
-	/**
-	 * fileDialogStart
-	 * 
-	 * Este evento se dispara inmediatamente antes de que la ventana de dialogo de seleccion de archivos sea abierta.
-	 * Sin embargo el evento no va a terminar ni a cerrarse hasta que la ventana dialogo de seleccion de archivos este sea cerrada por cancelacion, o aceptacion. 
-	 * @var string
-	 */
-	public $FILE_file_dialog_start_handler = 'fileDialogStart';
-
-	/**
-	 * fileQueued
-	 * 
-	 * No usar o tener en cuenta este evento.
-	 * @var string
-	 */
-	public $FILE_file_queued_handler = 'fileQueued';
-
-	/**
-	 * fileQueueError
-	 * 
-	 * Se ejecuta cuando existe o se produjo un error de validacion en la lista seleccionada de los archivos  que el  usuario selecciono.
-	 * Por ejemplo para ayudar a validar que el archivo no sea demasiado grande o que sea del tipo que se esta parametrizando.
-	 * Parametros que se pasan al evento: (file object, error code, message)
-	 * @var string
-	 */
-	public $FILE_file_queue_error_handler = 'fileQueueError';
-
-	/**
-	 * fileDialogComplete
-	 * 
-	 * Se ejecuta cuando se a echo click sobre el boton aceptar del cuadro de dialogo de los archivos que van a ser subidos al servidor.
-	 * Esto generalmente esta haciendo el cargue automatico de los archivos con "this.startUpload();"
-	 * Parametros que se pasan al evento: (number of files selected, number of files queued)
-	 * @var string
-	 */
-	public $FILE_file_dialog_complete_handler = 'fileDialogComplete';
-
-	/**
-	 * uploadStart
-	 * 
-	 * Funcion que es llamada cuando comienza todo el cargue completo de los archivos y para que en cierta forma tambien se pueda hacer automaticamente.
-	 * Parametros que se pasan al evento: (file object)
-	 * @var string
-	 */
-	public $FILE_upload_start_handler = 'uploadStart';
-
-	/**
-	 * uploadProgress
-	 * 
-	 * Se produce cuando el listado de los archivos que actualmente se han seleccionado estan en proceso de ser subidos al servidor.
-	 * Parametros que se pasan al evento: (file object, bytes complete, total bytes)
-	 * @var string
-	 */
-	public $FILE_upload_progress_handler = 'uploadProgress';
-
-	/**
-	 * uploadError
-	 * 
-	 * El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con éxito. 
-	 * El código de error parámetro indica el tipo de error que se produjo. 
-	 * El código de error parámetro especifica una constante en SWFUpload.UPLOAD_ERROR.
-	 * Parametros que se pasan al evento: (file object, error code, message)
-	 * @var string
-	 */
-	public $FILE_upload_error_handler = 'uploadError';
-
-	/**
-	 * uploadSuccess
-	 * 
-	 * Este evento se ejecuta cuando un archivo es subido exitosamente al servidor, mientras tanto otros archivos pueden seguir siendo subidos.
-	 * Parametros que se pasan al evento: (file object, server data)
-	 * @var string
-	 */
-	public $FILE_upload_success_handler = 'uploadSuccess';
-
-	/**
-	 * uploadComplete
-	 * 
-	 * Este evento siempre se dispara al final de un ciclo de una carga.
-	 * En este punto la carga esta completa y otra puede comenzar.
-	 * Parametros que se pasan al evento: (file object)
-	 * @var string
-	 */
-	public $FILE_upload_complete_handler = 'uploadComplete';
-
-	/**
-	 * debugHandler
-	 * 
-	 * debugHandler
-	 * @var string
-	 */
-	public $FILE_debug_handler = 'debugHandler';
-
-	/**
-	 * FILE_custom_settings
-	 *
-	 * FILE_custom_settings	
 	 * @var array
 	 */
-	public $FILE_custom_settings = array();
-
+	private $FILES_atts = array();
+	
 	/**
-	 * SRC Imagen boton
-	 * 
-	 * Ruta de la imagen que acompaña el boton examinar para el cargue de los archivos
-	 * @deprecated
-	 * @var string
+	 * Atributos permitidos a modificar en cada addFile o getFile
 	 */
-	public $FILE_src_img_button = '';
-
+	private $FILES_atts_ = array(
+	
+		'upload_url'=>'',
+	
+		'file_post_name'=>array(),
+	
+		'post_params'=>array(),
+	
+		'file_types'=>array('*.*'),
+	
+		'file_types_description'=>'Todos los tipos',
+	
+		'size_limit'=>2048,
+	
+		'show_max_upload_size_info_in_button'=>true,
+	
+		'file_upload_limit'=>0,
+	
+		'file_queue_limit'=>0,
+	
+		'flash_url'=>'',
+	
+		'button_image_url'=>'button_file.gif',
+	
+		'button_width'=>160,
+	
+		'button_height'=>22,
+	
+		'flash_width'=>'0px',
+	
+		'flash_height'=>'0px',
+	
+		'flash_color'=>'FFFFFF',
+	
+		'debug'=>'false',
+	
+		'swfupload_loaded_handler'=>'swfuploadLoadedHandler',
+	
+		'file_dialog_start_handler'=>'fileDialogStart',
+	
+		'file_queued_handler'=>'fileQueued',
+	
+		'file_queue_error_handler'=>'fileQueueError',
+	
+		'file_dialog_complete_handler'=>'fileDialogComplete',
+	
+		'upload_start_handler'=>'uploadStart',
+	
+		'upload_progress_handler'=>'uploadProgress',
+	
+		'upload_error_handler'=>'uploadError',
+	
+		'upload_success_handler'=>'uploadSuccess',
+	
+		'upload_complete_handler'=>'uploadComplete',
+	
+		'debug_handler'=>'debugHandler',
+	
+		'custom_settings'=>array(),
+	
+		'str_etq_button'=>'Examinar',
+	
+		'upload_several_files'=>'false'
+	
+ 	);
+	
 	/**
-	 * Texto boton.
+	 * Configura un atributo sobre un objeto tipo file.
 	 * 
-	 * Texto que esta dentro del boton quen  examina   los   archivos.
-	 * @var string
-	 */
-	public $FILE_str_etq_button = 'Examinar';
-
-	/**
-	 * Multiples archivos.
+	 * Solo los siguientes parametros estan admitidos:
+	 * upload_url: Url del script que procesa las peticiones de envio de archivos al servidor cuando exite un campo tipo file.
+	 * file_post_name: El nombre del campo cuando es enviado por el metodo POST, The Linux Flash Player ignores this setting.
+	 * post_params: Post params on file object. The param_object should be a simple JavaScript object. All names and values must be strings.
+	 * file_types: Los tipos de archivo que son admisibles al seleccionarlos. (Ejemplo: admitir solo archivos tipo txt y php seria array('*.php','*.txt'))
+	 * file_types_description: La descripcion de los tipos de archivo que se pueden subir al servidor, esta etiqueta aparecera en el cuadro de dialogo de seleccion de archivos.
+	 * size_limit: El tamano maximo en kilobytes para que un archivo pueda ser subido al  servidor de datos.
+	 * show_max_upload_size_info_in_button: Configura si se va a mostrar o no informacion de la capacidad max de subida por archivo en el boton que abre la ventana de dialogo para el swf_uploader.
+	 * file_upload_limit: Numero maximo de archivos que pueden ser subidos en un intento (cero es sin limite).
+	 * file_queue_limit: Numero maximo de archivos en archivos en  cola que pueden estar (cero es sin limite).
+	 * flash_url: Url en donde se encuentra el SWF que permite la carga  de los archivos al servidor.
+	 * button_image_url: Fuente de la imagen que por defecto se va a cargar como base para dibujar el boton de carga de archivos.
+	 * button_width: Ancho del boton en px en el formulario.
+	 * button_height: Alto del boton en px en el formulario.
+	 * flash_width: Ancho de el tamano del flash.
+	 * flash_height: Alto de el tamano del flash.
+	 * flash_color: Color de fondo para el flash.
+	 * debug: Habilitar el debug o no
+	 * swfupload_loaded_handler: The swfUploadLoaded event is fired by flashReady. It is overridable. When swfUploadLoaded is called it is safe to call SWFUpload methods.
+	 * file_dialog_start_handler: Este evento se dispara inmediatamente antes de que la ventana de dialogo de seleccion de archivos sea abierta. Sin embargo el evento no va a terminar ni a cerrarse hasta que la ventana dialogo de seleccion de archivos este sea cerrada por cancelacion, o aceptacion.
+	 * file_queued_handler: No usar o tener en cuenta este evento.
+	 * file_queue_error_handler: Se ejecuta cuando existe o se produjo un error de validacion en la lista seleccionada de los archivos  que el  usuario selecciono. Por ejemplo para ayudar a validar que el archivo no sea demasiado grande o que sea del tipo que se esta parametrizando. Parametros que se pasan al evento: (file object, error code, message)
+	 * file_dialog_complete_handler: Se ejecuta cuando se a echo click sobre el boton aceptar del cuadro de dialogo de los archivos que van a ser subidos al servidor. Esto generalmente esta haciendo el cargue automatico de los archivos con "this.startUpload();" Parametros que se pasan al evento: (number of files selected, number of files queued)
+	 * upload_start_handler: Funcion que es llamada cuando comienza todo el cargue completo de los archivos y para que en cierta forma tambien se pueda hacer automaticamente. Parametros que se pasan al evento: (file object)
+	 * upload_progress_handler: Se produce cuando el listado de los archivos que actualmente se han seleccionado estan en proceso de ser subidos al servidor. Parametros que se pasan al evento: (file object, bytes complete, total bytes)
+	 * upload_error_handler: El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con éxito. El código de error parámetro indica el tipo de error que se produjo. El código de error parámetro especifica una constante en SWFUpload.UPLOAD_ERROR. Parametros que se pasan al evento: (file object, error code, message)
+	 * upload_success_handler: Este evento se ejecuta cuando un archivo es subido exitosamente al servidor, mientras tanto otros archivos pueden seguir siendo subidos. Parametros que se pasan al evento: (file object, server data)
+	 * upload_complete_handler: Este evento siempre se dispara al final de un ciclo de una carga. En este punto la carga esta completa y otra puede comenzar. Parametros que se pasan al evento: (file object)
+	 * debug_handler: debugHandler
+	 * custom_settings: Custom settings
+	 * str_etq_button: Texto que esta dentro del boton quen  examina   los   archivos.
+	 * upload_several_files: Decidir si por upload se pueden se leccionar  varios  archivos  o no.
 	 * 
-	 * Decidir si por upload se pueden se leccionar  varios  archivos  o no.
-	 * @var boolean
+	 * Ejemplo:
+	 *<code>
+	 *
+	 *<?php
+	 *
+	 * $myForm = new myForm('form1');
+	 *
+	 * $myForm->addFile('Archivo:','file1');
+	 * 
+	 * // Configura el atributo 'str_etq_button' para este objeto, en este caso la etiqueta del botón de carga de archivo.
+	 * $myForm->setAttFile('file1','str_etq_button','Buscar...');
+	 *
+	 * $myForm->getForm(1);
+	 *
+	 *?>
+	 *
+	 *</code> 
+	 * 
+	 * @param string $nameObj Nombre dle objeto
+	 * @param string $attName Nombre del atributo
+	 * @param string $attValue Valor para el atributo
 	 */
-	public $FILE_upload_several_files = false;
+	public function setAttFile ($nameObj, $attName, $attValue){
 
+		$return = false;
+		
+		if (isset($this->FILES_atts_[$attName])){
+			
+			$this->FILES_atts[$nameObj][$attName] = $attValue;
+			
+			$return = true;
+		}
+		
+		return $return;
+	}
+	
+	private function setAttFileAuto($nameObj){
+		
+		$nameObj = $this->getColspanRowspan($nameObj);
+		
+		foreach ($this->FILES_atts_ as $attNom => $attVal){
+			
+			if (isset($this->FILES_atts[$nameObj][$attNom])){
+				if ($this->FILES_atts_[$attNom] == $this->FILES_atts[$nameObj][$attNom])
+			
+					$this->FILES_atts[$nameObj][$attNom] = $attVal;
+			}else
+				$this->FILES_atts[$nameObj][$attNom] = $attVal;
+			
+		}
+		
+	}
+	
+	
 	# Atributos de inicio de configuracion para el editor CKeditor
 
 	/**
@@ -1209,20 +1073,24 @@ class myForm {
 	 */
 	public function addFile ($etq, $name, $upload_url, $file_types = '', $file_types_description = '', $file_size_limit = ''){
 		
+		$this->setAttFileAuto($name);
+		
 		$flash_url = $GLOBALS['urlProject'].'swf/swfupload.swf';
 		
 		$name = $this->getColspanRowspan($name);
+		
 		if ($file_types && is_array($file_types))
-		$this->FILE_file_types = $file_types;
+			$this->setAttFile($name, 'file_types', $file_types);
 			
 		if ($file_types_description)
-		$this->FILE_file_types_description = $file_types_description;
+			$this->setAttFile($name,'file_types_description',$file_types_description);
 			
 		if (intval($file_size_limit))
-		$this->FILE_size_limit = $file_size_limit;
+			$this->setAttFile($name,'size_limit',$file_size_limit);
 
-		$this->FILE_upload_url = $upload_url;
-		$this->FILE_flash_url  = $flash_url;
+		$this->setAttFile($name,'upload_url',$upload_url);	
+		
+		$this->setAttFile($name,'flash_url',$flash_url);
 
 		$Cadena   = 'file'.$this->Separador.htmlentities($etq).$this->Separador.$name;
 		$this->Objects['field'][$name] = $Cadena;
@@ -1230,8 +1098,8 @@ class myForm {
 
 		$this->arrayFormElementType[$name] = 'file';
 		
-                if(!$this->useAddFileAfterLoad)
-                    $this->useAddFile = true;
+        if(!$this->useAddFileAfterLoad)
+           $this->useAddFile = true;
 	}
 
 	/**
@@ -1589,21 +1457,23 @@ class myForm {
 	public function getFile ($name, $upload_url, $file_types = '', $file_types_description = '', $file_size_limit = ''){
 		$buf = '';
 
+		$this->setAttFileAuto($name);
+		
 		$flash_url = $GLOBALS['urlProject'].'swf/swfupload.swf';
 		
 		if ($file_types && is_array($file_types))
-		$this->FILE_file_types = $file_types;
+			$this->setAttFile($name,'file_types',$file_types);
 		
 		if ($file_types_description)
-		$this->FILE_file_types_description = $file_types_description;
+			$this->setAttFile($name,'file_types_description',$file_types_description);
 		
 		if (intval($file_size_limit))
-		$this->FILE_size_limit = $file_size_limit;
+			$this->setAttFile($name,'size_limit',$file_size_limit);
 		
-		$this->FILE_upload_url = $upload_url;
-		$this->FILE_flash_url  = $flash_url;
+		$this->setAttFile($name,'upload_url',$upload_url);
+		$this->setAttFile($name,'flash_url',$flash_url);
 		
-		$buf.='<span id="spanButtonPlaceholder">';
+		$buf.='<span id="spanButtonPlaceholder'.$name.'">';
 		
 		/**
 		 * Deprecated
@@ -1612,13 +1482,13 @@ class myForm {
 		 */  
 		
 		$maxInfoSize = '';   
-	    if ($this->FILE_show_max_upload_size_info_in_button){
-	    	if ($this->FILE_size_limit<1024){
-	           $maxFileSizeUpload = '('.$this->FILE_size_limit.' Kb)';
-	    	}else if ($this->FILE_size_limit<1048576){
-	    	   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1024,2).' Mb)';
+	    if ($this->FILES_atts[$name]['show_max_upload_size_info_in_button']){
+	    	if ($this->FILES_atts[$name]['size_limit']<1024){
+	           $maxFileSizeUpload = '('.$this->FILES_atts[$name]['size_limit'].' Kb)';
+	    	}else if ($this->FILES_atts[$name]['size_limit']<1048576){
+	    	   $maxFileSizeUpload = '('.number_format($this->FILES_atts[$name]['size_limit']/1024,2).' Mb)';
 	    	}else{
-      		   $maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1048576,2).' Gb)';
+      		   $maxFileSizeUpload = '('.number_format($this->FILES_atts[$name]['size_limit']/1048576,2).' Gb)';
 	    	}
 	       $maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
 	    }	   
@@ -1626,7 +1496,7 @@ class myForm {
 		$buf.= '</span><div style="text-align: left;" class="'.$this->styleClassTags.'" id="div_file_progress" name="div_file_progress"></div>';
 		$this->arrayFormElementType[$name] = 'file';
 
-		return $this->getJavaScriptSWFUploader().$buf;
+		return $this->getJavaScriptSWFUploader($name).$buf;
 	}
 	
 	/**
@@ -2160,73 +2030,117 @@ class myForm {
 	 * para el cargar la configuracion del SWFUploader
 	 *
 	 */
-	private function getJavaScriptSWFUploader (){
+	private function getJavaScriptSWFUploader ($names){
+		
 		$JS = '';
 			
 		$JS.= '<script type="text/javascript">'."\n";
-		$JS.= 'var swfu;'."\n";
-		$JS.= 'window.onload = function() {'."\n";
-		$JS.= 'swfu = new SWFUpload({'."\n";
-
-		$JS.= '// Backend Settings'."\n";
-		$JS.= "\t".'upload_url : "'.$this->FILE_upload_url.'",'."\n";
+		
+		if (!is_array($names)){
 			
-		if (count($this->FILE_file_post_name)){
-			$JS.= 'post_params : {'."\n";
-			$swf_file_post_name_Keys = array_keys($this->FILE_file_post_name);
-			for ($i=0;$i<count($this->FILE_file_post_name);$i++){
-				$JS.= '"'.$swf_file_post_name_Keys[$i].'" : "'.$this->FILE_file_post_name[$swf_file_post_name_Keys[$i]].'"';
-				if ($i!=(count($this->FILE_file_post_name)-1))
-				$JS.= ',';
+			$JS.= 'var swfu'.$names.';'."\n";
+			
+		}else{
+			
+			$JS.= 'var ';
+			
+			foreach ($names as $name){
+				
+				$JS.= 'swfu'.$name.', ';
 			}
-			$JS.= "\n".'},'."\n";
+			
+			$JS = substr($JS, 0,-2).';'."\n";
+			
+		}	
+		
+		$JS.= 'window.onload = function() {'."\n";
+		
+		if (!is_array($names)){
+			
+			$JS.= $this->getJavaScriptSWFUploaderPerVar($names);
+			
+		}else{
+
+			foreach ($names as $name){
+			
+				$JS.= $this->getJavaScriptSWFUploaderPerVar($name);
+			}
+		}
+		
+		
+		
+		$JS.= '};'."\n";
+		
+		$JS.= '</script>'."\n";
+			
+		return $JS;
+	}
+
+	private function getJavaScriptSWFUploaderPerVar ($nameVar){
+		
+		$JSPerVar = '';
+		
+		$JSPerVar.= 'swfu'.$nameVar.' = new SWFUpload({'."\n";
+
+		$JSPerVar.= '// Backend Settings'."\n";
+		$JSPerVar.= "\t".'upload_url : "'.$this->FILES_atts[$nameVar]['upload_url'].'",'."\n";
+			
+		if (count($this->FILES_atts[$nameVar]['file_post_name'])){
+			$JSPerVar.= 'post_params : {'."\n";
+			$swf_file_post_name_Keys = array_keys($this->FILES_atts[$nameVar]['file_post_name']);
+			for ($i=0;$i<count($this->FILES_atts[$nameVar]['file_post_name']);$i++){
+				$JSPerVar.= '"'.$swf_file_post_name_Keys[$i].'" : "'.$this->FILES_atts[$nameVar]['file_post_name'][$swf_file_post_name_Keys[$i]].'"';
+				if ($i!=(count($this->FILES_atts[$nameVar]['file_post_name'])-1))
+				$JSPerVar.= ',';
+			}
+			$JSPerVar.= "\n".'},'."\n";
 		}
 			
 			
-		$JS.= '// File Upload Settings '."\n";
-		$JS.= "\t".'file_size_limit: "'.$this->FILE_size_limit.'",'."\n";
-		$JS.= "\t".'file_types : "';
-		for ($i=0;$i<count($this->FILE_file_types);$i++){
-			$JS.= "".''.$this->FILE_file_types[$i].'';
-			if ($i!=(count($this->FILE_file_types)-1))
-			$JS.= ';';
+		$JSPerVar.= '// File Upload Settings '."\n";
+		$JSPerVar.= "\t".'file_size_limit: "'.$this->FILES_atts[$nameVar]['size_limit'].'",'."\n";
+		$JSPerVar.= "\t".'file_types : "';
+		for ($i=0;$i<count($this->FILES_atts[$nameVar]['file_types']);$i++){
+			$JSPerVar.= "".''.$this->FILES_atts[$nameVar]['file_types'][$i].'';
+			if ($i!=(count($this->FILES_atts[$nameVar]['file_types'])-1))
+			$JSPerVar.= ';';
 		}
-		$JS.= '",'."\n";
-		$JS.= "\t".'file_types_description: "'.$this->FILE_file_types_description.'",'."\n";
-		$JS.= "\t".'file_upload_limit: '.$this->FILE_file_upload_limit.','."\n";
-		$JS.= "\t".'file_queue_limit: '.$this->FILE_file_queue_limit.','."\n";
+		$JSPerVar.= '",'."\n";
+		$JSPerVar.= "\t".'file_types_description: "'.$this->FILES_atts[$nameVar]['file_types_description'].'",'."\n";
+		$JSPerVar.= "\t".'file_upload_limit: '.$this->FILES_atts[$nameVar]['file_upload_limit'].','."\n";
+		$JSPerVar.= "\t".'file_queue_limit: '.$this->FILES_atts[$nameVar]['file_queue_limit'].','."\n";
 			
-		$JS.= '//Event Handler Settings - these functions as defined in Handlers.js'."\n";
-		$JS.= '//The handlers are not part of SWFUpload but are part of my website and control how'."\n";
-		$JS.= '//my website reacts to the SWFUpload events.'."\n";
-		$JS.= "\t".'file_queue_error_handler: '.$this->FILE_file_queue_error_handler.','."\n";
-		$JS.= "\t".'file_dialog_complete_handler: '.$this->FILE_file_dialog_complete_handler.','."\n";
-		$JS.= "\t".'upload_progress_handler: '.$this->FILE_upload_progress_handler.','."\n";
-		$JS.= "\t".'upload_error_handler: '.$this->FILE_upload_error_handler.','."\n";
-		$JS.= "\t".'upload_success_handler: '.$this->FILE_upload_success_handler.','."\n";
-		$JS.= "\t".'upload_complete_handler: '.$this->FILE_upload_complete_handler.','."\n";
-		$JS.= "\t".'swfupload_loaded_handler: '.$this->FILE_swfupload_loaded_handler.','."\n";
-		$JS.= "\t".'file_dialog_start_handler: '.$this->FILE_file_dialog_start_handler.','."\n";
-		$JS.= "\t".'file_queued_handler: '.$this->FILE_file_queued_handler.','."\n";
+		$JSPerVar.= '//Event Handler Settings - these functions as defined in Handlers.js'."\n";
+		$JSPerVar.= '//The handlers are not part of SWFUpload but are part of my website and control how'."\n";
+		$JSPerVar.= '//my website reacts to the SWFUpload events.'."\n";
+		$JSPerVar.= "\t".'file_queue_error_handler: '.$this->FILES_atts[$nameVar]['file_queue_error_handler'].','."\n";
+		$JSPerVar.= "\t".'file_dialog_complete_handler: '.$this->FILES_atts[$nameVar]['file_dialog_complete_handler'].','."\n";
+		$JSPerVar.= "\t".'upload_progress_handler: '.$this->FILES_atts[$nameVar]['upload_progress_handler'].','."\n";
+		$JSPerVar.= "\t".'upload_error_handler: '.$this->FILES_atts[$nameVar]['upload_error_handler'].','."\n";
+		$JSPerVar.= "\t".'upload_success_handler: '.$this->FILES_atts[$nameVar]['upload_success_handler'].','."\n";
+		$JSPerVar.= "\t".'upload_complete_handler: '.$this->FILES_atts[$nameVar]['upload_complete_handler'].','."\n";
+		$JSPerVar.= "\t".'swfupload_loaded_handler: '.$this->FILES_atts[$nameVar]['swfupload_loaded_handler'].','."\n";
+		$JSPerVar.= "\t".'file_dialog_start_handler: '.$this->FILES_atts[$nameVar]['file_dialog_start_handler'].','."\n";
+		$JSPerVar.= "\t".'file_queued_handler: '.$this->FILES_atts[$nameVar]['file_queued_handler'].','."\n";
 		//$JS.= 'upload_start_handler: '.$this->FILE_upload_start_handler.','."\n";
 		//$JS.= 'debug_handler: '.$this->FILE_debug_handler.','."\n";
 
-		$JS.= '// Button Settings'."\n";
-		$JS.= "\t".'button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,'."\n";
-		$JS.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
+		$JSPerVar.= '// Button Settings'."\n";
+		$JSPerVar.= "\t".'button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,'."\n";
+		$JSPerVar.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
 		
 		
-		$JS.= "\t".'button_image_url : "'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_button_image_url.'",'."\n";
-		$JS.= "\t".'button_placeholder_id : "'.$this->FILE_button_placeholder_id.'",'."\n";
-		$JS.= "\t".'button_width: '.$this->FILE_button_width.','."\n";
-		$JS.= "\t".'button_height: '.$this->FILE_button_height.','."\n";
+		$JSPerVar.= "\t".'button_image_url : "'.$GLOBALS['urlProject'].$this->pathImages.$this->FILES_atts[$nameVar]['button_image_url'].'",'."\n";
+		$JSPerVar.= "\t".'button_placeholder_id : "'.$this->FILE_button_placeholder_id.$nameVar.'",'."\n";
+		$JSPerVar.= "\t".'button_width: '.$this->FILES_atts[$nameVar]['button_width'].','."\n";
+		$JSPerVar.= "\t".'button_height: '.$this->FILES_atts[$nameVar]['button_height'].','."\n";
 		
-		if ($this->FILE_upload_several_files == true)
-			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILES,'."\n";
+		if ($this->FILES_atts[$nameVar]['upload_several_files'] == true)
+			$JSPerVar.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILES,'."\n";
 		else
-			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILE,'."\n";
+			$JSPerVar.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILE,'."\n";
 		
-		$JS.= "\t".'button_text : \'<span class="btnText">'.$this->FILE_str_etq_button.' ';
+		$JSPerVar.= "\t".'button_text : \'<span class="btnText">'.$this->FILES_atts[$nameVar]['str_etq_button'].' ';
 
 		/**
 		 * Deprecated
@@ -2237,31 +2151,31 @@ class myForm {
 		$maxInfoSize = '';
 		$maxFileSizeUpload = '';
 		   
-	    if ($this->FILE_show_max_upload_size_info_in_button){
-	    	if ($this->FILE_size_limit<1024){
-	    		$maxFileSizeUpload = $this->FILE_size_limit.' Kb';
-	    	}else if ($this->FILE_size_limit<1048576){
-	    	   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1024,2).' Mb';
+	    if ($this->FILES_atts[$nameVar]['show_max_upload_size_info_in_button']){
+	    	if ($this->FILES_atts[$nameVar]['size_limit']<1024){
+	    		$maxFileSizeUpload = $this->FILES_atts[$nameVar]['size_limit'].' Kb';
+	    	}else if ($this->FILES_atts[$nameVar]['size_limit']<1048576){
+	    	   	$maxFileSizeUpload = number_format($this->FILES_atts[$nameVar]['size_limit']/1024,2).' Mb';
 	    	}else{
-      		   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1048576,2).' Gb';
+      		   	$maxFileSizeUpload = number_format($this->FILES_atts[$nameVar]['size_limit']/1048576,2).' Gb';
 	    	}
 	       	$maxInfoSize = '('.$maxFileSizeUpload.')';
 	    }	   
 			
 			
-		$JS.= $maxInfoSize.'</span>\','."\n";
-		$JS.= "\t".'button_text_style : ".btnText { text-align: center; font-size: 9; font-weight: bold; font-family: MS Shell Dlg; }",'."\n";
-		$JS.= "\t".'button_text_top_padding : 3,'."\n";
-		$JS.= "\t".'button_text_left_padding : 0,'."\n"; 		
+		$JSPerVar.= $maxInfoSize.'</span>\','."\n";
+		$JSPerVar.= "\t".'button_text_style : ".btnText { text-align: center; font-size: 9; font-weight: bold; font-family: MS Shell Dlg; }",'."\n";
+		$JSPerVar.= "\t".'button_text_top_padding : 3,'."\n";
+		$JSPerVar.= "\t".'button_text_left_padding : 0,'."\n"; 		
 		
-		$JS.= '//Flash Settings'."\n";
-		$JS.= "\t".'flash_url: "'.$this->FILE_flash_url.'",'."\n";
-		$JS.= "\t".'flash_width: "'.$this->FILE_flash_width.'",'."\n";
-		$JS.= "\t".'flash_height: "'.$this->FILE_flash_height.'",'."\n";
-		$JS.= "\t".'flash_color: "#'.$this->FILE_flash_color.'",'."\n";
+		$JSPerVar.= '//Flash Settings'."\n";
+		$JSPerVar.= "\t".'flash_url: "'.$this->FILES_atts[$nameVar]['flash_url'].'",'."\n";
+		$JSPerVar.= "\t".'flash_width: "'.$this->FILES_atts[$nameVar]['flash_width'].'",'."\n";
+		$JSPerVar.= "\t".'flash_height: "'.$this->FILES_atts[$nameVar]['flash_height'].'",'."\n";
+		$JSPerVar.= "\t".'flash_color: "#'.$this->FILES_atts[$nameVar]['flash_color'].'",'."\n";
 			
-		$JS.= '//Debug Settings'."\n";
-		$JS.= "\t".'debug: '.$this->FILE_debug.''."\n";
+		$JSPerVar.= '//Debug Settings'."\n";
+		$JSPerVar.= "\t".'debug: '.$this->FILES_atts[$nameVar]['debug'].''."\n";
 			
 		//$JS.= 'file_post_name : "'.$this->FILE_file_post_name.'",'."\n";
 		/*
@@ -2274,140 +2188,9 @@ class myForm {
 		 }
 		 $JS.= '}'."\n";
 		 */
-		$JS.= '});'."\n";
-		$JS.= '};'."\n";
-		$JS.= '</script>'."\n";
-			
-		return $JS;
-	}
-
-
-	/**
-	 * Obtener el javascript necesario para
-	 * imprimirlo en la pagina despues de haber cargado la pagina
-	 * para el cargar la configuracion del SWFUploader
-	 *
-	 */
-	public function getJavaScriptSWFUploaderAfterLoad ($nameFunction){
-		$JS = '';
-
-		$JS.= 'var swfu=""'."\n";
-		$JS.= 'function '.$nameFunction.'(){'."\n";
-                $JS.= 'var settings = {'."\n";
-
-		$JS.= '// Backend Settings'."\n";
-		$JS.= "\t".'upload_url : "'.$this->FILE_upload_url.'",'."\n";
-
-		if (count($this->FILE_file_post_name)){
-			$JS.= 'post_params : {'."\n";
-			$swf_file_post_name_Keys = array_keys($this->FILE_file_post_name);
-			for ($i=0;$i<count($this->FILE_file_post_name);$i++){
-				$JS.= '"'.$swf_file_post_name_Keys[$i].'" : "'.$this->FILE_file_post_name[$swf_file_post_name_Keys[$i]].'"';
-				if ($i!=(count($this->FILE_file_post_name)-1))
-				$JS.= ',';
-			}
-			$JS.= "\n".'},'."\n";
-		}
-
-
-		$JS.= '// File Upload Settings '."\n";
-		$JS.= "\t".'file_size_limit: "'.$this->FILE_size_limit.'",'."\n";
-		$JS.= "\t".'file_types : "';
-		for ($i=0;$i<count($this->FILE_file_types);$i++){
-			$JS.= "".''.$this->FILE_file_types[$i].'';
-			if ($i!=(count($this->FILE_file_types)-1))
-			$JS.= ';';
-		}
-		$JS.= '",'."\n";
-		$JS.= "\t".'file_types_description: "'.$this->FILE_file_types_description.'",'."\n";
-		$JS.= "\t".'file_upload_limit: '.$this->FILE_file_upload_limit.','."\n";
-		$JS.= "\t".'file_queue_limit: '.$this->FILE_file_queue_limit.','."\n";
-
-		$JS.= '//Event Handler Settings - these functions as defined in Handlers.js'."\n";
-		$JS.= '//The handlers are not part of SWFUpload but are part of my website and control how'."\n";
-		$JS.= '//my website reacts to the SWFUpload events.'."\n";
-		$JS.= "\t".'file_queue_error_handler: '.$this->FILE_file_queue_error_handler.','."\n";
-		$JS.= "\t".'file_dialog_complete_handler: '.$this->FILE_file_dialog_complete_handler.','."\n";
-		$JS.= "\t".'upload_progress_handler: '.$this->FILE_upload_progress_handler.','."\n";
-		$JS.= "\t".'upload_error_handler: '.$this->FILE_upload_error_handler.','."\n";
-		$JS.= "\t".'upload_success_handler: '.$this->FILE_upload_success_handler.','."\n";
-		$JS.= "\t".'upload_complete_handler: '.$this->FILE_upload_complete_handler.','."\n";
-		$JS.= "\t".'swfupload_loaded_handler: '.$this->FILE_swfupload_loaded_handler.','."\n";
-		$JS.= "\t".'file_dialog_start_handler: '.$this->FILE_file_dialog_start_handler.','."\n";
-		$JS.= "\t".'file_queued_handler: '.$this->FILE_file_queued_handler.','."\n";
-		//$JS.= 'upload_start_handler: '.$this->FILE_upload_start_handler.','."\n";
-		//$JS.= 'debug_handler: '.$this->FILE_debug_handler.','."\n";
-
-		$JS.= '// Button Settings'."\n";
-		$JS.= "\t".'button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,'."\n";
-		$JS.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
-
-
-		$JS.= "\t".'button_image_url : "'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_button_image_url.'",'."\n";
-		$JS.= "\t".'button_placeholder_id : "'.$this->FILE_button_placeholder_id.'",'."\n";
-		$JS.= "\t".'button_width: '.$this->FILE_button_width.','."\n";
-		$JS.= "\t".'button_height: '.$this->FILE_button_height.','."\n";
-
-		if ($this->FILE_upload_several_files == true)
-			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILES,'."\n";
-		else
-			$JS.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILE,'."\n";
-
-		$JS.= "\t".'button_text : \'<span class="btnText">'.$this->FILE_str_etq_button.' ';
-
-		/**
-		 * Deprecated
-		if ($this->FILE_src_img_button)
-			$JS.= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
-		*/
-
-		$maxInfoSize = '';
-		$maxFileSizeUpload = '';
-
-	    if ($this->FILE_show_max_upload_size_info_in_button){
-	    	if ($this->FILE_size_limit<1024){
-	    		$maxFileSizeUpload = $this->FILE_size_limit.' Kb';
-	    	}else if ($this->FILE_size_limit<1048576){
-	    	   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1024,2).' Mb';
-	    	}else{
-      		   	$maxFileSizeUpload = number_format($this->FILE_size_limit/1048576,2).' Gb';
-	    	}
-	       	$maxInfoSize = '('.$maxFileSizeUpload.')';
-	    }
-
-
-		$JS.= $maxInfoSize.'</span>\','."\n";
-		$JS.= "\t".'button_text_style : ".btnText { text-align: center; font-size: 9; font-weight: bold; font-family: MS Shell Dlg; }",'."\n";
-		$JS.= "\t".'button_text_top_padding : 3,'."\n";
-		$JS.= "\t".'button_text_left_padding : 0,'."\n";
-
-		$JS.= '//Flash Settings'."\n";
-		$JS.= "\t".'flash_url: "'.$this->FILE_flash_url.'",'."\n";
-		$JS.= "\t".'flash_width: "'.$this->FILE_flash_width.'",'."\n";
-		$JS.= "\t".'flash_height: "'.$this->FILE_flash_height.'",'."\n";
-		$JS.= "\t".'flash_color: "#'.$this->FILE_flash_color.'",'."\n";
-
-		$JS.= '//Debug Settings'."\n";
-		$JS.= "\t".'debug: '.$this->FILE_debug.''."\n";
-
-		//$JS.= 'file_post_name : "'.$this->FILE_file_post_name.'",'."\n";
-		/*
-		 $JS.= 'custom_settings : {'."\n";
-		 $swf_custom_settings_Keys = array_keys($this->FILE_custom_settings);
-		 for ($i=0;$i<count($this->FILE_custom_settings);$i++){
-		 $JS.= ''.$swf_custom_settings_Keys[$i].' : "'.$this->FILE_custom_settings[$swf_custom_settings_Keys[$i]].'"';
-		 if ($i!=(count($this->FILE_custom_settings)-1))
-		 $JS.= ',';
-		 }
-		 $JS.= '}'."\n";
-		 */
-		$JS.= '};'."\n";
-		$JS.= 'swfu = new SWFUpload(settings);';
-		$JS.= '}';
-        
-		$JS.= ''.$nameFunction.'();';
-
-		return $JS;
+		$JSPerVar.= '});'."\n";
+		
+		return $JSPerVar;
 	}
 
 	/**
@@ -2500,9 +2283,9 @@ class myForm {
 
 		if ($this->useAddFile && !$this->useAddFileAfterLoad){
 		
-		  $buf .= $this->getJavaScriptSWFUploader();
+		  $buf .= $this->getJavaScriptSWFUploader($this->uploaderIdArray);
+		  
         }
-                
 
 		$this->cols = $cols;
 
@@ -2574,7 +2357,7 @@ class myForm {
 					$bufTemp = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld>';
 
 					//$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
-					$bufTemp .= '<span id="spanButtonPlaceholder">';
+					$bufTemp .= '<span id="'.$this->FILE_button_placeholder_id.''.$campos_f[2].'">';
 					
 					/**
 					 *	Deprecated 
@@ -2584,19 +2367,19 @@ class myForm {
 
 					$maxInfoSize = '';
 					   
-	    			if ($this->FILE_show_max_upload_size_info_in_button){
+	    			if ($this->FILES_atts[$campos_f[2]]['show_max_upload_size_info_in_button']){
 	    				
-	    				if ($this->FILE_size_limit<1024){
+	    				if ($this->FILES_atts[$campos_f[2]]['size_limit']<1024){
 	    					
-	           				$maxFileSizeUpload = '('.$this->FILE_size_limit.' Kb)';
+	           				$maxFileSizeUpload = '('.$this->FILES_atts[$campos_f[2]]['size_limit'].' Kb)';
 	           				
-	    				}else if ($this->FILE_size_limit<1048576){
+	    				}else if ($this->FILES_atts[$campos_f[2]]['size_limit']<1048576){
 	    					
-	    	   				$maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1024,2).' Mb)';
+	    	   				$maxFileSizeUpload = '('.number_format($this->FILES_atts[$campos_f[2]]['size_limit']/1024,2).' Mb)';
 	    	   				
 	    				}else{
 	    					
-      		   				$maxFileSizeUpload = '('.number_format($this->FILE_size_limit/1048576,2).' Gb)';
+      		   				$maxFileSizeUpload = '('.number_format($this->FILES_atts[$campos_f[2]]['size_limit']/1048576,2).' Gb)';
 	    				}
 	    				
 	       				$maxInfoSize = '<font style="vertical-align: middle; font-size: 6pt; font-weight: bold;">'.$maxFileSizeUpload.'</font>';
@@ -2659,7 +2442,7 @@ class myForm {
 							
 							$oCKeditor->config['toolbar_Basic'] = array(
 							
-								array('Preview','ShowBlocks'),
+								array('Source','Preview','ShowBlocks'),
 									
 								array('Cut','Copy','Paste','PasteText','PasteFromWord'),
 									
