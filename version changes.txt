@@ -1,1 +1,3 @@
-- Por formulario se admiten multiples llamados o nuevas instancias de addFile.
+- Issue 1 fixed.
+- Issue 2 fixed.
+- Issue 3 fixed. 
