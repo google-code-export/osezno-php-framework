@@ -335,7 +335,7 @@ class osezno {
   		 	 */
   			if (!isset($_GET['no_load_xajax'])){
   				
-  				$newContent = str_ireplace('</head>', $this->getAllHead().'</head>', $newContent);
+  				$newContent = str_ireplace('<head>', '<head>'."".$this->getAllHead(), $newContent);
   			
   				$newContent = str_ireplace('</body>', $this->getAllBody().'</body>', $newContent);
   			
