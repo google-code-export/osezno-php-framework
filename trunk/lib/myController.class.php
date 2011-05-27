@@ -1128,7 +1128,7 @@ class myController extends myControllerExt {
 				
 				if (isset($datForm[$field])){
 				
-					if (!$datForm[$field]){
+					if ($datForm[$field] == NULL){
 					
 						$this->assign($field,'className','caja_required');
 
