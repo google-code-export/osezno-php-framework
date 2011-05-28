@@ -534,9 +534,9 @@ class myList  {
 	public function setWidthColumn ($alias, $width){
 		
 		if (is_int($width))
-			$this->arrayWidthsCols[$alias] = $width;
+			$this->arrayWidthsCols[htmlentities($alias)] = $width;
 		else
-			$this->arrayWidthsCols[$alias] = intval($width);
+			$this->arrayWidthsCols[htmlentities($alias)] = intval($width);
 		
 	}
 	
@@ -789,7 +789,7 @@ class myList  {
 	 */
 	public function setRealNameInQuery ($field, $realName){
 		
-		$this->arrayAliasSetInQuery[$field] = $realName;
+		$this->arrayAliasSetInQuery[htmlentities($field)] = $realName;
 	}
 	
 	/**
@@ -1058,6 +1058,8 @@ class myList  {
 						foreach ($row as $key => $val){
 					
 							if (!is_numeric($key)){
+								
+								$key = htmlentities($key);
 
 								$this->arrayFieldsOnQuery[] = $key;
 							
@@ -1107,7 +1109,7 @@ class myList  {
 							
 									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td width="" style="text-align:center">'; 
 							
-									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.htmlentities(ucwords($key)).'</a>';
+									$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.htmlentities($key).'\')">'.(ucwords($key)).'</a>';
 
 									$bufHead.='</td><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td></tr></table>';
 							
@@ -1562,7 +1564,7 @@ class myList  {
 					}else
 						$data = $field;
 					
-					$arFields[$field] = $etq;
+					$arFields[htmlentities($field)] = $etq;
 				}
 			}
 			

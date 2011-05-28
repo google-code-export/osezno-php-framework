@@ -1477,7 +1477,7 @@ class myController extends myControllerExt {
 						}else
 							$data = $field;
 					
-						$arFields[$field] = $etq;
+						$arFields[htmlentities($field)] = $etq;
 					}
 				}
 		
