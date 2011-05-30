@@ -1778,13 +1778,12 @@ class myController extends myControllerExt {
 	 * Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña y del ID del grupo que se declaro en myTabs::_contruct.
 	 * @param string $tabName Nombre de la pestaña
 	 * @param string $idTabs Nombre grupo de pestañas
-	 * @param string $newUrl Permite asignar contenido desde una nueva Url
 	 */
-	public function MYTAB_makeActive($tabName, $idTabs = '', $newUrl = ''){
+	public function MYTAB_makeActive($tabName, $idTabs = ''){
 		
 		if ($idTabs){
 		
-			$script = "changeActiveTab(".$idTabs."_myTab".etqFormat($tabName).",'".$newUrl."')";
+			$script = "changeActiveTab(".$tabName."_myTab".etqFormat($idTabs).")";
 			
 			$this->script($script);
 			

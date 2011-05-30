@@ -154,7 +154,13 @@ class myTabs{
 		
 		$idTabDef = '';
 
-		$idDiv = $this->id_tabs.'_content_tab_'.$i;
+		$idDiv = $this->id_tabs.'_content';
+		
+		$paramsAllTabs = '\''.$idDiv.'\',';
+		
+		$htmlDivTabs = '';
+		
+		$selTabDefa = false;
 		
 		foreach ($this->arrayTabs as $etqTab => $urlTab){
 			
@@ -165,22 +171,51 @@ class myTabs{
 			   
 			   $urlTab.='?no_load_xajax=true';
 			
-			$script .= "\t".'var '.$this->id_tabs.'_myTab'.etqFormat($etqTab).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\', \''.$this->id_tabs.'\');'."\n";
+			$script .= "\t".'var '.$this->id_tabs.'_myTab'.etqFormat($etqTab).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\');'."\n";
 			
-			$html .= '<li id="'.$this->id_tabs.'_tab'.$i.'"><span onclick="makeactive(\''.$this->id_tabs.'_tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\''.$idDiv.'\', \''.$this->id_tabs.'\')">'.$etqTab.'</span></li>'."\n";
+			$display = 'none';
 			
-			if ($tabDefa == $etqTab)
+			$classTab = '';
 			
-				$idTabDef = $i;
+			if (!$selTabDefa){
 			
+				if ($tabDefa == $etqTab){
+			
+					$idTabDef = $i;
+				
+					$display = '';
+				
+					$selTabDefa = true;
+					
+					$classTab = 'current';
+				
+				}else if(!$tabDefa){
+				
+					$display = '';
+				
+					$selTabDefa = true;
+					
+					$classTab = 'current';
+				}
+				
+			}
+			
+			$html .= '<li id="'.$this->id_tabs.'_tab'.$i.'" class="'.$classTab.'"><span onclick="makeactive(\''.$this->id_tabs.'_tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\')">'.$etqTab.'</span></li>'."\n";
+
+			$htmlDivTabs .= '<div style="display:'.$display.'" id="div_cont_'.$this->id_tabs.'_tab'.$i.'"></div>';				
+				
 			$i++;
+			
+			$paramsAllTabs .= $this->id_tabs.'_myTab'.etqFormat($etqTab).', ';
 		}
 	
-		$html .= '</ul></div></td></tr><tr><td><div id="'.$idDiv.'"></div></td></tr></table>'."\n";
+		$html .= '</ul></div></td></tr><tr><td><div id="'.$idDiv.'">'.$htmlDivTabs.'</div></td></tr></table>'."\n";
 		
-		if ($tabDefa)
+		$html .= '<script type="text/javascript" charset="UTF-8">loadAllTabs(';
 		
-			$html .= '<script type="text/javascript" charset="UTF-8">makeactive(\''.$this->id_tabs.'_tab'.$idTabDef.'\','.($from).','.$couAr.',\''.$this->arrayTabs[$tabDefa].'\',\''.$idDiv.'\', \''.$this->id_tabs.'\');</script>'."\n";
+		$html .= substr($paramsAllTabs,0,-2);
+		
+		$html .= ');</script>'."\n";
 		
 		$GLOBALS['OF_TABS_ID_SEC'] = $i+1;	
 			

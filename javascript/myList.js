@@ -1,316 +1,214 @@
+var req = new Array();
 
-var rowsMarked = new Array();
+var addInfo = 'Please wait...';
 
-var markRowClass   = 'td_mark';
-	
-var overRowClass   = 'td_over';
-	
-var colSelected    = 'cell_content_selected';
+var reloadInfo = 'Slow process, you can ';
 
-/**
- * Habilita Case Sensitive sobre una regla en el filtro
- * 
- * @param data
- * @param idCS
- * @param idRule
- */
-function MYLIST_caseSensitiveCheckBox (data, idCS, idRule){
+var idInterval = new Array();
+
+var idFuncion = new Array();
+
+var counter = new Array();
+
+var allTabs = new Array();
+
+var arrayAllTabsContent = new Array();
+
+var lastIdTabVisit = '';
+
+function loadAllTabs (){
 	
-	var arRules = new Array('like','in','equal','different','notin','notlike');
-	
-	var have = false;
-	
-	for(a=0;a<arRules.length; a++){
+	for (i=0; i<=arguments.length;i++){
 		
-		if (arRules[a] == data[idRule]){
-			have = true;
-			break;
+		if (isArray(arguments[i])){
+			
+			callContent(arguments[i][3], arguments[i][0], arguments[i][4]);
+
 		}
-		
-	}
-	
-	if (!have){
-		
-		document.getElementById(idCS).disabled = true;
-		
-	}else{
-		
-		document.getElementById(idCS).disabled = false;
 	}
 	
 }
 
-/**
- * Hace un simple check sobre el objeto seleccionado
- * 
- * @param data
- * @param id
- * @return
- */
-function check_onlist(data, id){
+function callContent (url, idArray, idDiv){
 	
-	if (!document.getElementById(id).checked)
-		document.getElementById(id).checked = true;
-	else
-		document.getElementById(id).checked = false;
-}
-
-/**
- * Executa un evento global definido por el usuario en la lista dinamica
- * 
- * @param eventToCall
- * @param idlist
- * @return
- */
-function execGlobalEventOnList (eventToCall, idlist, idselect){
+	var req;
 	
-	if (eventToCall){
-		
-		document.getElementById(idselect).value = '';
-		
-		setTimeout (eventToCall+"(returnRowsSelectedOnList('"+idlist+"'))");
-	}
-}
-
-/**
- * Retorna los id de la lista seleccionados para validar que registros fueron chequeados
- * @param idlist
- * @return
- */
-function returnRowsSelectedOnList (idlist){
-	
-	var ids = new Array();
-	
-	var ins=document.getElementsByTagName('input');
-	
-	for (var j=i=0;i<ins.length;i++){
-		
-		if (ins[i].type == 'checkbox')
-			
-		if (ins[i].id.substr(0,idlist.length)==idlist)
-				
-		if (ins[i].id.substr(idlist.length)!='_over_all')
-				
-		if (document.getElementById(ins[i].id).checked == true){
-
-			ids[j] = ins[i].id.substr(ins[i].id.lastIndexOf('_')+1);
-					
-			j++;
-		}
-				
-	}
-
-	return ids;
-}
-
-/**
- * Marca o desmarca los checkboxes de una lista dinamica
- * 
- * @param value
- * @param idlist
- * @param idmaster
- * @return
- */
-function checkAllBoxesOnList (value, idlist, idmaster, numCols, cCols){
-	
-	var ins=document.getElementsByTagName('input');
-	
-	var valmain = document.getElementById(idmaster).checked;
-	
-	var idtr = '';
-	
-	for (var i=id=0;i<ins.length;i++){
-		
-		if (ins[i].type == 'checkbox'){
-			
-			if (ins[i].id.substr(0,idlist.length)==idlist){
-
-				if (ins[i].id.indexOf('over_all')==-1){
-				
-				if (id%2)
-					cName = 'td_default';
-				else
-					cName = 'td_middle';
-					
-				idtr = 'tr_'+idlist+'_'+id;
-				
-				 if (valmain == true){
-					 
-					 ins[i].checked=true;
-					 
-					 rowsMarked[idtr] = 1;
-					 
-					 for (j=0;j<numCols;j++){
-						 
-				     	 document.getElementById(idtr).cells[j].className = markRowClass;
-				     }
-					 
-				 }else{
-					 
-					 ins[i].checked=false;
-					 
-					 arrCCols = new Array();
-					 
-					 arrCCols = cCols.split(',');
-					 
-					 for (var j=0;j<numCols;j++){
-						 
-				    	switch (arrCCols[j]){
-				    		case '1':
-				    			document.getElementById(idtr).cells[j].className = cName;
-				    		break;
-				    		case '2':
-				    			document.getElementById(idtr).cells[j].className = colSelected;
-				    		break;
-				    		}
-				     }
-					 
-					 rowsMarked[idtr] = 0;
-				 }
-				 
-				 id++;
-				 
-				}
-				 
-			}
-		}
-		
-	}
-	
-}
-
-/**
- * Bloquea el primer select-one de un formulario de filtro de una lista dinamica
- * @param nomForm
- * @return
- */
-function blockFirstElementForm (nomForm){
-	
-	var i;
-	
-	var id;
-	
-	var option;
-	
-	for (i=0; i<document.forms[nomForm].elements.length; i++){
-		
-		option = document.forms[nomForm].elements[i].type;
-		
-		if (option == 'select-one'){
-			
-			id = document.forms[nomForm].elements[i].id;
-			
-			document.getElementById(id).disabled = true;
-			
-			document.getElementById(id).style.display = "none";
-			
-			break;
-		}
-		
-   }	
-	
-}
-
- /**
-  * Quita las marcas los registros seleccionados de una lista
-  * @return
-  */
-function clearRowsMarked (){
-	
-	rowsMarked = new Array();
-}
-
-
-/**
- * Cambia la clase de una fila al pasar
- * el puntero dobre el.
- * @param o Id de la fila
- * @return
- */
-function onRow (o, numCols){
-	 
-	 if (rowsMarked[o.id] != 1){
-		for (var i=0;i<numCols;i++){
-			o.cells[i].className = overRowClass;
-		}
-	 }
-	
-}
-
-/**
- * Cambia la clase al quitar el puntero
- * @param o Id de la fila
- * @param cname	Clase original
- * @return
- */
-function outRow (o, cName, cCols, numCols){
-	
-	 if (rowsMarked[o.id] != 1){
-		arrCCols = cCols.split(',');
-	 	for (var i=0;i<numCols;i++){
-	 		switch (arrCCols[i]){
- 				case '1':
- 					o.cells[i].className = cName;
- 					break;
- 				case '2':
- 					o.cells[i].className = colSelected;
- 					break;
-	 		}
-	 	}
-	 }
-	 
-}
-
-/**
- * Marca una fila de la lista
- * @param o	Id de la fila
- * @param cname Clase original
- * @return
- */
-function markRow (o, cName, cCols, numCols, field){
-	
-	 if (field.length){
-		 
-		 var valField = document.getElementById(field).checked;
-		 
-		 if (valField == true)
-			 document.getElementById(field).checked = false;
-		 else
-			 document.getElementById(field).checked = true;
-	 }
-	 
-	if (rowsMarked[o.id]==undefined)
-		rowsMarked[o.id] = 0;
-	
-    if (rowsMarked[o.id] == 0){
-    	
-    	for (i=0;i<numCols;i++){
-      	   o.cells[i].className = markRowClass;
-         }
-    	
-    	rowsMarked[o.id] = 1;    	
-        
-    }else{
+	try {
+   	 req = new XMLHttpRequest(); /* e.g. Firefox */
+    } catch(e) {
+      try {
+   	   req = new ActiveXObject("Msxml2.XMLHTTP");  /* some versions IE */
+      } catch (e) {
+        try {
+       	 req = new ActiveXObject("Microsoft.XMLHTTP");  /* some versions IE */
+        } catch (E) {
+       	 req = false;
+        } 
+      } 
+    }
     
-    	arrCCols = new Array();
-    	
-    	arrCCols = cCols.split(',');
-    	
-    	for (var i=0;i<numCols;i++){
-    		
-    		switch (arrCCols[i]){
-    			case '1':
-    				o.cells[i].className = cName;
-    			break;
-    			case '2':
-    				o.cells[i].className = colSelected;
-    			break;
-    		}
-    	}
+    req.onreadystatechange = function() {responseContent(req, idArray, idDiv);};
+    
+    req.open("GET",url,true);
+    
+    req.send(null);
 
-        rowsMarked[o.id] = 0;
+}
 
+function responseContent (req, idArray, idDiv){
+	  
+	var output = '';
+
+	if (req.readyState == 4) {
+
+		if (req.status == 200) {
+
+			output = req.responseText;
+
+		} else {
+
+			output = req.responseText;
+
+		}
+
+	}
+	
+	document.getElementById(idDiv).innerHTML = output; 
+}
+
+
+function cancelQuery (tab){
+	
+	req[tab].abort();
+	
+}
+
+function contador (tab){
+
+	counter[tab] += 1;
+	
+	if (document.getElementById('counter_info_'+tab)){
+	
+		if (counter[tab]>3){
+			
+			document.getElementById('counter_info_'+tab).style.color = 'red';
+			
+			document.getElementById('counter_info_'+tab).innerHTML = reloadInfo+'<a href="javascript:void(cancelQuery(\''+tab+'\'))"><font face="arial" size="2" color="blue">abort</font></a> this process'+' (<b>'+counter[tab]+' seconds elapsed</b>) ';
+		}else	
+			document.getElementById('counter_info_'+tab).innerHTML = addInfo+' ('+counter[tab]+' seconds elapsed) ';
+	}
+	
+}
+
+function detenerInterval (tab){
+	
+	clearInterval(idInterval[tab]);
+	
+	counter[tab] = 0;
+	
+}
+
+
+
+function callAHAH(url, pageElement, callMessage, errorMessage, tab, funcion) {
+
+	if (idInterval[tab])
+		detenerInterval(tab);
+	
+	counter[tab] = 0;
+	
+	idFuncion[tab] = funcion;
+	
+	idInterval[tab] = setInterval("contador('"+tab+"')",1000);
+
+	callMessage = '<div style="font-family: arial;color: gray;font-size: 12;" id="counter_info_'+tab+'" name="counter_info_'+tab+'">'+addInfo+'</div>';
+	
+	document.getElementById(pageElement).innerHTML = callMessage;
+		
+     try {
+    	 req[tab] = new XMLHttpRequest(); /* e.g. Firefox */
+     } catch(e) {
+       try {
+    	   req[tab] = new ActiveXObject("Msxml2.XMLHTTP");  /* some versions IE */
+       } catch (e) {
+         try {
+        	 req[tab] = new ActiveXObject("Microsoft.XMLHTTP");  /* some versions IE */
+         } catch (E) {
+        	 req[tab] = false;
+         } 
+       } 
      }
 
+     req[tab].onreadystatechange = function() {responseAHAH(pageElement, errorMessage, tab);};
+     
+     req[tab].open("GET",url,true);
+     
+     req[tab].send(null);
+     
+  }
+
+
+
+function responseAHAH(pageElement, errorMessage, tab) {
+	
+   var output = '';
+   
+   if(req[tab].readyState == 4) {
+	   
+	   detenerInterval(tab);
+	   
+      if(req[tab].status == 200) {
+         
+    	 output = req[tab].responseText;
+         
+         document.getElementById(pageElement).innerHTML = output;
+         
+       } else {
+    	   
+    	 output = req[tab].responseText;
+    	   
+    	 document.getElementById(pageElement).innerHTML = errorMessage+"\n"+output;
+        	 
+       }
+ 
+   }
+   
+   
+ }
+
+/**
+ * Activa una pestaña
+ * @param tabActive	Id de la pestaña
+ * @param from	Iniciar desde id
+ * @param countTabs	Numero de pestañas 
+ * @param urlActive	Url a la que apunta la pestaña
+ * @param idDiv	Id del div a modificar el contenido
+ * @param idDiv	Id del grupo de pestañas  
+ * @return
+ */
+function makeactive(tabActive, from, countTabs, urlActive, idDiv, idTabs) { 
+
+	for (var i=from;i<(from+countTabs);i++){
+			
+		document.getElementById(idTabs+"_tab"+i).className = '';
+			
+		document.getElementById("div_cont_"+idTabs+"_tab"+i).style.display ="none";
+	}
+		
+	document.getElementById(tabActive).className = 'current';
+		
+	document.getElementById("div_cont_"+tabActive).style.display ="";
+		
+}
+
+/**
+ * Cambia la pestaña activa actual
+ * @param etq
+ * @param newUrl
+ * @return
+ */ 
+function changeActiveTab (objTab){
+	
+	makeactive(objTab[0], objTab[1], objTab[2], objTab[3], objTab[4], objTab[5]);
 }
  
