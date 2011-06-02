@@ -131,10 +131,20 @@ class osezno {
 		URL_JS_TT.
 		'" charset="utf-8"></script>';
 		
+		$this->arrayAssignAreasBody['string_js_centerwindow']
+		= '<script type="text/javascript" src="'.
+		URL_JS_CW.
+		'" charset="utf-8"></script>';
+		
+		$this->arrayAssignAreasBody['string_js_followsroll']
+		= '<script type="text/javascript" src="'.
+		URL_JS_FS.
+		'"  charset="utf-8"></script>';
+
 		$this->arrayAssignAreasBody['string_js_balloon']
 		= '<script type="text/javascript" src="'.
 		URL_JS_TB.
-		'"  charset="utf-8"></script>';
+		'"  charset="utf-8"></script>';		
 		
 		$this->arrayAssignAreasBody['string_js_resize']
 		= '<script type="text/javascript">window.onresize=Resize;</script>';

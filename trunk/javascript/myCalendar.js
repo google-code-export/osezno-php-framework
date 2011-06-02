@@ -213,7 +213,7 @@ function CalendarFormat( input )
   
   if ( size==4 || size==7 || size==10 )
   {
-    if ( size == 4 && input.value < ( year - 3 ) )
+    //if ( size == 4 && input.value < ( year - 3 ) )
       //input.value = year; // Year
     if ( size == 7 && input.value.substring( 5, 7 ) == "00" )
       input.value = input.value.substring( 0, 4 )+"-"+month;
@@ -223,9 +223,9 @@ function CalendarFormat( input )
       input.value += "-";
   }
   
-  var nen = input.value.substring( 0, 4 );
-  if ( nen > ( year + 3 ) )
-    input.value = year+"-";
+  //var nen = input.value.substring( 0, 4 );
+  //if ( nen > ( year + 3 ) )
+    //input.value = year+"-";
   var mes = input.value.substring( 5, 7 );
   if ( mes > 12 )   
   {

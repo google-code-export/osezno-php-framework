@@ -189,8 +189,14 @@
   # Ruta tipo url donde se descarga el js de wz tooltip
   define ('URL_JS_TT',       $http.$httpHost.'javascript/wz_tooltip.js',true);
   
+  # Center window tooltip plugin 
+  define ('URL_JS_CW',       $http.$httpHost."javascript/tip_centerwindow.js",true);
+
+  # Follow scroll tooltip plugin
+  define ('URL_JS_FS',       $http.$httpHost."javascript/tip_followscroll.js",true);  
+  
   # Ruta tipo url donde se descarga el js de wz tooltip como plugin adicional para ayudas esilo bocadillo 
-  define ('URL_JS_TB',       $http.$httpHost."javascript/tip_balloon.js",true);  
+  define ('URL_JS_TB',       $http.$httpHost."javascript/tip_balloon.js",true);   
   
   # Ruta tipo url donde se descarga el js de funciones de SWF
   define ('URL_SWF_FCN',     $http.$httpHost."javascript/swfupload.js",true);
