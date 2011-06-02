@@ -1,3 +1,6 @@
 - Issue 1 fixed.
 - Issue 2 fixed.
 - Issue 3 fixed. 
+- Issue 4 fixed?.
+- Issue 6 fixed.
+- Issue 8 fixed.  

@@ -2007,17 +2007,16 @@ class myForm {
 		if (in_array($objName,$arrayKeysObjHelps)){
 			
 			switch ($this->styleTypeHelp){
-				
 				case 1:
 					
-					$return = ' onmouseover="getElementById(\''.$objName.'\').style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\',BALLOON, true, ABOVE, true, FADEIN, 300, FADEOUT, 300)" ';//
+					$return = ' onmouseover="Tip(\''.$this->objHelps[$objName].'\', BALLOON, true,  ABOVE, false, PADDING, 8, FOLLOWSCROLL, true, STICKY, true), getElementById(\''.$objName.'\').style.cursor=\'help\'" ';//
 					
-					break;
+				break;
 				case 2:
 					
-					$return = ' onmouseover="getElementById(\''.$objName.'\').style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\')" ';//
+					$return = ' onmouseover="getElementById(\''.$objName.'\').style.cursor=\'help\',Tip(\''.$this->objHelps[$objName].'\', ABOVE, true, PADDING, 8, FOLLOWSCROLL, true, STICKY, true)" ';//
 					
-					break;
+				break;
 			}
 		}
 
