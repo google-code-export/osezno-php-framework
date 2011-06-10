@@ -200,7 +200,7 @@ class myTabs{
 				
 			}
 			
-			$html .= '<li id="'.$this->id_tabs.'_tab'.$i.'" class="'.$classTab.'"><span onclick="makeactive(\''.$this->id_tabs.'_tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\')">'.$etqTab.'</span></li>'."\n";
+			$html .= '<li id="'.$this->id_tabs.'_tab'.$i.'" class="'.$classTab.'"><span onclick="makeactive(\''.$this->id_tabs.'_tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\')">'.htmlentities($etqTab).'</span></li>'."\n";
 
 			$htmlDivTabs .= '<div style="display:'.$display.'" id="div_cont_'.$this->id_tabs.'_tab'.$i.'"></div>';				
 				
