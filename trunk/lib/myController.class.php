@@ -1130,12 +1130,13 @@ class myController extends myControllerExt {
 				
 					if ($datForm[$field] == NULL){
 					
-						$this->assign($field,'className','caja_required');
+						$this->script('document.forms[\''.$datForm['form_id'].'\'].elements[\''.$field.'\'].className="caja_required"');
 
 						$valid = false;
+						
 					}else{
 					
-						$this->assign($field,'className','caja');
+						$this->script('document.forms[\''.$datForm['form_id'].'\'].elements[\''.$field.'\'].className="caja"');
 					}	
 				
 				}
