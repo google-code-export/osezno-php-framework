@@ -27,8 +27,8 @@ function addWindow (strContent, colorBg, intOpacity, windowWindth, windowHeight)
 	
 	capaBase.style.zIndex = countId+1;
 	
-	capaBase.style.width = arrayPageSize[0];
-	capaBase.style.height = arrayPageSize[1];
+	capaBase.style.width = arrayPageSize[0] + 'px';
+	capaBase.style.height = arrayPageSize[1] + 'px';
 	
 	var capaModalWindow = document.createElement('DIV');
 	capaModalWindow.id = 'modalWindow'+countId;
