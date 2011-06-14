@@ -1068,11 +1068,11 @@ class myController extends myControllerExt {
 	 * @param $toUpdate
 	 * @return string
 	 */
-	public function MYFORM_calOnChange ($partDate, $toUpdate){
+	public function MYFORM_calOnChange ($partDate, $toUpdate, $form_name = ''){
 
 		list($nD, $nM, $nA) = explode ('_',$partDate);
 		
-		$cal = new myCal($nA, $nM, $nD, $toUpdate);
+		$cal = new myCal($nA, $nM, $nD, $toUpdate, $form_name);
 		
 		$this->assign('div_trigger_'.$toUpdate,'innerHTML',$cal->getCalendar());
 		

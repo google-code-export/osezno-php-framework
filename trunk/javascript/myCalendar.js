@@ -43,25 +43,38 @@ function closeCalendarWindow (datForm, update){
 	countIdCall -= 2;
 }
 
-function selectDate (date, update){
+function selectDate (date, update, form){
 	
-	if (document.getElementById(update))
+	if (form){
 		
-		document.getElementById(update).value  = date;
+		if (document.forms[form])
+		
+			document.forms[form].elements[update].value = date;
+	
+	}else{
+		
+		if (document.getElementById(update))
+		
+			document.getElementById(update).value  = date;
+	}	
 	
 	var callId = 'div_trigger_'+update;
 	
 	var div = document.getElementById(callId);
 	
-	padre = div.parentNode;
+	if (div){
+		
+		padre = div.parentNode;
 	
-	padre.removeChild(div);
+		padre.removeChild(div);
 	
-	countIdCall -= 2;
+		countIdCall -= 2;
+	}
+	
 }
 
 
-function addCalendarWindow (value, update, idtrigger){
+function addCalendarWindow (value, update, idtrigger, id_form){
 
 	if (!countIdCall)
 		
@@ -69,7 +82,7 @@ function addCalendarWindow (value, update, idtrigger){
 	
 	var callId = 'div_trigger_'+idtrigger;
 	
-	var strUrlCalendar = '../calendarCaller.php?date='+value+'&update='+update;
+	var strUrlCalendar = '../calendarCaller.php?date='+value+'&update='+update+'&form_name='+id_form;
 	
 	var div = document.getElementById(callId);
 	
@@ -77,8 +90,8 @@ function addCalendarWindow (value, update, idtrigger){
 	    
 		countIdCall += 2;
 		
-		var pos = getAbsolutePosition(document.getElementById(update));
-		
+		var pos = getAbsolutePositionFormElement( update, id_form );
+
 		var miCapa = document.createElement('DIV');
 		
 		miCapa.id = callId;
@@ -103,8 +116,10 @@ function addCalendarWindow (value, update, idtrigger){
 		
 		padre.removeChild(div);
 
-		countIdCall -= 2;
+		countIdCall -= 2;;
 	}
+	
+	
 	
 }
 

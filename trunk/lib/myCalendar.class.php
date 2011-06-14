@@ -48,7 +48,7 @@ class myCal {
 		
 	private $arrYears = array ();
 		
-	public function __construct($nA, $nM, $nDp, $update){
+	public function __construct($nA, $nM, $nDp, $update, $form_name = ''){
 			
 		$nDp = intval($nDp);
 			
@@ -144,8 +144,7 @@ class myCal {
 						$onclick = 	'onclick="selectDate(\''.
 							$nA.'-'.
 							$nMsh.'-'.
-							$nDsh.'\',\''.
-							$update.'\')"';
+							$nDsh.'\',\''.$update.'\',\''.$form_name.'\')"';
 							
 						$iniA = '<a href="javascript:;" class="celldays_a" '.$onclick.'>';
 							
@@ -190,11 +189,11 @@ class myCal {
 		
 		$objMyForm->addEvent('cal_month',
 				'onchange',
-				'MYFORM_calOnChange',$update);
+				'MYFORM_calOnChange',$update, $form_name);
 			
 		$objMyForm->addEvent('cal_year',
 				'onchange',
-				'MYFORM_calOnChange',$update);
+				'MYFORM_calOnChange',$update, $form_name);
 
 		$objMyForm->addEvent('close_call',
 				'onclick', 
