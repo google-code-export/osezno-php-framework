@@ -171,7 +171,7 @@ class myTabs{
 			   
 			   $urlTab.='?no_load_xajax=true';
 			
-			$script .= "\t".'var '.$this->id_tabs.'_myTab'.etqFormat($etqTab).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\');'."\n";
+			$script .= "\t".'var '.$this->id_tabs.'_myTab'.ucfirst(etqFormat($etqTab)).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\');'."\n";
 			
 			$display = 'none';
 			
@@ -206,7 +206,7 @@ class myTabs{
 				
 			$i++;
 			
-			$paramsAllTabs .= $this->id_tabs.'_myTab'.etqFormat($etqTab).', ';
+			$paramsAllTabs .= $this->id_tabs.'_myTab'.ucfirst(etqFormat($etqTab)).', ';
 		}
 	
 		$html .= '</ul></div></td></tr><tr><td><div id="'.$idDiv.'">'.$htmlDivTabs.'</div></td></tr></table>'."\n";

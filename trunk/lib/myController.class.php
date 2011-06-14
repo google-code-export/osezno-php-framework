@@ -1783,8 +1783,10 @@ class myController extends myControllerExt {
 	public function MYTAB_makeActive($tabName, $idTabs = ''){
 		
 		if ($idTabs){
+			
+			$varName = etqFormat($idTabs).'_myTab'.$tabName;
 		
-			$script = "changeActiveTab(".$tabName."_myTab".etqFormat($idTabs).")";
+			$script = 'makeactive('.$varName.'[0], '.$varName.'[1], '.$varName.'[2], '.$varName.'[3], '.$varName.'[4], '.$varName.'[5]);';
 			
 			$this->script($script);
 			

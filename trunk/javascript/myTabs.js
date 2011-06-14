@@ -12,6 +12,71 @@ var counter = new Array();
 
 var allTabs = new Array();
 
+var arrayAllTabsContent = new Array();
+
+var lastIdTabVisit = '';
+
+function loadAllTabs (){
+	
+	for (i=0; i<=arguments.length;i++){
+		
+		if (isArray(arguments[i])){
+			
+			callContent(arguments[i][3], arguments[i][0], arguments[i][4]);
+
+		}
+	}
+	
+}
+
+function callContent (url, idArray, idDiv){
+	
+	var req;
+	
+	try {
+   	 req = new XMLHttpRequest(); /* e.g. Firefox */
+    } catch(e) {
+      try {
+   	   req = new ActiveXObject("Msxml2.XMLHTTP");  /* some versions IE */
+      } catch (e) {
+        try {
+       	 req = new ActiveXObject("Microsoft.XMLHTTP");  /* some versions IE */
+        } catch (E) {
+       	 req = false;
+        } 
+      } 
+    }
+    
+    req.onreadystatechange = function() {responseContent(req, idArray, idDiv);};
+    
+    req.open("GET",url,true);
+    
+    req.send(null);
+
+}
+
+function responseContent (req, idArray, idDiv){
+	  
+	var output = '';
+
+	if (req.readyState == 4) {
+
+		if (req.status == 200) {
+
+			output = req.responseText;
+
+		} else {
+
+			output = req.responseText;
+
+		}
+
+	}
+	
+	document.getElementById(idDiv).innerHTML = output; 
+}
+
+
 function cancelQuery (tab){
 	
 	req[tab].abort();
@@ -42,6 +107,8 @@ function detenerInterval (tab){
 	counter[tab] = 0;
 	
 }
+
+
 
 function callAHAH(url, pageElement, callMessage, errorMessage, tab, funcion) {
 
@@ -120,29 +187,17 @@ function responseAHAH(pageElement, errorMessage, tab) {
  * @return
  */
 function makeactive(tabActive, from, countTabs, urlActive, idDiv, idTabs) { 
-		
-		for (var i=from;i<(from+countTabs);i++){
+
+	for (var i=from;i<(from+countTabs);i++){
 			
-			document.getElementById(idTabs+"_tab"+i).className = '';
-		}
-
-		document.getElementById(tabActive).className = 'current'; 
+		document.getElementById(idTabs+"_tab"+i).className = '';
+			
+		document.getElementById("div_cont_"+idTabs+"_tab"+i).style.display ="none";
+	}
 		
-		callAHAH(urlActive, idDiv, '', '','tab'+i, 'makeactive'); 
-}
-
-/**
- * Cambia la pestaña activa actual
- * @param etq
- * @param newUrl
- * @return
- */ 
-function changeActiveTab (objTab, newUrl){
-	
-		if (newUrl)
-			objTab[3] = newUrl;
-
-		makeactive(objTab[0], objTab[1], objTab[2], objTab[3], objTab[4], objTab[5]);
-	
+	document.getElementById(tabActive).className = 'current';
+		
+	document.getElementById("div_cont_"+tabActive).style.display ="";
+		
 }
  
