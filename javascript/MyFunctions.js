@@ -502,6 +502,22 @@ function add_values(objetoSelect)
          return opt_selected;
          }
 
+function getAbsolutePositionFormElement(element, form) {
+	
+	var r = { x: document.forms[form].elements[element].offsetLeft, y: document.forms[form].elements[element].offsetTop };
+	
+	if (document.forms[form].elements[element].offsetParent) {
+		
+		var tmp = getAbsolutePosition(document.forms[form].elements[element].offsetParent, form);
+		
+		r.x += tmp.x;
+		
+		r.y += tmp.y;
+	}
+	
+	return r;
+}
+
 function getAbsolutePosition(element) {
 	
 		var r = { x: element.offsetLeft, y: element.offsetTop };
