@@ -223,7 +223,7 @@
   define ('XAJAX_WRAPPER_PREFIX','',true);
   
   # Osezno php framework versión
-  define ('FRAMEWORK_VERSION','Osezno PHP Framework 1.0 Beta 2 rev 397',true);
+  define ('FRAMEWORK_VERSION','1.0 Beta 2 rev 399',true);
 
   $objxAjax = new xajax();
   

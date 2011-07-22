@@ -6,3 +6,5 @@ a Beta 2
 - Issue 6 fixed.
 - Issue 8 fixed.
 - Issue 9 fixed.
+- Issue 10 fixed.
+- Issue 13 fixed.
