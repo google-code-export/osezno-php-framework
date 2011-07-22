@@ -597,7 +597,7 @@ class myList  {
 	 * @param boolean $html	Formato html
 	 * @param boolean $pdf	Formato pdf
 	 */
-	public function setExportData ($xls = true, $html = true, $pdf = true){
+	public function setExportData ($xls = false, $html = false, $pdf = false){
 
 		$this->arrayDataTypeExport = array(
 			'xls'=>$xls,
@@ -735,7 +735,7 @@ class myList  {
 			foreach ($this->arrayOrdMethod as $column => $method){
 				
 				if (!$sqlPart)
-					$sqlPart = ' ORDER BY ';;
+					$sqlPart = ' ORDER BY ';
 				
 				if ($method){
 				
@@ -1123,7 +1123,7 @@ class myList  {
 									
 									$bufHead.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$htmlGlobal.'</td><td align="center">';
 									
-									$bufHead.='<font class="column_title">'.htmlentities(ucwords($key)).'</font>';
+									$bufHead.='<font class="column_title">'.(ucwords($key)).'</font>';
 							
 									$bufHead.='</td><td width="20px">&nbsp;</td></tr></table>';
 
@@ -1175,7 +1175,7 @@ class myList  {
 					   
 					   		$buf.='<td class="';	
 					   			
-							if (in_array($key,$arrColOrd)){
+							if (in_array(htmlentities($key),$arrColOrd)){
 								$class='cell_content_selected';
 							}else
 								$class=$classTd;

@@ -48,7 +48,7 @@
 					if (!$sqlOrder)
 						$sqlOrder = ' ORDER BY ';
 				
-					$sqlOrder .= '"'.$column.'" '.$method.', ';
+					$sqlOrder .= '"'.html_entity_decode($column).'" '.$method.', ';
 				}
 			}
 		}
