@@ -1082,7 +1082,7 @@ class myList  {
 								}else
 									$htmlGlobal = '&nbsp;';	
 								
-								if ($this->useOrderMethod && !isset($this->arrayEventOnColumn[$key])){
+								if ($this->useOrderMethod && !isset($this->arrayEventOnColumn[html_entity_decode($key)])){
 								
 									$orderBy = '';
 									
@@ -1198,7 +1198,7 @@ class myList  {
 								if ($strMsg)
 									$strMsg = ' onClick="return confirm(\''.$strMsg.'\')"';
 							
-								$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.ucwords($key).'</a>';
+								$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.htmlentities(ucwords($key)).'</a>';
 							
 							}else
 								$buf.=($val).'';	
