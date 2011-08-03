@@ -9,11 +9,11 @@
  * La clase myForm permite al desarrollador crear/generar diferentes formas de formularios.
  *
  * @uses Creacion de formularios
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 1.6.0
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
-class myForm {
+class OPF_myForm {
 
 	/**
 	 * En caso de que el form no tenga action, hacer esto.
@@ -678,7 +678,7 @@ class myForm {
 	 *
 	 *<?php
 	 *
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 *
 	 * $myForm->addFile('Archivo:','file1');
 	 * 
@@ -781,7 +781,7 @@ class myForm {
 	 * Formulario simple.
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form_name');
+	 * $myForm = new OPF_myForm('form_name');
 	 * 
 	 * echo $myForm->getForm();
 	 * 
@@ -794,7 +794,7 @@ class myForm {
 	 * Formulario a un script.
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form_name','process.php');
+	 * $myForm = new OPF_myForm('form_name','process.php');
 	 * 
 	 * echo $myForm->getForm();
 	 * 
@@ -836,7 +836,7 @@ class myForm {
 	 * Ejemplo:
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addText('Nombre:','nom');
 	 *
@@ -1030,7 +1030,7 @@ class myForm {
 	 * index.php
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addFile('Seleccione archivo(s):','archivo','upload.php');
 	 * 
@@ -1118,7 +1118,7 @@ class myForm {
 	 * index.php
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addCKeditor ('Contenido:','contenido');
 	 * 
@@ -1196,7 +1196,7 @@ class myForm {
 	 * <code>
 	 * Ejemplo:
 	 * 
-	 * $myForm = new myForm ('form1');
+	 * $myForm = new OPF_myForm ('form1');
 	 * 
 	 * $object = '<img src="logo.gif">';
 	 * 
@@ -1540,7 +1540,7 @@ class myForm {
 	 * Ejemplo:
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addText('Nombre:','nom');
 	 * 
@@ -1592,7 +1592,7 @@ class myForm {
 	 * index.php
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addText('Nombre:','nom');
 	 * 
@@ -1787,7 +1787,7 @@ class myForm {
 	 *index.php
 	 *<?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addText('Nombre:','nom');
 	 * 
@@ -1848,7 +1848,7 @@ class myForm {
 	 *index.php
 	 *<?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addText('Nombre:','nom');
 	 * 
@@ -1888,7 +1888,7 @@ class myForm {
 	 * Ejemplo:
 	 * <?php
 	 * 
-	 * $myForm = new myForm('form1');
+	 * $myForm = new OPF_myForm('form1');
 	 * 
 	 * $myForm->addText('Nombre:','nom');
 	 * 

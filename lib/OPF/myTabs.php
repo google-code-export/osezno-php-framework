@@ -3,14 +3,14 @@
  * myTabs
  *
  * @uses Creacion de pestanas
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 0.5
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *
  * La clase crea pestanas para uso de varias URLs dentro de una misma ventana
  * 
  */
-class myTabs{
+class OPF_myTabs{
 
 	/**
 	 * Arreglo que contiene cada uno de los Nombres de las pes
@@ -31,7 +31,7 @@ class myTabs{
 	 * Ejemplo:
 	 * <?php
 	 * 
-	 * $myTabs = new myTabs('grupo_opciones_1');
+	 * $myTabs = new OPF_myTabs('grupo_opciones_1');
 	 * 
 	 * echo $myTabs->getTabsHtml();
 	 * 
@@ -71,7 +71,7 @@ class myTabs{
 	 * 
 	 * <?php
 	 * 
-	 * $myTabs = new myTabs;
+	 * $myTabs = new OPF_myTabs;
 	 * 
 	 * $myTabs->addTab('Opción A','a.php');
 	 * 
@@ -111,7 +111,7 @@ class myTabs{
 	 * 
 	 * include 'handlerEvent.php';
 	 * 
-	 * $myTabsA = new myTabs('primergrupo');
+	 * $myTabsA = new OPF_myTabs('primergrupo');
 	 * 
 	 * $myTabsA->addTab('Opción A','a.php');
 	 * 
@@ -121,7 +121,7 @@ class myTabs{
 	 * 
 	 * // Podemos crear los grupos de pestañas que necesitemos.
 	 * 
-	 * $myTabsB = new myTabs;
+	 * $myTabsB = new OPF_myTabs;
 	 * 
 	 * $myTabsB->addTab('Opción C','c.php');
 	 * 

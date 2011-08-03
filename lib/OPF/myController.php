@@ -32,7 +32,7 @@
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
-class myController extends myControllerExt {
+class OPF_myController extends OPF_myControllerExt {
 
 	/**
 	 * Objeto xajax
@@ -899,7 +899,7 @@ class myController extends myControllerExt {
 
 		$frm = '';
 		
-		$objMyForm = new myForm;
+		$objMyForm = new OPF_myForm;
 		
 		$objMyForm->styleClassButtons = $this->class_name_msg_buttons;
 		
@@ -1033,7 +1033,7 @@ class myController extends myControllerExt {
 
 		list($nD, $nM, $nA) = explode ('_',$partDate);
 		
-		$cal = new myCal($nA, $nM, $nD, $toUpdate, $form_name);
+		$cal = new OPF_myCal($nA, $nM, $nD, $toUpdate, $form_name);
 		
 		$this->assign('div_trigger_'.$toUpdate,'innerHTML',$cal->getCalendar());
 		
@@ -1130,7 +1130,7 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_chPag ($datForm, $idList){
 		
-		$myList = new myList($idList);
+		$myList = new OPF_myList($idList);
 		
 		$myList->setVar('recordsPerPageForm',$datForm[$idList.'_chg_pag']);
 		
@@ -1158,7 +1158,7 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_page ($datForm, $idList, $action){
 		
-		$myList = new myList($idList);
+		$myList = new OPF_myList($idList);
 		
 		$nameVar = 'currentPage';
 		
@@ -1211,7 +1211,7 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_moveTo ($idList, $alias){
 		
-		$myList = new myList($idList);
+		$myList = new OPF_myList($idList);
 		
 		$arAlsSetInQ = $myList->getVar('arrayAliasSetInQuery');
 		
@@ -1264,11 +1264,11 @@ class myController extends myControllerExt {
 		
 		$this->notificationWindow(MSG_SELECT_FIELD_TO_SHOW, 8,'ok');
 		
-		$myForm = new myForm('export_data_select_fields_'.$idList);
+		$myForm = new OPF_myForm('export_data_select_fields_'.$idList);
 		
 		$myForm->selectUseFirstValue = false;
 		
-		$myList = new myList($idList);
+		$myList = new OPF_myList($idList);
 		
 		$arFldOnQry = $myList->getVar('arrayFieldsOnQuery');
 		
@@ -1383,7 +1383,7 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_addRuleQuery ($datForm, $idList, $showFirstRule){
 		
-		$objList = new myList($idList);
+		$objList = new OPF_myList($idList);
 		
 		$arAlsInQry = $objList->getVar('arrayAliasSetInQuery');
 
@@ -1393,7 +1393,7 @@ class myController extends myControllerExt {
 
 			if (count($arAlsInQry)){
 			
-				$objMyForm = new myForm($idForm = $idList.'QueryForm');
+				$objMyForm = new OPF_myForm($idForm = $idList.'QueryForm');
 		
 				$objMyForm->cellPadding = 0;
 		
@@ -1516,7 +1516,7 @@ class myController extends myControllerExt {
 	 */
 	public function MYLIST_removeRuleQuery ($datForm, $idList, $numRule){
 
-		$myList = new myList($idList);
+		$myList = new OPF_myList($idList);
 		
 		$idForm = $idList.'QueryForm';
 		
@@ -1565,7 +1565,7 @@ class myController extends myControllerExt {
 		
 		$sqlRule = '';
 					
-		$myList = new myList($idList);
+		$myList = new OPF_myList($idList);
 
 		$engineDb = $myList->getVar('engineDb');
 		
@@ -1719,7 +1719,7 @@ class myController extends myControllerExt {
 
 		if (isset($_SESSION['prdLst'][$idList])){
 			
-			$myList = new myList($idList);
+			$myList = new OPF_myList($idList);
 		
 			$this->assign($idList,'innerHTML',$myList->getList());
 		

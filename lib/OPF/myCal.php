@@ -6,12 +6,12 @@
  * Calendario como componente de myForm 
  * 
  * @uses Llamado a calendario en formularios
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  *  
  */
-class myCal {
+class OPF_myCal {
 		
 	public $hight = 300;
 		
@@ -75,7 +75,7 @@ class myCal {
 				$this->arrYears[$nDp.'_'.$nM.'_'.$aIni] = $aIni;
 		} 			
 			
-		$objMyForm = new myForm;
+		$objMyForm = new OPF_myForm;
 
 		$iniCell = '<td class="cellday" onmouseover="this.className=\'cellday_over\'" onmouseout="this.className=\'cellday\'" {onclick}>';
 		

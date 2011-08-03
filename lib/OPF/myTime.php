@@ -7,7 +7,7 @@
  * Ejemplo de utilización:
  * <?php
  * 
- * $myTime = new myTime;
+ * $myTime = new OPF_myTime;
  *
  * $myTime->timeStart();
  * 
@@ -23,7 +23,7 @@
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
-class myTime {
+class OPF_myTime {
 
 	private $startTime;
 	

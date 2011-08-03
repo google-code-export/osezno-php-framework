@@ -4,12 +4,12 @@
 *
 * @internal
 * @uses Controlador de eventos
-* @package	OSEZNO-PHP-FRAMEWORK
+* @package	OPF
 * @version 0.1
 * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
 *
 */
-class myControllerExt {
+class OPF_myControllerExt {
 
 	/**
 	 * Obtener HTML desde plantilla.
