@@ -81,7 +81,7 @@ class osezno {
   		 
 		$this->objxAjax = $objxAjax;
   		
-  		require $this->folderProject.'lib/plugin/packages/xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
+  		require $this->folderProject.'plugin/packages/xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
   		
 		$this->arrayAssignAreasHead['xajax_scripts']
 		= $this->objxAjax->getJavascript(URL_JS_XJX);

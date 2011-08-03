@@ -1,6 +1,6 @@
 <?php
 
-	$pathckEditor = 'plugin/editors/ck_editor/ckeditor.php';
+	$pathckEditor = '../../plugin/editors/ck_editor/ckeditor.php';
 	require ($pathckEditor);
 	
 /**

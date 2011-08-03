@@ -13,7 +13,7 @@
    * - Retorna informacion que el Controlador muestra al usuario
    */
 
- include 'configMod.php';
+ include '../../config/configApplication.php';
  
  
 ?>

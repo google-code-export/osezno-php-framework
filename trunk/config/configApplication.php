@@ -1,7 +1,6 @@
 <?php
   /**
-   * Configuración del proyecto.
-   * 
+   * Configuración del proyecto OPF.
    * @author: José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
    */
 
@@ -11,7 +10,7 @@
    */
   $baseFolder = 'osezno-framework/';  
   
-  # Diseño y Vista  
+  # Diseño y Vista
   
   /**
    * Idioma que se va a usar en las etiquetas de los objetos.
@@ -30,16 +29,6 @@
    * @var string
    */
   $templateBaseFolder = 'templates/';
-  
-  /**
-   * Nivel de manejo de errores, E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL | E_DEPRECATED (> 5.3.0) 
-   * @var string
-   */
-  if (version_compare(PHP_VERSION, '5.3.0') >= 0)
-  	error_reporting(E_ALL ^ E_DEPRECATED);  
-  else
-  	error_reporting(E_ALL);
-  
   
   # Variables de sesión
   
@@ -98,9 +87,33 @@
    * @var integer
    */
   $port = 3306;
+
+  /**
+   * Encender o Apagar el Debug.
+   * El debug permite cuando se trabaja con ajax que podamos ver errores se sintaxis.
+   * @var boolean
+   */
+  $debugXajax = false;
   
   /**
-   * No tocar si no es necesario hasta el final del archivo
+   * Decodificar todas las tildes o carateres especiales que vengan de los campos de texto.
+   * @var boolean
+   */
+  $decodeUTF8InputXajax = true;
+  
+  /**
+  * Nivel de manejo de errores, E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL | E_DEPRECATED (> 5.3.0)
+  * @var string
+  */
+  if (version_compare(PHP_VERSION, '5.3.0') >= 0)
+     error_reporting(E_ALL ^ E_DEPRECATED);
+  else
+     error_reporting(E_ALL);
+  
+  /**
+   * Fin sección de config.
+   *  
+   * Nota: No tocar si no es necesario hasta el final del archivo.
    */
   
   # Parametros de conexion a base de datos por defecto
@@ -139,33 +152,23 @@
   # La caducidad de la sesion esta definida en la siguiente linea en numero de segundos 
   session_cache_expire ($sessionCacheExpire);
   
-  require_once $GLOBALS['folderProject'].'lib/plugin/packages/xajax/xajax_core/xajax.inc.php';
+  require_once $GLOBALS['folderProject'].'plugin/packages/xajax/xajax_core/xajax.inc.php';
   
-  require $GLOBALS['folderProject'].'lib/plugin/packages/fpdf/fpdf.php';
+  require $GLOBALS['folderProject'].'plugin/packages/fpdf/fpdf.php';
   
-  require $GLOBALS['folderProject'].'lib/osezno.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myForm.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myDinamicList.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myActiveRecord.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myExportData.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myTime.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myTabs.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myController.class.php';
-  
-  require $GLOBALS['folderProject'].'lib/myCalendar.class.php';
+  function __autoload($className){
+  	
+  	$classFile = $GLOBALS['folderProject'].'lib/OPF/OPF_'.$className.'.php';
+  	echo $classFile."<br>";
+  	require $classFile;
+  }
   
   require $GLOBALS['folderProject'].'lang/'.$lang.'.php';
   
   $httpHost = $_SERVER['HTTP_HOST'].'/'.$baseFolder;
   
   global $urlProject;
+  
   $GLOBALS['urlProject'] = $http.$httpHost;
   
   # Lang en uso
@@ -178,7 +181,7 @@
   define ('PATH_TEMPLATES', $GLOBALS['folderProject'].$templateBaseFolder,true);
   
   # Ruta tipo url en donde se almacenan los scripts js de xAjax
-  define ('URL_JS_XJX',     $http.$httpHost.'lib/plugin/packages/xajax/',true);
+  define ('URL_JS_XJX',     $http.$httpHost.'plugin/packages/xajax/',true);
   
   # Ruta tipo url donde se descarga el js de funciones
   define ('URL_JS_FCN',     $http.$httpHost.'javascript/MyFunctions.js',true);
@@ -226,6 +229,16 @@
   define ('FRAMEWORK_VERSION','1.0 Beta 2 rev 399',true);
 
   $objxAjax = new xajax();
+  
+  $objxAjax->setFlag("debug", $debugXajax);
+  
+  $objxAjax->setFlag('decodeUTF8Input',$decodeUTF8InputXajax);
+  
+  /**
+   * Configurar el prefijo de xAjax usado para llamar nuestras funciones de Php
+   */
+  $objxAjax->setWrapperPrefix(XAJAX_WRAPPER_PREFIX);
+  
   
   if (!isset($_SESSION['prdLst']))
   	$_SESSION['prdLst'] = array();
