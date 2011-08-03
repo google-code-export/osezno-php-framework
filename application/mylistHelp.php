@@ -2,7 +2,7 @@
 
 	include '../configApplication.php';
 
-	$objOsezno = new osezno($objxAjax);
+	$objOsezno = new OPF_osezno($objxAjax);
  
  	$objOsezno->setPathFolderTemplates('../lang/help_mylist/');
 
