@@ -138,6 +138,7 @@
   }
     
   global $folderProject;
+  
   $GLOBALS['folderProject'] = str_replace('//','/',$_SERVER['DOCUMENT_ROOT'].'/'.$baseFolder);
 
   # Se van a  guardar todas las sesiones en la siguiente carpeta
@@ -157,10 +158,22 @@
   require $GLOBALS['folderProject'].'plugin/packages/fpdf/fpdf.php';
   
   function __autoload($className){
+
+  		list($pkg, $fileName) = explode('_', $className);
   	
-  	$classFile = $GLOBALS['folderProject'].'lib/OPF/OPF_'.$className.'.php';
-  	echo $classFile."<br>";
-  	require $classFile;
+  		$classFile = $GLOBALS['folderProject'].'lib/'.$pkg.'/'.$fileName.'.php';
+
+  		$pack = 'PACKAGE';
+  	
+  		if ($pkg)
+  			$pack = $pkg;
+  	
+  		if (!file_exists($classFile)){
+  		
+  			die('<b>Error:</b> Fail to load <i>'.$pack.'/'.$fileName.'.php</i>');
+  		}
+  	
+  		require $classFile;
   }
   
   require $GLOBALS['folderProject'].'lang/'.$lang.'.php';

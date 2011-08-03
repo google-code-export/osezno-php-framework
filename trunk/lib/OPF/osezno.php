@@ -1,15 +1,15 @@
 <?php
 /**
- * osezno.class.php
+ * osezno
  * 
  * Asignación de areas de trabajo en plantillas. Llamado a javascripts, estilos. Configuración de tema.
  * 
  * @uses Metodos y atributos propios del proyecto, llamado plantillas.
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */	
-class osezno {
+class OPF_osezno {
   	
   	/**
   	 * Ruta fisica donde se encuentra nuestro proyecto

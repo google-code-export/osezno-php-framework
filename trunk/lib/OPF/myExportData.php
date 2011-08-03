@@ -6,11 +6,11 @@
  * La clase myExportData ayuda con algunos procedimientos de consultas SQL cuando se requiere obtener un archivo en un formato especifico con elresultado de la consulta.
  *  
  * @uses Exportar cosultas SQL 
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 0.1 
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
-class myExportData {
+class OPF_myExportData {
 	
 	/**
 	 * Objeto de conexion DB
@@ -95,7 +95,7 @@ class myExportData {
 	 *
 	 *<?php
 	 *	
- 	 *	$myExport = new myExportData('SELECT fiel1, field2, field3 FROM table','pdf','/var/www/html/project/report/report.pdf');
+ 	 *	$myExport = new OPF_myExportData('SELECT fiel1, field2, field3 FROM table','pdf','/var/www/html/project/report/report.pdf');
  	 *	
 	 *	# Cuando generamos un archivo en formato PDF es prescindible ajustar el tamaño de las columnas pues no es posible calcular su valor automaticamente.
  	 *
@@ -113,7 +113,7 @@ class myExportData {
 	 *
 	 *<?php
 	 *
-	 *	$myExport = new myExportData('SELECT * FROM table','xls');	
+	 *	$myExport = new OPF_myExportData('SELECT * FROM table','xls');	
 	 *
 	 *	$xls = $myExport->getResult();
 	 *
@@ -160,7 +160,7 @@ class myExportData {
 		
 		if (in_array($format,$this->arValidFormat)){
 			
-			$this->myAct = new myActiveRecord();
+			$this->myAct = new OPF_myActiveRecord();
 			
 			$this->resSql = $this->myAct->query($sql);
 			
@@ -195,7 +195,7 @@ class myExportData {
 		
 		if ($this->idList){
 			
-			$myList = new myList($this->idList);
+			$myList = new OPF_myList($this->idList);
 		
 			$arWidth = $myList->getVar('arrayWidthsCols');
 		
@@ -390,7 +390,7 @@ class myExportData {
 	 * 
 	 * <?php
 	 * 
-	 * if (!$myExport = new myExportData('SELECT * FROM table','xls')){
+	 * if (!$myExport = new OPF_myExportData('SELECT * FROM table','xls')){
 	 * 
 	 * 		echo $myExport->getError();
 	 * }

@@ -9,11 +9,11 @@
  * quieran acceder.
  *
  * @uses Acceso a bases de datos por medio de objetos de PHP
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
-class myActiveRecord {
+class OPF_myActiveRecord {
 
 	/**
 	 * Nombre base de datos
@@ -236,7 +236,7 @@ class myActiveRecord {
 	 * 
 	 * # Ejemplo 1: 
 	 * 
-	 * $myAct = new myActiveRecord('database');
+	 * $myAct = new OPF_myActiveRecord('database');
 	 * 
 	 * # Ejemplo 2:
 	 * 
@@ -970,7 +970,7 @@ class myActiveRecord {
 	 * 
 	 * <?php
 	 * 
-	 * $myAct = new myActiveRecord;
+	 * $myAct = new OPF_myActiveRecord;
 	 * 
 	 * $myAct->beginTransaction ();
 	 * 
@@ -1003,7 +1003,7 @@ class myActiveRecord {
 	 * 
 	 * <?php
 	 * 
-	 * $myAct = new myActiveRecord;
+	 * $myAct = new OPF_myActiveRecord;
 	 * 
 	 * $myAct->beginTransaction ();
 	 * 
@@ -1062,7 +1062,7 @@ class myActiveRecord {
 	 * SELECT * FROM table WHERE id = {id};
 	 * 
 	 * <?php
-	 * $myAct = new myActiveRecord;
+	 * $myAct = new OPF_myActiveRecord;
 	 * 
 	 * $sql = $myAct->loadSqlFromFile('query.sql',array('id'=>1));
 	 * 
@@ -1117,7 +1117,7 @@ class myActiveRecord {
 	 * 
 	 * // Obtener varios resultados
 	 * 
-	 * $myAct = new myActiveRecord();
+	 * $myAct = new OPF_myActiveRecord();
 	 * 
 	 * if ($res = $myAct->query('SELECT field1,... FROM table')){
 	 * 	  
@@ -1558,7 +1558,7 @@ class myActiveRecord {
 	 * 
 	 * <?php
 	 * 
-	 * $myAct = new myActiveRecord('database');
+	 * $myAct = new OPF_myActiveRecord('database');
 	 * 
 	 * if ($myAct->isSuccessfulConnect())
 	 * 

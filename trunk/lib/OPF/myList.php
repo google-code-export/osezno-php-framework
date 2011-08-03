@@ -11,7 +11,7 @@
  *
  *<?php
  *
- *	$myList = new myList('list_1','SELECT * FROM table');
+ *	$myList = new OPF_myList('list_1','SELECT * FROM table');
  *	
  *	echo $myList->getList();
  *
@@ -24,7 +24,7 @@
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
-class myList  {
+class OPF_myList  {
 	
 	/**
 	 * Ancho de la lista
@@ -424,7 +424,7 @@ class myList  {
 	 *
 	 *  $sql = 'SELECT * FROM table';
 	 *  
- 	 *	$myList = new myList('list_1',$sql);
+ 	 *	$myList = new OPF_myList('list_1',$sql);
  	 *	
  	 *	echo $myList->getList();
  	 *	 
@@ -446,7 +446,7 @@ class myList  {
 	 *  
 	 *  $table = new table;
 	 *  
-	 *  $myList = new myList('list_1',$table);
+	 *  $myList = new OPF_myList('list_1',$table);
 	 *  
 	 *  echo $myList->getList();
 	 *
@@ -472,7 +472,7 @@ class myList  {
 		
 		$this->sqlORobject = $sqlORobject;
 		
-		$this->objForm = new myForm;
+		$this->objForm = new OPF_myForm;
 		
 		$this->objForm->setParamTypeOnEvent('field');
 		
@@ -553,7 +553,7 @@ class myList  {
 	 *
 	 * $sql = 'SELECT id, name, last_name FROM table';
 	 *  
- 	 * $myList = new myList('list_1',$sql);
+ 	 * $myList = new OPF_myList('list_1',$sql);
  	 *	
  	 * $myList->setEventOnColumn('id','showInfoUser');
  	 *
@@ -619,7 +619,7 @@ class myList  {
 	 *
 	 * $sql = 'SELECT id, name, last_name FROM table';
 	 *  
- 	 * $myList = new myList('list_1',$sql);
+ 	 * $myList = new OPF_myList('list_1',$sql);
  	 *
  	 * # Configuramos dos posibles opciones en el evento global.
  	 * 	
@@ -771,9 +771,9 @@ class myList  {
 	 * 
 	 * // Para evitar problemas a la hora de aplicar funcionalidades de listas dinamicas (ordenamientos y filtros) guardamos el nombre del campo original sobre el alias creado. 
 	 * 
-	 * $myAct = new myActiveRecord();
+	 * $myAct = new OPF_myActiveRecord();
 	 * 
-	 * $myList = new myList ('idents',$myAct->loadSqlFromFile('query.sql'));
+	 * $myList = new OPF_myList ('idents',$myAct->loadSqlFromFile('query.sql'));
 	 * 
 	 * $myList->setRealNameInQuery('Identification','lpad(CAST(ident as varchar),4,\'0\')');
 	 * 
@@ -938,7 +938,7 @@ class myList  {
 			
 				// Cadena
 				
-				$this->objConn = new myActiveRecord();
+				$this->objConn = new OPF_myActiveRecord();
 		
 				$sql = $this->sql = $this->sqlORobject;
 			}
@@ -954,7 +954,7 @@ class myList  {
 			
 			$this->restVarsSess();
 			
-			$this->objConn = new myActiveRecord();
+			$this->objConn = new OPF_myActiveRecord();
 			
 			$sql = $this->sql.''.$this->getSqlPartWhere().''.$this->getSqlPartOrderBy().''.$this->getSqlPartLimit();
 			
@@ -1281,7 +1281,7 @@ class myList  {
 			);
 			
 			
-			$objMyForm = new myForm;
+			$objMyForm = new OPF_myForm;
 			
 			$objMyForm->selectUseFirstValue = false;
 			
@@ -1417,7 +1417,7 @@ class myList  {
 		
 		$arFields = array();
 		
-		$objMyForm = new myForm($nomForm = $this->idList.'QueryForm');
+		$objMyForm = new OPF_myForm($nomForm = $this->idList.'QueryForm');
 
 		$objMyForm->width = '98%';
 		
@@ -1531,7 +1531,7 @@ class myList  {
 
 			$arFields = array();
 			
-			$objMyForm = new myForm($idForm = $this->idList.'QueryForm');
+			$objMyForm = new OPF_myForm($idForm = $this->idList.'QueryForm');
 			
 			$objMyForm->cellPadding = 0;
 		
