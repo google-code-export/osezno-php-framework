@@ -1,0 +1,916 @@
+<html>
+<head>
+<title>Docs For Class OPF_myList</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+<script type="text/javascript" src="http://www.osezno-framework.org/addwords/addwords.js" charset="utf-8"></script>
+</head>
+<div style="top:0px;position:absolute;"><img src="../media/head.jpg"></div>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">Doc Ref[1.0 Beta 3]<!-- OPF --></td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                              		  [ <a href="../classtrees_OPF.html" class="menu">class tree: OPF</a> ]
+		  [ <a href="../elementindex_OPF.html" class="menu">index: OPF</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+      <b>Packages:</b><br />
+              <a href="../li_OPF.html">OPF</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../OPF/_myActiveRecord.php.html">		myActiveRecord.php
+		</a><br>
+			<a href="../OPF/_myController.php.html">		myController.php
+		</a><br>
+			<a href="../OPF/_myExportData.php.html">		myExportData.php
+		</a><br>
+			<a href="../OPF/_myForm.php.html">		myForm.php
+		</a><br>
+			<a href="../OPF/_myList.php.html">		myList.php
+		</a><br>
+			<a href="../OPF/_myTabs.php.html">		myTabs.php
+		</a><br>
+			<a href="../OPF/_myTime.php.html">		myTime.php
+		</a><br>
+			<a href="../OPF/_osezno.php.html">		osezno.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a><br />
+	    		<a href="../OPF/OPF_myController.html">OPF_myController</a><br />
+	    		<a href="../OPF/OPF_myExportData.html">OPF_myExportData</a><br />
+	    		<a href="../OPF/OPF_myForm.html">OPF_myForm</a><br />
+	    		<a href="../OPF/OPF_myList.html">OPF_myList</a><br />
+	    		<a href="../OPF/OPF_myTabs.html">OPF_myTabs</a><br />
+	    		<a href="../OPF/OPF_myTime.html">OPF_myTime</a><br />
+	    		<a href="../OPF/OPF_osezno.html">OPF_osezno</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: OPF_myList</h1>
+Source Location: /myList.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description">myList</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
+                  </ul>
+
+
+
+
+        
+        
+<h4>Version:</h4>
+<ul>
+  <li>0.1</li>
+</ul>
+
+        
+</td>
+
+<td valign="top">
+<h3><a href="#class_vars">Variables</a></h3>
+<ul>
+    <li><a href="../OPF/OPF_myList.html#var$width">$width</a></li>
+  </ul>
+</td>
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../OPF/OPF_myList.html#method__construct">__construct</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodgetList">getList</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodgetNumRowsAffected">getNumRowsAffected</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodgetQueryForm">getQueryForm</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodisSuccessfulProcess">isSuccessfulProcess</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetEventOnColumn">setEventOnColumn</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetExportData">setExportData</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetGlobalEventOnColumn">setGlobalEventOnColumn</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetPagination">setPagination</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetRealNameInQuery">setRealNameInQuery</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetSqlDebug">setSqlDebug</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetTheme">setTheme</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetUseOrderMethod">setUseOrderMethod</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetWidthColumn">setWidthColumn</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 26]<br />
+myList<br /><br /><p>Es la propuesta de osezno-framework cuando se desea implementar una  lista dianamica (grid) por medio de una consulta sql o una tabla de myActiveRecord.</p><p><ol><li><div class="src-line">&nbsp;#&nbsp;Ejemplo&nbsp;en&nbsp;la&nbsp;definición:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>version:</b>&nbsp;&nbsp;</td><td>0.1</td>
+  </tr>
+  <tr>
+    <td><b>uses:</b>&nbsp;&nbsp;</td><td>Listas - dinamicas</td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+<hr />
+<a name="class_vars"></a>
+<h3>Class Variables</h3>
+<div class="tags">
+	<a name="var$width"></a>
+	<p></p>
+	<h4>$width = <span class="value">&nbsp;1000</span></h4>
+	<p>[line 34]</p>
+  Ancho de la lista<br /><br /><p>Define el ancho de la lista dinámica en px</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+
+  <br />
+	<div class="tags">
+  <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td><b>Type:</b>&nbsp;&nbsp;</td>
+      <td>integer</td>
+    </tr>
+      </table>
+	</div><br /><br />
+	<div class="top">[ <a href="#top">Top</a> ]</div><br />
+</div><br />
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="method__construct"></a>
+	<h3>constructor __construct <span class="smalllinenumber">[line 458]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>OPF_myList __construct(
+string
+$idList, [string
+$sqlORobject = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Constructor<br /><br /><p>Instancia un nuevo objeto de tipo lista dinamica para que pueda ser mostrada cuando se necesite. <ol><li><div class="src-line">Ejemplo&nbsp;1:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-var">$sql&nbsp;</span>=&nbsp;<span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">Ejemplo&nbsp;2:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">table&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myActiveRecord&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$id</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$name</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$last_name</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-var">$table&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">table</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-var">$table</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><span class="src-id">getList</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$idList</b>&nbsp;&nbsp;</td>
+        <td>Nombre de la lista dinamica.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$sqlORobject</b>&nbsp;&nbsp;</td>
+        <td>SQL u Objeto tabla.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetList"></a>
+	<h3>method getList <span class="smalllinenumber">[line 1693]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getList(
+[boolean
+$showQueryForm = false], [boolean
+$showFirstRule = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener HTML<br /><br /><p>Obtiene el contenido de la lista dinámica como codigo HTML</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$showQueryForm</b>&nbsp;&nbsp;</td>
+        <td>Mostrar formulario de consulta</td>
+      </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$showFirstRule</b>&nbsp;&nbsp;</td>
+        <td>Mostrar primera regla a aplicar si el formulario de consulta se va a usar</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetNumRowsAffected"></a>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1669]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getNumRowsAffected(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Registros afectados.<br /><br /><p>Retorna el numero de registros afectados por la anterior consulta.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetQueryForm"></a>
+	<h3>method getQueryForm <span class="smalllinenumber">[line 1406]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getQueryForm(
+[boolean
+$showFirstRule = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener formulario de filtro<br /><br /><p>Retorna el formulario de filtro para una lista dinámica.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$showFirstRule</b>&nbsp;&nbsp;</td>
+        <td>Mostrar primera regla/filtro al iniciar.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodisSuccessfulProcess"></a>
+	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1680]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean isSuccessfulProcess(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Exito en el proceso.<br /><br /><p>Indica si la lista se ejecuto correctamente o no.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetEventOnColumn"></a>
+	<h3>method setEventOnColumn <span class="smalllinenumber">[line 586]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setEventOnColumn(
+string
+$alias, strinh
+$event, [string
+$confirm_msg = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar evento sobre columna.<br /><br /><p>Configura en una columna segun su alias o nombre un evento que se disparara al hacer click sobre ese campo en esa columna. El evento recibira como parametro el valor de la columna y tambien el nombre de la lista dinamica.  <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;Index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$sql&nbsp;</span>=&nbsp;<span class="src-str">'SELECT&nbsp;id,&nbsp;name,&nbsp;last_name&nbsp;FROM&nbsp;table'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodsetEventOnColumn">setEventOnColumn</a><span class="src-sym">(</span><span class="src-str">'id'</span><span class="src-sym">,</span><span class="src-str">'showInfoUser'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">className&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myController&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">showInfoUser&nbsp;</span><span class="src-sym">(</span><span class="src-var">$id</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><span class="src-var">$id</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$objclassName&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">className</span><span class="src-sym">(</span><span class="src-var">$objxAjax</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$alias</b>&nbsp;&nbsp;</td>
+        <td>Alias o nombre de la columna como la escribio</td>
+      </tr>
+          <tr>
+        <td class="type">strinh&nbsp;&nbsp;</td>
+        <td><b>$event</b>&nbsp;&nbsp;</td>
+        <td>Nombre del evento que disparara en el handlerEvent</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$confirm_msg</b>&nbsp;&nbsp;</td>
+        <td>Mensaje de confirmacion antes de ejecutar el evento.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetExportData"></a>
+	<h3>method setExportData <span class="smalllinenumber">[line 599]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setExportData(
+[boolean
+$xls = false], [boolean
+$html = false], [boolean
+$pdf = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Habilitar exportar datos.<br /><br /><p>Configura la posibilidad de que en una lista dinamica se le permita descargar la consulta actual en un formato seleccionable.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$xls</b>&nbsp;&nbsp;</td>
+        <td>Formato xls</td>
+      </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$html</b>&nbsp;&nbsp;</td>
+        <td>Formato html</td>
+      </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$pdf</b>&nbsp;&nbsp;</td>
+        <td>Formato pdf</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetGlobalEventOnColumn"></a>
+	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 670]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setGlobalEventOnColumn(
+string
+$alias, [string
+$events = array ()])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar evento global.<br /><br /><p>Configura un unico evento global en una lista dinamica sobre columna definida para que los registros marcados se vean afectados por dicho evento o eventos. El evento programado recibira en un arreglo los registros seleccionados de dicha columna. <ol><li><div class="src-line">&nbsp;Ejemplo:</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;Index.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$sql&nbsp;</span>=&nbsp;<span class="src-str">'SELECT&nbsp;id,&nbsp;name,&nbsp;last_name&nbsp;FROM&nbsp;table'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Configuramos&nbsp;dos&nbsp;posibles&nbsp;opciones&nbsp;en&nbsp;el&nbsp;evento&nbsp;global.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodsetGlobalEventOnColumn">setGlobalEventOnColumn</a><span class="src-sym">(</span><span class="src-str">'id'</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'Eliminar'</span>=&gt;<span class="src-str">'deleteRecord'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'Actualizar'</span>=&gt;<span class="src-str">'updateRecord'</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;handlerEvent.php</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Definimos&nbsp;los&nbsp;eventos.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">className&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myController&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Cada&nbsp;metodo&nbsp;definido&nbsp;recibira&nbsp;un&nbsp;arreglo&nbsp;con&nbsp;los&nbsp;ids&nbsp;de&nbsp;los&nbsp;registros&nbsp;seleccionados.&nbsp;En&nbsp;este&nbsp;caso&nbsp;se&nbsp;utilizo&nbsp;el&nbsp;valor&nbsp;de&nbsp;la&nbsp;columna&nbsp;'id'</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">deleteRecord&nbsp;</span><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><a href="http://www.php.net/var_export">var_export</a><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">,</span><span class="src-id">true</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">updateRecord&nbsp;</span><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">alert</span><span class="src-sym">(</span><a href="http://www.php.net/var_export">var_export</a><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">,</span><span class="src-id">true</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">response</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$objclassName&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">className</span><span class="src-sym">(</span><span class="src-var">$objxAjax</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$alias</b>&nbsp;&nbsp;</td>
+        <td>Alias o nombre de la columna del que tomara el valor</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$events</b>&nbsp;&nbsp;</td>
+        <td>Array con los etiquetas y nombres de eventos que ejecutara el handlerEvent</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetPagination"></a>
+	<h3>method setPagination <span class="smalllinenumber">[line 504]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setPagination(
+[boolean
+$use = true], [integer
+$rows = 20])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configura una paginación.<br /><br /><p>Configura una paginacion sobre la lista dinamica.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$use</b>&nbsp;&nbsp;</td>
+        <td>Activa o inactiva la paginación de la lista dinámica.</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$rows</b>&nbsp;&nbsp;</td>
+        <td>Número de registro a mostrar por pagina.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetRealNameInQuery"></a>
+	<h3>method setRealNameInQuery <span class="smalllinenumber">[line 789]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setRealNameInQuery(
+string
+$field, 
+$realName, string
+$alias)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar Alias<br /><br /><p>Configura un campo en la consulta SQL para  que  le sea definido un alias y este pueda ser usado en los demas procesos de busqueda, consulta y ordenamiento.  <ol><li><div class="src-line">&nbsp;query.sql</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;SELECT&nbsp;lpad(CAST(ident&nbsp;as&nbsp;varchar),4,'0')&nbsp;as&nbsp;Identification,&nbsp;nom&nbsp;as&nbsp;User&nbsp;FROM&nbsp;users</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;En&nbsp;ocaciones&nbsp;necesitamos&nbsp;aplicar&nbsp;funciones&nbsp;SQL&nbsp;sobre&nbsp;campos&nbsp;de&nbsp;una&nbsp;consulta.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Para&nbsp;evitar&nbsp;problemas&nbsp;a&nbsp;la&nbsp;hora&nbsp;de&nbsp;aplicar&nbsp;funcionalidades&nbsp;de&nbsp;listas&nbsp;dinamicas&nbsp;(ordenamientos&nbsp;y&nbsp;filtros)&nbsp;guardamos&nbsp;el&nbsp;nombre&nbsp;del&nbsp;campo&nbsp;original&nbsp;sobre&nbsp;el&nbsp;alias&nbsp;creado.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a>&nbsp;</span><span class="src-sym">(</span><span class="src-str">'idents'</span><span class="src-sym">,</span><span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><span class="src-id">loadSqlFromFile</span><span class="src-sym">(</span><span class="src-str">'query.sql'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodsetRealNameInQuery">setRealNameInQuery</a><span class="src-sym">(</span><span class="src-str">'Identification'</span><span class="src-sym">,</span><span class="src-str">'lpad(CAST(ident&nbsp;as&nbsp;varchar),4,\'0\')'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Lo&nbsp;anterior&nbsp;ayuda&nbsp;a&nbsp;aplicar&nbsp;correctamente&nbsp;un&nbsp;filtro&nbsp;o&nbsp;un&nbsp;ordenamiento&nbsp;sobre&nbsp;el&nbsp;campo&nbsp;'Identification'.</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$field</b>&nbsp;&nbsp;</td>
+        <td>Nombre del campo en la consulta o Alias</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$alias</b>&nbsp;&nbsp;</td>
+        <td>Nombre real compuesto en la consulta</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$realName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetSqlDebug"></a>
+	<h3>method setSqlDebug <span class="smalllinenumber">[line 521]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setSqlDebug(
+[boolean
+$use = true])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Habilita una debud para Sql.<br /><br /><p>Muestra en pantalla junto a la lista dinamica, un registro de los  cambios sobre la consulta sql que se van produciendo a medida que  se aplican filtros y ordenamientos.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$use</b>&nbsp;&nbsp;</td>
+        <td>Activa o inactiva el debug</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetTheme"></a>
+	<h3>method setTheme <span class="smalllinenumber">[line 488]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string setTheme(
+[string
+$theme = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Seleccionar un tema<br /><br /><p>Selecciona un tema de estilos para las lista dinamica. Si no se especifica uno, se toma el configurado a nivel de la aplicacion y el metodo retorna el tema en uso.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Tema en uso</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$theme</b>&nbsp;&nbsp;</td>
+        <td>Nombre del tema</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetUseOrderMethod"></a>
+	<h3>method setUseOrderMethod <span class="smalllinenumber">[line 802]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setUseOrderMethod(
+boolean
+$use, [string
+$defaultColumn = ''], [string
+$defaultMethod = 'ASC'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar ordenamiento<br /><br /><p>Configura si la lista dinamica va a tener una propiedad especial que le permitira a esta ser ordenada en forma ascendente o descendente o simplemente no ser organizada en cada columna.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$use</b>&nbsp;&nbsp;</td>
+        <td>Activar o Inactivar</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$defaultColumn</b>&nbsp;&nbsp;</td>
+        <td>Nombre de la columna que se mostrara ordenada al cargar la lista dinamica.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$defaultMethod</b>&nbsp;&nbsp;</td>
+        <td>Metodo de ordenamiento que usara la columna a ordenar ASC o DESC.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetWidthColumn"></a>
+	<h3>method setWidthColumn <span class="smalllinenumber">[line 533]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setWidthColumn(
+string
+$alias, integer
+$width)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar ancho em columna.<br /><br /><p>Configura manualmente un acho determinado para cada columna de la lista dinamica.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$alias</b>&nbsp;&nbsp;</td>
+        <td>Nombre de la columna o alias</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$width</b>&nbsp;&nbsp;</td>
+        <td>Ancho de la columna en PX o %</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Thu, 04 Aug 2011 13:25:00 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
