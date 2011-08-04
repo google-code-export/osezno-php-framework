@@ -1,6 +1,9 @@
 <?php
-
-	$pathckEditor = '../../plugin/editors/ck_editor/ckeditor.php';
+	
+	if (stripos($_SERVER['SCRIPT_NAME'],'calendarCaller')==false)
+		$pathckEditor = '../../plugin/editors/ck_editor/ckeditor.php';
+	else
+		$pathckEditor = '../plugin/editors/ck_editor/ckeditor.php';
 	require ($pathckEditor);
 	
 /**
@@ -734,7 +737,7 @@ class OPF_myForm {
 	 * 
 	 * Ruta base de acceso para encontrar los script del editor.
 	 * Se calcula automaticamente en el contructor.
-	 * El valor por defecto es URL_BASE_PROJECT.'/lib/plugin/editors/ck_editor/'.
+	 * El valor por defecto es URL_BASE_PROJECT.'/plugin/editors/ck_editor/'.
 	 * @var string
 	 */
 	private $WYSIWYG_editor_BasePath = '';
@@ -811,7 +814,7 @@ class OPF_myForm {
 	 */
 	public function __construct($name = '', $action = '', $target = '', $enctype = ''){
 
-		$this->WYSIWYG_editor_BasePath = URL_BASE_PROJECT.'lib/plugin/editors/'.$this->WYSIWYG_type.'/';
+		$this->WYSIWYG_editor_BasePath = URL_BASE_PROJECT.'plugin/editors/'.$this->WYSIWYG_type.'/';
 		
 		$this->pathImages =  'themes/'.THEME_NAME.'/myform/';
 		
@@ -1133,7 +1136,7 @@ class OPF_myForm {
 	 * handlerEvent.php
 	 * <?php
 	 * 
-	 * class events extends myController {
+	 * class events extends OPF_myController {
      *  
      *    public function dataSend ($dataForm){
      *		  
@@ -1612,7 +1615,7 @@ class OPF_myForm {
 	 * handlerEvent.php
 	 * <?php
 	 * 
-	 *  class events extends myController {
+	 *  class events extends OPF_myController {
      *    
      *    // Los eventos se declaran en el handlerEvent en donde se codifican por separado. 
      *    
@@ -1808,7 +1811,7 @@ class OPF_myForm {
 	 *handlerEvent.php
 	 *<?php
 	 * 
-	 *  class events extends myController {
+	 *  class events extends OPF_myController {
      *    
      *    public function onClickEvent ($dataForm){
      *		  

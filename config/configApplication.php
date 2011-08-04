@@ -168,12 +168,12 @@
   		if ($pkg)
   			$pack = $pkg;
   	
-  		if (!file_exists($classFile)){
+  		if (file_exists($classFile)){
   		
-  			die('<b>Error:</b> Fail to load <i>'.$pack.'/'.$fileName.'.php</i>');
+  			include $classFile;
+  			
   		}
-  	
-  		require $classFile;
+  			
   }
   
   require $GLOBALS['folderProject'].'lang/'.$lang.'.php';
