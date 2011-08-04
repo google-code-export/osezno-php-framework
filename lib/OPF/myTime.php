@@ -19,7 +19,7 @@
  * 
  * </code> 
  * @uses Manejo de tiempo (fechas)
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
