@@ -1,11 +1,5 @@
 <?php
 	
-	if (stripos($_SERVER['SCRIPT_NAME'],'calendarCaller')==false)
-		$pathckEditor = '../../plugin/editors/ck_editor/ckeditor.php';
-	else
-		$pathckEditor = '../plugin/editors/ck_editor/ckeditor.php';
-	require ($pathckEditor);
-	
 /**
  * myForm
  *
@@ -2418,17 +2412,12 @@ class OPF_myForm {
 					switch ($this->WYSIWYG_type){
 						
 						case 'ck_editor':
+
+							$pathckEditor = $GLOBALS['folderProject'].'plugin/editors/ck_editor/ckeditor.php';
+							
+							require ($pathckEditor);
 							
 							$oCKeditor = new CKeditor();
-							
-							/*
-							$oCKeditor->config['filebrowserBrowseUrl'] = '/ckfinder/ckfinder.html';
-							$oCKeditor->config['filebrowserImageBrowseUrl'] = '/ckfinder/ckfinder.html?type=Images';
- 							$oCKeditor->config['filebrowserFlashBrowseUrl'] = '/ckfinder/ckfinder.html?type=Flash';
- 							$oCKeditor->config['filebrowserUploadUrl'] = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';
- 							$oCKeditor->config['filebrowserImageUploadUrl'] = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
- 							$oCKeditor->config['filebrowserFlashUploadUrl'] = '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
-							*/
 							
 							$events = array();
 					
