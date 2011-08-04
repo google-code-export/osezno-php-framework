@@ -5,22 +5,21 @@
  * Es la propuesta de osezno-framework cuando se desea implementar una
  * lista dianamica (grid) por medio de una consulta sql o una tabla de myActiveRecord.
  *
- *<code>
+ * <code>
  *
- *Ejemplo en la definición:
+ * # Ejemplo en la definición:
  *
- *<?php
+ * <?php
  *
  *	$myList = new OPF_myList('list_1','SELECT * FROM table');
  *	
  *	echo $myList->getList();
  *
- *?>
+ * ?>
  *
- *</code>
- *
+ * </code>
  * @uses Listas dinamicas
- * @package OSEZNO-PHP-FRAMEWORK
+ * @package OPF
  * @version 0.1
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
