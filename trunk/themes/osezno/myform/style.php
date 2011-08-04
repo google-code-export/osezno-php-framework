@@ -37,7 +37,7 @@ select.caja {
 	font-size: 11px;
 	color: #000000;
 	vertical-align: middle;
-	width:150px;
+	width:110px;
 }
 
 .select_fields_to_show {
@@ -69,7 +69,7 @@ select.caja_required {
 	color: #000000;
 	background-color:#FFD7D7;
 	vertical-align: middle;
-	width:150px;
+	width:110px;
 }
 
 .boton_cal {

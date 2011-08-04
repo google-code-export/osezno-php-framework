@@ -4,7 +4,7 @@
 	 * Llama asincronicamente el modulo Calendario para los
 	 * formulario de la clase myForm.
 	 */
-	include '../configApplication.php';
+	include '../config/configApplication.php';
 
  	$objxAjax->processRequest();	
 	

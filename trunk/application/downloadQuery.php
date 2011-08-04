@@ -1,12 +1,12 @@
 <?php
 
-	include '../configApplication.php';
+	include '../config/configApplication.php';
 
 	if (isset($_GET['id_list'])){
 		
 		$idList = $_GET['id_list'];
 		
-		$objList = new myList($idList);
+		$objList = new OPF_myList($idList);
 		
 		$sql = $objList->getVar('sql');
 		
@@ -77,7 +77,7 @@
  		
  		$xlsOut = $htmlOut = $pdfOut = '';
  		
- 		$export = new myExportData($sql,$_GET['format'],'',$idList,$_GET['fields']);
+ 		$export = new OPF_myExportData($sql,$_GET['format'],'',$idList,$_GET['fields']);
  		
 		switch ($_GET['format']){
 			

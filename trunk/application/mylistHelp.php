@@ -1,6 +1,6 @@
 <?php
 
-	include '../configApplication.php';
+	include '../config/configApplication.php';
 
 	$objOsezno = new OPF_osezno($objxAjax);
  
