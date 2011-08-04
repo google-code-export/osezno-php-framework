@@ -42,7 +42,7 @@
    * Nombre de cookie referencia de las sesiones de OszenO framework.
    * @var string
    */
-  $sessionName = 'OSEZNO_FRAMEWORK';
+  $sessionName = 'oseznophp';
   
   /**
    * Caducidad en segundos en cache para la sesión.
@@ -56,37 +56,37 @@
    * Nombre de base de datos.
    * @var string
    */
-  $database = 'osezno';
+  $database = 'multivacaciones';//osezno
   
   /**
    * Motor de base de datos; pgsql ó mysql.
    * @var string
    */
-  $engine = 'mysql';
+  $engine = 'pgsql';//mysql
   
   /**
    * Direccion Ip o nombre de maquina del motor de base de datos.
    * @var string
    */
-  $host = 'localhost';
+  $host = '192.168.30.10';//localhost
   
   /**
    * Nombre de usuario para conexion a base de datos.
    * @var string
    */
-  $user = 'root';
+  $user = 'postgresql';//root
   
   /**
    * Contraseña de usuario para conexión a base de datos.
    * @var string
    */
-  $password = '';
+  $password = 'postgresql';
 
   /**
    * Puerto para la conexión, Mysql 3306, Postgre 5432.
    * @var integer
    */
-  $port = 3306;
+  $port = 5432;//3306
 
   /**
    * Encender o Apagar el Debug.
@@ -159,21 +159,22 @@
   
   function __autoload($className){
 
-  		list($pkg, $fileName) = explode('_', $className);
-  	
-  		$classFile = $GLOBALS['folderProject'].'lib/'.$pkg.'/'.$fileName.'.php';
-
-  		$pack = 'PACKAGE';
-  	
-  		if ($pkg)
-  			$pack = $pkg;
-  	
-  		if (file_exists($classFile)){
-  		
-  			include $classFile;
-  			
-  		}
-  			
+		if (stripos($className,'_')!==false){
+			
+			list($pkg, $fileName) = explode('_', $className);
+			 
+			$classFile = $GLOBALS['folderProject'].'lib/'.$pkg.'/'.$fileName.'.php';
+			
+			$pack = 'PACKAGE';
+			 
+			if ($pkg)
+			$pack = $pkg;
+			 
+			if (file_exists($classFile)){
+			
+				include $classFile;
+			}
+		}
   }
   
   require $GLOBALS['folderProject'].'lang/'.$lang.'.php';
