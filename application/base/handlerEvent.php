@@ -18,7 +18,7 @@
  * Manejador de eventos de usuario
  *
  */	
- class eventos extends myController {
+ class eventos extends OPF_myController {
 
  	/**
  	 * Ejemplo de evento
@@ -39,7 +39,7 @@
  
  
  $objEventos = new eventos($objxAjax);
- $objOsezno  = new osezno($objxAjax,$theme);
+ $objOsezno  = new OPF_osezno($objxAjax,$theme);
  
  $objOsezno->setPathFolderTemplates(PATH_TEMPLATES);
  $objxAjax->processRequest();

@@ -1,10 +1,49 @@
-a Beta 2
-- Issue 1 fixed.
-- Issue 2 fixed.
-- Issue 3 fixed. 
-- Issue 4 fixed.
-- Issue 6 fixed.
-- Issue 8 fixed.
-- Issue 9 fixed.
-- Issue 10 fixed.
-- Issue 13 fixed.
+Se cambian los siguientes directorios:
+OPFDIR/lib/plugin a OPFDIR/plugin
+
+Se renombra el package OPSEZNO-PHP-FRAMEWORK a OPF
+
+El formato de uso para las clases del package OPF ahora se hace de la siguiente manera:
+
+Todas las clases del package OPF iran dentro dela carpeta OPFDIR/lib/OPF/
+
+La creacion de nuevos Packages de hara en OPFDIR/lib/
+
+Ejemplo:
+
+Package: MYLIBS
+
+Ruta: OPFDIR/lib/MYLIBS/
+
+Y las clases deben ser definidas de las siguiente forma:
+
+Archivo: myClass.php
+
+Contenido:
+
+MYLIBS_myClass {
+
+}
+
+
+De esta forma el autolad Osezno puede hacer la correcta auto carga de clases segun el package en donde se encuentren, y tambien se permite 
+repetir el nombre de la clase en los diferentes packages.
+
+El archivo de configuración de Osezno ahora esta en: 
+
+Ruta: OPFDIR/config/
+
+
+Este cambio implica que ahora los nuevos modulos no necesitan configMod.php debido a que ahora la configuracion de estos se hara global.
+
+Se pueden ver los cambios en el archivo OPFDIR/lib/config/configApplication.php con las variables llamadas: $debugXajax y $decodeUTF8InputXajax
+
+Estos cambios debido a que se permitira interactuar con las clases de otros frameworks o librerias ya escritas en la web.
+
+Los nombres de las pricipales clases de OPF ahora tienen un prefijo llamado 'OPF_'
+
+Por ejemplo la clase myForm {} ahora esta declarada OPF_myForm {}
+
+Cualquier duda consultar los foros.
+
+http://www.osezno-framework.org/foro/ 
