@@ -56,25 +56,25 @@
    * Nombre de base de datos.
    * @var string
    */
-  $database = 'multivacaciones';//osezno
+  $database = 'osezno';
   
   /**
    * Motor de base de datos; pgsql ó mysql.
    * @var string
    */
-  $engine = 'pgsql';//mysql
+  $engine = 'mysql';
   
   /**
    * Direccion Ip o nombre de maquina del motor de base de datos.
    * @var string
    */
-  $host = '192.168.30.10';//localhost
+  $host = 'localhost';
   
   /**
    * Nombre de usuario para conexion a base de datos.
    * @var string
    */
-  $user = 'postgresql';//root
+  $user = 'root';
   
   /**
    * Contraseña de usuario para conexión a base de datos.
@@ -86,7 +86,7 @@
    * Puerto para la conexión, Mysql 3306, Postgre 5432.
    * @var integer
    */
-  $port = 5432;//3306
+  $port = 3306;
 
   /**
    * Encender o Apagar el Debug.
