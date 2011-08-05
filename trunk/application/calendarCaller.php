@@ -17,7 +17,7 @@
  	
  	$nM = intval($nM);
  	
-	$cal = new myCal($nA, $nM, $nD, $_GET['update'], $_GET['form_name']);
+	$cal = new OPF_myCal($nA, $nM, $nD, $_GET['update'], $_GET['form_name']);
 	
 	echo $cal->getCalendar();
 	 
