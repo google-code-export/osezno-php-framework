@@ -86,6 +86,10 @@
 	define('ERROR_DET_LABEL','Detalle del error');
 	define('ERROR_LABEL','Error en');
 	
+	/**
+	 * Reportes generados de Listas dinamicas
+	 */
+	define('REPORT_TITLE','Reporte de consulta parametrizada desde: ');
 	
 	/**
 	 * Calendario

@@ -178,6 +178,20 @@ class OPF_myExportData {
 		return $success;
 	}
 	
+	
+	private $objPDF;
+	
+	private function Header(){
+
+		$this->objPDF->Image('../themes/'.THEME_NAME.'/pdflogo/pdf_logo.jpg',10,10,0,0,'','http://www.osezno-framework.org');
+
+		$this->objPDF->SetFont('Arial','',8);
+		
+		$this->objPDF->Cell(275,10,REPORT_TITLE.$_SERVER['HTTP_REFERER'],1,0,'C');
+		
+		$this->objPDF->Ln(10);
+	}
+	
 	/**
 	 * Contruye el resultado segun el tipo de archivo
 	 * @access private
@@ -210,13 +224,17 @@ class OPF_myExportData {
 				
 				$swTl = 0;
 				
-				$pdf = new FPDF();
+				$this->objPDF = new FPDF('L');
+
+				$this->objPDF->SetLineWidth(.1);
 				
-				$pdf->SetFont('Arial','',8);
+				$this->objPDF->AliasNbPages();
+
+				$this->objPDF->AddPage();
 				
-				$pdf->SetLineWidth(.1);
-				
-				$pdf->AddPage();
+				$this->Header();
+
+				$this->objPDF->SetFont('Arial','',7);
 				
 				foreach ($this->resSql as $row){
 					
@@ -229,16 +247,16 @@ class OPF_myExportData {
 
 							if (in_array($intTitl,$this->arrFieldHiden)){
 							
-								if(isset($this->width[$key])){
-									$widthCol = $this->width[$key];
+								if(isset($this->width[htmlentities($key, ENT_QUOTES)])){
+									$widthCol = $this->width[htmlentities($key, ENT_QUOTES)];
 								}else
 									$widthCol = 40;
 						
-								if (isset($arWidth[$key])){
-									$widthCol = $arWidth[$key];
+								if (isset($arWidth[htmlentities($key, ENT_QUOTES)])){
+									$widthCol = $arWidth[htmlentities($key, ENT_QUOTES)];
 								}
 							
-								$pdf->Cell(($widthCol/6),3,ucwords(strtolower($key)),1,0,'C',false);
+								$this->objPDF->Cell(($widthCol/6),3,ucwords(strtolower($key)),1,0,'C',false);
 							
 							}
 							
@@ -246,7 +264,7 @@ class OPF_myExportData {
 							
 						}
 
-						$pdf->Ln();
+						$this->objPDF->Ln();
 						
 						$swTl = 1;
 					}
@@ -257,30 +275,31 @@ class OPF_myExportData {
 						
 						if (in_array($intTitl,$this->arrFieldHiden)){
 						
-							if(isset($this->width[$key])){
-								$widthCol = $this->width[$key];
+							if(isset($this->width[htmlentities($key, ENT_QUOTES)])){
+								$widthCol = $this->width[htmlentities($key, ENT_QUOTES)];
 							}else
 								$widthCol = 40;
 						
-							if (isset($arWidth[$key])){
-								$widthCol = $arWidth[$key];
+							if (isset($arWidth[htmlentities($key, ENT_QUOTES)])){
+								$widthCol = $arWidth[htmlentities($key, ENT_QUOTES)];
 							}
 						
 							$align = 'L';
 							if (is_numeric($val))
 								$align = 'R';
 						
-							$pdf->Cell(($widthCol/6),3,utf8_decode($val),1,0,$align);
+							$this->objPDF->Cell(($widthCol/6),3,utf8_decode($val),1,0,$align);
 						
 						}
 						
 						$intTitl++;
 						
 					}
-					$pdf->Ln();
+					
+					$this->objPDF->Ln();
 				}
 				
-				$out .= $pdf->Output('','S');
+				$out .= $this->objPDF->Output('','S');
 			 	
 			break;
 			default:
@@ -321,8 +340,9 @@ class OPF_myExportData {
  							
  								$widthCol = '';
 						
-								if (isset($arWidth[$key])){
-									$widthCol = 'width="'.$arWidth[$key].'"';
+								if (isset($arWidth[htmlentities($key, ENT_QUOTES)])){
+									
+									$widthCol = 'width="'.$arWidth[htmlentities($key, ENT_QUOTES)].'"';
 								}
 						
  								$out .= '<td '.$widthCol.' align="center" '.$bg.'>';
