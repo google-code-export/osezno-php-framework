@@ -1064,6 +1064,8 @@ class OPF_myList  {
 							
 								$widCol = 0;
 								
+								//echo $key.'='.$this->arrayWidthsCols[$key]."<br>";
+								
 								if (isset($this->arrayWidthsCols[$key]))
 									$widCol = $this->arrayWidthsCols[$key];
 								else

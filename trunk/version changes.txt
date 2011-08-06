@@ -53,3 +53,7 @@ Se actualizo el plugin framework XAJAX de 0.5 Beta 4 a 0.5 Final (Estable)
 Se actualizo el plugin FPDF de 1.6 a 1.7
 
 Se redujeron en pixeles el tamaño por defecto para los campos de seleccion unica de formularios en el 'theme' llamado 'osezno'
+
+Se mejoro la presentación de los reportes que vienen de listas dinámicas en formato PDF, ahora se generan con mucho mayor espacio y con un logo configurable que se obtiene del 'theme' que haya sido aplicado. THEME/pdflogo/pdf_logo.jpg
+
+Se corrigio un error que se producia al exportar archivos desde listas dinámicas cuando algunas columnas de esa lista tienen nombres con caracteres especiales con tildes. 
