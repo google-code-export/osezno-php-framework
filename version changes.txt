@@ -56,4 +56,6 @@ Se redujeron en pixeles el tamaño por defecto para los campos de seleccion unica
 
 Se mejoro la presentación de los reportes que vienen de listas dinámicas en formato PDF, ahora se generan con mucho mayor espacio y con un logo configurable que se obtiene del 'theme' que haya sido aplicado. THEME/pdflogo/pdf_logo.jpg
 
-Se corrigio un error que se producia al exportar archivos desde listas dinámicas cuando algunas columnas de esa lista tienen nombres con caracteres especiales con tildes. 
+Se corrigio un error que se producia al exportar archivos desde listas dinámicas cuando algunas columnas de esa lista tienen nombres con caracteres especiales con tildes.
+
+Se actualiza la clase que genera las consulta de la lista dinámica a archivos pdf. Se agrega la posibilidad de que el sistema pueda administrar la orientación de la hoja cuan se trata de listas dinámicas con mas campos de lo común. Cuando la lista dinámica solo tiene algunos campos, la orientación va a permanecer normal. El espacio por defecto de un campo de lista dinámica sin un ancho definido es mas grande ahora, permitiendo una mejor presentación. 
