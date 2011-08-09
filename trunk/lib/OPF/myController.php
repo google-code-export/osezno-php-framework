@@ -1008,7 +1008,7 @@ class OPF_myController extends OPF_myControllerExt {
 			'critical'=>'critical'
 		);
 		
-		if (!isset($styles[$style]))
+		if (!isset($styles[strtolower($style)]))
 			$style = 'info';
 		
 		$intSecDuration = $intSecDuration*1000;
