@@ -80,7 +80,7 @@
    * Contraseña de usuario para conexión a base de datos.
    * @var string
    */
-  $password = 'postgresql';
+  $password = '';
 
   /**
    * Puerto para la conexión, Mysql 3306, Postgre 5432.
