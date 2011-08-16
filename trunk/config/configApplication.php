@@ -185,6 +185,8 @@
   
   $GLOBALS['urlProject'] = $http.$httpHost;
   
+  require 'security.php';
+  
   # Lang en uso
   define ('LANG',			$lang,true);
   
