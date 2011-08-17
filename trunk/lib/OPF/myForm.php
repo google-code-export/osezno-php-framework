@@ -2489,9 +2489,15 @@ class OPF_myForm {
 					if ($campos_f[3] == true)
 						$cheked = 'checked';
 
-					$onClickTag   = 'onclick="checkear(\''.$campos_f[2].'\')"';
+					$onClickTag  = 'onclick="checkear(\''.$campos_f[2].'\')"';
 						
 					$onEvent = $this->checkExistEventJs($campos_f[2]);
+					
+					if ($onEvent){
+						
+						$onClickTag  = str_ireplace('onclick="','onclick="checkear(\''.$campos_f[2].'\'),',$onEvent);
+						
+					}
 						
 					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq '.$onClickTag.' class="'.$this->styleClassTags.'"  widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$onEvent.' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="checkbox" name="'.$campos_f[2].'" id="'.$campos_f[2].'" '.$cheked.' '.$this->checkIfIsDisabled($campos_f[2]).'>'.'</td>'."\n";
 					break;
