@@ -817,15 +817,17 @@ class OPF_myList  {
 
                 if ($defaultColumn){
                 
-                        $this->arrayOrdNum[$defaultColumn] = $defaultColumn;
+                	$defaultColumn = htmlentities($defaultColumn);
+                	
+                    $this->arrayOrdNum[$defaultColumn] = $defaultColumn;
                         
-                        if (in_array(strtoupper($defaultMethod),$methods))
+                    if (in_array(strtoupper($defaultMethod),$methods))
                         
-                                $this->arrayOrdMethod[$defaultColumn]=strtoupper($defaultMethod);
+                       $this->arrayOrdMethod[$defaultColumn]=strtoupper($defaultMethod);
                 
-                        else
+                    else
                         
-                                $this->arrayOrdMethod[$defaultColumn]=$default;
+                       $this->arrayOrdMethod[$defaultColumn]=$default;
                 }
         }
         
