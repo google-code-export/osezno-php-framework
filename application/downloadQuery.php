@@ -40,6 +40,8 @@
 		
 		$arOrMtd = $objList->getVar('arrayOrdMethod');
 		
+		$arAlInQy = $objList->getVar('arrayAliasSetInQuery');
+		
 		if ($arOrMtd!==false){
 		
 			foreach ($arOrMtd as $column => $method){
@@ -48,13 +50,19 @@
 					if (!$sqlOrder)
 						$sqlOrder = ' ORDER BY ';
 				
-					$sqlOrder .= '"'.html_entity_decode($column).'" '.$method.', ';
+					if (isset($arAlInQy[$column]))
+					
+						$sqlOrder .= ''.$arAlInQy[$column].' '.$method.', ';
+					
+					else
+					
+						$sqlOrder .= '"'.html_entity_decode($column).'" '.$method.', ';
 				}
 			}
 		}
 		
 		$sqlOrder = substr($sqlOrder,0,-2);
-		
+
 		/**
 		 * Limit
 		 */
