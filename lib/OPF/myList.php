@@ -1009,6 +1009,8 @@ class OPF_myList  {
                         
                 }else{
                         
+                	$i = 0;
+                	
                         if ($this->numAffectedRows){
                                 
                                 $buf .=  "\n".'<table border="0" width="'.$this->width.''.$this->formatWidthList.'" cellspacing="0" cellpadding="0" align="center"><tr><td class="list">'."\n";
@@ -1270,7 +1272,7 @@ class OPF_myList  {
                 $buf .= '</td><td width="34%" align="center">'; 
                 
                 # Usar paginacion
-                if ($this->usePagination && $this->successFul && $this->numAffectedRows){
+                if ($this->usePagination && $this->successFul){
                         
                         $arrBut = array(
                                 '_ini_page'      =>array('&nbsp;--&nbsp;','beg','button'),
