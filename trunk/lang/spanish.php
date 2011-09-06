@@ -1,13 +1,6 @@
 <?php
 
 	/**
-	 * Todas las definiciones que usted necesite
-	 */
-	define('OPF_ADD_RECORD','Agregar');
-	define('OPF_SAVE_RECORD','Guardar');
-
-
-	/**
 	 * Exportar datos
 	 */
 	define('MYEXPORT_ERROR_INVALID_FORMAT','El formato a exportar no es valido.');
