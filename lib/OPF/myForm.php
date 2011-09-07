@@ -291,6 +291,14 @@ class OPF_myForm {
 	 * @var array
 	 */
 	private $objDisabled = array();
+	
+	/**
+	* Arreglo que contiene los nombres de los objetos y el valor de la propiedad autocomplete
+	* dentro del formulario
+	*
+	* @var array
+	*/
+	private $objAutoComplete = array();
 
 	/**
 	 * Arreglo que contiene los nombres de los objetos que
@@ -1273,7 +1281,7 @@ class OPF_myForm {
 		}else 
 			$strEvents = $this->checkExistEventJs($name);
 			
-		$buf ='<table cellpadding="0" border="0" cellspacing="0"><tr><td><input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="text" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" '.$utilyVal.' maxlength="'. $maxlength.'"'.$keypress.' '.$strEvents.'></td>'.$LauncherCalendar.'</tr></table>'."\n";
+		$buf ='<table cellpadding="0" border="0" cellspacing="0"><tr><td><input '.$this->checkAutoCompleteStatus($name).'  '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="text" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" '.$utilyVal.' maxlength="'. $maxlength.'"'.$keypress.' '.$strEvents.'></td>'.$LauncherCalendar.'</tr></table>'."\n";
 			
 		return $buf;
 	}
@@ -1406,7 +1414,7 @@ class OPF_myForm {
 	public function getPassword($name = '', $value = '', $size = '', $maxlength = ''){
 
 		$buf = '';
-		$buf ='<input '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="password" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" maxlength="'. $maxlength.'" '.$this->checkExistEventJs($name).'>'."\n";
+		$buf ='<input '.$this->checkAutoCompleteStatus($name).' '.$this->checkIfIsDisabled($name).' '.$this->checkIsHelping($name).' class="'.$this->styleClassFields.'" type="password" name="'.$name.'" id="'.$name.'" value="'.$value.'" size="'.$size.'" maxlength="'. $maxlength.'" '.$this->checkExistEventJs($name).'>'."\n";
 		$this->arrayFormElementType[$name] = 'password';
 			
 		return $buf;		
@@ -1864,6 +1872,35 @@ class OPF_myForm {
 	}
 	
 	/**
+	* Habilita o desabilita el autocomplete en una caja de texto.
+	*
+	* Agrega la propiedad 'autocomplete="on/off"' en la caja de texto del formulario que se invoque.
+	*<code>
+	*
+	*index.php
+	*<?php
+	*
+	* $myForm = new OPF_myForm('form1');
+	*
+	* $myForm->addText('Nombre:','nom');
+	*
+	* $myForm->setAutoComplete('nom',false);
+	*
+	* $myForm->getForm(1);
+	*
+	*?>
+	*</code>
+	* @param string $objName id Nombre o id del objeto
+	*/
+	public function setAutoComplete ($objName, $value){
+		
+		if (is_bool($value)){
+		
+			$this->objAutoComplete[$objName] = $value;
+		}
+	}
+	
+	/**
 	 * Agrega un tip informativo.
 	 * 
 	 * Agrega un tip informativo sobre el objeto al pasar el puntero del mouse sobre él.
@@ -1987,6 +2024,35 @@ class OPF_myForm {
 		return $return;
 	}
 
+	/**
+	* Es llamada dentro de la construccion del
+	* formulario como un  metodo  que  ayuda a
+	* contruir  los  campos  con  un  atributo
+	* adicional  que  permite a un campo de tipo
+	* texto o password que tenga activo o no el
+	* atributo autocomplete.
+	*
+	* @param string  objName Id del objeto del formulario que el buscara en el arreglo
+	*/
+	private function checkAutoCompleteStatus ($objName){
+		
+		$return = '';
+		
+		if (isset($this->objAutoComplete[$objName])){
+			
+			$return = 'autocomplete="';
+			
+			if ($this->objAutoComplete[$objName] == true)
+				$return .= 'on';
+			else
+				$return .= 'off';
+			
+			$return .= '"';
+		}
+	
+		return $return;
+	}	
+	
 	/**
 	 * Llamada que dentro de la construccion del
 	 * formulario verifica si el objeto que   se
@@ -2341,12 +2407,12 @@ class OPF_myForm {
 					}else 
 						$strEvents = $this->checkExistEventJs($campos_f[2]);
 
-					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><table cellpadding="0" border="0" cellspacing="0"><tr><td><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="text" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" '.$utilyVal.' maxlength="'.$campos_f[5].'"'.$keypress.''.$strEvents.''.$this->checkIfIsDisabled($campos_f[2]).'></td>'.$LauncherCalendar.'</tr></table></td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><table cellpadding="0" border="0" cellspacing="0"><tr><td><input '.$this->checkAutoCompleteStatus($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="text" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" '.$utilyVal.' maxlength="'.$campos_f[5].'"'.$keypress.''.$strEvents.''.$this->checkIfIsDisabled($campos_f[2]).'></td>'.$LauncherCalendar.'</tr></table></td>'."\n";
 					
 					break;
 				case 'password':
 					
-					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="password" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" maxlength="'.$campos_f[5].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'></td>'."\n";
+					$this->arrayFormElements[$campos_f[2]] = '<td rowSpanEtq colSpanEtq class="'.$this->styleClassTags.'" widthEtq>'.$campos_f[1].'</td>'.'<td rowSpanFld colSpanFld widthFld><input '.$this->checkAutoCompleteStatus($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassFields.'" type="password" name="'.$campos_f[2].'" id="'.$campos_f[2].'" value="'.$campos_f[3].'" size="'.$campos_f[4].'" maxlength="'.$campos_f[5].'" '.$this->checkExistEventJs($campos_f[2]).' '.$this->checkIfIsDisabled($campos_f[2]).'></td>'."\n";
 					break;
 				case 'file':
 					
