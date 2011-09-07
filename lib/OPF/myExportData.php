@@ -1,6 +1,154 @@
 <?php
 
 /**
+ * Clase alterna para resolver el problema de aplicar multicells con un alto definido.
+ * Solución aportada desde http://www.fpdf.org/en/script/script3.php <oliver@fpdf.org> 
+ */
+class PDF_MC_Table extends FPDF
+{
+	private $widths;
+	
+	private $aligns;
+
+	public function SetWidths($w){
+		
+		$this->widths=$w;
+	}
+
+	public function SetAligns($a){
+		
+		$this->aligns=$a;
+	}
+
+	public function Row($data){
+		
+		//Calculate the height of the row
+		$nb=0;
+		
+		for($i=0;$i<count($data);$i++)
+		
+			$nb=max($nb,$this->NbLines($this->widths[$i],$data[$i]));
+		
+		$h=5*$nb;
+		
+		//Issue a page break first if needed
+		$this->CheckPageBreak($h);
+		
+		//Draw the cells of the row
+		for($i=0;$i<count($data);$i++){
+			
+			$w=$this->widths[$i];
+			
+			$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'L';
+			
+			//Save the current position
+			$x=$this->GetX();
+			
+			$y=$this->GetY();
+			
+			//Draw the border
+			$this->Rect($x,$y,$w,$h);
+			
+			//Print the text
+			$this->MultiCell($w,5,$data[$i],0,$a);
+			
+			//Put the position to the right of the cell
+			$this->SetXY($x+$w,$y);
+		}
+		
+		//Go to the next line
+		$this->Ln($h);
+	}
+
+	public function CheckPageBreak($h){
+		
+		//If the height h would cause an overflow, add a new page immediately
+		if($this->GetY()+$h>$this->PageBreakTrigger)
+		
+			$this->AddPage($this->CurOrientation);
+	}
+
+	public function NbLines($w,$txt){
+		
+		//Computes the number of lines a MultiCell of width w will take
+		$cw=&$this->CurrentFont['cw'];
+		
+		if($w==0)
+			$w=$this->w-$this->rMargin-$this->x;
+		
+		$wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
+		
+		$s=str_replace("\r",'',$txt);
+		
+		$nb=strlen($s);
+		
+		if($nb>0 and $s[$nb-1]=="\n")
+			$nb--;
+		
+		$sep=-1;
+		
+		$i=0;
+		
+		$j=0;
+		
+		$l=0;
+		
+		$nl=1;
+		
+		while($i<$nb){
+			
+			$c=$s[$i];
+			
+			if($c=="\n"){
+				
+				$i++;
+				
+				$sep=-1;
+				
+				$j=$i;
+				
+				$l=0;
+				
+				$nl++;
+				
+				continue;
+			}
+			
+			if($c==' ')
+			
+				$sep=$i;
+			
+			$l+=$cw[$c];
+			
+			if($l>$wmax){
+				
+				if($sep==-1){
+					
+					if($i==$j)
+					
+						$i++;
+				}else
+					$i=$sep+1;
+				
+				$sep=-1;
+				
+				$j=$i;
+				
+				$l=0;
+				
+				$nl++;
+				
+			}else
+			
+				$i++;
+		}
+		return $nl;
+	}
+	
+}
+
+				
+/**
  * myExportData
  * 
  * La clase myExportData ayuda con algunos procedimientos de consultas SQL cuando se requiere obtener un archivo en un formato especifico con elresultado de la consulta.
@@ -238,7 +386,7 @@ class OPF_myExportData {
                                 if ($widthList>900)
                                 	$ori = 'L';
                                 
-                                $this->objPDF = new FPDF($ori);
+                                $this->objPDF = new PDF_MC_Table($ori);
 
                                 $this->objPDF->SetLineWidth(.1);
                                 
@@ -283,6 +431,12 @@ class OPF_myExportData {
                                         
                                         $intTitl = 1;
                                         
+                                        $estaFila = array();
+                                        
+                                        $estaFilaAnchos = array();
+                                        
+                                        $estaFilaAligns = array();
+                                        
                                         foreach ($row as $key => $val){
                                                 
                                                 if (in_array($intTitl,$this->arrFieldHiden)){
@@ -292,13 +446,20 @@ class OPF_myExportData {
                                                       $widthCol = $this->width[htmlentities($key, ENT_QUOTES)]+40;
                                                       
                                                    }else
-                                                      $widthCol = $widthDefa+40;
+                                                      
+                                                   	  $widthCol = $widthDefa+40;
                                                 
-                                                        $align = 'L';
-                                                        if (is_numeric($val))
-                                                                $align = 'R';
+                                                    $align = 'L';
+                                                      
+                                                    if (is_numeric($val))
+
+                                                       $align = 'R';
                                                 
-                                                        $this->objPDF->Cell(($widthCol/6),3,utf8_decode($val),1,0,$align);
+                                                     $estaFila[] = utf8_decode($val);
+
+                                                     $estaFilaAligns[] = ($widthCol/6);
+                                                        
+                                                     $estaFilaAnchos[] = ($widthCol/6);
                                                 
                                                 }
                                                 
@@ -306,7 +467,11 @@ class OPF_myExportData {
                                                 
                                         }
                                         
-                                        $this->objPDF->Ln();
+                                        $this->objPDF->SetAligns($estaFilaAligns);
+                                        
+                                        $this->objPDF->SetWidths($estaFilaAnchos);
+                                        
+                                        $this->objPDF->Row($estaFila);
                                 }
                                 
                                 $out .= $this->objPDF->Output('','S');
@@ -324,9 +489,11 @@ class OPF_myExportData {
                                         
                                         $out .= '<body>';
                                         
-                                        $out .= '<table border="0" cellspacing="0" cellpadding="0"><tr><td bgcolor="#000000">';
+                                        $out .= '<table border="0" cellspacing="0" cellpadding="0"><tr><td width="30%"><img src="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/pdflogo/pdf_logo.jpg'.'"></td><td width="70%">'.REPORT_TITLE.$_SERVER['HTTP_REFERER'].'</td></tr>';
                                         
-                                        $out .= '<table border="0" cellspacing="1" cellpadding="0">';
+                                        $out .= '<tr><td bgcolor="#000000" colspan="2">';
+                                        
+                                        $out .= '<table border="0" cellspacing="1" cellpadding="0" width="100%">';
                                 }else
                                         $out .= '<table border="1">';
                                 
