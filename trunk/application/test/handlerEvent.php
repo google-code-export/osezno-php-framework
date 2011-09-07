@@ -1,17 +1,12 @@
 <?php
-  /**
-   * @package OSEZNO PHP FRAMEWORK
-   * @copyright 2007-2011  
-   * @version: 0.1
-   * @author: José Ignacio Gutiérrez Guzmán
-   * 
-   * developer@osezno-framework.org
-   *  
-   * handlerEvent.php: 
-   * Manejador de eventos del Usuario
-   *  
-   */
-
+/**
+ * Menjador de eventos de usuario.
+ *
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ * @link http://www.osezno-framework.org/
+ * @copyright Copyright &copy; 2007-2011 Osezno PHP Framework
+ * @license http://www.osezno-framework.org/license.txt
+ */
  include 'dataModel.php';
  
 /**
