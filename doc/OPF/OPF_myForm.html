@@ -8,7 +8,7 @@
 <body>
 <table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
   <tr>
-    <td class="header_top">Doc Ref[1.0 Beta 3]<!-- OPF --></td>
+    <td class="header_top">Doc Ref[1.0 Beta 4]<!-- OPF --></td>
   </tr>
   <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
   <tr>
@@ -162,6 +162,7 @@ Source Location: /myForm.php<br /><br />
     <li><a href="../OPF/OPF_myForm.html#methodgetTextArea">getTextArea</a></li>
     <li><a href="../OPF/OPF_myForm.html#methodgroupGroups">groupGroups</a></li>
     <li><a href="../OPF/OPF_myForm.html#methodsetAttFile">setAttFile</a></li>
+    <li><a href="../OPF/OPF_myForm.html#methodsetAutoComplete">setAutoComplete</a></li>
     <li><a href="../OPF/OPF_myForm.html#methodsetParamTypeOnEvent">setParamTypeOnEvent</a></li>
     <li><a href="../OPF/OPF_myForm.html#methodsetWYSIWYGeditorToUse">setWYSIWYGeditorToUse</a></li>
     <li><a href="../OPF/OPF_myForm.html#methodshowForm">showForm</a></li>
@@ -184,7 +185,7 @@ Source Location: /myForm.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 19]<br />
+[line 13]<br />
 myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar diferentes formas de formularios.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -210,7 +211,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$action"></a>
 	<p></p>
 	<h4>$action = <span class="value"></span></h4>
-	<p>[line 341]</p>
+	<p>[line 343]</p>
   Accion (action) del formulario.<br /><br /><p>La ruta del script que procesara los datos.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -234,7 +235,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$border"></a>
 	<p></p>
 	<h4>$border = <span class="value">&nbsp;0</span></h4>
-	<p>[line 437]</p>
+	<p>[line 439]</p>
   Borde de tabla.<br /><br /><p>Borde de la tabla que contiene el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -258,7 +259,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cache_dir"></a>
 	<p></p>
 	<h4>$cache_dir = <span class="value">&nbsp;'myform_cache/'</span></h4>
-	<p>[line 381]</p>
+	<p>[line 383]</p>
   Directorio cache.<br /><br /><p>Directorio en donde el formulario sera cacheado si la opcion esta habilitada.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -282,7 +283,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cellPadding"></a>
 	<p></p>
 	<h4>$cellPadding = <span class="value">&nbsp;2</span></h4>
-	<p>[line 405]</p>
+	<p>[line 407]</p>
   Anchura interior de celda.<br /><br /><p>Anchura interior de una celda, en este caso para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -306,7 +307,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cellSpacing"></a>
 	<p></p>
 	<h4>$cellSpacing = <span class="value">&nbsp;0</span></h4>
-	<p>[line 413]</p>
+	<p>[line 415]</p>
   Espacio entre celdas.<br /><br /><p>Espacion interior entre celdas, en este caso para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -330,7 +331,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$cols"></a>
 	<p></p>
 	<h4>$cols = <span class="value">&nbsp;2</span></h4>
-	<p>[line 397]</p>
+	<p>[line 399]</p>
   Columnas.<br /><br /><p>Numero de columnas en las que se divira la vista del formulario. Un campo sera ubicado en cada columna.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -354,7 +355,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$enctype"></a>
 	<p></p>
 	<h4>$enctype = <span class="value"></span></h4>
-	<p>[line 357]</p>
+	<p>[line 359]</p>
   Tipo MIME (Enctype) del formulario.<br /><br /><p>El tipo de datos que va a enviar, usualmente se utiliza para manejar acrchivos. (application/x-www-form-urlencoded, multipart/form-data)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -378,7 +379,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$FILE_button_placeholder_id"></a>
 	<p></p>
 	<h4>$FILE_button_placeholder_id = <span class="value">&nbsp;'spanButtonPlaceholder'</span></h4>
-	<p>[line 565]</p>
+	<p>[line 567]</p>
   Id DIV<br /><br /><p>Id del span donde el button se va a alojar.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -402,7 +403,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$height"></a>
 	<p></p>
 	<h4>$height = <span class="value">&nbsp;'0%'</span></h4>
-	<p>[line 429]</p>
+	<p>[line 431]</p>
   Alto de formulario.<br /><br /><p>Tamano de alto de la tabla que contiene el formulario en porcentaje o px.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -426,7 +427,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$method"></a>
 	<p></p>
 	<h4>$method = <span class="value">&nbsp;'post'</span></h4>
-	<p>[line 333]</p>
+	<p>[line 335]</p>
   Metodo (method) del formulario.<br /><br /><p>El metodo que utilizara en el momento de enviar el Formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -450,7 +451,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$name"></a>
 	<p></p>
 	<h4>$name = <span class="value"></span></h4>
-	<p>[line 373]</p>
+	<p>[line 375]</p>
   Nombre (name) del formulario.<br /><br /><p>El nombre del formulario con el que se esta interactuando.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -474,7 +475,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$prefAjax"></a>
 	<p></p>
 	<h4>$prefAjax = <span class="value">&nbsp;''</span></h4>
-	<p>[line 365]</p>
+	<p>[line 367]</p>
   Prefijo xajax.<br /><br /><p>Prefijo que usa xajax para llamar a sus funciones.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -498,7 +499,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$selectStringFirstLabelOption"></a>
 	<p></p>
 	<h4>$selectStringFirstLabelOption = <span class="value">&nbsp;'Seleccione...'</span></h4>
-	<p>[line 468]</p>
+	<p>[line 470]</p>
   Etiqueta primer opcion en campos tipo SELECT<br /><br /><p>Etiqueta de la primera opcion por select que se activa solo si $objMyForm-&gt;selectUseFirstValue es igual a 'true'.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -522,7 +523,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$selectUseFirstValue"></a>
 	<p></p>
 	<h4>$selectUseFirstValue = <span class="value">&nbsp;true</span></h4>
-	<p>[line 445]</p>
+	<p>[line 447]</p>
   Usar pirmer valor en campos tipo select.<br /><br /><p>Permite decidir si se va a usar o no una opcion en el select que  muestre un etiqueta por defecto como presentacion segun el idioma que utilize.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -546,7 +547,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$srcImageCalendarButton"></a>
 	<p></p>
 	<h4>$srcImageCalendarButton = <span class="value">&nbsp;'calendar.gif'</span></h4>
-	<p>[line 453]</p>
+	<p>[line 455]</p>
   SRC imagen boton calendario.<br /><br /><p>Ruta de la Imagen que acompana el boton de cada uno de los Controles de calendario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -570,7 +571,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$strFormFieldSet"></a>
 	<p></p>
 	<h4>$strFormFieldSet = <span class="value">&nbsp;''</span></h4>
-	<p>[line 557]</p>
+	<p>[line 559]</p>
   Etiqueta Legend formulario.<br /><br /><p>Etiqueta del Legend del Fieldset que usara el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -594,7 +595,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassButtons"></a>
 	<p></p>
 	<h4>$styleClassButtons = <span class="value">&nbsp;'boton'</span></h4>
-	<p>[line 525]</p>
+	<p>[line 527]</p>
   Clase CSS Botones.<br /><br /><p>Nombre de la clase que por defecto usan los los botones del formulario que seran mostrados.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -618,7 +619,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassComments"></a>
 	<p></p>
 	<h4>$styleClassComments = <span class="value">&nbsp;'comentario'</span></h4>
-	<p>[line 541]</p>
+	<p>[line 543]</p>
   Clase CSS comentarios.<br /><br /><p>Nombre de la clase que por defecto usan los comentarios dentro del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -642,7 +643,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassFields"></a>
 	<p></p>
 	<h4>$styleClassFields = <span class="value">&nbsp;'caja'</span></h4>
-	<p>[line 517]</p>
+	<p>[line 519]</p>
   Clase CSS Campos.<br /><br /><p>Nombre de la clase que por defecto usan los campos del formulario para ser mostrados.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -666,7 +667,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassFieldsets"></a>
 	<p></p>
 	<h4>$styleClassFieldsets = <span class="value">&nbsp;'formulario_fieldset'</span></h4>
-	<p>[line 549]</p>
+	<p>[line 551]</p>
   Clase CSS Fieldset.<br /><br /><p>Nombre de la clase que por defecto usan los fieldsets del formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -690,7 +691,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassForm"></a>
 	<p></p>
 	<h4>$styleClassForm = <span class="value">&nbsp;'formulario'</span></h4>
-	<p>[line 485]</p>
+	<p>[line 487]</p>
   Clase CSS Formularios<br /><br /><p>Nombre de la clase que por defecto usan los formularios.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -714,7 +715,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassRowSeparator"></a>
 	<p></p>
 	<h4>$styleClassRowSeparator = <span class="value">&nbsp;'fondo_fila_medio'</span></h4>
-	<p>[line 501]</p>
+	<p>[line 503]</p>
   Clase CSS filas intermedias.<br /><br /><p>Nombre de la clase que por defecto usan las filas del medio para los formularios cuando $myForm-&gt;useRowSeparator es true.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -738,7 +739,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassTableForm"></a>
 	<p></p>
 	<h4>$styleClassTableForm = <span class="value">&nbsp;'fondo_tabla_form'</span></h4>
-	<p>[line 493]</p>
+	<p>[line 495]</p>
   Clase CSS tabla formulario.<br /><br /><p>Nombre de la clase que por defecto usan las tablas que se crean para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -762,7 +763,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleClassTags"></a>
 	<p></p>
 	<h4>$styleClassTags = <span class="value">&nbsp;'etiqueta'</span></h4>
-	<p>[line 533]</p>
+	<p>[line 535]</p>
   Clase CSS etiquetas.<br /><br /><p>Nombre de la clase que por defecto usan las etiquetas de los campos del formulario que seran mostrados.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -786,7 +787,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$styleTypeHelp"></a>
 	<p></p>
 	<h4>$styleTypeHelp = <span class="value">&nbsp;1</span></h4>
-	<p>[line 509]</p>
+	<p>[line 511]</p>
   Clase CSS Ayudas tipo.<br /><br /><p>Tipo del la ayuda que mostrara el help sobre los campos que se configuraron previamente (1 ó 2).</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -810,7 +811,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$target"></a>
 	<p></p>
 	<h4>$target = <span class="value">&nbsp;'_self'</span></h4>
-	<p>[line 349]</p>
+	<p>[line 351]</p>
   Objetivo (target) del formulario.<br /><br /><p>La ventana en donde se abrira la informacion enviada desde ese formulario. (_self, _blank, _parent, _top)</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -834,7 +835,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$useAddFileAfterLoad"></a>
 	<p></p>
 	<h4>$useAddFileAfterLoad = <span class="value">&nbsp;false</span></h4>
-	<p>[line 284]</p>
+	<p>[line 278]</p>
   Verifica si un objeto tipo file ha sido  agregado al formulario despues de haber  cargado la pagina.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -858,7 +859,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$useRowSeparator"></a>
 	<p></p>
 	<h4>$useRowSeparator = <span class="value">&nbsp;false</span></h4>
-	<p>[line 477]</p>
+	<p>[line 479]</p>
   Usar distincion de filas.<br /><br /><p>Utilizar o no la fila intermedia de color diferente para diferenciar visualmente las filas de los campos en un formulario.  Nota: Al activar este atributo debe tenerse en cuenta la clase de estilos que usa por medio de 'styleClassRowSeparator'</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -882,7 +883,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$use_cache"></a>
 	<p></p>
 	<h4>$use_cache = <span class="value">&nbsp;false</span></h4>
-	<p>[line 389]</p>
+	<p>[line 391]</p>
   Usar cache.<br /><br /><p>Define si se va a usar o no cache para el formulario.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -906,7 +907,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 	<a name="var$width"></a>
 	<p></p>
 	<h4>$width = <span class="value">&nbsp;'97%'</span></h4>
-	<p>[line 421]</p>
+	<p>[line 423]</p>
   Ancho de formulario.<br /><br /><p>Tamano de ancho de la tabla que contiene el formulario en porcentaje o px.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -936,7 +937,7 @@ myForm<br /><br /><p>La clase myForm permite al desarrollador crear/generar dife
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 815]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 817]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1021,7 +1022,7 @@ $nomForm)</code>
   </div>
   <hr />
 	<a name="methodaddButton"></a>
-	<h3>method addButton <span class="smalllinenumber">[line 1232]</span></h3>
+	<h3>method addButton <span class="smalllinenumber">[line 1234]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1069,7 +1070,7 @@ $strSrcImg = ''])</code>
   </div>
   <hr />
 	<a name="methodaddCheckBox"></a>
-	<h3>method addCheckBox <span class="smalllinenumber">[line 934]</span></h3>
+	<h3>method addCheckBox <span class="smalllinenumber">[line 936]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1117,7 +1118,7 @@ $ini_sts = false])</code>
   </div>
   <hr />
 	<a name="methodaddComment"></a>
-	<h3>method addComment <span class="smalllinenumber">[line 1187]</span></h3>
+	<h3>method addComment <span class="smalllinenumber">[line 1189]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1159,7 +1160,7 @@ $Coment)</code>
   </div>
   <hr />
 	<a name="methodaddDisabled"></a>
-	<h3>method addDisabled <span class="smalllinenumber">[line 1866]</span></h3>
+	<h3>method addDisabled <span class="smalllinenumber">[line 1868]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1207,7 +1208,7 @@ $objName)</code>
   </div>
   <hr />
 	<a name="methodaddEvent"></a>
-	<h3>method addEvent <span class="smalllinenumber">[line 1652]</span></h3>
+	<h3>method addEvent <span class="smalllinenumber">[line 1654]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1320,7 +1321,7 @@ $param3)</code>
   </div>
   <hr />
 	<a name="methodaddFile"></a>
-	<h3>method addFile <span class="smalllinenumber">[line 1077]</span></h3>
+	<h3>method addFile <span class="smalllinenumber">[line 1079]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1421,7 +1422,7 @@ $file_size_limit = ''])</code>
   </div>
   <hr />
 	<a name="methodaddFreeObject"></a>
-	<h3>method addFreeObject <span class="smalllinenumber">[line 1216]</span></h3>
+	<h3>method addFreeObject <span class="smalllinenumber">[line 1218]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1491,7 +1492,7 @@ $val_c)</code>
   </div>
   <hr />
 	<a name="methodaddGroup"></a>
-	<h3>method addGroup <span class="smalllinenumber">[line 1575]</span></h3>
+	<h3>method addGroup <span class="smalllinenumber">[line 1577]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1579,7 +1580,7 @@ $iniVisibilitySts = 'show'])</code>
   </div>
   <hr />
 	<a name="methodaddHelp"></a>
-	<h3>method addHelp <span class="smalllinenumber">[line 1879]</span></h3>
+	<h3>method addHelp <span class="smalllinenumber">[line 1910]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1621,7 +1622,7 @@ $strHelp)</code>
   </div>
   <hr />
 	<a name="methodaddHidden"></a>
-	<h3>method addHidden <span class="smalllinenumber">[line 1013]</span></h3>
+	<h3>method addHidden <span class="smalllinenumber">[line 1015]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1663,7 +1664,7 @@ $value = ''])</code>
   </div>
   <hr />
 	<a name="methodaddPassword"></a>
-	<h3>method addPassword <span class="smalllinenumber">[line 979]</span></h3>
+	<h3>method addPassword <span class="smalllinenumber">[line 981]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1723,7 +1724,7 @@ $maxlength = ''])</code>
   </div>
   <hr />
 	<a name="methodaddRadioButton"></a>
-	<h3>method addRadioButton <span class="smalllinenumber">[line 957]</span></h3>
+	<h3>method addRadioButton <span class="smalllinenumber">[line 959]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1780,7 +1781,7 @@ $is_checked = false])</code>
   </div>
   <hr />
 	<a name="methodaddSelect"></a>
-	<h3>method addSelect <span class="smalllinenumber">[line 883]</span></h3>
+	<h3>method addSelect <span class="smalllinenumber">[line 885]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1852,7 +1853,7 @@ $multiple = false])</code>
   </div>
   <hr />
 	<a name="methodaddText"></a>
-	<h3>method addText <span class="smalllinenumber">[line 862]</span></h3>
+	<h3>method addText <span class="smalllinenumber">[line 864]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1938,7 +1939,7 @@ $CampoFecha = false])</code>
   </div>
   <hr />
 	<a name="methodaddTextArea"></a>
-	<h3>method addTextArea <span class="smalllinenumber">[line 998]</span></h3>
+	<h3>method addTextArea <span class="smalllinenumber">[line 1000]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2004,7 +2005,7 @@ $wrap = ''])</code>
   </div>
   <hr />
 	<a name="methodaddWYSIWYGeditor"></a>
-	<h3>method addWYSIWYGeditor <span class="smalllinenumber">[line 1160]</span></h3>
+	<h3>method addWYSIWYGeditor <span class="smalllinenumber">[line 1162]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2100,7 +2101,7 @@ $toolbarset = ''])</code>
   </div>
   <hr />
 	<a name="methodgetButton"></a>
-	<h3>method getButton <span class="smalllinenumber">[line 1515]</span></h3>
+	<h3>method getButton <span class="smalllinenumber">[line 1517]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2148,7 +2149,7 @@ $strSrcImg = ''])</code>
   </div>
   <hr />
 	<a name="methodgetCheckBox"></a>
-	<h3>method getCheckBox <span class="smalllinenumber">[line 1360]</span></h3>
+	<h3>method getCheckBox <span class="smalllinenumber">[line 1362]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2190,7 +2191,7 @@ $ini_sts = false])</code>
   </div>
   <hr />
 	<a name="methodgetFile"></a>
-	<h3>method getFile <span class="smalllinenumber">[line 1460]</span></h3>
+	<h3>method getFile <span class="smalllinenumber">[line 1462]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2250,7 +2251,7 @@ $file_size_limit = ''])</code>
   </div>
   <hr />
 	<a name="methodgetForm"></a>
-	<h3>method getForm <span class="smalllinenumber">[line 1929]</span></h3>
+	<h3>method getForm <span class="smalllinenumber">[line 1960]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2286,7 +2287,7 @@ $cols = 2])</code>
   </div>
   <hr />
 	<a name="methodgetHidden"></a>
-	<h3>method getHidden <span class="smalllinenumber">[line 1445]</span></h3>
+	<h3>method getHidden <span class="smalllinenumber">[line 1447]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2328,7 +2329,7 @@ $value = ''])</code>
   </div>
   <hr />
 	<a name="methodgetPassword"></a>
-	<h3>method getPassword <span class="smalllinenumber">[line 1412]</span></h3>
+	<h3>method getPassword <span class="smalllinenumber">[line 1414]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2382,7 +2383,7 @@ $maxlength = ''])</code>
   </div>
   <hr />
 	<a name="methodgetRadioButton"></a>
-	<h3>method getRadioButton <span class="smalllinenumber">[line 1386]</span></h3>
+	<h3>method getRadioButton <span class="smalllinenumber">[line 1388]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2430,7 +2431,7 @@ $is_checked = false])</code>
   </div>
   <hr />
 	<a name="methodgetSelect"></a>
-	<h3>method getSelect <span class="smalllinenumber">[line 1299]</span></h3>
+	<h3>method getSelect <span class="smalllinenumber">[line 1301]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2496,7 +2497,7 @@ $multiple = false])</code>
   </div>
   <hr />
 	<a name="methodgetText"></a>
-	<h3>method getText <span class="smalllinenumber">[line 1258]</span></h3>
+	<h3>method getText <span class="smalllinenumber">[line 1260]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2562,7 +2563,7 @@ $CampoFecha = false])</code>
   </div>
   <hr />
 	<a name="methodgetTextArea"></a>
-	<h3>method getTextArea <span class="smalllinenumber">[line 1431]</span></h3>
+	<h3>method getTextArea <span class="smalllinenumber">[line 1433]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2622,7 +2623,7 @@ $wrap = ''])</code>
   </div>
   <hr />
 	<a name="methodgroupGroups"></a>
-	<h3>method groupGroups <span class="smalllinenumber">[line 1917]</span></h3>
+	<h3>method groupGroups <span class="smalllinenumber">[line 1948]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2686,7 +2687,7 @@ $idGroupingGroups)</code>
   </div>
   <hr />
 	<a name="methodsetAttFile"></a>
-	<h3>method setAttFile <span class="smalllinenumber">[line 701]</span></h3>
+	<h3>method setAttFile <span class="smalllinenumber">[line 703]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2745,8 +2746,62 @@ $attValue)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodsetAutoComplete"></a>
+	<h3>method setAutoComplete <span class="smalllinenumber">[line 1895]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setAutoComplete(
+string
+$objName, 
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Habilita o desabilita el autocomplete en una caja de texto.<br /><br /><p>Agrega la propiedad 'autocomplete=&quot;on/off&quot;' en la caja de texto del formulario que se invoque. <ol><li><div class="src-line">index.php</div></li>
+<li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myForm.html">OPF_myForm</a></span><span class="src-sym">(</span><span class="src-str">'form1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myForm.html#methodaddText">addText</a><span class="src-sym">(</span><span class="src-str">'Nombre:'</span><span class="src-sym">,</span><span class="src-str">'nom'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myForm.html#methodsetAutoComplete">setAutoComplete</a><span class="src-sym">(</span><span class="src-str">'nom'</span><span class="src-sym">,</span><span class="src-id">false</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myForm</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myForm.html#methodgetForm">getForm</a><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$objName</b>&nbsp;&nbsp;</td>
+        <td>id Nombre o id del objeto</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodsetParamTypeOnEvent"></a>
-	<h3>method setParamTypeOnEvent <span class="smalllinenumber">[line 1837]</span></h3>
+	<h3>method setParamTypeOnEvent <span class="smalllinenumber">[line 1839]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2825,7 +2880,7 @@ $paramType)</code>
   </div>
   <hr />
 	<a name="methodsetWYSIWYGeditorToUse"></a>
-	<h3>method setWYSIWYGeditorToUse <span class="smalllinenumber">[line 1952]</span></h3>
+	<h3>method setWYSIWYGeditorToUse <span class="smalllinenumber">[line 1983]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2861,7 +2916,7 @@ $editor_name)</code>
   </div>
   <hr />
 	<a name="methodshowForm"></a>
-	<h3>method showForm <span class="smalllinenumber">[line 1942]</span></h3>
+	<h3>method showForm <span class="smalllinenumber">[line 1973]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2900,7 +2955,7 @@ $cols = 2])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 04 Aug 2011 13:24:59 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
+		    Documentation generated on Mon, 12 Sep 2011 15:39:58 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
 	      </div>
       </td></tr></table>
     </td>
