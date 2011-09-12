@@ -8,7 +8,7 @@
 <body>
 <table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
   <tr>
-    <td class="header_top">Doc Ref[1.0 Beta 3]<!-- OPF --></td>
+    <td class="header_top">Doc Ref[1.0 Beta 4]<!-- OPF --></td>
   </tr>
   <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
   <tr>
@@ -121,7 +121,7 @@ Source Location: /myExportData.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 13]<br />
+[line 181]<br />
 myExportData<br /><br /><p>La clase myExportData ayuda con algunos procedimientos de consultas SQL cuando se requiere obtener un archivo en un formato especifico con elresultado de la consulta.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -148,7 +148,7 @@ myExportData<br /><br /><p>La clase myExportData ayuda con algunos procedimiento
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 144]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 312]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -166,17 +166,17 @@ $id_list)</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myExportData.html">OPF_myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;fiel1,&nbsp;field2,&nbsp;field3&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'pdf'</span><span class="src-sym">,</span><span class="src-str">'/var/www/html/project/report/report.pdf'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myExportData.html">OPF_myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;fiel1,&nbsp;field2,&nbsp;field3&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'pdf'</span><span class="src-sym">,</span><span class="src-str">'/var/www/html/project/report/report.pdf'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Cuando&nbsp;generamos&nbsp;un&nbsp;archivo&nbsp;en&nbsp;formato&nbsp;PDF&nbsp;es&nbsp;prescindible&nbsp;ajustar&nbsp;el&nbsp;tamaño&nbsp;de&nbsp;las&nbsp;columnas&nbsp;pues&nbsp;no&nbsp;es&nbsp;posible&nbsp;calcular&nbsp;su&nbsp;valor&nbsp;automaticamente.</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">#&nbsp;Cuando&nbsp;generamos&nbsp;un&nbsp;archivo&nbsp;en&nbsp;formato&nbsp;PDF&nbsp;es&nbsp;prescindible&nbsp;ajustar&nbsp;el&nbsp;tamaño&nbsp;de&nbsp;las&nbsp;columnas&nbsp;pues&nbsp;no&nbsp;es&nbsp;posible&nbsp;calcular&nbsp;su&nbsp;valor&nbsp;automaticamente.</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'fiel1'</span><span class="src-sym">,</span><span class="src-num">100</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'fiel1'</span><span class="src-sym">,</span><span class="src-num">100</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'field2'</span><span class="src-sym">,</span><span class="src-num">150</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'field2'</span><span class="src-sym">,</span><span class="src-num">150</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'field3'</span><span class="src-sym">,</span><span class="src-num">200</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><span class="src-id">setWidth</span><span class="src-sym">(</span><span class="src-str">'field3'</span><span class="src-sym">,</span><span class="src-num">200</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myExportData.html#methodgetResult">getResult</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myExportData.html#methodgetResult">getResult</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -184,24 +184,24 @@ $id_list)</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myExportData.html">OPF_myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'xls'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myExportData.html">OPF_myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'xls'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$xls&nbsp;</span>=&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myExportData.html#methodgetResult">getResult</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$xls&nbsp;</span>=&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myExportData.html#methodgetResult">getResult</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-type:&nbsp;application/x-msexcel'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-type:&nbsp;application/x-msexcel'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;file.xls&quot;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-Disposition:&nbsp;attachment;&nbsp;filename=&quot;file.xls&quot;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-Length:&nbsp;'</span>.<a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$xls</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a>&nbsp;<span class="src-sym">(</span><span class="src-str">'Content-Length:&nbsp;'</span>.<a href="http://www.php.net/strlen">strlen</a><span class="src-sym">(</span><span class="src-var">$xls</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/strstr">strstr</a><span class="src-sym">(</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">&quot;HTTP_USER_AGENT&quot;</span><span class="src-sym">]</span><span class="src-sym">,&nbsp;</span><span class="src-str">&quot;MSIE&quot;</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/strstr">strstr</a><span class="src-sym">(</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">&quot;HTTP_USER_AGENT&quot;</span><span class="src-sym">]</span><span class="src-sym">,&nbsp;</span><span class="src-str">&quot;MSIE&quot;</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">'Pragma:&nbsp;private'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">'Pragma:&nbsp;private'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">'Cache-control:&nbsp;private,&nbsp;must-revalidate'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">'Cache-control:&nbsp;private,&nbsp;must-revalidate'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$xls</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$xls</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-php">?&gt;</span></div></li>
 </ol></p><br /><br /><br />
@@ -250,7 +250,7 @@ $id_list)</code>
   </div>
   <hr />
 	<a name="methodgetError"></a>
-	<h3>method getError <span class="smalllinenumber">[line 402]</span></h3>
+	<h3>method getError <span class="smalllinenumber">[line 619]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -263,7 +263,7 @@ $id_list)</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$myExport&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myExportData.html">OPF_myExportData</a></span><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">,</span><span class="src-str">'xls'</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myExportData.html#methodgetError">getError</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myExport</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myExportData.html#methodgetError">getError</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
@@ -283,7 +283,7 @@ $id_list)</code>
   </div>
   <hr />
 	<a name="methodgetResult"></a>
-	<h3>method getResult <span class="smalllinenumber">[line 453]</span></h3>
+	<h3>method getResult <span class="smalllinenumber">[line 670]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -308,7 +308,7 @@ $id_list)</code>
   </div>
   <hr />
 	<a name="methodsetWidthInColumn"></a>
-	<h3>method setWidthInColumn <span class="smalllinenumber">[line 414]</span></h3>
+	<h3>method setWidthInColumn <span class="smalllinenumber">[line 631]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -353,7 +353,7 @@ $width)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 04 Aug 2011 13:24:59 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
+		    Documentation generated on Mon, 12 Sep 2011 15:39:57 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
 	      </div>
       </td></tr></table>
     </td>
