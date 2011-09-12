@@ -1,3 +1,20 @@
-Al asignar un evento a un checkbox con el metodo addCheck de la clase OPF_myForm este evento tambien deberia producirse cuando el usuario hace click en la etiqueta del campo.
+Al asignar un evento a un checkbox con el método addCheck de la clase OPF_myForm este evento también se produce cuando el usuario hace click en la etiqueta del campo.
  
-Cuando se agrega un evento a un checbox pero despues el campo es desabilitado con el metodo addDisabled este evento no se debe ejecutar.
+Cuando se agrega un evento a un checbox pero después el campo es deshabilitado con el método addDisabled este evento no se ejecuta.
+
+Se soluciona problema cuando se exportaba el contenido de una lista dinámica que se encontraba ordenada por uno o más campos y que al momento de exportarla no parecía ordenada como en un principio estaba.
+
+Se soluciona problema cuando se habilitaba el ordenamiento inicial por una columna que tenía algún acento en su nombre d campo.
+
+Se agrega mejora en las listas dinámicas cuando se configura una paginación y al pasar una página el número de registros mostrados era múltiplo del número de registro por página.
+
+Se han actualizado los enlaces de ayuda de mensajes de notificación que aparecían por ejemplo cuando se intentaba ordenar una columna cuyo nombre
+no había sido configurado previamente con un alias.
+
+Ahora el reporte por PDF para listas dinámicas respeta el espacio asignado por el contenido de un campo pues ahora no importa cuántos caracteres tenga ese campo porque va a mostrar el contenido sin desbordarse a otras celdas.
+
+Se agrega un nuevo método a la clase OPF_myForm, el método OPF_myForm::setAutoComplete('field_name,bool) permite encender o apagar el autocompletado para campos de tipo texto o password.
+
+Se agrega a la distribución un nuevo módulo predefinido llamado “application/test” que muestra la configuración actual del framework así como también permite hacer una prueba de conexión a la base de datos.
+
+Se agrega soporte para usar traducciones en el idioma Ingles. Las traducciones incluyen el manejo de la cadena comunes y la ayuda para listas dinámicas de operadores de relacion.
