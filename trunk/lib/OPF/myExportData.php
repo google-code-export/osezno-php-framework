@@ -1,8 +1,12 @@
 <?php
 
 /**
+ * Multicell solution
+ * 
  * Clase alterna para resolver el problema de aplicar multicells con un alto definido.
- * Solución aportada desde http://www.fpdf.org/en/script/script3.php <oliver@fpdf.org> 
+ * Solución aportada desde http://www.fpdf.org/en/script/script3.php <oliver@fpdf.org>
+ * 
+ * @ignore
  */
 class PDF_MC_Table extends FPDF
 {
@@ -10,16 +14,26 @@ class PDF_MC_Table extends FPDF
 	
 	private $aligns;
 
+	/**
+	 * @ignore
+	 */
 	public function SetWidths($w){
 		
 		$this->widths=$w;
 	}
 
+	/**
+	 * @ignore
+	 */
 	public function SetAligns($a){
 		
 		$this->aligns=$a;
 	}
 
+
+	/**
+	 * @ignore
+	 */
 	public function Row($data){
 		
 		//Calculate the height of the row
@@ -60,6 +74,9 @@ class PDF_MC_Table extends FPDF
 		$this->Ln($h);
 	}
 
+   /**
+	* @ignore
+	*/
 	public function CheckPageBreak($h){
 		
 		//If the height h would cause an overflow, add a new page immediately
@@ -67,7 +84,10 @@ class PDF_MC_Table extends FPDF
 		
 			$this->AddPage($this->CurOrientation);
 	}
-
+	
+   /**
+	* @ignore
+	*/
 	public function NbLines($w,$txt){
 		
 		//Computes the number of lines a MultiCell of width w will take
