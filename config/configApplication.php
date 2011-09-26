@@ -56,25 +56,25 @@
    * Nombre de base de datos.
    * @var string
    */
-  $database = 'osezno';
+  $database = '';
   
   /**
    * Motor de base de datos; pgsql ó mysql.
    * @var string
    */
-  $engine = 'mysql';
+  $engine = '';
   
   /**
    * Direccion Ip o nombre de maquina del motor de base de datos.
    * @var string
    */
-  $host = 'localhost';
+  $host = '';
   
   /**
    * Nombre de usuario para conexion a base de datos.
    * @var string
    */
-  $user = 'root';
+  $user = '';
   
   /**
    * Contraseña de usuario para conexión a base de datos.
@@ -86,7 +86,7 @@
    * Puerto para la conexión, Mysql 3306, Postgre 5432.
    * @var integer
    */
-  $port = 3306;
+  $port = '';
 
   /**
    * Encender o Apagar el Debug.
