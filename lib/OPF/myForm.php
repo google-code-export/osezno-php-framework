@@ -467,7 +467,7 @@ class OPF_myForm {
 	 * Etiqueta de la primera opcion por select que se activa solo si $objMyForm->selectUseFirstValue es igual a 'true'.
 	 * @var string
 	 */
-	public $selectStringFirstLabelOption = 'Seleccione...';
+	public $selectStringFirstLabelOption = LABEL_FIRST_OPT_SELECT_FIELD;
 
 	/**
 	 * Usar distincion de filas.
