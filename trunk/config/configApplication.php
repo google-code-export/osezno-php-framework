@@ -13,13 +13,13 @@
   # Diseño y Vista
   
   /**
-   * Idioma que se va a usar en las etiquetas de los objetos.
+   * Idioma que se va a usar en las etiquetas de los objetos. (spanish, english) (lang/)
    * @var string 
    */
   $lang = 'spanish';
   
   /**
-   * Tema actual de estilos.
+   * Tema actual de estilos. (themes/)
    * @var string
    */
   $theme = 'osezno';
