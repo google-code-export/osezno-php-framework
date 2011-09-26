@@ -1141,6 +1141,7 @@ class OPF_myActiveRecord {
 		$eError = array ();
 		
 		if ($saveInLog)
+		
 			$GLOBALS['OF_SQL_LOG'] .= $sql.' '."\n";
 			
 		$isrW = false;
@@ -1152,9 +1153,16 @@ class OPF_myActiveRecord {
 			if ($pos === false){
 				
 			}else{
-				$isrW = true;
-				break;
+				
+				if (stripos($sql, 'select') === false){
+					
+					$isrW = true;
+					
+					break;
+				}
+				
 			}
+			
 		}
 		
 		if ($isrW){
