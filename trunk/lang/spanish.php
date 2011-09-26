@@ -1,6 +1,11 @@
 <?php
 
 	/**
+	 * Formularios
+	 */
+	define('LABEL_FIRST_OPT_SELECT_FIELD','Seleccione...');
+	
+	/**
 	 * Exportar datos
 	 */
 	define('MYEXPORT_ERROR_INVALID_FORMAT','El formato a exportar no es valido.');
