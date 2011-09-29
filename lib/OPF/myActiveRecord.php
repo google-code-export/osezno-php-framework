@@ -595,21 +595,24 @@ class OPF_myActiveRecord {
 					}
 					
 				}
-			
+				
 				$rF = $this->query($sql);
 			
 				if ($this->num_rows == 1){
 				
 					foreach ($rF[0] as $etq => $value){
 					
-						$this->$etq = $value;
+						if (!in_array($etq,$this->arrayInvalidAtt)){
+							
+							$this->$etq = $value;
+						}	
 					}
 				
 					$this->keyFinded = $keyFinded;
 					
 				}else{
 					//TODO:
-
+					// El resultado sera recorrido
 				}
 				
 			}else{
@@ -1186,7 +1189,6 @@ class OPF_myActiveRecord {
 			return $this->num_rows;
 			
 		}else{
-			
 			# Select / No se afectan en transacciones, no afectan las busquedas
 			
 			$objReturn;
@@ -1194,7 +1196,7 @@ class OPF_myActiveRecord {
 			$array = array();
 			
 			$resQuery = $this->myact_dbh->query($sql);
-		
+			
 			if (!$resQuery){
 				
 				$eError = $this->myact_dbh->errorInfo();
@@ -1202,7 +1204,7 @@ class OPF_myActiveRecord {
 				$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
 				
 			}else{
-
+				
 				$this->num_cols = $resQuery->columnCount();
 				
 				$this->num_rows = 0;
@@ -1211,7 +1213,7 @@ class OPF_myActiveRecord {
 					
 					$array[] = $this->buildRes($row);
 					
-					$this->num_rows++;	
+					$this->num_rows++;
 				}
 
 			}
