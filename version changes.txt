@@ -1,3 +1,5 @@
 Se permite el acceso a los estilos para mostrar errores en caso de accesos no permitidos en OPF Essentials. 
 
 Se soluciona problema que se presentaba con las consultas SQL en listas dinamicas que tenian palabras reservadas como 'Delete', 'Update' y 'Insert'
+
+Se soluciona error que se prensentaba cuando el metodo getNumRowsAffected de Active Record no estaba devolviendo un numero de registros afectados si el metodo Find que lo precede encuentra solo 1 registro. Este problema se esta prensentando en la version de php >= 5.2.11
