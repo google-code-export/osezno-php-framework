@@ -89,6 +89,14 @@ class OPF_myActiveRecord {
 	private $myact_dbh;
 
 	/**
+	 * Arreglo con los valores que se
+	 * pretenden intercambiar en el metodo
+	 * pre query para prevenir ataques sql.
+	 * @var array
+	 */
+	private $arrayPrepare = array ();
+	
+	/**
 	 * Estado de la conexion actual.
 	 * 
 	 * Comprueba el estado boleano de si la actual conexion esta abierta o cerrada.
@@ -207,7 +215,7 @@ class OPF_myActiveRecord {
 	 */
 	private $arrayInvalidAtt = array (
 		'myact_database', 'myact_engine', 'myact_host', 'myact_user', 'myact_password', 'myact_port', 'myact_table', 'posFijSeq', 'num_rows', 'num_cols',
-		'myact_dbh', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
+		'myact_dbh', 'arrayPrepare', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
 		'arrayInvalidAtt','tablePk', 'tableIdSeq', 'autoQuoteOnFind', 'arrayCrud'	
 	);
 	
@@ -501,6 +509,7 @@ class OPF_myActiveRecord {
 				$iCounter = 1;
 
 				if ($strCond)
+				
 			   		$sql .= ' WHERE ';
 
 				$cCond = count($strCond = explode('&',$strCond));
@@ -511,31 +520,24 @@ class OPF_myActiveRecord {
 					$smblRel = $this->evalSimbolInSubQuery($cnd,true);
 				
 					if ($smblRel)
+					
 						list ($fCnd, $vCnd) = explode($smblRel,$cnd);
 				
 					if (trim($fCnd) && $vCnd){
 
-						if ($this->autoQuoteOnFind){
-						
-							if (is_numeric(trim($vCnd))){
-							
-								$keyFinded .= $fCnd.$smblRel.' '.trim($vCnd);
+						$keyFinded .= $fCnd.$smblRel.' ?';
 
-							}else{
-							
-								$keyFinded .= $fCnd.$smblRel." '".trim($vCnd)."'";
-							}
-						}else{
-						
-							$keyFinded .= $fCnd.$smblRel.' '.trim($vCnd).'';
-						}
+						$this->arrayPrepare[] = trim($vCnd);
 
 					}else{
 					
-						$keyFinded .= ' '.trim($cnd);
+						$keyFinded .= ' ?';
+						
+						$this->arrayPrepare[] = trim($vCnd);
 					}
 					
 					if ($iCounter<$cCond)
+					
 				   		$keyFinded .= ' AND';
 					
 					$iCounter ++;
@@ -570,6 +572,7 @@ class OPF_myActiveRecord {
 								}
 						
 								if ($cute){
+									
 									$sql .= ' ORDER BY '.substr($sqlOrderBy,0,-2);	
 								}
 							
@@ -580,6 +583,7 @@ class OPF_myActiveRecord {
 							$sql .= ' ORDER BY '.$orderBy;
 						
 							if ($orderMethod)
+							
 				   				$sql .= ' '.$orderMethod;
 						}
 					}
@@ -597,9 +601,9 @@ class OPF_myActiveRecord {
 				}
 				
 				$rF = $this->query($sql);
-			
-				if ($this->num_rows == 1){
 				
+				if ($this->num_rows == 1){
+					
 					foreach ($rF[0] as $etq => $value){
 					
 						if (!in_array($etq,$this->arrayInvalidAtt)){
@@ -621,8 +625,12 @@ class OPF_myActiveRecord {
 				
 					if ($this->autoQuoteOnFind){
 					
-						if (is_string($strCond))
-							$strCond = '\''.$strCond.'\'';
+						if (is_string($strCond)){
+							
+							$strCond = '?';
+							
+							$this->arrayPrepare[] = $strCond;
+						}
 					}
 				
 					$sql .= ' WHERE '.$this->tablePk[$this->myact_table].' = '.$strCond;
@@ -644,8 +652,6 @@ class OPF_myActiveRecord {
 							}
 						}
 					}
-				
-				
 				}
 			}
 						
@@ -1177,9 +1183,13 @@ class OPF_myActiveRecord {
 				
 					$this->tableIdSeq[$this->myact_table] = $this->myact_table.'_'.$this->tablePk[$this->myact_table].$this->posFijSeq;			
 			
-			$this->num_rows = $this->myact_dbh->exec($sql);
+			$sth = $this->myact_dbh->prepare($sql);
+			
+			$sth->execute($this->arrayPrepare);
+		
+			$this->num_rows = $sth->rowCount();  
 				
-			$eError = $this->myact_dbh->errorInfo();
+			$eError =  $sth->errorInfo();
 				
 			if (isset($eError[2])){
 					
@@ -1195,32 +1205,38 @@ class OPF_myActiveRecord {
 			
 			$array = array();
 			
-			$resQuery = $this->myact_dbh->query($sql);
+			$sth = $this->myact_dbh->prepare($sql);
 			
-			if (!$resQuery){
-				
-				$eError = $this->myact_dbh->errorInfo();
-				
+			$sth->execute($this->arrayPrepare);
+			
+			$resQuery = $sth->fetchAll();
+			
+			$eError =  $sth->errorInfo();
+			
+			if (isset($eError[2])){
+								
 				$GLOBALS['OF_SQL_LOG_ERROR'] .= $eError[2]."\n";
 				
 			}else{
 				
-				$this->num_cols = $resQuery->columnCount();
+				$this->num_cols = $sth->columnCount();
 				
 				$this->num_rows = 0;
 
 				foreach ($resQuery as $row){
 					
 					$array[] = $this->buildRes($row);
-					
+
 					$this->num_rows++;
 				}
 
+				
 			}
 		
 			return $array;
 		}
 		
+		$this->arrayPrepare = array ();
 	}
 
 	/**
@@ -1339,26 +1355,31 @@ class OPF_myActiveRecord {
 					
 					$sql.=$field.' = ';
 
-					if (is_numeric($this->$field)){
+					if (!strcmp( trim( strtoupper($this->$field)),'NULL')){
 							
-						$sql .= $this->$field.', ';
-												
+						$sql .= 'NULL, ';
+							
 					}else{
-												
-						if (!strcmp( trim( strtoupper($this->$field)),'NULL'))
-							$sql .= 'NULL, ';
-						else
-							$sql .= '\''.addslashes(utf8_decode($this->$field)).'\', ';
+							
+						$sql .= '?, ';
+							
+						$this->arrayPrepare[] = utf8_decode($this->$field);
 					}
 				
 				}
 				
 			}
 
-			if ($this->evalSimbolInSubQuery($this->keyFinded))
+			if ($this->evalSimbolInSubQuery($this->keyFinded)){
+				
 				$sql = substr($sql,0,-2).' WHERE '.$this->keyFinded;
-			else
-				$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->myact_table].' = '.$this->keyFinded;
+				
+			}else{
+
+				$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->myact_table].' = ?';
+				
+				$this->arrayPrepare[] = $this->keyFinded;
+			}
 
 			$this->query($sql);
 			
@@ -1373,14 +1394,9 @@ class OPF_myActiveRecord {
 				
 					$sql.=$field.', ';
 
-					if (is_numeric($this->$field)){
-							
-						$sqlValues .= $this->$field.', ';
-					}else{
-							
-						$sqlValues .= '\''.addslashes(utf8_decode($this->$field)).'\', ';
-					}
+					$sqlValues .= '?, ';
 						
+					$this->arrayPrepare[] = utf8_decode($this->$field); 
 				}
 			}									
 			
