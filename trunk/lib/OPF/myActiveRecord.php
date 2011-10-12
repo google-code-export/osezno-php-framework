@@ -519,6 +519,8 @@ class OPF_myActiveRecord {
 					# TODO: Evaluar si viene una sentencia booleana
 					$smblRel = $this->evalSimbolInSubQuery($cnd,true);
 				
+					$vCnd = '';
+				
 					if ($smblRel)
 					
 						list ($fCnd, $vCnd) = explode($smblRel,$cnd);
@@ -531,7 +533,7 @@ class OPF_myActiveRecord {
 
 					}else{
 					
-						$keyFinded .= ' ?';
+						$keyFinded .= '';
 						
 						$this->arrayPrepare[] = trim($vCnd);
 					}
