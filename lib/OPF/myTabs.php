@@ -164,12 +164,18 @@ class OPF_myTabs{
 		
 		foreach ($this->arrayTabs as $etqTab => $urlTab){
 			
-			if (stripos($urlTab,'?'))
+			if (stripos($urlTab,'?')){
 			
 			   $urlTab.='&no_load_xajax=true';
-			else
+			}else{
 			   
 			   $urlTab.='?no_load_xajax=true';
+			}
+			
+			if (isset($_GET['secure_opf_code'])){
+				
+				$urlTab.='&secure_opf_code='.$_GET['secure_opf_code'];
+			}
 			
 			$script .= "\t".'var '.$this->id_tabs.'_myTab'.ucfirst(etqFormat($etqTab)).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\');'."\n";
 			
