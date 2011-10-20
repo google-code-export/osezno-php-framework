@@ -629,8 +629,6 @@ class OPF_myActiveRecord {
 					
 						if (is_string($strCond)){
 							
-							$strCond = '?';
-							
 							$this->arrayPrepare[] = $strCond;
 						}
 					}
