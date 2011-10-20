@@ -620,7 +620,7 @@ class OPF_myActiveRecord {
 					//TODO:
 					// El resultado sera recorrido
 				}
-				
+				$this->arrayPrepare = array ();				
 			}else{
 
 				if ($strCond){
@@ -655,6 +655,7 @@ class OPF_myActiveRecord {
 						}
 					}
 				}
+				$this->arrayPrepare = array ();
 			}
 						
 			return $rF;
@@ -1186,7 +1187,7 @@ class OPF_myActiveRecord {
 					$this->tableIdSeq[$this->myact_table] = $this->myact_table.'_'.$this->tablePk[$this->myact_table].$this->posFijSeq;			
 			
 			$sth = $this->myact_dbh->prepare($sql);
-			
+
 			$sth->execute($this->arrayPrepare);
 		
 			$this->num_rows = $sth->rowCount();  
@@ -1409,6 +1410,8 @@ class OPF_myActiveRecord {
 			$this->lastInserId = $this->get_LastInsertId();
 		}
 		
+		$this->arrayPrepare = array ();
+		
 		return $this->getNumRowsAffected();
 	}
 
@@ -1460,8 +1463,7 @@ class OPF_myActiveRecord {
 					
 				$sql .= ' WHERE ';
 					
-				$cCond = count($strCond = explode(
-							'&',$strCond));
+				$cCond = count($strCond = explode('&',$strCond));
 					
 				foreach ($strCond as $cnd){
 						
@@ -1470,33 +1472,35 @@ class OPF_myActiveRecord {
 
 					if (trim($fCnd) && $vCnd){
 							
-						if (is_numeric(trim($vCnd))){
-							$sql .= $fCnd.$smblRel.' '.trim($vCnd);
+						$sql .= $fCnd.$smblRel.' ?';
+						
+						$this->arrayPrepare[] = trim($vCnd);
 
-						}else{
-							$sql .= $fCnd.$smblRel." '".trim($vCnd)."'";
-						}
-
-					}else{
+					}else
+						
 						$sql .= ' '.trim($cnd);
-					}
+					
 						
 					if ($iCounter<$cCond)
-					$sql .= ' AND';
+						
+						$sql .= ' AND';
 						
 					$iCounter ++;
 				}
 				
 			}else{
 				
-				if (is_string($strCond))
-					$strCond = '\''.$strCond.'\'';
+				$strCond = '?';
+				
+				$this->arrayPrepare[] = $strCond;
 
 				$sql .= ' WHERE '.$this->tablePk[$this->myact_table].' = '.$strCond;
 			}
 
 			$this->query($sql);
 		}
+		
+		$this->arrayPrepare = array ();
 		
 		return $this->getNumRowsAffected();
 	}
