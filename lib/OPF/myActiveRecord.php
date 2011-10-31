@@ -629,7 +629,7 @@ class OPF_myActiveRecord {
 					
 						if (is_string($strCond)){
 							
-							$this->arrayPrepare[] = $strCond;
+							$strCond = "'".$strCond."'";
 						}
 					}
 				
@@ -1174,7 +1174,7 @@ class OPF_myActiveRecord {
 			}
 			
 		}
-		
+
 		if ($isrW){
 			
 			# Establecer nombre de secuencia automaticamente en Pgsql
