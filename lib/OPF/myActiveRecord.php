@@ -533,9 +533,9 @@ class OPF_myActiveRecord {
 
 					}else{
 					
-						$keyFinded .= '';
+						//$keyFinded .= '';
 						
-						$this->arrayPrepare[] = trim($vCnd);
+						//$this->arrayPrepare[] = trim($vCnd);
 					}
 					
 					if ($iCounter<$cCond)
