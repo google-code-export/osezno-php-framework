@@ -1001,6 +1001,8 @@ class OPF_myActiveRecord {
 			$GLOBALS['OF_SQL_LOG'] .= 'BEGIN TRANSACTION;'."\n";
 		
 			$GLOBALS['OF_IN_TRANSACCTION'] = true;
+			
+			$this->myact_dbh->beginTransaction();
 		}
 		
 	}
@@ -1037,8 +1039,6 @@ class OPF_myActiveRecord {
 		
 		if ($GLOBALS['OF_IN_TRANSACCTION']){
 			
-			$this->myact_dbh->beginTransaction();
-				
 			if (!$this->getErrorLog()){
 			
 				$GLOBALS['OF_SQL_LOG'] .='COMMIT;'."\n";
@@ -1152,7 +1152,7 @@ class OPF_myActiveRecord {
 		
 		if ($saveInLog)
 		
-			$GLOBALS['OF_SQL_LOG'] .= $sql.' '."\n";
+			$GLOBALS['OF_SQL_LOG'] .= vsprintf(str_ireplace("?","%s",$sql) ,$this->arrayPrepare).' '."\n";
 			
 		$isrW = false;
 			
