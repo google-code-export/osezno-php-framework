@@ -204,7 +204,7 @@ class OPF_myActiveRecord {
 	 * @access private 
 	 * @var boolean
 	 */
-	private $autoQuoteOnFind = true;
+	private $autoQuoteOnFind = false;
 	
 	/**
 	 * Atributos no reconocibles
@@ -1114,7 +1114,38 @@ class OPF_myActiveRecord {
   		
   		return $sql;
 	}
+
 	
+	private function bindParamValues ($sth){
+		
+		$i = 1;
+			
+		foreach ($this->arrayPrepare as $param){
+		
+			$type = '';
+		
+			if (is_string($param))
+		
+				$type = PDO::PARAM_STR;
+		
+			else if (is_int($param))
+		
+				$type = PDO::PARAM_INT;
+		
+			else if (is_null($param))
+		
+				$type = PDO::PARAM_NULL;
+		
+			else if (is_bool($param))
+		
+				$type = PDO::PARAM_BOOL;
+		
+			$sth->bindValue($i, $param, $type);
+		
+			$i++;
+		}
+		
+	} 
 
 	/**
 	 * Ejecutar una consulta SQL
@@ -1150,9 +1181,11 @@ class OPF_myActiveRecord {
 		
 		$eError = array ();
 		
-		if ($saveInLog)
+		if ($saveInLog){
 		
-			$GLOBALS['OF_SQL_LOG'] .= vsprintf(str_ireplace("?","%s",$sql) ,$this->arrayPrepare).' '."\n";
+			$GLOBALS['OF_SQL_LOG'] .= @vsprintf(str_ireplace('?',"'%s'",$sql) ,$this->arrayPrepare).' '."\n";
+			
+		}	
 			
 		$isrW = false;
 			
@@ -1186,7 +1219,9 @@ class OPF_myActiveRecord {
 			
 			$sth = $this->myact_dbh->prepare($sql);
 
-			$sth->execute($this->arrayPrepare);
+			$this->bindParamValues($sth);
+			
+			$sth->execute();
 		
 			$this->num_rows = $sth->rowCount();  
 				
@@ -1208,7 +1243,9 @@ class OPF_myActiveRecord {
 			
 			$sth = $this->myact_dbh->prepare($sql);
 			
-			$sth->execute($this->arrayPrepare);
+			$this->bindParamValues($sth);
+			
+			$sth->execute();
 			
 			$resQuery = $sth->fetchAll();
 			
