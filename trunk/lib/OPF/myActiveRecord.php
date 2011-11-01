@@ -806,6 +806,41 @@ class OPF_myActiveRecord {
 	}	
 	
 	/**
+	 * Configura un parametro pasado a un SQL para que tome un tipo determinado y PDO lo trate asi.
+	 * @param object $sth
+	 */
+	private function bindParamValues ($sth){
+	
+		$i = 1;
+		
+		foreach ($this->arrayPrepare as $param){
+	
+			$type = '';
+	
+			if (is_string($param))
+	
+				$type = PDO::PARAM_STR;
+	
+			else if (is_int($param))
+	
+				$type = PDO::PARAM_INT;
+	
+			else if (is_null($param))
+	
+				$type = PDO::PARAM_NULL;
+	
+			else if (is_bool($param))
+	
+				$type = PDO::PARAM_BOOL;
+	
+			$sth->bindValue($i, $param, $type);
+	
+			$i++;
+		}
+	
+	}	
+	
+	/**
 	 * Configurar el posfijo para las secuencias Postgresql.
 	 * 
 	 * Configura el posfijo utilizado para llamar a las secuencias en Postgresql cuando se desea obtener el Last Insert Id de una tabla.
@@ -1115,37 +1150,6 @@ class OPF_myActiveRecord {
   		return $sql;
 	}
 
-	
-	private function bindParamValues ($sth){
-		
-		$i = 1;
-			
-		foreach ($this->arrayPrepare as $param){
-		
-			$type = '';
-		
-			if (is_string($param))
-		
-				$type = PDO::PARAM_STR;
-		
-			else if (is_int($param))
-		
-				$type = PDO::PARAM_INT;
-		
-			else if (is_null($param))
-		
-				$type = PDO::PARAM_NULL;
-		
-			else if (is_bool($param))
-		
-				$type = PDO::PARAM_BOOL;
-		
-			$sth->bindValue($i, $param, $type);
-		
-			$i++;
-		}
-		
-	} 
 
 	/**
 	 * Ejecutar una consulta SQL
@@ -1525,10 +1529,6 @@ class OPF_myActiveRecord {
 				
 			}else{
 				
-				$strCond = '?';
-				
-				$this->arrayPrepare[] = $strCond;
-
 				$sql .= ' WHERE '.$this->tablePk[$this->myact_table].' = '.$strCond;
 			}
 
