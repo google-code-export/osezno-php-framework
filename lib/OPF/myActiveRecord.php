@@ -1036,8 +1036,6 @@ class OPF_myActiveRecord {
 			$GLOBALS['OF_SQL_LOG'] .= 'BEGIN TRANSACTION;'."\n";
 		
 			$GLOBALS['OF_IN_TRANSACCTION'] = true;
-			
-			$this->myact_dbh->beginTransaction();
 		}
 		
 	}
@@ -1073,6 +1071,8 @@ class OPF_myActiveRecord {
 		$sucsess = true;
 		
 		if ($GLOBALS['OF_IN_TRANSACCTION']){
+			
+			$this->myact_dbh->beginTransaction();
 			
 			if (!$this->getErrorLog()){
 			
