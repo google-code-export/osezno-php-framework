@@ -1,6 +1,6 @@
 <?php
 /**
- * myActiveRecord
+ * OPF_myActiveRecord
  *
  * La clase myActiveRecord es la propuesta que da osezno framework
  * para acceder a las bases de datos de Postgres, MySql mediante
@@ -290,7 +290,7 @@ class OPF_myActiveRecord {
 		
 		$this->openConecction();
 
-		if (strcmp($this->myact_table = get_class($this),'myActiveRecord')){
+		if (strcmp($this->myact_table = get_class($this),'OPF_myActiveRecord')){
 			
 			$this->classVars = get_class_vars($this->myact_table);
 			
@@ -475,7 +475,7 @@ class OPF_myActiveRecord {
 	 */
 	private function findEngine ($strCond = '', $orderBy = '', $orderMethod = '', $intLimit = 0, $offset = 0){
 		
-		if ($this->myact_table != 'myActiveRecord'){
+		if ($this->myact_table != 'OPF_myActiveRecord'){
 		
 			$fCnd = '';
 		
@@ -527,9 +527,7 @@ class OPF_myActiveRecord {
 				
 					if (trim($fCnd) && $vCnd){
 
-						$keyFinded .= $fCnd.$smblRel.' ?';
-
-						$this->arrayPrepare[] = trim($vCnd);
+						$keyFinded .= $fCnd.$smblRel.' '.trim($vCnd);
 
 					}else{
 					
@@ -620,7 +618,7 @@ class OPF_myActiveRecord {
 					//TODO:
 					// El resultado sera recorrido
 				}
-				$this->arrayPrepare = array ();				
+				$this->arrayPrepare[$this->myact_table] = array ();				
 			}else{
 
 				if ($strCond){
@@ -653,7 +651,7 @@ class OPF_myActiveRecord {
 						}
 					}
 				}
-				$this->arrayPrepare = array ();
+				$this->arrayPrepare[$this->myact_table] = array ();
 			}
 						
 			return $rF;
@@ -811,31 +809,34 @@ class OPF_myActiveRecord {
 	 */
 	private function bindParamValues ($sth){
 	
-		$i = 1;
+		if ($this->myact_table != 'OPF_myActiveRecord' && isset($this->arrayPrepare[$this->myact_table])){
 		
-		foreach ($this->arrayPrepare as $param){
+			$i = 1;
+		
+			foreach ($this->arrayPrepare[$this->myact_table] as $param){
 	
-			$type = '';
+				$type = '';
 	
-			if (is_string($param))
+				if (is_string($param))
 	
-				$type = PDO::PARAM_STR;
+					$type = PDO::PARAM_STR;
 	
-			else if (is_int($param))
+				else if (is_int($param))
 	
-				$type = PDO::PARAM_INT;
+					$type = PDO::PARAM_INT;
 	
-			else if (is_null($param))
+				else if (is_null($param))
 	
-				$type = PDO::PARAM_NULL;
+					$type = PDO::PARAM_NULL;
 	
-			else if (is_bool($param))
+				else if (is_bool($param))
 	
-				$type = PDO::PARAM_BOOL;
+					$type = PDO::PARAM_BOOL;
 	
-			$sth->bindValue($i, $param, $type);
+				$sth->bindValue($i, $param, $type);
 	
-			$i++;
+				$i++;
+			}
 		}
 	
 	}	
@@ -1187,7 +1188,7 @@ class OPF_myActiveRecord {
 		
 		if ($saveInLog){
 		
-			$GLOBALS['OF_SQL_LOG'] .= @vsprintf(str_ireplace('?',"'%s'",$sql) ,$this->arrayPrepare).' '."\n";
+			$GLOBALS['OF_SQL_LOG'] .= @vsprintf(str_ireplace('?',"'%s'",$sql) ,$this->arrayPrepare[$this->myact_table]).' '."\n";
 			
 		}	
 			
@@ -1278,7 +1279,7 @@ class OPF_myActiveRecord {
 			return $array;
 		}
 		
-		$this->arrayPrepare = array ();
+		$this->arrayPrepare[$this->myact_table] = array ();
 	}
 
 	/**
@@ -1405,7 +1406,7 @@ class OPF_myActiveRecord {
 							
 						$sql .= '?, ';
 							
-						$this->arrayPrepare[] = utf8_decode($this->$field);
+						$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
 					}
 				
 				}
@@ -1420,10 +1421,12 @@ class OPF_myActiveRecord {
 
 				$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->myact_table].' = ?';
 				
-				$this->arrayPrepare[] = $this->keyFinded;
+				$this->arrayPrepare[$this->myact_table][] = $this->keyFinded;
 			}
 
 			$this->query($sql);
+
+			//echo $this->getSqlLog().$this->getErrorLog(); 
 			
 		// Insert
 		}else{
@@ -1438,7 +1441,7 @@ class OPF_myActiveRecord {
 
 					$sqlValues .= '?, ';
 						
-					$this->arrayPrepare[] = utf8_decode($this->$field); 
+					$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field); 
 				}
 			}									
 			
@@ -1449,7 +1452,7 @@ class OPF_myActiveRecord {
 			$this->lastInserId = $this->get_LastInsertId();
 		}
 		
-		$this->arrayPrepare = array ();
+		$this->arrayPrepare[$this->myact_table] = array ();
 		
 		return $this->getNumRowsAffected();
 	}
@@ -1513,7 +1516,7 @@ class OPF_myActiveRecord {
 							
 						$sql .= $fCnd.$smblRel.' ?';
 						
-						$this->arrayPrepare[] = trim($vCnd);
+						$this->arrayPrepare[$this->myact_table][] = trim($vCnd);
 
 					}else
 						
@@ -1535,7 +1538,7 @@ class OPF_myActiveRecord {
 			$this->query($sql);
 		}
 		
-		$this->arrayPrepare = array ();
+		$this->arrayPrepare[$this->myact_table] = array ();
 		
 		return $this->getNumRowsAffected();
 	}
