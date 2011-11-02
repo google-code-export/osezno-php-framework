@@ -232,6 +232,8 @@ class OPF_myActiveRecord {
 		'delete'
 	);
 
+	private $mainCondition = ''; 
+	
 	/**
 	 * Abre una conexion a base de datos.
 	 * 
@@ -461,6 +463,46 @@ class OPF_myActiveRecord {
 		return $this->myact_dbh->lastInsertId($idSeq);	
 	}
 	
+	
+	private function rebuildCond ($strCond = ''){
+		
+		if ($strCond)
+		
+			$this->mainCondition = $strCond;
+		
+		$keyFinded = '';
+		
+		$iCounter = 1;
+		
+		$cCond = count($strCond = explode('&',$this->mainCondition));
+			
+		foreach ($strCond as $cnd){
+		
+			# TODO: Evaluar si viene una sentencia booleana
+			$smblRel = $this->evalSimbolInSubQuery($cnd,true);
+		
+			if ($smblRel)
+			
+				list ($fCnd, $vCnd) = explode($smblRel,$cnd);
+		
+			if (trim($fCnd) && $vCnd){
+		
+				$keyFinded .= $fCnd.$smblRel.' ?';
+		
+				$this->arrayPrepare[$this->myact_table][] = trim($vCnd);
+		
+			}
+					
+			if ($iCounter<$cCond)
+					
+				$keyFinded .= ' AND';
+					
+			$iCounter ++;
+		}
+		
+		return $keyFinded;
+	}
+	
 	/**
 	 * Buscar registros
 	 *
@@ -504,39 +546,12 @@ class OPF_myActiveRecord {
 			# Condicion compuesta, condicion sencilla
 			if ( $this->evalIfIsQuery($strCond) || !$strCond){
 
-				$keyFinded = '';
-			
-				$iCounter = 1;
-
 				if ($strCond)
 				
 			   		$sql .= ' WHERE ';
 
-				$cCond = count($strCond = explode('&',$strCond));
-			
-				foreach ($strCond as $cnd){
+				$keyFinded = $this->rebuildCond ($strCond);				
 				
-					# TODO: Evaluar si viene una sentencia booleana
-					$smblRel = $this->evalSimbolInSubQuery($cnd,true);
-				
-					if ($smblRel)
-						list ($fCnd, $vCnd) = explode($smblRel,$cnd);
-				
-					if (trim($fCnd) && $vCnd){
-
-						$keyFinded .= $fCnd.$smblRel.' ?';
-
-						$this->arrayPrepare[$this->myact_table][] = trim($vCnd);
-						
-					}
-					
-					if ($iCounter<$cCond)
-					
-				   		$keyFinded .= ' AND';
-					
-					$iCounter ++;
-				}
-			
 				$sql .= $keyFinded;
 			
 				if ($orderBy){
@@ -1390,32 +1405,22 @@ class OPF_myActiveRecord {
 				
 				if ($this->validateAtt($field)){
 					
-					$sql.=$field.' = ';
+					$sql.= $field.' = ?, ';
 
-					if (!strcmp( trim( strtoupper($this->$field)),'NULL')){
-							
-						$sql .= 'NULL, ';
-							
-					}else{
-							
-						$sql .= '?, ';
-							
-						$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
-					}
-				
+					$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
 				}
 				
 			}
 
 			if ($this->evalSimbolInSubQuery($this->keyFinded)){
 				
-				$sql = substr($sql,0,-2).' WHERE '.$this->keyFinded;
+				$sql = substr($sql,0,-2).' WHERE '.$this->rebuildCond();
 				
 			}else{
 
 				$sql = substr($sql,0,-2).' WHERE '.$this->tablePk[$this->myact_table].' = ?';
 				
-				$this->arrayPrepare[$this->myact_table][] = $this->keyFinded;
+				$this->arrayPrepare[$this->myact_table][] = $this->keyFinded; 
 			}
 
 			$this->query($sql);
