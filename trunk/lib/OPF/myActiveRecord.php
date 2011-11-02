@@ -470,7 +470,7 @@ class OPF_myActiveRecord {
 		
 			$this->mainCondition = $strCond;
 		
-		$keyFinded = '';
+		$vCnd = $fCnd = $keyFinded = '';
 		
 		$iCounter = 1;
 		
