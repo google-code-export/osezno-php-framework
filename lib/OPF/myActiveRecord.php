@@ -519,21 +519,15 @@ class OPF_myActiveRecord {
 					# TODO: Evaluar si viene una sentencia booleana
 					$smblRel = $this->evalSimbolInSubQuery($cnd,true);
 				
-					$vCnd = '';
-				
 					if ($smblRel)
-					
 						list ($fCnd, $vCnd) = explode($smblRel,$cnd);
 				
 					if (trim($fCnd) && $vCnd){
 
-						$keyFinded .= $fCnd.$smblRel.' '.trim($vCnd);
+						$keyFinded .= $fCnd.$smblRel.' ?';
 
-					}else{
-					
-						//$keyFinded .= '';
+						$this->arrayPrepare[$this->myact_table][] = trim($vCnd);
 						
-						//$this->arrayPrepare[] = trim($vCnd);
 					}
 					
 					if ($iCounter<$cCond)
@@ -812,7 +806,7 @@ class OPF_myActiveRecord {
 		if ($this->myact_table != 'OPF_myActiveRecord' && isset($this->arrayPrepare[$this->myact_table])){
 		
 			$i = 1;
-		
+			
 			foreach ($this->arrayPrepare[$this->myact_table] as $param){
 	
 				$type = '';
@@ -1426,7 +1420,7 @@ class OPF_myActiveRecord {
 
 			$this->query($sql);
 
-			//echo $this->getSqlLog().$this->getErrorLog(); 
+ 
 			
 		// Insert
 		}else{
