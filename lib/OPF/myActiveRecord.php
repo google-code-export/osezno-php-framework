@@ -216,7 +216,7 @@ class OPF_myActiveRecord {
 	private $arrayInvalidAtt = array (
 		'myact_database', 'myact_engine', 'myact_host', 'myact_user', 'myact_password', 'myact_port', 'myact_table', 'posFijSeq', 'num_rows', 'num_cols',
 		'myact_dbh', 'arrayPrepare', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
-		'arrayInvalidAtt','tablePk', 'tableIdSeq', 'autoQuoteOnFind', 'arrayCrud'	
+		'arrayInvalidAtt','tablePk', 'tableIdSeq', 'autoQuoteOnFind', 'arrayCrud','mainCondition'	
 	);
 	
 	/**
