@@ -1225,7 +1225,7 @@ class OPF_myActiveRecord {
 		if ($isrW){
 			
 			# Establecer nombre de secuencia automaticamente en Pgsql
-			if (!isset($this->tableIdSeq[$this->myact_table]))
+			if (!isset($this->tableIdSeq[$this->myact_table]) && strcmp($this->myact_table,'OPF_myActiveRecord'))
 			
 				if ($this->getEngine()=='pgsql')
 				
