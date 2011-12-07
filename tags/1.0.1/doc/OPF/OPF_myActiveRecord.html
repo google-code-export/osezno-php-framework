@@ -1,0 +1,1159 @@
+<html>
+<head>
+<title>Docs For Class OPF_myActiveRecord</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+<script type="text/javascript" src="http://www.osezno-framework.org/addwords/addwords.js" charset="utf-8"></script>
+</head>
+<div style="top:0px;position:absolute;"><img src="../media/head.jpg"></div>
+<body>
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">Doc Ref [1.0]<!-- OPF --></td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                              		  [ <a href="../classtrees_OPF.html" class="menu">class tree: OPF</a> ]
+		  [ <a href="../elementindex_OPF.html" class="menu">index: OPF</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+      <b>Packages:</b><br />
+              <a href="../li_OPF.html">OPF</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../OPF/_myActiveRecord.php.html">		myActiveRecord.php
+		</a><br>
+			<a href="../OPF/_myController.php.html">		myController.php
+		</a><br>
+			<a href="../OPF/_myExportData.php.html">		myExportData.php
+		</a><br>
+			<a href="../OPF/_myForm.php.html">		myForm.php
+		</a><br>
+			<a href="../OPF/_myList.php.html">		myList.php
+		</a><br>
+			<a href="../OPF/_myTabs.php.html">		myTabs.php
+		</a><br>
+			<a href="../OPF/_myTime.php.html">		myTime.php
+		</a><br>
+			<a href="../OPF/_osezno.php.html">		osezno.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a><br />
+	    		<a href="../OPF/OPF_myController.html">OPF_myController</a><br />
+	    		<a href="../OPF/OPF_myExportData.html">OPF_myExportData</a><br />
+	    		<a href="../OPF/OPF_myForm.html">OPF_myForm</a><br />
+	    		<a href="../OPF/OPF_myList.html">OPF_myList</a><br />
+	    		<a href="../OPF/OPF_myTabs.html">OPF_myTabs</a><br />
+	    		<a href="../OPF/OPF_myTime.html">OPF_myTime</a><br />
+	    		<a href="../OPF/OPF_osezno.html">OPF_osezno</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: OPF_myActiveRecord</h1>
+Source Location: /myActiveRecord.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description">myActiveRecord</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
+                  </ul>
+
+
+
+
+        
+        
+<h4>Version:</h4>
+<ul>
+  <li>0.1</li>
+</ul>
+
+        
+</td>
+
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../OPF/OPF_myActiveRecord.html#method__construct">__construct</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodbeginTransaction">beginTransaction</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methoddelete">delete</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodendTransaction">endTransaction</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodfind">find</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetDatabase">getDatabase</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetEngine">getEngine</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetErrorLog">getErrorLog</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetHost">getHost</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetLastInsertId">getLastInsertId</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetNumFieldsAffected">getNumFieldsAffected</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetNumRowsAffected">getNumRowsAffected</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetPassword">getPassword</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetPort">getPort</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetSqlLog">getSqlLog</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodgetUser">getUser</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodisSuccessfulConnect">isSuccessfulConnect</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodloadSqlFromFile">loadSqlFromFile</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodquery">query</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodsave">save</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodsetAutoQuotesInFind">setAutoQuotesInFind</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodsetPosfijSeq">setPosfijSeq</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodsetPrimaryKey">setPrimaryKey</a></li>
+    <li><a href="../OPF/OPF_myActiveRecord.html#methodsetSeqName">setSeqName</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 16]<br />
+myActiveRecord<br /><br /><p>La clase myActiveRecord es la propuesta que da osezno framework  para acceder a las bases de datos de Postgres, MySql mediante  objetos del Lenguaje de programacion. Extendiendo la clase a subclases  que tengan la informacion de cada una de las tablas a las que se  quieran acceder.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>version:</b>&nbsp;&nbsp;</td><td>0.1</td>
+  </tr>
+  <tr>
+    <td><b>uses:</b>&nbsp;&nbsp;</td><td>Acceso - a bases de datos por medio de objetos de PHP</td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="method__construct"></a>
+	<h3>constructor __construct <span class="smalllinenumber">[line 263]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>OPF_myActiveRecord __construct(
+[string
+$database = ''], [string
+$user = ''], [string
+$password = ''], [string
+$host = ''], [string
+$engine = ''], [string
+$port = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Abre una conexion a base de datos.<br /><br /><p>Instancia a un nuevo objeto una conexion a la base con los parametros usados.  El parametro engine puede ser mysql o pgsql.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1:</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">(</span><span class="src-str">'database'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;2:</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">table&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myActiveRecord&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$field1</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$field2</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$table&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">table</span><span class="src-sym">(</span><span class="src-str">'database'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$database</b>&nbsp;&nbsp;</td>
+        <td>Nombre base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$user</b>&nbsp;&nbsp;</td>
+        <td>Usuario de base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$password</b>&nbsp;&nbsp;</td>
+        <td>Clave de usuario de base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$host</b>&nbsp;&nbsp;</td>
+        <td>Ruta fisica del servidor de base de datos.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$engine</b>&nbsp;&nbsp;</td>
+        <td>Motor de base de datos seleccionado. (mysql o pgsql)</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$port</b>&nbsp;&nbsp;</td>
+        <td>Puerto de conexion.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodbeginTransaction"></a>
+	<h3>method beginTransaction <span class="smalllinenumber">[line 990]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void beginTransaction(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Inicia una transaccion.<br /><br /><p>Inicia un bloque de transaccion.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodbeginTransaction">beginTransaction</a>&nbsp;<span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">&quot;UPDATE&nbsp;table&nbsp;SET&nbsp;field2&nbsp;=&nbsp;'value'&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">&quot;DELETE&nbsp;FROM&nbsp;table&nbsp;WHERE&nbsp;field1&nbsp;=&nbsp;1&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodendTransaction">endTransaction</a>&nbsp;<span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methoddelete"></a>
+	<h3>method delete <span class="smalllinenumber">[line 1431]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer delete(
+string
+$strCond)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Elimina registros de una tabla.<br /><br /><p>Trata de borrar los registros de una tabla si ellos cumplen con las condiciones. La condicion opera de forma identica a el metodo find. El metodo retornara el numero de registros afectados.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1:</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">usuarios&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myActiveRecord&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$usuario_id</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$usuario</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">usuarios</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">delete</span><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'El&nbsp;registro&nbsp;fue&nbsp;eliminado'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'El&nbsp;registro&nbsp;no&nbsp;fue&nbsp;eliminado'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strCond</b>&nbsp;&nbsp;</td>
+        <td>Condicion</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodendTransaction"></a>
+	<h3>method endTransaction <span class="smalllinenumber">[line 1027]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean endTransaction(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Finaliza una transaccion.<br /><br /><p>Finaliza un bloque de transaccion. Y retorna su exito o no exito.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodbeginTransaction">beginTransaction</a>&nbsp;<span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">&quot;UPDATE&nbsp;table&nbsp;SET&nbsp;field2&nbsp;=&nbsp;'value'&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">&quot;DELETE&nbsp;FROM&nbsp;table&nbsp;WHERE&nbsp;field1&nbsp;=&nbsp;1&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodendTransaction">endTransaction</a>&nbsp;<span class="src-sym">(</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'Exito'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodgetErrorLog">getErrorLog</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodfind"></a>
+	<h3>method find <span class="smalllinenumber">[line 1282]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>object find(
+[string
+$strCond = ''], [string
+$orderBy = ''], [string
+$orderMethod = ''], [integer
+$intLimit = ''], [integer
+$offSet = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Busca registros que coincidan con el parametro de consulta.<br /><br /><p>Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.  [Nota 1:] El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.  [Nota 2:] El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.  [Nota 3:] EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.  [Nota 4:] Es posible agregar mas de una condición utilizando los operadores de comparacion ('&lt;&gt;','&lt;=','&gt;=', '!=','&gt;', '&lt;','=', '!') y el conector lógico &amp; (AND) Ver ejemplo 2.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">usuarios&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myActiveRecord&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$usuario_id</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$usuario</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$apellido</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1&nbsp;Condición&nbsp;única:</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">usuarios</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">find</span><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'Hola&nbsp;'</span>.<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">usuario</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'No&nbsp;existe&nbsp;el&nbsp;usuario&nbsp;con&nbsp;el&nbsp;Id&nbsp;1'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;2&nbsp;Condición&nbsp;compuesta:</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$apellido&nbsp;</span>=&nbsp;<span class="src-str">'ortegon'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">find</span><span class="src-sym">(</span><span class="src-str">'usuario=jose&nbsp;&amp;&nbsp;apellido='</span>.<span class="src-var">$apellido</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'Hola&nbsp;'</span>.<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">usuario</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'No&nbsp;existe&nbsp;el&nbsp;usuario'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$strCond</b>&nbsp;&nbsp;</td>
+        <td>Condicion o condiciones principales.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$orderBy</b>&nbsp;&nbsp;</td>
+        <td>Ordenar por el campo o campos.</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$orderMethod</b>&nbsp;&nbsp;</td>
+        <td>Metodo de ordenamiento.</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$intLimit</b>&nbsp;&nbsp;</td>
+        <td>Limite de registro.</td>
+      </tr>
+          <tr>
+        <td class="type">integer&nbsp;&nbsp;</td>
+        <td><b>$offSet</b>&nbsp;&nbsp;</td>
+        <td>Cuando aplica un limite de registros obtener desde.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetDatabase"></a>
+	<h3>method getDatabase <span class="smalllinenumber">[line 841]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getDatabase(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el nombre de la base de datos.<br /><br /><p>Obtiene el nombre de la base de datos actual a la que se esta conectado o se esta intentando conectar.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetEngine"></a>
+	<h3>method getEngine <span class="smalllinenumber">[line 852]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getEngine(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el motor de base de datos.<br /><br /><p>Obtiene el nombre del motor de la base de datos a la que se esta conectado o se esta intentando conectar.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetErrorLog"></a>
+	<h3>method getErrorLog <span class="smalllinenumber">[line 919]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getErrorLog(
+[boolean
+$HTMLformat = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el Log de Errores Sql.<br /><br /><p>Obtiene una cadena con el utimo error en una transaccion o consulta sql a la base de datos.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$HTMLformat</b>&nbsp;&nbsp;</td>
+        <td>Formato HTML</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetHost"></a>
+	<h3>method getHost <span class="smalllinenumber">[line 863]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getHost(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el host.<br /><br /><p>Obtiene el host (direccion fisica) del motor de la base de datos a la que se esta conectado o se esta intentando conectar.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetLastInsertId"></a>
+	<h3>method getLastInsertId <span class="smalllinenumber">[line 963]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getLastInsertId(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener Last Insert Id.<br /><br /><p>Obtiene el valor del indice o llave primaria siempre y cuando este sea un campo autoincrmentable o serial del ultimo registro insertado en una tabla.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetNumFieldsAffected"></a>
+	<h3>method getNumFieldsAffected <span class="smalllinenumber">[line 951]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getNumFieldsAffected(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener numero de campos.<br /><br /><p>Obtiene el numero de campos afectados por la ultima consulta Select.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetNumRowsAffected"></a>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 940]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getNumRowsAffected(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener numero de registros.<br /><br /><p>Obtiene el numero de registros afectados por la utima consulta, insercion, actualizacion o eliminacion de registros.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetPassword"></a>
+	<h3>method getPassword <span class="smalllinenumber">[line 885]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getPassword(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener la clave del usuario.<br /><br /><p>Obtiene la clave del nombre de usuario de la base de datos a la que se esta conectado o se esta intentando conectar.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetPort"></a>
+	<h3>method getPort <span class="smalllinenumber">[line 896]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>integer getPort(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener numero de puerto.<br /><br /><p>Obtiene el numero de puerto del motor de la base de datos a la que se esta conectado o se esta intentando conectar.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetSqlLog"></a>
+	<h3>method getSqlLog <span class="smalllinenumber">[line 907]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getSqlLog(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el Log Sql.<br /><br /><p>Obtiene un registro de las consulta echas al motor de la base de datos. Incluso en una transaccion.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodgetUser"></a>
+	<h3>method getUser <span class="smalllinenumber">[line 874]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string getUser(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Obtener el usuario de la conexion.<br /><br /><p>Obtiene el nombre del usuario de la base de datos con el que se esta conectado o se esta intentando conectar.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodisSuccessfulConnect"></a>
+	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1586]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean isSuccessfulConnect(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Verificar la conexion actual.<br /><br /><p>Despues de intentar abrir una conexion en el constructor verifica si esta se pudo abrir o no.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">(</span><span class="src-str">'database'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodisSuccessfulConnect">isSuccessfulConnect</a><span class="src-sym">(</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'Conexion&nbsp;exitosa'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodgetErrorLog">getErrorLog</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodloadSqlFromFile"></a>
+	<h3>method loadSqlFromFile <span class="smalllinenumber">[line 1083]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>string loadSqlFromFile(
+string
+$file, [array
+$vars = array()])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Cargar un archivo de SQL.<br /><br /><p>Carga una consulta sql desde un archivo fisico ademas con la posibilidad de asignar variables dentro de la lectura del archivo.  En caso de no encontrar el archivo retorna FALSE.  <ol><li><div class="src-line">&nbsp;query.sql</div></li>
+<li><div class="src-line">&nbsp;SELECT&nbsp;*&nbsp;FROM&nbsp;table&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;{id};</div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$sql&nbsp;</span>=&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodloadSqlFromFile">loadSqlFromFile</a><span class="src-sym">(</span><span class="src-str">'query.sql'</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'id'</span>=&gt;<span class="src-num">1</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$sql</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;Resultado:</div></li>
+<li><div class="src-line">&nbsp;SELECT&nbsp;*&nbsp;FROM&nbsp;table&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;1;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$file</b>&nbsp;&nbsp;</td>
+        <td>Ruta del archivo fisico</td>
+      </tr>
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$vars</b>&nbsp;&nbsp;</td>
+        <td>Arreglo de variables a reemplazar</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodquery"></a>
+	<h3>method query <span class="smalllinenumber">[line 1142]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>object query(
+string
+$sql, [boolean
+$saveInLog = true])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Ejecutar una consulta SQL<br /><br /><p>Ejecuta una consulta SQL a la base de datos y retorna una resultado (objeto) asociado a los registros obtenidos o retorna false en caso de que no haya exito.  <ol><li><div class="src-line">&nbsp;Ejemplo&nbsp;1:</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;Obtener&nbsp;varios&nbsp;resultados</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$res&nbsp;</span>=&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodquery">query</a><span class="src-sym">(</span><span class="src-str">'SELECT&nbsp;field1,...&nbsp;FROM&nbsp;table'</span><span class="src-sym">))</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$res&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$row</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$row</span><span class="src-sym">-&gt;</span><span class="src-id">field1</span>.<span class="src-str">'&lt;br&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span><span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myAct</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myActiveRecord.html#methodgetErrorLog">getErrorLog</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$sql</b>&nbsp;&nbsp;</td>
+        <td>Consulta SQL</td>
+      </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$saveInLog</b>&nbsp;&nbsp;</td>
+        <td>Guardar en el log</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsave"></a>
+	<h3>method save <span class="smalllinenumber">[line 1325]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>boolean save(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Inserta o Modifica un registro.<br /><br /><p>El metodo save modificara un registro o insertara uno nuevo. Si lo precede el metodo find y este encuentra un registro que coincida con la busqueda, este lo modificara. En caso contrario lo agregara a la tabla.  Por seguridad el metodo Save solo actualizara el regitro cuando la busqueda anterior solo haya devuelto un regitro.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1:</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">usuarios&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myActiveRecord&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$usuario_id</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$usuario</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">usuarios</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">find</span><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">usuario&nbsp;</span>=&nbsp;<span class="src-str">'xxx'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">save</span><span class="src-sym">(</span><span class="src-sym">))</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'Cambios&nbsp;guardados.'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">getErrorLog</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetAutoQuotesInFind"></a>
+	<h3>method setAutoQuotesInFind <span class="smalllinenumber">[line 830]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setAutoQuotesInFind(
+boolean
+$value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar comillas automaticas.<br /><br /><p>Configurar si se van a usar o no las comillas automaticas cuando se realizan consultas con el metodo Query. Las comillas automaticas se aplican en cadenas de caracteres alfanumericas.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>True o False.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetPosfijSeq"></a>
+	<h3>method setPosfijSeq <span class="smalllinenumber">[line 807]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setPosfijSeq(
+[string
+$posFij = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar el posfijo para las secuencias Postgresql.<br /><br /><p>Configura el posfijo utilizado para llamar a las secuencias en Postgresql cuando se desea obtener el Last Insert Id de una tabla.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$posFij</b>&nbsp;&nbsp;</td>
+        <td>Posfijo</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetPrimaryKey"></a>
+	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1518]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setPrimaryKey(
+[string
+$field = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configura la llave primaria de una tabla.<br /><br /><p>Configura una llave primaria para la tabla, si no se suministra se calculara automaticamente.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">usuarios&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myActiveRecord&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$nombre</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-var">$apellido</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">usuarios</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">setPrimaryKey</span><span class="src-sym">(</span><span class="src-str">'user_id'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">find</span><span class="src-sym">(</span><span class="src-num">1</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$usuarios</span><span class="src-sym">-&gt;</span><span class="src-id">getSqlLog</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;Resultado:</div></li>
+<li><div class="src-line">&nbsp;SELECT&nbsp;nombre,&nbsp;apellido&nbsp;FROM&nbsp;usuarios&nbsp;WHERE&nbsp;user_id&nbsp;=&nbsp;1;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$field</b>&nbsp;&nbsp;</td>
+        <td>Nombre llave primaria</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodsetSeqName"></a>
+	<h3>method setSeqName <span class="smalllinenumber">[line 818]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setSeqName(
+[string
+$name = ''])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Configurar el nombre de la secuencia usada en Postgresql.<br /><br /><p>Configura el nombre de la secuencia en la tabla para que despues de guardar un registro se pueda obtener el valor de Last Insert Id.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>Nombre secuencia</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Sat, 01 Oct 2011 13:20:05 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
