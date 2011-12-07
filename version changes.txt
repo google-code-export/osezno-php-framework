@@ -1,1 +1,3 @@
-Issue 35 Solucionado.
+Se permite la integración de Essentials con Osezno PHP Framework cuando se habilita el uso de vistas compartidas en las pestañas.
+
+Revisión completa ante la posibilidad de ataques SQL.
