@@ -379,6 +379,13 @@ class OPF_myExportData {
          */
         private function buildResult (){
                 
+        	$fromListExport = false;
+        	
+        	if (count($this->arrFieldHiden)){
+        		
+        		$fromListExport = true;
+        	}
+        	
                 $out = '';
                 
                 $widthList = 0;
@@ -425,7 +432,7 @@ class OPF_myExportData {
                                                 
                                                 foreach ($row as $key => $val){
 
-                                                        if (in_array($intTitl,$this->arrFieldHiden)){
+                                                        if (in_array($intTitl,$this->arrFieldHiden) || $fromListExport == false){
                                                         
                                                             if(isset($this->width[htmlentities($key, ENT_QUOTES)])){
                                                                 	
@@ -459,7 +466,7 @@ class OPF_myExportData {
                                         
                                         foreach ($row as $key => $val){
                                                 
-                                                if (in_array($intTitl,$this->arrFieldHiden)){
+                                                if (in_array($intTitl,$this->arrFieldHiden) || $fromListExport == false){
                                                 
                                                    if(isset($this->width[htmlentities($key, ENT_QUOTES)])){
                                                         	
@@ -522,6 +529,7 @@ class OPF_myExportData {
                                 if ($this->format == 'html')
                                         $bg = 'bgcolor="#FFFFFF"';                                      
                                         
+                                
                                 foreach ($this->resSql as $row){
                         
                                         // Titles
@@ -533,7 +541,7 @@ class OPF_myExportData {
                                                 
                                                 foreach ($row as $key => $val){
 
-                                                        if (in_array($intTitl,$this->arrFieldHiden)){
+                                                        if (in_array($intTitl,$this->arrFieldHiden) || $fromListExport == false){
                                                         
                                                                 $widthCol = '';
                                                 
@@ -564,7 +572,7 @@ class OPF_myExportData {
                                         
                                         foreach ($row as $key => $val){
 
-                                                if (in_array($intTitl,$this->arrFieldHiden)){
+                                                if (in_array($intTitl,$this->arrFieldHiden) || $fromListExport == false){
                                                 
                                                         $align = 'left';
                                                         if (is_numeric($val))
