@@ -161,7 +161,8 @@ class OPF_myList  {
                 'useSqlDebug',
                 'engineDb',
                 'numAffectedRows',
-                'numFldsAftd'
+                'numFldsAftd',
+                'externalMethods'
         );      
         
         /**
@@ -348,6 +349,15 @@ class OPF_myList  {
          * @var array
          */
         private $arrayEventOnColumn = array ();
+        
+        /**
+         * Metodos externos
+         * 
+         * Arreglo con los nombres de los metodos externos sobre columnas.
+         * @var array
+         * @access private
+         */
+        private $externalMethods = array ();
         
         /**
          * Arreglo con los nombres de las columnas obtenidos
@@ -1225,8 +1235,17 @@ class OPF_myList  {
                                                                 
                                                                 	$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.htmlentities(ucwords($key)).'</a>';
                                                         
-                                                        }else
-                                                                $buf.=($val).'';        
+                                                        }else if (isset($this->externalMethods[$key])){
+                                                        	
+                                                        	$strNameMethod = $this->externalMethods[$key]['strNameMethod'];
+                                                        	
+                                                        	$buf.= $this->externalMethods[$key]['objClass']->$strNameMethod($val).' ';
+                                                        	
+                                                        }else{
+
+                                                        	$buf.=($val).' ';
+                                                        	
+                                                        }
                                         
                                                         if ($firsVal && $this->globalEventOnColumn){
                                                                 
@@ -1722,6 +1741,47 @@ class OPF_myList  {
                 
                 return $this->bufHtml;
         }
+        
+        
+        /**
+         * Permite asignar un metodo de una clase a un campo especifico.
+         * 
+         * Permite modificar el resultado de un campo pasandolo como parametro a un metodo dentro de una clase. El metodo no debe ser estatico. 
+         * <code>
+         * 
+         * <?php
+         *
+         * class myMethods {
+         * 
+         * 		public function formatName ($last_name){
+         * 		
+         * 			return ucwords($last_name);
+         * 		}
+         * 
+         * }
+         *
+         * $sql = 'SELECT id, name, last_name FROM table';
+         *  
+         * $myList = new OPF_myList('list_1',$sql);
+         *      
+         * $objClass = new myMethods;     
+         *      
+         * $myList->setExternalMethodOnColumn('last_name',$objClass'formatName');
+         *
+         * echo $myList->getList();
+         * 
+         * ?>
+         * 
+         * </code> 
+         * @param unknown_type $alias
+         * @param unknown_type $objClass
+         * @param unknown_type $strNameMethod
+         */
+        public function setExternalMethodOnColumn ($alias, $objClass, $strNameMethod){
+        	
+        	$this->externalMethods[$alias] = array('objClass'=>$objClass, 'strNameMethod'=>$strNameMethod);
+        }
+        
 
 }
 
