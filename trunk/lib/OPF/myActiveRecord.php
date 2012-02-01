@@ -216,7 +216,7 @@ class OPF_myActiveRecord {
 	private $arrayInvalidAtt = array (
 		'myact_database', 'myact_engine', 'myact_host', 'myact_user', 'myact_password', 'myact_port', 'myact_table', 'posFijSeq', 'num_rows', 'num_cols',
 		'myact_dbh', 'arrayPrepare', 'successfulConnect', 'tableStruct', 'classVars', 'keyFinded', 'arrayStringRelation', 'lastInserId',
-		'arrayInvalidAtt','tablePk', 'tableIdSeq', 'autoQuoteOnFind', 'arrayCrud','mainCondition'	
+		'arrayInvalidAtt','tablePk', 'tableIdSeq', 'autoQuoteOnFind', 'arrayCrud','mainCondition','persistentConnection'
 	);
 	
 	/**
@@ -233,6 +233,9 @@ class OPF_myActiveRecord {
 	);
 
 	private $mainCondition = ''; 
+	
+	
+	private $persistentConnection;
 	
 	/**
 	 * Abre una conexion a base de datos.
@@ -269,8 +272,9 @@ class OPF_myActiveRecord {
 	 * @param string $host	Ruta fisica del servidor de base de datos.
 	 * @param string $engine Motor de base de datos seleccionado. (mysql o pgsql)	
 	 * @param string $port	Puerto de conexion.
+	 * @param boolean $usePerConnection	Usar o no conexión persistente.
 	 */
-	public function __construct($database = '', $user = '', $password = '', $host = '', $engine = '', $port = ''){
+	public function __construct($database = '', $user = '', $password = '', $host = '', $engine = '', $port = '', $usePerConnection = false){
 
 		$arrayConecction = array (
 			'database'=>$database,
@@ -289,6 +293,8 @@ class OPF_myActiveRecord {
 			
 			$GLOBALS['OF_IN_TRANSACCTION'] = false;
 		}
+		
+		$this->persistentConnection = $usePerConnection;
 		
 		$this->openConecction();
 
@@ -1596,7 +1602,13 @@ class OPF_myActiveRecord {
 				
 		try {
 			
-    		$this->myact_dbh = new PDO($dsn, $user, $password);
+			$params = NULL;
+			
+			if ($this->persistentConnection)
+			
+				$params = array(PDO::ATTR_PERSISTENT => $this->persistentConnection);
+			
+    		$this->myact_dbh = new PDO($dsn, $user, $password, $params);
     		
     		$this->successfulConnect = true;
     		
