@@ -369,7 +369,7 @@ function setCheckboxes(the_form, do_check){
 function OnlyNum(event)
          {
          var unicode=event.charCode? event.charCode : event.keyCode
-         if (unicode!=8  && unicode!=9){
+        		 if (unicode!=8  && unicode!=9 && unicode!=37 && unicode!=38 && unicode!=39 && unicode!=40){
             if ((unicode<48 || unicode>57) && unicode != 46)
                return false 
             }
