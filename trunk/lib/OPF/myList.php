@@ -1076,9 +1076,8 @@ class OPF_myList  {
                                                         
                                                                 $widCol = 0;
                                                                 
-                                                                //echo $key.'='.$this->arrayWidthsCols[$key]."<br>";
-                                                                
                                                                 if (isset($this->arrayWidthsCols[$key]))
+                                                                
                                                                         $widCol = $this->arrayWidthsCols[$key];
                                                                 else
                                                                         $widCol = $widByCol;
@@ -1162,7 +1161,9 @@ class OPF_myList  {
                                                 
                                                 $alsGbl = $this->globalEventOnColumn;
                                                 
-                                                $nmCheck = $this->idList.'_'.$row->$alsGbl;
+                                                if ($row->$alsGbl)
+                                                
+                                                	$nmCheck = $this->idList.'_'.$row->$alsGbl;
                                         }
                         
                                         $buf.='<tr ';
@@ -1189,6 +1190,7 @@ class OPF_myList  {
                                                         $buf.='<td class="';    
                                                                 
                                                         if (in_array(htmlentities($key),$arrColOrd)){
+                                                        	
                                                                 $class='cell_content_selected';
                                                         }else
                                                                 $class=$classTd;
@@ -1199,9 +1201,17 @@ class OPF_myList  {
                                                                 
                                                                 $nmCheck = $this->idList.'_'.$row->$alsGbl;
                                                                 
-                                                                $this->objForm->addEvent($nmCheck,'onclick','check_onlist',array($nmCheck));
+                                                                if ($row->$alsGbl){
                                                                 
-                                                                $buf.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$this->objForm->getCheckBox($nmCheck).'</td><td class="'.$class.'_checkbox">';
+                                                                	$this->objForm->addEvent($nmCheck,'onclick','check_onlist',array($nmCheck));
+                                                                
+                                                                	$buf.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px">'.$this->objForm->getCheckBox($nmCheck).'</td><td class="'.$class.'_checkbox">';
+                                                                	
+                                                                }else{
+                                                                	
+                                                                	$buf.='<table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"><tr><td width="20px"></td><td class="'.$class.'_checkbox">';
+                                                                	
+                                                                }
                                                         }
                                                         
                                                         if (isset($this->arrayEventOnColumn[$key])){
@@ -1211,7 +1221,9 @@ class OPF_myList  {
                                                                 if ($strMsg)
                                                                         $strMsg = ' onClick="return confirm(\''.$strMsg.'\')"';
                                                         
-                                                                $buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.htmlentities(ucwords($key)).'</a>';
+                                                                if ($val)
+                                                                
+                                                                	$buf.='<a href="javascript:void('.$event.'(\''.$val.'\',\''.$this->idList.'\'))"'.$strMsg.'>'.htmlentities(ucwords($key)).'</a>';
                                                         
                                                         }else
                                                                 $buf.=($val).'';        
