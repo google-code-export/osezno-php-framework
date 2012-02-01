@@ -2380,7 +2380,7 @@ class OPF_myForm {
 		
 		for($j=0, $objKeysFields = array_keys($this->Objects['field']); $j < $countObjects; $j++){
 			
-			$campos_f = split ($this->Separador,$this->Objects['field'][$objKeysFields[$j]]);
+			$campos_f = explode ($this->Separador,$this->Objects['field'][$objKeysFields[$j]]);
 			
 			switch ($campos_f[0]){
 				

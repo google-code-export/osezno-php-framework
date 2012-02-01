@@ -4,7 +4,7 @@
 
  	public function addWindow($htmlContent, $colorBackground, $intOpacity, $windth, $height) {
  		
-        $this->objResponse->script("addWindow('".addslashes(eregi_replace("[\n|\r|\n\r]",'',$htmlContent))."', '".$colorBackground."', ".$intOpacity.", ".$windth.", ".$height.")");
+        $this->objResponse->script("addWindow('".addslashes(preg_replace("[\n|\r|\n\r]",'',$htmlContent))."', '".$colorBackground."', ".$intOpacity.", ".$windth.", ".$height.")");
         
     }
  	
