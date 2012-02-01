@@ -445,8 +445,6 @@ class OPF_myActiveRecord {
 									
 		if (!in_array($field,$this->arrayInvalidAtt))
 										
-		if (strlen(trim($this->$field)))
-											
 			$valid = true;
 
 		return $valid;
