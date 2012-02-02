@@ -1444,15 +1444,11 @@ class OPF_myActiveRecord {
 				
 				if ($this->validateAtt($field)){
 				
-					if ($this->$field){
+					$sql.=$field.', ';
 						
-						$sql.=$field.', ';
+					$sqlValues .= '?, ';
 						
-						$sqlValues .= '?, ';
-						
-						$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
-					}
-					
+					$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
 				}
 				
 			}									
