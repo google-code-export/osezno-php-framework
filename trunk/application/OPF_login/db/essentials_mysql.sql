@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `ess_menu` (
   PRIMARY KEY (`id`),
   KEY `usuario_id` (`usuario_id`),
   KEY `menu_id` (`menu_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_bin AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_bin AUTO_INCREMENT=15 ;
 
 #bloq
 
@@ -65,7 +65,8 @@ INSERT INTO `ess_menu` (`id`, `menu_id`, `description`, `icon`, `url`, `ord`, `u
 (10, NULL, 'Documentación', 'img/cd.gif', 'http://www.osezno-framework.org/doc/', 2, 1, '2011-10-01 01:33:51'),
 (11, NULL, 'Demos', 'img/base.gif', 'http://www.osezno-framework.org/demos/forms1/', 3, 1, '2011-10-01 01:21:31'),
 (12, NULL, 'Website', 'img/globe.gif', 'http://www.osezno-framework.org/', 1, 1, '2011-10-01 01:33:43'),
-(13, NULL, 'Foro', 'img/question.gif', 'http://www.osezno-framework.org/forum/', 4, 1, '2011-10-01 01:25:41');
+(13, NULL, 'Foro', 'img/question.gif', 'http://www.osezno-framework.org/forum/', 4, 1, '2011-10-01 01:25:41'),
+(14, 1, 'Andamiaje', 'img/page.gif', '../OPF_scaffold/', 7, 1, '2012-02-02 12:00:00');
 
 #bloq
 
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `ess_profiles_detail` (
   PRIMARY KEY (`id`),
   KEY `profiles_id` (`profiles_id`),
   KEY `menu_id` (`menu_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_bin AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_bin AUTO_INCREMENT=15 ;
 
 #bloq
 
@@ -110,7 +111,8 @@ INSERT INTO `ess_profiles_detail` (`id`, `profiles_id`, `menu_id`) VALUES
 (10, 1, 10),
 (11, 1, 11),
 (12, 1, 12),
-(13, 1, 13);
+(13, 1, 13),
+(14, 1, 14);
 
 #bloq
 

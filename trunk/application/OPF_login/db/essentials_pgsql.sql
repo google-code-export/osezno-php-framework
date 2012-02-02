@@ -248,6 +248,11 @@ VALUES (33, 24, 'Usuarios Online', 'img/page.gif', '../OPF_useronline/', 6, 1, '
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
+VALUES (34, 24, 'Andamiaje', 'img/page.gif', '../OPF_scaffold/', 7, 1, '2012-02-02 12:00:00');
+
+#bloq
+
+INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
 VALUES (1, NULL, 'Website', 'img/globe.gif', 'http://www.osezno-framework.org', 1, 1, '2011-10-01 12:53:04');
 
 #bloq
@@ -258,12 +263,12 @@ VALUES (4, NULL, 'Foro', 'img/question.gif', 'http://www.osezno-framework.org/fo
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (24, NULL, 'Administración', 'Seleccione...', '', 5, 1, '2011-10-01 12:56:23');
+VALUES (24, NULL, 'Administraciï¿½n', 'Seleccione...', '', 5, 1, '2011-10-01 12:56:23');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (2, NULL, 'Documentación', 'img/cd.gif', 'http://www.osezno-framework.org/doc/', 2, 1, '2011-10-01 12:56:32');
+VALUES (2, NULL, 'Documentaciï¿½n', 'img/cd.gif', 'http://www.osezno-framework.org/doc/', 2, 1, '2011-10-01 12:56:32');
 
 #bloq
 
@@ -339,6 +344,11 @@ VALUES (12, 1, 31);
 
 INSERT INTO ess_profiles_detail (id, profiles_id, menu_id)
 VALUES (13, 1, 29);
+
+#bloq
+
+INSERT INTO ess_profiles_detail (id, profiles_id, menu_id)
+VALUES (14, 1, 34);
 
 #bloq
 
@@ -454,7 +464,7 @@ SELECT pg_catalog.setval('ess_master_tables_detail_id_seq', 1, false);
 
 #bloq
 
-SELECT pg_catalog.setval('ess_menu_id_seq', 14, false);
+SELECT pg_catalog.setval('ess_menu_id_seq', 35, false);
 
 #bloq
 
@@ -462,7 +472,7 @@ SELECT pg_catalog.setval('ess_profiles_id_seq', 2, false);
 
 #bloq
 
-SELECT pg_catalog.setval('ess_profiles_detail_id_seq', 15, false);
+SELECT pg_catalog.setval('ess_profiles_detail_id_seq', 16, false);
 
 #bloq
 

@@ -128,7 +128,7 @@
 	define('OPF_LOGIN_23','Imposible conectarse al servidor.');
 	define('OPF_LOGIN_24','Conexión a base de datos.');
 	define('OPF_LOGIN_25','Configuración');
-	define('OPF_LOGIN_26','Antes de comenzar por favor asegurate de configurar las variables de conexión a la base de datos de la siguiente forma.');
+	define('OPF_LOGIN_26','Antes de comenzar por favor asegurate de configurar las variables de conexión a la base de datos de la siguiente forma. Recuerda que el usuario y la clave de acceso por defecto es root');
 	define('OPF_LOGIN_27','La base de datos no tiene instaladas las tablas requeridas.');
 	define('OPF_LOGIN_28','La extensión no ha sido cargada, por favor seleccione otra o active esta.');
 	define('OPF_LOGIN_29','Instalación - Paso 1 - Base de datos');

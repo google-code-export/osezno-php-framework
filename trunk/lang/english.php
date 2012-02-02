@@ -128,7 +128,7 @@
 	define('OPF_LOGIN_23','Unable to connect to server.');
 	define('OPF_LOGIN_24','Connecting to the database.');
 	define('OPF_LOGIN_25','Configuration');
-	define('OPF_LOGIN_26','Before you start please make sure to configure the connection variables the database as follows.');
+	define('OPF_LOGIN_26','Before you start please make sure to configure the connection variables the database as follows. Remember that the username and password by default is root');
 	define('OPF_LOGIN_27','The database has not installed the required tables.');
 	define('OPF_LOGIN_28','The extension has not been charged, please select another or activate it.');
 	define('OPF_LOGIN_29','Installation - Step 1 - Database');

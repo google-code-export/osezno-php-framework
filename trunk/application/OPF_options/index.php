@@ -36,7 +36,7 @@
  
  if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') === FALSE) {
  	
-	$objOsezno->assign('essentials','Essentials');
+	$objOsezno->assign('essentials','OseznoPHP');
  }
  
  

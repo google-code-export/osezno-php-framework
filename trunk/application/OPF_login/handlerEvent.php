@@ -46,7 +46,7 @@
 
  		$this->closeMessageBox();
  		
- 		$this->modalWindow($OPF_login->getFormConfigApp($datForm),htmlentities(OPF_LOGIN_25),300,390,2);
+ 		$this->modalWindow($OPF_login->getFormConfigApp($datForm),htmlentities(OPF_LOGIN_25),300,400,2);
  		
 		$this->assign('content1', 'innerHTML', $OPF_login->getFormLogin());
  		
@@ -241,7 +241,7 @@
  					
  							@pg_query($link, 'ROLLBACK;');
  							
- 							$this->modalWindow($error.'<br>client_encoding:'.pg_client_encoding($link),'Error',300,300,2);
+ 							$this->modalWindow(utf8_encode($error).'<br>client_encoding:'.pg_client_encoding($link),'Error',300,300,2);
  					
  						}else{
  					
