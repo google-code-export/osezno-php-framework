@@ -79,7 +79,13 @@
  			
  			$ess_menu->description = $datForm['description'];
  			
- 			$ess_menu->menu_id = $datForm['menu_id'];
+ 			if ($datForm['menu_id']){
+ 			
+ 				$ess_menu->menu_id = $datForm['menu_id'];
+ 				
+ 				$this->alert('Hola');
+ 			}
+ 			
  			
  			$ess_menu->ord = $datForm['ord'];
  			
@@ -106,7 +112,7 @@
  				
  				}else{
  				
- 					$this->messageBox($ess_menu->getSqlLog(),'error');
+ 					$this->messageBox(htmlentities($ess_menu->getSqlLog().$ess_menu->getErrorLog()),'error');
 	 				
  				}
  				
