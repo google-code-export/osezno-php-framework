@@ -1,4 +1,180 @@
 <?php
+	
+	/**
+	 * Essentials OPF
+	 */
+
+	// Botones comunes
+	define('LABEL_BTN_SAVE', 'Guardar');
+	define('LABEL_BTN_ADD', 'Agregar');
+	define('LABEL_BTN_CANCEL', 'Cancelar');
+	
+	// Access error
+	define('OPF_ACCESS_NOT_VERIFY_ERROR','Codigo de seguridad.');
+	define('OPF_ACCESS_NOT_VERIFY_DETAIL','No es posible verificar el acceso, ¿Esta accediendo desde el menu?');
+	define('OPF_ACCESS_NOT_PERMITED_ERROR','Acceso no permitido.');
+	define('OPF_ACCESS_NOT_PERMITED_DETAIL','No cuenta con los suficientes privilegios del sistema para acceder a este modulo.');
+	
+	//OPF_bit
+	define('OPF_BIT_TITLE','Essentials - Bitacora del sistema');
+	define('OPF_BIT_DESC','Registro de eventos de usuarios sobre el sistema');
+	
+	//EOPF General
+	define('MSG_CAMBIOS_GUARDADOS','Cambios guardados');
+	define('MSG_CAMPOS_REQUERIDOS','Campos requeridos');
+	define('YES','Si');
+	define('NO','No');
+	
+	// Listas dinamicas
+	define('OPF_FIELD_ID','Id');
+	define('OPF_FIELD_DATETIME','Fecha Hora');
+	define('OPF_FIELD_IP','Ip');
+	define('OPF_FIELD_URL','Url');
+	define('OPF_FIELD_TABLA','Tabla');
+	define('OPF_FIELD_USUARIO','Usuario');
+	define('OPF_FIELD_ACTUALIZADO','Actualizado');
+	define('OPF_FIELD_MODIFICAR','Modificar');
+	define('OPF_FIELD_ELIMINAR','Eliminar');
+	define('OPF_FIELD_DETALLE','Detalle');
+	define('OPF_FIELD_CODIGO','Código');
+	define('OPF_FIELD_DESCRIPCION','Descripción');
+	define('OPF_FIELD_NOMBRE','Nombre');
+	define('OPF_FIELD_APELLIDO','Apellido');
+	define('OPF_FIELD_PERFIL','Perfil');
+	define('OPF_FIELD_ESTADO','Estado');
+	define('OPF_FIELD_PADRE','Padre');
+	define('OPF_FIELD_ORDEN','Ord');
+	define('OPF_FIELD_MENU','Menu');
+	define('OPF_FIELD_INGRESO','Ingreso');
+	define('OPF_FIELD_FILE','Archivo');
+	define('OPF_FIELD_PESO','Peso');
+	define('OPF_FIELD_SESSNAME','Sesión');
+	define('OPF_FIELD_CERRAR','Cerrar');
+	define('OPF_FIELD_ICON', 'Icono');
+	define('OPF_FIELD_CONFIRM_ELIMINAR','¿Desea eliminar el registro?');
+	define('OPF_FIELD_CONFIRM_ELIMINAR_VARIOS','¿Desea eliminar estos registros?');
+	
+	// OPF_useronline
+	define('OPF_USRONLINE_TITLE','Essentials - Usuarios en linea');
+	define('OPF_USRONLINE_DESC','Administración y vista de usuarios en linea');
+	define('OPF_USRONLINE_1','La sesión fue finalizada.');
+	define('OPF_USRONLINE_2','Error cerrando la sesión.');
+	define('OPF_USRONLINE_3','¿Cerrar esta sesión?');
+	
+	// OPF_profiles
+	define('OPF_PROFILES_TITLE','Essentials - Administración de perfiles');
+	define('OPF_PROFILES_DESC','Administre aquí los perfiles de acceso de los usuarios');
+	define('OPF_PROFILES_1','¿Desea cancelar el proceso?');
+	define('OPF_PROFILES_2','Registro eliminado');
+	define('OPF_PROFILES_3','Perfiles');
+	define('OPF_PROFILES_4','Permisos');
+	define('OPF_PROFILES_5','Nombre del Perfil:');
+	define('OPF_PROFILES_6','Descripción:');
+	
+	// OPF_passwd
+	define('OPF_PASSWD_TITLE','Essentials - Cambio de contraseña de acceso');
+	define('OPF_PASSWD_DESC','Cambie desde aqui su clave de acceso');
+	define('OPF_PASSWD_1','Las claves no coinciden.');
+	define('OPF_PASSWD_2','La clave actual no es valida.');
+	define('OPF_PASSWD_3','Nombre de usuario no valido');
+	define('OPF_PASSWD_4','Usuario:');
+	define('OPF_PASSWD_5','Actual clave:');
+	define('OPF_PASSWD_6','Nueva clave:');
+	define('OPF_PASSWD_7','Repetir clave:');
+	
+	// OPF_options
+	define('OPF_OPTIONS_1','Abrir todo');
+	define('OPF_OPTIONS_2','Cerrar todo');
+	
+	// OPF_menu
+	define('OPF_MENU_TITLE','Essentials - Administración de Menu');
+	define('OPF_MENU_DESC','Administre las opciones disponibles del menu');
+	define('OPF_MENU_1','Registro eliminado');
+	define('OPF_MENU_2','Opción del menu');
+	define('OPF_MENU_3','El padre no puede ser el mismo');
+	define('OPF_MENU_4','Descripción:');
+	define('OPF_MENU_5','Ubicación:');
+	define('OPF_MENU_6','Num Ord:');
+	define('OPF_MENU_7','URL:');
+	define('OPF_MENU_8','Explorar');
+		
+	//OPF_logout
+	define('OPF_LOGOUT_1','Cerrando sesión... por favor espere.');
+	
+	//OPF_login
+	define('OPF_LOGIN_1','Usuario o clave no validos');
+	define('OPF_LOGIN_2','Usuario:');
+	define('OPF_LOGIN_3','Clave:');
+	define('OPF_LOGIN_4','Ingresar');	
+	define('OPF_LOGIN_5','Recordar usuario');
+	define('OPF_LOGIN_6','Imposible conectarse a la base de datos.');
+	define('OPF_LOGIN_7','Instalación');
+	define('OPF_LOGIN_8','Seleccione Motor:');
+	define('OPF_LOGIN_9','Usuario:');
+	define('OPF_LOGIN_10','Contraseña:');
+	define('OPF_LOGIN_11','Servidor:');
+	define('OPF_LOGIN_12','Base de datos:');
+	define('OPF_LOGIN_12A','Codificación:');
+	define('OPF_LOGIN_13','Puerto:');
+	define('OPF_LOGIN_14','Crear tablas');
+	define('OPF_LOGIN_15','Las tablas fueron instaladas. Essentials Osezno PHP Framework fue instalado.');
+	define('OPF_LOGIN_16','Aceptar');
+	define('OPF_LOGIN_17','Crear base de datos');
+	define('OPF_LOGIN_18','No es posible crear la base de datos.');
+	define('OPF_LOGIN_19','La base de datos fue creada.');
+	define('OPF_LOGIN_20','Imposible crear la base de datos.');
+	define('OPF_LOGIN_21','Imposible seleccionar la base de datos.');
+	define('OPF_LOGIN_22','Por favor complete los campos requeridos.');
+	define('OPF_LOGIN_23','Imposible conectarse al servidor.');
+	define('OPF_LOGIN_24','Conexión a base de datos.');
+	define('OPF_LOGIN_25','Configuración');
+	define('OPF_LOGIN_26','Antes de comenzar por favor asegurate de configurar las variables de conexión a la base de datos de la siguiente forma.');
+	define('OPF_LOGIN_27','La base de datos no tiene instaladas las tablas requeridas.');
+	define('OPF_LOGIN_28','La extensión no ha sido cargada, por favor seleccione otra o active esta.');
+	define('OPF_LOGIN_29','Instalación - Paso 1 - Base de datos');
+	define('OPF_LOGIN_30','Instalación - Paso 2 - Tablas del sistema');
+	define('OPF_LOGIN_31','Bienvenido');
+	
+	//OPF_admUsr
+	define('OPF_ADMUSR_TITLE','Essentials - Usuarios del sistema');
+	define('OPF_ADMUSR_DESC','Administración de usuarios del sistema');
+	define('OPF_ADMUSR_1','Usuario:');
+	define('OPF_ADMUSR_2','Nombres:');
+	define('OPF_ADMUSR_3','Apellidos:');
+	define('OPF_ADMUSR_4','Contraseña:');
+	define('OPF_ADMUSR_5','Repetir contraseña:');
+	define('OPF_ADMUSR_6','Perfil:');
+	define('OPF_ADMUSR_7','Activo:');
+	define('OPF_ADMUSR_8','Activar');
+	define('OPF_ADMUSR_9','Inactivar');
+	define('OPF_ADMUSR_10','Inactivo');
+	define('OPF_ADMUSR_11','Activo');
+	define('OPF_ADMUSR_12','¿Desea Inhabilitar estos usuarios?');
+	define('OPF_ADMUSR_13','¿Desea Habilitar estos usuarios?');
+	define('OPF_ADMUSR_14','Usuario eliminado');
+	define('OPF_ADMUSR_15','El usuario');
+	define('OPF_ADMUSR_16','ya existe.');
+	define('OPF_ADMUSR_17','La clave fue cambiada.');
+	define('OPF_ADMUSR_18','La clave NO fue cambiada.');
+	define('OPF_ADMUSR_19','Las contraseñas escritas no coinciden.');
+	
+	//OPF_admTablas
+	define('OPF_ADMTABLAS_TITLE','Essentials - Maestro de tablas');
+	define('OPF_ADMTABLAS_DESC','Administración de tablas del sistema');
+	define('OPF_ADMTABLAS_1','Nombre tabla:');
+	define('OPF_ADMTABLAS_2','Descripción:');
+	define('OPF_ADMTABLAS_3','Código:');
+	define('OPF_ADMTABLAS_4','Registro eliminado');
+	define('OPF_ADMTABLAS_5','Registros eliminados');
+	define('OPF_ADMTABLAS_6','Detalle');
+	define('OPF_ADMTABLAS_7','Tablas');
+	define('OPF_ADMTABLAS_8','<? Codigo ?>');
+	define('OPF_ADMTABLAS_9','Copie y pegue este codigo:');
+	define('OPF_ADMTABLAS_10','Definimos la clase de la tabla desde Active Record');
+	define('OPF_ADMTABLAS_11','Instanciamos el objeto de la clase');
+	define('OPF_ADMTABLAS_12','Consultamos los registros asociados');
+	
+	#--------------------------------------------------------------
 
 	/**
 	 * Formularios
@@ -56,7 +232,7 @@
 	
 	define('MSG_FAILED_MAKE_ACTIVE_TAB','Debe especificar un <a href="http://www.osezno-framework.org/doc/OPF/OPF_myController.html#methodMYTAB_makeActive" target="_blank"><font style="font-size: 14px;">ID de grupo</font></a>.');
 	define('MSG_FAILED_SHOW_FILTER_MUST_PROVIDE_REAL_NAME','Debe especificar al menos un campo con <a href="http://www.osezno-framework.org/doc/OPF/OPF_myList.html#methodsetRealNameInQuery" target="_blank"><font style="font-size: 14px;">alias</font></a>.');
-	define('MSG_FAILED_SHOW_FILTER_NO_RECORDS_FOUND','No es posible agregar filtros pues no se encontraron registros.');
+	define('MSG_FAILED_SHOW_FILTER_NO_RECORDS_FOUND','No es posible agregar filtros pues no se encontraron regitros.');
 	define('MSG_FAILED_ORDER_BY_FIELD_MUST_PROVIDE_REAL_NAME','Debe especificar un <a href="http://www.osezno-framework.org/doc/OPF/OPF_myList.html#methodsetRealNameInQuery"><font style="font-size: 14px;">alias</font></a> para este campo.');
 	define('MSG_FAILED_SELECT_FIELD_TO_SHOW','Debe seleccionar al menos un campo a mostrar.');
 	define('MSG_SELECT_FIELD_TO_SHOW','Seleccione (<b>Ctrl + Click</b>) los campos que desea mostrar en el archivo.');
@@ -121,4 +297,5 @@
 	define('CAL_DAY5_LABEL','V');
 	define('CAL_DAY6_LABEL','S');
 	define('CAL_DAY7_LABEL','D');
+	
 ?>
