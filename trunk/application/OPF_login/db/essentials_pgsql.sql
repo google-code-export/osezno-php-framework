@@ -263,12 +263,12 @@ VALUES (4, NULL, 'Foro', 'img/question.gif', 'http://www.osezno-framework.org/fo
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (24, NULL, 'Administraci�n', 'Seleccione...', '', 5, 1, '2011-10-01 12:56:23');
+VALUES (24, NULL, 'Administración', 'Seleccione...', '', 5, 1, '2011-10-01 12:56:23');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (2, NULL, 'Documentaci�n', 'img/cd.gif', 'http://www.osezno-framework.org/doc/', 2, 1, '2011-10-01 12:56:32');
+VALUES (2, NULL, 'Documentación', 'img/cd.gif', 'http://www.osezno-framework.org/doc/', 2, 1, '2011-10-01 12:56:32');
 
 #bloq
 

@@ -124,7 +124,7 @@
  	 */
  	public function onClickSaveItemTable ($datForm, $table_id, $detail_id = ''){
  		
- 		if ($this->MYFORM_validate($datForm, array('item_cod','item_desc'))){
+ 		if ($this->MYFORM_validate($datForm, array('item_desc'))){
  			
  			$ess_master_tables_detail = new ess_master_tables_detail;
 
@@ -249,7 +249,7 @@
  	 */
  	public function onClickSaveReg ($params, $id = ''){
  		
- 		$requiredFields = array('name','description');
+ 		$requiredFields = array('name');
  		
  		if ($this->MYFORM_validate($params, $requiredFields)){
  			

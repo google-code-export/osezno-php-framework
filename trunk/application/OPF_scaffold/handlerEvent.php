@@ -22,23 +22,23 @@
  		switch ($step){
  			
  			case 1:
- 				$this->modalWindow(scaffold::formNewScaffStep1(),'Nuevo andamio - Paso 1',500,370,2);
+ 				$this->modalWindow(scaffold::formNewScaffStep1(),htmlentities(OPF_SCAFF_1),500,370,2);
  			break;
  			
  			case 2:
- 				$this->modalWindow(scaffold::formNewScaffStep2($datForm),'Campos de formulario - Paso 2',500,370,2);
+ 				$this->modalWindow(scaffold::formNewScaffStep2($datForm),htmlentities(OPF_SCAFF_2),500,370,2);
  			break;
  				
  			case 3:
- 				$this->modalWindow(scaffold::formNewScaffStep3($datForm),'Combos seleccion - Paso 3',500,370,2);
+ 				$this->modalWindow(scaffold::formNewScaffStep3($datForm),htmlentities(OPF_SCAFF_3),500,370,2);
  			break;
  			
  			case 4:
- 				$this->modalWindow(scaffold::formNewScaffStep4($datForm),'Atributos y campos de grilla - Paso 4',500,370,2);
+ 				$this->modalWindow(scaffold::formNewScaffStep4($datForm),htmlentities(OPF_SCAFF_4),500,370,2);
  			break;
  			
  			case 5:
- 				$this->modalWindow(scaffold::formNewScaffStep5($datForm),'Nombre y descripci&oacute;n del modulo - Paso 5',500,370,2);
+ 				$this->modalWindow(scaffold::formNewScaffStep5($datForm),htmlentities(OPF_SCAFF_5),500,370,2);
  			break;
  		}
  		
@@ -73,7 +73,6 @@
 							break;
 						}
 					}
-					
 					
 				}
 
@@ -139,26 +138,21 @@
  						
  						fclose($link);
  						
- 					}else{
+ 					}else
  					
- 						$this->messageBox('No es posible crear el directorio: "'.$folder.'"','error');
- 					}
+ 						$this->messageBox(htmlentities(OPF_SCAFF_6).' "'.$folder.'"','error');
  				
- 				}else{
+ 				}else
  				
- 					$this->messageBox('El directorio <b>'.'application/SCAFF_'.$_SESSION['temp_scaff_info']['table_name'].'/'.'</b> ya existe, '.htmlentities('¿desea sobre escribir los archivos?'),'help',array('Si'=>'toScaffStep6','No'),$datForm,true);
- 				}
+ 					$this->messageBox(htmlentities(OPF_SCAFF_7_A).' <b>'.'application/SCAFF_'.$_SESSION['temp_scaff_info']['table_name'].'/'.'</b> '.OPF_SCAFF_7_B.' '.htmlentities(OPF_SCAFF_7_C),'help',array(YES=>'toScaffStep6',NO),$datForm,true);
  				
- 			}else{
+ 			}else
  				
- 				$this->messageBox('Error al eliminar al sobre escribir el directorio <b>'.$folder.'</b> Por favor borrelo manualmente.','error');
- 				
- 			}
+ 				$this->messageBox(htmlentities(OPF_SCAFF_8_A).' <b>'.$folder.'</b> '.htmlentities(OPF_SCAFF_8_B),'error');
  			
- 		}else{
+ 		}else
  			
- 			$this->notificationWindow('Campos requeridos',5,'error');
- 		}
+ 			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
  		
  		return $this->response;
  	}
@@ -207,13 +201,13 @@
  				
  			}else{
  				
- 				$this->messageBox('La suma total de anchos de columnas debe ser igual al ancho total de la grilla.','ERROR');
+ 				$this->messageBox(htmlentities(OPF_SCAFF_9),'ERROR');
  				
  			}
  		
  		}else{
  		
- 			$this->notificationWindow('Campos requeridos',5,'error');
+ 			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
  		}
  		
  		return $this->response;
@@ -248,7 +242,7 @@
  			
  		}else{
  			
- 			$this->notificationWindow('Campos requeridos',5,'error');
+ 			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
  		}
  		
  		return $this->response;
@@ -304,7 +298,7 @@
  			
  		}else{
  			
- 			$this->notificationWindow('Campos requeridos',5,'error');
+ 			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
  		}
  		
  		return $this->response;
@@ -324,7 +318,7 @@
 
  			if (!$resSql){
  				
- 				$this->messageBox('Por favor verifique que la tabla exista y que tenga al menos 1 registro en ella.','warning');
+ 				$this->messageBox(OPF_SCAFF_10,'warning');
  				
  			}else{
  				
@@ -335,7 +329,7 @@
  			
  		}else{
  			
- 			$this->notificationWindow('Campos requeridos',5,'error');
+ 			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
  		}
  		
  		return $this->response;

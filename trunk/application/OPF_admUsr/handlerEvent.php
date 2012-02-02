@@ -122,7 +122,7 @@
  		
  		$txtChgPas = '';
  		
- 		$requiredFields = array('user_name','name','lastname','passwd1','passwd','profile_id');
+ 		$requiredFields = array('user_name','passwd1','passwd','profile_id');
  		
  		if ($this->MYFORM_validate($datForm, $requiredFields)){
  			
@@ -154,12 +154,12 @@
  						
  					}else {
  					
- 						$ess_system_users->name = $datForm['name'];
+ 						$ess_system_users->user_name = $datForm['user_name'];
  						
  						$ess_system_users->passwd = md5($datForm['user_name'].$datForm['passwd']);
  					}
  					
- 					$ess_system_users->user_name = $datForm['user_name'];
+ 					$ess_system_users->name = $datForm['name'];
  					
  					$ess_system_users->lastname = $datForm['lastname'];
  					
@@ -183,6 +183,8 @@
  							
  						$this->MYLIST_reload('lst_users');
  							
+ 						$this->alert($ess_system_users->getSqlLog());
+ 						
  						$this->closeModalWindow();
  							
  					}else{

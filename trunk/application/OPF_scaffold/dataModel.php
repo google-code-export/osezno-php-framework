@@ -408,7 +408,7 @@
  		
  		$myForm = new OPF_myForm('frm_startup');
  		
- 		$myForm->addButton('btn1','Agregar','add.gif');
+ 		$myForm->addButton('btn1',LABEL_BTN_ADD,'add.gif');
  		
  		$myForm->addEvent('btn1', 'onclick', 'newScaff', 1);
  		
@@ -425,7 +425,7 @@
  		
  			$modnom = $_SESSION['temp_scaff_info']['modnom'];
  		
- 		$myForm->addText('Nombre del modulo:','modnom:3',$modnom);
+ 		$myForm->addText(OPF_SCAFF_11,'modnom:3',$modnom);
  		
  		$moddesc = '';
  		
@@ -433,15 +433,15 @@
  		
  			$moddesc = $_SESSION['temp_scaff_info']['moddesc'];
  		
- 		$myForm->addTextArea('Descripción:','moddesc:3',$moddesc,40,2);
+ 		$myForm->addTextArea(OPF_SCAFF_12,'moddesc:3',$moddesc,40,2);
  		
- 		$myForm->addButton('btn0','Anterior');
+ 		$myForm->addButton('btn0',OPF_SCAFF_13);
  			
  		$myForm->addEvent('btn0', 'onclick', 'newScaff',4);
  			
  		$myForm->addComment('cm_space', '');
  			
- 		$myForm->addButton('btn1','Finalizar','ok.gif');
+ 		$myForm->addButton('btn1',OPF_SCAFF_15,'ok.gif');
  			
  		$myForm->addEvent('btn1', 'onclick', 'toScaffStep6');
  		
@@ -460,11 +460,11 @@
  		
  		$campoGrilla = array('field_selec','field_etq','field_ancho');
  		
- 		$myForm->addComment('field_selec', '<div align="center"><b>Campo</b></div>');
+ 		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
  			
- 		$myForm->addComment('field_etq', '<div align="center"><b>Etiqueta</b></div>');
+ 		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_17.'</b></div>');
  			
- 		$myForm->addComment('field_ancho', '<div align="center"><b>Ancho</b></div>');
+ 		$myForm->addComment('field_ancho', '<div align="center"><b>'.OPF_SCAFF_18.'</b></div>');
  			
  		foreach ($resSql[0] as $id => $value){
  				
@@ -504,7 +504,7 @@
  		
  			$anchoTotal = $_SESSION['temp_scaff_info']['grid_att']['ancho_total'];
  		
- 		$myForm->addText('Ancho total:','ancho_total',$anchoTotal,5,4,true);
+ 		$myForm->addText(OPF_SCAFF_19,'ancho_total',$anchoTotal,5,4,true);
  		
  		$getqueryform = false;
  			
@@ -512,7 +512,7 @@
  			
  			$getqueryform = $_SESSION['temp_scaff_info']['grid_att']['getqueryform'];
  		
- 		$myForm->addCheckBox('Formulario filtro:','getqueryform',$getqueryform);
+ 		$myForm->addCheckBox(OPF_SCAFF_20,'getqueryform',$getqueryform);
  		
  		$setexportdata = false;
  		
@@ -520,7 +520,7 @@
  		
  			$setexportdata = $_SESSION['temp_scaff_info']['grid_att']['setexportdata'];
  		
- 		$myForm->addCheckBox('Exportar datos:','setexportdata',$setexportdata);
+ 		$myForm->addCheckBox(OPF_SCAFF_21,'setexportdata',$setexportdata);
  		
  		$setpagination = false;
  			
@@ -528,7 +528,7 @@
  			
  			$setpagination = $_SESSION['temp_scaff_info']['grid_att']['setpagination'];
  		
- 		$myForm->addCheckBox('Paginación:','setpagination',$setpagination);
+ 		$myForm->addCheckBox(OPF_SCAFF_22,'setpagination',$setpagination);
  		
  		$setuseordermethod = false;
  		
@@ -536,7 +536,7 @@
  		
  			$setuseordermethod = $_SESSION['temp_scaff_info']['grid_att']['setuseordermethod'];
  		
- 		$myForm->addCheckBox('Ordenammiento:','setuseordermethod',$setuseordermethod);
+ 		$myForm->addCheckBox(OPF_SCAFF_23,'setuseordermethod',$setuseordermethod);
  		
  		$editar = false;
  			
@@ -544,7 +544,7 @@
  			
  			$editar = $_SESSION['temp_scaff_info']['grid_att']['editar'];
  		
- 		$myForm->addCheckBox('Editar:','editar',$editar);
+ 		$myForm->addCheckBox(OPF_SCAFF_24,'editar',$editar);
  		
  		$eliminar = false;
  		
@@ -552,7 +552,7 @@
  		
  			$eliminar = $_SESSION['temp_scaff_info']['grid_att']['eliminar'];
  		
- 		$myForm->addCheckBox('Eliminar:','eliminar',$eliminar);
+ 		$myForm->addCheckBox(OPF_SCAFF_25,'eliminar',$eliminar);
  		
  		$eliminar_mul = false;
  			
@@ -560,19 +560,19 @@
  			
  			$eliminar_mul = $_SESSION['temp_scaff_info']['grid_att']['eliminar_mul'];
  		
- 		$myForm->addCheckBox('Eliminación multiple:','eliminar_mul',$eliminar_mul);
+ 		$myForm->addCheckBox(OPF_SCAFF_26,'eliminar_mul',$eliminar_mul);
  		
- 		$myForm->addGroup('opcvarias','Atributos',array('ancho_total','getqueryform','setexportdata','setpagination','setuseordermethod','editar','eliminar','eliminar_mul'));
+ 		$myForm->addGroup('opcvarias',OPF_SCAFF_27,array('ancho_total','getqueryform','setexportdata','setpagination','setuseordermethod','editar','eliminar','eliminar_mul'));
  		
- 		$myForm->addGroup('campos','Campos',$campoGrilla,3);
+ 		$myForm->addGroup('campos',OPF_SCAFF_28,$campoGrilla,3);
  		
- 		$myForm->addButton('btn0','Anterior');
+ 		$myForm->addButton('btn0',OPF_SCAFF_14);
  		
  		$myForm->addEvent('btn0', 'onclick', 'newScaff',3);
  		
  		$myForm->addComment('cm_space', '');
  		
- 		$myForm->addButton('btn1','Siguiente');
+ 		$myForm->addButton('btn1',OPF_SCAFF_14);
  		
  		$myForm->addEvent('btn1', 'onclick', 'toScaffStep5');
  			
@@ -592,9 +592,9 @@
  		
  		$myForm = new OPF_myForm('formNewScaffStep3');
 
- 		$myForm->addComment('field_selec', '<div align="center"><b>Campo</b></div>');
+ 		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
  			
- 		$myForm->addComment('field_etq', '<div align="center"><b>Tabla</b></div>');
+ 		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_29.'</b></div>');
  		
  		foreach ($_SESSION['temp_scaff_info']['combos'] as $combo){
  			
@@ -610,11 +610,11 @@
  			$myForm->addComment('type_'.$combo, '<div align="center">'.$myForm->getSelect('type_'.$combo, $arrTablas, $value).'</div>');
  		}
  		
- 		$myForm->addButton('btn0','Anterior');
+ 		$myForm->addButton('btn0',OPF_SCAFF_13);
  		
  		$myForm->addEvent('btn0', 'onclick', 'newScaff',2);
  		
- 		$myForm->addButton('btn1','Siguiente');
+ 		$myForm->addButton('btn1',OPF_SCAFF_14);
  		
  		$myForm->addEvent('btn1', 'onclick', 'toScaffStep4');
  		
@@ -627,30 +627,30 @@
  		
  		$arrTypes = array (
  			
- 			1 => 'Texto',
+ 			1 => htmlentities(OPF_SCAFF_30),
  			
- 			2 => 'N&uacute;merico',
+ 			2 => htmlentities(OPF_SCAFF_31),
  			
- 			3 => 'Selecci&oacute;n',
+ 			3 => htmlentities(OPF_SCAFF_32),
  			
- 			4 => 'Fecha',
+ 			4 => htmlentities(OPF_SCAFF_33),
  			
- 			5 => 'Area texto',
+ 			5 => htmlentities(OPF_SCAFF_34),
  			
- 			6 => 'Booleano'
+ 			6 => htmlentities(OPF_SCAFF_35)
  		);
  		
  		$myAct = new OPF_myActiveRecord();
  			
  		$resSql =  self::getResultSelectFields($myAct, $_SESSION['temp_scaff_info']['table_name']);  
  			
- 		$myForm->addComment('field_selec', '<div align="center"><b>Campo</b></div>');
+ 		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
  		
- 		$myForm->addComment('field_etq', '<div align="center"><b>Etiqueta</b></div>');
+ 		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_17.'</b></div>');
  		
- 		$myForm->addComment('field_tipo', '<div align="center"><b>Tipo</b></div>');
+ 		$myForm->addComment('field_tipo', '<div align="center"><b>'.OPF_SCAFF_36.'</b></div>');
 
- 		$myForm->addComment('field_primary', '<div align="center"><b>Llave primaria</b></div>');
+ 		$myForm->addComment('field_primary', '<div align="center"><b>'.OPF_SCAFF_37.'</b></div>');
  		
  		$count = 0;
  		
@@ -702,13 +702,13 @@
  			$count++;
  		}
 		
- 		$myForm->addButton('btn0','Anterior');
+ 		$myForm->addButton('btn0',OPF_SCAFF_13);
  			
  		$myForm->addComment('cm_space', '');
  		
  		$myForm->addComment('cm_space1', '');
  			
- 		$myForm->addButton('btn1','Siguiente');
+ 		$myForm->addButton('btn1',OPF_SCAFF_14);
  			
  		$myForm->addEvent('btn1', 'onclick', 'toScaffStep3');
  		
@@ -733,10 +733,10 @@
  			
  			$table = $_SESSION['temp_scaff_info']['table_name'];
  		}
+
+ 		$myForm->addHelp('table_name', OPF_SCAFF_39);
  		
- 		$myForm->addText('Nombre de la tabla:','table_name:3', $table);
- 		
- 		$myForm->addHelp('table_name', 'Escriba aqui el nombre de la tabla');
+ 		$myForm->addText(OPF_SCAFF_38,'table_name:3', $table);
  		
  		$myForm->addComment('cm4:3', '');
  		
@@ -748,7 +748,7 @@
  		
  		$myForm->addComment('cm8', '');
  		
- 		$myForm->addButton('btn1','Siguiente');
+ 		$myForm->addButton('btn1',OPF_SCAFF_14);
  		
  		$myForm->addEvent('btn1', 'onclick', 'toScaffStep2');
  		

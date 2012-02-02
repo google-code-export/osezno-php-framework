@@ -13,15 +13,18 @@
  /**
   * Asignar contenidos a areas de la plantilla
   */ 
- $objOsezno->assign('nom_modulo',htmlentities(OPF_SCAFF_TITLE));
+ $objOsezno->assign('nom_modulo','Usuarios');
  
- $objOsezno->assign('desc_modulo',htmlentities(OPF_SCAFF_DESC));
+ $objOsezno->assign('desc_modulo','Usuarios de magalenore');
  
- $objOsezno->assign('content1',scaffold::formStartUp());
+ $objOsezno->assign('content1',scaffolding_maga::getFormStartUp_maga());
+ 
+ $objOsezno->assign('content2',scaffolding_maga::getList_maga());
+ 
   
  /**
   * Mostrar la plantilla
   */
- $objOsezno->call_template('scaffold/modulo.tpl');
-
+ $objOsezno->call_template('modulo/modulo.tpl');
+ 
 ?>
