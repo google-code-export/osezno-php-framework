@@ -1409,9 +1409,13 @@ class OPF_myActiveRecord {
 				
 				if ($this->validateAtt($field)){
 					
-					$sql.= $field.' = ?, ';
+					if ($this->$field){
+					
+						$sql.= $field.' = ?, ';
 
-					$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
+						$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
+					}
+					
 				}
 				
 			}
@@ -1440,12 +1444,17 @@ class OPF_myActiveRecord {
 				
 				if ($this->validateAtt($field)){
 				
-					$sql.=$field.', ';
-
-					$sqlValues .= '?, ';
+					if ($this->$field){
 						
-					$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field); 
+						$sql.=$field.', ';
+						
+						$sqlValues .= '?, ';
+						
+						$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
+					}
+					
 				}
+				
 			}									
 			
 			$sql = substr($sql,0,-2).') VALUES ('.substr($sqlValues,0,-2).')';
