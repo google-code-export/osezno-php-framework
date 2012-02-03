@@ -57,11 +57,11 @@
 	// OPF_scaffold
 	define('OPF_SCAFF_TITLE','Essentials - Andamiaje');
 	define('OPF_SCAFF_DESC','Generación asistida de modulos sobre tablas de la DB');
-	define('OPF_SCAFF_1','Nuevo andamio - Paso 1');
-	define('OPF_SCAFF_2','Campos del formulario - Paso 2');
-	define('OPF_SCAFF_3','Combos selección - Paso 3');
-	define('OPF_SCAFF_4','Atributos y campos de grilla - Paso 4');
-	define('OPF_SCAFF_5','Nombre y descripción del modulo - Paso 5');
+	define('OPF_SCAFF_1','Nombre de tabla [Paso 1]');
+	define('OPF_SCAFF_2','Campos del formulario [Paso 2]');
+	define('OPF_SCAFF_3','Relación campos de selección [Paso 3]');
+	define('OPF_SCAFF_4','Atributos y campos de grilla [Paso 4]');
+	define('OPF_SCAFF_5','Nombre y descripción del modulo [Paso 5]');
 	define('OPF_SCAFF_6','No es posible crear el directorio:');
 	define('OPF_SCAFF_7_A','El directorio');
 	define('OPF_SCAFF_7_B','ya existe,');
@@ -72,12 +72,12 @@
 	define('OPF_SCAFF_10','Por favor verifique que la tabla exista y que tenga al menos 1 registro en ella.');
 	define('OPF_SCAFF_11','Nombre del modulo:');
 	define('OPF_SCAFF_12','Descripción:');
-	define('OPF_SCAFF_13','Anterior');
-	define('OPF_SCAFF_14','Siguiente');
+	define('OPF_SCAFF_13','<< Anterior');
+	define('OPF_SCAFF_14','Siguiente >>');
 	define('OPF_SCAFF_15','Finalizar');
 	define('OPF_SCAFF_16','Campo');
 	define('OPF_SCAFF_17','Etiqueta');
-	define('OPF_SCAFF_18','Ancho');
+	define('OPF_SCAFF_18','Ancho (Px)');
 	define('OPF_SCAFF_19','Ancho total:');
 	define('OPF_SCAFF_20','Formulario filtro:');
 	define('OPF_SCAFF_21','Exportar datos:');
@@ -93,12 +93,14 @@
 	define('OPF_SCAFF_31','Númerico');
 	define('OPF_SCAFF_32','Selección');
 	define('OPF_SCAFF_33','Fecha');
-	define('OPF_SCAFF_34','Area texto');
+	define('OPF_SCAFF_34','Area de texto');
 	define('OPF_SCAFF_35','Booleano');
 	define('OPF_SCAFF_36','Tipo');
-	define('OPF_SCAFF_37','Llave primaria');
+	define('OPF_SCAFF_37','PK');
 	define('OPF_SCAFF_38','Nombre de la tabla:');
 	define('OPF_SCAFF_39','Escriba aqui el nombre de la tabla');
+	define('OPF_SCAFF_40','Requerido');
+	define('OPF_SCAFF_41','Mostrar');
 	
 	
 	// OPF_useronline

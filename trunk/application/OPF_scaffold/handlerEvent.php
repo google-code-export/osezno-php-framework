@@ -22,23 +22,53 @@
  		switch ($step){
  			
  			case 1:
- 				$this->modalWindow(scaffold::formNewScaffStep1(),htmlentities(OPF_SCAFF_1),500,370,2);
+ 				
+ 				$this->modalWindow(
+ 				
+ 					scaffold::formNewScaffStep1(),
+ 					
+ 					htmlentities(OPF_SCAFF_1),580,400,2);
+ 				
  			break;
  			
  			case 2:
- 				$this->modalWindow(scaffold::formNewScaffStep2($datForm),htmlentities(OPF_SCAFF_2),500,370,2);
+ 				
+ 				$this->modalWindow(
+ 				
+ 					scaffold::formNewScaffStep2($datForm),
+ 					
+ 					htmlentities(OPF_SCAFF_2),580,400,2);
+ 				
  			break;
  				
  			case 3:
- 				$this->modalWindow(scaffold::formNewScaffStep3($datForm),htmlentities(OPF_SCAFF_3),500,370,2);
+ 				
+ 				$this->modalWindow(
+ 				
+ 					scaffold::formNewScaffStep3($datForm),
+ 					
+ 					htmlentities(OPF_SCAFF_3),580,400,2);
+ 				
  			break;
  			
  			case 4:
- 				$this->modalWindow(scaffold::formNewScaffStep4($datForm),htmlentities(OPF_SCAFF_4),500,370,2);
+ 				
+ 				$this->modalWindow(
+ 				
+ 					scaffold::formNewScaffStep4($datForm),
+ 					
+ 					htmlentities(OPF_SCAFF_4),580,400,2);
+ 				
  			break;
  			
  			case 5:
- 				$this->modalWindow(scaffold::formNewScaffStep5($datForm),htmlentities(OPF_SCAFF_5),500,370,2);
+ 				
+ 				$this->modalWindow(
+ 				
+ 					scaffold::formNewScaffStep5($datForm),
+ 					
+ 					htmlentities(OPF_SCAFF_5),580,400,2);
+ 				
  			break;
  		}
  		
@@ -93,8 +123,11 @@
  						$fillScaffold = new fillScaffold;
  						
  						$contIndex = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/index.tpl', array(
+ 						
  							'{scaff_mod_name}'=>($_SESSION['temp_scaff_info']['modnom']),
+ 							
  							'{scaff_mod_desc}'=>($_SESSION['temp_scaff_info']['moddesc']),
+ 							
  							'{name_table_scaff}'=>$_SESSION['temp_scaff_info']['table_name']));
  						
  						$link = fopen($folder.'index.php', 'w');
@@ -104,8 +137,11 @@
  						fclose($link);
  						
  						$contHandler = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/handlerEvent.tpl', array(
+ 						
  						 	'{name_table_scaff}'=>$_SESSION['temp_scaff_info']['table_name'],
+ 						 	
  						 	'{fields_required_list_array}'=>$fillScaffold->getFillAreaContent('fields_required_list_array'),
+ 						 	
  						 	'{fields_assign_to_save}'=>$fillScaffold->getFillAreaContent('fields_assign_to_save')
  						));
  							
@@ -116,19 +152,33 @@
  						fclose($link);
  						
  						$contDataModel = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/dataModel.tpl', array(
+ 						
  						 	'{name_table_scaff}'=>$_SESSION['temp_scaff_info']['table_name'],
+ 						 	
  						 	'{fields_table_scaff}'=>$fillScaffold->getFillAreaContent('fields_table_scaff'),
+ 						 	
  						 	'{form_reg_list_fields}'=>$fillScaffold->getFillAreaContent('form_reg_list_fields'),
+ 						 	
  						 	'{sql_list_scaff}'=>$fillScaffold->getFillAreaContent('sql_list_scaff'),
+ 						 	
  						 	'{getqueryform}'=>$fillScaffold->getFillAreaContent('getqueryform'),
+ 						 	
  							'{real_names_in_query}'=>$fillScaffold->getFillAreaContent('real_names_in_query'),
+ 							
  							'{setexportdata}'=>$fillScaffold->getFillAreaContent('setexportdata'),
+ 							
  							'{setpagination}'=>$fillScaffold->getFillAreaContent('setpagination'),
+ 							
  							'{setuseordermethod}'=>$fillScaffold->getFillAreaContent('setuseordermethod'),
+ 							
  							'{eliminar}'=>$fillScaffold->getFillAreaContent('eliminar'),
+ 							
  							'{editar}'=>$fillScaffold->getFillAreaContent('editar'),
+ 							
  							'{eliminar_mul}'=>$fillScaffold->getFillAreaContent('eliminar_mul'),
+ 							
  							'{width_list}'=>$fillScaffold->getFillAreaContent('width_list'),
+ 							
  							'{width_fields}'=>$fillScaffold->getFillAreaContent('width_fields')
  						));
  						
@@ -291,7 +341,7 @@
  			
  			foreach ($checks as $campo){
  				
- 				$_SESSION['temp_scaff_info']['form'][$campo] = array ($datForm['etq_'.$campo],$datForm['type_'.$campo]);
+ 				$_SESSION['temp_scaff_info']['form'][$campo] = array ($datForm['etq_'.$campo], $datForm['type_'.$campo], $datForm['req_'.$campo]);
  			}
  			
  			$this->newScaff($datForm,3);

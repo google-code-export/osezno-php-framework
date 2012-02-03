@@ -114,9 +114,10 @@
  		
  		foreach ($_SESSION['temp_scaff_info']['form'] as $field => $prop){
  			
- 			$buf .= '\''.$field.'\',';
+ 			if($prop[2])
  			
- 			break;
+ 				$buf .= '\''.$field.'\',';
+ 			
  		}
  		
  		$buf = substr($buf, 0, -1);
@@ -210,12 +211,6 @@
  		$this->fillAreas['sql_list_scaff'] = $buf;
  		
  		$buf = '';
- 		
- 		/**
- 		 * 
- 		 */
- 		
- 		
  		
  		/**
  		 * Formulario de consulta lista dinamica
@@ -485,6 +480,8 @@
  				$width = '';
  			}
  		
+ 			$myForm->addEvent('field_'.$id, 'onclick', 'updateWidthListT2', 'field_'.$id, 'width_'.$id);
+ 			
  			$myForm->addCheckBox($id,'field_'.$id,$check);
  		
  			$campoGrilla[] = 'field_'.$id;
@@ -493,16 +490,20 @@
  			
  			$campoGrilla[] = 'etq_'.$id;
  		
- 			$myForm->addComment('width_'.$id, '<div align="center">'.$myForm->getText('width_'.$id,$width,5).'</div>');
+ 			$myForm->addEvent('width_'.$id, 'onblur', 'updateWidthListT','width_'.$id,'field_'.$id);
+ 			
+ 			$myForm->addComment('width_'.$id, '<div align="center">'.$myForm->getText('width_'.$id,$width,5,3,true).'</div>');
  			
  			$campoGrilla[] = 'width_'.$id;
  		}
 
- 		$anchoTotal = '';
+ 		$anchoTotal = 0;
  		
  		if (isset($_SESSION['temp_scaff_info']['grid_att']['ancho_total']))
  		
  			$anchoTotal = $_SESSION['temp_scaff_info']['grid_att']['ancho_total'];
+ 		
+ 		$myForm->addDisabled('ancho_total');
  		
  		$myForm->addText(OPF_SCAFF_19,'ancho_total',$anchoTotal,5,4,true);
  		
@@ -566,7 +567,7 @@
  		
  		$myForm->addGroup('campos',OPF_SCAFF_28,$campoGrilla,3);
  		
- 		$myForm->addButton('btn0',OPF_SCAFF_14);
+ 		$myForm->addButton('btn0',OPF_SCAFF_13);
  		
  		$myForm->addEvent('btn0', 'onclick', 'newScaff',3);
  		
@@ -644,13 +645,17 @@
  			
  		$resSql =  self::getResultSelectFields($myAct, $_SESSION['temp_scaff_info']['table_name']);  
  			
- 		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
+ 		$myForm->addComment('field_etq1', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
+ 		
+ 		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_41.'</b></div>');
  		
  		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_17.'</b></div>');
  		
  		$myForm->addComment('field_tipo', '<div align="center"><b>'.OPF_SCAFF_36.'</b></div>');
 
- 		$myForm->addComment('field_primary', '<div align="center"><b>'.OPF_SCAFF_37.'</b></div>');
+ 		$myForm->addComment('field_primary', '<div align="center"><b>'.OPF_SCAFF_40.'</b></div>');
+ 		
+ 		$myForm->addComment('field_required', '<div align="center"><b>'.OPF_SCAFF_37.'</b></div>');
  		
  		$count = 0;
  		
@@ -671,13 +676,27 @@
  				$etq = '';
  				
  				$type = '';
+ 				
+ 				$myForm->addDisabled('req_'.$id);
  			}
  			
- 			$myForm->addCheckBox($id,'field_'.$id,$check);
+ 			$checkReq = false;
  			
- 			$myForm->addComment('etq_'.$id, $myForm->getText('etq_'.$id,$etq,15));
+ 			if (isset($_SESSION['temp_scaff_info']['form'][$id][2]))
  			
- 			$myForm->addComment('type_'.$id, $myForm->getSelect('type_'.$id,$arrTypes,$type));
+ 				if ($_SESSION['temp_scaff_info']['form'][$id][2])
+ 			
+ 					$checkReq = true;
+ 			
+ 			$myForm->addEvent('field_'.$id, 'onclick', 'checkFormItem', 'field_'.$id, 'req_'.$id);
+ 			
+ 			$myForm->addComment('etq1_'.$id, '<div align="center">'.$id.'</div>');
+ 			
+ 			$myForm->addComment('show_'.$id, '<div align="center">'.$myForm->getCheckBox('field_'.$id, $check).'</div>');
+ 			
+ 			$myForm->addComment('etq_'.$id, $myForm->getText('etq_'.$id, $etq, 10));
+ 			
+ 			$myForm->addComment('type_'.$id, $myForm->getSelect('type_'.$id, $arrTypes, $type));
  			
  			$mark = false;
  			
@@ -697,6 +716,8 @@
  				
  			}
  			
+ 			$myForm->addComment('req_'.$id, '<div align="center">'.$myForm->getCheckBox('req_'.$id, $checkReq).'</div>');
+ 			
  			$myForm->addComment('primary_'.$id, '<div align="center">'.$myForm->getRadioButton($id, 'primary_key', $mark).'</div>');
  			
  			$count++;
@@ -707,6 +728,10 @@
  		$myForm->addComment('cm_space', '');
  		
  		$myForm->addComment('cm_space1', '');
+ 		
+ 		$myForm->addComment('cm_space2', '');
+ 		
+ 		$myForm->addComment('cm_space3', '');
  			
  		$myForm->addButton('btn1',OPF_SCAFF_14);
  			
@@ -714,7 +739,7 @@
  		
  		$myForm->addEvent('btn0', 'onclick', 'newScaff',1);
  		
- 		return $myForm->getForm(4);
+ 		return $myForm->getForm(6);
  	}
  	
  	static public function formNewScaffStep1 (){
@@ -727,6 +752,14 @@
  		
  		$myForm->addComment('cm3:3', '');
  		
+ 		$myForm->addComment('cm4:3', '');
+ 		
+ 		$myForm->addComment('cm5:3', '');
+ 		
+ 		$myForm->addComment('cm6:3', '');
+ 		
+ 		$myForm->addComment('cm7:3', '');
+ 		
  		$table = '';
  		
  		if (isset($_SESSION['temp_scaff_info']['table_name'])){
@@ -738,15 +771,23 @@
  		
  		$myForm->addText(OPF_SCAFF_38,'table_name:3', $table);
  		
- 		$myForm->addComment('cm4:3', '');
+ 		$myForm->addComment('cm8:3', '');
  		
- 		$myForm->addComment('cm5:3', '');
+ 		$myForm->addComment('cm9:3', '');
  		
- 		$myForm->addComment('cm6:3', '');
+ 		$myForm->addComment('cm10:3', '');
  		
- 		$myForm->addComment('cm7', '');
+ 		$myForm->addComment('cm11:3', '');
  		
- 		$myForm->addComment('cm8', '');
+ 		$myForm->addComment('cm12:3', '');
+ 		
+ 		$myForm->addComment('cm13:3', '');
+ 		
+ 		$myForm->addComment('cm14:3', '');
+ 		
+ 		$myForm->addComment('cm15', '');
+ 		
+ 		$myForm->addComment('cm16', '');
  		
  		$myForm->addButton('btn1',OPF_SCAFF_14);
  		

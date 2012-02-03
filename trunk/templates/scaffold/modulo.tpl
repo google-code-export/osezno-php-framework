@@ -14,6 +14,72 @@ function posicionarTittle (){
 	
 	document.getElementById('titulo_modulo_div2').style.left = arrayPageSize[0]-670;
 }
+
+var valsAnchos = new Array();
+
+function updateWidthListT (datForm, idText, idCheck){
+
+	if (parseInt(datForm[idText]) >= 0)
+	
+		if (datForm[idCheck]){
+		
+			if (valsAnchos[idText]){
+			
+				varRest = parseInt(valsAnchos[idText]);
+
+			}else{
+			
+				varRest = 0;
+			}
+				
+			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) - varRest;
+		
+			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) + parseInt(datForm[idText]);
+			
+			valsAnchos[idText] = parseInt(datForm[idText]); 
+		}  
+	  	
+}
+
+function updateWidthListT2 (datForm, idCheck, idText){
+
+	if (datForm[idCheck]){
+	
+		if (parseInt(datForm[idText]) >= 0){
+	
+			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) + parseInt(datForm[idText]);
+			
+			valsAnchos[idText] = parseInt(datForm[idText]); 
+		}
+		
+	}else{
+	
+		if (parseInt(datForm[idText]) >= 0){
+	
+			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) - parseInt(valsAnchos[idText]);
+			
+			valsAnchos[idText] = parseInt(datForm[idText]);
+		}
+	}
+
+}
+
+function checkFormItem (datForm, idCheck, idReq){
+
+	if (datForm[idCheck]){
+	
+		document.forms['formNewScaffStep2'].elements[idReq].disabled = false;
+		
+	}else{
+	
+		document.forms['formNewScaffStep2'].elements[idReq].disabled = true;
+		
+		document.forms['formNewScaffStep2'].elements[idReq].checked = false;
+	
+	}
+	
+}
+
 </script>
 <style type="text/css">
 
@@ -34,57 +100,6 @@ function posicionarTittle (){
 	text-decoration: none;
 	text-align:right;
 	color: #666666;
-}
-
-</style>
-<style type='text/css'>
-
-select#icon option
-{
-    background-repeat: no-repeat;
-    padding-left: 21px;
-    height: 18px;
-}
-
-option#cd
-{
-    background-image: url(img/cd.gif);
-    
-}
-
-option#imgfolder
-{
-    background-image: url(img/imgfolder.gif);
-}
-
-option#globe
-{
-    background-image: url(img/globe.gif);
-}
-
-option#musicfolder
-{
-    background-image: url(img/musicfolder.gif);
-}
-
-option#page
-{
-    background-image: url(img/page.gif);
-}
-
-option#question
-{
-    background-image: url(img/question.gif);
-}
-
-option#trash
-{
-    background-image: url(img/trash.gif);
-}
-
-option#osezno
-{
-    background-image: url(img/base.gif);
 }
 
 </style>
