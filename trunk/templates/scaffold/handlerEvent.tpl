@@ -17,8 +17,6 @@
 
  	public function onClickDeleteRecord ($id){
  		
- 		$this->alert(var_export($id,true));
- 		
  		${name_table_scaff} = new {name_table_scaff};
  		
  		$ok = false;

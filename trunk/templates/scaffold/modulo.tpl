@@ -19,7 +19,7 @@ var valsAnchos = new Array();
 
 function updateWidthListT (datForm, idText, idCheck){
 
-	if (parseInt(datForm[idText]) >= 0)
+	if (parseInt(datForm[idText]) >= 0){
 	
 		if (datForm[idCheck]){
 		
@@ -37,45 +37,98 @@ function updateWidthListT (datForm, idText, idCheck){
 			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) + parseInt(datForm[idText]);
 			
 			valsAnchos[idText] = parseInt(datForm[idText]); 
-		}  
+		}
+		  
+	}else{
+	
+		document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) - valsAnchos[idText];
+		
+		valsAnchos[idText] = 0;
+	
+	}	
 	  	
 }
 
-function updateWidthListT2 (datForm, idCheck, idText){
+function updateWidthListT2 (datForm, idCheck, idText, idEtq){
 
 	if (datForm[idCheck]){
-	
+
+		document.forms['formNewScaffStep4'].elements[idText].disabled = false;
+		
+		document.forms['formNewScaffStep4'].elements[idEtq].disabled = false;
+			
 		if (parseInt(datForm[idText]) >= 0){
 	
 			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) + parseInt(datForm[idText]);
 			
-			valsAnchos[idText] = parseInt(datForm[idText]); 
+			valsAnchos[idText] = parseInt(datForm[idText]);
+			 
+		}else{
+			
+			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) - valsAnchos[idText];
+		
+			valsAnchos[idText] = 0;
+		
 		}
 		
 	}else{
+	
+		document.forms['formNewScaffStep4'].elements[idText].disabled = true;
+		
+		document.forms['formNewScaffStep4'].elements[idEtq].disabled = true;
 	
 		if (parseInt(datForm[idText]) >= 0){
 	
 			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) - parseInt(valsAnchos[idText]);
 			
 			valsAnchos[idText] = parseInt(datForm[idText]);
+			
+		}else{
+			
+			document.forms['formNewScaffStep4'].elements['ancho_total'].value = parseInt(document.forms['formNewScaffStep4'].elements['ancho_total'].value) - valsAnchos[idText];
+		
+			valsAnchos[idText] = 0;
+		
 		}
+		
 	}
 
 }
 
-function checkFormItem (datForm, idCheck, idReq){
+function valOptDelete (datForm){
+
+	if (!datForm['eliminar']){
+	
+		document.forms['formNewScaffStep4'].elements['eliminar_mul'].checked = false;
+		
+		document.forms['formNewScaffStep4'].elements['eliminar_mul'].disabled = true;
+		
+	}else{
+	
+		document.forms['formNewScaffStep4'].elements['eliminar_mul'].disabled = false;
+	}
+	
+}
+
+function checkFormItem (datForm, idCheck, idReq, idEtq, idType){
 
 	if (datForm[idCheck]){
 	
 		document.forms['formNewScaffStep2'].elements[idReq].disabled = false;
+		
+		document.forms['formNewScaffStep2'].elements[idEtq].disabled = false;
+		
+		document.forms['formNewScaffStep2'].elements[idType].disabled = false;
 		
 	}else{
 	
 		document.forms['formNewScaffStep2'].elements[idReq].disabled = true;
 		
 		document.forms['formNewScaffStep2'].elements[idReq].checked = false;
-	
+		
+		document.forms['formNewScaffStep2'].elements[idEtq].disabled = true;
+		
+		document.forms['formNewScaffStep2'].elements[idType].disabled = true;
 	}
 	
 }

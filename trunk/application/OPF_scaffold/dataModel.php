@@ -157,12 +157,12 @@
  		
  		if ($_SESSION['temp_scaff_info']['grid_att']['eliminar']){
  			
- 			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "Eliminar", ';
+ 			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "'.OPF_FIELD_ELIMINAR.'", ';
  		}
  		
  		if ($_SESSION['temp_scaff_info']['grid_att']['editar']){
  		
- 			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "Editar", ';
+ 			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "'.OPF_FIELD_MODIFICAR.'", ';
  		}
  		
  		$contRel = 1;
@@ -277,7 +277,7 @@
  		
  		if ($_SESSION['temp_scaff_info']['grid_att']['eliminar']){
  		
- 			$buf = "".'$myList->setEventOnColumn(\'Eliminar\',\'onClickDeleteRecord\');'."\n";
+ 			$buf = "".'$myList->setEventOnColumn(\''.OPF_FIELD_ELIMINAR.'\',\'onClickDeleteRecord\');'."\n";
  			
  			$masWidthEliminar = 50;
  		}
@@ -295,7 +295,7 @@
  		
  		if ($_SESSION['temp_scaff_info']['grid_att']['editar']){
  			
- 			$buf = "".'$myList->setEventOnColumn(\'Editar\',\'onClickAddRecord\');'."\n";
+ 			$buf = "".'$myList->setEventOnColumn(\''.OPF_FIELD_MODIFICAR.'\',\'onClickAddRecord\');'."\n";
 
  			$masWidthEditar = 40;
  		}
@@ -309,9 +309,9 @@
  		 */
  		$buf = '';
  		
- 		if ($_SESSION['temp_scaff_info']['grid_att']['eliminar_mul'])
+ 		if ($_SESSION['temp_scaff_info']['grid_att']['eliminar_mul'] && $masWidthEliminar)
  		
- 			$buf = "".'$myList->setGlobalEventOnColumn(\'Eliminar\', array(\'Eliminar\'=>\'onClickDeleteRecord\') );';
+ 			$buf = "".'$myList->setGlobalEventOnColumn(\''.OPF_FIELD_ELIMINAR.'\', array(\''.OPF_FIELD_ELIMINAR.'\'=>\'onClickDeleteRecord\') );';
  			
  		$this->fillAreas['eliminar_mul'] = $buf;
  		
@@ -493,7 +493,7 @@
  		
  		$campoGrilla = array('field_selec','field_etq','field_ancho');
  		
- 		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
+ 		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'/'.OPF_SCAFF_41.'</b></div>');
  			
  		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_17.'</b></div>');
  			
@@ -516,9 +516,13 @@
  				$etq = '';
  					
  				$width = '';
+ 				
+ 				$myForm->addDisabled('etq_'.$id);
+ 				
+ 				$myForm->addDisabled('width_'.$id);
  			}
  		
- 			$myForm->addEvent('field_'.$id, 'onclick', 'updateWidthListT2', 'field_'.$id, 'width_'.$id);
+ 			$myForm->addEvent('field_'.$id, 'onclick', 'updateWidthListT2', 'field_'.$id, 'width_'.$id, 'etq_'.$id);
  			
  			$myForm->addCheckBox($id,'field_'.$id,$check);
  		
@@ -587,14 +591,22 @@
  		
  		$eliminar = false;
  		
- 		if (isset($_SESSION['temp_scaff_info']['grid_att']['eliminar']))
+ 		if (isset($_SESSION['temp_scaff_info']['grid_att']['eliminar'])){
  		
  			$eliminar = $_SESSION['temp_scaff_info']['grid_att']['eliminar'];
+ 			
+ 		}
+ 		
+ 		if (!$eliminar)
+ 		
+ 			$myForm->addDisabled('eliminar_mul');
+ 		
+ 		$myForm->addEvent('eliminar', 'onclick', 'valOptDelete');
  		
  		$myForm->addCheckBox(OPF_SCAFF_25,'eliminar',$eliminar);
  		
  		$eliminar_mul = false;
- 			
+ 		
  		if (isset($_SESSION['temp_scaff_info']['grid_att']['eliminar_mul']))
  			
  			$eliminar_mul = $_SESSION['temp_scaff_info']['grid_att']['eliminar_mul'];
@@ -716,6 +728,10 @@
  				$type = '';
  				
  				$myForm->addDisabled('req_'.$id);
+ 				
+ 				$myForm->addDisabled('etq_'.$id);
+ 				
+ 				$myForm->addDisabled('type_'.$id);
  			}
  			
  			$checkReq = false;
@@ -726,7 +742,7 @@
  			
  					$checkReq = true;
  			
- 			$myForm->addEvent('field_'.$id, 'onclick', 'checkFormItem', 'field_'.$id, 'req_'.$id);
+ 			$myForm->addEvent('field_'.$id, 'onclick', 'checkFormItem', 'field_'.$id, 'req_'.$id, 'etq_'.$id, 'type_'.$id);
  			
  			$myForm->addComment('etq1_'.$id, '<div align="center">'.$id.'</div>');
  			
