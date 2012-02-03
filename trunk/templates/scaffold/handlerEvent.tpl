@@ -70,7 +70,7 @@
  		
  			$idParam = $id;
  		
- 		$this->modalWindow(scaffolding_{name_table_scaff}::getFormAddMod{name_table_scaff}($idParam),htmlentities('Registro'),300,250,2);
+ 		$this->modalWindow(scaffolding_{name_table_scaff}::getFormAddMod{name_table_scaff}($idParam),htmlentities('Registro'),300,{height_window_form},2);
  		
  		return $this->response;
  	}

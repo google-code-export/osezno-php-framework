@@ -359,7 +359,15 @@
  		
  		$buf = '';
  		
+ 		/**
+ 		 * Alto del formulario de registro
+ 		 * height_window_form
+ 		 */
+ 		$buf = '';
  		
+ 		$this->fillAreas['height_window_form'] = 70+count($_SESSION['temp_scaff_info']['form'])*30;
+ 			
+ 		$buf = '';
  	}
  	
  	public function getFillAreaContent($nameArea){
@@ -414,6 +422,24 @@
  		
  		$myForm = new OPF_myForm('formNewScaffStep5');
  		
+ 		$myForm->addComment('cm1:3', '');
+ 			
+ 		$myForm->addComment('cm2:3', '');
+ 			
+ 		$myForm->addComment('cm3:3', '');
+ 			
+ 		$myForm->addComment('cm4:3', '');
+ 		
+ 		$myForm->addComment('cm5:3', '');
+ 		
+ 		$foldername = 'SCAFF_'.$_SESSION['temp_scaff_info']['table_name'];
+ 			
+ 		if (isset($_SESSION['temp_scaff_info']['namefolder']))
+ 			
+ 			$foldername = $_SESSION['temp_scaff_info']['namefolder'];
+ 			
+ 		$myForm->addText(OPF_SCAFF_42,'namefolder:3',$foldername);
+ 		
  		$modnom = '';
  		
  		if (isset($_SESSION['temp_scaff_info']['modnom']))
@@ -428,8 +454,20 @@
  		
  			$moddesc = $_SESSION['temp_scaff_info']['moddesc'];
  		
- 		$myForm->addTextArea(OPF_SCAFF_12,'moddesc:3',$moddesc,40,2);
+ 		$myForm->addText(OPF_SCAFF_12,'moddesc:3',$moddesc);
  		
+ 		$myForm->addCheckBox(OPF_SCAFF_43,'downloadzip:3');
+
+ 		$myForm->addComment('cm6:3', '');
+ 		
+ 		$myForm->addComment('cm7:3', '');
+ 		
+ 		$myForm->addComment('cm8:3', '');
+ 		
+ 		$myForm->addComment('cm9:3', '');
+ 		
+ 		$myForm->addComment('cm10:3', '');
+ 			
  		$myForm->addButton('btn0',OPF_SCAFF_13);
  			
  		$myForm->addEvent('btn0', 'onclick', 'newScaff',4);

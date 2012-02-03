@@ -101,6 +101,10 @@
 	define('OPF_SCAFF_39','Escriba aqui el nombre de la tabla');
 	define('OPF_SCAFF_40','Requerido');
 	define('OPF_SCAFF_41','Mostrar');
+	define('OPF_SCAFF_42','Nombre de carpeta:');
+	define('OPF_SCAFF_43','Descargar zip:');
+	define('OPF_SCAFF_44','No es posible escribir en el directorio');
+	define('OPF_SCAFF_45','El andamio fue creado correctamente en la ruta: ');
 	
 	
 	// OPF_useronline

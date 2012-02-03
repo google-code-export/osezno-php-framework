@@ -83,8 +83,10 @@
  			$_SESSION['temp_scaff_info']['modnom'] = $datForm['modnom'];
  			
  			$_SESSION['temp_scaff_info']['moddesc'] = $datForm['moddesc'];
-
- 			$folder = $GLOBALS['folderProject'].'application/SCAFF_'.$_SESSION['temp_scaff_info']['table_name'].'/';
+ 			
+ 			$_SESSION['temp_scaff_info']['namefolder'] = $datForm['namefolder'];
+ 			
+ 			$folder = $GLOBALS['folderProject'].'application/'.$datForm['namefolder'].'/';
  			
  			$errorRewrite = false;
  			
@@ -120,6 +122,8 @@
  				
  					if (mkdir($folder,0644)){
 
+ 						$writeError = false;
+ 						
  						$fillScaffold = new fillScaffold;
  						
  						$contIndex = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/index.tpl', array(
@@ -132,9 +136,16 @@
  						
  						$link = fopen($folder.'index.php', 'w');
  						
- 						fwrite($link, $contIndex);
+ 						if ($link){
  						
- 						fclose($link);
+ 							fwrite($link, $contIndex);
+ 						
+ 							fclose($link);
+ 							
+ 						}else{
+ 							
+ 							$writeError = true;
+ 						}
  						
  						$contHandler = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/handlerEvent.tpl', array(
  						
@@ -142,14 +153,23 @@
  						 	
  						 	'{fields_required_list_array}'=>$fillScaffold->getFillAreaContent('fields_required_list_array'),
  						 	
- 						 	'{fields_assign_to_save}'=>$fillScaffold->getFillAreaContent('fields_assign_to_save')
+ 						 	'{fields_assign_to_save}'=>$fillScaffold->getFillAreaContent('fields_assign_to_save'),
+ 						 	
+ 						 	'{height_window_form}'=>$fillScaffold->getFillAreaContent('height_window_form')
  						));
  							
  						$link = fopen($folder.'handlerEvent.php', 'w');
+
+ 						if ($link){
+ 						
+ 							fwrite($link, $contHandler);
  							
- 						fwrite($link, $contHandler);
+ 							fclose($link);
  							
- 						fclose($link);
+ 						}else{
+ 							
+ 							$writeError = true;
+ 						}
  						
  						$contDataModel = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/dataModel.tpl', array(
  						
@@ -184,9 +204,46 @@
  						
  						$link = fopen($folder.'dataModel.php', 'w');
  						
- 						fwrite($link, $contDataModel);
+ 						if ($link){
  						
- 						fclose($link);
+ 							fwrite($link, $contDataModel);
+ 						
+ 							fclose($link);
+ 							
+ 						}else{
+ 							
+ 							$writeError = true;
+ 						}
+ 						
+ 						if (!$writeError){
+ 							
+ 							if ($datForm['downloadzip']){
+ 							
+ 								$_SESSION['SCAFF_TEMP_ZIP_FILES_C'] = array (
+ 							
+ 							 		'index'=>$contIndex,
+ 									
+ 									'handler'=>$contHandler,
+ 							
+ 							 		'data'=>$contDataModel
+ 								);
+ 							
+ 								$secure_opf_code = '';
+ 							
+ 								if (isset($_GET['secure_opf_code']))
+ 							
+ 								$secure_opf_code = $_GET['secure_opf_code'];
+ 							
+ 								$this->redirect('downloadzip.php?secure_opf_code='.$secure_opf_code.'&namefolder='.$datForm['namefolder']);
+ 							}
+ 							
+ 							$this->closeMessageBox();
+ 							
+ 							$this->messageBox(htmlentities(OPF_SCAFF_45).' <b>'.'application/'.$datForm['namefolder'].'/'.'</b> ','INFO');
+ 							
+ 						}else
+ 							
+ 							$this->messageBox(htmlentities(OPF_SCAFF_44).' "'.$folder.'"','error');
  						
  					}else
  					
@@ -194,7 +251,7 @@
  				
  				}else
  				
- 					$this->messageBox(htmlentities(OPF_SCAFF_7_A).' <b>'.'application/SCAFF_'.$_SESSION['temp_scaff_info']['table_name'].'/'.'</b> '.OPF_SCAFF_7_B.' '.htmlentities(OPF_SCAFF_7_C),'help',array(YES=>'toScaffStep6',NO),$datForm,true);
+ 					$this->messageBox(htmlentities(OPF_SCAFF_7_A).' <b>'.'application/'.$datForm['namefolder'].'/'.'</b> '.OPF_SCAFF_7_B.' '.htmlentities(OPF_SCAFF_7_C),'help',array(YES=>'toScaffStep6',NO),$datForm,true);
  				
  			}else
  				
@@ -252,7 +309,6 @@
  			}else{
  				
  				$this->messageBox(htmlentities(OPF_SCAFF_9),'ERROR');
- 				
  			}
  		
  		}else{
