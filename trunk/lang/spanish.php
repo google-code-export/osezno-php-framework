@@ -82,7 +82,7 @@
 	define('OPF_SCAFF_20','Formulario filtro:');
 	define('OPF_SCAFF_21','Exportar datos:');
 	define('OPF_SCAFF_22','Paginación:');
-	define('OPF_SCAFF_23','Ordenammiento:');
+	define('OPF_SCAFF_23','Ordenamiento:');
 	define('OPF_SCAFF_24','Editar:');
 	define('OPF_SCAFF_25','Eliminar:');
 	define('OPF_SCAFF_26','Eliminación multiple:');
@@ -106,7 +106,6 @@
 	define('OPF_SCAFF_44','No es posible escribir en el directorio');
 	define('OPF_SCAFF_45','El andamio fue creado correctamente en la ruta: ');
 	define('OPF_SCAFF_46','¿Desea eliminar permanentemente este(os) registro(s)?');
-	
 	
 	// OPF_useronline
 	define('OPF_USRONLINE_TITLE','Essentials - Usuarios en linea');
