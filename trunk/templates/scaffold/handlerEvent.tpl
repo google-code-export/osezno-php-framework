@@ -4,7 +4,7 @@
  *
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
- * @copyright Copyright &copy; 2007-2011 Osezno PHP Framework
+ * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
  include 'dataModel.php';
@@ -14,10 +14,13 @@
  *
  */	
  class eventos extends OPF_myController {
-
- 	public function onClickDeleteRecord ($id){
- 		
- 		${name_table_scaff} = new {name_table_scaff};
+	
+	/**
+	 * Confirma la acción solicitada de eliminar uno o varios registros de la tabla.
+	 */ 
+	public function deleteRecordsConfirm ($id){
+	
+		${name_table_scaff} = new {name_table_scaff};
  		
  		$ok = false;
  		
@@ -47,12 +50,24 @@
  		
  			$this->notificationWindow(htmlentities('Registro(s) eliminado(s)'),3,'ok');
 
+			$this->closeMessageBox();
+
 			$this->MYLIST_reload('lst_{name_table_scaff}');
 			
 		}else{
 		
 			$this->messageBox(${name_table_scaff}->getErrorLog(),'error');
 		}
+	
+		return $this->response;
+	}
+
+	/**
+	 * Acción solcitida para eliminar uno o varios registros especificos.
+	 */
+ 	public function onClickDeleteRecord ($id){
+ 		
+ 		$this->messageBox(htmlentities(OPF_SCAFF_46),'HELP',array(YES=>'deleteRecordsConfirm',NO),$id);
  		
  		return $this->response;
  	}

@@ -59,9 +59,13 @@
  					
  					htmlentities(OPF_SCAFF_4),580,400,2);
  				
+ 				$this->script('updateValsAnchos()');	
+ 					
  			break;
  			
  			case 5:
+ 				
+ 				
  				
  				$this->modalWindow(
  				

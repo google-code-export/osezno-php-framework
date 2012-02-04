@@ -105,6 +105,7 @@
 	define('OPF_SCAFF_43','Descargar zip:');
 	define('OPF_SCAFF_44','No es posible escribir en el directorio');
 	define('OPF_SCAFF_45','El andamio fue creado correctamente en la ruta: ');
+	define('OPF_SCAFF_46','¿Desea eliminar permanentemente este(os) registro(s)?');
 	
 	
 	// OPF_useronline

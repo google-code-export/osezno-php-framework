@@ -6,13 +6,16 @@
  *
  * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
- * @copyright Copyright &copy; 2007-2011 Osezno PHP Framework
+ * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
  include '../../config/configApplication.php';
  
  class scaffolding_{name_table_scaff} {
  
+ 	/**
+ 	 * Obtiene el formualario que permite agregar un registro
+ 	 */
  	public static function getFormStartUp_{name_table_scaff} (){
  	
  		$myForm = new OPF_myForm('FormStartUp_{name_table_scaff}');
@@ -24,6 +27,9 @@
  		return $myForm->getForm(1);
  	}
  	
+ 	/**
+ 	 * Obtiene el formulario principal
+ 	 */
  	public static function getFormAddMod{name_table_scaff}($id){
  	
  		$ess_master_tables_detail = new ess_master_tables_detail;
@@ -42,6 +48,9 @@
  		return $myForm->getForm(1);
  	}
  	
+ 	/**
+ 	 * Lista dinámica de los registros
+ 	 */
  	public function getList_{name_table_scaff} (){
  		
  		$sql = '{sql_list_scaff}';

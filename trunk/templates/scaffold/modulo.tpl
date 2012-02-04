@@ -17,6 +17,23 @@ function posicionarTittle (){
 
 var valsAnchos = new Array();
 
+function updateValsAnchos (){
+	
+	for (i=0; i<document.forms['formNewScaffStep4'].elements.length; i++){
+
+		if (document.forms['formNewScaffStep4'].elements[i].name.substring(0,6)=='width_'){
+			
+			if (!document.forms['formNewScaffStep4'].elements[i].value)
+			
+				valsAnchos[document.forms['formNewScaffStep4'].elements[i].name] = 0;
+			else
+				valsAnchos[document.forms['formNewScaffStep4'].elements[i].name] = parseInt(document.forms['formNewScaffStep4'].elements[i].value);
+		}
+	}
+	
+	
+}
+
 function updateWidthListT (datForm, idText, idCheck){
 
 	if (parseInt(datForm[idText]) >= 0){
