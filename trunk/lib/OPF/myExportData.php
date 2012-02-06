@@ -6,6 +6,7 @@
  * Clase alterna para resolver el problema de aplicar multicells con un alto definido.
  * Solución aportada desde http://www.fpdf.org/en/script/script3.php <oliver@fpdf.org>
  * 
+ * @package OPF
  * @ignore
  */
 class PDF_MC_Table extends FPDF

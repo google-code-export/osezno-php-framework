@@ -8,7 +8,7 @@
 <body>
 <table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
   <tr>
-    <td class="header_top">Doc Ref [1.0]<!-- OPF --></td>
+    <td class="header_top">Doc Ref [1.2]<!-- OPF --></td>
   </tr>
   <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
   <tr>
@@ -74,16 +74,15 @@ Source Location: /myActiveRecord.php<br /><br />
 
 <h3><a href="#class_details">Class Overview</a></h3>
 <pre></pre><br />
-<div class="description">myActiveRecord</div><br /><br />
+<div class="description">OPF_myActiveRecord</div><br /><br />
 <h4>Author(s):</h4>
 <ul>
-          <li>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</li>
-                  </ul>
+              </ul>
 
 
 
 
-        
+    
         
 <h4>Version:</h4>
 <ul>
@@ -141,14 +140,11 @@ Source Location: /myActiveRecord.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 16]<br />
-myActiveRecord<br /><br /><p>La clase myActiveRecord es la propuesta que da osezno framework  para acceder a las bases de datos de Postgres, MySql mediante  objetos del Lenguaje de programacion. Extendiendo la clase a subclases  que tengan la informacion de cada una de las tablas a las que se  quieran acceder.</p><br /><br /><br />
+[line 21]<br />
+OPF_myActiveRecord<br /><br /><p>La clase myActiveRecord es la propuesta que da osezno framework  para acceder a las bases de datos de Postgres, MySql mediante  objetos del Lenguaje de programacion. Extendiendo la clase a subclases  que tengan la informacion de cada una de las tablas a las que se  quieran acceder.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>author:</b>&nbsp;&nbsp;</td><td>José Ignacio Gutiérrez Guzmán &lt;<a href="mailto:jose.gutierrez@osezno-framework.org">jose.gutierrez@osezno-framework.org</a>&gt;</td>
-  </tr>
   <tr>
     <td><b>version:</b>&nbsp;&nbsp;</td><td>0.1</td>
   </tr>
@@ -168,7 +164,7 @@ myActiveRecord<br /><br /><p>La clase myActiveRecord es la propuesta que da osez
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 263]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 282]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -179,7 +175,8 @@ $user = ''], [string
 $password = ''], [string
 $host = ''], [string
 $engine = ''], [string
-$port = ''])</code>
+$port = ''], [boolean
+$usePerConnection = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -247,13 +244,18 @@ $port = ''])</code>
         <td><b>$port</b>&nbsp;&nbsp;</td>
         <td>Puerto de conexion.</td>
       </tr>
+          <tr>
+        <td class="type">boolean&nbsp;&nbsp;</td>
+        <td><b>$usePerConnection</b>&nbsp;&nbsp;</td>
+        <td>Usar o no conexión persistente.</td>
+      </tr>
         </table>
     </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
 	<a name="methodbeginTransaction"></a>
-	<h3>method beginTransaction <span class="smalllinenumber">[line 990]</span></h3>
+	<h3>method beginTransaction <span class="smalllinenumber">[line 1053]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -291,7 +293,7 @@ $port = ''])</code>
   </div>
   <hr />
 	<a name="methoddelete"></a>
-	<h3>method delete <span class="smalllinenumber">[line 1431]</span></h3>
+	<h3>method delete <span class="smalllinenumber">[line 1505]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -350,7 +352,7 @@ $strCond)</code>
   </div>
   <hr />
 	<a name="methodendTransaction"></a>
-	<h3>method endTransaction <span class="smalllinenumber">[line 1027]</span></h3>
+	<h3>method endTransaction <span class="smalllinenumber">[line 1090]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -391,7 +393,7 @@ $strCond)</code>
   </div>
   <hr />
 	<a name="methodfind"></a>
-	<h3>method find <span class="smalllinenumber">[line 1282]</span></h3>
+	<h3>method find <span class="smalllinenumber">[line 1361]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -488,7 +490,7 @@ $offSet = ''])</code>
   </div>
   <hr />
 	<a name="methodgetDatabase"></a>
-	<h3>method getDatabase <span class="smalllinenumber">[line 841]</span></h3>
+	<h3>method getDatabase <span class="smalllinenumber">[line 904]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -513,7 +515,7 @@ $offSet = ''])</code>
   </div>
   <hr />
 	<a name="methodgetEngine"></a>
-	<h3>method getEngine <span class="smalllinenumber">[line 852]</span></h3>
+	<h3>method getEngine <span class="smalllinenumber">[line 915]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -538,7 +540,7 @@ $offSet = ''])</code>
   </div>
   <hr />
 	<a name="methodgetErrorLog"></a>
-	<h3>method getErrorLog <span class="smalllinenumber">[line 919]</span></h3>
+	<h3>method getErrorLog <span class="smalllinenumber">[line 982]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -574,7 +576,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetHost"></a>
-	<h3>method getHost <span class="smalllinenumber">[line 863]</span></h3>
+	<h3>method getHost <span class="smalllinenumber">[line 926]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -599,7 +601,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetLastInsertId"></a>
-	<h3>method getLastInsertId <span class="smalllinenumber">[line 963]</span></h3>
+	<h3>method getLastInsertId <span class="smalllinenumber">[line 1026]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -624,7 +626,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetNumFieldsAffected"></a>
-	<h3>method getNumFieldsAffected <span class="smalllinenumber">[line 951]</span></h3>
+	<h3>method getNumFieldsAffected <span class="smalllinenumber">[line 1014]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -649,7 +651,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetNumRowsAffected"></a>
-	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 940]</span></h3>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1003]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -674,7 +676,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetPassword"></a>
-	<h3>method getPassword <span class="smalllinenumber">[line 885]</span></h3>
+	<h3>method getPassword <span class="smalllinenumber">[line 948]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -699,7 +701,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetPort"></a>
-	<h3>method getPort <span class="smalllinenumber">[line 896]</span></h3>
+	<h3>method getPort <span class="smalllinenumber">[line 959]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -724,7 +726,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetSqlLog"></a>
-	<h3>method getSqlLog <span class="smalllinenumber">[line 907]</span></h3>
+	<h3>method getSqlLog <span class="smalllinenumber">[line 970]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -749,7 +751,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodgetUser"></a>
-	<h3>method getUser <span class="smalllinenumber">[line 874]</span></h3>
+	<h3>method getUser <span class="smalllinenumber">[line 937]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -774,7 +776,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodisSuccessfulConnect"></a>
-	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1586]</span></h3>
+	<h3>method isSuccessfulConnect <span class="smalllinenumber">[line 1663]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -812,7 +814,7 @@ $HTMLformat = false])</code>
   </div>
   <hr />
 	<a name="methodloadSqlFromFile"></a>
-	<h3>method loadSqlFromFile <span class="smalllinenumber">[line 1083]</span></h3>
+	<h3>method loadSqlFromFile <span class="smalllinenumber">[line 1146]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -867,7 +869,7 @@ $vars = array()])</code>
   </div>
   <hr />
 	<a name="methodquery"></a>
-	<h3>method query <span class="smalllinenumber">[line 1142]</span></h3>
+	<h3>method query <span class="smalllinenumber">[line 1205]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -927,7 +929,7 @@ $saveInLog = true])</code>
   </div>
   <hr />
 	<a name="methodsave"></a>
-	<h3>method save <span class="smalllinenumber">[line 1325]</span></h3>
+	<h3>method save <span class="smalllinenumber">[line 1404]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -979,7 +981,7 @@ $saveInLog = true])</code>
   </div>
   <hr />
 	<a name="methodsetAutoQuotesInFind"></a>
-	<h3>method setAutoQuotesInFind <span class="smalllinenumber">[line 830]</span></h3>
+	<h3>method setAutoQuotesInFind <span class="smalllinenumber">[line 893]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1015,7 +1017,7 @@ $value)</code>
   </div>
   <hr />
 	<a name="methodsetPosfijSeq"></a>
-	<h3>method setPosfijSeq <span class="smalllinenumber">[line 807]</span></h3>
+	<h3>method setPosfijSeq <span class="smalllinenumber">[line 870]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1051,7 +1053,7 @@ $posFij = ''])</code>
   </div>
   <hr />
 	<a name="methodsetPrimaryKey"></a>
-	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1518]</span></h3>
+	<h3>method setPrimaryKey <span class="smalllinenumber">[line 1589]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1109,7 +1111,7 @@ $field = ''])</code>
   </div>
   <hr />
 	<a name="methodsetSeqName"></a>
-	<h3>method setSeqName <span class="smalllinenumber">[line 818]</span></h3>
+	<h3>method setSeqName <span class="smalllinenumber">[line 881]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1148,7 +1150,7 @@ $name = ''])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 01 Oct 2011 13:20:05 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
+		    Documentation generated on Mon, 06 Feb 2012 09:08:02 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
 	      </div>
       </td></tr></table>
     </td>

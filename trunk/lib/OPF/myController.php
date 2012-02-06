@@ -836,14 +836,14 @@ class OPF_myController extends OPF_myControllerExt {
 	 * ?>
 	 * 
 	 * </code> 
-	 * @param  string $msg Mensaje
-	 * @param  string $iconMsg Icono que se va a mostra; critical, error, help, info, list, user, warning
-	 * @param  array $mixedButtons  Arreglo de los botones que pueda tener la caja de mensaje 
-	 * @param1 array/string $param1 Parametro 1
-	 * @param2 array/string $param2 Parametro 2
-	 * @param3 array/string $param3 Parametro 3
-	 * @param4 array/string $param4 Parametro 4
-	 * @param5 array/string $param5 Parametro 5
+	 * @param string $msg Mensaje
+	 * @param string $iconMsg Icono que se va a mostra; critical, error, help, info, list, user, warning
+	 * @param array $mixedButtons  Arreglo de los botones que pueda tener la caja de mensaje 
+	 * @param array/string $param1 Parametro 1
+	 * @param array/string $param2 Parametro 2
+	 * @param array/string $param3 Parametro 3
+	 * @param array/string $param4 Parametro 4
+	 * @param array/string $param5 Parametro 5
 	 */	
 	public function messageBox($msg = '', $iconMsg = 'warning', $mixedButtons = array(), $param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = ''){
 		
@@ -1333,7 +1333,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 * Acepta los campos seleccionados y envia a ejecucion la descarga del archivo
 	 * @ignore
 	 * @param $datForm Datos de form	
-	 * @return
+	 * @return string
 	 */
 	public function MYLIST_exportDataOk ($datForm, $format, $idList, $count){
 

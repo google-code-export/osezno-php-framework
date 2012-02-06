@@ -1,14 +1,19 @@
 <?php
-	
+
+/**
+ * Formularios
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ */
+
+
 /**
  * myForm
  *
  * La clase myForm permite al desarrollador crear/generar diferentes formas de formularios.
  *
- * @uses Creacion de formularios
  * @package OPF
+ * @uses Creacion de formularios
  * @version 1.6.0
- * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 class OPF_myForm {
 

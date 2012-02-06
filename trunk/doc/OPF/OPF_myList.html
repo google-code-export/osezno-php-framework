@@ -8,7 +8,7 @@
 <body>
 <table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
   <tr>
-    <td class="header_top">Doc Ref [1.0]<!-- OPF --></td>
+    <td class="header_top">Doc Ref [1.2]<!-- OPF --></td>
   </tr>
   <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
   <tr>
@@ -111,6 +111,7 @@ Source Location: /myList.php<br /><br />
     <li><a href="../OPF/OPF_myList.html#methodisSuccessfulProcess">isSuccessfulProcess</a></li>
     <li><a href="../OPF/OPF_myList.html#methodsetEventOnColumn">setEventOnColumn</a></li>
     <li><a href="../OPF/OPF_myList.html#methodsetExportData">setExportData</a></li>
+    <li><a href="../OPF/OPF_myList.html#methodsetExternalMethodOnColumn">setExternalMethodOnColumn</a></li>
     <li><a href="../OPF/OPF_myList.html#methodsetGlobalEventOnColumn">setGlobalEventOnColumn</a></li>
     <li><a href="../OPF/OPF_myList.html#methodsetPagination">setPagination</a></li>
     <li><a href="../OPF/OPF_myList.html#methodsetRealNameInQuery">setRealNameInQuery</a></li>
@@ -144,7 +145,7 @@ myList<br /><br /><p>Es la propuesta de osezno-framework cuando se desea impleme
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-str">'SELECT&nbsp;*&nbsp;FROM&nbsp;table'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><a href="../OPF/OPF_myList.html#methodgetList">getList</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><span class="src-id">getList</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
 </ol></p><br /><br /><br />
@@ -202,7 +203,7 @@ myList<br /><br /><p>Es la propuesta de osezno-framework cuando se desea impleme
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 466]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 476]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -277,7 +278,7 @@ $sqlORobject = ''])</code>
   </div>
   <hr />
 	<a name="methodgetList"></a>
-	<h3>method getList <span class="smalllinenumber">[line 1707]</span></h3>
+	<h3>method getList <span class="smalllinenumber">[line 1738]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -319,7 +320,7 @@ $showFirstRule = false])</code>
   </div>
   <hr />
 	<a name="methodgetNumRowsAffected"></a>
-	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1683]</span></h3>
+	<h3>method getNumRowsAffected <span class="smalllinenumber">[line 1714]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -344,7 +345,7 @@ $showFirstRule = false])</code>
   </div>
   <hr />
 	<a name="methodgetQueryForm"></a>
-	<h3>method getQueryForm <span class="smalllinenumber">[line 1420]</span></h3>
+	<h3>method getQueryForm <span class="smalllinenumber">[line 1451]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -380,7 +381,7 @@ $showFirstRule = false])</code>
   </div>
   <hr />
 	<a name="methodisSuccessfulProcess"></a>
-	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1694]</span></h3>
+	<h3>method isSuccessfulProcess <span class="smalllinenumber">[line 1725]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -405,7 +406,7 @@ $showFirstRule = false])</code>
   </div>
   <hr />
 	<a name="methodsetEventOnColumn"></a>
-	<h3>method setEventOnColumn <span class="smalllinenumber">[line 594]</span></h3>
+	<h3>method setEventOnColumn <span class="smalllinenumber">[line 604]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -485,7 +486,7 @@ $confirm_msg = ''])</code>
   </div>
   <hr />
 	<a name="methodsetExportData"></a>
-	<h3>method setExportData <span class="smalllinenumber">[line 607]</span></h3>
+	<h3>method setExportData <span class="smalllinenumber">[line 617]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -532,8 +533,78 @@ $pdf = false])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodsetExternalMethodOnColumn"></a>
+	<h3>method setExternalMethodOnColumn <span class="smalllinenumber">[line 1780]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void setExternalMethodOnColumn(
+unknown_type
+$alias, unknown_type
+$objClass, unknown_type
+$strNameMethod)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Permite asignar un metodo de una clase a un campo especifico.<br /><br /><p>Permite modificar el resultado de un campo pasandolo como parametro a un metodo dentro de una clase. El metodo no debe ser estatico.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">myMethods&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><span class="src-id">formatName&nbsp;</span><span class="src-sym">(</span><span class="src-var">$last_name</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/ucwords">ucwords</a><span class="src-sym">(</span><span class="src-var">$last_name</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$sql&nbsp;</span>=&nbsp;<span class="src-str">'SELECT&nbsp;id,&nbsp;name,&nbsp;last_name&nbsp;FROM&nbsp;table'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myList.html">OPF_myList</a></span><span class="src-sym">(</span><span class="src-str">'list_1'</span><span class="src-sym">,</span><span class="src-var">$sql</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$objClass&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">myMethods</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><span class="src-id">setExternalMethodOnColumn</span><span class="src-sym">(</span><span class="src-str">'last_name'</span><span class="src-sym">,</span><span class="src-var">$objClass</span><span class="src-str">'formatName'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;echo&nbsp;<span class="src-var">$myList</span><span class="src-sym">-&gt;</span><span class="src-id">getList</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">unknown_type&nbsp;&nbsp;</td>
+        <td><b>$alias</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">unknown_type&nbsp;&nbsp;</td>
+        <td><b>$objClass</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">unknown_type&nbsp;&nbsp;</td>
+        <td><b>$strNameMethod</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodsetGlobalEventOnColumn"></a>
-	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 678]</span></h3>
+	<h3>method setGlobalEventOnColumn <span class="smalllinenumber">[line 688]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -626,7 +697,7 @@ $events = array ()])</code>
   </div>
   <hr />
 	<a name="methodsetPagination"></a>
-	<h3>method setPagination <span class="smalllinenumber">[line 512]</span></h3>
+	<h3>method setPagination <span class="smalllinenumber">[line 522]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -668,7 +739,7 @@ $rows = 20])</code>
   </div>
   <hr />
 	<a name="methodsetRealNameInQuery"></a>
-	<h3>method setRealNameInQuery <span class="smalllinenumber">[line 797]</span></h3>
+	<h3>method setRealNameInQuery <span class="smalllinenumber">[line 807]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -737,7 +808,7 @@ $alias)</code>
   </div>
   <hr />
 	<a name="methodsetSqlDebug"></a>
-	<h3>method setSqlDebug <span class="smalllinenumber">[line 529]</span></h3>
+	<h3>method setSqlDebug <span class="smalllinenumber">[line 539]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -773,7 +844,7 @@ $use = true])</code>
   </div>
   <hr />
 	<a name="methodsetTheme"></a>
-	<h3>method setTheme <span class="smalllinenumber">[line 496]</span></h3>
+	<h3>method setTheme <span class="smalllinenumber">[line 506]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -812,7 +883,7 @@ $theme = ''])</code>
   </div>
   <hr />
 	<a name="methodsetUseOrderMethod"></a>
-	<h3>method setUseOrderMethod <span class="smalllinenumber">[line 810]</span></h3>
+	<h3>method setUseOrderMethod <span class="smalllinenumber">[line 820]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -860,7 +931,7 @@ $defaultMethod = 'ASC'])</code>
   </div>
   <hr />
 	<a name="methodsetWidthColumn"></a>
-	<h3>method setWidthColumn <span class="smalllinenumber">[line 541]</span></h3>
+	<h3>method setWidthColumn <span class="smalllinenumber">[line 551]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -905,7 +976,7 @@ $width)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 01 Oct 2011 13:20:07 -0400 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
+		    Documentation generated on Mon, 06 Feb 2012 09:08:04 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
 	      </div>
       </td></tr></table>
     </td>

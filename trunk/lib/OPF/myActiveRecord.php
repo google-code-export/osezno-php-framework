@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Acceso a bases de datos
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ */
+
 /**
  * OPF_myActiveRecord
  *
@@ -8,10 +14,9 @@
  * que tengan la informacion de cada una de las tablas a las que se
  * quieran acceder.
  *
- * @uses Acceso a bases de datos por medio de objetos de PHP
  * @package OPF
+ * @uses Acceso a bases de datos por medio de objetos de PHP
  * @version 0.1
- * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 class OPF_myActiveRecord {
 
