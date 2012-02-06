@@ -1,6 +1,0 @@
-Author
-José Ignacio Gutiérrez Guzmán
-jose.gutierrez@osezno-framework.org
-
-Version
-1.0
