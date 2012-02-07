@@ -2,26 +2,26 @@
 /**
  * Vista inicial.
  *
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
- * @copyright Copyright &copy; 2007-2011 Osezno PHP Framework
+ * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
- include 'handlerEvent.php';
+include 'handlerEvent.php';
 
- 
- /**
-  * Asignar contenidos a areas de la plantilla
-  */ 
- $objOsezno->assign('name','Instalation test');
- 
- $objOsezno->assign('desc','Instalation test');
- 
- $objOsezno->assign('main_area',testInstall::getInfoOPF());
- 
- /**
-  * Mostrar la plantilla
-  */
- $objOsezno->call_template('osezno/osezno.tpl');
- 
+
+/**
+ * Asignar contenidos a areas de la plantilla
+ */
+$objOsezno->assign('name','Instalation test');
+
+$objOsezno->assign('desc','Instalation test');
+
+$objOsezno->assign('main_area',testInstall::getInfoOPF());
+
+/**
+ * Mostrar la plantilla
+ */
+$objOsezno->call_template('osezno/osezno.tpl');
+
 ?>

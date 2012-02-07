@@ -1,9 +1,9 @@
 <?php
 
-	include 'handlerEvent.php';
+include 'handlerEvent.php';
 
-	$objOsezno->setPathFolderTemplates('../../lang/firstTime/');
+$objOsezno->setPathFolderTemplates('../../lang/firstTime/');
 
-	echo $objOsezno->call_template(LANG.'.tpl');
+echo $objOsezno->call_template(LANG.'.tpl');
 
 ?>

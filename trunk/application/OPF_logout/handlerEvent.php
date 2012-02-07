@@ -1,32 +1,26 @@
 <?php
-  /**
-   * @package OSEZNO PHP FRAMEWORK
-   * @copyright 2007-2011  
-   * @version: 0.1
-   * @author: Oscar Eduardo Aldana 
-   * @author: José Ignacio Gutiérrez Guzmán
-   * 
-   * developer@osezno-framework.org
-   *  
-   * handlerEvent.php: 
-   * Manejador de eventos del Usuario
-   *  
-   */
+/**
+ * Menjador de eventos de usuario.
+ *
+ * @author JosÃ© Ignacio GutiÃ©rrez GuzmÃ¡n <jose.gutierrez@osezno-framework.org>
+ * @link http://www.osezno-framework.org/
+ * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
+ * @license http://www.osezno-framework.org/license.txt
+ */
+include 'dataModel.php';
 
- include 'dataModel.php';
- 
 /**
  * Manejador de eventos de usuario
  *
- */	
- class eventos extends OPF_myController {
- 	
- }
+ */
+class eventos extends OPF_myController {
 
- $objEventos = new eventos($objxAjax);
- $objOsezno  = new OPF_osezno($objxAjax,$theme);
- 
- $objOsezno->setPathFolderTemplates(PATH_TEMPLATES);
- $objxAjax->processRequest();
- 
+}
+
+$objEventos = new eventos($objxAjax);
+$objOsezno  = new OPF_osezno($objxAjax,$theme);
+
+$objOsezno->setPathFolderTemplates(PATH_TEMPLATES);
+$objxAjax->processRequest();
+
 ?>

@@ -2,47 +2,47 @@
 /**
  * Vista inicial.
  *
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
- * @copyright Copyright &copy; 2007-2011 Osezno PHP Framework
+ * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
- include 'handlerEvent.php';
+include 'handlerEvent.php';
 
- 
- /**
-  * Asignar contenidos a areas de la plantilla
-  */ 
- 
- if (isset($_SESSION['profile_id'])){
 
- 	$struct_menu = new struct_menu;
- 	
- 	$objOsezno->assign('menu_struct',$struct_menu->getJsMenu());
- }
+/**
+ * Asignar contenidos a areas de la plantilla
+ */
 
- $ess_system_users = new ess_system_users;
- 
- $ess_system_users->find($_SESSION['user_id']);
- 
- $objOsezno->assign('user_login',OPF_LOGIN_31.'&nbsp;'.$ess_system_users->name);
- 
- $objOsezno->assign('open_all',OPF_OPTIONS_1);
- 
- $objOsezno->assign('close_all',OPF_OPTIONS_2);
- 
- $objOsezno->assign('home_etq','&nbsp;<b>'.APP_DESC.'</b>');
- 
- 
- if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') === FALSE) {
- 	
+if (isset($_SESSION['profile_id'])){
+
+	$struct_menu = new struct_menu;
+
+	$objOsezno->assign('menu_struct',$struct_menu->getJsMenu());
+}
+
+$ess_system_users = new ess_system_users;
+
+$ess_system_users->find($_SESSION['user_id']);
+
+$objOsezno->assign('user_login',OPF_LOGIN_31.'&nbsp;'.$ess_system_users->name);
+
+$objOsezno->assign('open_all',OPF_OPTIONS_1);
+
+$objOsezno->assign('close_all',OPF_OPTIONS_2);
+
+$objOsezno->assign('home_etq','&nbsp;<b>'.APP_DESC.'</b>');
+
+
+if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') === FALSE) {
+
 	$objOsezno->assign('essentials','OseznoPHP');
- }
- 
- 
- /**
-  * Mostrar la plantilla
-  */
- $objOsezno->call_template('options/options.tpl');
-  
+}
+
+
+/**
+ * Mostrar la plantilla
+ */
+$objOsezno->call_template('options/options.tpl');
+
 ?>

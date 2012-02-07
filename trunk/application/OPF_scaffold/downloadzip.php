@@ -2,38 +2,38 @@
 /**
  * Vista inicial.
  *
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
- * @copyright Copyright &copy; 2007-2011 Osezno PHP Framework
+ * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
- include 'handlerEvent.php';
+include 'handlerEvent.php';
 
 
- $zipFile = new ZIP_zipfile();
- 
- $zipFile->add_dir($_GET['namefolder'].'/');
- 
- $zipFile->add_file($_SESSION['SCAFF_TEMP_ZIP_FILES_C']['index'], $_GET['namefolder'].'/index.php');
- 
- $zipFile->add_file($_SESSION['SCAFF_TEMP_ZIP_FILES_C']['handler'], $_GET['namefolder'].'/handlerEvent.php');
- 
- $zipFile->add_file($_SESSION['SCAFF_TEMP_ZIP_FILES_C']['data'], $_GET['namefolder'].'/dataModel.php');
- 
- header("Content-type: application/octet-stream");
- 
- header("Content-disposition: attachment; filename=".$_GET['namefolder'].".zip");
- 
- if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")){
- 
- 	header('Pragma: private');
- 
- 	header('Cache-control: private, must-revalidate');
- }
- 
- unset($_SESSION['SCAFF_TEMP_ZIP_FILES_C']);
- 
- echo $zipFile->file();
- 
+$zipFile = new ZIP_zipfile();
+
+$zipFile->add_dir($_GET['namefolder'].'/');
+
+$zipFile->add_file($_SESSION['SCAFF_TEMP_ZIP_FILES_C']['index'], $_GET['namefolder'].'/index.php');
+
+$zipFile->add_file($_SESSION['SCAFF_TEMP_ZIP_FILES_C']['handler'], $_GET['namefolder'].'/handlerEvent.php');
+
+$zipFile->add_file($_SESSION['SCAFF_TEMP_ZIP_FILES_C']['data'], $_GET['namefolder'].'/dataModel.php');
+
+header("Content-type: application/octet-stream");
+
+header("Content-disposition: attachment; filename=".$_GET['namefolder'].".zip");
+
+if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")){
+
+	header('Pragma: private');
+
+	header('Cache-control: private, must-revalidate');
+}
+
+unset($_SESSION['SCAFF_TEMP_ZIP_FILES_C']);
+
+echo $zipFile->file();
+
 
 ?>

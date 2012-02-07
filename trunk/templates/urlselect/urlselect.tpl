@@ -4,7 +4,7 @@
 /*--------------------------------------------------|
 | dTree 2.05 | www.destroydrop.com/javascript/tree/ |
 |---------------------------------------------------|
-| Copyright (c) 2002-2003 Geir Landrö               |
+| Copyright (c) 2002-2003 Geir Landrï¿½               |
 |--------------------------------------------------*/
 
 .dtree {
@@ -37,6 +37,7 @@
 }
 </style>
 <script type="text/javascript" src="js/dtree.js"></script>
+<meta charset="UTF-8">
 </head>
 <body>
 <div class="dtree">

@@ -4,12 +4,12 @@
  * - Acceso a datos de las bases de datos
  * - Retorna informacion que el Controlador muestra al usuario
  *
- * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ * @author Josï¿½ Ignacio Gutiï¿½rrez Guzmï¿½n <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
- include '../../config/configApplication.php';
- 
- 
+include '../../config/configApplication.php';
+
+
 ?>

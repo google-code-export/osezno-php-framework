@@ -1,14 +1,14 @@
 <?php
 /**
-* myControllerExt
-*
-* @internal
-* @uses Controlador de eventos
-* @package	OPF
-* @version 0.1
-* @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
-*
-*/
+ * myControllerExt
+ *
+ * @internal
+ * @uses Controlador de eventos
+ * @package	OPF
+ * @version 0.1
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ *
+ */
 class OPF_myControllerExt {
 
 	/**
@@ -27,7 +27,7 @@ class OPF_myControllerExt {
 
 		if (is_array($arrayReplacement)){
 			$arrayKeys = array_keys($arrayReplacement);
-				
+
 			$contenido = str_ireplace ( $arrayKeys, $arrayReplacement, $contenido);
 		}
 

@@ -8,7 +8,8 @@
 	vertical-align: middle;
 }
 </style>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-type" content="text/html">
+<meta charset="UTF-8">
 <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="0">
 </head>

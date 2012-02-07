@@ -2,29 +2,29 @@
 /**
  * Vista inicial.
  *
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
- * @copyright Copyright &copy; 2007-2011 Osezno PHP Framework
+ * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
- include 'handlerEvent.php';
+include 'handlerEvent.php';
 
- 
- /**
-  * Asignar contenidos a areas de la plantilla
-  */
- $OPF_passwd = new OPF_passwd;
- 
- $objOsezno->assign('nom_modulo',htmlentities(OPF_PASSWD_TITLE));
- 
- $objOsezno->assign('desc_modulo',htmlentities(OPF_PASSWD_DESC));
- 
- $objOsezno->assign('content1',$OPF_passwd->getFormChngPasswd());
- 
-  
- /**
-  * Mostrar la plantilla
-  */
- $objOsezno->call_template('modulo/modulo.tpl');
- 
+
+/**
+ * Asignar contenidos a areas de la plantilla
+ */
+$OPF_passwd = new OPF_passwd;
+
+$objOsezno->assign('nom_modulo',OPF_PASSWD_TITLE);
+
+$objOsezno->assign('desc_modulo',OPF_PASSWD_DESC);
+
+$objOsezno->assign('content1',$OPF_passwd->getFormChngPasswd());
+
+
+/**
+ * Mostrar la plantilla
+ */
+$objOsezno->call_template('modulo/modulo.tpl');
+
 ?>

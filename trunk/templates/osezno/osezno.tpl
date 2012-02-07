@@ -24,7 +24,9 @@ body {
 	font-style:normal;
 }
 -->
-</style></head>
+</style>
+<meta charset="UTF-8">
+</head>
 <body background="../../templates/osezno/bg.jpg" onload="{on_load}">
 <div align="center">
   <table width="780" border="0" cellspacing="0" cellpadding="0">
