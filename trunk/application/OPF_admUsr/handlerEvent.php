@@ -48,8 +48,6 @@ class eventos extends OPF_myController {
 			$this->closeMessageBox();
 
 		}else
-		$this->alert($ess_system_users->getErrorLog());
-
 
 		return $this->response;
 	}

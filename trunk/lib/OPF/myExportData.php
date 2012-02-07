@@ -442,7 +442,7 @@ class OPF_myExportData {
 								}else
 								$widthCol = $widthDefa+40;
 
-								$this->objPDF->Cell(($widthCol/6),5,ucwords(strtolower($key)),1,0,'C',false);
+								$this->objPDF->Cell(($widthCol/6),5,ucwords(strtolower(utf8_decode($key))),1,0,'C',false);
 
 							}
 
@@ -483,7 +483,7 @@ class OPF_myExportData {
 
 							$align = 'R';
 
-							$estaFila[] = $val;
+							$estaFila[] = utf8_decode($val);
 
 							$estaFilaAligns[] = ($widthCol/6);
 
