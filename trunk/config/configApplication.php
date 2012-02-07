@@ -56,37 +56,37 @@ $sessionCacheExpire = 3600;
  * Nombre de base de datos.
  * @var string
  */
-$database = 'oseznotestfinal';
+$database = '';
 
 /**
  * Motor de base de datos; pgsql ó mysql.
  * @var string
  */
-$engine = 'pgsql';
+$engine = '';
 
 /**
  * Direccion Ip o nombre de maquina del motor de base de datos.
  * @var string
  */
-$host = 'localhost';
+$host = '';
 
 /**
  * Nombre de usuario para conexion a base de datos.
  * @var string
  */
-$user = 'postgres';
+$user = '';
 
 /**
  * Contraseña de usuario para conexión a base de datos.
  * @var string
  */
-$password = 'postgres';
+$password = '';
 
 /**
  * Puerto para la conexión, Mysql 3306, Postgre 5432.
  * @var integer
  */
-$port = 5432;
+$port = '';
 
 /**
  * Encender o Apagar el Debug.

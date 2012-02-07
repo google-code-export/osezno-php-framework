@@ -48,6 +48,7 @@ class eventos extends OPF_myController {
 			$this->closeMessageBox();
 
 		}else
+		$this->alert($ess_system_users->getErrorLog());
 
 		return $this->response;
 	}
@@ -181,8 +182,6 @@ class eventos extends OPF_myController {
 
 						$this->MYLIST_reload('lst_users');
 
-						$this->alert($ess_system_users->getSqlLog());
-							
 						$this->closeModalWindow();
 
 					}else{
