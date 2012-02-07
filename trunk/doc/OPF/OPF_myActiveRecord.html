@@ -180,7 +180,7 @@ $usePerConnection = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Abre una conexion a base de datos.<br /><br /><p>Instancia a un nuevo objeto una conexion a la base con los parametros usados.  El parametro engine puede ser mysql o pgsql.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+		Abre una conexi贸n a base de datos.<br /><br /><p>Instancia a un nuevo objeto una conexion a la base con los parametros usados.  El parametro engine puede ser mysql o pgsql.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1:</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -247,7 +247,7 @@ $usePerConnection = false])</code>
           <tr>
         <td class="type">boolean&nbsp;&nbsp;</td>
         <td><b>$usePerConnection</b>&nbsp;&nbsp;</td>
-        <td>Usar o no conexi髇 persistente.</td>
+        <td>Usar o no conexi贸n persistente.</td>
       </tr>
         </table>
     </div><br />
@@ -264,7 +264,7 @@ $usePerConnection = false])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Inicia una transaccion.<br /><br /><p>Inicia un bloque de transaccion.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+		Inicia una transacci贸n.<br /><br /><p>Inicia un bloque de transaccion.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -361,7 +361,7 @@ $strCond)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Finaliza una transaccion.<br /><br /><p>Finaliza un bloque de transaccion. Y retorna su exito o no exito.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+		Finaliza una transacci贸n.<br /><br /><p>Finaliza un bloque de transaccion. Y retorna su exito o no exito.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$myAct&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OPF/OPF_myActiveRecord.html">OPF_myActiveRecord</a></span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -407,7 +407,7 @@ $offSet = ''])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Busca registros que coincidan con el parametro de consulta.<br /><br /><p>Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.  [Nota 1:] El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.  [Nota 2:] El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.  [Nota 3:] EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.  [Nota 4:] Es posible agregar mas de una condici髇 utilizando los operadores de comparacion ('&lt;&gt;','&lt;=','&gt;=', '!=','&gt;', '&lt;','=', '!') y el conector l骻ico &amp; (AND) Ver ejemplo 2.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+		Busca registros que coincidan con el parametro de consulta.<br /><br /><p>Trata de encontrar registros de una tabla en la base de datos en uso que cumplan con determinadas condiciones segun campos de la tabla.  [Nota 1:] El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.  [Nota 2:] El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.  [Nota 3:] EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.  [Nota 4:] Es posible agregar mas de una condici贸n utilizando los operadores de comparacion ('&lt;&gt;','&lt;=','&gt;=', '!=','&gt;', '&lt;','=', '!') y el conector l锟絞ico &amp; (AND) Ver ejemplo 2.  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-key">class&nbsp;</span><span class="src-id">usuarios&nbsp;</span><span class="src-key">extends&nbsp;</span><span class="src-id">myActiveRecord&nbsp;</span><span class="src-sym">{</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -419,7 +419,7 @@ $offSet = ''])</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1&nbsp;Condici髇&nbsp;鷑ica:</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;1&nbsp;Condici贸n&nbsp;煤nica:</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$usuarios&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">usuarios</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -431,7 +431,7 @@ $offSet = ''])</code>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;<span class="src-str">'No&nbsp;existe&nbsp;el&nbsp;usuario&nbsp;con&nbsp;el&nbsp;Id&nbsp;1'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;2&nbsp;Condici髇&nbsp;compuesta:</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">#&nbsp;Ejemplo&nbsp;2&nbsp;Condici贸n&nbsp;compuesta:</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$apellido&nbsp;</span>=&nbsp;<span class="src-str">'ortegon'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
@@ -991,7 +991,7 @@ $value)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Configurar comillas automaticas.<br /><br /><p>Configurar si se van a usar o no las comillas automaticas cuando se realizan consultas con el metodo Query. Las comillas automaticas se aplican en cadenas de caracteres alfanumericas.</p><br /><br /><br />
+		Configurar comillas autom谩ticas.<br /><br /><p>Configurar si se van a usar o no las comillas automaticas cuando se realizan consultas con el metodo Query. Las comillas automaticas se aplican en cadenas de caracteres alfan煤mericas.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -1150,7 +1150,7 @@ $name = ''])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Mon, 06 Feb 2012 09:08:02 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
+		    Documentation generated on Tue, 07 Feb 2012 17:30:35 -0500 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a> jose.gutierrez@osezno-framework.org
 	      </div>
       </td></tr></table>
     </td>
