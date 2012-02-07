@@ -275,11 +275,12 @@
  				$this->notificationWindow(htmlentities(MSG_CAMBIOS_GUARDADOS),5,'ok');
  				
  				if (!$id)
- 				$this->onClickGetDetList($ess_master_tables->getLastInsertId());
+ 				
+ 					$this->onClickGetDetList($ess_master_tables->getLastInsertId());
  				
  			}else{
  				
- 				$this->messageBox($ess_master_tables->getErrorLog(),'error');
+ 				$this->messageBox($ess_master_tables->getSqlLog()."\n".$ess_master_tables->getErrorLog(),'error');
  			}
  			
  		}else 

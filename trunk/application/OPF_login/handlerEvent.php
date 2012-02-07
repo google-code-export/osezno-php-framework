@@ -221,7 +221,7 @@
  						$bloqs = explode ('#bloq',$sql);
  					
  						$error = '';
- 								
+ 						
  						foreach ($bloqs as $bloq){
  					
  							if (strlen(trim($bloq)) != 0){
@@ -229,6 +229,8 @@
  								if (!@pg_query($link, $bloq)){
  					
  									$error .= pg_last_error($link);
+ 									
+ 									$this->alert($bloq).pg_last_error($link);
  									
  									break;
  								}
@@ -241,7 +243,7 @@
  					
  							@pg_query($link, 'ROLLBACK;');
  							
- 							$this->modalWindow(utf8_encode($error).'<br>client_encoding:'.pg_client_encoding($link),'Error',300,300,2);
+ 							$this->modalWindow($error.'<br>client_encoding:'.pg_client_encoding($link),'Error',300,300,2);
  					
  						}else{
  					
@@ -251,7 +253,6 @@
  						}
  					
  					}
- 					
  					
  				break;
  			}

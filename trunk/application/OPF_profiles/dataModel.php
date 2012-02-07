@@ -91,7 +91,7 @@
  			
  				$sts = true;
  			
- 			$myForm->addCheckBox(utf8_decode($desc),'chk_'.$id,$sts);
+ 			$myForm->addCheckBox($desc,'chk_'.$id,$sts);
  			
  			$this->groups[] = 'chk_'.$id;
  			

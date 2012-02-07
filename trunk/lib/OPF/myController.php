@@ -1601,7 +1601,7 @@ class OPF_myController extends OPF_myControllerExt {
 								
 								if (!is_numeric($nVals))
 								
-									$nVals = '\''.utf8_decode($nVals).'\'';
+									$nVals = '\''.$nVals.'\'';
 								
 								$nVal .= $nVals.',';
 							}
@@ -1610,13 +1610,13 @@ class OPF_myController extends OPF_myControllerExt {
 						
 					}else if (in_array($datForm['relation_'.$i],array('like','notlike'))){
 						
-						$val = '\''.utf8_decode($val).'\'';
+						$val = '\''.$val.'\'';
 						
 					}else{
 						
 						if (!is_numeric($val))
 						
-							$val = '\''.utf8_decode($val).'\'';
+							$val = '\''.$val.'\'';
 							
 					}
 					

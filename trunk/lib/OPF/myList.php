@@ -1243,7 +1243,7 @@ class OPF_myList  {
                                                         	
                                                         }else{
 
-                                                        	$buf.=($val).' ';
+                                                        	$buf.= ($val).' ';
                                                         	
                                                         }
                                         

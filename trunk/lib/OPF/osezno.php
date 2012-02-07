@@ -363,7 +363,7 @@ class OPF_osezno {
   			die ($this->arrayAssignAreasHead['css_errors'].$msgError);
   		}
   		
-  		echo utf8_decode($newContent);
+  		echo $newContent;
   	}
   	
   }

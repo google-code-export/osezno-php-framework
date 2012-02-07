@@ -95,7 +95,7 @@ CREATE TABLE public.ess_menu (
     ord smallint,
     usuario_id integer,
     datetime timestamp(6) without time zone
-) WITHOUT OIDS;
+);
 ALTER TABLE ONLY public.ess_menu ALTER COLUMN id SET STATISTICS 0;
 ALTER TABLE ONLY public.ess_menu ALTER COLUMN menu_id SET STATISTICS 0;
 ALTER TABLE ONLY public.ess_menu ALTER COLUMN description SET STATISTICS 0;
@@ -143,7 +143,7 @@ CREATE TABLE public.ess_profiles_detail (
     id integer DEFAULT nextval('ess_profiles_detail_id_seq'::regclass) NOT NULL,
     profiles_id integer,
     menu_id integer
-) WITHOUT OIDS;
+);
 ALTER TABLE ONLY public.ess_profiles_detail ALTER COLUMN id SET STATISTICS 0;
 ALTER TABLE ONLY public.ess_profiles_detail ALTER COLUMN profiles_id SET STATISTICS 0;
 ALTER TABLE ONLY public.ess_profiles_detail ALTER COLUMN menu_id SET STATISTICS 0;

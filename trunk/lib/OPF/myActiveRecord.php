@@ -721,7 +721,7 @@ class OPF_myActiveRecord {
 				
 				if (!is_numeric($name)){
 					
-					$cloThis->$name = utf8_encode($value);
+					$cloThis->$name = $value;
 				}
 			}
 		}
@@ -986,7 +986,7 @@ class OPF_myActiveRecord {
 		if (trim($GLOBALS['OF_SQL_LOG_ERROR'])){
 			
 			if ($HTMLformat)
-				$error = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.htmlentities($GLOBALS['OF_SQL_LOG']).'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.htmlentities($GLOBALS['OF_SQL_LOG_ERROR']).'</div></div>';
+				$error = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.($GLOBALS['OF_SQL_LOG']).'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.($GLOBALS['OF_SQL_LOG_ERROR']).'</div></div>';
 			else 
 				$error = trim($GLOBALS['OF_SQL_LOG_ERROR']);
 		}
@@ -1418,7 +1418,7 @@ class OPF_myActiveRecord {
 					
 					$sql.= $field.' = ?, ';
 
-					$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field);
+					$this->arrayPrepare[$this->myact_table][] = ($this->$field);
 				}
 				
 			}
@@ -1451,7 +1451,7 @@ class OPF_myActiveRecord {
 
 					$sqlValues .= '?, ';
 						
-					$this->arrayPrepare[$this->myact_table][] = utf8_decode($this->$field); 
+					$this->arrayPrepare[$this->myact_table][] = ($this->$field); 
 				}
 
 			}									

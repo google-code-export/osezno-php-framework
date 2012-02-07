@@ -483,7 +483,7 @@ class OPF_myExportData {
 
                                                        $align = 'R';
                                                 
-                                                     $estaFila[] = utf8_decode($val);
+                                                     $estaFila[] = $val;
 
                                                      $estaFilaAligns[] = ($widthCol/6);
                                                         
@@ -581,7 +581,7 @@ class OPF_myExportData {
                                                 
                                                         $out .= '<td '.$bg.' align="'.$align.'">';
                                 
-                                                        $out .= utf8_decode($val);
+                                                        $out .= $val;
                         
                                                         $out .= '</td>';
                                                 }
