@@ -4,7 +4,7 @@
  * Multicell solution
  *
  * Clase alterna para resolver el problema de aplicar multicells con un alto definido.
- * Soluci�n aportada desde http://www.fpdf.org/en/script/script3.php <oliver@fpdf.org>
+ * Solución aportada desde http://www.fpdf.org/en/script/script3.php <oliver@fpdf.org>
  *
  * @package OPF
  * @ignore
@@ -177,7 +177,7 @@ class PDF_MC_Table extends FPDF
  * @uses Exportar cosultas SQL
  * @package OPF
  * @version 0.1
- * @author Jos� Ignacio Guti�rrez Guzm�n <jose.gutierrez@osezno-framework.org>
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 class OPF_myExportData {
 
@@ -260,13 +260,13 @@ class OPF_myExportData {
 	 *
 	 *<code>
 	 *
-	 *Ejemplo 1: Salida a un archivo f�sico:
+	 *Ejemplo 1: Salida a un archivo físico:
 	 *
 	 *<?php
 	 *
 	 *      $myExport = new OPF_myExportData('SELECT fiel1, field2, field3 FROM table','pdf','/var/www/html/project/report/report.pdf');
 	 *
-	 *      # Cuando generamos un archivo en formato PDF es prescindible ajustar el tama�o de las columnas pues no es posible calcular su valor automaticamente.
+	 *      # Cuando generamos un archivo en formato PDF es prescindible ajustar el tamaño de las columnas pues no es posible calcular su valor automáticamente.
 	 *
 	 *      $myExport->setWidth('fiel1',100);
 	 *

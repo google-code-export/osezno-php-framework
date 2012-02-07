@@ -10,6 +10,7 @@
 <table align="center" width="350px" border="0">
 <tr><td align="center"><br><br><br><br><img src="../../templates/login/imagenes/logo.jpg"></td></tr>
 <tr><td><div align="center" id="content1">{content1}</div></td></tr>
+<tr><td>{content2}</td></tr>
 </table>
 </body>
 </html>

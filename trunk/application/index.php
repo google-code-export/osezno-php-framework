@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_id'])){
 </HEAD>
 <FRAMESET cols="170,*" border="0">
 
-	<frame name="menu" src="OPF_options/" title="Menu de navegaci�n">
+	<frame name="menu" src="OPF_options/" title="Menu de navegación">
 
 	<frame name="modulo" src="OPF_welcome/" title="Modulos">
 

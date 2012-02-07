@@ -106,7 +106,7 @@ class OPF_login {
 		return $this->errorLogIn;
 	}
 
-	public function getFormInstall ($type, $datForm = ''){
+	public function getFormInstall ($type, $datForm = '', $disabled = false){
 			
 		$myForm = new OPF_myForm('install_essentials');
 			
@@ -129,6 +129,10 @@ class OPF_login {
 			
 		$engine = $datForm['engine'];
 			
+		if ($disabled)
+		
+		$myForm->addDisabled('engine');
+		
 		$myForm->addSelect(OPF_LOGIN_8, 'engine', $arEngine, $engine);
 			
 		$db = '';
@@ -139,12 +143,14 @@ class OPF_login {
 
 		$myForm->addText(OPF_LOGIN_12,'db',$db);
 
-		$encoding = '';
+		$encoding = 'UTF8';
 			
 		if (isset($datForm['encoding']))
 			
 		$encoding = $datForm['encoding'];
 
+		$myForm->addDisabled('encoding');
+		
 		$myForm->addText(OPF_LOGIN_12A,'encoding',$encoding);
 			
 		$user_db = '';
@@ -191,6 +197,10 @@ class OPF_login {
 
 			$str = OPF_LOGIN_29;
 
+			if ($disabled)
+				
+			$myForm->addDisabled('btn_install');
+			
 			$myForm->addButton('btn_install',OPF_LOGIN_17,'new.gif');
 				
 			$myForm->addEvent('btn_install', 'onclick', 'onClickCreateBD');

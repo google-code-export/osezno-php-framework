@@ -7,7 +7,7 @@
  *
  * <code>
  *
- * # Ejemplo en la definiciÛn:
+ * # Ejemplo en la definici√≥n:
  *
  * <?php
  *
@@ -21,14 +21,14 @@
  * @uses Listas dinamicas
  * @package OPF
  * @version 0.1
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  */
 class OPF_myList  {
 
 	/**
 	 * Ancho de la lista
 	 *
-	 * Define el ancho de la lista din·mica en px
+	 * Define el ancho de la lista din√°mica en px
 	 * @var integer
 	 */
 	public $width = 1000;
@@ -45,7 +45,7 @@ class OPF_myList  {
 	/**
 	 * Borde entre celdas
 	 *
-	 * TamaÒo del borde de la lista entre celdas
+	 * Tama√±o del borde de la lista entre celdas
 	 * @access private
 	 * @var integer
 	 */
@@ -513,11 +513,11 @@ class OPF_myList  {
                 }
 
                 /**
-                 * Configura una paginaciÛn.
+                 * Configura una paginaci√≥n.
                  *
                  * Configura una paginacion sobre la lista dinamica.
-                 * @param boolean $use  Activa o inactiva la paginaciÛn de la lista din·mica.
-                 * @param integer $rows N˙mero de registro a mostrar por pagina.
+                 * @param boolean $use  Activa o inactiva la paginaci√≥n de la lista din√°mica.
+                 * @param integer $rows N√∫mero de registro a mostrar por pagina.
                  */
                 public function setPagination ($use = true, $rows = 20){
 
@@ -1418,7 +1418,7 @@ class OPF_myList  {
                 }
 
                 /**
-                 * Retorna el campo checkbox que acompaÒa cada registro cuando el evento global esta activo
+                 * Retorna el campo checkbox que acompa√±a cada registro cuando el evento global esta activo
                  *
                  * @param $getNumFldsAftd       Numero de campos afectados
                  * @param $cadParam                     Columnas ordenadas
@@ -1445,7 +1445,7 @@ class OPF_myList  {
                 /**
                  * Obtener formulario de filtro
                  *
-                 * Retorna el formulario de filtro para una lista din·mica.
+                 * Retorna el formulario de filtro para una lista din√°mica.
                  * @param boolean $showFirstRule        Mostrar primera regla/filtro al iniciar.
                  * @return string
                  */
@@ -1731,7 +1731,7 @@ class OPF_myList  {
                 /**
                  * Obtener HTML
                  *
-                 * Obtiene el contenido de la lista din·mica como codigo HTML
+                 * Obtiene el contenido de la lista din√°mica como codigo HTML
                  * @param boolean $showQueryForm        Mostrar formulario de consulta
                  * @param boolean $showFirstRule        Mostrar primera regla a aplicar si el formulario de consulta se va a usar
                  * @return string

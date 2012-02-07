@@ -5,7 +5,7 @@
  * @uses Creacion de pestanas
  * @package OPF
  * @version 0.5
- * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ * @author JosÃ© Ignacio GutiÃ©rrez GuzmÃ¡n <jose.gutierrez@osezno-framework.org>
  *
  * La clase crea pestanas para uso de varias URLs dentro de una misma ventana
  *
@@ -38,7 +38,7 @@ class OPF_myTabs{
 	 * ?>
 	 *
 	 * </code>
-	 * @param string $id_tabs Nombre del grupo de pestañas.
+	 * @param string $id_tabs Nombre del grupo de pestaÃ±as.
 	 */
 	public function __construct($id_tabs = ''){
 
@@ -60,7 +60,7 @@ class OPF_myTabs{
 	}
 
 	/**
-	 * Agrega una pestaña a la salida.
+	 * Agrega una pestaÃ±a a la salida.
 	 *
 	 * Se encarga de agregar nuevas pestanas a la salida HTML.
 	 * Si se apunta a un script este debe estar al mismo nivel si se quieren preservar los eventos declarados.
@@ -73,9 +73,9 @@ class OPF_myTabs{
 	 *
 	 * $myTabs = new OPF_myTabs;
 	 *
-	 * $myTabs->addTab('Opción A','a.php');
+	 * $myTabs->addTab('OpciÃ³n A','a.php');
 	 *
-	 * $myTabs->addTab('Opción B','../b.html');
+	 * $myTabs->addTab('OpciÃ³n B','../b.html');
 	 *
 	 * echo $myTabs->getTabsHtml();
 	 *
@@ -91,9 +91,9 @@ class OPF_myTabs{
 	}
 
 	/**
-	 * Obtiene las pestañas.
+	 * Obtiene las pestaÃ±as.
 	 *
-	 * Obtiene el HTML para imprimir las pestañas o insertalas en una plantilla.
+	 * Obtiene el HTML para imprimir las pestaï¿½as o insertalas en una plantilla.
 	 * <code>
 	 *
 	 * tabs.tpl
@@ -113,29 +113,29 @@ class OPF_myTabs{
 	 *
 	 * $myTabsA = new OPF_myTabs('primergrupo');
 	 *
-	 * $myTabsA->addTab('Opción A','a.php');
+	 * $myTabsA->addTab('OpciÃ³n A','a.php');
 	 *
-	 * $myTabsA->addTab('Opción B','b.php');
+	 * $myTabsA->addTab('OpciÃ³n B','b.php');
 	 *
-	 * $objOsezno->assign('tabs_a',$myTabsA->getTabsHtml('Opción A'));
+	 * $objOsezno->assign('tabs_a',$myTabsA->getTabsHtml('OpciÃ³n A'));
 	 *
-	 * // Podemos crear los grupos de pestañas que necesitemos.
+	 * // Podemos crear los grupos de pestaÃ±as que necesitemos.
 	 *
 	 * $myTabsB = new OPF_myTabs;
 	 *
-	 * $myTabsB->addTab('Opción C','c.php');
+	 * $myTabsB->addTab('OpciÃ³n C','c.php');
 	 *
-	 * $myTabsB->addTab('Opción D','d.php');
+	 * $myTabsB->addTab('OpciÃ³n D','d.php');
 	 *
-	 * // Es posible mostrar por defecto una pestaña al cargar el HTML.
+	 * // Es posible mostrar por defecto una pestaÃ±a al cargar el HTML.
 	 *
-	 * $objOsezno->assign('tabs_b',$myTabsB->getTabsHtml('Opción D'));
+	 * $objOsezno->assign('tabs_b',$myTabsB->getTabsHtml('OpciÃ³n D'));
 	 *
 	 * $objOsezno->call_template('tabs.tpl');
 	 *
 	 * ?>
 	 * </code>
-	 * @param string $tabDefa Nombre pestaña por defecto
+	 * @param string $tabDefa Nombre pestaÃ±a por defecto
 	 * @return string
 	 */
 	public function getTabsHtml($tabDefa = ''){

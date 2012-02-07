@@ -21,7 +21,7 @@ $OPF_profiles = new OPF_profiles;
 
 $objOsezno->assign('content1',$OPF_profiles->getFormStartUp());
 
-$objOsezno->assign('content2',$OPF_profiles->getListProfiles().('descripción') );
+$objOsezno->assign('content2',$OPF_profiles->getListProfiles());
 
 /**
  * Mostrar la plantilla

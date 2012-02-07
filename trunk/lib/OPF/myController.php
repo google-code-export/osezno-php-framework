@@ -30,7 +30,7 @@
  * @uses Controlador de eventos
  * @package	OPF
  * @version 0.1
- * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ * @author JosÃ© Ignacio GutiÃ©rrez GuzmÃ¡n <jose.gutierrez@osezno-framework.org>
  */
 class OPF_myController extends OPF_myControllerExt {
 
@@ -158,7 +158,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 */
 	private $myDinamicListAcentkW = array(
 
-		'pgsql'=>'TO_ASCII'
+		'pgsql'=>''
 	
 	);
 
@@ -279,13 +279,13 @@ class OPF_myController extends OPF_myControllerExt {
 	 *
 	 * Response command that is used  to execute a
 	 * portion of javascript on the browser.
-	 * The script  runs  in it’s own  context,  so
-	 * variables declared locally, using the ‘var’
+	 * The script  runs  in its own  context,  so
+	 * variables declared locally, using the 'var'
 	 * keyword, will  no longer be available after
 	 * the call.
 	 * To construct a variable that will be accessable
 	 * globally,  even after the script  has executed,
-	 * leave off the ‘var’ keyword.
+	 * leave off the ï¿½varï¿½ keyword.
 	 *
 	 * @param  string $strJs The script to execute.
 	 */
@@ -296,7 +296,7 @@ class OPF_myController extends OPF_myControllerExt {
 
 	/**
 	 * Response  command that indicates the specified
-	 * data should be appended to the given element’s
+	 * data should be appended to the given elements
 	 * property.
 	 *
 	 * @param  string $idElement The id of the element to be updated.
@@ -310,7 +310,7 @@ class OPF_myController extends OPF_myControllerExt {
 
 	/**
 	 * Response command to prepend the specified value
-	 * onto the given element’s property.
+	 * onto the given elementï¿½s property.
 	 *
 	 * @param  string $idElement The id of the element to be updated.
 	 * @param  string $propertyElement The property to be updated.
@@ -446,7 +446,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 * @param  string $strNameEvent The name of the event to add the handler to.
 	 * @param  string $strNameFunction The javascript function to call when the event is fired.
 	 *
-	 * You can add more than one event handler to an element’s event using this method.
+	 * You can add more than one event handler to an elementï¿½s event using this method.
 	 */
 	public function addHandler ($idElement, $strNameEvent, $strNameFunction){
 			
@@ -806,13 +806,13 @@ class OPF_myController extends OPF_myControllerExt {
 	 *
 	 * class events extends myController {
 	 *
-	 * 		# Evento botón de formulario:
+	 * 		# Evento botÃ³n de formulario:
 	 *
 	 * 		public function sendFormData ($formData){
 	 *
-	 * 			# En un arreglo definimos los eventos. Donde la llave es la Etiqueta del botón y el valor es el evento que va a llamar.
+	 * 			# En un arreglo definimos los eventos. Donde la llave es la Etiqueta del botÃ³n y el valor es el evento que va a llamar.
 	 * 			# Si la llave no es definida, el valor sera tomado como la etiqueta del boton y el evento por defecto sera closeModalWindow.
-	 * 			# Del parametro número 4 al numero 8 puede enviar variables tipo caracter, numericas o arreglos.
+	 * 			# Del parametro nÃºmero 4 al numero 8 puede enviar variables tipo caracter, numericas o arreglos.
 	 * 			# Los parametros enviados seran recibidos por el evento definido.
 	 *
 	 * 			$events = array ('Aceptar'=>'acceptSendFormData','Cancelar');
@@ -825,7 +825,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 * 		# Creamos el evento del message box y los programamos
 	 * 		public function acceptSendFormData ($formData){
 	 *
-	 * 			$this->alert('Usted pulso el botón aceptar, enviaste esto: '.var_export($formData,true));
+	 * 			$this->alert('Usted pulso el botÃ³n aceptar, enviaste esto: '.var_export($formData,true));
 	 *
 	 * 			$this->closeMessageBox();
 	 *
@@ -989,7 +989,7 @@ class OPF_myController extends OPF_myControllerExt {
 	}
 
 	/**
-	 * Crea una notificación.
+	 * Crea una notificaciÃ³n.
 	 *
 	 * Crea un mensaje de notificacion que no afecta la ventana principal.
 	 * @param string $strNotification Mensaje de notificacion.
@@ -1023,7 +1023,7 @@ class OPF_myController extends OPF_myControllerExt {
 	/**
 	 * Cambia fecha en campo texto.
 	 *
-	 * Evento que se cumple al cambiar el mes o año a mostrar en el calendario.
+	 * Evento que se cumple al cambiar el mes o aÃ±o a mostrar en el calendario.
 	 * @ignore
 	 * @param $partDate
 	 * @param $toUpdate
@@ -1053,7 +1053,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 *
 	 * class events extends myController {
 	 *
-	 * 		# Evento botón de formulario:
+	 * 		# Evento botÃ³n de formulario:
 	 * 		public function validateForm ($formData){
 	 *
 	 * 			# Id's de los campos requeridos.
@@ -1206,7 +1206,7 @@ class OPF_myController extends OPF_myControllerExt {
 	/**
 	 * Ordena ascendente y descendente las columnas.
 	 * @ignore
-	 * @param $idList	Id o nombre de la lista dinámica
+	 * @param $idList	Id o nombre de la lista dinÃ¡mica
 	 * @param $alias	Alias de la columna
 	 */
 	public function MYLIST_moveTo ($idList, $alias){
@@ -1705,7 +1705,7 @@ class OPF_myController extends OPF_myControllerExt {
 	/**
 	 * Recarga una lista dinamica.
 	 *
-	 * Refresca los datos contenidos de una lista dinamica previamente declarada en su ubicación actual u original.
+	 * Refresca los datos contenidos de una lista dinamica previamente declarada en su ubicaciÃ³n actual u original.
 	 * @param string $idList Id de la lista a refrescar su contenido
 	 */
 	public function MYLIST_reload($idList){
@@ -1735,11 +1735,11 @@ class OPF_myController extends OPF_myControllerExt {
 	}
 
 	/**
-	 * Activa una pestaña creada
+	 * Activa una pestaÃ±a creada
 	 *
-	 * Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña y del ID del grupo que se declaro en myTabs::_contruct.
-	 * @param string $tabName Nombre de la pestaña
-	 * @param string $idTabs Nombre grupo de pestañas
+	 * Activa una pestaÃ±a previamente creada, por medio de la etiqueta que uso para el nombre de la pestaï¿½a y del ID del grupo que se declaro en myTabs::_contruct.
+	 * @param string $tabName Nombre de la pestaÃ±a
+	 * @param string $idTabs Nombre grupo de pestaÃ±as
 	 */
 	public function MYTAB_makeActive($tabName, $idTabs = ''){
 

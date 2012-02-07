@@ -2,7 +2,7 @@
 
 /**
  * Acceso a bases de datos
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  */
 
 /**
@@ -174,7 +174,7 @@ class OPF_myActiveRecord {
 	private $keyFinded;
 
 	/**
-	 * Operadores lÛgicos
+	 * Operadores l√≥gicos
 	 *
 	 * Operadores logicos usados para buscar registros de una tabla.
 	 * @access private
@@ -243,7 +243,7 @@ class OPF_myActiveRecord {
 	private $persistentConnection;
 
 	/**
-	 * Abre una conexion a base de datos.
+	 * Abre una conexi√≥n a base de datos.
 	 *
 	 * Instancia a un nuevo objeto una conexion a la base con los parametros usados.
 	 * El parametro engine puede ser mysql o pgsql.
@@ -277,7 +277,7 @@ class OPF_myActiveRecord {
 	 * @param string $host	Ruta fisica del servidor de base de datos.
 	 * @param string $engine Motor de base de datos seleccionado. (mysql o pgsql)
 	 * @param string $port	Puerto de conexion.
-	 * @param boolean $usePerConnection	Usar o no conexiÛn persistente.
+	 * @param boolean $usePerConnection	Usar o no conexi√≥n persistente.
 	 */
 	public function __construct($database = '', $user = '', $password = '', $host = '', $engine = '', $port = '', $usePerConnection = false){
 
@@ -885,9 +885,9 @@ class OPF_myActiveRecord {
 	}
 
 	/**
-	 * Configurar comillas automaticas.
+	 * Configurar comillas autom√°ticas.
 	 *
-	 * Configurar si se van a usar o no las comillas automaticas cuando se realizan consultas con el metodo Query. Las comillas automaticas se aplican en cadenas de caracteres alfanumericas.
+	 * Configurar si se van a usar o no las comillas automaticas cuando se realizan consultas con el metodo Query. Las comillas automaticas se aplican en cadenas de caracteres alfan√∫mericas.
 	 * @param boolean $value	True o False.
 	 */
 	public function setAutoQuotesInFind ($value){
@@ -1029,7 +1029,7 @@ class OPF_myActiveRecord {
 	}
 
 	/**
-	 * Inicia una transaccion.
+	 * Inicia una transacci√≥n.
 	 *
 	 * Inicia un bloque de transaccion.
 	 * <code>
@@ -1062,7 +1062,7 @@ class OPF_myActiveRecord {
 	}
 
 	/**
-	 * Finaliza una transaccion.
+	 * Finaliza una transacci√≥n.
 	 *
 	 * Finaliza un bloque de transaccion. Y retorna su exito o no exito.
 	 * <code>
@@ -1309,7 +1309,7 @@ class OPF_myActiveRecord {
 	 * [Nota 1:] El metodo find devolvera un objeto asociado a los campos de la clase extendida (Tabla) o FALSE en caso de no encontrar registros asociados.
 	 * [Nota 2:] El metodo find solo esta disponible cuando se llama desde un objeto extendido de la clase myActiveRecord, no directamente desde myActiveRecord. En caso contrario pruebe el metodo Query.
 	 * [Nota 3:] EL metodo find solo retorna datos asociados a los campos de la tabla cuando se trata de un solo registro, sin embargo si llega a encontrar mas de un registro el metodo devolvera TRUE.
-	 * [Nota 4:] Es posible agregar mas de una condiciÛn utilizando los operadores de comparacion ('<>','<=','>=', '!=','>', '<','=', '!') y el conector lÛgico & (AND) Ver ejemplo 2.
+	 * [Nota 4:] Es posible agregar mas de una condici√≥n utilizando los operadores de comparacion ('<>','<=','>=', '!=','>', '<','=', '!') y el conector lÔøΩgico & (AND) Ver ejemplo 2.
 	 * <code>
 	 *
 	 * <?php
@@ -1324,7 +1324,7 @@ class OPF_myActiveRecord {
 	 *
 	 * }
 	 *
-	 * # Ejemplo 1 CondiciÛn ˙nica:
+	 * # Ejemplo 1 Condici√≥n √∫nica:
 	 *
 	 * $usuarios = new usuarios;
 	 *
@@ -1336,7 +1336,7 @@ class OPF_myActiveRecord {
 	 *
 	 * 	  echo 'No existe el usuario con el Id 1';
 	 *
-	 * # Ejemplo 2 CondiciÛn compuesta:
+	 * # Ejemplo 2 Condici√≥n compuesta:
 	 *
 	 * $apellido = 'ortegon';
 	 *

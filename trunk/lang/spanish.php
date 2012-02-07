@@ -59,7 +59,7 @@ define('OPF_SCAFF_TITLE','Essentials - Andamiaje');
 define('OPF_SCAFF_DESC','Generación asistida de modulos sobre tablas de la DB');
 define('OPF_SCAFF_1','Nombre de tabla [Paso 1]');
 define('OPF_SCAFF_2','Campos del formulario [Paso 2]');
-define('OPF_SCAFF_3','Relación campos de selecci�n [Paso 3]');
+define('OPF_SCAFF_3','Relación campos de selección [Paso 3]');
 define('OPF_SCAFF_4','Atributos y campos de grilla [Paso 4]');
 define('OPF_SCAFF_5','Nombre y descripción del modulo [Paso 5]');
 define('OPF_SCAFF_6','No es posible crear el directorio:');
@@ -106,6 +106,7 @@ define('OPF_SCAFF_43','Descargar zip:');
 define('OPF_SCAFF_44','No es posible escribir en el directorio');
 define('OPF_SCAFF_45','El andamio fue creado correctamente en la ruta: ');
 define('OPF_SCAFF_46','¿Desea eliminar permanentemente este(os) registro(s)?');
+define('OPF_SCAFF_47','Registro(s) eliminado(s)');
 
 // OPF_useronline
 define('OPF_USRONLINE_TITLE','Essentials - Usuarios en linea');
@@ -187,6 +188,7 @@ define('OPF_LOGIN_28','La extensión no ha sido cargada, por favor seleccione ot
 define('OPF_LOGIN_29','Instalación - Paso 1 - Base de datos');
 define('OPF_LOGIN_30','Instalación - Paso 2 - Tablas del sistema');
 define('OPF_LOGIN_31','Bienvenido');
+define('OPF_LOGIN_32','Por favor verifique que la codificación por defecto para PHP y Apache sea UTF-8');
 
 //OPF_admUsr
 define('OPF_ADMUSR_TITLE','Essentials - Usuarios del sistema');
@@ -209,7 +211,7 @@ define('OPF_ADMUSR_15','El usuario');
 define('OPF_ADMUSR_16','ya existe.');
 define('OPF_ADMUSR_17','La clave fue cambiada.');
 define('OPF_ADMUSR_18','La clave NO fue cambiada.');
-define('OPF_ADMUSR_19','Las contrase�as escritas no coinciden.');
+define('OPF_ADMUSR_19','Las contraseñas escritas no coinciden.');
 
 //OPF_admTablas
 define('OPF_ADMTABLAS_TITLE','Essentials - Maestro de tablas');

@@ -178,8 +178,6 @@ class OPF_profiles {
 			
 		$myList = new OPF_myList('lst_profiles',$sql = $myAct->loadSqlFromFile('sql/lstProfiles.sql',$arrRpl));
 			
-		//echo $sql.'Descripci�n';
-			
 		$myList->setEventOnColumn(OPF_FIELD_MODIFICAR, 'onClickAddRecord');
 			
 		$myList->setEventOnColumn(OPF_FIELD_ELIMINAR, 'onClickDeleteRecord',OPF_FIELD_CONFIRM_ELIMINAR);

@@ -82,10 +82,8 @@ class eventos extends OPF_myController {
 			if ($datForm['menu_id']){
 
 				$ess_menu->menu_id = $datForm['menu_id'];
-					
-				$this->alert('Hola');
-			}
 
+			}
 
 			$ess_menu->ord = $datForm['ord'];
 

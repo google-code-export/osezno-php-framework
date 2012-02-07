@@ -31,10 +31,18 @@ if ($OPF_login->existsDB()){
 
 }else{
 
-	$objOsezno->assign('content1',$OPF_login->getFormInstall('db'));
-
+	$disabled = false;
+	
 	$objOsezno->assign('onload', 'onLoadShowWel()');
+	
+	if (!strstr(strtoupper(ini_get('default_charset')), "UTF") || !strstr(strtoupper($_SERVER['HTTP_ACCEPT_CHARSET']), "UTF")){
+	
+		$objOsezno->assign('content2','<div align="center" id="content2" class="error">'.OPF_LOGIN_32.'</div>');
+		
+		$disabled = true;
+	}
 
+	$objOsezno->assign('content1',$OPF_login->getFormInstall('db',array(),$disabled));
 }
 
 /**

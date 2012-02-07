@@ -6,7 +6,7 @@
  * @uses Controlador de eventos
  * @package	OPF
  * @version 0.1
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  *
  */
 class OPF_myControllerExt {

@@ -4,7 +4,7 @@
  *
  * Controlar tiempo de ejecucion de scripts.
  * <code>
- * Ejemplo de utilizaciÛn:
+ * Ejemplo de utilizaci√≥n:
  * <?php
  *
  * $myTime = new OPF_myTime;
@@ -21,7 +21,7 @@
  * @uses Manejo de tiempo (fechas)
  * @package OPF
  * @version 0.1
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  */
 class OPF_myTime {
 

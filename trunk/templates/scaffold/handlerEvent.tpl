@@ -2,7 +2,7 @@
 /**
  * Menjador de eventos de usuario.
  *
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
@@ -16,7 +16,7 @@
  class eventos extends OPF_myController {
 	
 	/**
-	 * Confirma la acciÛn solicitada de eliminar uno o varios registros de la tabla.
+	 * Confirma la acciÔøΩn solicitada de eliminar uno o varios registros de la tabla.
 	 */ 
 	public function deleteRecordsConfirm ($id){
 	
@@ -63,11 +63,11 @@
 	}
 
 	/**
-	 * AcciÛn solcitida para eliminar uno o varios registros especificos.
+	 * AcciÔøΩn solcitida para eliminar uno o varios registros especificos.
 	 */
  	public function onClickDeleteRecord ($id){
  		
- 		$this->messageBox(htmlentities(OPF_SCAFF_46),'HELP',array(YES=>'deleteRecordsConfirm',NO),$id);
+ 		$this->messageBox(OPF_SCAFF_46,'HELP',array(YES=>'deleteRecordsConfirm',NO),$id);
  		
  		return $this->response;
  	}

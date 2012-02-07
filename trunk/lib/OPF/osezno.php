@@ -2,12 +2,12 @@
 /**
  * osezno
  *
- * Asignación de areas de trabajo en plantillas. Llamado a javascripts, estilos. Configuración de tema.
+ * AsignaciÃ³n de areas de trabajo en plantillas. Llamado a javascripts, estilos. ConfiguraciÃ³n de tema.
  *
  * @uses Metodos y atributos propios del proyecto, llamado plantillas.
  * @package OPF
  * @version 0.1
- * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
+ * @author JosÃ© Ignacio GutiÃ©rrez GuzmÃ¡n <jose.gutierrez@osezno-framework.org>
  */
 class OPF_osezno {
 	 
@@ -377,7 +377,7 @@ function etqFormat ($etq){
 
 	$etq = strtolower($etq);
 	 
-	$tildes = array("á","é","í","ó","ú","ä","ë","ï","ö","ü","à","è","ì","ò","ù","ñ"," ",",",".",";",":","¡","!","¿","?",'"',"[","]","{","}","(",")");
+	$tildes = array("Ã¡","Ã©","Ã­","Ã³","Ãº","Ã¤","Ã«","Ã¯","Ã¶","Ã¼","Ã ","Ã¨","Ã¬","Ã²","Ã¹","Ã±"," ",",",".",";",":","Â¡","!","Â¿","?",'"',"[","]","{","}","(",")");
 
 	$replac = array("a","e","i","o","u","a","e","i","o","u","a","e","i","o","u","n","","","","","","","","","",'',"","","","","","");
 	 

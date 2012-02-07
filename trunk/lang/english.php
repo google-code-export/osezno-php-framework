@@ -106,6 +106,7 @@ define('OPF_SCAFF_43','Download zip:');
 define('OPF_SCAFF_44','Unable to write to the directory');
 define('OPF_SCAFF_45','The scaffold was set up correctly on the path: ');
 define('OPF_SCAFF_46','Desea eliminar permanentemente este(os) registro(s)?');
+define('OPF_SCAFF_47','Registro(s) eliminado(s)');
 
 // OPF_useronline
 define('OPF_USRONLINE_TITLE','Essentials - Users online');
@@ -187,6 +188,7 @@ define('OPF_LOGIN_28','The extension has not been charged, please select another
 define('OPF_LOGIN_29','Installation - Step 1 - Database');
 define('OPF_LOGIN_30','Installation - Step 2 - System Tables');
 define('OPF_LOGIN_31','Welcome');
+define('OPF_LOGIN_32','Please verify that the default encoding for PHP and Apache is UTF-8');
 
 //OPF_admUsr
 define('OPF_ADMUSR_TITLE','Essentials - System users');

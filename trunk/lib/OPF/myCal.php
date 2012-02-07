@@ -8,7 +8,7 @@
  * @uses Llamado a calendario en formularios
  * @package OPF
  * @version 0.1
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  *
  */
 class OPF_myCal {
@@ -66,7 +66,7 @@ class OPF_myCal {
 		}
 			
 		/**
-		 * Construimos un arreglo de datos para los aÒos
+		 * Construimos un arreglo de datos para los a√±os
 		 */
 		for ($aIni=($nA-30);$aIni<($nA+5);$aIni++){
 				

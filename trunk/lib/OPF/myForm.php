@@ -2,7 +2,7 @@
 
 /**
  * Formularios
- * @author Jos� Ignacio Guti�rrez Guzm�n <jose.gutierrez@osezno-framework.org>
+ * @author José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 
 
@@ -510,7 +510,7 @@ class OPF_myForm {
 	/**
 	 * Clase CSS Ayudas tipo.
 	 *
-	 * Tipo del la ayuda que mostrara el help sobre los campos que se configuraron previamente (1 � 2).
+	 * Tipo del la ayuda que mostrara el help sobre los campos que se configuraron previamente (1 ó 2).
 	 * @var integer
 	 */
 	public $styleTypeHelp = 1;
@@ -675,7 +675,7 @@ class OPF_myForm {
 		 * file_dialog_complete_handler: Se ejecuta cuando se a echo click sobre el boton aceptar del cuadro de dialogo de los archivos que van a ser subidos al servidor. Esto generalmente esta haciendo el cargue automatico de los archivos con "this.startUpload();" Parametros que se pasan al evento: (number of files selected, number of files queued)
 		 * upload_start_handler: Funcion que es llamada cuando comienza todo el cargue completo de los archivos y para que en cierta forma tambien se pueda hacer automaticamente. Parametros que se pasan al evento: (file object)
 		 * upload_progress_handler: Se produce cuando el listado de los archivos que actualmente se han seleccionado estan en proceso de ser subidos al servidor. Parametros que se pasan al evento: (file object, bytes complete, total bytes)
-		 * upload_error_handler: El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con �xito. El c�digo de error par�metro indica el tipo de error que se produjo. El c�digo de error par�metro especifica una constante en SWFUpload.UPLOAD_ERROR. Parametros que se pasan al evento: (file object, error code, message)
+		 * upload_error_handler: El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con Éxito. El código de error par�metro indica el tipo de error que se produjo. El c�digo de error par�metro especifica una constante en SWFUpload.UPLOAD_ERROR. Parametros que se pasan al evento: (file object, error code, message)
 		 * upload_success_handler: Este evento se ejecuta cuando un archivo es subido exitosamente al servidor, mientras tanto otros archivos pueden seguir siendo subidos. Parametros que se pasan al evento: (file object, server data)
 		 * upload_complete_handler: Este evento siempre se dispara al final de un ciclo de una carga. En este punto la carga esta completa y otra puede comenzar. Parametros que se pasan al evento: (file object)
 		 * debug_handler: debugHandler
@@ -692,7 +692,7 @@ class OPF_myForm {
 		 *
 		 * $myForm->addFile('Archivo:','file1');
 		 *
-		 * // Configura el atributo 'str_etq_button' para este objeto, en este caso la etiqueta del bot�n de carga de archivo.
+		 * // Configura el atributo 'str_etq_button' para este objeto, en este caso la etiqueta del botón de carga de archivo.
 		 * $myForm->setAttFile('file1','str_etq_button','Buscar...');
 		 *
 		 * $myForm->getForm(1);
@@ -784,7 +784,7 @@ class OPF_myForm {
 		/**
 		 * Constructor
 		 *
-		 * Inicia la creaci�n de un formulario para mas adelante poder definir campos dentro de el.
+		 * Inicia la creación de un formulario para mas adelante poder definir campos dentro de el.
 		 * <code>
 		 *
 		 * Ejemplo 1:
@@ -929,13 +929,13 @@ class OPF_myForm {
 		}
 
 		/**
-		 * Agrega una caja de selecci�n.
+		 * Agrega una caja de selección.
 		 *
-		 * Agrega una caja de selecci�n al formulario, el contenido de esta caja puede ser evaluado para verificar si es true o false
+		 * Agrega una caja de selección al formulario, el contenido de esta caja puede ser evaluado para verificar si es true o false
 		 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 		 * @param string $etq Etiqueta del campo
 		 * @param string $name Nombre de checkbox
-		 * @param boolean $ini_sts  Marcado por defecto o no (false � true)
+		 * @param boolean $ini_sts  Marcado por defecto o no (false ó true)
 		 *
 		 */
 		public function addCheckBox($etq = '', $name = '', $ini_sts = false){
@@ -947,9 +947,9 @@ class OPF_myForm {
 		}
 
 		/**
-		 * Agrega un bot�n de opci�n.
+		 * Agrega un bot�n de opción.
 		 *
-		 * Agrega un bot�n de opcion al formulario en particular.
+		 * Agrega un botón de opcion al formulario en particular.
 		 * Los grupos de radio buttons se pueden formar y funcionar
 		 * siempre y cuando esos radio buttons queden con el mismo
 		 * nombre que permita agruparlos.
@@ -958,7 +958,7 @@ class OPF_myForm {
 		 * @param string $etq Etiqueta
 		 * @param string $value Valor
 		 * @param string $name_group Grupo al que pertenece
-		 * @param boolean $is_checked Marcado por defecto o no (false � true)
+		 * @param boolean $is_checked Marcado por defecto o no (false ó true)
 		 * @return string Id del radio button, se usa para poder agrupar mas adelante
 		 */
 		public function addRadioButton($etq = '', $value = '', $name_group = '', $is_checked = false){
@@ -973,9 +973,9 @@ class OPF_myForm {
 		}
 
 		/**
-		 * Agrega una caja de texto tipo contrase�a.
+		 * Agrega una caja de texto tipo contraseña.
 		 *
-		 * Agrega una caja de texto tipo contrase�a al formulario.
+		 * Agrega una caja de texto tipo contraseña al formulario.
 		 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 		 * @param string $etq Etiqueta del campo
 		 * @param string $name Nombre del campo
@@ -1065,7 +1065,7 @@ class OPF_myForm {
 		 *
 		 *  }
 		 *
-		 * //Cerramos el archivo de registro y finalizamos ala ejecuci�n del script.
+		 * //Cerramos el archivo de registro y finalizamos ala ejecución del script.
 		 * fclose($x);
 		 * exit(0);
 		 *
@@ -1117,10 +1117,10 @@ class OPF_myForm {
 		 *
 		 * Agrega un editor WYSIWYG al formulario actual.
 		 * Un editor WYSIWYG es un campo textarea modificado y enriquecido con herramientas para la edicion avanzada de su contenido.
-		 * Por ejemplo es posible editar contenido HTML, como tablas, vi�etas e imagenes.
+		 * Por ejemplo es posible editar contenido HTML, como tablas, viñetas e imagenes.
 		 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 		 *
-		 * Nota Importante: Cuando se selecciona 'ck_editor' como editor WYSIWYG este no podra ser mostrado correctamente en contenido de ventanas modales o pesta�as.
+		 * Nota Importante: Cuando se selecciona 'ck_editor' como editor WYSIWYG este no podra ser mostrado correctamente en contenido de ventanas modales o pestañas.
 		 *
 		 * Ejemplo:
 		 * <code>
@@ -1234,7 +1234,7 @@ class OPF_myForm {
 		 * Es posible asignar un valor al atributo colspan en la salida de este objeto. Para asignarlo se debe escribir seguido del nombre del objeto ':valor_numerico'. Ver ejemplo en la documentacion de myForm::addText()
 		 * @param string $strName Nombre del Elemento
 		 * @param string $strLabel Etiqueta o valor del Elemento
-		 * @param string $strSrcImg Nombre de la imagen que lo acompa�a.
+		 * @param string $strSrcImg Nombre de la imagen que lo acompaña.
 		 */
 		public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
 
@@ -1382,12 +1382,12 @@ class OPF_myForm {
 		}
 
 		/**
-		 * Obtiene un bot�n de opci�n.
+		 * Obtiene un botón de opción.
 		 *
 		 * Opera de identica forma al metodo addRadioButton solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
 		 * @param string $value Valor por defecto del Radio button
 		 * @param string $name_group Nombre del radio o grupo que van a comformarlo
-		 * @param boolean $is_checked Estado inicial del boton de selecci�n. (true o false)
+		 * @param boolean $is_checked Estado inicial del boton de selección. (true o false)
 		 * @return string
 		 */
 		public function getRadioButton ($value = '', $name_group = '', $is_checked = false){
@@ -1510,13 +1510,13 @@ class OPF_myForm {
 		}
 
 		/**
-		 * Obtiene un bot�n.
+		 * Obtiene un botón.
 		 *
 		 * Obtiene el codigo HTML. Los botones normalmente encapsulan algun evento del usuario, por ejemplo guardar algun dato o hacer una consulta.
-		 * Para agregar un evento a un boton y hacerlo funcional pruebe el metodo addEvent antes de obtener el bot�n.
+		 * Para agregar un evento a un boton y hacerlo funcional pruebe el metodo addEvent antes de obtener el botón.
 		 * @param string $strName  Nombre del boton.
 		 * @param string $strLabel Etiqueta del boton.
-		 * @param string $strSrcImg  Nombre de la imagen que lo acompa�a.
+		 * @param string $strSrcImg  Nombre de la imagen que lo acompaña.
 		 * @return string
 		 */
 		public function getButton ($strName, $strLabel = '', $strSrcImg = ''){
@@ -1612,7 +1612,7 @@ class OPF_myForm {
 		 * // Para definir mas de un evento se puede asociar en un arreglo los nombres de los eventos que queremos ejecutar.
 		 * $myForm->addEvent('btn1','onclick','onClickEvent');
 		 *
-		 * // Los eventos pueden ayudar a validar cierto tipo de informaci�n.
+		 * // Los eventos pueden ayudar a validar cierto tipo de información.
 		 * $myForm->addEvent('nom','onchange','onChangeEvent');
 		 *
 		 * $myForm->getForm(1);
@@ -1649,11 +1649,11 @@ class OPF_myForm {
 		 *
 		 * </code>
 		 * @param string  $objName   Nombre o id del objeto del formulario al que se le va a agregar un evento. El objeto debe ser textarea, select, password, text, radiobutton, checkbox o button para que sea posible agregar el evento.
-		 * @param integer $event     El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento. (1 � onblur, 2 � onchange, 3 � onclick, 4 � onfocus, 5 � onmouseout, 6 � onmouseover)
+		 * @param integer $event     El metodo que deseamos realizar, puede ser un entero o directamente el nombre del evento. (1 onblur, 2 onchange, 3 onclick, 4 onfocus, 5 onmouseout, 6 onmouseover)
 		 * @param string  $functions El nombre de la funcion o funciones que deseamos llamar al momento de cumplirse el evento
-		 * @param string $param1 Parametro n�mero 1...
-		 * @param string $param2 Parametro n�mero 2...
-		 * @param string $param3 Parametro n�mero 3...
+		 * @param string $param1 Parametro número 1...
+		 * @param string $param2 Parametro número 2...
+		 * @param string $param3 Parametro número 3...
 		 * ...
 		 */
 		public function addEvent($objName,$event,$functions){
@@ -1908,7 +1908,7 @@ class OPF_myForm {
 		/**
 		 * Agrega un tip informativo.
 		 *
-		 * Agrega un tip informativo sobre el objeto al pasar el puntero del mouse sobre �l.
+		 * Agrega un tip informativo sobre el objeto al pasar el puntero del mouse sobre él.
 		 * @param string $objName Nombre o id del Objeto
 		 * @param string $strHelp Contenido de la ayuda
 		 */

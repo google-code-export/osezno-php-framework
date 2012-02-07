@@ -241,7 +241,7 @@ define ('URL_BASE_PROJECT',$http.$httpHost);
 # Prefijo que usa xAjax para llamar a los metodos y funciones que reciben sus datos
 define ('XAJAX_WRAPPER_PREFIX','',true);
 
-# Osezno php framework versi�n
+# Osezno php framework versión
 define ('FRAMEWORK_VERSION','1.0.1',true);
 
 $objxAjax = new xajax();
