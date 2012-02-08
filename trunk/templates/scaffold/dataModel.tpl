@@ -4,7 +4,7 @@
  * - Acceso a datos de las bases de datos
  * - Retorna informacion que el Controlador muestra al usuario
  *
- * @author JosÈ Ignacio GutiÈrrez Guzm·n <jose.gutierrez@osezno-framework.org>
+ * @author Jos√© Ignacio Guti√©rrez Guzm√°n <jose.gutierrez@osezno-framework.org>
  * @link http://www.osezno-framework.org/
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
@@ -49,7 +49,7 @@
  	}
  	
  	/**
- 	 * Lista din·mica de los registros
+ 	 * Lista dinÔøΩmica de los registros
  	 */
  	public function getList_{name_table_scaff} (){
  		
@@ -57,7 +57,7 @@
  		
  		$myList = new OPF_myList('lst_{name_table_scaff}',$sql);
  		
- 		$myList->width = '{width_list}';
+ 		$myList->width = {width_list};
  		{real_names_in_query}
  		$myList->setExportData({setexportdata});
  		

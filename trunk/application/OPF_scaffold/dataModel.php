@@ -88,7 +88,7 @@ class fillScaffold {
 					$buf .= "\n\t\t".'$myForm->addText(\''.$etq.':\', \''.$field.'\', $'.$_SESSION['temp_scaff_info']['table_name'].'->'.$field.', 10, 12, true, true);'."\n";
 					break;
 				case 5: //Area texto
-					$buf .= "\n\t\t".'$myForm->addTextArea(\''.$etq.':\', \''.$field.'\', $'.$_SESSION['temp_scaff_info']['table_name'].'->'.$field.');'."\n";
+					$buf .= "\n\t\t".'$myForm->addTextArea(\''.$etq.':\', \''.$field.'\', $'.$_SESSION['temp_scaff_info']['table_name'].'->'.$field.',40);'."\n";
 					break;
 				case 6: //Booleano
 					$buf .= "\n\t\t".'$valChk = false;'."\n";
@@ -340,7 +340,7 @@ class fillScaffold {
 			
 		foreach ($_SESSION['temp_scaff_info']['grid_att']['fields_on_list'] as $id => $prop){
 
-			$buf .= "\n\t\t".'$myList->setWidthColumn(\''.$id.'\', '.$prop[1].');'."\n";
+			$buf .= "\n\t\t".'$myList->setWidthColumn(\''.$prop[0].'\', '.$prop[1].');'."\n";
 
 		}
 			
