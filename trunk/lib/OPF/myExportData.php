@@ -513,9 +513,9 @@ class OPF_myExportData {
 
 				$out .= '<html>';
 
-				$out .= '<head><style type="text/css">td{font-family: Arial, Helvetica, sans-serif;font-size: 13px;}</style></head>';
+				$out .= '<head><style type="text/css">td{font-family: Arial, Helvetica, sans-serif;font-size: 13px;}</style>';
 
-				$out .= '<body>';
+				$out .= '</head><body>';
 
 				$out .= '<table border="0" cellspacing="0" cellpadding="0"><tr><td width="30%"><img src="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/pdflogo/pdf_logo.jpg'.'"></td><td width="70%">'.REPORT_TITLE.$_SERVER['HTTP_REFERER'].'</td></tr>';
 
@@ -553,7 +553,7 @@ class OPF_myExportData {
 
 							$out .= '<td '.$widthCol.' align="center" '.$bg.'>';
 
-							$out .= ucwords(strtolower($key));
+							$out .= ucwords(strtolower(utf8_decode($key)));
 
 							$out .= '</td>';
 
@@ -581,7 +581,7 @@ class OPF_myExportData {
 
 						$out .= '<td '.$bg.' align="'.$align.'">';
 
-						$out .= $val;
+						$out .= utf8_decode($val);
 
 						$out .= '</td>';
 					}
