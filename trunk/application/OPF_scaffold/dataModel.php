@@ -377,6 +377,93 @@ class fillScaffold {
 
 }
 
+class relationTable {
+	
+	public static function getFormTable ($object){
+		
+		if (!isset($_SESSION['temp_scaff_info']['rt']))
+		
+			$_SESSION['temp_scaff_info']['rt'] = array();
+		
+		$myForm = new OPF_myForm('getFormTable_relation');
+		
+		$myForm->addComment('cm1:3', '');
+			
+		$myForm->addComment('cm2:3', '');
+			
+		$myForm->addComment('cm3:3', '');
+			
+		$table = '';
+			
+		if (isset($_SESSION['temp_scaff_info']['rt'][$object]['table_name'])){
+		
+			$table = $_SESSION['temp_scaff_info']['rt'][$object]['table_name'];
+		}
+		
+		$myForm->addHelp('table_name', OPF_SCAFF_39);
+			
+		$myForm->addText(OPF_SCAFF_38,'table_name:3', $table);
+			
+		$myForm->addComment('cm12:3', '');
+			
+		$myForm->addComment('cm13:3', '');
+			
+		$myForm->addComment('cm14:3', '');
+			
+		$myForm->addComment('cm15', '');
+			
+		$myForm->addComment('cm16', '');
+			
+		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
+		
+		$myForm->addEvent('btn1', 'onclick', 'onClickSetRT', $object);
+			
+		return $myForm->getForm(3);		
+	}
+	
+	public static function getFormIdValue ($object, $datForm){
+		
+		$myAct = new OPF_myActiveRecord();
+		
+		$resSql =  scaffold::getResultSelectFields($myAct, $datForm['table_name']);
+		
+		$myForm = new OPF_myForm('FormIdValue');
+		
+		$myForm->addComment('cm1:2', '');
+		
+		$myForm->addComment('cm2:2', '');
+		
+		$myForm->addComment('cm3:2', '');
+		
+		$cols = array ();
+		
+		foreach ($resSql[0] as $id => $value){
+		
+			$cols[$id] = $id;
+		}
+		
+		$myForm->addSelect(OPF_SCAFF_50,'key:2',$cols);
+		
+		$myForm->addSelect(OPF_SCAFF_51,'value:2',$cols);
+		
+		$myForm->addComment('cm4:2', '');
+		
+		$myForm->addComment('cm5:2', '');
+		
+		$myForm->addButton('btn2',OPF_SCAFF_14,'back.gif');
+		
+		$myForm->addButton('btn1',OPF_SCAFF_15,'ok.gif');
+		
+		$myForm->addEvent('btn1', 'onclick', 'onClickSetIdValRT', $object);
+		
+		$myForm->addEvent('btn2', 'onclick', 'selectOtherTable', $object, true);
+		
+		return $myForm->getForm(2);
+	} 
+	
+}
+
+
 class scaffold {
 
 	static public function scaffReadTemplate ($file, $arrayAssignAreas){
@@ -468,7 +555,7 @@ class scaffold {
 			
 		$myForm->addComment('cm10:3', '');
 
-		$myForm->addButton('btn0',OPF_SCAFF_13);
+		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
 
 		$myForm->addEvent('btn0', 'onclick', 'newScaff',4);
 
@@ -617,13 +704,13 @@ class scaffold {
 			
 		$myForm->addGroup('campos',OPF_SCAFF_28,$campoGrilla,3);
 			
-		$myForm->addButton('btn0',OPF_SCAFF_13);
+		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
 			
 		$myForm->addEvent('btn0', 'onclick', 'newScaff',3);
 			
 		$myForm->addComment('cm_space', '');
 			
-		$myForm->addButton('btn1',OPF_SCAFF_14);
+		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
 			
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep5');
 
@@ -640,6 +727,8 @@ class scaffold {
 
 			$arrTablas[$tabla->id] = $tabla->name;
 		}
+		
+		$arrTablas['other'] = OPF_SCAFF_48;
 			
 		$myForm = new OPF_myForm('formNewScaffStep3');
 
@@ -658,14 +747,16 @@ class scaffold {
 				$value = $_SESSION['temp_scaff_info']['combos_rel']['type_'.$combo];
 			}
 
+			$myForm->addEvent('type_'.$combo, 'onchange', 'onChangeTable','type_'.$combo);
+			
 			$myForm->addComment('type_'.$combo, '<div align="center">'.$myForm->getSelect('type_'.$combo, $arrTablas, $value).'</div>');
 		}
 			
-		$myForm->addButton('btn0',OPF_SCAFF_13);
+		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
 			
 		$myForm->addEvent('btn0', 'onclick', 'newScaff',2);
 			
-		$myForm->addButton('btn1',OPF_SCAFF_14);
+		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
 			
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep4');
 			
@@ -777,7 +868,7 @@ class scaffold {
 			$count++;
 		}
 
-		$myForm->addButton('btn0',OPF_SCAFF_13);
+		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
 
 		$myForm->addComment('cm_space', '');
 			
@@ -787,7 +878,7 @@ class scaffold {
 			
 		$myForm->addComment('cm_space3', '');
 
-		$myForm->addButton('btn1',OPF_SCAFF_14);
+		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
 
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep3');
 			
@@ -843,7 +934,7 @@ class scaffold {
 			
 		$myForm->addComment('cm16', '');
 			
-		$myForm->addButton('btn1',OPF_SCAFF_14);
+		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
 			
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep2');
 			

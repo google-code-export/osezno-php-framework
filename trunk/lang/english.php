@@ -72,8 +72,8 @@ define('OPF_SCAFF_9','La suma total de anchos de columnas debe ser igual al anch
 define('OPF_SCAFF_10','Por favor verifique que la tabla exista y que tenga al menos 1 registro en ella.');
 define('OPF_SCAFF_11','Name of module:');
 define('OPF_SCAFF_12','Description:');
-define('OPF_SCAFF_13','<< Previous');
-define('OPF_SCAFF_14','Next >>');
+define('OPF_SCAFF_13','Previous');
+define('OPF_SCAFF_14','Next');
 define('OPF_SCAFF_15','Finalize');
 define('OPF_SCAFF_16','Field');
 define('OPF_SCAFF_17','Label');
@@ -107,6 +107,10 @@ define('OPF_SCAFF_44','Unable to write to the directory');
 define('OPF_SCAFF_45','The scaffold was set up correctly on the path: ');
 define('OPF_SCAFF_46','Desea eliminar permanentemente este(os) registro(s)?');
 define('OPF_SCAFF_47','Registro(s) eliminado(s)');
+define('OPF_SCAFF_48','Tabla independiente');
+define('OPF_SCAFF_49','Relación tabla');
+define('OPF_SCAFF_50','Valor oculto');
+define('OPF_SCAFF_51','Valor mostrado');
 
 // OPF_useronline
 define('OPF_USRONLINE_TITLE','Essentials - Users online');

@@ -72,8 +72,8 @@ define('OPF_SCAFF_9','La suma total de anchos de columnas debe ser igual al anch
 define('OPF_SCAFF_10','Por favor verifique que la tabla exista y que tenga al menos 1 registro en ella.');
 define('OPF_SCAFF_11','Nombre del modulo:');
 define('OPF_SCAFF_12','Descripción:');
-define('OPF_SCAFF_13','<< Anterior');
-define('OPF_SCAFF_14','Siguiente >>');
+define('OPF_SCAFF_13','Anterior');
+define('OPF_SCAFF_14','Siguiente');
 define('OPF_SCAFF_15','Finalizar');
 define('OPF_SCAFF_16','Campo');
 define('OPF_SCAFF_17','Etiqueta');
@@ -107,6 +107,10 @@ define('OPF_SCAFF_44','No es posible escribir en el directorio');
 define('OPF_SCAFF_45','El andamio fue creado correctamente en la ruta: ');
 define('OPF_SCAFF_46','¿Desea eliminar permanentemente este(os) registro(s)?');
 define('OPF_SCAFF_47','Registro(s) eliminado(s)');
+define('OPF_SCAFF_48','Tabla independiente');
+define('OPF_SCAFF_49','Relación tabla');
+define('OPF_SCAFF_50','Valor oculto');
+define('OPF_SCAFF_51','Valor mostrado');
 
 // OPF_useronline
 define('OPF_USRONLINE_TITLE','Essentials - Usuarios en linea');

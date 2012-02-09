@@ -15,6 +15,44 @@ include 'dataModel.php';
  */
 class eventos extends OPF_myController {
 
+	public function onClickSetIdValRT ($datForm, $id){
+		
+		$this->alert($id.'->'.$datForm['key']);
+		
+		return $this->response;
+	}
+	
+	public function onClickSetRT ($datForm, $id){
+		
+		if ($this->MYFORM_validate($datForm, array('table_name'))){
+		
+			$myAct = new OPF_myActiveRecord();
+		
+			$resSql = scaffold::getResultSelectFields($myAct,$datForm['table_name']);
+		
+			if (!$resSql){
+					
+				$this->messageBox(OPF_SCAFF_10,'warning');
+					
+			}else{
+					
+				$_SESSION['temp_scaff_info']['rt'][$id]['table_name'] = $datForm['table_name'];
+				
+				$this->closeModalWindow();
+				
+				$this->modalWindow(relationTable::getFormIdValue($id, $datForm),OPF_SCAFF_49, 300, 260);
+			}
+		
+		}else{
+		
+			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+		}
+		
+		return $this->response;
+	}
+	
+	
+	
 	public function newScaff ($datForm, $step = ''){
 
 		$this->closeModalWindow();
@@ -79,7 +117,17 @@ class eventos extends OPF_myController {
 		return $this->response;
 	}
 
-
+	public function selectOtherTable ($datForm, $object, $closePreview = false){
+		
+		if ($closePreview)
+		
+			$this->closeModalWindow();
+		
+		$this->modalWindow(relationTable::getFormTable($object),OPF_SCAFF_49, 300, 260);
+		
+		return $this->response;
+	}
+	
 	public function toScaffStep6 ($datForm, $rewrite = false){
 			
 		if ( $this->MYFORM_validate($datForm, array('modnom')) ){
@@ -339,7 +387,9 @@ class eventos extends OPF_myController {
 					
 				if ($datForm[$id]){
 						
-					$_SESSION['temp_scaff_info']['combos_rel'][$id] = $datForm[$id];
+					if ($datForm[$id] != 'other')
+					
+						$_SESSION['temp_scaff_info']['combos_rel'][$id] = $datForm[$id];
 				}
 					
 			}

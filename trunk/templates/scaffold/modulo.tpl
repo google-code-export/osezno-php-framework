@@ -2,6 +2,15 @@
 <head>
 <script type="text/javascript">
 
+function onChangeTable (datForm, combo){
+
+	if (datForm[combo] == 'other'){
+
+		selectOtherTable(datForm, combo);
+	}
+	
+}
+
 function posicionarTittle (){
 
 	var arrayPageSize = new Array();
