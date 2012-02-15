@@ -17,7 +17,20 @@ class eventos extends OPF_myController {
 
 	public function onClickSetIdValRT ($datForm, $id){
 		
-		$this->alert($id.'->'.$datForm['key']);
+		if ($this->MYFORM_validate($datForm, array('key','value'))){
+			
+			$_SESSION['temp_scaff_info']['rt'][$id]['key'] = $datForm['key'];
+			
+			$_SESSION['temp_scaff_info']['rt'][$id]['value'] = $datForm['value'];
+			
+			$this->clear($id, 'value');
+			
+			$this->closeModalWindow();
+			
+		}else{
+			
+			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+		}
 		
 		return $this->response;
 	}
@@ -383,14 +396,20 @@ class eventos extends OPF_myController {
 
 			if (stripos($id, $key) !== false){
 
-				$arraReq[] = $id;
-					
-				if ($datForm[$id]){
-						
-					if ($datForm[$id] != 'other')
-					
-						$_SESSION['temp_scaff_info']['combos_rel'][$id] = $datForm[$id];
+				if (!isset($_SESSION['temp_scaff_info']['rt'][$id])){
+				
+					$arraReq[] = $id;
+				
 				}
+				
+				if ($datForm[$id]){
+				
+					if ($datForm[$id] != 'other')
+						
+						$_SESSION['temp_scaff_info']['combos_rel'][$id] = $datForm[$id];
+				
+				}
+				
 					
 			}
 

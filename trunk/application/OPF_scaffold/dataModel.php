@@ -442,9 +442,21 @@ class relationTable {
 			$cols[$id] = $id;
 		}
 		
-		$myForm->addSelect(OPF_SCAFF_50,'key:2',$cols);
+		$key = '';
 		
-		$myForm->addSelect(OPF_SCAFF_51,'value:2',$cols);
+		if (isset($_SESSION['temp_scaff_info']['rt'][$object]['key']))
+		
+			$key = $_SESSION['temp_scaff_info']['rt'][$object]['key'];
+		
+		$myForm->addSelect(OPF_SCAFF_50,'key:2',$cols, $key);
+
+		$value = '';
+		
+		if (isset($_SESSION['temp_scaff_info']['rt'][$object]['value']))
+		
+			$value = $_SESSION['temp_scaff_info']['rt'][$object]['value'];
+		
+		$myForm->addSelect(OPF_SCAFF_51,'value:2',$cols, $value);
 		
 		$myForm->addComment('cm4:2', '');
 		
