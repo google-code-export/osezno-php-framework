@@ -62,9 +62,11 @@ class eventos extends OPF_myController {
 			$writeError = true;
 		}
 		
-		if ($writeError){
+		if (!$writeError){
 			
-			$this->notificationWindow(OPF_LOGIN_34,5,'ok.gif');
+			$this->notificationWindow(OPF_LOGIN_34,5,'ok');
+			
+			$this->closeMessageBox();
 			
 		}else{
 			
@@ -103,6 +105,8 @@ class eventos extends OPF_myController {
 			
 		$OPF_login = new OPF_login;
 
+		$this->notificationWindow(OPF_LOGIN_35,5,'warning');
+		
 		$this->closeMessageBox();
 			
 		$this->modalWindow($OPF_login->getFormConfigApp($datForm),OPF_LOGIN_25,300,400,2);
