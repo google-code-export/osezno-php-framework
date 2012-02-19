@@ -175,7 +175,7 @@ define('OPF_LOGIN_12','Base de datos:');
 define('OPF_LOGIN_12A','Codificación:');
 define('OPF_LOGIN_13','Puerto:');
 define('OPF_LOGIN_14','Crear tablas');
-define('OPF_LOGIN_15','Las tablas fueron instaladas. Essentials Osezno PHP Framework fue instalado.');
+define('OPF_LOGIN_15','Las tablas fueron instaladas. Essentials Osezno PHP Framework fue instalado. ¿Desea guardar estas variables por defecto para la conexión a base de datos?');
 define('OPF_LOGIN_16','Aceptar');
 define('OPF_LOGIN_17','Crear base de datos');
 define('OPF_LOGIN_18','No es posible crear la base de datos.');
@@ -193,6 +193,9 @@ define('OPF_LOGIN_29','Instalación - Paso 1 - Base de datos');
 define('OPF_LOGIN_30','Instalación - Paso 2 - Tablas del sistema');
 define('OPF_LOGIN_31','Bienvenido');
 define('OPF_LOGIN_32','Por favor verifique que la codificación por defecto para PHP y Apache sea UTF-8');
+define('OPF_LOGIN_33','Imposible sobreescribir el archivo config/configApplication.php');
+define('OPF_LOGIN_34','EL archivo de configuración fue creado con exito.');
+define('OPF_LOGIN_35','EL archivo de configuración no fue creado automáticamente.');
 
 //OPF_admUsr
 define('OPF_ADMUSR_TITLE','Essentials - Usuarios del sistema');
