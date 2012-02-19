@@ -517,7 +517,7 @@ class OPF_myExportData {
 
 				$out .= '</head><body>';
 
-				$out .= '<table border="0" cellspacing="0" cellpadding="0"><tr><td width="30%"><img src="'.$GLOBALS['urlProject'].'/themes/'.THEME_NAME.'/pdflogo/pdf_logo.jpg'.'"></td><td width="70%">'.REPORT_TITLE.$_SERVER['HTTP_REFERER'].'</td></tr>';
+				$out .= '<table border="0" cellspacing="0" cellpadding="0"><tr><td width="30%">&nbsp;</td><td width="70%">'.REPORT_TITLE.$_SERVER['HTTP_REFERER'].'</td></tr>';
 
 				$out .= '<tr><td bgcolor="#000000" colspan="2">';
 

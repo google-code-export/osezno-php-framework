@@ -229,7 +229,7 @@ class OPF_login {
 				
 			$myForm->addDisabled('btn_install');
 			
-			$myForm->addButton('btn_install',OPF_LOGIN_17,'new.gif');
+			$myForm->addButton('btn_install',OPF_LOGIN_17,'add.gif');
 				
 			$myForm->addEvent('btn_install', 'onclick', 'onClickCreateBD');
 			

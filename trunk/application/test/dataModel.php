@@ -25,9 +25,9 @@ class testInstall {
 			
 		$myForm->addGroup('version','Versions:',array('version1','version2'),1);
 			
-		$myForm->addFreeObject('path1','URL Project:',$GLOBALS['urlProject']);
+		$myForm->addFreeObject('path1','URL Project:','');
 			
-		$myForm->addFreeObject('path2','PATH Project:',$GLOBALS['folderProject']);
+		$myForm->addFreeObject('path2','PATH Project:','');
 			
 		$myForm->addFreeObject('path3','PATH Templates:',PATH_TEMPLATES);
 			

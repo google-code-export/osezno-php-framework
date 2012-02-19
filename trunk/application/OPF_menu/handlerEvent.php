@@ -17,7 +17,7 @@ class eventos extends OPF_myController {
 
 	public function assignUrl ($url){
 			
-		$this->script('opener.document.getElementById("url").value = "'.$GLOBALS['urlProject'].'application/'.$url.'/'.'"');
+		$this->script('opener.document.getElementById("url").value = "../'.$url.'/'.'"');
 			
 		$this->closeWindow();
 			

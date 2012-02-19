@@ -731,7 +731,7 @@ class OPF_myController extends OPF_myControllerExt {
 		$tablaOpacity = '';
 
 
-		$file = $GLOBALS['folderProject'].'/themes/'.THEME_NAME.'/modal_window/modal_window.tpl';
+		$file = '../../themes/'.THEME_NAME.'/modal_window/modal_window.tpl';
 
 		$arRepl = array (
 			'{div_name}'=>$this->idLastMWopen,
@@ -880,8 +880,8 @@ class OPF_myController extends OPF_myControllerExt {
 		}
 			
 
-		$file = $GLOBALS['folderProject'].'/themes/'.THEME_NAME.'/msg_box/message_box.tpl';
-
+		$file = '../../themes/'.THEME_NAME.'/msg_box/message_box.tpl';
+		
 		if (!$this->widthMessageBox)
 		$width = 400;
 		else

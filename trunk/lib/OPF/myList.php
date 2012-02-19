@@ -508,7 +508,7 @@ class OPF_myList  {
                 	if ($theme)
                 	$this->themeName = $theme;
                 	else{
-                		return  $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/style.css.php?img='.$GLOBALS['urlProject'].'/css/themes/'.$this->themeName.'/';
+                		return  '../../'.$this->pathThemes.$this->themeName.'/style.css.php?img='.'../css/themes/'.$this->themeName.'/';
                 	}
                 }
 
@@ -887,7 +887,7 @@ class OPF_myList  {
                  */
                 private function getSrcImageOrdMethod ($method = ''){
 
-                	$pathImg = $GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/';
+                	$pathImg ='../../'.$this->pathThemes.$this->themeName.'/mylist/';
 
                 	$return = '';
 
@@ -1371,15 +1371,11 @@ class OPF_myList  {
 
                 				case 'button':
 
-                					//$htmlBut = '<img src="'.$GLOBALS['urlProject'].'/'.$this->pathThemes.$this->themeName.'/mylist/'.$id.'.gif">';
-
                 					$objMyForm->addEvent($this->idList.$id,'onclick','MYLIST_page',$this->idList,$attr[1]);
 
                 					$buf .= $objMyForm->getButton($this->idList.$id,'','../../'.$this->themeName.'/mylist/'.$id.'.gif');
                 					break;
                 				case 'field':
-
-                					//$objMyForm->addEvent($this->idList.$id,'onChange','myListPage',array($this->idList,$attr[1]));
 
                 					$objMyForm->addHelp($this->idList.$id,'&nbsp;'.LABEL_HELP_PAGACT_FORM.' <b>'.$attr[0].'</b>'.'&nbsp;');
 

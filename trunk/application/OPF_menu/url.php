@@ -2,9 +2,9 @@
 
 include 'handlerEvent.php';
 
-$objOsezno->assign('home_etq','&nbsp;<b>'.$GLOBALS['folderProject'].'application/</b>');
+$objOsezno->assign('home_etq','&nbsp;<b>'.'../../application/</b>');
 
-$readDirs = new readDirs($GLOBALS['folderProject']);
+$readDirs = new readDirs('../../');
 
 $objOsezno->assign('menu_struct',$readDirs->returnJsTree());
 

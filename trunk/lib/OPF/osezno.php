@@ -12,20 +12,6 @@
 class OPF_osezno {
 	 
 	/**
-	 * Ruta fisica donde se encuentra nuestro proyecto
-	 *
-	 * @var string
-	 */
-	private $folderProject = '';
-	 
-	/**
-	 * Url base donde esta ubicado el proyecto
-	 *
-	 * @var string
-	 */
-	private $urlProject = '';
-	 
-	/**
 	 * Ruta fisica donde se encuentran las plantillas
 	 *
 	 * @var string
@@ -117,13 +103,9 @@ class OPF_osezno {
 	 */
 	public function __construct($objxAjax = ''){
 
-		$this->folderProject = $GLOBALS['folderProject'];
-
-		$this->urlProject = $GLOBALS['urlProject'];
-			
 		$this->objxAjax = $objxAjax;
 
-		require $this->folderProject.'plugin/packages/xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
+		require '../../plugin/packages/xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
 
 		$this->arrayAssignAreasHead['xajax_scripts']
 		= $this->objxAjax->getJavascript(URL_JS_XJX);
@@ -195,35 +177,35 @@ class OPF_osezno {
 		 * Llamar a las diferentes hojas de estilos
 		 */
 		$this->arrayAssignAreasHead['string_css_calendar']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/calendar/style.php'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/calendar/style.php'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_mylist']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mylist/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mylist/'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/mylist/style.php?path_img='.'../../../themes/'.THEME_NAME.'/mylist/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_myform']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/myform/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/myform/'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/myform/style.php?path_img='.'../../../themes/'.THEME_NAME.'/myform/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_message_box']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/msg_box/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/msg_box/'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/msg_box/style.php?path_img='.'../../../themes/'.THEME_NAME.'/msg_box/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_modal_window']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/modal_window/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/modal_window/'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/modal_window/style.php?path_img='.'../../../themes/'.THEME_NAME.'/modal_window/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_notification_window']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/notification_window/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/notification_window/'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/notification_window/style.php?path_img='.'../../../themes/'.THEME_NAME.'/notification_window/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_tabs']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mytabs/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/mytabs/'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/mytabs/style.php?path_img='.'../../../themes/'.THEME_NAME.'/mytabs/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['string_css_callback_xajax']
-		= '<link href="'.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/callback_xajax/style.php?path_img='.$GLOBALS['urlProject'].'themes/'.THEME_NAME.'/callback_xajax/'.
+		= '<link href="'.'../../themes/'.THEME_NAME.'/callback_xajax/style.php?path_img='.'../../../themes/'.THEME_NAME.'/callback_xajax/'.
 		'" rel="stylesheet" type="text/css" />';
 
 		$this->arrayAssignAreasHead['css_errors'] = '<style type="text/css">'."\n".self::$cssErrors."\n".'</style>';
@@ -237,26 +219,6 @@ class OPF_osezno {
 	 */
 	public function setTheme ($theme){
 		$this->theme = $theme;
-	}
-	 
-	/**
-	 * Obtiene la ruta fisica del proyecto.
-	 *
-	 * Obtiene la ruta fisica del proyecto.
-	 * @return string
-	 */
-	public function getPathProject (){
-		return $this->folderProject;
-	}
-	 
-	/**
-	 * Obtiene la url base del proyecto.
-	 *
-	 * Obtiene la url base del proyecto.
-	 * @return string
-	 */
-	public function getUrlProject (){
-		return $this->urlProject;
 	}
 	 
 	/**

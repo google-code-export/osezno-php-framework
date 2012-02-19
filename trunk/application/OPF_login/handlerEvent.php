@@ -23,7 +23,7 @@ class eventos extends OPF_myController {
 	 */
 	public function onClickCreateConfig ($datForm){
 		
-		$file = $GLOBALS['folderProject'].'config/configApplication.php';
+		$file = '../../config/configApplication.php';
 		
 		$link = fopen($file, 'w');
 		
@@ -67,6 +67,8 @@ class eventos extends OPF_myController {
 			$this->notificationWindow(OPF_LOGIN_34,5,'ok');
 			
 			$this->closeMessageBox();
+			
+			$this->assign('content1', 'innerHTML', $OPF_login->getFormLogin());
 			
 		}else{
 			

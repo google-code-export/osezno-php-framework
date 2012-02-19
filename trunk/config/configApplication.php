@@ -4,12 +4,6 @@
  * @author: José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 
-/**
- * Carpeta de projecto ubicada dentro de la caperta publica www. Ej: osezno-framework/
- * @var string
- */
-$baseFolder = 'osezno-framework/';
-
 # Diseño y Vista
 
 /**
@@ -34,9 +28,10 @@ $templateBaseFolder = 'templates/';
 
 /**
  * Nombre de la carpeta que guarda las sesiones, esta carpeta por defecto esta en la raiz del proyecto.
+ * Si no se escribe el nombre de la carpeta el tomara por defecto la temporal.
  * @var string
  */
-$sessionNameFolder = 'sesiones/';
+$sessionNameFolder = '';
 
 /**
  * Nombre de cookie referencia de las sesiones de OPF.
@@ -56,25 +51,25 @@ $sessionCacheExpire = 3600;
  * Nombre de base de datos.
  * @var string
  */
-$database = '';
+$database = 'oseznophp';
 
 /**
  * Motor de base de datos; pgsql ó mysql.
  * @var string
  */
-$engine = '';
+$engine = 'mysql';
 
 /**
  * Direccion Ip o nombre de maquina del motor de base de datos.
  * @var string
  */
-$host = '';
+$host = 'localhost';
 
 /**
  * Nombre de usuario para conexion a base de datos.
  * @var string
  */
-$user = '';
+$user = 'root';
 
 /**
  * Contraseña de usuario para conexión a base de datos.
@@ -86,7 +81,7 @@ $password = '';
  * Puerto para la conexión, Mysql 3306, Postgre 5432.
  * @var integer
  */
-$port = '';
+$port = '3306';
 
 /**
  * Encender o Apagar el Debug.
@@ -139,10 +134,7 @@ if (isset($_SERVER['HTTPS'])){
 
 global $folderProject;
 
-$GLOBALS['folderProject'] = str_replace('//','/',$_SERVER['DOCUMENT_ROOT'].'/'.$baseFolder);
-
-# Se van a  guardar todas las sesiones en la siguiente carpeta
-session_save_path ($GLOBALS['folderProject'].$sessionNameFolder);
+$GLOBALS['folderProject'] = dirname(__FILE__);
 
 # Cambiamos el nombre de la cookie
 session_name($sessionName);
@@ -153,9 +145,9 @@ session_start();
 # La caducidad de la sesión esta definida en la siguiente linea en numero de segundos
 session_cache_expire ($sessionCacheExpire);
 
-require_once $GLOBALS['folderProject'].'plugin/packages/xajax/xajax_core/xajax.inc.php';
+require_once $GLOBALS['folderProject'].'/../plugin/packages/xajax/xajax_core/xajax.inc.php';
 
-require $GLOBALS['folderProject'].'plugin/packages/fpdf/fpdf.php';
+require $GLOBALS['folderProject'].'/../plugin/packages/fpdf/fpdf.php';
 
 function __autoload($className){
 
@@ -163,7 +155,7 @@ function __autoload($className){
 			
 		list($pkg, $fileName) = explode('_', $className);
 
-		$classFile = $GLOBALS['folderProject'].'lib/'.$pkg.'/'.$fileName.'.php';
+		$classFile = $GLOBALS['folderProject'].'/../lib/'.$pkg.'/'.$fileName.'.php';
 			
 		$pack = 'PACKAGE';
 
@@ -177,13 +169,9 @@ function __autoload($className){
 	}
 }
 
-require $GLOBALS['folderProject'].'lang/'.$lang.'.php';
+require $GLOBALS['folderProject'].'/../lang/'.$lang.'.php';
 
-$httpHost = $_SERVER['HTTP_HOST'].'/'.$baseFolder;
-
-global $urlProject;
-
-$GLOBALS['urlProject'] = $http.$httpHost;
+$httpHost = $_SERVER['HTTP_HOST'].'/../../';
 
 require 'security.php';
 
@@ -194,49 +182,49 @@ define ('LANG',			$lang,true);
 define ('THEME_NAME',		$theme,true);
 
 # Ruta donde se encuentran las plantillas de Osezno
-define ('PATH_TEMPLATES', $GLOBALS['folderProject'].$templateBaseFolder,true);
+define ('PATH_TEMPLATES', $GLOBALS['folderProject'].'/../'.$templateBaseFolder,true);
 
 # Ruta tipo url en donde se almacenan los scripts js de xAjax
-define ('URL_JS_XJX',     $http.$httpHost.'plugin/packages/xajax/',true);
+define ('URL_JS_XJX',     '../../plugin/packages/xajax/',true);
 
 # Ruta tipo url donde se descarga el js de funciones
-define ('URL_JS_FCN',     $http.$httpHost.'javascript/MyFunctions.js',true);
+define ('URL_JS_FCN',     '../../javascript/MyFunctions.js',true);
 
 # Ruta tipo Url archivo js para ventanas modales.
-define ('URL_JS_MW',       $http.$httpHost.'javascript/myModalWindow.js',true);
+define ('URL_JS_MW',       '../../javascript/myModalWindow.js',true);
 
 # Ruta tipo url donde se descarga el js de wz tooltip
-define ('URL_JS_TT',       $http.$httpHost.'javascript/wz_tooltip.js',true);
+define ('URL_JS_TT',       '../../javascript/wz_tooltip.js',true);
 
 # Center window tooltip plugin
-define ('URL_JS_CW',       $http.$httpHost."javascript/tip_centerwindow.js",true);
+define ('URL_JS_CW',       '../../javascript/tip_centerwindow.js',true);
 
 # Follow scroll tooltip plugin
-define ('URL_JS_FS',       $http.$httpHost."javascript/tip_followscroll.js",true);
+define ('URL_JS_FS',       '../../javascript/tip_followscroll.js',true);
 
 # Ruta tipo url donde se descarga el js de wz tooltip como plugin adicional para ayudas esilo bocadillo
-define ('URL_JS_TB',       $http.$httpHost."javascript/tip_balloon.js",true);
+define ('URL_JS_TB',       '../../javascript/tip_balloon.js',true);
 
 # Ruta tipo url donde se descarga el js de funciones de SWF
-define ('URL_SWF_FCN',     $http.$httpHost."javascript/swfupload.js",true);
+define ('URL_SWF_FCN',     '../../javascript/swfupload.js',true);
 
 # Ruta tipo url donde se encuentra el js de handlers de SWF
-define ('URL_SWF_HLD',     $http.$httpHost.'javascript/handlers.js',true);
+define ('URL_SWF_HLD',     '../../javascript/handlers.js',true);
 
 # Ruta tipo url donde se encuentra el js de myList
-define ('URL_JS_ML',       $http.$httpHost.'javascript/myList.js',true);
+define ('URL_JS_ML',       '../../javascript/myList.js',true);
 
 # Ruta tipo url donde se encuentra el js de myTabs
-define ('URL_JS_MT',       $http.$httpHost.'javascript/myTabs.js',true);
+define ('URL_JS_MT',       '../../javascript/myTabs.js',true);
 
 # Ruta tipo url donde se encuentra el js de myCalendar
-define ('URL_JS_MC',       $http.$httpHost.'javascript/myCalendar.js',true);
+define ('URL_JS_MC',       '../../javascript/myCalendar.js',true);
 
 # Ruta tipo url donde se descarga el favicon del proyecto
-define ('URL_FAV_ICON',    $http.$httpHost.'favicon.ico',true);
+define ('URL_FAV_ICON',    '../../favicon.ico',true);
 
 # Ruta tipo url donde se encuentra la base del proyecto
-define ('URL_BASE_PROJECT',$http.$httpHost);
+define ('URL_BASE_PROJECT','../../');
 
 # Prefijo que usa xAjax para llamar a los metodos y funciones que reciben sus datos
 define ('XAJAX_WRAPPER_PREFIX','',true);

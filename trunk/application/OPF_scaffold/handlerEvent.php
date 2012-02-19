@@ -151,7 +151,7 @@ class eventos extends OPF_myController {
 
 			$_SESSION['temp_scaff_info']['namefolder'] = $datForm['namefolder'];
 
-			$folder = $GLOBALS['folderProject'].'application/'.$datForm['namefolder'].'/';
+			$folder = '../../application/'.$datForm['namefolder'].'/';
 
 			$errorRewrite = false;
 

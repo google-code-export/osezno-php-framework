@@ -1085,7 +1085,7 @@ class OPF_myForm {
 
 			$this->setAttFileAuto($name);
 
-			$flash_url = $GLOBALS['urlProject'].'swf/swfupload.swf';
+			$flash_url = '../../swf/swfupload.swf';
 
 			$name = $this->getColspanRowspan($name);
 
@@ -1239,7 +1239,7 @@ class OPF_myForm {
 		public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
 
 			if ($strSrcImg)
-			$strSrcImg = $GLOBALS['urlProject'].$this->pathImages.$strSrcImg;
+			$strSrcImg = '../../'.$this->pathImages.$strSrcImg;
 
 			$name     = $this->getColspanRowspan($strName);
 
@@ -1282,7 +1282,7 @@ class OPF_myForm {
 					
 				$utilyVal = 'onKeyUp="CalendarFormat( this );" onBlur="BlurDate( this )"';
 					
-				$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($name).' type="button" class="boton_cal" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$name.'\'].value, \''.$name.'\', \''.$name.'\', \''.$this->name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
+				$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($name).' type="button" class="boton_cal" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$name.'\'].value, \''.$name.'\', \''.$name.'\', \''.$this->name.'\')" /><img src="'.'../../'.$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
 			}else
 			$strEvents = $this->checkExistEventJs($name);
 				
@@ -1485,12 +1485,6 @@ class OPF_myForm {
 
 			$buf.='<span id="spanButtonPlaceholder'.$name.'">';
 
-			/**
-			 * Deprecated
-			 if ($this->FILE_src_img_button)
-			 $buf.='<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
-			 */
-
 			$maxInfoSize = '';
 			if ($this->FILES_atts[$name]['show_max_upload_size_info_in_button']){
 				if ($this->FILES_atts[$name]['size_limit']<1024){
@@ -1529,7 +1523,7 @@ class OPF_myForm {
 			$buf .= '<table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>';
 
 			if ($strSrcImg)
-			$buf .= '<td align="right"><img style="padding-right: 2px; vertical-align: middle;" src="'.$GLOBALS['urlProject'].$this->pathImages.$strSrcImg.'" border="0"></td>';
+			$buf .= '<td align="right"><img style="padding-right: 2px; vertical-align: middle;" src="'.'../../'.$this->pathImages.$strSrcImg.'" border="0"></td>';
 				
 			$buf.='<td class="boton_font">'.str_replace(' ','&nbsp;',$strLabel).'</td></tr></table></button>';
 
@@ -2197,7 +2191,7 @@ class OPF_myForm {
 			$JSPerVar.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
 
 
-			$JSPerVar.= "\t".'button_image_url : "'.$GLOBALS['urlProject'].$this->pathImages.$this->FILES_atts[$nameVar]['button_image_url'].'",'."\n";
+			$JSPerVar.= "\t".'button_image_url : "'.'../../'.$this->pathImages.$this->FILES_atts[$nameVar]['button_image_url'].'",'."\n";
 			$JSPerVar.= "\t".'button_placeholder_id : "'.$this->FILE_button_placeholder_id.$nameVar.'",'."\n";
 			$JSPerVar.= "\t".'button_width: '.$this->FILES_atts[$nameVar]['button_width'].','."\n";
 			$JSPerVar.= "\t".'button_height: '.$this->FILES_atts[$nameVar]['button_height'].','."\n";
@@ -2208,12 +2202,6 @@ class OPF_myForm {
 			$JSPerVar.= "\t".'button_action : SWFUpload.BUTTON_ACTION.SELECT_FILE,'."\n";
 
 			$JSPerVar.= "\t".'button_text : \'<span class="btnText">'.$this->FILES_atts[$nameVar]['str_etq_button'].' ';
-
-			/**
-			 * Deprecated
-			 if ($this->FILE_src_img_button)
-			 $JS.= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
-			 */
 
 			$maxInfoSize = '';
 			$maxFileSizeUpload = '';
@@ -2407,7 +2395,7 @@ class OPF_myForm {
 
 								$utilyVal = 'onKeyUp="CalendarFormat( this );" onBlur="BlurDate( this )"';
 
-								$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="boton_cal" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$campos_f[2].'\'].value, \''.$campos_f[2].'\', \''.$campos_f[2].'\', \''.$this->name.'\')" /><img src="'.$GLOBALS['urlProject'].$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
+								$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="boton_cal" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$campos_f[2].'\'].value, \''.$campos_f[2].'\', \''.$campos_f[2].'\', \''.$this->name.'\')" /><img src="'.'../../'.$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
 
 							}else
 							$strEvents = $this->checkExistEventJs($campos_f[2]);
@@ -2425,12 +2413,6 @@ class OPF_myForm {
 
 							//$bufTemp .= '<button '.$this->checkIfIsDisabled($campos_f[2]).' '.$this->checkIsHelping($campos_f[2]).' class="'.$this->styleClassButtons.'" id="'.$campos_f[2].'" type="button"  onclick="'.$SWFonClick.'">';
 							$bufTemp .= '<span id="'.$this->FILE_button_placeholder_id.''.$campos_f[2].'">';
-								
-							/**
-							 *	Deprecated
-							 if ($this->FILE_src_img_button)
-							 $bufTemp .= '<img style="padding-right: 3px; vertical-align: bottom;" src="'.$GLOBALS['urlProject'].$this->pathImages.$this->FILE_src_img_button.'" border="0">';
-							 */
 
 							$maxInfoSize = '';
 
