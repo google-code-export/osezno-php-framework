@@ -15,6 +15,65 @@ include 'dataModel.php';
  */
 class eventos extends OPF_myController {
 
+	/**
+	 * Acepta el porceso de crear el arhivo de configuracion automaticamente.
+	 * 
+	 * @param  $datForm
+	 * @return string
+	 */
+	public function onClickCreateConfig ($datForm){
+		
+		$file = $GLOBALS['folderProject'].'config/configApplication.php';
+		
+		$link = fopen($file, 'w');
+		
+		$writeError = false;
+		
+		if ($link){
+		
+			$OPF_login = new OPF_login;
+			
+			$cont = $OPF_login->readTemplate(PATH_TEMPLATES.'install_config/configApplication.tpl', array(
+				
+			 	'{db_name}'=>$datForm['db'],
+				
+			 	'{db_engine}'=>$datForm['engine'],
+				
+			 	'{db_host}'=>$datForm['host_db'],
+				
+			 	'{db_user}'=>$datForm['user_db'],
+			 		
+				'{db_password}'=>$datForm['passwd_db'],
+					
+				'{db_port}'=>$datForm['host_port'],
+			));
+			
+			if (fwrite($link, $cont)){
+
+				fclose($link);
+				
+			}else{
+				
+				$writeError = true;
+			}
+		
+		}else{
+		
+			$writeError = true;
+		}
+		
+		if ($writeError){
+			
+			$this->notificationWindow(OPF_LOGIN_34,5,'ok.gif');
+			
+		}else{
+			
+			$this->messageBox(OPF_LOGIN_33,'error');
+		}
+		
+		return $this->response;
+	}
+	
 	public function onLoadShowWel (){
 			
 		$this->modalWindowFromUrl('firstTime.php',OPF_LOGIN_31,300,320,2);
@@ -191,8 +250,9 @@ class eventos extends OPF_myController {
 
 								@mysql_query('COMMIT;',$link);
 									
-								$this->messageBox(OPF_LOGIN_15,'info',array(OPF_LOGIN_16=>'onClickReload'),$datForm);
+								$this->messageBox(OPF_LOGIN_15,'info',array(YES=>'onClickCreateConfig',NO=>'onClickReload'),$datForm);
 									
+								
 							}
 								
 						}else{
@@ -249,7 +309,7 @@ class eventos extends OPF_myController {
 
 							@pg_query($link, 'COMMIT;');
 
-							$this->messageBox(OPF_LOGIN_15,'info',array(OPF_LOGIN_16=>'onClickReload'),$datForm);
+							$this->messageBox(OPF_LOGIN_15,'info',array(YES=>'onClickCreateConfig',NO=>'onClickReload'),$datForm);
 						}
 
 					}

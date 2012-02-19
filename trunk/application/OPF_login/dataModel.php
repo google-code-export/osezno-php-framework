@@ -17,6 +17,34 @@ class OPF_login {
 
 	private $errorLogIn = '';
 
+	public function readTemplate ($file, $arrayAssignAreas){
+			
+		$newContent = '';
+			
+		$linkTpl = @fopen($file,'r');
+			
+		if ($linkTpl){
+	
+			$contHTML = fread($linkTpl,filesize($file));
+	
+			$newContent = $contHTML;
+	
+			fclose($linkTpl);
+	
+			if (count($arrayAssignAreas)){
+					
+				$arrayKeys = array_keys($arrayAssignAreas);
+	
+				$newContent = str_ireplace ( $arrayKeys, $arrayAssignAreas, $contHTML);
+			}
+	
+			$newContent = preg_replace('(\\{+[0-9a-zA-Z_]+\\})','',$newContent);
+	
+		}
+			
+		return $newContent;
+	}
+	
 	public function getFormConfigApp ($datForm){
 			
 		$code = ''.
@@ -204,7 +232,7 @@ class OPF_login {
 			$myForm->addButton('btn_install',OPF_LOGIN_17,'new.gif');
 				
 			$myForm->addEvent('btn_install', 'onclick', 'onClickCreateBD');
-
+			
 		}
 			
 		$myForm->addGroup('grp1',$str,array('engine','db','encoding','user_db','passwd_db','host_db','host_port'),1);
