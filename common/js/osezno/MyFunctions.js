@@ -71,7 +71,7 @@ function responseCallUrl(pageElement) {
 	}
  
  /*
-  * Obtiene el tamaño de una area de trabajo visible para un browser
+  * Obtiene el tamaï¿½o de una area de trabajo visible para un browser
   */
  function getPageSize()
 	{
@@ -118,6 +118,7 @@ function responseCallUrl(pageElement) {
 		 
 		return arrayPageSize;
 	}	
+ 
 
   xajax.callback.global.onRequest = function() {
 	  
@@ -159,7 +160,6 @@ function responseCallUrl(pageElement) {
     var padre = el.parentNode;
 	padre.removeChild(el);
   }
-
   
   function onResizeScroll (){
 
@@ -182,7 +182,7 @@ function responseCallUrl(pageElement) {
   }
   
   /**
-   * Funcion aplicada cuando el browser es cambiado de tamaño
+   * Funcion aplicada cuando el browser es cambiado de tamaï¿½o
    */
   function Resize (){
 	  

@@ -17,7 +17,7 @@ class eventos extends OPF_myController {
 
 	public function onLoadShowWel (){
 			
-		$this->modalWindowFromUrl('firstTime.php',OPF_LOGIN_31,300,320,2);
+		//$this->modalWindowFromUrl('firstTime.php',OPF_LOGIN_31,300,320,2);
 			
 		return $this->response;
 	}
@@ -26,12 +26,6 @@ class eventos extends OPF_myController {
 }
 
 
-
-
-$objEventos = new eventos($objxAjax);
-$objOsezno  = new OPF_osezno($objxAjax,$theme);
-
-$objOsezno->setPathFolderTemplates(PATH_TEMPLATES);
-$objxAjax->processRequest();
-
+$objEventos = new eventos();
+$objEventos->processRequest();
 ?>

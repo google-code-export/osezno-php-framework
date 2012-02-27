@@ -11,11 +11,11 @@ include 'handlerEvent.php';
 
 if (SHOW_WELCOME_MESSAGE == true)
 
-$objOsezno->assign('onload', 'onload="onLoadShowWel()"');
+	OPF_osezno::assign('onload', 'onload="onLoadShowWel()"');
 
 /**
  * Mostrar la plantilla
  */
-$objOsezno->call_template('welcome/welcome.tpl');
+OPF_osezno::call_template('welcome'.DS.'welcome.tpl');
 
 ?>
