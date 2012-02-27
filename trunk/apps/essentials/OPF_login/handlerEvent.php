@@ -23,7 +23,7 @@ class eventos extends OPF_myController {
 	 */
 	public function onClickCreateConfig ($datForm){
 		
-		$file = '../../config/configApplication.php';
+		$file = 'config/configApplication.php';
 		
 		$link = fopen($file, 'w');
 		
@@ -80,8 +80,8 @@ class eventos extends OPF_myController {
 	
 	public function onLoadShowWel (){
 			
-		$this->modalWindowFromUrl('firstTime.php',OPF_LOGIN_31,300,320,2);
-			
+		$this->modalWindowFromUrl(BASE_URL_PATH.'resources/lang/firstTime/'.LANG.'.html',OPF_LOGIN_31,300,320,2);
+		
 		return $this->response;
 	}
 
@@ -197,9 +197,10 @@ class eventos extends OPF_myController {
 
 		}else{
 
-			$this->messageBox(OPF_LOGIN_22, 'error');
+			$this->messageBox(OPF_LOGIN_22.'', 'error');
+
 		}
-			
+		
 		return $this->response;
 	}
 
@@ -372,10 +373,7 @@ class eventos extends OPF_myController {
 
 
 
-$objEventos = new eventos($objxAjax);
-$objOsezno  = new OPF_osezno($objxAjax,$theme);
-
-$objOsezno->setPathFolderTemplates(PATH_TEMPLATES);
-$objxAjax->processRequest();
+$objEventos = new eventos();
+$objEventos->processRequest();
 
 ?>

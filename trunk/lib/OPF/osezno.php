@@ -144,14 +144,9 @@ class OPF_osezno {
 		self::$arrayAssignAreasHead['string_favicon']
 		= '<link rel="shortcut icon" href="'.BASE_URL_PATH.'common/favicon.ico">';
 		
-		self::$arrayAssignAreasHead['string_js_common']
-		= '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/MyFunctions.js" charset="utf-8"></script>';
-		
 		switch (AJAX_ENGINE){
 				
 			case 'xajax':
-		
-				require PLUGINS_PATH.'xajax/xajax_plugins/response/modalWindow/myModalWindow.class.php';
 		
 				self::$arrayAssignAreasHead['xajax_scripts'] = $objAjax->getJavascript(BASE_URL_PATH.PATH_XAJAX_JS);
 		
@@ -160,6 +155,9 @@ class OPF_osezno {
 		
 				break;
 		}
+
+		self::$arrayAssignAreasHead['string_js_common']
+		= '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/MyFunctions.js" charset="utf-8"></script>';
 		
 		self::$arrayAssignAreasHead['string_js_swf_hld']
 		= '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/handlers.js" charset="utf-8"></script>';
@@ -203,27 +201,27 @@ class OPF_osezno {
 						'" rel="stylesheet" type="text/css" />';
 		
 		self::$arrayAssignAreasHead['string_css_myform']
-		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/myform/style.php?path_img='.'resources/themes/'.THEME_NAME.'/myform/'.
+		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/myform/style.php?path_img='.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/myform/'.
 						'" rel="stylesheet" type="text/css" />';
 		
 		self::$arrayAssignAreasHead['string_css_message_box']
-		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/msg_box/style.php?path_img='.'resources/themes/'.THEME_NAME.'/msg_box/'.
+		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/msg_box/style.php?path_img='.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/msg_box/'.
 						'" rel="stylesheet" type="text/css" />';
 		
 		self::$arrayAssignAreasHead['string_css_modal_window']
-		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/modal_window/style.php?path_img='.'resources/themes/'.THEME_NAME.'/modal_window/'.
+		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/modal_window/style.php?path_img='.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/modal_window/'.
 						'" rel="stylesheet" type="text/css" />';
 		
 		self::$arrayAssignAreasHead['string_css_notification_window']
-		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/notification_window/style.php?path_img='.'resources/themes/'.THEME_NAME.'/notification_window/'.
+		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/notification_window/style.php?path_img='.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/notification_window/'.
 						'" rel="stylesheet" type="text/css" />';
 		
 		self::$arrayAssignAreasHead['string_css_tabs']
-		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/mytabs/style.php?path_img='.'resources/themes/'.THEME_NAME.'/mytabs/'.
+		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/mytabs/style.php?path_img='.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/mytabs/'.
 						'" rel="stylesheet" type="text/css" />';
 		
 		self::$arrayAssignAreasHead['string_css_callback_xajax']
-		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/callback_xajax/style.php?path_img='.'resources/themes/'.THEME_NAME.'/callback_xajax/'.
+		= '<link href="'.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/callback_xajax/style.php?path_img='.BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/callback_xajax/'.
 						'" rel="stylesheet" type="text/css" />';
 		
 		self::$arrayAssignAreasHead['css_errors'] = '<style type="text/css">'."\n".self::$cssErrors."\n".'</style>';

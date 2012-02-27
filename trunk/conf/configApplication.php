@@ -12,14 +12,14 @@
  * 
  * @var string
  */
-$default_app = 'default';
+$default_app = 'essentials';
 
 /**
  * Modulo de aplicacion por defecto que se cargara si no es llamado
  * 
  * @var string
  */
-$default_mod = 'public';
+$default_mod = 'OPF_login';
 
 # Conexión a base de datos.
 

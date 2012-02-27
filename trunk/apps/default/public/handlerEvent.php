@@ -43,8 +43,6 @@ class eventos extends OPF_myController {
 }
 
 $objEventos = new eventos();
-
-
-$GLOBALS['objAjax']->processRequest();
+$objEventos->processRequest();
 
 ?>

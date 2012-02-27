@@ -28,7 +28,7 @@ if(typeof config == "undefined")
 
 //===================  GLOBAL TOOLTIP CONFIGURATION  =========================//
 config. Balloon				= false	// true or false - set to true if you want this to be the default behaviour
-config. BalloonImgPath		= "../../javascript/img/tip_ballon/" // Path to images (border, corners, stem), in quotes. Path must be relative to your HTML file.
+config. BalloonImgPath		= "common/js/osezno/img/tip_ballon/" // Path to images (border, corners, stem), in quotes. Path must be relative to your HTML file.
 // Sizes of balloon images
 config. BalloonEdgeSize		= 6		// Integer - sidelength of quadratic corner images
 config. BalloonStemWidth	= 15	// Integer

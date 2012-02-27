@@ -823,7 +823,7 @@ class OPF_myForm {
 
 			$this->WYSIWYG_editor_BasePath = 'plugin/'.$this->WYSIWYG_type.'/';
 
-			$this->pathImages =  'themes/'.THEME_NAME.'/myform/';
+			$this->pathImages =  BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/myform/';
 
 			$this->name = $name;
 
@@ -1239,7 +1239,7 @@ class OPF_myForm {
 		public function addButton ($strName, $strLabel = '', $strSrcImg = ''){
 
 			if ($strSrcImg)
-			$strSrcImg = '../../'.$this->pathImages.$strSrcImg;
+			$strSrcImg = $this->pathImages.$strSrcImg;
 
 			$name     = $this->getColspanRowspan($strName);
 

@@ -47,6 +47,22 @@ class OPF_myController extends OPF_myControllerExt {
 	}
 	
 	/**
+	 * Procesa la repuesta de Ajax (dependiendo del motor) si existe para ser mostrada o ejecutada en el navegador.
+	 */
+	public function processRequest (){
+		
+		switch (AJAX_ENGINE){
+				
+			case 'xajax':
+		
+				$GLOBALS['objAjax']->processRequest();
+		
+			break;
+		}
+		
+	}
+	
+	/**
 	 * Objeto xajax
 	 *
 	 * Objeto de xajax pasado como referencia del original pasado como parametro dentro del constructor.
@@ -759,8 +775,7 @@ class OPF_myController extends OPF_myControllerExt {
 		$tablaDisplay = '';
 		$tablaOpacity = '';
 
-
-		$file = '../../themes/'.THEME_NAME.'/modal_window/modal_window.tpl';
+		$file = ROOT_PATH.DS.'resources'.DS.'themes'.DS.THEME_NAME.DS.'modal_window'.DS.'modal_window.tpl';
 
 		$arRepl = array (
 			'{div_name}'=>$this->idLastMWopen,
@@ -804,8 +819,8 @@ class OPF_myController extends OPF_myControllerExt {
 
 		$html = $this->loadHtmlFromFile($file, $arRepl);
 
-		$this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',10, $width, $height);
-
+		$this->script("addWindow('".addslashes(preg_replace("[\n|\r|\n\r]",'',$html))."', '#000000', 10, ".$width.", ".$height.")");
+		
 		if ($nameFuntionEffect){
 			$this->response->script($nameFuntionEffect.'(\''.$this->idLastMWopen.'\','.$width.','.$height.','.$ini_height.');');
 		}
@@ -909,7 +924,7 @@ class OPF_myController extends OPF_myControllerExt {
 		}
 			
 
-		$file = '../../themes/'.THEME_NAME.'/msg_box/message_box.tpl';
+		$file = ROOT_PATH.DS.'resources'.DS.'themes'.DS.THEME_NAME.DS.'msg_box'.DS.'message_box.tpl';
 		
 		if (!$this->widthMessageBox)
 		$width = 400;
@@ -993,8 +1008,8 @@ class OPF_myController extends OPF_myControllerExt {
 
 		$html = $this->loadHtmlFromFile($file, $arRepl);
 
-		$this->response->plugin('myModalWindow', 'addWindow',$html,'#000000',5, $width, $height);
-
+		$this->script("addWindow('".addslashes(preg_replace("[\n|\r|\n\r]",'',$html))."', '#000000', 5, ".$width.", ".$height.")");
+		
 		$this->script('document.getElementById(\''.$primerButton.'\').focus()');
 	}
 

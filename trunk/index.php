@@ -28,6 +28,9 @@
 
 	require LANG_PATH;
 
+	# Idioma en uso
+	define('LANG',  $lang);
+	
 	# Ruta del tema seleccionado
 	define('THEME_NAME',	$theme);
 	

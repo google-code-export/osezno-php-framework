@@ -26,6 +26,7 @@ class OPF_myControllerExt {
 		$contenido = fread($gestor, filesize($file));
 
 		if (is_array($arrayReplacement)){
+			
 			$arrayKeys = array_keys($arrayReplacement);
 
 			$contenido = str_ireplace ( $arrayKeys, $arrayReplacement, $contenido);

@@ -15,25 +15,25 @@ include 'handlerEvent.php';
  */
 $OPF_login = new OPF_login;
 
-$objOsezno->assign('nom_modulo','Essentials');
+OPF_osezno::assign('nom_modulo','Essentials');
 
-$objOsezno->assign('desc_modulo','Essentials Osezno PHP Framework');
+OPF_osezno::assign('desc_modulo','Essentials Osezno PHP Framework');
 
 if ($OPF_login->existsDB()){
 
-	if ($OPF_login->existsStruct())
+	if ($OPF_login->existsStruct()){
 
-	$objOsezno->assign('content1',$OPF_login->getFormLogin());
+	OPF_osezno::assign('content1',$OPF_login->getFormLogin());
 		
-	else
+	}else
 		
-	$objOsezno->assign('content1',$OPF_login->getFormInstall('tables'));
+	OPF_osezno::assign('content1',$OPF_login->getFormInstall('tables'));
 
 }else{
 
 	$disabled = false;
 	
-	$objOsezno->assign('onload', 'onLoadShowWel()');
+	OPF_osezno::assign('onload', 'onLoadShowWel()');
 	
 	if (!strstr(strtoupper(ini_get('default_charset')), "UTF")){
 		
@@ -51,15 +51,15 @@ if ($OPF_login->existsDB()){
 	
 	if ($disabled){
 		
-		$objOsezno->assign('content2','<div align="center" id="content2" class="error">'.OPF_LOGIN_32.'</div>');
+		OPF_osezno::assign('content2','<div align="center" id="content2" class="error">'.OPF_LOGIN_32.'</div>');
 	}
 
-	$objOsezno->assign('content1',$OPF_login->getFormInstall('db',array(),$disabled));
+	OPF_osezno::assign('content1',$OPF_login->getFormInstall('db',array(),$disabled));
 }
 
 /**
  * Mostrar la plantilla
  */
-$objOsezno->call_template('login/login.tpl');
+OPF_osezno::call_template('login'.DS.'login.tpl');
 
 ?>
