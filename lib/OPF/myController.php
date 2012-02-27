@@ -41,7 +41,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 * @param string $area
 	 * @param string $content
 	 */
-	public function assign_to_template ($area, $content){
+	public function render_template ($area, $content){
 		
 		OPF_osezno::assign($area, $content);
 	}

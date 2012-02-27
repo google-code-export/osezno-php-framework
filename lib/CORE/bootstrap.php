@@ -11,11 +11,11 @@
 		public function __construct($pathDir, $entorno = 'dev', $app = ''){
 			
 			$q_string = $_SERVER['REQUEST_URI'];
-				
+			
 			$q_string = trim(filter_var($q_string, FILTER_SANITIZE_URL), '/');
-
+			
 			$q_string = str_replace(substr($pathDir, strripos($pathDir, DIRECTORY_SEPARATOR)), '', $q_string);
-				
+			
 			$entornos_validos = array(
 			        
 		        'dev'  => array('INDEX' => 'index.php'),
