@@ -17,9 +17,9 @@ OPF_osezno::assign('name','Modulo de Ejemplo');
 
 OPF_osezno::assign('desc','Modulo de ejemplo');
 
-//OPF_osezno::assign('main_area','');
+OPF_osezno::assign('main_area','');
 
-//OPF_osezno::assign('alt_area','sssssssssssssssssssss');
+OPF_osezno::assign('alt_area','');
 
 
 /**

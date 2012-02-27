@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Errores de acceso de clases
+ */
+define ('ROUTER_CLASS_NOT_FOUND','Al intentar encontrar la clase: ');
+define ('ROUTER_METHOD_NOT_FOUND','Al intentar acceder al evento: ');
+
+
+/**
  * Essentials OPF
  */
 

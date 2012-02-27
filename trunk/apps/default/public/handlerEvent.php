@@ -15,14 +15,14 @@ include 'dataModel.php';
  */
 class eventos extends OPF_myController {
 
-	public function calcular ($params){
+	public function calcular (){
 		
-		$this->assign_to_template('alt_area', 1+1);
+		$this->render_template('alt_area', 1+1);
 	}
 	
-	public function saludo ($params){
+	public function saludo ($nombre, $apellido){
 	
-		$this->assign_to_template('alt_area', 'Hola perro del orto!');
+		$this->render_template('alt_area', 'Hola '.$nombre.' '.$apellido);
 	}
 	
 	
