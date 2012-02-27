@@ -1,0 +1,15 @@
+    # Activar modo de reescritura
+    RewriteEngine On
+
+    # Directorio de instalacion, puede ser necesario si 
+    # la aplicacion se ubica en public_html
+    RewriteBase /
+
+    # No permite reescritura si el archivo o directorio existe
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Para peticiones que no son archivos ni directorios
+    # Reescribe a index.php?url=URL
+    #RewriteRule ^(.*)$ index.php [QSA,L]   
+    RewriteRule !\.(js|gif)$ /wladimir/index.php
