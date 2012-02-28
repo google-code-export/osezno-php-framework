@@ -17,6 +17,6 @@
 
 	<frame name="menu" src="<?php echo BASE_URL_PATH.'index.php/options/'; ?>" title="Menu de navegación">
 
-	<frame name="modulo" src="/OPF_welcome/" title="Modulos">
+	<frame name="modulo" src="<?php echo BASE_URL_PATH.'index.php/welcome/'; ?>" title="Modulos">
 
 </FRAMESET>

@@ -1523,7 +1523,7 @@ class OPF_myForm {
 			$buf .= '<table border="0" cellspacing="0" cellpadding="0" width="100%"><tr>';
 
 			if ($strSrcImg)
-			$buf .= '<td align="right"><img style="padding-right: 2px; vertical-align: middle;" src="'.'../../'.$this->pathImages.$strSrcImg.'" border="0"></td>';
+			$buf .= '<td align="right"><img style="padding-right: 2px; vertical-align: middle;" src="'.''.$this->pathImages.$strSrcImg.'" border="0"></td>';
 				
 			$buf.='<td class="boton_font">'.str_replace(' ','&nbsp;',$strLabel).'</td></tr></table></button>';
 

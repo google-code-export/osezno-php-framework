@@ -7,7 +7,7 @@
 </head>
 <body {onload}>
 <table align="center" width="512px" border="0" height="600px">
-	<tr><td><img src="../../templates/welcome/imagenes/logo.jpg"></td></tr>
+	<tr><td><img src="welcome/imagenes/logo.jpg"></td></tr>
 </table>
 </body>
 </html>

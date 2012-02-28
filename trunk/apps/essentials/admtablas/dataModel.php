@@ -9,7 +9,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include '../../config/configApplication.php';
 
 class admTablas {
 
@@ -107,7 +106,7 @@ class admTablas {
 
 		);
 			
-		$myList = new OPF_myList('lst_tablas',$sql = $myAct->loadSqlFromFile('sql/lst_tablas.sql',$arrReplace));
+		$myList = new OPF_myList('lst_tablas',$sql = $myAct->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'lst_tablas.sql',$arrReplace));
 			
 		$myList->setRealNameInQuery(OPF_FIELD_TABLA, 'ess_master_tables.name');
 			
