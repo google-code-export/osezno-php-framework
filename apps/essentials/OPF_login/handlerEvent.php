@@ -7,7 +7,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include 'dataModel.php';
 
 /**
  * Manejador de eventos de usuario

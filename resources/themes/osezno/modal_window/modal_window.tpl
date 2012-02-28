@@ -5,7 +5,7 @@
 			<td class="mw_top_center" onMouseDown="js_drag(event)" onMouseOver="this.style.cursor='move'">
 				<table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0">
 					<tr>
-						<td width="16"><img src="../../../common/icon.gif"></td>
+						<td width="16"><img src="common/icon.gif"></td>
 						<td width="96%" class="tit_mw">&nbsp;{html_title}</td>
 						<td width="4%" align="left"><a href="javascript:;" onclick="closeModalWindow()"><div class="buttom_close_mw"></div></a></td>
 					</tr>

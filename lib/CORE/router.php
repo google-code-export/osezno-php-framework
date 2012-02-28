@@ -4,11 +4,19 @@
 		
 		public static function router ($app, $module, $event, $params){
 			
-			$path = APP_PATH.$app.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'index.php';
+			$pathModel 		= APP_PATH.$app.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'dataModel.php';
 			
-			if (file_exists($path)){
+			$pathHandler 	= APP_PATH.$app.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'handlerEvent.php';
+			
+			$pathIndex 		= APP_PATH.$app.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'index.php';
+			
+			if (file_exists($pathIndex)){
 				
-				include $path;
+				include $pathModel;
+				
+				include $pathHandler;
+				
+				include $pathIndex;
 
 				if (class_exists('eventos')){
 				
@@ -32,7 +40,6 @@
 					$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_CLASS_NOT_FOUND.'&nbsp;&quot;'.'eventos'.'&quot;</div>';
 					
 					die ($msgError);
-						
 				}
 				
 			}else{

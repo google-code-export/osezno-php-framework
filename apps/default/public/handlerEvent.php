@@ -7,7 +7,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include 'dataModel.php';
 
 /**
  * Manejador de eventos de usuario
@@ -15,16 +14,9 @@ include 'dataModel.php';
  */
 class eventos extends OPF_myController {
 
-	public function calcular (){
+	public function default_event (){
 		
-		$this->render_template('alt_area', 1+1);
 	}
-	
-	public function saludo ($nombre, $apellido){
-	
-		$this->render_template('alt_area', 'Hola '.$nombre.' '.$apellido);
-	}
-	
 	
 	/**
 	 * Ejemplo de evento

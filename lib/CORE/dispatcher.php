@@ -31,7 +31,7 @@
 			
 			$posicion++;
 			
-			self::$event = (empty($q_pieces[$posicion])) ? 'default' : $q_pieces[$posicion];
+			self::$event = (empty($q_pieces[$posicion])) ? 'default_event' : $q_pieces[$posicion];
 			
 			$posicion++;
 			
