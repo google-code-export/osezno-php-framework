@@ -20,7 +20,7 @@ class OPF_login {
 			
 		$newContent = '';
 			
-		$linkTpl = @fopen($file,'r');
+		$linkTpl = fopen($file,'r');
 			
 		if ($linkTpl){
 	

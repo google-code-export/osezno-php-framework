@@ -50,10 +50,10 @@
 	overflow: hidden;
 }
 </style>
-<script type="text/javascript" src="js/dtree.js"></script>
+<script type="text/javascript" src="{path_js_tree}common/js/essentials/dtree.js"></script>
 <meta charset="UTF-8">
 </head>
-<body background="../../templates/login/imagenes/bg.jpg">
+<body background="login/imagenes/bg.jpg">
 
 <div class="dtree">
 {user_login}

@@ -22,9 +22,7 @@ class eventos extends OPF_myController {
 	 */
 	public function onClickCreateConfig ($datForm){
 		
-		$file = 'config/configApplication.php';
-		
-		$link = fopen($file, 'w');
+		$link = fopen(CONF_PATH, 'w');
 		
 		$writeError = false;
 		
@@ -32,7 +30,7 @@ class eventos extends OPF_myController {
 		
 			$OPF_login = new OPF_login;
 			
-			$cont = $OPF_login->readTemplate(PATH_TEMPLATES.'install_config/configApplication.tpl', array(
+			$cont = $OPF_login->readTemplate(APP_PATH.'essentials/OPF_login/templates/configApplication.tpl', array(
 				
 			 	'{db_name}'=>$datForm['db'],
 				
@@ -223,7 +221,7 @@ class eventos extends OPF_myController {
 
 						if (@mysql_select_db ($datForm['db'], $link)){
 								
-							$sql = $OPF_login->loadSQLfromFile('db/essentials_'.$datForm['engine'].'.sql');
+							$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/OPF_login/db/essentials_'.$datForm['engine'].'.sql');
 								
 							$bloqs = explode ('#bloq',$sql);
 
@@ -282,7 +280,7 @@ class eventos extends OPF_myController {
 
 						@pg_query($link, 'BEGIN;');
 							
-						$sql = $OPF_login->loadSQLfromFile('db/essentials_'.$datForm['engine'].'.sql');
+						$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/OPF_login/db/essentials_'.$datForm['engine'].'.sql');
 							
 						$bloqs = explode ('#bloq',$sql);
 
@@ -345,7 +343,7 @@ class eventos extends OPF_myController {
 
 						$_SESSION['register_access'] = true;
 							
-						$this->redirect('../?');
+						$this->redirect('index.php/frames/');
 
 					}else
 
