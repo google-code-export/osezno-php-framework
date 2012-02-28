@@ -10,7 +10,6 @@
  * @license http://www.osezno-framework.org/license.txt
  */
 
-
  class formularios {
 
  	public static function getForm (){

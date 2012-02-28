@@ -30,6 +30,8 @@ class OPF_myControllerExt {
 			$arrayKeys = array_keys($arrayReplacement);
 
 			$contenido = str_ireplace ( $arrayKeys, $arrayReplacement, $contenido);
+			
+			$contenido = str_ireplace (array('<img src="'), array('<img src="'.BASE_URL_PATH), $contenido);
 		}
 
 		fclose($gestor);

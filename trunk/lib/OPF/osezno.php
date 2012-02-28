@@ -109,7 +109,9 @@ class OPF_osezno {
 	 */
 	private static function getAllHead (){
 		
-		$toReturn = '';
+		$varJsPathUrl = "\n".'<script type=\'text/javascript\' charset=\'UTF-8\'>'."\n".'var pathUrl = \''.BASE_URL_PATH.'\';'."\n".'</javascript>'."\n";
+		
+		$toReturn = $varJsPathUrl;
 
 		foreach (self::$arrayAssignAreasHead as $key => $cont){
 			
