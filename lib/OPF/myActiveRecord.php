@@ -1166,6 +1166,9 @@ class OPF_myActiveRecord {
 
 			$sql = str_ireplace ( $keys, $vars, $sql);
 
+		}else{
+			
+			die('Error: The file "'.$file.'" could not be found');
 		}
 
 		return $sql;

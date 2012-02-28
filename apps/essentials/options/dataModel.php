@@ -47,7 +47,7 @@ class struct_menu {
 					
 				$url = $menuOpt->url.'?secure_opf_code='.$this->objESS->crypNumbers($menuOpt->id);
 					
-				$icon = $menuOpt->icon;
+				$icon = BASE_URL_PATH.'common/js/essentials/'.$menuOpt->icon;
 			}
 
 			$this->js .= "d.add(".$menuOpt->id.",0,'".$menuOpt->description."','".$url."','".$menuOpt->description."','modulo','".$icon."');\n";
@@ -75,7 +75,7 @@ class struct_menu {
 				$url = $row->url.'?secure_opf_code='.$this->objESS->crypNumbers($row->id);
 			}
 
-			$this->js .= "d.add(".$row->id.",".$id.",'".$row->description."','".$url."','".$row->description."','modulo','".$row->icon."');\n";
+			$this->js .= "d.add(".$row->id.",".$id.",'".$row->description."','".$url."','".$row->description."','modulo','".BASE_URL_PATH.'common/js/essentials/'.$row->icon."');\n";
 
 			$this->recurWalkItems($menu,$row->id);
 		}
