@@ -19,7 +19,7 @@ $default_app = 'essentials';
  * 
  * @var string
  */
-$default_mod = 'login';
+$default_mod = 'OPF_login';
 
 # Conexión a base de datos.
 
@@ -28,42 +28,42 @@ $default_mod = 'login';
 * 
 * @var string
 */
-$engine = 'mysql';
+$engine = '{db_engine}';
 
 /**
  * Nombre de base de datos.
  * 
  * @var string
  */
-$database = 'oseznotestfinal';
+$database = '{db_name}';
 
 /**
  * Direccion Ip o nombre de maquina del motor de base de datos.
  * 
  * @var string
  */
-$host = 'localhost';
+$host = '{db_host}';
 
 /**
  * Nombre de usuario para conexion a base de datos.
  * 
  * @var string
  */
-$user = 'root';
+$user = '{db_user}';
 
 /**
  * Contraseña de usuario para conexión a base de datos.
  * 
  * @var string
  */
-$password = '';
+$password = '{db_password}';
 
 /**
  * Puerto para la conexión, Mysql 3306, Postgre 5432.
  * 
  * @var integer
  */
-$port = '3306';
+$port = '{db_port}';
 
 
 #Ajax Engine

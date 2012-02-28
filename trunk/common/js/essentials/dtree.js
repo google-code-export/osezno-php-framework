@@ -1,7 +1,7 @@
 /*--------------------------------------------------|
 | dTree 2.05 | www.destroydrop.com/javascript/tree/ |
 |---------------------------------------------------|
-| Copyright (c) 2002-2003 Geir Landrö               |
+| Copyright (c) 2002-2003 Geir Landrï¿½               |
 |                                                   |
 | This script can be used freely as long as all     |
 | copyright messages are intact.                    |
@@ -41,20 +41,20 @@ function dTree(objName) {
 		inOrder					: false
 	}
 	this.icon = {
-		root				: 'img/base.gif',
-		folder			: 'img/folder.gif',
-		folderOpen	: 'img/folderopen.gif',
-		node				: 'img/page.gif',
-		empty				: 'img/empty.gif',
-		line				: 'img/line.gif',
-		join				: 'img/join.gif',
-		joinBottom	: 'img/joinbottom.gif',
-		plus				: 'img/plus.gif',
-		plusBottom	: 'img/plusbottom.gif',
-		minus				: 'img/minus.gif',
-		minusBottom	: 'img/minusbottom.gif',
-		nlPlus			: 'img/nolines_plus.gif',
-		nlMinus			: 'img/nolines_minus.gif'
+		root				: pathUrl+'common/js/essentials/img/base.gif',
+		folder				: pathUrl+'common/js/essentials/img/folder.gif',
+		folderOpen			: pathUrl+'common/js/essentials/img/folderopen.gif',
+		node				: pathUrl+'common/js/essentials/img/page.gif',
+		empty				: pathUrl+'common/js/essentials/img/empty.gif',
+		line				: pathUrl+'common/js/essentials/img/line.gif',
+		join				: pathUrl+'common/js/essentials/img/join.gif',
+		joinBottom			: pathUrl+'common/js/essentials/img/joinbottom.gif',
+		plus				: pathUrl+'common/js/essentials/img/plus.gif',
+		plusBottom			: pathUrl+'common/js/essentials/img/plusbottom.gif',
+		minus				: pathUrl+'common/js/essentials/img/minus.gif',
+		minusBottom			: pathUrl+'common/js/essentials/img/minusbottom.gif',
+		nlPlus				: pathUrl+'common/js/essentials/img/nolines_plus.gif',
+		nlMinus				: pathUrl+'common/js/essentials/img/nolines_minus.gif'
 	};
 	this.obj = objName;
 	this.aNodes = [];

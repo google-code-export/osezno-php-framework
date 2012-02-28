@@ -23,7 +23,7 @@ OPF_osezno::assign('alt_area','');
 /**
  * Mostrar la plantilla
  */
-echo OPF_osezno::call_template('osezno'.DS.'osezno.tpl');
+OPF_osezno::call_template('osezno'.DS.'osezno.tpl');
 
 
 ?>
