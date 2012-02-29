@@ -212,6 +212,28 @@ a:hover {
 	color: blue;
 }
 
+.num_ord_ref_asc {
+	background-image: url('<?php echo $_GET['path_img']; ?>asc.gif');
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-style:italic;
+	text-decoration: none;
+	text-align:center;
+	font-weight: bold;
+	color: blue;
+}
+
+.num_ord_ref_desc {
+	background-image: url('<?php echo $_GET['path_img']; ?>desc.gif');
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-style:italic;
+	text-decoration: none;
+	text-align:center;
+	font-weight: bold;
+	color: blue;
+}
+
 /** Contenido de la titulo de la columna **/
 .column_title {
 	font-family: Arial, Helvetica, sans-serif;

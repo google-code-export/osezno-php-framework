@@ -25,6 +25,6 @@ OPF_osezno::assign('content2',$admTablas->getListForTables());
 /**
  * Mostrar la plantilla
  */
-OPF_osezno::call_template('modulo/modulo.tpl');
+OPF_osezno::call_template('modulo'.DS.'modulo.tpl');
 
 ?>
