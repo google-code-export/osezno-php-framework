@@ -117,15 +117,6 @@ class OPF_myList  {
 	private $currentPage;
 
 	/**
-	 * Path imagenes
-	 *
-	 * Path subcarpeta dentro de la carpeta principal del proyecto que almacena las imagenes generales que se usan en las lista dianmicas.
-	 * @access private
-	 * @var string
-	 */
-	private $pathThemes = 'themes/';
-
-	/**
 	 * Atributos accesibles.
 	 *
 	 * Nombre de los atributos seteables
@@ -133,37 +124,35 @@ class OPF_myList  {
 	 * @var array
 	 */
 	private $validNomKeys = array (
-                'width',
-                'formatWidthList',
-                'borderCellSize',
-                'useDistBetwRows',
-                'pathThemes',
-                'sql',
-                'arrayAliasSetInQuery',
-                'arrayOrdMethod',
-                'useOrderMethod',
-                'arrayOrdNum',
-                'themeName',
-                'arrayWidthsCols',
-                'usePagination',
-                'recordsPerPage',
-                'recordsPerPageForm',
-                'maxNumPage',
-                'currentPage',
-                'typeList',
-                'arrayEventOnColumn',
-                'arrayFieldsOnQuery',
-                'numRuleQuery',
-                'arrayWhereRules',
-                'arrayDataTypeExport',
-                'globalEventOnColumn',
-                'globalEventsName',
-                'useSqlDebug',
-                'engineDb',
-                'numAffectedRows',
-                'numFldsAftd',
-                'externalMethods'
-                );
+            'width',
+            'formatWidthList',
+            'borderCellSize',
+            'useDistBetwRows',
+            'sql',
+            'arrayAliasSetInQuery',
+            'arrayOrdMethod',
+            'useOrderMethod',
+            'arrayOrdNum',
+            'arrayWidthsCols',
+            'usePagination',
+            'recordsPerPage',
+            'recordsPerPageForm',
+            'maxNumPage',
+            'currentPage',
+            'typeList',
+            'arrayEventOnColumn',
+            'arrayFieldsOnQuery',
+            'numRuleQuery',
+            'arrayWhereRules',
+            'arrayDataTypeExport',
+            'globalEventOnColumn',
+            'globalEventsName',
+            'useSqlDebug',
+            'engineDb',
+            'numAffectedRows',
+            'numFldsAftd',
+            'externalMethods'
+    );
 
                 /**
                  * Tipos de filtro
@@ -403,15 +392,6 @@ class OPF_myList  {
                 private $errorLog;
 
                 /**
-                 * Tema lista
-                 *
-                 * Nombre del tema de estilo que usara la lista
-                 * @access private
-                 * @var string
-                 */
-                private $themeName = 'default';
-
-                /**
                  * Consulta exitosa
                  *
                  * Determina si existe un error en la consutla sql que se ejecuto previo la construccion de la lista.
@@ -492,24 +472,6 @@ class OPF_myList  {
                 	$this->objForm = new OPF_myForm;
 
                 	$this->objForm->setParamTypeOnEvent('field');
-
-                	$this->themeName = THEME_NAME;
-                }
-
-                /**
-                 * Seleccionar un tema
-                 *
-                 * Selecciona un tema de estilos para las lista dinamica. Si no se especifica uno, se toma el configurado a nivel de la aplicacion y el metodo retorna el tema en uso.
-                 * @param string $theme Nombre del tema
-                 * @return string Tema en uso
-                 */
-                public function setTheme ($theme = ''){
-
-                	if ($theme)
-                	$this->themeName = $theme;
-                	else{
-                		return  '../../'.$this->pathThemes.$this->themeName.'/style.css.php?img='.'../css/themes/'.$this->themeName.'/';
-                	}
                 }
 
                 /**
@@ -878,37 +840,6 @@ class OPF_myList  {
                 	 
                 }
 
-                /**
-                 * Retorna la ruta de la imagen que se va a mostrar segun
-                 * el metodo de ordenamiento.
-                 *
-                 * @param $method       Metodo de ordenamiento
-                 * @return string
-                 */
-                private function getSrcImageOrdMethod ($method = ''){
-
-                	$pathImg ='../../'.$this->pathThemes.$this->themeName.'/mylist/';
-
-                	$return = '';
-
-                	if ($method){
-
-                		switch ($method){
-
-                			case 'ASC':
-                				$return .= $pathImg.'asc.gif';
-                				break;
-
-                			case 'DESC':
-                				$return .= $pathImg.'desc.gif';
-                				break;
-                		}
-
-                	}
-
-                	return $return;
-                }
-
                 private $firsKey = false;
 
                 /**
@@ -1102,15 +1033,18 @@ class OPF_myList  {
                 								$htmlGlobal = '{htmlGlobal}';
 
                 								$this->firsKey = false;
+                								
                 							}else
-                							$htmlGlobal = '&nbsp;';
+                							
+                								$htmlGlobal = '&nbsp;';
 
                 							if ($this->useOrderMethod && !isset($this->arrayEventOnColumn[$key])){
 
                 								$orderBy = '';
 
                 								if (isset($this->arrayOrdMethod[$key]))
-                								$orderBy = $this->arrayOrdMethod[$key];
+                								
+                									$orderBy = $this->arrayOrdMethod[$key];
 
                 								$styleName = 'cell_title';
 
@@ -1125,6 +1059,7 @@ class OPF_myList  {
                 									$numOrder = $arrayOrdNum[$key];
 
                 								}else{
+                									
                 									$cadParam .= '1,';
                 								}
 
@@ -1134,7 +1069,25 @@ class OPF_myList  {
 
                 								$bufHead.='<a class="column_title" href="javascript:;" onClick="MYLIST_moveTo(\''.$this->idList.'\',\''.$key.'\')">'.(ucwords($key)).'</a>';
 
-                								$bufHead.='</td><td width="20px" background="'.$this->getSrcImageOrdMethod($orderBy).'" class="num_ord_ref">'.$numOrder.'</td></tr></table>';
+                								$classOrd = 'num_ord_ref';
+                								
+                								switch ($orderBy){
+                									
+                									case 'ASC':
+                										
+                										$classOrd = 'num_ord_ref_asc';
+                										
+                									break;
+                									
+                									case 'DESC':
+                										
+                										$classOrd = 'num_ord_ref_desc';
+                										
+                									break;
+                									
+                								}
+                								
+                								$bufHead.='</td><td width="20px" class="'.$classOrd.'">'.$numOrder.'</td></tr></table>';
 
                 								$bufHead.='</td>';
 
@@ -1373,7 +1326,7 @@ class OPF_myList  {
 
                 					$objMyForm->addEvent($this->idList.$id,'onclick','MYLIST_page',$this->idList,$attr[1]);
 
-                					$buf .= $objMyForm->getButton($this->idList.$id,'',''.$this->themeName.'/mylist/'.$id.'.gif');
+                					$buf .= $objMyForm->getButton($this->idList.$id,'',''.'../mylist/'.$id.'.gif');
                 					break;
                 				case 'field':
 

@@ -223,7 +223,7 @@ class admDetalleTablas {
 			
 		);
 			
-		$myList = new OPF_myList('lst_tablas_detalle',$myAct->loadSqlFromFile('sql/lst_tablas_detalle.sql',$arrReplace));
+		$myList = new OPF_myList('lst_tablas_detalle',$myAct->loadSqlFromFile(dirname(__FILE__).'/sql/lst_tablas_detalle.sql',$arrReplace));
 			
 		$myList->width = 760;
 
