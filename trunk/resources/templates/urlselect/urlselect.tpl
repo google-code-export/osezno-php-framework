@@ -36,7 +36,7 @@
 	overflow: hidden;
 }
 </style>
-<script type="text/javascript" src="js/dtree.js"></script>
+<script type="text/javascript" src="{path_js_tree}common/js/essentials/dtree.js"></script>
 <meta charset="UTF-8">
 </head>
 <body>

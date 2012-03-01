@@ -31,9 +31,7 @@ OPF_osezno::assign('open_all',OPF_OPTIONS_1);
 
 OPF_osezno::assign('close_all',OPF_OPTIONS_2);
 
-//OPF_osezno::assign('home_etq','&nbsp;<b>'.APP_DESC.'</b>');
-
-OPF_osezno::assign('home_etq','&nbsp;<b>Hola</b>');
+OPF_osezno::assign('home_etq','&nbsp;<b>'.APP_DESC.'</b>');
 
 
 if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') === FALSE) {
@@ -45,6 +43,6 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') === FALSE) {
 /**
  * Mostrar la plantilla
  */
-OPF_osezno::call_template('options/options.tpl');
+OPF_osezno::call_template('options'.DS.'options.tpl');
 
 ?>
