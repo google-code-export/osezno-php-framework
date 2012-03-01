@@ -14,18 +14,9 @@
  */
 class eventos extends OPF_myController {
 
-	public function assignUrl ($url){
-			
-		$this->script('opener.document.getElementById("url").value = "../'.$url.'/'.'"');
-			
-		$this->closeWindow();
-			
-		return $this->response;
-	}
-
 	public function onClickFindMod ($datForm){
 			
-		$this->window('url_select_mod', 'url.php');
+		$this->window('url_select_mod', '../url/');
 			
 		return $this->response;
 	}
