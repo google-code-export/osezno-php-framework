@@ -208,47 +208,47 @@ ALTER TABLE ONLY public.ess_usronline ALTER COLUMN datetime SET STATISTICS 0;
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (25, 24, 'Tablas sitema', 'img/page.gif', '../OPF_admTablas/', 1, 1, '2011-08-31 15:34:12');
+VALUES (25, 24, 'Tablas sitema', 'img/page.gif', '../admtablas/', 1, 1, '2011-08-31 15:34:12');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (26, 24, 'Usuarios', 'img/page.gif', '../OPF_admUsr/', 2, 1, '2011-08-31 15:34:54');
+VALUES (26, 24, 'Usuarios', 'img/page.gif', '../admusr/', 2, 1, '2011-08-31 15:34:54');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (27, 24, 'Menu', 'img/page.gif', '../OPF_menu/', 3, 1, '2011-08-31 15:35:17');
+VALUES (27, 24, 'Menu', 'img/page.gif', '../menu/', 3, 1, '2011-08-31 15:35:17');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (28, 24, 'Perfiles', 'img/page.gif', '../OPF_profiles/', 4, 1, '2011-08-31 15:35:49');
+VALUES (28, 24, 'Perfiles', 'img/page.gif', '../profiles/', 4, 1, '2011-08-31 15:35:49');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (29, NULL, 'Salir', 'img/page.gif', '../OPF_logout/', 100, 1, '2011-08-31 17:08:42');
+VALUES (29, NULL, 'Salir', 'img/page.gif', '../logout/', 100, 1, '2011-08-31 17:08:42');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (31, NULL, 'Cambiar clave', 'img/page.gif', '../OPF_passwd/', 99, 1, '2011-08-31 19:01:33');
+VALUES (31, NULL, 'Cambiar clave', 'img/page.gif', '../passwd/', 99, 1, '2011-08-31 19:01:33');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (32, 24, 'Log de sucesos', 'img/page.gif', '../OPF_bit/', 5, 1, '2011-09-01 12:05:29');
+VALUES (32, 24, 'Log de sucesos', 'img/page.gif', '../bit/', 5, 1, '2011-09-01 12:05:29');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (33, 24, 'Usuarios Online', 'img/page.gif', '../OPF_useronline/', 6, 1, '2011-09-21 23:26:53');
+VALUES (33, 24, 'Usuarios Online', 'img/page.gif', '../useronline/', 6, 1, '2011-09-21 23:26:53');
 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (34, 24, 'Andamiaje', 'img/page.gif', '../OPF_scaffold/', 7, 1, '2012-02-02 12:00:00');
+VALUES (34, 24, 'Andamiaje', 'img/page.gif', '../scaffold/', 7, 1, '2012-02-02 12:00:00');
 
 #bloq
 
