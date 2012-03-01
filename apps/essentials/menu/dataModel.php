@@ -9,7 +9,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include '../../config/configApplication.php';
 
 class readDirs {
 
@@ -200,7 +199,7 @@ class OPF_menu {
 
 		);
 			
-		$myList = new OPF_myList('lst_menu',$myAct->loadSqlFromFile('sql/list_menu.sql',$arRpl));
+		$myList = new OPF_myList('lst_menu',$myAct->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'list_menu.sql',$arRpl));
 			
 		$myList->width = 1100;
 			
