@@ -9,8 +9,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include '../../config/configApplication.php';
-
 
 class user_on_line {
 
@@ -111,7 +109,7 @@ class user_on_line {
 			
 		);
 			
-		$myList = new OPF_myList('users_on_line',$actRecord->loadSqlFromFile('sql/user_online.sql',$arrRpl));
+		$myList = new OPF_myList('users_on_line',$actRecord->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'user_online.sql',$arrRpl));
 			
 		$myList->setWidthColumn(OPF_FIELD_CERRAR, 60);
 			

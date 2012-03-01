@@ -343,7 +343,7 @@ class eventos extends OPF_myController {
 
 						$_SESSION['register_access'] = true;
 							
-						$this->redirect('index.php/frames/');
+						$this->redirect(BASE_URL_PATH.'index.php/frames/');
 
 					}else
 
