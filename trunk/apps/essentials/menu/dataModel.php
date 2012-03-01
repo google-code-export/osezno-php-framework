@@ -69,21 +69,21 @@ class OPF_menu {
 
 		$arrIcons = array (
 			
-		array ('img/imgfolder.gif','imgfolder','Image folder'),
+		array (BASE_URL_PATH.'common/js/essentials/img/imgfolder.gif','imgfolder','Image folder'),
 
-		array ('img/musicfolder.gif','musicfolder','Music folder'),
+		array (BASE_URL_PATH.'common/js/essentials/img/musicfolder.gif','musicfolder','Music folder'),
 			
-		array ('img/page.gif','page','Page'),
+		array (BASE_URL_PATH.'common/js/essentials/img/page.gif','page','Page'),
 			
-		array ('img/cd.gif','cd','Cd'),
+		array (BASE_URL_PATH.'common/js/essentials/img/cd.gif','cd','Cd'),
 			
-		array ('img/base.gif','osezno','Osezno PHP Framefork logo'),
+		array (BASE_URL_PATH.'common/js/essentials/img/base.gif','osezno','Osezno PHP Framefork logo'),
 			
-		array ('img/globe.gif','globe','Globe'),
+		array (BASE_URL_PATH.'common/js/essentials/img/globe.gif','globe','Globe'),
 
-		array ('img/question.gif','question','Question'),
+		array (BASE_URL_PATH.'common/js/essentials/img/question.gif','question','Question'),
 
-		array ('img/trash.gif','trash','Trash')
+		array (BASE_URL_PATH.'common/js/essentials/img/trash.gif','trash','Trash')
 			
 		);
 			

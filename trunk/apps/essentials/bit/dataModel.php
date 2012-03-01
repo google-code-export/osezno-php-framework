@@ -9,7 +9,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include '../../config/configApplication.php';
 
 class OPF_bit {
 
@@ -31,7 +30,7 @@ class OPF_bit {
 			
 		);
 			
-		$myList = new OPF_myList('lst_bit',$myAct->loadSqlFromFile('sql/bit.sql',$arrReplace));
+		$myList = new OPF_myList('lst_bit',$myAct->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'bit.sql',$arrReplace));
 			
 		$myList->setWidthColumn(OPF_FIELD_ID, 100);
 			

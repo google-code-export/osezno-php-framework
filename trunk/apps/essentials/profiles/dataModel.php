@@ -9,7 +9,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include '../../config/configApplication.php';
 
 class OPF_profiles {
 
@@ -176,7 +175,7 @@ class OPF_profiles {
 			
 		);
 			
-		$myList = new OPF_myList('lst_profiles',$sql = $myAct->loadSqlFromFile('sql/lstProfiles.sql',$arrRpl));
+		$myList = new OPF_myList('lst_profiles',$sql = $myAct->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'lstProfiles.sql',$arrRpl));
 			
 		$myList->setEventOnColumn(OPF_FIELD_MODIFICAR, 'onClickAddRecord');
 			

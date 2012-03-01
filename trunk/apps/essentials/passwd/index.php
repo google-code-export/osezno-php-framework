@@ -7,24 +7,22 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include 'handlerEvent.php';
-
 
 /**
  * Asignar contenidos a areas de la plantilla
  */
 $OPF_passwd = new OPF_passwd;
 
-$objOsezno->assign('nom_modulo',OPF_PASSWD_TITLE);
+OPF_osezno::assign('nom_modulo',OPF_PASSWD_TITLE);
 
-$objOsezno->assign('desc_modulo',OPF_PASSWD_DESC);
+OPF_osezno::assign('desc_modulo',OPF_PASSWD_DESC);
 
-$objOsezno->assign('content1',$OPF_passwd->getFormChngPasswd());
+OPF_osezno::assign('content1',$OPF_passwd->getFormChngPasswd());
 
 
 /**
  * Mostrar la plantilla
  */
-$objOsezno->call_template('modulo/modulo.tpl');
+OPF_osezno::call_template('modulo/modulo.tpl');
 
 ?>
