@@ -19,7 +19,7 @@ $default_app = 'essentials';
  * 
  * @var string
  */
-$default_mod = 'OPF_login';
+$default_mod = 'login';
 
 # Conexión a base de datos.
 

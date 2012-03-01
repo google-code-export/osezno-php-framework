@@ -54,19 +54,19 @@ CREATE TABLE IF NOT EXISTS `ess_menu` (
 
 INSERT INTO `ess_menu` (`id`, `menu_id`, `description`, `icon`, `url`, `ord`, `usuario_id`, `datetime`) VALUES
 (1, NULL, 'Administración', 'img/globe.gif', '', 5, 1, '2011-10-01 01:33:24'),
-(2, 1, 'Tablas sitema', 'img/page.gif', '../OPF_admTablas/', 1, 1, '2011-08-31 15:34:12'),
-(3, 1, 'Usuarios', 'img/page.gif', '../OPF_admUsr/', 2, 1, '2011-08-31 15:34:54'),
-(4, 1, 'Menu', 'img/page.gif', '../OPF_menu/', 3, 1, '2011-08-31 15:35:17'),
-(5, 1, 'Perfiles', 'img/page.gif', '../OPF_profiles/', 4, 1, '2011-08-31 15:35:49'),
-(6, NULL, 'Salir', 'img/page.gif', '../OPF_logout/', 100, 1, '2011-10-01 01:33:02'),
-(7, NULL, 'Cambiar clave', 'img/page.gif', '../OPF_passwd/', 99, 1, '2011-08-31 19:01:33'),
-(8, 1, 'Log de sucesos', 'img/page.gif', '../OPF_bit/', 5, 1, '2011-09-01 12:05:29'),
-(9, 1, 'Usuarios Online', 'img/page.gif', '../OPF_useronline/', 6, 1, '2011-09-21 23:26:53'),
+(2, 1, 'Tablas sitema', 'img/page.gif', '../admtablas/', 1, 1, '2011-08-31 15:34:12'),
+(3, 1, 'Usuarios', 'img/page.gif', '../admusr/', 2, 1, '2011-08-31 15:34:54'),
+(4, 1, 'Menu', 'img/page.gif', '../menu/', 3, 1, '2011-08-31 15:35:17'),
+(5, 1, 'Perfiles', 'img/page.gif', '../profiles/', 4, 1, '2011-08-31 15:35:49'),
+(6, NULL, 'Salir', 'img/page.gif', '../logout/', 100, 1, '2011-10-01 01:33:02'),
+(7, NULL, 'Cambiar clave', 'img/page.gif', '../passwd/', 99, 1, '2011-08-31 19:01:33'),
+(8, 1, 'Log de sucesos', 'img/page.gif', '../bit/', 5, 1, '2011-09-01 12:05:29'),
+(9, 1, 'Usuarios Online', 'img/page.gif', '../useronline/', 6, 1, '2011-09-21 23:26:53'),
 (10, NULL, 'Documentación', 'img/cd.gif', 'http://www.osezno-framework.org/doc/', 2, 1, '2011-10-01 01:33:51'),
 (11, NULL, 'Demos', 'img/base.gif', 'http://www.osezno-framework.org/demos/forms1/', 3, 1, '2011-10-01 01:21:31'),
 (12, NULL, 'Website', 'img/globe.gif', 'http://www.osezno-framework.org/', 1, 1, '2011-10-01 01:33:43'),
 (13, NULL, 'Foro', 'img/question.gif', 'http://www.osezno-framework.org/forum/', 4, 1, '2011-10-01 01:25:41'),
-(14, 1, 'Andamiaje', 'img/page.gif', '../OPF_scaffold/', 7, 1, '2012-02-02 12:00:00');
+(14, 1, 'Andamiaje', 'img/page.gif', '../scaffold/', 7, 1, '2012-02-02 12:00:00');
 
 #bloq
 

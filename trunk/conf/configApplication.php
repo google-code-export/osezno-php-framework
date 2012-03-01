@@ -35,7 +35,7 @@ $engine = 'mysql';
  * 
  * @var string
  */
-$database = 'oseznotestfinal';
+$database = 'testosezno';
 
 /**
  * Direccion Ip o nombre de maquina del motor de base de datos.
