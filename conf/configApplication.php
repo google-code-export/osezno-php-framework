@@ -21,6 +21,15 @@ $default_app = 'default';
  */
 $default_mod = 'public';
 
+#Auto detectar subdominio
+
+/**
+ * Auto detectar subdominio para dedireccionar a la aplicacion secundaria
+ * 
+ * @var string
+ */
+$autodetect_subdomain = true;
+
 # Conexión a base de datos por cada aplicación.
 
 /**
