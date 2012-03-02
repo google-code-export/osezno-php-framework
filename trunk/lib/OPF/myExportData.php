@@ -352,7 +352,7 @@ class OPF_myExportData {
 
 	private function Header($ori){
 
-		$this->objPDF->Image('../themes/'.THEME_NAME.'/pdflogo/pdf_logo.jpg',10,10,0,0,'','http://www.osezno-framework.org');
+		$this->objPDF->Image(ROOT_PATH.DS.'resources/themes/'.THEME_NAME.'/pdflogo/pdf_logo.jpg',10,10,0,0,'','http://www.osezno-framework.org/');
 
 		$this->objPDF->SetFont('Arial','',8);
 

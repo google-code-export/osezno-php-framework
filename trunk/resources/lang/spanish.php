@@ -18,7 +18,7 @@ define('LABEL_BTN_CANCEL', 'Cancelar');
 
 // Access error
 define('OPF_ACCESS_NOT_VERIFY_ERROR','Codigo de seguridad.');
-define('OPF_ACCESS_NOT_VERIFY_DETAIL','No es posible verificar el acceso, ¿Esta accediendo desde el menu?');
+define('OPF_ACCESS_NOT_VERIFY_DETAIL','No es posible verificar el acceso.');
 define('OPF_ACCESS_NOT_PERMITED_ERROR','Acceso no permitido.');
 define('OPF_ACCESS_NOT_PERMITED_DETAIL','No cuenta con los suficientes privilegios del sistema para acceder a este modulo.');
 

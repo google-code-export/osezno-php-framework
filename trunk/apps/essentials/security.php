@@ -4,35 +4,22 @@ define('APP_DESC','OPF Essentials');
 
 define('SHOW_WELCOME_MESSAGE',true);
 
-$urlRedirect =  '../application/logout/';
+$urlRedirect =  '../logout/';
 
-# Modulos de acceso abierto
+# Modulos de acceso abierto, agregar aqui los que necesite.
 $openAccess = array (
 
-		'/application/index.php',
+		'/login/',
 
-		'/application/OPF_login/',
+		'/logout/',
 
-		'/application/OPF_logout/',
+		'/frames/',
 
-		'/application/OPF_login/firstTime.php',
+		'/options/',
 
-		'/application/OPF_options/',
+		'/welcome/',
 
-		'/application/downloadQuery.php',
-
-		'/application/calendarCaller.php',
-
-		'/application/myListHelp.php',
-
-		'/application/OPF_menu/url.php',
-
-		'/application/OPF_welcome/',
-		
-		'/application/public_view/index.php',
-		
-		'index.php'
-		
+		'downloadQuery.php'
 );
 
 function showErrorAccess ($error, $detalle){
@@ -53,20 +40,19 @@ function validateAccess ($executed, $openAccess, $urlRedirect, $ESS_essentials){
 	$isOpenAccess = false;
 
 	foreach ($openAccess as $path){
-			
-		if (stripos($executed, $path)!==false){
-
+		
+		if (str_replace(DS, '', strrchr(dirname(__FILE__), DS)) == 'essentials' && stripos($executed, $path)!==false){
+		
 			$isOpenAccess = true;
-
+			
 			break;
 		}
-			
+
 	}
 
-
 	if ($isOpenAccess){
-
-			
+		
+		#TODO
 
 	}else{
 			

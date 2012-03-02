@@ -1160,8 +1160,8 @@ class OPF_myController extends OPF_myControllerExt {
 	 */
 	public function MYLIST_help ($datForm){
 
-		$this->modalWindowFromUrl('../mylistHelp.php?no_load_xajax=true',TITLE_WINDOW_HELP_MYLIST,350,500);
-
+		$this->modalWindowFromUrl(BASE_URL_PATH.'resources/lang/help_mylist/'.LANG.'.html',TITLE_WINDOW_HELP_MYLIST,350,500,2);
+		
 		return $this->response;
 	}
 
@@ -1411,7 +1411,7 @@ class OPF_myController extends OPF_myControllerExt {
 			$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
 				
 			$this->redirect($url);
-				
+			
 			$this->closeModalWindow();
 		}
 
