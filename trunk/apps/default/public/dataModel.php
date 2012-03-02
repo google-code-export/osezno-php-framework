@@ -10,22 +10,4 @@
  * @license http://www.osezno-framework.org/license.txt
  */
 
- class formularios {
-
- 	public static function getForm (){
- 		
- 		$myForm = new OPF_myForm('form_ejemplo');
- 		
- 		$myForm->addText('Nombre:','nombre');
- 		
- 		$myForm->addButton('btn1','Aceptar');
- 		
- 		$myForm->addEvent('btn1', 'onclick', 'saludar');
- 		
- 		return $myForm->getForm(1);
- 	}
- 	
- 	
- }
-
 ?>

@@ -397,33 +397,33 @@ class OPF_myActiveRecord {
 		if ($arrayParams['database'])
 		$this->setDatabase($arrayParams['database']);
 		else
-		$this->setDatabase($GLOBALS['MYACTIVERECORD_PARAMS']['database']);
+		$this->setDatabase($GLOBALS['myActParams']['database']);
 
 		if ($arrayParams['engine'])
 		$this->setEngine($arrayParams['engine']);
 		else{
-			$this->setEngine($GLOBALS['MYACTIVERECORD_PARAMS']['engine']);
+			$this->setEngine($GLOBALS['myActParams']['engine']);
 		}
 
 		if ($arrayParams['host'])
 		$this->setHost($arrayParams['host']);
 		else
-		$this->setHost($GLOBALS['MYACTIVERECORD_PARAMS']['host']);
+		$this->setHost($GLOBALS['myActParams']['host']);
 
 		if ($arrayParams['user'])
 		$this->setUser($arrayParams['user']);
 		else
-		$this->setUser($GLOBALS['MYACTIVERECORD_PARAMS']['user']);
+		$this->setUser($GLOBALS['myActParams']['user']);
 
 		if ($arrayParams['password'])
 		$this->setPassword($arrayParams['password']);
 		else
-		$this->setPassword($GLOBALS['MYACTIVERECORD_PARAMS']['password']);
+		$this->setPassword($GLOBALS['myActParams']['password']);
 
 		if ($arrayParams['port'])
 		$this->setPort($arrayParams['port']);
 		else
-		$this->setPort($GLOBALS['MYACTIVERECORD_PARAMS']['port']);
+		$this->setPort($GLOBALS['myActParams']['port']);
 	}
 
 	/**

@@ -14,23 +14,6 @@
  */
 class eventos extends OPF_myController {
 
-	public function default_event (){
-		
-	}
-	
-	/**
-	 * Ejemplo de evento
-	 *
-	 * @param $params
-	 * @return string
-	 */
-	public function saludar ($params){
-			
-		$this->alert('Hola');
-			
-		return $this->response;
-	}
-
 
 }
 

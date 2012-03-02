@@ -40,12 +40,6 @@
 	# Base url
 	define ('BASE_URL_PATH', 'http://'.dirname($_SERVER['HTTP_HOST'].''.$_SERVER['SCRIPT_NAME']).'/');
 	
-	if (version_compare(PHP_VERSION, '5.3.0') >= 0)
-	
-		error_reporting(E_ALL ^ E_DEPRECATED);
-	else
-		error_reporting(E_ALL);
-
 	# Cambiamos el nombre de la cookie
 	session_name($sessionName);
 	
@@ -59,12 +53,12 @@
 	define('DEFAULT_MOD', $default_mod);
 	
 	# Osezno php framework versión
-	define ('FRAMEWORK_VERSION','1.2',true);
+	define ('FRAMEWORK_VERSION','1.5',true);
 	
 	# Arreglo de listas dinamicas
 	if (!isset($_SESSION['prdLst']))
 	
-		$_SESSION['prdLst'] = array();	
+		$_SESSION['prdLst'] = array();
 
 	#Areas de la plantilla
 	global $ptlAreas;
@@ -75,27 +69,35 @@
 	global $tplNameInUse;
 	
 	# Parametros de conexion a base de datos por defecto
-	global $MYACTIVERECORD_PARAMS;
+	global $myActParams;
 	
-	$GLOBALS['MYACTIVERECORD_PARAMS']['database'] 	= $database;
+	$GLOBALS['myActParams'] = array (
 	
-	$GLOBALS['MYACTIVERECORD_PARAMS']['engine'] 	= $engine;
+		'database' 	=> $pull_connect[$default_app]['database'],
 	
-	$GLOBALS['MYACTIVERECORD_PARAMS']['host'] 		= $host;
+		'engine' 	=> $pull_connect[$default_app]['engine'],
 	
-	$GLOBALS['MYACTIVERECORD_PARAMS']['user'] 		= $user;
+		'host'		=> $pull_connect[$default_app]['host'],
 	
-	$GLOBALS['MYACTIVERECORD_PARAMS']['password'] 	= $password;
+		'user'		=> $pull_connect[$default_app]['user'],
 	
-	$GLOBALS['MYACTIVERECORD_PARAMS']['port'] 		= $port;
+		'password' 	=> $pull_connect[$default_app]['password'],
+	
+		'port'		=> $pull_connect[$default_app]['port']
+	
+	);
 		
-	function __autoload($className){
-	
+	function auto_carga ($className){
+		
+		$classFound = false;
+		
+		# Buscamos en los paquetes
+		
 		if (stripos($className,'_')!==false){
 				
 			list($pkg, $fileName) = explode('_', $className);
 	
-			$classFile =LIB_PATH.$pkg.DS.$fileName.'.php';
+			$classFile = LIB_PATH.$pkg.DS.$fileName.'.php';
 				
 			$pack = 'PACKAGE';
 	
@@ -106,11 +108,15 @@
 			if (file_exists($classFile)){
 	
 				include $classFile;
+				
+				$classFound = true;
 			}
 				
 		}
-	
+		
 	}
+	
+	spl_autoload_register ('auto_carga');
 	
 	global $objAjax;
 	
@@ -136,8 +142,6 @@
 		
 	}
 	
-	require PLUGINS_PATH.'fpdf/fpdf.php';
-
 	date_default_timezone_set($timezone);
 	
 	ini_set('default_charset', $default_charset);
