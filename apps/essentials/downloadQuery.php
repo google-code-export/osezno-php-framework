@@ -1,7 +1,5 @@
 <?php
 
-include '../config/configApplication.php';
-
 if (isset($_GET['id_list'])){
 
 	$idList = $_GET['id_list'];
@@ -123,7 +121,6 @@ if (isset($_GET['id_list'])){
 
 		header('Cache-control: private, must-revalidate');
 	}
-		
 		
 	echo $xlsOut.$htmlOut.$pdfOut;
 }

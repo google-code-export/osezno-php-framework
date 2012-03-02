@@ -16,7 +16,7 @@ class eventos extends OPF_myController {
 
 	public function onClickFindMod ($datForm){
 			
-		$this->window('url_select_mod', '../url/');
+		$this->window('url_select_mod', '../url/?secure_opf_code='.$_GET['secure_opf_code']);
 			
 		return $this->response;
 	}
