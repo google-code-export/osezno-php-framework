@@ -9,6 +9,8 @@
  * @package OPF
  * @ignore
  */
+require PLUGINS_PATH.'fpdf/fpdf.php';
+
 class PDF_MC_Table extends FPDF
 {
 	private $widths;

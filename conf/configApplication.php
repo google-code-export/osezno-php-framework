@@ -12,59 +12,66 @@
  * 
  * @var string
  */
-$default_app = 'essentials';
+$default_app = 'default';
 
 /**
  * Modulo de aplicacion por defecto que se cargara si no es llamado
  * 
  * @var string
  */
-$default_mod = 'login';
+$default_mod = 'public';
 
-# Conexión a base de datos.
-
-/**
-* Motor de base de datos; pgsql ó mysql.
-* 
-* @var string
-*/
-$engine = 'mysql';
+# Conexión a base de datos por cada aplicación.
 
 /**
- * Nombre de base de datos.
+ * [engine] Motor de base de datos; pgsql ó mysql.
+ * [database] Nombre de la base de datos.
+ * [host] Direccion Ip o nombre de maquina del motor de base de datos.
+ * [user] Nombre de usuario para conexion a base de datos.
+ * [password] Contraseña de usuario para conexión a base de datos.
+ * [port] Puerto para la conexión, Mysql 3306, Postgre 5432.
  * 
- * @var string
+ * @var array
  */
-$database = 'oseznotestfinal';
+$pull_connect = array (
 
-/**
- * Direccion Ip o nombre de maquina del motor de base de datos.
- * 
- * @var string
- */
-$host = 'localhost';
+	'default' => 
+		
+		array (
+		
+			'engine' => '',
+		
+			'database' => '',
+		
+			'host'	=> '',
+		
+			'user'	=> '',
+		
+			'password'	=> '',
+		
+			'port' => ''
+		
+		),
+		
+	'essentials' => 
 
-/**
- * Nombre de usuario para conexion a base de datos.
- * 
- * @var string
- */
-$user = 'root';
+		array (
+		
+			'engine' => 'mysql',
+		
+			'database' => 'oseznotestfinal',
+		
+			'host'	=> 'localhost',
+		
+			'user'	=> 'root',
+		
+			'password'	=> '',
+		
+			'port' => '3306'
+		
+		)
 
-/**
- * Contraseña de usuario para conexión a base de datos.
- * 
- * @var string
- */
-$password = '';
-
-/**
- * Puerto para la conexión, Mysql 3306, Postgre 5432.
- * 
- * @var integer
- */
-$port = '3306';
-
+);
 
 #Ajax Engine
 
