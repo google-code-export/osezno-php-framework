@@ -12,7 +12,7 @@
  * 
  * @var string
  */
-$default_app = 'default';
+$default_app = 'www';
 
 /**
  * Modulo de aplicacion por defecto que se cargara si no es llamado
