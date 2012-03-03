@@ -146,19 +146,44 @@
 	
 	ini_set('default_charset', $default_charset);
 	
-	if ($autodetect_subdomain){
+	$cad = 'www.dominio.com';
+	
+	global $cuantas;
+	
+	$GLOBALS['cuantas'] = 0;
+	
+	function cuantas_en ($cad, $caracter){
 		
-		$userMaxLen = 100; 
-
-		$usuario = addslashes(htmlentities(substr(strtolower($_SERVER['SERVER_NAME']), 0, $userMaxLen)));
+		if (stripos($cad,$caracter)!==false){
+			
+			$GLOBALS['cuantas']++;
+			
+			$newCad = substr($cad, strpos($cad,$caracter)+1);
+			
+			cuantas_en( $newCad, $caracter, $cuantas);
+		}
 		
-		$usuario = substr($usuario,0,strpos($usuario,"."));
+	}
+	
+	cuantas_en($cad, '.');
+	
+	if ($GLOBALS['cuantas'] >= 2){
 		
-		if ($usuario)
+		if ($autodetect_subdomain){
 		
-		 	$default_app = $usuario;
+			$userMaxLen = 100;
+		
+			$usuario = addslashes(htmlentities(substr(strtolower($_SERVER['SERVER_NAME']), 0, $userMaxLen)));
+		
+			$usuario = substr($usuario,0,strpos($usuario,"."));
+		
+			if ($usuario)
+		
+				$default_app = $usuario;
+		}
+			
 	}
 	
 	$bootstrap = new CORE_bootstrap(ROOT_PATH,'dev',$default_app);
-	
+		
 ?>
