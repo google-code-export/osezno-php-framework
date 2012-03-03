@@ -12,14 +12,14 @@
  * 
  * @var string
  */
-$default_app = 'www';
+$default_app = 'essentials';
 
 /**
  * Modulo de aplicacion por defecto que se cargara si no es llamado
  * 
  * @var string
  */
-$default_mod = 'public';
+$default_mod = 'login';
 
 #Auto detectar subdominio
 
@@ -44,7 +44,7 @@ $autodetect_subdomain = true;
  */
 $pull_connect = array (
 
-	'default' => 
+	'www' => 
 		
 		array (
 		

@@ -10,18 +10,18 @@
 			
 			if (strstr($module, '.php')){
 				
-				$pathScript 	= APP_PATH.$app.DIRECTORY_SEPARATOR.$module;
+				$pathScript 	= APP_PATH.$app.DS.$module;
 				
 				include $pathScript;
 				
 			}else{
 				
-				$pathModel 		= APP_PATH.$app.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'dataModel.php';
+				$pathModel 		= APP_PATH.$app.DS.$module.DS.'dataModel.php';
 			
-				$pathHandler 	= APP_PATH.$app.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'handlerEvent.php';
+				$pathHandler 	= APP_PATH.$app.DS.$module.DS.'handlerEvent.php';
 			
-				$pathIndex 		= APP_PATH.$app.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'index.php';
-			
+				$pathIndex 		= APP_PATH.$app.DS.$module.DS.'index.php';
+							
 				if (file_exists($pathIndex)){
 				
 					include $pathModel;
@@ -59,9 +59,8 @@
 					}
 				
 				}else{
-				
-					# Error de path no encontrada
-					header('HTTP/1.0 404 Not Found');
+
+					die('Error: 404 / The module "'.$module.'" does not exist.');
 				}
 								
 			}
