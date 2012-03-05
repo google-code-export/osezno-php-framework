@@ -67,7 +67,7 @@
 			/**
 			 * Obtenemos el modulo a ejecutar, si no esta definido entonces ejecutamos el dejado por defecto
 			 */
-			if (empty($realComponents[0])){
+			if (empty($realComponents[0]) || $realComponents[0]=='index.php'){
 				
 				self::$module = DEFAULT_MOD;
 				
