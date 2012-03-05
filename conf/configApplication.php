@@ -19,7 +19,7 @@ $default_app = 'essentials';
  * 
  * @var string
  */
-$default_mod = 'login';
+$default_mod = 'public';
 
 #Auto detectar subdominio
 

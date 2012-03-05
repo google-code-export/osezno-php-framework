@@ -60,7 +60,7 @@
 				
 				}else{
 
-					die('Error: 404 / The module "'.$module.'" does not exist.');
+					die('Error: 404 / The module "'.$app.'/'.$module.'" does not exist.');
 				}
 								
 			}

@@ -146,7 +146,7 @@
 	
 	ini_set('default_charset', $default_charset);
 	
-	$cad = 'www.dominio.com';
+	$cad = $_SERVER['SERVER_NAME'];
 	
 	global $cuantas;
 	
