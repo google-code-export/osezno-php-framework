@@ -15,7 +15,7 @@
 			 */
 			if (strpos($q_string, '?') !== FALSE){
 			
-				$q_string = substr($q_string, 0, strpos($q_string, '?'));
+				$q_string = substr($q_string, 0, strpos($q_string, '?')); 
 			}
 			
 			
