@@ -72,7 +72,7 @@ function validateAccess ($executed, $openAccess, $urlRedirect, $ESS_essentials){
 
 		}else{
 
-			header ('Location: '.$urlRedirect);
+			//header ('Location: '.$urlRedirect);
 		}
 			
 	}
