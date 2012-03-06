@@ -19,7 +19,9 @@ $openAccess = array (
 
 		'/welcome/',
 
-		'downloadQuery.php'
+		'downloadQuery.php',
+		
+		'calendarCaller.php'
 );
 
 function showErrorAccess ($error, $detalle){

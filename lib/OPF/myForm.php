@@ -1282,7 +1282,7 @@ class OPF_myForm {
 					
 				$utilyVal = 'onKeyUp="CalendarFormat( this );" onBlur="BlurDate( this )"';
 					
-				$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($name).' type="button" class="boton_cal" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$name.'\'].value, \''.$name.'\', \''.$name.'\', \''.$this->name.'\')" /><img src="'.'../../'.$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
+				$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($name).' type="button" class="boton_cal" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$name.'\'].value, \''.$name.'\', \''.$name.'\', \''.$this->name.'\')" /><img border="0" src="'.''.$this->pathImages.$this->srcImageCalendarButton.'"></button></td>';
 			}else
 			$strEvents = $this->checkExistEventJs($name);
 				
@@ -2367,6 +2367,7 @@ class OPF_myForm {
 			# Creamos cada uno de los Objetos HTML con el objetivo de que mas adelante sean procesados en: Grupos, o Independientemente.
 				
 			if (count($this->Objects)){
+				
 				$ObjectKeys = array_keys($this->Objects);
 
 				$countObjects = count($this->Objects['field']);
@@ -2395,7 +2396,7 @@ class OPF_myForm {
 
 								$utilyVal = 'onKeyUp="CalendarFormat( this );" onBlur="BlurDate( this )"';
 
-								$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="boton_cal" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$campos_f[2].'\'].value, \''.$campos_f[2].'\', \''.$campos_f[2].'\', \''.$this->name.'\')" /><img src="'.'../../'.$this->pathImages.$this->srcImageCalendarButton.'" border="0"></button></td>';
+								$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="boton_cal" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$campos_f[2].'\'].value, \''.$campos_f[2].'\', \''.$campos_f[2].'\', \''.$this->name.'\')" /><img border="0" src="'.''.$this->pathImages.$this->srcImageCalendarButton.'"></button></td>';
 
 							}else
 							$strEvents = $this->checkExistEventJs($campos_f[2]);

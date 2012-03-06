@@ -35,18 +35,6 @@
 class OPF_myController extends OPF_myControllerExt {
 
 	/**
-	 * Asigna contenidos a la plantilla desde el controlador
-	 * 
-	 * Asigna un contenido a la plantilla en uso desde el controlador sin usar ajax
-	 * @param string $area
-	 * @param string $content
-	 */
-	public function render_template ($area, $content){
-		
-		OPF_osezno::assign($area, $content);
-	}
-	
-	/**
 	 * Procesa la repuesta de Ajax (dependiendo del motor) si existe para ser mostrada o ejecutada en el navegador.
 	 */
 	public function processRequest (){
@@ -214,6 +202,10 @@ class OPF_myController extends OPF_myControllerExt {
 	 */
 	public function __construct(){
 
+		global $dataViewFromCrtl;
+		
+		$GLOBALS['dataViewFromCrtl'] = array ();
+		
 		global $MYCONTROLLER_REGISTERED_FUNCTIONS;
 
 		switch (AJAX_ENGINE){
@@ -1408,7 +1400,7 @@ class OPF_myController extends OPF_myControllerExt {
 
 		if (!$error){
 				
-			$url = '../downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
+			$url = '/index.php/resources/utility/downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
 				
 			$this->redirect($url);
 			
@@ -1797,6 +1789,34 @@ class OPF_myController extends OPF_myControllerExt {
 		$this->notificationWindow(MSG_FAILED_MAKE_ACTIVE_TAB,3,'warning');
 			
 	}
+	
+	public function __set($name, $value) {
+	
+		$GLOBALS['dataViewFromCrtl'][$name] = $value;
+	
+	}
+	
+	public function __get($name) {
+		 
+		if (array_key_exists($name, $GLOBALS['dataViewFromCrtl'])) {
+	
+			return $GLOBALS['dataViewFromCrtl'][$name];
+		}
+	
+	}
+	
+	/**
+	 * Asigna contenidos a la plantilla desde el controlador
+	 *
+	 * Asigna un contenido a la plantilla en uso desde el controlador sin usar ajax
+	 * @param string $area
+	 * @param string $content
+	 */
+	public function render_template ($area, $content){
+	
+		OPF_osezno::assign($area, $content);
+	}
+	
 
 }
 
