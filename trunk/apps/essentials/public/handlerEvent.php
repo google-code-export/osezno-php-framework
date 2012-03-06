@@ -30,7 +30,7 @@ class eventos extends OPF_myController {
 		
 			$OPF_login = new OPF_login;
 			
-			$cont = $OPF_login->readTemplate(APP_PATH.'essentials/login/templates/configApplication.tpl', array(
+			$cont = $OPF_login->readTemplate(APP_PATH.'essentials/public/templates/configApplication.tpl', array(
 				
 			 	'{db_name}'=>$datForm['db'],
 				
@@ -221,7 +221,7 @@ class eventos extends OPF_myController {
 
 						if (@mysql_select_db ($datForm['db'], $link)){
 								
-							$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/login/db/essentials_'.$datForm['engine'].'.sql');
+							$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/public/db/essentials_'.$datForm['engine'].'.sql');
 								
 							$bloqs = explode ('#bloq',$sql);
 
@@ -280,7 +280,7 @@ class eventos extends OPF_myController {
 
 						@pg_query($link, 'BEGIN;');
 							
-						$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/login/db/essentials_'.$datForm['engine'].'.sql');
+						$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/public/db/essentials_'.$datForm['engine'].'.sql');
 							
 						$bloqs = explode ('#bloq',$sql);
 
@@ -343,7 +343,7 @@ class eventos extends OPF_myController {
 
 						$_SESSION['register_access'] = true;
 							
-						$this->redirect(BASE_URL_PATH.'index.php/frames/');
+						$this->redirect(BASE_URL_PATH.'frames/');
 
 					}else
 

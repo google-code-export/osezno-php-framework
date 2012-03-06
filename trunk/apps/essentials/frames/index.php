@@ -11,12 +11,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <HTML>
 <HEAD>
-<TITLE></TITLE>
+<link rel="shortcut icon" href="<?php echo BASE_URL_PATH; ?>common/favicon.ico">
+<TITLE><?php echo APP_DESC; ?></TITLE>
 </HEAD>
 <FRAMESET cols="170,*" border="0">
 
-	<frame name="menu" src="<?php echo BASE_URL_PATH.'index.php/options/'; ?>" title="Menu de navegación">
+	<frame name="menu" src="<?php echo BASE_URL_PATH.'options/'; ?>" title="Menu de navegación">
 
-	<frame name="modulo" src="<?php echo BASE_URL_PATH.'index.php/welcome/'; ?>" title="Modulos">
+	<frame name="modulo" src="<?php echo BASE_URL_PATH.'welcome/'; ?>" title="Modulos">
 
 </FRAMESET>

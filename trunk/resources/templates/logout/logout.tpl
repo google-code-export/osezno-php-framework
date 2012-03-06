@@ -17,7 +17,7 @@
 <div class="caja">{msg_close_session}</div>
 <script type="text/javascript">
 
-setTimeout('parent.location.href="../login/"',1000);
+setTimeout('parent.location.href="../public/"',1000);
 
 </script>
 </body>

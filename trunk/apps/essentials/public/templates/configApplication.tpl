@@ -19,52 +19,68 @@ $default_app = 'essentials';
  * 
  * @var string
  */
-$default_mod = 'login';
+$default_mod = 'public';
 
-# Conexión a base de datos.
-
-/**
-* Motor de base de datos; pgsql ó mysql.
-* 
-* @var string
-*/
-$engine = '{db_engine}';
+#Auto detectar subdominio
 
 /**
- * Nombre de base de datos.
+ * Auto detectar subdominio para dedireccionar a la aplicacion secundaria
  * 
  * @var string
  */
-$database = '{db_name}';
+$autodetect_subdomain = true;
+
+# Conexión a base de datos por cada aplicación.
 
 /**
- * Direccion Ip o nombre de maquina del motor de base de datos.
+ * [engine] Motor de base de datos; pgsql ó mysql.
+ * [database] Nombre de la base de datos.
+ * [host] Direccion Ip o nombre de maquina del motor de base de datos.
+ * [user] Nombre de usuario para conexion a base de datos.
+ * [password] Contraseña de usuario para conexión a base de datos.
+ * [port] Puerto para la conexión, Mysql 3306, Postgre 5432.
  * 
- * @var string
+ * @var array
  */
-$host = '{db_host}';
+$pull_connect = array (
 
-/**
- * Nombre de usuario para conexion a base de datos.
- * 
- * @var string
- */
-$user = '{db_user}';
+	'www' => 
+		
+		array (
+		
+			'engine' => '',
+		
+			'database' => '',
+		
+			'host'	=> '',
+		
+			'user'	=> '',
+		
+			'password'	=> '',
+		
+			'port' => ''
+		
+		),
+		
+	'essentials' => 
 
-/**
- * Contraseña de usuario para conexión a base de datos.
- * 
- * @var string
- */
-$password = '{db_password}';
+		array (
+		
+			'engine' => '{db_engine}',
+		
+			'database' => '{db_name}',
+		
+			'host'	=> '{db_host}',
+		
+			'user'	=> '{db_user}',
+		
+			'password'	=> '{db_password}',
+		
+			'port' => '{db_port}'
+		
+		)
 
-/**
- * Puerto para la conexión, Mysql 3306, Postgre 5432.
- * 
- * @var integer
- */
-$port = '{db_port}';
-
+);
 
 #Ajax Engine
 
