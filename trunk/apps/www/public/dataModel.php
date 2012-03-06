@@ -10,4 +10,17 @@
  * @license http://www.osezno-framework.org/license.txt
  */
 
+	class formularios {
+		
+		public static function form (){
+			
+			$myForm = new OPF_myForm('frm_1');
+			
+			$myForm->addText('Fecha:','fecha',date('Y-m-d'),12,10,true,true);
+			
+			return $myForm->getForm(1);
+		} 
+		
+	}
+
 ?>

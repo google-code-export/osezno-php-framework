@@ -8,9 +8,10 @@
 
 			include $security;
 			
+			# Es una utilidad?
 			if (strstr($module, '.php')){
 				
-				$pathScript 	= APP_PATH.$app.DS.$module;
+				$pathScript 	= ROOT_PATH.DS.'resources'.DS.'utility'.DS.$module;
 				
 				include $pathScript;
 				
@@ -27,9 +28,7 @@
 					include $pathModel;
 				
 					include $pathHandler;
-				
-					include $pathIndex;
-
+					
 					if (class_exists('eventos')){
 				
 						$eventos = new eventos;
@@ -44,13 +43,15 @@
 						
 							if ($event != 'default_event'){
 						
-								$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_METHOD_NOT_FOUND.'&nbsp;&quot;'.$event.'&quot;</div>';
+								$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_METHOD_NOT_FOUND.'&nbsp;&quot;'.$event.$params[0].$params[1].'&quot;</div>';
 							
 								die ($msgError);
 							}
 						
 						}
 					
+						include $pathIndex;
+						
 					}else{
 					
 						$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_CLASS_NOT_FOUND.'&nbsp;&quot;'.'eventos'.'&quot;</div>';
