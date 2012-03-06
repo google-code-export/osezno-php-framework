@@ -1,6 +1,6 @@
 <?php
 
-define('APP_DESC','OPF Essentials');
+define('APP_DESC','OPF Essentials APP');
 
 define('SHOW_WELCOME_MESSAGE',true);
 
@@ -9,7 +9,7 @@ $urlRedirect =  '../logout/';
 # Modulos de acceso abierto, agregar aqui los que necesite.
 $openAccess = array (
 
-		'/login/',
+		'/public/',
 
 		'/logout/',
 
@@ -72,7 +72,7 @@ function validateAccess ($executed, $openAccess, $urlRedirect, $ESS_essentials){
 
 		}else{
 
-			//header ('Location: '.$urlRedirect);
+			header ('Location: '.$urlRedirect);
 		}
 			
 	}

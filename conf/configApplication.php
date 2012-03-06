@@ -68,7 +68,7 @@ $pull_connect = array (
 		
 			'engine' => 'mysql',
 		
-			'database' => 'oseznotestfinal',
+			'database' => 'testosezno',
 		
 			'host'	=> 'localhost',
 		

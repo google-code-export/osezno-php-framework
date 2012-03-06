@@ -6,6 +6,6 @@ RewriteBase /
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
  
-RewriteRule ^(.*)$ index.php?$1 [PT,L]
+RewriteRule ^(.*)$ index.php/$1 [PT,L]
 
 </IfModule>
