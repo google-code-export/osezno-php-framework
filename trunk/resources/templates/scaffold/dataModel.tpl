@@ -9,7 +9,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
- include '../../config/configApplication.php';
  
  class scaffolding_{name_table_scaff} {
  

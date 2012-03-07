@@ -6,7 +6,7 @@
 	# Directorio Raiz
 	define('ROOT_PATH',	dirname(__FILE__));
 
-	# Ruta de plantilals
+	# Ruta de plantillas
 	define('TPL_PATH',	ROOT_PATH . DS.'resources'.DS.'templates'.DS);
 
 	# Ruta de aplicaciones

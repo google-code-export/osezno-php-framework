@@ -150,8 +150,8 @@ class eventos extends OPF_myController {
 
 			$_SESSION['temp_scaff_info']['namefolder'] = $datForm['namefolder'];
 
-			$folder = '../../application/'.$datForm['namefolder'].'/';
-
+			$folder = dirname(dirname(__FILE__)).DS.$datForm['namefolder'].DS;
+			
 			$errorRewrite = false;
 
 			if ($rewrite == true){
@@ -190,7 +190,7 @@ class eventos extends OPF_myController {
 							
 						$fillScaffold = new fillScaffold;
 							
-						$contIndex = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/index.tpl', array(
+						$contIndex = scaffold::scaffReadTemplate(TPL_PATH.'scaffold'.DS.'index.tpl', array(
 							
  							'{scaff_mod_name}'=>($_SESSION['temp_scaff_info']['modnom']),
 
@@ -211,7 +211,7 @@ class eventos extends OPF_myController {
 							$writeError = true;
 						}
 							
-						$contHandler = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/handlerEvent.tpl', array(
+						$contHandler = scaffold::scaffReadTemplate(TPL_PATH.'scaffold'.DS.'handlerEvent.tpl', array(
 							
  						 	'{name_table_scaff}'=>$_SESSION['temp_scaff_info']['table_name'],
 							
@@ -235,7 +235,7 @@ class eventos extends OPF_myController {
 							$writeError = true;
 						}
 							
-						$contDataModel = scaffold::scaffReadTemplate(PATH_TEMPLATES.'scaffold/dataModel.tpl', array(
+						$contDataModel = scaffold::scaffReadTemplate(TPL_PATH.'scaffold'.DS.'dataModel.tpl', array(
 							
  						 	'{name_table_scaff}'=>$_SESSION['temp_scaff_info']['table_name'],
 							
@@ -281,29 +281,9 @@ class eventos extends OPF_myController {
 							
 						if (!$writeError){
 
-							if ($datForm['downloadzip']){
-
-								$_SESSION['SCAFF_TEMP_ZIP_FILES_C'] = array (
-
- 							 		'index'=>$contIndex,
-
- 									'handler'=>$contHandler,
-
- 							 		'data'=>$contDataModel
-								);
-
-								$secure_opf_code = '';
-
-								if (isset($_GET['secure_opf_code']))
-
-								$secure_opf_code = $_GET['secure_opf_code'];
-
-								$this->redirect('downloadzip.php?secure_opf_code='.$secure_opf_code.'&namefolder='.$datForm['namefolder']);
-							}
-
 							$this->closeMessageBox();
 
-							$this->messageBox(OPF_SCAFF_45.' <b>'.'application/'.$datForm['namefolder'].'/'.'</b> ','INFO');
+							$this->messageBox(OPF_SCAFF_45.' <b>essentials'.DS.$datForm['namefolder'].DS.'</b> ','INFO');
 
 						}else
 
@@ -315,7 +295,7 @@ class eventos extends OPF_myController {
 						
 				}else
 					
-				$this->messageBox(OPF_SCAFF_7_A.' <b>'.'application/'.$datForm['namefolder'].'/'.'</b> '.OPF_SCAFF_7_B.' '.OPF_SCAFF_7_C,'help',array(YES=>'toScaffStep6',NO),$datForm,true);
+				$this->messageBox(OPF_SCAFF_7_A.' <b>'.'essentials'.DS.$datForm['namefolder'].DS.'</b> '.OPF_SCAFF_7_B.' '.OPF_SCAFF_7_C,'help',array(YES=>'toScaffStep6',NO),$datForm,true);
 					
 			}else
 				
