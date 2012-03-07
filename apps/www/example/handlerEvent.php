@@ -7,7 +7,6 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include 'dataModel.php';
 
 /**
  * Manejador de eventos de usuario
@@ -15,28 +14,11 @@ include 'dataModel.php';
  */
 class eventos extends OPF_myController {
 
-	/**
-	 * Ejemplo de evento
-	 *
-	 * @param $params
-	 * @return string
-	 */
-	public function myFunction ($params){
-			
-			
-		return $this->response;
-	}
-
 
 }
 
+$eventos = new eventos();
 
-
-
-$objEventos = new eventos($objxAjax);
-$objOsezno  = new OPF_osezno($objxAjax,$theme);
-
-$objOsezno->setPathFolderTemplates(PATH_TEMPLATES);
-$objxAjax->processRequest();
+$eventos->processRequest();
 
 ?>

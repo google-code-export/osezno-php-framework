@@ -9,6 +9,5 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-require dirname(dirname(dirname(dirname(__FILE__)))).DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'index.php';
 
 ?>

@@ -7,24 +7,22 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
-include 'handlerEvent.php';
-
 
 /**
  * Asignar contenidos a areas de la plantilla
  */
-$objOsezno->assign('name','');
+OPF_osezno::assign('name','');
 
-$objOsezno->assign('desc','');
+OPF_osezno::assign('desc','');
 
-$objOsezno->assign('main_area','');
+OPF_osezno::assign('main_area','');
 
-$objOsezno->assign('alt_area','');
+OPF_osezno::assign('alt_area','');
 
 
 /**
  * Mostrar la plantilla
  */
-$objOsezno->call_template('osezno/osezno.tpl');
+OPF_osezno::call_template('osezno'.DS.'osezno.tpl');
 
 ?>
