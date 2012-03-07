@@ -48,7 +48,7 @@
  	}
  	
  	/**
- 	 * Lista din�mica de los registros
+ 	 * Lista dinámica de los registros
  	 */
  	public function getList_{name_table_scaff} (){
  		
@@ -92,5 +92,7 @@
  	public $datetime;
  	
  }
+ 
+ {another_tables}
  
 ?>

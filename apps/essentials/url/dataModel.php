@@ -21,7 +21,7 @@ class readDirs {
  		'admusr',
  		'bit',
  		'frames',
- 		'login',
+ 		'public',
  		'logout',
  		'menu',
  		'options',
