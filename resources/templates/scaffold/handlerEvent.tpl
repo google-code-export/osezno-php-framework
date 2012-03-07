@@ -7,8 +7,7 @@
  * @copyright Copyright &copy; 2007-2012 Osezno PHP Framework
  * @license http://www.osezno-framework.org/license.txt
  */
- include 'dataModel.php';
- 
+  
 /**
  * Manejador de eventos de usuario
  *
@@ -16,7 +15,7 @@
  class eventos extends OPF_myController {
 	
 	/**
-	 * Confirma la acci�n solicitada de eliminar uno o varios registros de la tabla.
+	 * Confirma la acción solicitada de eliminar uno o varios registros de la tabla.
 	 */ 
 	public function deleteRecordsConfirm ($id){
 	
@@ -63,7 +62,7 @@
 	}
 
 	/**
-	 * Acci�n solcitida para eliminar uno o varios registros especificos.
+	 * Acción solcitida para eliminar uno o varios registros especificos.
 	 */
  	public function onClickDeleteRecord ($id){
  		
@@ -83,7 +82,7 @@
  		
  			$idParam = $id;
  		
- 		$this->modalWindow(scaffolding_{name_table_scaff}::getFormAddMod{name_table_scaff}($idParam),htmlentities('Registro'),300,{height_window_form},2);
+ 		$this->modalWindow(scaffolding_{name_table_scaff}::getFormAddMod{name_table_scaff}($idParam),htmlentities('Record'),300,{height_window_form},2);
  		
  		return $this->response;
  	}
@@ -125,13 +124,8 @@
 	
  }
 
- 
- 
- 
- $objEventos = new eventos($objxAjax);
- $objOsezno  = new OPF_osezno($objxAjax,$theme);
- 
- $objOsezno->setPathFolderTemplates(PATH_TEMPLATES);
- $objxAjax->processRequest();
+$eventos = new eventos();
+
+$eventos->processRequest();
  
 ?>
