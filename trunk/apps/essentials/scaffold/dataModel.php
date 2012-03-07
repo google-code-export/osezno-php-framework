@@ -367,6 +367,35 @@ class fillScaffold {
 		$this->fillAreas['height_window_form'] = 70+count($_SESSION['temp_scaff_info']['form'])*30;
 
 		$buf = '';
+		
+		/**
+		 * Otras tablas que van a participar
+		 * temp_scaff_info
+		 */
+		$buf = '';
+		
+		$tables_show = array ();
+		
+		foreach ($_SESSION['temp_scaff_info']['rt'] as $rt){
+			
+			if (!in_array($rt['table_name'], $tables_show)){
+			
+				$buf .= "".'class '.$rt['table_name'].' extends OPF_myActiveRecord {'."\n\n";
+			
+				$buf .= "\t".'public $'.$rt['key'].';'."\n\n";
+			
+				$buf .= "\t".'public $'.$rt['value'].';'."\n\n";
+			
+				$buf .= "".'}'."\n";
+				
+				$tables_show[] = $rt['table_name'];
+			}
+			
+		}
+		
+		$this->fillAreas['another_tables'] = $buf;
+		
+		$buf = '';
 	}
 
 	public function getFillAreaContent($nameArea){
