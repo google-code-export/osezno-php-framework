@@ -265,7 +265,9 @@ class eventos extends OPF_myController {
 
  							'{width_fields}'=>$fillScaffold->getFillAreaContent('width_fields'),
  							
-							'{another_tables}'=>$fillScaffold->getFillAreaContent('another_tables')
+							'{another_tables}'=>$fillScaffold->getFillAreaContent('another_tables'),
+							
+							'{another_tables_are_defined}'=>$fillScaffold->getFillAreaContent('another_tables_are_defined')
 						));
 							
 						$link = fopen($folder.'dataModel.php', 'w');

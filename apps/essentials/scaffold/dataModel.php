@@ -79,6 +79,17 @@ class fillScaffold {
 						$buf .= "\n\t\t\t".'$arrayValues'.$field.'[$row->id] = $row->item_desc;'."\n";
 							
 						$buf .= "\n\t\t".'}'."\n";
+						
+					}else if (isset($_SESSION['temp_scaff_info']['rt']['type_'.$field])){
+						
+						$buf .= "\n\t\t".'$arrayValues'.$field.' = array();'."\n";
+						
+						$buf .= "\n\t\t".'foreach ($'.$_SESSION['temp_scaff_info']['rt']['type_'.$field]['table_name'].'->find() as $row){'."\n";
+							
+						$buf .= "\n\t\t\t".'$arrayValues'.$field.'[$row->'.$_SESSION['temp_scaff_info']['rt']['type_'.$field]['key'].'] = $row->'.$_SESSION['temp_scaff_info']['rt']['type_'.$field]['value'].';'."\n";
+							
+						$buf .= "\n\t\t".'}'."\n";
+						
 					}
 
 					$buf .= "\n\t\t".'$myForm->addSelect(\''.$etq.':\', \''.$field.'\', $arrayValues'.$field.', $'.$_SESSION['temp_scaff_info']['table_name'].'->'.$field.');'."\n";
@@ -176,12 +187,22 @@ class fillScaffold {
 
 					$buf .= 'rel'.$contRel.'.item_desc AS "'.$prop[0].'", ';
 
-					$infRel[$contRel] = array('id_table'=>$_SESSION['temp_scaff_info']['combos_rel']['type_'.$field], 'fieldrel'=>$field, 'etq'=>$prop[0]);
+					$infRel[$contRel] = array('fk'=>'master_tables_id','table'=>'ess_master_tables_detail','id_table'=>$_SESSION['temp_scaff_info']['combos_rel']['type_'.$field], 'fieldrel'=>$field, 'etq'=>$prop[0]);
 
 					$this->fillAreas['real_names_in_query'] .= "\n\t\t".'$myList->setRealNameInQuery(\''.$prop[0].'\',\''.'rel'.$contRel.'.item_desc\');'."\n";
 
 					$contRel++;
 
+				}else if (isset($_SESSION['temp_scaff_info']['rt']['type_'.$field])){
+
+					$buf .= 'rel'.$contRel.'.'.$_SESSION['temp_scaff_info']['rt']['type_'.$field]['value'].' AS "'.$prop[0].'", ';
+					
+					$infRel[$contRel] = array('fk'=>$_SESSION['temp_scaff_info']['rt']['type_'.$field]['key'],'table'=>$_SESSION['temp_scaff_info']['rt']['type_'.$field]['table_name'],'id_table'=>'', 'fieldrel'=>$field, 'etq'=>$prop[0]);
+					
+					$this->fillAreas['real_names_in_query'] .= "\n\t\t".'$myList->setRealNameInQuery(\''.$prop[0].'\',\''.'rel'.$contRel.'.'.$_SESSION['temp_scaff_info']['rt']['type_'.$field]['value'].'\');'."\n";
+					
+					$contRel++;
+					
 				}else{
 
 					$buf .= ''.$_SESSION['temp_scaff_info']['table_name'].'.'.$field.' AS "'.$prop[0].'", ';
@@ -201,7 +222,13 @@ class fillScaffold {
 
 			foreach ($infRel as $conRel => $propRel){
 					
-				$buf .= ' LEFT OUTER JOIN ess_master_tables_detail rel'.$conRel.' ON (rel'.$conRel.'.id = '.$_SESSION['temp_scaff_info']['table_name'].'.'.$propRel['fieldrel'].' AND rel'.$conRel.'.master_tables_id = '.$propRel['id_table'].') ';
+				if ($propRel['table'] == 'ess_master_tables_detail')
+				
+					$buf .= ' LEFT OUTER JOIN '.$propRel['table'].' rel'.$conRel.' ON (rel'.$conRel.'.id = '.$_SESSION['temp_scaff_info']['table_name'].'.'.$propRel['fieldrel'].' AND rel'.$conRel.'.'.$propRel['fk'].' = '.$propRel['id_table'].') ';
+				
+				else
+				
+					$buf .= ' LEFT OUTER JOIN '.$propRel['table'].' rel'.$conRel.' ON (rel'.$conRel.'.id = '.$_SESSION['temp_scaff_info']['table_name'].'.'.$propRel['fieldrel'].') ';
 					
 			}
 
@@ -372,21 +399,27 @@ class fillScaffold {
 		 * Otras tablas que van a participar
 		 * temp_scaff_info
 		 */
-		$buf = '';
+		$buf1 = $buf = '';
 		
 		$tables_show = array ();
 		
 		foreach ($_SESSION['temp_scaff_info']['rt'] as $rt){
 			
 			if (!in_array($rt['table_name'], $tables_show)){
+
+				if (!$buf1)
+				
+					$buf1 .= "\n";
+				
+				$buf1 	.= "\t\t".'$'.$rt['table_name'].' = new '.$rt['table_name'].';'."\n\n";
+				
+				$buf 	.= "".'class '.$rt['table_name'].' extends OPF_myActiveRecord {'."\n\n";
 			
-				$buf .= "".'class '.$rt['table_name'].' extends OPF_myActiveRecord {'."\n\n";
+				$buf 	.= "\t".'public $'.$rt['key'].';'."\n\n";
 			
-				$buf .= "\t".'public $'.$rt['key'].';'."\n\n";
+				$buf 	.= "\t".'public $'.$rt['value'].';'."\n\n";
 			
-				$buf .= "\t".'public $'.$rt['value'].';'."\n\n";
-			
-				$buf .= "".'}'."\n";
+				$buf 	.= "".'}'."\n\n";
 				
 				$tables_show[] = $rt['table_name'];
 			}
@@ -396,6 +429,14 @@ class fillScaffold {
 		$this->fillAreas['another_tables'] = $buf;
 		
 		$buf = '';
+		
+		/**
+		 * Otras tablas que seran instanciadas dentro del formulario para obtener valores de ellas
+		 * another_tables_are_defined
+		 */
+		$this->fillAreas['another_tables_are_defined'] = $buf1;
+		
+		$buf1 = '';
 	}
 
 	public function getFillAreaContent($nameArea){

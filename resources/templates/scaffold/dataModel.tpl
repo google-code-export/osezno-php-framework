@@ -30,7 +30,7 @@
  	 * Obtiene el formulario principal
  	 */
  	public static function getFormAddMod{name_table_scaff}($id){
- 	
+{another_tables_are_defined}
  		$ess_master_tables_detail = new ess_master_tables_detail;
  	
  		$myForm = new OPF_myForm('FormAddMod{name_table_scaff}');
