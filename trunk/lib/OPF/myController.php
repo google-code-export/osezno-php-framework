@@ -1025,6 +1025,18 @@ class OPF_myController extends OPF_myControllerExt {
 	}
 
 	/**
+	 * Imrpime una notificación.
+	 * 
+	 * Imprime un mensaje de notificación, muy util cuando no se usa ajax.
+	 * @param unknown_type $strNotification
+	 * @param unknown_type $style
+	 */
+	public function printNotification ($strNotification, $style = 'info'){
+		
+		echo '<div class="notification_'.$style.'"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="notifi_img_'.$style.'">&nbsp;</div></td><td class="notification_text_'.$style.'">&nbsp;'.$strNotification.'&nbsp;</td></tr></table></div>';
+	}
+	
+	/**
 	 * Crea una notificación.
 	 *
 	 * Crea un mensaje de notificacion que no afecta la ventana principal.

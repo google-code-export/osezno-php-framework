@@ -118,7 +118,8 @@
 					$params[] = $realComponents[$i];
 				}
 				
-				$c_params = array_merge($params, $_POST, $_GET, $_FILES);
+				//$c_params = array_merge($params, $_POST, $_GET, $_FILES);
+				$c_params = $params;
 			
 				self::$params = $c_params;
 			}

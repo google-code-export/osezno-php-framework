@@ -744,7 +744,7 @@ class OPF_myForm {
 	 *
 	 * Ruta base de acceso para encontrar los script del editor.
 	 * Se calcula automaticamente en el contructor.
-	 * El valor por defecto es URL_BASE_PROJECT.'/plugin/editors/ck_editor/'.
+	 * El valor por defecto es ROOT_PATH.'/plugin/ck_editor/'.
 	 * @var string
 	 */
 		private $WYSIWYG_editor_BasePath = '';
@@ -821,7 +821,7 @@ class OPF_myForm {
 		 */
 		public function __construct($name = '', $action = '', $target = '', $enctype = ''){
 
-			$this->WYSIWYG_editor_BasePath = 'plugin/'.$this->WYSIWYG_type.'/';
+			$this->WYSIWYG_editor_BasePath = BASE_URL_PATH.'plugin/'.$this->WYSIWYG_type.'/';
 
 			$this->pathImages =  BASE_URL_PATH.'resources/themes/'.THEME_NAME.'/myform/';
 
@@ -1476,7 +1476,7 @@ class OPF_myForm {
 		/**
 		 * Obtiene el HTML de un campo formulario tipo File asincronico.
 		 *
-		 * Opera de identica forma al metodo addFile solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario.
+		 * Opera de identica forma al metodo addFile solo que aqui se retorna inmediatamente el codigo HTML y no se agrega a la salida del formulario. Ver ejemplo de addFile
 		 * @param string $name Nombre del campo
 		 * @return string
 		 */
@@ -2483,7 +2483,7 @@ class OPF_myForm {
 
 								case 'ck_editor':
 
-									$pathckEditor = $GLOBALS['folderProject'].'plugin/editors/ck_editor/ckeditor.php';
+									$pathckEditor = ROOT_PATH.DS.'plugin'.DS.'ck_editor'.DS.'ckeditor.php';
 										
 									require ($pathckEditor);
 										
