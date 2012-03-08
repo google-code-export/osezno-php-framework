@@ -1,7 +1,7 @@
 <?php
 /**
  * Configuración de OPF.
- * 
+ * Osezno PHP Framework es una herramienta libre
  * @author: José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 
@@ -12,7 +12,7 @@
  * 
  * @var string
  */
-$default_app = 'essentials';
+$default_app = 'www';
 
 /**
  * Modulo de aplicacion por defecto que se cargara si no es llamado
@@ -24,7 +24,7 @@ $default_mod = 'public';
 #Auto detectar subdominio
 
 /**
- * Auto detectar subdominio para dedireccionar a la aplicacion secundaria
+ * Auto detectar subdominio para dedireccionar a la aplicacion secundaria/alerna
  * 
  * @var string
  */
@@ -66,17 +66,17 @@ $pull_connect = array (
 
 		array (
 		
-			'engine' => 'mysql',
+			'engine' => '',
 		
-			'database' => 'testosezno',
+			'database' => '',
 		
-			'host'	=> 'localhost',
+			'host'	=> '',
 		
-			'user'	=> 'root',
+			'user'	=> '',
 		
 			'password'	=> '',
 		
-			'port' => '3306'
+			'port' => ''
 		
 		)
 

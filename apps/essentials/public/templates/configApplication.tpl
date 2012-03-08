@@ -1,7 +1,7 @@
 <?php
 /**
  * Configuración de OPF.
- * 
+ * Osezno PHP Framework es una herramienta libre
  * @author: José Ignacio Gutiérrez Guzmán <jose.gutierrez@osezno-framework.org>
  */
 
@@ -24,7 +24,7 @@ $default_mod = 'public';
 #Auto detectar subdominio
 
 /**
- * Auto detectar subdominio para dedireccionar a la aplicacion secundaria
+ * Auto detectar subdominio para dedireccionar a la aplicacion secundaria/alerna
  * 
  * @var string
  */

@@ -164,7 +164,7 @@ define('OPF_MENU_7','URL:');
 define('OPF_MENU_8','Explorar');
 
 //OPF_logout
-define('OPF_LOGOUT_1','Cerrando sesión... por favor espere.');
+define('OPF_LOGOUT_1','Por favor espere...');
 
 //OPF_login
 define('OPF_LOGIN_1','Usuario o clave no validos');
