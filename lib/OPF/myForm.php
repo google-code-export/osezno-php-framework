@@ -675,7 +675,7 @@ class OPF_myForm {
 		 * file_dialog_complete_handler: Se ejecuta cuando se a echo click sobre el boton aceptar del cuadro de dialogo de los archivos que van a ser subidos al servidor. Esto generalmente esta haciendo el cargue automatico de los archivos con "this.startUpload();" Parametros que se pasan al evento: (number of files selected, number of files queued)
 		 * upload_start_handler: Funcion que es llamada cuando comienza todo el cargue completo de los archivos y para que en cierta forma tambien se pueda hacer automaticamente. Parametros que se pasan al evento: (file object)
 		 * upload_progress_handler: Se produce cuando el listado de los archivos que actualmente se han seleccionado estan en proceso de ser subidos al servidor. Parametros que se pasan al evento: (file object, bytes complete, total bytes)
-		 * upload_error_handler: El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con Éxito. El código de error par�metro indica el tipo de error que se produjo. El c�digo de error par�metro especifica una constante en SWFUpload.UPLOAD_ERROR. Parametros que se pasan al evento: (file object, error code, message)
+		 * upload_error_handler: El evento es uploadError se dispara en cualquier momento cuando la carga de un archivo se interrumpe o no se completa con Éxito. El código de error parámetro indica el tipo de error que se produjo. El c�digo de error par�metro especifica una constante en SWFUpload.UPLOAD_ERROR. Parametros que se pasan al evento: (file object, error code, message)
 		 * upload_success_handler: Este evento se ejecuta cuando un archivo es subido exitosamente al servidor, mientras tanto otros archivos pueden seguir siendo subidos. Parametros que se pasan al evento: (file object, server data)
 		 * upload_complete_handler: Este evento siempre se dispara al final de un ciclo de una carga. En este punto la carga esta completa y otra puede comenzar. Parametros que se pasan al evento: (file object)
 		 * debug_handler: debugHandler
@@ -1037,55 +1037,71 @@ class OPF_myForm {
 		 * Ejemplo:
 		 * <code>
 		 *
-		 * index.php
+		 * apps/www/archivos/index.php
 		 * <?php
 		 *
 		 * $myForm = new OPF_myForm('form1');
-		 *
-		 * $myForm->addFile('Seleccione archivo(s):','archivo','upload.php');
+		 * 
+		 * # Intentara ejecutar la ruta del controlador descrita (Modulo: archivos y Evento: upload)
+		 * $myForm->addFile('Seleccione archivo(s):','archivo','archivos/upload');
 		 *
 		 * echo $myForm->getForm(1);
 		 *
 		 * ?>
 		 *
-		 * upload.php
+		 * apps/www/archivos/handlerEvent.php
 		 * <?php
 		 *
-		 *  // Creamos o abrimos un archivo de registro
-		 * 	$x = fopen('log.txt','a');
+		 *  class eventos extends OPF_myController {
+		 *	
+		 *		public function upload (){
+		 *		
+		 *			# Creamos un Log dentro del modulo que ejecuta el Upload
+		 *			$log = fopen(dirname(__FILE__).DS.'log.txt','a');
 		 *
-		 *  // Validamos que el archivo(s) se haya(n) copiado
-		 *  if (move_uploaded_file($_FILES['Filedata']['tmp_name'],'files/'.$_FILES['Filedata']['name'])){
+		 *			# Capturamos el nombre del archivo temporal
+		 *			$tempFilePath = $_FILES['Filedata']['tmp_name'];
 		 *
-		 *     fwrite($x,'Archivo subido y copiado de '.$_FILES['Filedata']['tmp_name'].' a '.$_FILES['Filedata']['name']."\r\n");
+		 *			# Definimos una ruta final del archivo, donde va a ser guardado
+		 *			$finalFilePath = dirname(__FILE__).DS.'files'.DS.$_FILES['Filedata']['name'];
 		 *
-		 *  }else{
+		 *			# Preguntamos si el archivo pudo ser movido a esa ruta y escribimos en el log
+		 *			if (move_uploaded_file($tempFilePath,$finalFilePath)){
 		 *
-		 *     fwrite($x,'Problemas al copiar el archivo '.$_FILES['Filedata']['name']."\r\n");
+		 *				fwrite($log,'Archivo subido y copiado de '.$tempFilePath.' a '.$finalFilePath."\n");
+		 *			
+		 *			}else{
 		 *
-		 *  }
+		 *				fwrite($log,'Problemas al copiar el archivo '.$tempFilePath.' a '.$finalFilePath."\n");
 		 *
-		 * //Cerramos el archivo de registro y finalizamos ala ejecución del script.
-		 * fclose($x);
-		 * exit(0);
+		 *			}
 		 *
-		 * // En este script, copiamos el/los archivo(s) seleccionados de la carpeta temporal a una final llamada 'files' que esta ubicada a nivel del script.
+		 *			# Cerramos el log
+		 *			fclose($log);
+		 *		
+		 *		}
+		 *
+		 *	}
+		 *
+		 *	$eventos = new eventos();
+		 *
+		 *	$eventos->processRequest();
 		 *
 		 * ?>
 		 * </code>
 		 *
 		 * @param string $etq Etiqueta del campo
 		 * @param string $name del campo
-		 * @param string $upload_url Url del archivo php que recibe los datos
+		 * @param string $event_name Nombre del evento que recibe los datos
 		 * @param array  $file_types Arreglo con los tipos de archivos que se pueden subir
 		 * @param string $file_types_description  Descripcion de los tipos de archivos que se pueden subir
 		 * @param integer $file_size_limit Limite de tamano por archivo que se puede subir
 		 */
-		public function addFile ($etq, $name, $upload_url, $file_types = '', $file_types_description = '', $file_size_limit = ''){
+		public function addFile ($etq, $name, $event_name, $file_types = '', $file_types_description = '', $file_size_limit = ''){
 
 			$this->setAttFileAuto($name);
 
-			$flash_url = '../../swf/swfupload.swf';
+			$flash_url = BASE_URL_PATH.'common/swf/swfupload.swf';
 
 			$name = $this->getColspanRowspan($name);
 
@@ -1098,7 +1114,7 @@ class OPF_myForm {
 			if (intval($file_size_limit))
 			$this->setAttFile($name,'size_limit',$file_size_limit);
 
-			$this->setAttFile($name,'upload_url',$upload_url);
+			$this->setAttFile($name,'upload_url',BASE_URL_PATH.$event_name);
 
 			$this->setAttFile($name,'flash_url',$flash_url);
 
@@ -1469,7 +1485,7 @@ class OPF_myForm {
 
 			$this->setAttFileAuto($name);
 
-			$flash_url = $GLOBALS['urlProject'].'swf/swfupload.swf';
+			$flash_url =  BASE_URL_PATH.'common/swf/swfupload.swf';
 
 			if ($file_types && is_array($file_types))
 			$this->setAttFile($name,'file_types',$file_types);
@@ -2191,7 +2207,7 @@ class OPF_myForm {
 			$JSPerVar.= "\t".'button_cursor: SWFUpload.CURSOR.HAND,'."\n";
 
 
-			$JSPerVar.= "\t".'button_image_url : "'.'../../'.$this->pathImages.$this->FILES_atts[$nameVar]['button_image_url'].'",'."\n";
+			$JSPerVar.= "\t".'button_image_url : "'.$this->pathImages.$this->FILES_atts[$nameVar]['button_image_url'].'",'."\n";
 			$JSPerVar.= "\t".'button_placeholder_id : "'.$this->FILE_button_placeholder_id.$nameVar.'",'."\n";
 			$JSPerVar.= "\t".'button_width: '.$this->FILES_atts[$nameVar]['button_width'].','."\n";
 			$JSPerVar.= "\t".'button_height: '.$this->FILES_atts[$nameVar]['button_height'].','."\n";

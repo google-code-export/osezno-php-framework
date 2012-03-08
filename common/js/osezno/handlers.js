@@ -42,6 +42,7 @@ function TamVentanaFunc() {
 
 
 function fileQueueError(file, errorCode, message) {
+	
 	try {
 		if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
 			alert("You have attempted to queue too many files.\n" + (message === 0 ? "You have reached the upload limit." : "You may select " + (message > 1 ? "up to " + message + " files." : "one file.")));
@@ -215,8 +216,11 @@ function uploadError (file, errorCode, message) {
 
 		switch (errorCode) {
 		case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
-			this.debug("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message);
-			createNotificationWindow("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message,5000,"error");
+			// Evitamos mostrar el error 302
+			if (message != '302'){
+				this.debug("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message);
+				createNotificationWindow("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message,5000,"error");
+			}
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_FAILED:
 			this.debug("Error Code: Upload Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
