@@ -14,16 +14,6 @@
  */
 class eventos extends OPF_myController {
 
-	public function saludar ($p1 = '', $p2 = '', $p3 = '', $p4 = ''){
-		
-		$this->nombre = $p1;
-		
-		//$this->nombre = 'José Ignacio Gutiérrez Guzmán';
-		
-		//$this->maga = array ('maga','lenore');
-		
-		$this->render_template('name', $p2);
-	}
 
 }
 

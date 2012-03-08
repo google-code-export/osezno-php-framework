@@ -13,9 +13,9 @@
  */
 OPF_osezno::assign('name','');
 
-OPF_osezno::assign('desc',$eventos->nombre);
+OPF_osezno::assign('desc','');
 
-OPF_osezno::assign('main_area',formularios::form());
+OPF_osezno::assign('main_area','');
 
 OPF_osezno::assign('alt_area','');
 
@@ -24,6 +24,5 @@ OPF_osezno::assign('alt_area','');
  * Mostrar la plantilla
  */
 OPF_osezno::call_template('osezno'.DS.'osezno.tpl');
-
 
 ?>
