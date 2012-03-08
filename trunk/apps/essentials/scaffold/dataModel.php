@@ -624,8 +624,6 @@ class scaffold {
 			
 		$myForm->addText(OPF_SCAFF_12,'moddesc:3',$moddesc);
 			
-		$myForm->addCheckBox(OPF_SCAFF_43,'downloadzip:3');
-
 		$myForm->addComment('cm6:3', '');
 			
 		$myForm->addComment('cm7:3', '');
