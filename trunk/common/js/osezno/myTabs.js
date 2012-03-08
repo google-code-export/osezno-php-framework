@@ -23,7 +23,7 @@ function loadAllTabs (){
 		if (isArray(arguments[i])){
 			
 			callContent(arguments[i][3], arguments[i][0], arguments[i][4]);
-
+				
 		}
 	}
 	
@@ -177,13 +177,13 @@ function responseAHAH(pageElement, errorMessage, tab) {
  }
 
 /**
- * Activa una pestaña
- * @param tabActive	Id de la pestaña
+ * Activa una pestaï¿½a
+ * @param tabActive	Id de la pestaï¿½a
  * @param from	Iniciar desde id
- * @param countTabs	Numero de pestañas 
- * @param urlActive	Url a la que apunta la pestaña
+ * @param countTabs	Numero de pestaï¿½as 
+ * @param urlActive	Url a la que apunta la pestaï¿½a
  * @param idDiv	Id del div a modificar el contenido
- * @param idDiv	Id del grupo de pestañas  
+ * @param idDiv	Id del grupo de pestaï¿½as  
  * @return
  */
 function makeactive(tabActive, from, countTabs, urlActive, idDiv, idTabs) { 

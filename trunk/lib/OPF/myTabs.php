@@ -63,8 +63,7 @@ class OPF_myTabs{
 	 * Agrega una pestaña a la salida.
 	 *
 	 * Se encarga de agregar nuevas pestanas a la salida HTML.
-	 * Si se apunta a un script este debe estar al mismo nivel si se quieren preservar los eventos declarados.
-	 * Un archivo HTML puede incluirse desde cualquier ruta publica del servidor.
+	 * Url que complementa el llamado a la vista de este modulo por ejemplo 'evento/parametro_1/parametro_2/'.
 	 * <code>
 	 *
 	 * Ejemplo:

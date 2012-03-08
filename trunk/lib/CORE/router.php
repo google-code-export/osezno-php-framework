@@ -43,7 +43,7 @@
 						
 							if ($event != 'default_event'){
 						
-								$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_METHOD_NOT_FOUND.'&nbsp;&quot;'.$event.$params[0].$params[1].'&quot;</div>';
+								$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_METHOD_NOT_FOUND.'&nbsp;&quot;'.$event.'&quot;</div>';
 							
 								die ($msgError);
 							}
