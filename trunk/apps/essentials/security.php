@@ -90,6 +90,6 @@ if (!isset($_SESSION['register_access'])){
 
 $ESS_essentials->registerAccess($_SESSION['register_access']);
 
-validateAccess($_SERVER['PHP_SELF'],$openAccess,$urlRedirect, $ESS_essentials);
+validateAccess($_SERVER['REQUEST_URI'],$openAccess,$urlRedirect, $ESS_essentials);
 
 ?>
