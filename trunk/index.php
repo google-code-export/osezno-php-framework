@@ -163,7 +163,7 @@
 			
 			$newCad = substr($cad, strpos($cad,$caracter)+1);
 			
-			cuantas_en( $newCad, $caracter, $cuantas);
+			cuantas_en( $newCad, $caracter);
 		}
 		
 	}
