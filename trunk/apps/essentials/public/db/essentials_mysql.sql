@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `ess_bit` (
+﻿CREATE TABLE IF NOT EXISTS `ess_bit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `url` text COLLATE utf8_unicode_ci NOT NULL,
@@ -65,7 +65,7 @@ INSERT INTO `ess_menu` (`id`, `menu_id`, `description`, `icon`, `url`, `ord`, `u
 (10, NULL, 'Documentación', 'img/cd.gif', 'http://www.osezno-framework.org/doc/', 2, 1, '2011-10-01 01:33:51'),
 (11, NULL, 'Demos', 'img/base.gif', 'http://www.osezno-framework.org/demos/forms1/', 3, 1, '2011-10-01 01:21:31'),
 (12, NULL, 'Website', 'img/globe.gif', 'http://www.osezno-framework.org/', 1, 1, '2011-10-01 01:33:43'),
-(13, NULL, 'Foro', 'img/question.gif', 'http://www.osezno-framework.org/forum/', 4, 1, '2011-10-01 01:25:41'),
+(13, NULL, 'Foro', 'img/question.gif', 'http://forum.osezno-framework.org/', 4, 1, '2011-10-01 01:25:41'),
 (14, 1, 'Andamiaje', 'img/page.gif', '../scaffold/', 7, 1, '2012-02-02 12:00:00');
 
 #bloq
