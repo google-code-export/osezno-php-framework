@@ -158,4 +158,11 @@ $sessionName = 'oseznophp';
  */
 $sessionCacheExpire = 3600;
 
+/**
+ * Nombre de directorio donde se leen los archivos de sesión, no colocar '/'
+ *
+ * @var string 
+ */
+ $sessionPathFolder = 'sess';
+
 ?>

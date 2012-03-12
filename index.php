@@ -43,6 +43,9 @@
 	# Cambiamos el nombre de la cookie
 	session_name($sessionName);
 	
+	# La sesiones se van a guardar en:
+	session_save_path(ROOT_PATH.DS.$sessionPathFolder);
+	
 	# Permitir al sistema usar sesiones para Usar listas dinamicas
 	session_start();
 	

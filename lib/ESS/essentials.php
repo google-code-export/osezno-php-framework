@@ -19,7 +19,7 @@ class ESS_essentials {
 
 			$ess_bit->ip = $_SERVER['REMOTE_ADDR'];
 
-			$ess_bit->url = $_SERVER['PHP_SELF'];
+			$ess_bit->url = $_SERVER['REQUEST_URI'];
 
 			$user_id = NULL;
 				
