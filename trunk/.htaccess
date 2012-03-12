@@ -1,11 +1,15 @@
 <IfModule mod_rewrite.c>
 
+AddDefaultCharset UTF-8
+
 RewriteEngine on
+
 RewriteBase /
 
-RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
  
-RewriteRule ^(.*)$ index.php/$1 [PT,L]
+RewriteRule ^(.*)$ /index.php?/$1 [L,QSA]
+
 
 </IfModule>
