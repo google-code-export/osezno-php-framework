@@ -1,4 +1,4 @@
-SET check_function_bodies = false;
+﻿SET check_function_bodies = false;
 
 #bloq
 
@@ -258,7 +258,7 @@ VALUES (1, NULL, 'Website', 'img/globe.gif', 'http://www.osezno-framework.org', 
 #bloq
 
 INSERT INTO ess_menu (id, menu_id, description, icon, url, ord, usuario_id, datetime)
-VALUES (4, NULL, 'Foro', 'img/question.gif', 'http://www.osezno-framework.org/foro/', 4, 1, '2011-10-01 12:56:02');
+VALUES (4, NULL, 'Foro', 'img/question.gif', 'http://forum.osezno-framework.org/', 4, 1, '2011-10-01 12:56:02');
 
 #bloq
 
