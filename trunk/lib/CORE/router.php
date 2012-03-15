@@ -29,13 +29,13 @@
 				
 					include $pathHandler;
 					
-					if (class_exists('eventos')){
+					if (class_exists('controller')){
 				
-						$eventos = new eventos;
+						$eventos = new controller;
 					
 						if (method_exists($eventos, $event)){
 					
-							$reflectionMethod = new ReflectionMethod('eventos', $event);
+							$reflectionMethod = new ReflectionMethod('controller', $event);
 						
 							$reflectionMethod->invokeArgs($eventos, $params);
 					
