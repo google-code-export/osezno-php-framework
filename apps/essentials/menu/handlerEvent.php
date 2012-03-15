@@ -12,7 +12,7 @@
  * Manejador de eventos de usuario
  *
  */
-class eventos extends OPF_myController {
+class controller extends OPF_myController {
 
 	public function onClickFindMod ($datForm){
 			
@@ -118,7 +118,7 @@ class eventos extends OPF_myController {
 
 }
 
-$objEventos = new eventos();
+$objEventos = new controller();
 $objEventos->processRequest();
 
 ?>

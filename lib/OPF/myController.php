@@ -51,6 +51,13 @@ class OPF_myController extends OPF_myControllerExt {
 	}
 	
 	/**
+	 * Contiene cada una de las variables pasadas a la vista.
+	 *
+	 * @var unknown_type
+	 */
+	public $view;
+		
+	/**
 	 * Objeto xajax
 	 *
 	 * Objeto de xajax pasado como referencia del original pasado como parametro dentro del constructor.

@@ -12,7 +12,7 @@
  * Manejador de eventos de usuario
  *
  */
-class eventos extends OPF_myController {
+class controller extends OPF_myController {
 
 	
 
@@ -21,7 +21,7 @@ class eventos extends OPF_myController {
 
 
 
-$objEventos = new eventos();
+$objEventos = new controller();
 $objEventos->processRequest();
 
 ?>
