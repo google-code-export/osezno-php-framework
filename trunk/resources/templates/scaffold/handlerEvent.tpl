@@ -12,7 +12,7 @@
  * Manejador de eventos de usuario
  *
  */	
- class eventos extends OPF_myController {
+ class controller extends OPF_myController {
 	
 	/**
 	 * Confirma la acción solicitada de eliminar uno o varios registros de la tabla.
@@ -124,8 +124,8 @@
 	
  }
 
-$eventos = new eventos();
+$controller = new controller();
 
-$eventos->processRequest();
+$controller->processRequest();
  
 ?>

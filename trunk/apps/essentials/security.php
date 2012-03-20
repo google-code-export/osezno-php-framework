@@ -8,7 +8,7 @@ $urlRedirect =  '../logout/';
 
 # Modulos de acceso abierto, agregar aqui los que necesite.
 $openAccess = array (
-
+		
 		'/public/',
 
 		'/logout/',

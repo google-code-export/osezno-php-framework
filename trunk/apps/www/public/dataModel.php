@@ -10,4 +10,17 @@
  * @license http://www.osezno-framework.org/license.txt
  */
 
+class forms{
+	
+	public static function getForm (){
+		
+		$frm = new OPF_myForm('frm1');
+		
+		$frm->addButton('bt1','Ok');
+		
+		$frm->addEvent('bt1', 'onclick','ajax_enviarForm');
+		
+		return $frm->getForm(1);
+	}
+}
 ?>
