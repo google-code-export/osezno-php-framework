@@ -17,15 +17,16 @@ OPF_osezno::assign('nom_modulo','Essentials');
 
 OPF_osezno::assign('desc_modulo','Essentials Osezno PHP Framework');
 
+
 if ($OPF_login->existsDB()){
 
 	if ($OPF_login->existsStruct()){
 
-	OPF_osezno::assign('content1',$OPF_login->getFormLogin());
-		
+		OPF_osezno::assign('content1',$OPF_login->getFormLogin());
+
 	}else
 		
-	OPF_osezno::assign('content1',$OPF_login->getFormInstall('tables'));
+		OPF_osezno::assign('content1',$OPF_login->getFormInstall('tables'));
 
 }else{
 
@@ -44,7 +45,7 @@ if ($OPF_login->existsDB()){
 				
 			$disabled = true;
 		}
-			
+		
 	}
 	
 	if ($disabled){
@@ -54,6 +55,7 @@ if ($OPF_login->existsDB()){
 
 	OPF_osezno::assign('content1',$OPF_login->getFormInstall('db',array(),$disabled));
 }
+
 
 /**
  * Mostrar la plantilla

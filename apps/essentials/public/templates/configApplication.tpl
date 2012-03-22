@@ -8,7 +8,7 @@
 # Aplicación por defecto 
 
 /**
- * Aplicacion por defecto que administra la vista inicial
+ * Aplicación por defecto que administra la vista inicial
  * 
  * @var string
  */
