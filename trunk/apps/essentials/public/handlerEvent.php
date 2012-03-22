@@ -221,25 +221,19 @@ class controller extends OPF_myController {
 
 						if (@mysql_select_db ($datForm['db'], $link)){
 								
-							$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/public/db/essentials_'.$datForm['engine'].'.sql');
+							require APP_PATH.'essentials'.DS.'public'.DS.'db'.DS.'essentials_'.$datForm['engine'].'.sql';
 								
-							$bloqs = explode ('#bloq',$sql);
-
 							$error = '';
 								
 							@mysql_query('BEGIN;',$link);
 
-							foreach ($bloqs as $bloq){
+							foreach ($arrInstallDB as $bloq){
 
-								if (strlen(trim($bloq)) != 0){
+								if (!@mysql_query($bloq,$link)){
 
-									if (!@mysql_query($bloq,$link)){
-
-										$error .= mysql_errno($link).mysql_error($link);
+									$error .= mysql_errno($link).mysql_error($link);
 											
-										break;
-									}
-										
+									break;
 								}
 
 							}
@@ -279,28 +273,22 @@ class controller extends OPF_myController {
 					}else{
 
 						@pg_query($link, 'BEGIN;');
-							
-						$sql = $OPF_login->loadSQLfromFile(APP_PATH.'essentials/public/db/essentials_'.$datForm['engine'].'.sql');
-							
-						$bloqs = explode ('#bloq',$sql);
 
+						require APP_PATH.'essentials'.DS.'public'.DS.'db'.DS.'essentials_'.$datForm['engine'].'.php';
+						
 						$error = '';
 							
-						foreach ($bloqs as $bloq){
+						foreach ($arrInstallDB as $bloq){
 
-							if (strlen(trim($bloq)) != 0){
+							if (!@pg_query($link, $bloq)){
 
-								if (!@pg_query($link, $bloq)){
+								$error .= pg_last_error($link);
 
-									$error .= pg_last_error($link);
+								$this->alert($bloq).pg_last_error($link);
 
-									$this->alert($bloq).pg_last_error($link);
-
-									break;
-								}
-									
+								break;
 							}
-
+									
 						}
 							
 						if ($error){
@@ -330,11 +318,13 @@ class controller extends OPF_myController {
 	}
 
 	public function onClickLogIn ($datForm){
-			
-		$OPF_login = new OPF_login;
-			
-		if ($OPF_login->isSucFullCon()){
+		
+		$myAct = new OPF_myActiveRecord();
+		
+		if ($myAct->isSuccessfulConnect()){
 
+			$OPF_login = new OPF_login;
+			
 			if ($OPF_login->existsStruct()){
 					
 				if ($this->MYFORM_validate($datForm, array('user_opf_ess','passwd_opf_ess'))){
@@ -347,19 +337,22 @@ class controller extends OPF_myController {
 
 					}else
 
-					$this->messageBox($OPF_login->getStrError(),'error');
+						$this->messageBox($OPF_login->getStrError(),'error');
 						
 				}else
 					
-				$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+					$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
 
 			}else
 
-			$this->messageBox(OPF_LOGIN_27.$OPF_login->existsStruct().$OPF_login->errorSql,'error');
-
-		}else
-
-		$this->messageBox(OPF_LOGIN_6,'error');
+				$this->messageBox(OPF_LOGIN_27.$OPF_login->existsStruct().$OPF_login->errorSql,'error');
+			
+		}else{
+			
+			$this->heightMessageBox = 290;
+			
+			$this->errorBox(OPF_LOGIN_23,$myAct->getErrorLog());
+		}
 			
 		return $this->response;
 	}

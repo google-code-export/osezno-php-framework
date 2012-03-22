@@ -90,26 +90,6 @@ class OPF_login {
 		return $sql;
 	}
 
-	public function isSucFullCon (){
-			
-		$objMyAct = new OPF_myActiveRecord(
-
-		$GLOBALS['MYACTIVERECORD_PARAMS']['database'],
-
-		$GLOBALS['MYACTIVERECORD_PARAMS']['user'],
-
-		$GLOBALS['MYACTIVERECORD_PARAMS']['password'],
-
-		$GLOBALS['MYACTIVERECORD_PARAMS']['host'],
-
-		$GLOBALS['MYACTIVERECORD_PARAMS']['engine'],
-
-		$GLOBALS['MYACTIVERECORD_PARAMS']['port']
-		);
-			
-		return $objMyAct->isSuccessfulConnect();
-	}
-
 	public function existsStruct (){
 			
 		$ess_system_users = new ess_system_users;

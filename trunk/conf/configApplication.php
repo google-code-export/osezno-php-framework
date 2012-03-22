@@ -8,7 +8,7 @@
 # Aplicación por defecto 
 
 /**
- * Aplicacion por defecto que administra la vista inicial
+ * Aplicación por defecto que administra la vista inicial
  * 
  * @var string
  */
@@ -161,8 +161,8 @@ $sessionCacheExpire = 3600;
 /**
  * Nombre de directorio donde se leen los archivos de sesión, no colocar '/'
  *
- * @var string
+ * @var string 
  */
-$sessionPathFolder = 'sess';
+ $sessionPathFolder = 'sess';
 
 ?>

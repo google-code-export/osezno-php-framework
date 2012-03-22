@@ -200,9 +200,10 @@ define('OPF_LOGIN_29','Installation - Step 1 - Database');
 define('OPF_LOGIN_30','Installation - Step 2 - System Tables');
 define('OPF_LOGIN_31','Welcome');
 define('OPF_LOGIN_32','Please verify that the default encoding for PHP and Apache is UTF-8');
-define('OPF_LOGIN_33','Unable to overwrite the file config/configApplication.php');
+define('OPF_LOGIN_33','Unable to overwrite the file conf/configApplication.php');
 define('OPF_LOGIN_34','The configuration file was created successfully.');
 define('OPF_LOGIN_35','The configuration file was not created automatically.');
+define('OPF_LOGIN_36','Warning: There is no connection setup database for this application.');
 
 //OPF_admUsr
 define('OPF_ADMUSR_TITLE','Essentials - System users');

@@ -14,14 +14,6 @@
  */
 class controller extends OPF_myController {
 
-	public function ajax_enviarForm (){
-		
-		$this->alert('hola');
-		
-		//$this->processRequest($this->response);
-		
-		return $this->response;
-	}
 }
 
 $controller = new controller();

@@ -200,9 +200,10 @@ define('OPF_LOGIN_29','Instalación - Paso 1 - Base de datos');
 define('OPF_LOGIN_30','Instalación - Paso 2 - Tablas del sistema');
 define('OPF_LOGIN_31','Bienvenido');
 define('OPF_LOGIN_32','Por favor verifique que la codificación por defecto para PHP y Apache sea UTF-8');
-define('OPF_LOGIN_33','Imposible sobreescribir el archivo config/configApplication.php');
+define('OPF_LOGIN_33','Imposible sobreescribir el archivo conf/configApplication.php');
 define('OPF_LOGIN_34','EL archivo de configuración fue creado con exito.');
 define('OPF_LOGIN_35','EL archivo de configuración no fue creado automáticamente.');
+define('OPF_LOGIN_36','Advertencia: No existe una configuración de conexión a bases de datos para esta aplicación.');
 
 //OPF_admUsr
 define('OPF_ADMUSR_TITLE','Essentials - Usuarios del sistema');
