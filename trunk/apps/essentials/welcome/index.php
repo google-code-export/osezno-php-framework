@@ -8,7 +8,7 @@
  * @license http://www.osezno-framework.org/license.txt
  */
 
-//if (SHOW_WELCOME_MESSAGE == true)
+if (SHOW_WELCOME_MESSAGE == true)
 
 	OPF_osezno::assign('onload', 'onload="onLoadShowWel()"');
 
