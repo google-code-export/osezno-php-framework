@@ -403,27 +403,31 @@ class fillScaffold {
 		
 		$tables_show = array ();
 		
-		foreach ($_SESSION['temp_scaff_info']['rt'] as $rt){
+		if (isset($_SESSION['temp_scaff_info']['rt'])){
+		
+			foreach ($_SESSION['temp_scaff_info']['rt'] as $rt){
 			
-			if (!in_array($rt['table_name'], $tables_show)){
+				if (!in_array($rt['table_name'], $tables_show)){
 
-				if (!$buf1)
+					if (!$buf1)
 				
-					$buf1 .= "\n";
+						$buf1 .= "\n";
 				
-				$buf1 	.= "\t\t".'$'.$rt['table_name'].' = new '.$rt['table_name'].';'."\n\n";
+					$buf1 	.= "\t\t".'$'.$rt['table_name'].' = new '.$rt['table_name'].';'."\n\n";
 				
-				$buf 	.= "".'class '.$rt['table_name'].' extends OPF_myActiveRecord {'."\n\n";
+					$buf 	.= "".'class '.$rt['table_name'].' extends OPF_myActiveRecord {'."\n\n";
 			
-				$buf 	.= "\t".'public $'.$rt['key'].';'."\n\n";
+					$buf 	.= "\t".'public $'.$rt['key'].';'."\n\n";
 			
-				$buf 	.= "\t".'public $'.$rt['value'].';'."\n\n";
+					$buf 	.= "\t".'public $'.$rt['value'].';'."\n\n";
 			
-				$buf 	.= "".'}'."\n\n";
+					$buf 	.= "".'}'."\n\n";
 				
-				$tables_show[] = $rt['table_name'];
+					$tables_show[] = $rt['table_name'];
+				}
+			
 			}
-			
+		
 		}
 		
 		$this->fillAreas['another_tables'] = $buf;
