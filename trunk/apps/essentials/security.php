@@ -4,7 +4,7 @@ define('APP_DESC','OPF Essentials APP');
 
 define('SHOW_WELCOME_MESSAGE',true);
 
-$urlRedirect =  '../logout/';
+$urlRedirect =  BASE_URL_PATH.'logout/';
 
 # Modulos de acceso abierto, agregar aqui los que necesite.
 $openAccess = array (

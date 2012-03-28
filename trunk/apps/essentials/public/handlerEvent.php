@@ -221,7 +221,7 @@ class controller extends OPF_myController {
 
 						if (@mysql_select_db ($datForm['db'], $link)){
 								
-							require APP_PATH.'essentials'.DS.'public'.DS.'db'.DS.'essentials_'.$datForm['engine'].'.sql';
+							require APP_PATH.'essentials'.DS.'public'.DS.'db'.DS.'essentials_'.$datForm['engine'].'.php';
 								
 							$error = '';
 								
