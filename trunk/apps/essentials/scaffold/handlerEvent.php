@@ -73,6 +73,11 @@ class controller extends OPF_myController {
 
 			case 1:
 					
+				if (isset($_SESSION['temp_scaff_info'])){
+					
+					unset($_SESSION['temp_scaff_info']);
+				}
+				
 				$this->modalWindow(
 					
 				scaffold::formNewScaffStep1(),
@@ -184,7 +189,7 @@ class controller extends OPF_myController {
 
 				if (!file_exists($folder)){
 						
-					if (mkdir($folder,0644)){
+					if (@mkdir($folder,0644)){
 
 						$writeError = false;
 							
@@ -198,7 +203,7 @@ class controller extends OPF_myController {
 
  							'{name_table_scaff}'=>$_SESSION['temp_scaff_info']['table_name']));
 							
-						$link = fopen($folder.'index.php', 'w');
+						$link = @fopen($folder.'index.php', 'w');
 							
 						if ($link){
 								
@@ -285,13 +290,16 @@ class controller extends OPF_myController {
 							
 						if (!$writeError){
 
-							$this->closeMessageBox();
+							$this->closeModalWindow(2);
 
 							$this->messageBox(OPF_SCAFF_45.' <b>essentials'.DS.$datForm['namefolder'].DS.'</b> ','INFO');
 
-						}else
+						}else{
 
-						$this->messageBox(OPF_SCAFF_44.' "'.$folder.'"','error');
+							$this->messageBox(OPF_SCAFF_44.' "'.$folder.'"','error');
+							
+							unset($_SESSION['temp_scaff_info']);
+						}
 							
 					}else
 
@@ -474,7 +482,7 @@ class controller extends OPF_myController {
 
 			if (!isset($_SESSION['temp_scaff_info']))
 				
-			$_SESSION['temp_scaff_info'] = array();
+				$_SESSION['temp_scaff_info'] = array();
 
 			$resSql = scaffold::getResultSelectFields($myAct,$datForm['table_name']);
 
