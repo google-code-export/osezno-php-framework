@@ -13,8 +13,12 @@
  *
  */
 class controller extends OPF_myController {
-
-
+	
+	public function default_event (){
+		
+		/* Default event */
+	}
+	
 }
 
 $controller = new controller();
