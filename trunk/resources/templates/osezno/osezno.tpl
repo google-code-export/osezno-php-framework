@@ -1,69 +1,46 @@
+<!DOCTYPE HTML>
 <html>
-<head>
-<style type="text/css">
-<!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
-.titulo_pagina{
-	font-family:Arial, Helvetica, sans-serif;
-	color:#FFF;
-	font-size:22px;
-	font-style:normal;
-	font-weight:bold;
-	font-variant:normal;
-	text-shadow:#666;
-}
-.desc_pagina{
-	font-family:Arial, Helvetica, sans-serif;
-	color:#009AE2;
-	font-size:10px;
-	font-style:normal;
-}
--->
-</style>
-<meta charset="UTF-8">
-</head>
-<body background="osezno/bg.jpg" onload="{on_load}">
-<div align="center">
-  <table width="780" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td width="5" align="right" background="osezno/bg_left.gif">&nbsp;</td>
-      <td width="780" bgcolor="#808080"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-        <tr>
-          <td background="osezno/head.jpg" width="769" height="90">
-          <table width="100%" height="86" border="0" cellpadding="0" cellspacing="0">
-  			<tr>
-    			<td>&nbsp;</td>
-  			</tr>
-  			<tr>
-    			<td height="32" align="right" valign="bottom" class="titulo_pagina">{name}&nbsp;</td>
-  			</tr>
-  			<tr>
-    			<td height="29" class="desc_pagina" align="right" valign="top">{desc}&nbsp;&nbsp;</td>
-  			</tr>
-		  </table>
-		  </td>
-        </tr>
-        <tr>
-          <td align="center" bgcolor="#FFFFFF">&nbsp;</td>
-        </tr>
-        <tr>
-          <td align="center" bgcolor="#FFFFFF"><div align="center" name="main_area" id="main_area">{main_area}</div></td>
-        </tr>
-        <tr>
-          <td align="center"><div name="alt_area" id="alt_area">{alt_area}</div></td>
-        </tr>		
-        <tr>
-          <td><img src="osezno/foot.jpg" width="770" height="20" /></td>
-        </tr>
-      </table></td>
-      <td width="5" align="left" background="osezno/bg_right.gif">&nbsp;</td>
-    </tr>
-  </table>
-</div>
-</body>
-</html>
+<head><title>¡OPF esta listo!</title><meta name="description" content="website description"><meta name="keywords" content=""><meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<link rel="stylesheet" type="text/css" href="../resources/templates/osezno/style/style.css" title="style">
+</head><body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+      </div>
+      <div id="menubar">
+    </div>
+    <div id="site_content">
+      <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Notas</h3>
+        <h4>Versi&oacute;n 1.5</h4>
+        <h5>Abril 03, 2012</h5>
+        <p>Encuentre aqu&iacute; los ultimos cambios producidos en Osezno.<br>
+          <a target="_blank" href="http://forum.osezno-framework.org/index.php?topic=76.0">Ir al detalle</a></p>
+        <p></p>
+        <h4>Enlaces de inter&eacute;s</h4>
+        <ul>
+          <li><a href="http://demos.osezno-framework.org/" target="_blank">Demos</a></li>
+          <li><a href="http://www.youtube.com/playlist?list=PL9D85D128EB2B0E38" target="_blank">Videotutoriales</a></li>
+          <li><a href="http://forum.osezno-framework.org/" target="_blank">Foros</a></li>
+          <li><a href="http://wiki.osezno-framework.org/index.php?title=Main_Page" target="_blank">Wiki</a></li>
+          <li><a href="http://doc.osezno-framework.org/1.5/" target="_blank">Documentaci&oacute;n</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        <h1>Bienvenido(a)</h1>
+        <p align="justify">A partir de este momento puedes comenzar a usar<strong> Osezno PHP Framework</strong> como alternativa ultil y r&aacute;pida para el desarrollo de tus aplicaciones web. Nuestro interes es el de que pases menos tiempo desarrollando y aprendiendo para mostrar resultados mas pronto. Cuando hablamos que OPF ya viene listo en realidad no mentimos pues tienes una backend listo llamado essentials que te ahorrara el trabajo de realizar una administrador para tu p&aacute;gina pues tiene lo b&aacute;sico que se necesita para hacer un buen desarrollo web en corto tiempo.</p>
+        <h2>Browser Compatibility</h2>
+        <p>This template has been tested in the following browsers:</p>
+        <ul><li>Internet Explorer 8</li>
+          <li>FireFox 3</li>
+          <li>Google Chrome 13</li>
+        </ul></div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+      Copyright � black &amp; white | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">design from HTML5webtemplates.co.uk</a>
+    <!--%@##--> Design provided by <a href="http://www.freewebtemplates.com">Free Website Templates</a>.<!--##@%--></div>
+  </div>
+</body></html>
