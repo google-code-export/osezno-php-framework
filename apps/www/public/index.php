@@ -11,14 +11,7 @@
 /**
  * Asignar contenidos a areas de la plantilla
  */
-OPF_osezno::assign('name','');
-
-OPF_osezno::assign('desc','');
-
-OPF_osezno::assign('main_area','');
-
-OPF_osezno::assign('alt_area','');
-
+OPF_osezno::assign('librerias',$controller->htmlTeExt);
 
 /**
  * Mostrar la plantilla

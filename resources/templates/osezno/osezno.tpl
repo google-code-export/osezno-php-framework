@@ -18,7 +18,7 @@
         <p>Encuentre aqu&iacute; los ultimos cambios producidos en Osezno.<br>
           <a target="_blank" href="http://forum.osezno-framework.org/index.php?topic=76.0">Ir al detalle</a></p>
         <p></p>
-        <h4>Enlaces de inter&eacute;s</h4>
+        <h4>Le puede interesar...</h4>
         <ul>
           <li><a href="http://demos.osezno-framework.org/" target="_blank">Demos</a></li>
           <li><a href="http://www.youtube.com/playlist?list=PL9D85D128EB2B0E38" target="_blank">Videotutoriales</a></li>
@@ -30,17 +30,13 @@
       <div id="content">
         <!-- insert the page content here -->
         <h1>Bienvenido(a)</h1>
-        <p align="justify">A partir de este momento puedes comenzar a usar<strong> Osezno PHP Framework</strong> como alternativa ultil y r&aacute;pida para el desarrollo de tus aplicaciones web. Nuestro interes es el de que pases menos tiempo desarrollando y aprendiendo para mostrar resultados mas pronto. Cuando hablamos que OPF ya viene listo en realidad no mentimos pues tienes una backend listo llamado essentials que te ahorrara el trabajo de realizar una administrador para tu p&aacute;gina pues tiene lo b&aacute;sico que se necesita para hacer un buen desarrollo web en corto tiempo.</p>
-        <h2>Browser Compatibility</h2>
-        <p>This template has been tested in the following browsers:</p>
-        <ul><li>Internet Explorer 8</li>
-          <li>FireFox 3</li>
-          <li>Google Chrome 13</li>
-        </ul></div>
+        <p align="justify">A partir de este momento puedes comenzar a usar<strong> Osezno PHP Framework</strong> como alternativa ultil y r&aacute;pida para el desarrollo de tus aplicaciones web. Nuestro interes es el de que pases menos tiempo desarrollando y aprendiendo para mostrar resultados mas pronto. Cuando hablamos que OPF ya viene listo en realidad no mentimos pues tienes una backend listo llamado <a href="http://wiki.osezno-framework.org/index.php?title=Essentials_Osezno_PHP_Framework" target="_blank"><b>essentials</b></a> que te ahorrara el trabajo de realizar una administrador para tu p&aacute;gina pues tiene lo b&aacute;sico que se necesita para hacer un buen desarrollo web en corto tiempo.</p>
+        <h2>Librerias instaladas</h2>
+        {librerias}
+        </div>
     </div>
     <div id="content_footer"></div>
     <div id="footer">
-      Copyright � black &amp; white | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">design from HTML5webtemplates.co.uk</a>
-    <!--%@##--> Design provided by <a href="http://www.freewebtemplates.com">Free Website Templates</a>.<!--##@%--></div>
+      Copyright © Osezno PHP Framework 2012 </div>
   </div>
 </body></html>

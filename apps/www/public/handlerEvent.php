@@ -14,6 +14,23 @@
  */
 class controller extends OPF_myController {
 
+	public function default_event(){
+		
+		$loadedExt = get_loaded_extensions();
+		
+		foreach ($loadedExt as $ext){
+			
+			if ($ext == 'pdo_mysql' || $ext == 'pdo_pgsql')
+			
+				$this->htmlTeExt .= '<b>'.$ext.'</b>, ';
+			else 
+				$this->htmlTeExt .= $ext.', ';
+		}
+		
+		$this->htmlTeExt .= 'end...';
+		
+	}
+	
 }
 
 $controller = new controller();
