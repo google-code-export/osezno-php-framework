@@ -51,13 +51,6 @@ class OPF_myController extends OPF_myControllerExt {
 	}
 	
 	/**
-	 * Contiene cada una de las variables pasadas a la vista.
-	 *
-	 * @var unknown_type
-	 */
-	public $view;
-		
-	/**
 	 * Objeto xajax
 	 *
 	 * Objeto de xajax pasado como referencia del original pasado como parametro dentro del constructor.
@@ -1810,13 +1803,13 @@ class OPF_myController extends OPF_myControllerExt {
 	}
 	
 	public function __set($name, $value) {
-	
+		
 		$GLOBALS['dataViewFromCrtl'][$name] = $value;
 	
 	}
 	
 	public function __get($name) {
-		 
+		
 		if (array_key_exists($name, $GLOBALS['dataViewFromCrtl'])) {
 	
 			return $GLOBALS['dataViewFromCrtl'][$name];
