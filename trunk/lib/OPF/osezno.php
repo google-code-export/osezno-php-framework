@@ -264,8 +264,6 @@ class OPF_osezno {
 					
 			}
 		
-			$newContent = str_ireplace(array('background="','<img src="'), array('background="'.BASE_URL_PATH.'resources/templates/','<img src="'.BASE_URL_PATH.'resources/templates/'), $newContent);
-
 			self::$content = $newContent;
 			
 		}else{
@@ -288,6 +286,8 @@ class OPF_osezno {
 	 */
 	public static function call_template ($strNameTemplate){
 
+		$GLOBALS['ptlAreas']['{BASE_URL_PATH}'] = BASE_URL_PATH;
+		
 		$GLOBALS['tplNameInUse'] = $strNameTemplate;
 		
 		self::buildAreas();
