@@ -170,7 +170,7 @@
 	
 	cuantas_en($cad, '.');
 	
-	if ($GLOBALS['cuantas'] >= 2){
+	if ($GLOBALS['cuantas'] == 2){
 		
 		if ($autodetect_subdomain){
 		
