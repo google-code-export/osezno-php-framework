@@ -1,6 +1,13 @@
 <html>
 <head>
 <style type="text/css">
+
+body{
+	background-image:url('{path_js_tree}resources/templates/options/imagenes/bg.jpg');
+	background-attachment:fixed;
+	background-position:center;
+}
+
 .divname{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 32px;
@@ -53,7 +60,7 @@
 <script type="text/javascript" src="{path_js_tree}common/js/essentials/dtree.js"></script>
 <meta charset="UTF-8">
 </head>
-<body background="login/imagenes/bg.jpg">
+<body>
 
 <div class="dtree">
 {user_login}
