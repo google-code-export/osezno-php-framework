@@ -191,7 +191,7 @@ function checkFormItem (datForm, idCheck, idReq, idEtq, idType){
 <META HTTP-EQUIV="Expires" CONTENT="0">
 </head>
 <body onload="posicionarTittle(){onload}">
-<div id="img_mod" style="z-index:0;top:2;position:absolute;width:50;"><img src="modulo/imagenes/huellita.jpg"></div>
+<div id="img_mod" style="z-index:0;top:2;position:absolute;width:50;"><img src="{BASE_URL_PATH}resources/templates/modulo/imagenes/huellita.jpg"></div>
 <div id="titulo_modulo_div1" style="z-index:2;top:5;position:absolute;width:600;">
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr><td class="titulo_modulo">{nom_modulo}</td></tr>

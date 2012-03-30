@@ -5,10 +5,10 @@
 <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="0">
 </head>
-<body onload="{onload}" background="login/imagenes/bg.jpg">
+<body onload="{onload}" background="{BASE_URL_PATH}resources/templates/login/imagenes/bg.jpg">
 
 <table align="center" width="350px" border="0">
-<tr><td align="center"><br><br><br><br><img src="login/imagenes/logo.jpg"></td></tr>
+<tr><td align="center"><br><br><br><br><img src="{BASE_URL_PATH}resources/templates/login/imagenes/logo.jpg"></td></tr>
 <tr><td><div align="center" id="content1">{content1}</div></td></tr>
 <tr><td>{content2}</td></tr>
 </table>

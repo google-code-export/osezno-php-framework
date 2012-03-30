@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head><title>¡OPF esta listo!</title><meta name="description" content="website description"><meta name="keywords" content=""><meta http-equiv="content-type" content="text/html; charset=windows-1252">
-<link rel="stylesheet" type="text/css" href="../resources/templates/osezno/style/style.css" title="style">
+<link rel="stylesheet" type="text/css" href="{BASE_URL_PATH}resources/templates/osezno/style/style.css" title="style">
 </head><body>
   <div id="main">
     <div id="header">
