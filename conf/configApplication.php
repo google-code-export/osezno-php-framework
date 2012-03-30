@@ -12,7 +12,7 @@
  * 
  * @var string
  */
-$default_app = 'essentials';
+$default_app = 'www';
 
 /**
  * Modulo de aplicacion por defecto que se cargara si no es llamado
@@ -66,17 +66,17 @@ $pull_connect = array (
 
 		array (
 		
-			'engine' => 'mysql',
+			'engine' => '',
 		
-			'database' => 'test2',
+			'database' => '',
 		
-			'host'	=> 'localhost',
+			'host'	=> '',
 		
-			'user'	=> 'root',
+			'user'	=> '',
 		
 			'password'	=> '',
 		
-			'port' => '3306'
+			'port' => ''
 		
 		)
 
