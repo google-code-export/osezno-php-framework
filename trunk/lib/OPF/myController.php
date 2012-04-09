@@ -1412,7 +1412,7 @@ class OPF_myController extends OPF_myControllerExt {
 
 		if (!$error){
 				
-			$url = '/index.php/resources/utility/downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
+			$url = BASE_URL_PATH.'index.php/resources/utility/downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
 				
 			$this->redirect($url);
 			
