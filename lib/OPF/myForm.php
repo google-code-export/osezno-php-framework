@@ -1298,7 +1298,7 @@ class OPF_myForm {
 					
 				$utilyVal = 'onKeyUp="CalendarFormat( this );" onBlur="BlurDate( this )"';
 					
-				$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($name).' type="button" class="boton_cal" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$name.'\'].value, \''.$name.'\', \''.$name.'\', \''.$this->name.'\')" /><img border="0" src="'.''.$this->pathImages.$this->srcImageCalendarButton.'"></button></td>';
+				$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($name).' type="button" class="boton_cal" id="trigger_'.$name.'"  name="trigger_'.$name.'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$name.'\'].value, \''.$name.'\', \''.$name.'\', \''.$this->name.'\', pathUrl)" /><img border="0" src="'.''.$this->pathImages.$this->srcImageCalendarButton.'"></button></td>';
 			}else
 			$strEvents = $this->checkExistEventJs($name);
 				
@@ -2412,7 +2412,7 @@ class OPF_myForm {
 
 								$utilyVal = 'onKeyUp="CalendarFormat( this );" onBlur="BlurDate( this )"';
 
-								$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="boton_cal" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$campos_f[2].'\'].value, \''.$campos_f[2].'\', \''.$campos_f[2].'\', \''.$this->name.'\')" /><img border="0" src="'.''.$this->pathImages.$this->srcImageCalendarButton.'"></button></td>';
+								$LauncherCalendar = '<td><button '.$this->checkIfIsDisabled($campos_f[2]).' type="button" class="boton_cal" id="trigger_'.$campos_f[2].'"  name="trigger_'.$campos_f[2].'" onClick="addCalendarWindow(document.forms[\''.$this->name.'\'].elements[\''.$campos_f[2].'\'].value, \''.$campos_f[2].'\', \''.$campos_f[2].'\', \''.$this->name.'\', pathUrl)" /><img border="0" src="'.''.$this->pathImages.$this->srcImageCalendarButton.'"></button></td>';
 
 							}else
 							$strEvents = $this->checkExistEventJs($campos_f[2]);
