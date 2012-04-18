@@ -1,8 +1,6 @@
 <?php
 
 	class CORE_dispatcher {
-
-		private static $utilitys = array ('calendarCaller.php', 'downloadQuery.php');
 		
 		private static $params = array ();
 		
@@ -10,20 +8,14 @@
 		
 		private static $event = '';
 		
-		public static function dispath ($q_string, $entorno, $entornos_validos){
+		private static $name_utility = '';
+		
+		public static function defineUtility ($name){
 			
-			$is_utility = false;
-			
-			foreach (self::$utilitys as $utility){
-				
-				if (stripos($q_string, $utility) !== false){
-					
-					$is_utility = true;
-					
-					break;
-				}
-				
-			}
+			self::$name_utility = $name;
+		}
+		
+		public static function dispath ($q_string, $entorno, $entornos_validos, $is_utility){
 			
 			if ($is_utility){
 				
@@ -55,7 +47,6 @@
 				
 				}
 			
-			
 				/**
 			 	* Obtenemos la porcion de los componentes de la URL
 			 	*/
@@ -64,7 +55,6 @@
 					$string_components = str_replace('/'.$folder, '', $q_string);
 				else
 					$string_components = $q_string;
-			
 			
 				/**
 			 	* Partimos los componentes para obtener 'modulo', 'evento', 'parametros'
@@ -84,30 +74,43 @@
 					$i ++;
 				}
 			
-			
 				/**
 			 	* Obtenemos el modulo a ejecutar, si no esta definido entonces ejecutamos el dejado por defecto
 			 	*/
 				if (empty($realComponents[0]) || $realComponents[0]=='index.php'){
 				
 					self::$module = DEFAULT_MOD;
+					
+					unset($realComponents);
+					/**
+					 * Obtenemos el evento a ejecutar, si no fue definido entonces ejecutamos por defecto 'default_event'
+					 */
+					if (empty($realComponents[1])){
+							
+						self::$event = 'default_event';
+							
+					}else{
+							
+						self::$event = $realComponents[2];
+					
+					}
 				
 				}else{
 				
 					self::$module = $realComponents[0];
-				
-				}
-			
-				/**
-			 	* Obtenemos el evento a ejecutar, si no fue definido entonces ejecutamos por defecto 'default_event'
-			 	*/
-				if (empty($realComponents[1])){
-			
-					self::$event = 'default_event';
-			
-				}else{
-			
-					self::$event = $realComponents[1];
+					
+					/**
+					 * Obtenemos el evento a ejecutar, si no fue definido entonces ejecutamos por defecto 'default_event'
+					 */
+					if (empty($realComponents[1])){
+							
+						self::$event = 'default_event';
+							
+					}else{
+							
+						self::$event = $realComponents[1];
+					
+					}
 				
 				}
 			
@@ -119,6 +122,7 @@
 				}
 				
 				//$c_params = array_merge($params, $_POST, $_GET, $_FILES);
+				
 				$c_params = $params;
 			
 				self::$params = $c_params;

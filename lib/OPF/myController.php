@@ -1412,7 +1412,7 @@ class OPF_myController extends OPF_myControllerExt {
 
 		if (!$error){
 				
-			$url = BASE_URL_PATH.'index.php/resources/utility/downloadQuery.php?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
+			$url = BASE_URL_PATH.'downloadQuery/?id_list='.$idList.'&format='.$format.'&usepg='.$usepg.'&fields='.$cadFields;
 				
 			$this->redirect($url);
 			
@@ -1783,7 +1783,7 @@ class OPF_myController extends OPF_myControllerExt {
 	/**
 	 * Activa una pestaña creada
 	 *
-	 * Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pesta�a y del ID del grupo que se declaro en myTabs::_contruct.
+	 * Activa una pestaña previamente creada, por medio de la etiqueta que uso para el nombre de la pestaña y del ID del grupo que se declaro en myTabs::_contruct.
 	 * @param string $tabName Nombre de la pestaña
 	 * @param string $idTabs Nombre grupo de pestañas
 	 */
@@ -1791,8 +1791,10 @@ class OPF_myController extends OPF_myControllerExt {
 
 		if ($idTabs){
 				
-			$varName = etqFormat($idTabs).'_myTab'.$tabName;
-
+			include_once 'osezno.php';
+			
+			$varName = $idTabs.'_myTab'.ucfirst(etqFormat($tabName));
+			
 			$script = 'makeactive('.$varName.'[0], '.$varName.'[1], '.$varName.'[2], '.$varName.'[3], '.$varName.'[4], '.$varName.'[5]);';
 				
 			$this->script($script);
