@@ -2,16 +2,16 @@
 
 	class CORE_router {
 		
-		public static function router ($app, $module, $event, $params){
+		public static function router ($app, $module, $event, $params, $name_utility = ''){
 			
 			$security 		= APP_PATH.$app.DS.'security.php';
 
 			include $security;
 			
 			# Es una utilidad?
-			if (strstr($module, '.php')){
+			if ($name_utility){
 				
-				$pathScript 	= ROOT_PATH.DS.'resources'.DS.'utility'.DS.$module;
+				$pathScript 	= ROOT_PATH.DS.'resources'.DS.'utility'.DS.$name_utility.'.php';
 				
 				include $pathScript;
 				

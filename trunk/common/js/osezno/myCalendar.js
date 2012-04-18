@@ -82,8 +82,8 @@ function addCalendarWindow (value, update, idtrigger, id_form, doc_root){
 	
 	var callId = 'div_trigger_'+idtrigger;
 	
-	var strUrlCalendar = doc_root+'index.php/resources/utility/calendarCaller.php?date='+value+'&update='+update+'&form_name='+id_form;
-	
+	var strUrlCalendar = doc_root+'calendarCaller/?date='+value+'&update='+update+'&form_name='+id_form;
+
 	var div = document.getElementById(callId);
 	
 	if(!div){

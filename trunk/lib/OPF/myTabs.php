@@ -176,7 +176,7 @@ class OPF_myTabs{
 				$urlTab.='&secure_opf_code='.$_GET['secure_opf_code'];
 			}
 				
-			$script .= "\t".'var '.$this->id_tabs.'_myTab'.ucfirst(etqFormat($etqTab)).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\');'."\n";
+			$script .= "\t".'var '.$this->id_tabs.'_myTab'.ucfirst(etqFormat($etqTab)).' = new Array(\''.$this->id_tabs.'_tab'.$i.'\','.$from.','.$couAr.',\''.BASE_URL_PATH.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\');'."\n";
 				
 			$display = 'none';
 				
@@ -205,7 +205,7 @@ class OPF_myTabs{
 
 			}
 				
-			$html .= '<li id="'.$this->id_tabs.'_tab'.$i.'" class="'.$classTab.'"><span onclick="makeactive(\''.$this->id_tabs.'_tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\')">'.$etqTab.'</span></li>'."\n";
+			$html .= '<li id="'.$this->id_tabs.'_tab'.$i.'" class="'.$classTab.'"><span onclick="makeactive(\''.$this->id_tabs.'_tab'.$i.'\', '.($from).'   ,'.$couAr.',\''.BASE_URL_PATH.$urlTab.'\',\'div_cont_'.$this->id_tabs.'_tab'.$i.'\', \''.$this->id_tabs.'\')">'.$etqTab.'</span></li>'."\n";
 
 			$htmlDivTabs .= '<div style="display:'.$display.'" id="div_cont_'.$this->id_tabs.'_tab'.$i.'"></div>';
 
