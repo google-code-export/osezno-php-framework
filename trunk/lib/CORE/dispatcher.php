@@ -12,14 +12,14 @@
 		
 		public static function defineUtility ($name){
 			
-			self::$name_utility = $name;
+			self::$module = self::$name_utility;
 		}
 		
 		public static function dispath ($q_string, $entorno, $entornos_validos, $is_utility){
 			
 			if ($is_utility){
 				
-				self::$module = self::$name_utility;
+				self::$module = $utility;
 				
 			}else{
 			
@@ -77,25 +77,45 @@
 				/**
 			 	* Obtenemos el modulo a ejecutar, si no esta definido entonces ejecutamos el dejado por defecto
 			 	*/
-				if (empty($realComponents[0]) || $realComponents[0]=='index.php'){
+				if (empty($realComponents[0])){
 				
 					self::$module = DEFAULT_MOD;
 					
-					unset($realComponents);
 					/**
 					 * Obtenemos el evento a ejecutar, si no fue definido entonces ejecutamos por defecto 'default_event'
 					 */
-					if (empty($realComponents[1])){
+					if (empty($realComponents[2])){
 							
 						self::$event = 'default_event';
-							
+						
 					}else{
 							
 						self::$event = $realComponents[2];
-					
 					}
 				
-				}else{
+				}else if($realComponents[0]=='index.php'){
+					
+					unset($realComponents[0]);
+					
+					if (empty($realComponents[1])){
+						
+						self::$module = DEFAULT_MOD;
+						
+					}else{
+						
+						self::$module = $realComponents[1];
+					}
+
+					if (empty($realComponents[2])){
+							
+						self::$event = 'default_event';
+					
+					}else{
+							
+						self::$event = $realComponents[2];
+					}
+					
+				}else {	
 				
 					self::$module = $realComponents[0];
 					
@@ -120,8 +140,6 @@
 					
 					$params[] = $realComponents[$i];
 				}
-				
-				//$c_params = array_merge($params, $_POST, $_GET, $_FILES);
 				
 				$c_params = $params;
 			
