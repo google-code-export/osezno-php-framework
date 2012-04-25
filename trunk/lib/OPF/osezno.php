@@ -45,7 +45,7 @@ class OPF_osezno {
 	 * @var object
 	 */
 	private $objxAjax;
-	 
+	
 	/**
 	 * Estilos usados para dar formato a los errores del sistema
 	 * @var string
@@ -268,9 +268,9 @@ class OPF_osezno {
 			
 		}else{
 		
-			$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.MSG_TEMPLATE_NO_FOUND.'&nbsp;&quot;'.$strNameTemplate.'&quot;<br><br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b> '.MSG_TEMPLATE_NO_FOUND_DET.'&nbsp;&quot;'.$this->pathFolderTemplates.'&quot;</div></div>';
+			$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.MSG_TEMPLATE_NO_FOUND.'&nbsp;&quot;'.$GLOBALS['tplNameInUse'].'&quot;<br><br><div class="error_detail"><b>'.ERROR_DET_LABEL.':</b> '.MSG_TEMPLATE_NO_FOUND_DET.'&nbsp;&quot;'.TPL_PATH.'&quot;</div></div>';
 		
-			die ($this->arrayAssignAreasHead['css_errors'].$msgError);
+			die (self::$arrayAssignAreasHead['css_errors'].$msgError);
 		}
 		
 	} 

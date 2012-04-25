@@ -19,7 +19,7 @@
 			
 			if ($is_utility){
 				
-				self::$module = $utility;
+				self::$module = self::$name_utility;
 				
 			}else{
 			
