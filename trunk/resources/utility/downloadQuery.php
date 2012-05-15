@@ -122,7 +122,7 @@ if (isset($_GET['id_list'])){
 		header('Cache-control: private, must-revalidate');
 	}
 		
-	echo $xlsOut.$htmlOut.$pdfOut;
+	echo $xlsOut,$htmlOut,$pdfOut;
 }
 
 die ();

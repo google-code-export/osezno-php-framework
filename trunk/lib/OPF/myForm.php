@@ -1684,7 +1684,7 @@ class OPF_myForm {
 
 				$buf .= ', ';
 
-				for($i=3;$i<$numArg;$i++){
+				for($i=3;$i<$numArg;++$i){
 
 					if (is_array(func_get_arg($i))){
 
@@ -1737,7 +1737,7 @@ class OPF_myForm {
 					
 				$cantFinctions = count($functions);
 					
-				for($i=0;$i<$cantFinctions;$i++){
+				for($i=0;$i<$cantFinctions;++$i){
 
 					switch ($this->paramTypeOnEvent){
 							
@@ -1986,7 +1986,7 @@ class OPF_myForm {
 		 * @param integer $cols Numero de columnas que tendra el formulario.
 		 */
 		public function showForm($cols = 2){
-			print $this->getForm($cols);
+			echo $this->getForm($cols);
 		}
 
 		/**
@@ -2165,7 +2165,7 @@ class OPF_myForm {
 			if (count($this->FILES_atts[$nameVar]['file_post_name'])){
 				$JSPerVar.= 'post_params : {'."\n";
 				$swf_file_post_name_Keys = array_keys($this->FILES_atts[$nameVar]['file_post_name']);
-				for ($i=0;$i<count($this->FILES_atts[$nameVar]['file_post_name']);$i++){
+				for ($i=0;$i<count($this->FILES_atts[$nameVar]['file_post_name']);++$i){
 					$JSPerVar.= '"'.$swf_file_post_name_Keys[$i].'" : "'.$this->FILES_atts[$nameVar]['file_post_name'][$swf_file_post_name_Keys[$i]].'"';
 					if ($i!=(count($this->FILES_atts[$nameVar]['file_post_name'])-1))
 					$JSPerVar.= ',';
@@ -2177,7 +2177,7 @@ class OPF_myForm {
 			$JSPerVar.= '// File Upload Settings '."\n";
 			$JSPerVar.= "\t".'file_size_limit: "'.$this->FILES_atts[$nameVar]['size_limit'].'",'."\n";
 			$JSPerVar.= "\t".'file_types : "';
-			for ($i=0;$i<count($this->FILES_atts[$nameVar]['file_types']);$i++){
+			for ($i=0;$i<count($this->FILES_atts[$nameVar]['file_types']);++$i){
 				$JSPerVar.= "".''.$this->FILES_atts[$nameVar]['file_types'][$i].'';
 				if ($i!=(count($this->FILES_atts[$nameVar]['file_types'])-1))
 				$JSPerVar.= ';';
@@ -2252,7 +2252,7 @@ class OPF_myForm {
 			/*
 			 $JS.= 'custom_settings : {'."\n";
 		 $swf_custom_settings_Keys = array_keys($this->FILE_custom_settings);
-		 for ($i=0;$i<count($this->FILE_custom_settings);$i++){
+		 for ($i=0;$i<count($this->FILE_custom_settings);++$i){
 		 $JS.= ''.$swf_custom_settings_Keys[$i].' : "'.$this->FILE_custom_settings[$swf_custom_settings_Keys[$i]].'"';
 		 if ($i!=(count($this->FILE_custom_settings)-1))
 		 $JS.= ',';
@@ -2388,7 +2388,7 @@ class OPF_myForm {
 
 				$countObjects = count($this->Objects['field']);
 
-				for($j=0, $objKeysFields = array_keys($this->Objects['field']); $j < $countObjects; $j++){
+				for($j=0, $objKeysFields = array_keys($this->Objects['field']); $j < $countObjects; ++$j){
 						
 					$campos_f = explode ($this->Separador,$this->Objects['field'][$objKeysFields[$j]]);
 						
@@ -2610,7 +2610,7 @@ class OPF_myForm {
 			 */
 			$countArrayGroups = count($this->arrayGroups);
 
-			for ($kAgrupa = 0; $kAgrupa < $countArrayGroups; $kAgrupa++){
+			for ($kAgrupa = 0; $kAgrupa < $countArrayGroups; ++$kAgrupa){
 					
 				$bufHTMLgroup = '';
 					
@@ -2670,7 +2670,7 @@ class OPF_myForm {
 
 					$sumNumColSpan = 0;
 
-					for ($i = 0; $i < $cantCamposInGroup; $i++){
+					for ($i = 0; $i < $cantCamposInGroup; ++$i){
 
 						$nameField = $this->arrayGroups[$kAgrupa]['arraystrIdFields'][$i];
 
@@ -2686,7 +2686,7 @@ class OPF_myForm {
 								
 							$bufHTMLgroup .= "\t".'<tr '.$htmlUseRowSeparator.'>'."\n";
 
-							$cantTr++;
+							++$cantTr;
 						}
 
 						if (isset($this->arrayFormElementsColspan[$nameField])){
@@ -2701,16 +2701,16 @@ class OPF_myForm {
 							}else{
 								$numColSpan = 0;
 									
-								$iTemp++;
+								++$iTemp;
 									
-								$sumNumColSpan ++;
+								++$sumNumColSpan;
 							}
 						}else{
 							$numColSpan = 0;
 
-							$iTemp++;
+							++$iTemp;
 
-							$sumNumColSpan ++;
+							++$sumNumColSpan;
 						}
 							
 
@@ -2776,7 +2776,7 @@ class OPF_myForm {
 
 					if ($tdFaltan){
 							
-						for ($i = 0; $i < $tdFaltan; $i++){
+						for ($i = 0; $i < $tdFaltan; ++$i){
 
 							$bufHTMLgroup .= "\t\t".'<td class="'.$this->styleClassTags.'">&nbsp;</td><td class="'.$this->styleClassTags.'">&nbsp;</td>'."\n";
 						}
@@ -2805,7 +2805,7 @@ class OPF_myForm {
 
 			$arrayKeysGroupingGroups  = array_keys($this->arrayGroupsIdInShareSpace);
 
-			for ($i=0;$i<$countarrayGroupsIdInShareSpace;$i++){
+			for ($i=0;$i<$countarrayGroupsIdInShareSpace;++$i){
 					
 				// Pregunta de seguridad
 				if (is_array($arrayGroupsIdInShareSpace = $this->arrayGroupsIdInShareSpace[$arrayKeysGroupingGroups[$i]]['arrayIdGroups'])){
@@ -2816,7 +2816,7 @@ class OPF_myForm {
 
 					$countArGpIdInShSp = count($arrayGroupsIdInShareSpace);
 
-					for ($j=0;$j<$countArGpIdInShSp;$j++){
+					for ($j=0;$j<$countArGpIdInShSp;++$j){
 							
 						$buf.='<td width="'.intval(100/count($arrayGroupsIdInShareSpace)).'%" align="center">'.str_replace('width:'.$this->width.'','width:'.(($this->width/$countArGpIdInShSp)-17),$this->arrayGroupsElementsHTML[$arrayGroupsIdInShareSpace[$j]]).'</td>'."\n";
 							
@@ -2832,7 +2832,7 @@ class OPF_myForm {
 
 			# Mostrar cada uno de los grupos que no han sido mostrados
 
-			for ($i=0;$i<$countArrayGroups;$i++){
+			for ($i=0;$i<$countArrayGroups;++$i){
 					
 				if (!in_array($this->arrayGroups[$i]['idGroup'],$this->arrayGroupsShown)){
 
@@ -2848,7 +2848,7 @@ class OPF_myForm {
 
 			$arrayKeysFormElements = array_keys($this->arrayFormElements);
 
-			for ($i=0;$i<$countArrayFormElements;$i++){
+			for ($i=0;$i<$countArrayFormElements;++$i){
 					
 				if (!in_array($arrayKeysFormElements[$i],$this->arrayFormElementsShown)){
 
@@ -2872,7 +2872,7 @@ class OPF_myForm {
 
 			$sumNumColSpan = 0;
 
-			for ($i = 0; $i < $cantCamposToShow; $i++){
+			for ($i = 0; $i < $cantCamposToShow; ++$i){
 
 				$nameField = $this->arrayFormElementsToShow[$i];
 
@@ -2888,7 +2888,7 @@ class OPF_myForm {
 						
 					$buf .= "\t".'<tr'.$htmlUseRowSeparator.'>'."\n";
 
-					$cantTr++;
+					++$cantTr;
 				}
 
 				if (isset($this->arrayFormElementsColspan[$nameField])){
@@ -2904,16 +2904,16 @@ class OPF_myForm {
 					}else{
 						$numColSpan = 0;
 							
-						$iTemp++;
+						++$iTemp;
 							
-						$sumNumColSpan ++;
+						++$sumNumColSpan;
 					}
 				}else{
 					$numColSpan = 0;
 
-					$iTemp++;
+					++$iTemp;
 
-					$sumNumColSpan ++;
+					++$sumNumColSpan;
 				}
 
 				$attObj = $this->arrayFormElementType[$nameField];
@@ -2983,7 +2983,7 @@ class OPF_myForm {
 
 			if ($tdFaltan){
 					
-				for ($i = 0; $i < $tdFaltan; $i++){
+				for ($i = 0; $i < $tdFaltan; ++$i){
 
 					$buf .= "\t\t".'<td class="'.$this->styleClassTags.'">&nbsp;</td><td class="'.$this->styleClassTags.'">&nbsp;</td>'."\n";
 				}

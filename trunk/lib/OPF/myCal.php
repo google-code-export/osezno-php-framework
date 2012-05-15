@@ -68,7 +68,7 @@ class OPF_myCal {
 		/**
 		 * Construimos un arreglo de datos para los años
 		 */
-		for ($aIni=($nA-30);$aIni<($nA+5);$aIni++){
+		for ($aIni=($nA-30);$aIni<($nA+5);++$aIni){
 				
 			if ($aIni>=1902)
 				
@@ -158,7 +158,7 @@ class OPF_myCal {
 						$htm .= str_replace('{onclick}',$onclick,$iniCell).$iniA.
 						$nD.
 						$endA.$endCell;
-						$nD++;
+						++$nD;
 
 					}else{
 
@@ -169,13 +169,13 @@ class OPF_myCal {
 
 						$htm .= $iniCell.'<div class="cell_other_days">'.$cDam.'</div>'.$endCell;
 
-						$cDam++;
+						++$cDam;
 					}
 
 				}else{
 					$htm .= $iniCell.'<div class="cell_other_days">'.$cDpm.'</div>'.$endCell;
 
-					$cDpm++;
+					++$cDpm;
 				}
 			}
 			$nSem = intval(date('W',mktime(0,0,0,$nM,$nD,$nA)));

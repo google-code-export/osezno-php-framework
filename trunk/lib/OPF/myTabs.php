@@ -46,7 +46,7 @@ class OPF_myTabs{
 
 			$id_tabs = 'n';
 				
-			$id_tabs .= rand(0, 100000);
+			$id_tabs .= mt_rand(0, 100000);
 		}
 
 		$this->id_tabs = $id_tabs;
@@ -209,7 +209,7 @@ class OPF_myTabs{
 
 			$htmlDivTabs .= '<div style="display:'.$display.'" id="div_cont_'.$this->id_tabs.'_tab'.$i.'"></div>';
 
-			$i++;
+			++$i;
 				
 			$paramsAllTabs .= $this->id_tabs.'_myTab'.ucfirst(etqFormat($etqTab)).', ';
 		}

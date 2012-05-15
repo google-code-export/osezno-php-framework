@@ -71,7 +71,7 @@
 						unset($components[$i]);
 					else
 						$realComponents[] = $component;
-					$i ++;
+					++$i;
 				}
 			
 				/**
@@ -136,7 +136,9 @@
 			
 				$params = array();
 			
-				for($i=2;$i<count($realComponents);$i++) {
+				$countRealC = count($realComponents);
+				
+				for($i=2;$i<$countRealC;++$i) {
 					
 					$params[] = $realComponents[$i];
 				}
