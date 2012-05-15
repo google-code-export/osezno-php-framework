@@ -70,7 +70,7 @@ class OPF_profiles {
 
 			list($numSpaces, $id, $desc) = explode(':',$opt);
 
-			for ($i=0;$i<$numSpaces;$i++){
+			for ($i=0;$i<$numSpaces;++$i){
 
 				$add = '&nbsp;';
 					
@@ -94,7 +94,7 @@ class OPF_profiles {
 
 			$this->groups[] = 'chk_'.$id;
 
-			for ($j=($numSpaces+1);$j<$this->maxCols+1;$j++){
+			for ($j=($numSpaces+1);$j<$this->maxCols+1;++$j){
 					
 				$myForm->addComment('cm2_'.$j.'_'.$id, '&nbsp;');
 

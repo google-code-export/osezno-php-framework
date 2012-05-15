@@ -42,7 +42,9 @@ class PDF_MC_Table extends FPDF
 		//Calculate the height of the row
 		$nb=0;
 
-		for($i=0;$i<count($data);$i++)
+		$cD = count($data); 
+		
+		for($i=0;$i<$cD;++$i)
 
 		$nb=max($nb,$this->NbLines($this->widths[$i],$data[$i]));
 
@@ -52,7 +54,9 @@ class PDF_MC_Table extends FPDF
 		$this->CheckPageBreak($h);
 
 		//Draw the cells of the row
-		for($i=0;$i<count($data);$i++){
+		$cD = count($data);
+		
+		for($i=0;$i<$cD;++$i){
 				
 			$w=$this->widths[$i];
 				
@@ -124,7 +128,7 @@ class PDF_MC_Table extends FPDF
 				
 			if($c=="\n"){
 
-				$i++;
+				++$i;
 
 				$sep=-1;
 
@@ -132,7 +136,7 @@ class PDF_MC_Table extends FPDF
 
 				$l=0;
 
-				$nl++;
+				++$nl;
 
 				continue;
 			}
@@ -149,7 +153,7 @@ class PDF_MC_Table extends FPDF
 						
 					if($i==$j)
 						
-					$i++;
+					++$i;
 				}else
 				$i=$sep+1;
 
@@ -159,11 +163,11 @@ class PDF_MC_Table extends FPDF
 
 				$l=0;
 
-				$nl++;
+				++$nl;
 
 			}else
 				
-			$i++;
+			++$i;
 		}
 		return $nl;
 	}
@@ -448,7 +452,7 @@ class OPF_myExportData {
 
 							}
 
-							$intTitl++;
+							++$intTitl;
 
 						}
 
@@ -493,7 +497,7 @@ class OPF_myExportData {
 
 						}
 
-						$intTitl++;
+						++$intTitl;
 
 					}
 
@@ -561,7 +565,7 @@ class OPF_myExportData {
 
 						}
 
-						$intTitl++;
+						++$intTitl;
 					}
 
 					$out .= '</tr>';
@@ -588,7 +592,7 @@ class OPF_myExportData {
 						$out .= '</td>';
 					}
 
-					$intTitl++;
+					++$intTitl;
 				}
 
 				$out .= '</tr>';

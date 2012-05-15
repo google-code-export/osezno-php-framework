@@ -508,7 +508,7 @@ class OPF_myActiveRecord {
 			
 		$keyFinded .= ' AND';
 			
-		$iCounter ++;
+		++$iCounter;
 		}
 
 		return $keyFinded;
@@ -546,7 +546,7 @@ class OPF_myActiveRecord {
 
 					$subSqlF .= ', ';
 
-					$iCounter++;
+					++$iCounter;
 				}
 			}
 
@@ -752,7 +752,7 @@ class OPF_myActiveRecord {
 			if ($iCounter<$countFields)
 			$subSqlF .= ', ';
 
-			$iCounter++;
+			++$iCounter;
 		}
 			
 		return $subSqlF;
@@ -855,7 +855,7 @@ class OPF_myActiveRecord {
 
 				$sth->bindValue($i, $param, $type);
 
-				$i++;
+				++$i;
 			}
 		}
 
@@ -1192,7 +1192,7 @@ class OPF_myActiveRecord {
 	 *
 	 *    foreach ($res as $row)
 	 *
-	 *    	  echo $row->field1.'<br>';
+	 *    	  echo $row->field1,'<br>';
 	 *
 	 * }else
 	 *
@@ -1293,7 +1293,7 @@ class OPF_myActiveRecord {
 					
 				$array[] = $this->buildRes($row);
 
-				$this->num_rows++;
+				++$this->num_rows;
 			}
 
 
@@ -1333,7 +1333,7 @@ class OPF_myActiveRecord {
 	 *
 	 * if ($usuarios->find(1))
 	 *
-	 * 	  echo 'Hola '.$usuarios->usuario;
+	 * 	  echo 'Hola ',$usuarios->usuario;
 	 *
 	 * else
 	 *
@@ -1345,7 +1345,7 @@ class OPF_myActiveRecord {
 	 *
 	 * if ($usuarios->find('usuario=jose & apellido='.$apellido))
 	 *
-	 * 	  echo 'Hola '.$usuarios->usuario;
+	 * 	  echo 'Hola ',$usuarios->usuario;
 	 *
 	 * else
 	 *
@@ -1541,7 +1541,7 @@ class OPF_myActiveRecord {
 
 				$sql .= ' AND';
 
-				$iCounter ++;
+				++$iCounter;
 				}
 
 			}else{

@@ -61,7 +61,7 @@ class ESS_essentials {
 
 			while ($i <= $count){
 					
-				$rand = rand(0,$count);
+				$rand = mt_rand(0,$count);
 					
 				if (!in_array($this->arrayAlphaNumeric[$rand],$_SESSION['base_key_cryp_data']))
 
@@ -69,15 +69,15 @@ class ESS_essentials {
 
 				else
 					
-				$i++;
+				++$i;
 					
 			}
 				
 			$base = '';
 				
-			for($i=0;$i<$this->limitLenghtCharCryp;$i++)
+			for($i=0;$i<$this->limitLenghtCharCryp;++$i)
 
-			$base .= rand(0,9);
+			$base .= mt_rand(0,9);
 
 				
 			$_SESSION['key_cryp_data'] = $base;
@@ -96,7 +96,7 @@ class ESS_essentials {
 
 		$base = $this->genBaseCrypData();
 
-		for ($i=0;$i<$strlen;$i++)
+		for ($i=0;$i<$strlen;++$i)
 
 		$crypData .= $_SESSION['base_key_cryp_data'][substr($data,$i,1) + substr($base,$i,1)];
 
@@ -113,7 +113,7 @@ class ESS_essentials {
 
 		$base = $this->genBaseCrypData();
 
-		for ($i=0;$i<$length;$i++)
+		for ($i=0;$i<$length;++$i)
 
 		$data .=  $flip[substr($crypData,$i,1)] - substr($base,$i,1);
 

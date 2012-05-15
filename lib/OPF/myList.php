@@ -878,7 +878,7 @@ class OPF_myList  {
 
                 				$subSqlF .= ', ';
 
-                				$iCounter++;
+                				++$iCounter;
                 			}
 
                 			$sql = 'SELECT '.$subSqlF.' FROM '.$table;
@@ -1003,7 +1003,7 @@ class OPF_myList  {
 
                 						$arrayOrdNum[$nom] = $cOrd;
 
-                						$cOrd++;
+                						++$cOrd;
                 					}
 
                 					$this->firsKey = true;
@@ -1216,7 +1216,7 @@ class OPF_myList  {
 
                 				$buf.= "\n".'</tr>'."\n";
 
-                				$i++;
+                				++$i;
                 			}
 
                 			$buf .=  '</tbody>'."\n";
@@ -1533,7 +1533,7 @@ class OPF_myList  {
 
                 		$objMyForm->selectUseFirstValue = false;
 
-                		$this->numRuleQuery += 1;
+                		++$this->numRuleQuery;
 
                 		$html .= '<table border="0" id="rule_gp_'.$this->idList.'_'.$this->numRuleQuery.'" width="100%" cellpadding="0" cellspacing="0">';
 

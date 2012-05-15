@@ -191,7 +191,7 @@ class fillScaffold {
 
 					$this->fillAreas['real_names_in_query'] .= "\n\t\t".'$myList->setRealNameInQuery(\''.$prop[0].'\',\''.'rel'.$contRel.'.item_desc\');'."\n";
 
-					$contRel++;
+					++$contRel;
 
 				}else if (isset($_SESSION['temp_scaff_info']['rt']['type_'.$field])){
 
@@ -201,7 +201,7 @@ class fillScaffold {
 					
 					$this->fillAreas['real_names_in_query'] .= "\n\t\t".'$myList->setRealNameInQuery(\''.$prop[0].'\',\''.'rel'.$contRel.'.'.$_SESSION['temp_scaff_info']['rt']['type_'.$field]['value'].'\');'."\n";
 					
-					$contRel++;
+					++$contRel;
 					
 				}else{
 
@@ -948,7 +948,7 @@ class scaffold {
 
 			$myForm->addComment('primary_'.$id, '<div align="center">'.$myForm->getRadioButton($id, 'primary_key', $mark).'</div>');
 
-			$count++;
+			++$count;
 		}
 
 		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');

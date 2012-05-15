@@ -14,6 +14,11 @@
  */
 class controller extends OPF_myController {
 	
+	public function saludar (){
+		
+		$this->saludo = 'Hola Mundo';
+	}
+	
 	public function default_event (){
 		
 		/* Default event */

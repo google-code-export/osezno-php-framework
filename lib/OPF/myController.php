@@ -43,7 +43,7 @@ class OPF_myController extends OPF_myControllerExt {
 				
 			case 'xajax':
 		
-				$GLOBALS['objAjax']->processRequest();
+				//$GLOBALS['objAjax']->processRequest();
 		
 			break;
 		}
@@ -201,7 +201,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 * @param object $objxAjax Objeto de xAjax
 	 */
 	public function __construct(){
-
+/*
 		global $dataViewFromCrtl;
 		
 		$GLOBALS['dataViewFromCrtl'] = array ();
@@ -248,7 +248,7 @@ class OPF_myController extends OPF_myControllerExt {
 			}
 		
 		}
-
+*/
 	}
 
 	/**
@@ -686,7 +686,7 @@ class OPF_myController extends OPF_myControllerExt {
 					$strGet .= '&';
 				}
 
-				$countIni++;
+				++$countIni;
 			}
 				
 			if (stripos($strUrl,'?'))
@@ -706,7 +706,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 */
 	public function closeModalWindow ($number_of_windows = 1){
 
-		for($i=0;$i<$number_of_windows;$i++)
+		for($i=0;$i<$number_of_windows;++$i)
 
 		$this->response->script('closeModalWindow()');
 	}
@@ -1033,7 +1033,7 @@ class OPF_myController extends OPF_myControllerExt {
 	 */
 	public function printNotification ($strNotification, $style = 'info'){
 		
-		echo '<div class="notification_'.$style.'"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="notifi_img_'.$style.'">&nbsp;</div></td><td class="notification_text_'.$style.'">&nbsp;'.$strNotification.'&nbsp;</td></tr></table></div>';
+		echo '<div class="notification_',$style,'"><table border="0" cellpadding="0" cellspacing="0"><tr><td><div class="notifi_img_',$style,'">&nbsp;</div></td><td class="notification_text_',$style,'">&nbsp;',$strNotification,'&nbsp;</td></tr></table></div>';
 	}
 	
 	/**
@@ -1349,7 +1349,7 @@ class OPF_myController extends OPF_myControllerExt {
 				$arrSelects[] = 'field_'.$i;
 			}
 				
-			$i++;
+			++$i;
 		}
 
 		$myForm->border = 0;
@@ -1627,7 +1627,7 @@ class OPF_myController extends OPF_myControllerExt {
 
 		$numRules = $myList->getVar('numRuleQuery');
 
-		for ($i=1;$i<=$numRules;$i++){
+		for ($i=1;$i<=$numRules;++$i){
 				
 			if (isset($datForm['field_'.$i])){
 

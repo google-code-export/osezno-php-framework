@@ -47,7 +47,7 @@ class readDirs {
 
 					$this->js .= "d.add(".$this->id.",0,'".$entry."','javascript:void(assignUrl(\'".$entry."\'))','','','".BASE_URL_PATH."common/js/essentials/img/folder.gif');\n";
 
-					$this->id++;
+					++$this->id;
 				}
 			}
 		}

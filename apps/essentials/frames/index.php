@@ -16,8 +16,8 @@
 </HEAD>
 <FRAMESET cols="170,*" border="0">
 
-	<frame name="menu" src="<?php echo BASE_URL_PATH.'options/'; ?>" title="Menu de navegación">
+	<frame name="menu" src="<?php echo BASE_URL_PATH,'options/'; ?>" title="Menu de navegación">
 
-	<frame name="modulo" src="<?php echo BASE_URL_PATH.'welcome/'; ?>" title="Modulos">
+	<frame name="modulo" src="<?php echo BASE_URL_PATH,'welcome/'; ?>" title="Modulos">
 
 </FRAMESET>
