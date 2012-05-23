@@ -35,7 +35,7 @@ class OPF_myLang {
 	
 	public static function getPhrase ($sPhrase){
 		
-		return (isset($_SESSION['lang_content'][$sPhrase]) ? '':$_SESSION['lang_content'][$sPhrase]);
+		return (isset($_SESSION['lang_content'][$sPhrase]) ? $_SESSION['lang_content'][$sPhrase]:'<b><i>The phrase is no defined</i></b>');
 	} 
 	
 	

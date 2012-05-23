@@ -167,12 +167,12 @@ class fillScaffold {
 			
 		if ($_SESSION['temp_scaff_info']['grid_att']['eliminar']){
 
-			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "'.OPF_FIELD_ELIMINAR.'", ';
+			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "'.OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR').'", ';
 		}
 			
 		if ($_SESSION['temp_scaff_info']['grid_att']['editar']){
 				
-			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "'.OPF_FIELD_MODIFICAR.'", ';
+			$buf .= $_SESSION['temp_scaff_info']['table_name'].'.'.$_SESSION['temp_scaff_info']['pk'].' AS "'.OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR').'", ';
 		}
 			
 		$contRel = 1;
@@ -246,7 +246,7 @@ class fillScaffold {
 			
 		if ($_SESSION['temp_scaff_info']['grid_att']['getqueryform'])
 			
-		$buf = 'true,true';
+			$buf = 'true,true';
 			
 		$this->fillAreas['getqueryform'] = $buf;
 			
@@ -260,7 +260,7 @@ class fillScaffold {
 
 		if ($_SESSION['temp_scaff_info']['grid_att']['setexportdata'])
 
-		$buf = 'true,true,true';
+			$buf = 'true,true,true';
 			
 		$this->fillAreas['setexportdata'] = $buf;
 
@@ -274,7 +274,7 @@ class fillScaffold {
 			
 		if ($_SESSION['temp_scaff_info']['grid_att']['setpagination'])
 			
-		$buf = 'true,50';
+			$buf = 'true,50';
 
 		$this->fillAreas['setpagination'] = $buf;
 			
@@ -303,7 +303,7 @@ class fillScaffold {
 			
 		if ($_SESSION['temp_scaff_info']['grid_att']['eliminar']){
 				
-			$buf = "".'$myList->setEventOnColumn(\''.OPF_FIELD_ELIMINAR.'\',\'onClickDeleteRecord\');'."\n";
+			$buf = "".'$myList->setEventOnColumn(\''.OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR').'\',\'onClickDeleteRecord\');'."\n";
 
 			$masWidthEliminar = 50;
 		}
@@ -321,7 +321,7 @@ class fillScaffold {
 			
 		if ($_SESSION['temp_scaff_info']['grid_att']['editar']){
 
-			$buf = "".'$myList->setEventOnColumn(\''.OPF_FIELD_MODIFICAR.'\',\'onClickAddRecord\');'."\n";
+			$buf = "".'$myList->setEventOnColumn(\''.OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR').'\',\'onClickAddRecord\');'."\n";
 
 			$masWidthEditar = 40;
 		}
@@ -337,7 +337,7 @@ class fillScaffold {
 			
 		if ($_SESSION['temp_scaff_info']['grid_att']['eliminar_mul'] && $masWidthEliminar)
 			
-		$buf = "".'$myList->setGlobalEventOnColumn(\''.OPF_FIELD_ELIMINAR.'\', array(\''.OPF_FIELD_ELIMINAR.'\'=>\'onClickDeleteRecord\') );';
+			$buf = "".'$myList->setGlobalEventOnColumn(\''.OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR').'\', array(\''.OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR').'\'=>\'onClickDeleteRecord\') );';
 
 		$this->fillAreas['eliminar_mul'] = $buf;
 			
@@ -473,9 +473,9 @@ class relationTable {
 			$table = $_SESSION['temp_scaff_info']['rt'][$object]['table_name'];
 		}
 		
-		$myForm->addHelp('table_name', OPF_SCAFF_39);
+		$myForm->addHelp('table_name', OPF_myLang::getPhrase('OPF_SCAFF_39'));
 			
-		$myForm->addText(OPF_SCAFF_38,'table_name:3', $table);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_SCAFF_38'),'table_name:3', $table);
 			
 		$myForm->addComment('cm12:3', '');
 			
@@ -487,7 +487,7 @@ class relationTable {
 			
 		$myForm->addComment('cm16', '');
 			
-		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('OPF_SCAFF_14'),'next.gif');
 		
 		$myForm->addEvent('btn1', 'onclick', 'onClickSetRT', $object);
 			
@@ -521,7 +521,7 @@ class relationTable {
 		
 			$key = $_SESSION['temp_scaff_info']['rt'][$object]['key'];
 		
-		$myForm->addSelect(OPF_SCAFF_50,'key:2',$cols, $key);
+		$myForm->addSelect(OPF_myLang::getPhrase('OPF_SCAFF_50'),'key:2',$cols, $key);
 
 		$value = '';
 		
@@ -529,15 +529,15 @@ class relationTable {
 		
 			$value = $_SESSION['temp_scaff_info']['rt'][$object]['value'];
 		
-		$myForm->addSelect(OPF_SCAFF_51,'value:2',$cols, $value);
+		$myForm->addSelect(OPF_myLang::getPhrase('OPF_SCAFF_51'),'value:2',$cols, $value);
 		
 		$myForm->addComment('cm4:2', '');
 		
 		$myForm->addComment('cm5:2', '');
 		
-		$myForm->addButton('btn2',OPF_SCAFF_14,'back.gif');
+		$myForm->addButton('btn2',OPF_myLang::getPhrase('OPF_SCAFF_14'),'back.gif');
 		
-		$myForm->addButton('btn1',OPF_SCAFF_15,'ok.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('OPF_SCAFF_15'),'ok.gif');
 		
 		$myForm->addEvent('btn1', 'onclick', 'onClickSetIdValRT', $object);
 		
@@ -583,7 +583,7 @@ class scaffold {
 			
 		$myForm = new OPF_myForm('frm_startup');
 			
-		$myForm->addButton('btn1',LABEL_BTN_ADD,'add.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('LABEL_BTN_ADD'),'add.gif');
 			
 		$myForm->addEvent('btn1', 'onclick', 'newScaff', 1);
 			
@@ -608,25 +608,25 @@ class scaffold {
 
 		if (isset($_SESSION['temp_scaff_info']['namefolder']))
 
-		$foldername = $_SESSION['temp_scaff_info']['namefolder'];
+			$foldername = $_SESSION['temp_scaff_info']['namefolder'];
 
-		$myForm->addText(OPF_SCAFF_42,'namefolder:3',$foldername);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_SCAFF_42'),'namefolder:3',$foldername);
 			
 		$modnom = '';
 			
 		if (isset($_SESSION['temp_scaff_info']['modnom']))
 			
-		$modnom = $_SESSION['temp_scaff_info']['modnom'];
+			$modnom = $_SESSION['temp_scaff_info']['modnom'];
 			
-		$myForm->addText(OPF_SCAFF_11,'modnom:3',$modnom);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_SCAFF_11'),'modnom:3',$modnom);
 			
 		$moddesc = '';
 			
 		if (isset($_SESSION['temp_scaff_info']['moddesc']))
 			
-		$moddesc = $_SESSION['temp_scaff_info']['moddesc'];
+			$moddesc = $_SESSION['temp_scaff_info']['moddesc'];
 			
-		$myForm->addText(OPF_SCAFF_12,'moddesc:3',$moddesc);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_SCAFF_12'),'moddesc:3',$moddesc);
 			
 		$myForm->addComment('cm6:3', '');
 			
@@ -638,13 +638,13 @@ class scaffold {
 			
 		$myForm->addComment('cm10:3', '');
 
-		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
+		$myForm->addButton('btn0',OPF_myLang::getPhrase('OPF_SCAFF_13'),'back.gif');
 
 		$myForm->addEvent('btn0', 'onclick', 'newScaff',4);
 
 		$myForm->addComment('cm_space', '');
 
-		$myForm->addButton('btn1',OPF_SCAFF_15,'ok.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('OPF_SCAFF_15'),'ok.gif');
 
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep6');
 			
@@ -663,11 +663,11 @@ class scaffold {
 			
 		$campoGrilla = array('field_selec','field_etq','field_ancho');
 			
-		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'/'.OPF_SCAFF_41.'</b></div>');
+		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_16').'/'.OPF_myLang::getPhrase('OPF_SCAFF_41').'</b></div>');
 
-		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_17.'</b></div>');
+		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_17').'</b></div>');
 
-		$myForm->addComment('field_ancho', '<div align="center"><b>'.OPF_SCAFF_18.'</b></div>');
+		$myForm->addComment('field_ancho', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_18').'</b></div>');
 
 		foreach ($resSql[0] as $id => $value){
 				
@@ -713,51 +713,51 @@ class scaffold {
 			
 		if (isset($_SESSION['temp_scaff_info']['grid_att']['ancho_total']))
 			
-		$anchoTotal = $_SESSION['temp_scaff_info']['grid_att']['ancho_total'];
+			$anchoTotal = $_SESSION['temp_scaff_info']['grid_att']['ancho_total'];
 			
 		$myForm->addDisabled('ancho_total');
 			
-		$myForm->addText(OPF_SCAFF_19,'ancho_total',$anchoTotal,5,4,true);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_SCAFF_19'),'ancho_total',$anchoTotal,5,4,true);
 			
 		$getqueryform = false;
 
 		if (isset($_SESSION['temp_scaff_info']['grid_att']['getqueryform']))
 
-		$getqueryform = $_SESSION['temp_scaff_info']['grid_att']['getqueryform'];
+			$getqueryform = $_SESSION['temp_scaff_info']['grid_att']['getqueryform'];
 			
-		$myForm->addCheckBox(OPF_SCAFF_20,'getqueryform',$getqueryform);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_SCAFF_20'),'getqueryform',$getqueryform);
 			
 		$setexportdata = false;
 			
 		if (isset($_SESSION['temp_scaff_info']['grid_att']['setexportdata']))
 			
-		$setexportdata = $_SESSION['temp_scaff_info']['grid_att']['setexportdata'];
+			$setexportdata = $_SESSION['temp_scaff_info']['grid_att']['setexportdata'];
 			
-		$myForm->addCheckBox(OPF_SCAFF_21,'setexportdata',$setexportdata);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_SCAFF_21'),'setexportdata',$setexportdata);
 			
 		$setpagination = false;
 
 		if (isset($_SESSION['temp_scaff_info']['grid_att']['setpagination']))
 
-		$setpagination = $_SESSION['temp_scaff_info']['grid_att']['setpagination'];
+			$setpagination = $_SESSION['temp_scaff_info']['grid_att']['setpagination'];
 			
-		$myForm->addCheckBox(OPF_SCAFF_22,'setpagination',$setpagination);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_SCAFF_22'),'setpagination',$setpagination);
 			
 		$setuseordermethod = false;
 			
 		if (isset($_SESSION['temp_scaff_info']['grid_att']['setuseordermethod']))
 			
-		$setuseordermethod = $_SESSION['temp_scaff_info']['grid_att']['setuseordermethod'];
+			$setuseordermethod = $_SESSION['temp_scaff_info']['grid_att']['setuseordermethod'];
 			
-		$myForm->addCheckBox(OPF_SCAFF_23,'setuseordermethod',$setuseordermethod);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_SCAFF_23'),'setuseordermethod',$setuseordermethod);
 			
 		$editar = false;
 
 		if (isset($_SESSION['temp_scaff_info']['grid_att']['editar']))
 
-		$editar = $_SESSION['temp_scaff_info']['grid_att']['editar'];
+			$editar = $_SESSION['temp_scaff_info']['grid_att']['editar'];
 			
-		$myForm->addCheckBox(OPF_SCAFF_24,'editar',$editar);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_SCAFF_24'),'editar',$editar);
 			
 		$eliminar = false;
 			
@@ -769,31 +769,31 @@ class scaffold {
 			
 		if (!$eliminar)
 			
-		$myForm->addDisabled('eliminar_mul');
+			$myForm->addDisabled('eliminar_mul');
 			
 		$myForm->addEvent('eliminar', 'onclick', 'valOptDelete');
 			
-		$myForm->addCheckBox(OPF_SCAFF_25,'eliminar',$eliminar);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_SCAFF_25'),'eliminar',$eliminar);
 			
 		$eliminar_mul = false;
 			
 		if (isset($_SESSION['temp_scaff_info']['grid_att']['eliminar_mul']))
 
-		$eliminar_mul = $_SESSION['temp_scaff_info']['grid_att']['eliminar_mul'];
+			$eliminar_mul = $_SESSION['temp_scaff_info']['grid_att']['eliminar_mul'];
 			
-		$myForm->addCheckBox(OPF_SCAFF_26,'eliminar_mul',$eliminar_mul);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_SCAFF_26'),'eliminar_mul',$eliminar_mul);
 			
-		$myForm->addGroup('opcvarias',OPF_SCAFF_27,array('ancho_total','getqueryform','setexportdata','setpagination','setuseordermethod','editar','eliminar','eliminar_mul'));
+		$myForm->addGroup('opcvarias',OPF_myLang::getPhrase('OPF_SCAFF_27'),array('ancho_total','getqueryform','setexportdata','setpagination','setuseordermethod','editar','eliminar','eliminar_mul'));
 			
-		$myForm->addGroup('campos',OPF_SCAFF_28,$campoGrilla,3);
+		$myForm->addGroup('campos',OPF_myLang::getPhrase('OPF_SCAFF_28'),$campoGrilla,3);
 			
-		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
+		$myForm->addButton('btn0',OPF_myLang::getPhrase('OPF_SCAFF_13'),'back.gif');
 			
 		$myForm->addEvent('btn0', 'onclick', 'newScaff',3);
 			
 		$myForm->addComment('cm_space', '');
 			
-		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('OPF_SCAFF_14'),'next.gif');
 			
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep5');
 
@@ -811,13 +811,13 @@ class scaffold {
 			$arrTablas[$tabla->id] = $tabla->name;
 		}
 		
-		$arrTablas['other'] = OPF_SCAFF_48;
+		$arrTablas['other'] = OPF_myLang::getPhrase('OPF_SCAFF_48');
 			
 		$myForm = new OPF_myForm('formNewScaffStep3');
 
-		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
+		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_16').'</b></div>');
 
-		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_29.'</b></div>');
+		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_29').'</b></div>');
 			
 		foreach ($_SESSION['temp_scaff_info']['combos'] as $combo){
 
@@ -835,11 +835,11 @@ class scaffold {
 			$myForm->addComment('type_'.$combo, '<div align="center">'.$myForm->getSelect('type_'.$combo, $arrTablas, $value).'</div>');
 		}
 			
-		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
+		$myForm->addButton('btn0',OPF_myLang::getPhrase('OPF_SCAFF_13'),'back.gif');
 			
 		$myForm->addEvent('btn0', 'onclick', 'newScaff',2);
 			
-		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('OPF_SCAFF_14'),'next.gif');
 			
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep4');
 			
@@ -852,34 +852,34 @@ class scaffold {
 			
 		$arrTypes = array (
 
-		1 => OPF_SCAFF_30,
+			1 => OPF_myLang::getPhrase('OPF_SCAFF_30'),
 
-		2 => OPF_SCAFF_31,
+			2 => OPF_myLang::getPhrase('OPF_SCAFF_31'),
 
-		3 => OPF_SCAFF_32,
+			3 => OPF_myLang::getPhrase('OPF_SCAFF_32'),
 
-		4 => OPF_SCAFF_33,
+			4 => OPF_myLang::getPhrase('OPF_SCAFF_33'),
 
-		5 => OPF_SCAFF_34,
+			5 => OPF_myLang::getPhrase('OPF_SCAFF_34'),
 
-		6 => OPF_SCAFF_35
+			6 => OPF_myLang::getPhrase('OPF_SCAFF_35')
 		);
 			
 		$myAct = new OPF_myActiveRecord();
 
 		$resSql =  self::getResultSelectFields($myAct, $_SESSION['temp_scaff_info']['table_name']);
 
-		$myForm->addComment('field_etq1', '<div align="center"><b>'.OPF_SCAFF_16.'</b></div>');
+		$myForm->addComment('field_etq1', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_16').'</b></div>');
 			
-		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_SCAFF_41.'</b></div>');
+		$myForm->addComment('field_selec', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_41').'</b></div>');
 			
-		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_SCAFF_17.'</b></div>');
+		$myForm->addComment('field_etq', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_17').'</b></div>');
 			
-		$myForm->addComment('field_tipo', '<div align="center"><b>'.OPF_SCAFF_36.'</b></div>');
+		$myForm->addComment('field_tipo', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_36').'</b></div>');
 
-		$myForm->addComment('field_primary', '<div align="center"><b>'.OPF_SCAFF_40.'</b></div>');
+		$myForm->addComment('field_primary', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_40').'</b></div>');
 			
-		$myForm->addComment('field_required', '<div align="center"><b>'.OPF_SCAFF_37.'</b></div>');
+		$myForm->addComment('field_required', '<div align="center"><b>'.OPF_myLang::getPhrase('OPF_SCAFF_37').'</b></div>');
 			
 		$count = 0;
 			
@@ -912,9 +912,9 @@ class scaffold {
 
 			if (isset($_SESSION['temp_scaff_info']['form'][$id][2]))
 
-			if ($_SESSION['temp_scaff_info']['form'][$id][2])
+				if ($_SESSION['temp_scaff_info']['form'][$id][2])
 
-			$checkReq = true;
+					$checkReq = true;
 
 			$myForm->addEvent('field_'.$id, 'onclick', 'checkFormItem', 'field_'.$id, 'req_'.$id, 'etq_'.$id, 'type_'.$id);
 
@@ -951,7 +951,7 @@ class scaffold {
 			++$count;
 		}
 
-		$myForm->addButton('btn0',OPF_SCAFF_13,'back.gif');
+		$myForm->addButton('btn0',OPF_myLang::getPhrase('OPF_SCAFF_13'),'back.gif');
 
 		$myForm->addComment('cm_space', '');
 			
@@ -961,7 +961,7 @@ class scaffold {
 			
 		$myForm->addComment('cm_space3', '');
 
-		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('OPF_SCAFF_14'),'next.gif');
 
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep3');
 			
@@ -995,9 +995,9 @@ class scaffold {
 			$table = $_SESSION['temp_scaff_info']['table_name'];
 		}
 
-		$myForm->addHelp('table_name', OPF_SCAFF_39);
+		$myForm->addHelp('table_name', OPF_myLang::getPhrase('OPF_SCAFF_39'));
 			
-		$myForm->addText(OPF_SCAFF_38,'table_name:3', $table);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_SCAFF_38'),'table_name:3', $table);
 			
 		$myForm->addComment('cm8:3', '');
 			
@@ -1017,7 +1017,7 @@ class scaffold {
 			
 		$myForm->addComment('cm16', '');
 			
-		$myForm->addButton('btn1',OPF_SCAFF_14,'next.gif');
+		$myForm->addButton('btn1',OPF_myLang::getPhrase('OPF_SCAFF_14'),'next.gif');
 			
 		$myForm->addEvent('btn1', 'onclick', 'toScaffStep2');
 			

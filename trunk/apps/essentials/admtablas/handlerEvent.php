@@ -22,7 +22,7 @@ class controller extends OPF_myController {
 			
 		$admTablas = new admTablas;
 			
-		$this->modalWindow($admTablas->getPHPCodeTable($id),OPF_ADMTABLAS_8,500,400,2);
+		$this->modalWindow($admTablas->getPHPCodeTable($id),OPF_myLang::getPhrase('OPF_ADMTABLAS_8'),500,400,2);
 			
 		return $this->response;
 	}
@@ -45,7 +45,7 @@ class controller extends OPF_myController {
 
 		if ($ess_master_tables_detail->endTransaction()){
 
-			$this->notificationWindow(OPF_ADMTABLAS_4,3,'warning');
+			$this->notificationWindow(OPF_myLang::getPhrase('OPF_ADMTABLAS_4,3'),'warning');
 
 			$this->MYLIST_reload('lst_tablas_detalle');
 
@@ -73,7 +73,7 @@ class controller extends OPF_myController {
 			
 		if (is_array($datFormId)){
 
-			$this->messageBox(OPF_FIELD_CONFIRM_ELIMINAR_VARIOS,'HELP',array(NO,YES=>'confirmDeleteItems'),$datFormId);
+			$this->messageBox(OPF_myLang::getPhrase('OPF_FIELD_CONFIRM_ELIMINAR_VARIOS'),'HELP',array(OPF_myLang::getPhrase('NO'),OPF_myLang::getPhrase('YES')=>'confirmDeleteItems'),$datFormId);
 
 		}else{
 
@@ -81,7 +81,7 @@ class controller extends OPF_myController {
 
 			if ($ess_master_tables_detail->endTransaction()){
 
-				$this->notificationWindow(OPF_ADMTABLAS_5,3,'warning');
+				$this->notificationWindow(OPF_myLang::getPhrase('OPF_ADMTABLAS_5'),3,'warning');
 
 				$this->MYLIST_reload('lst_tablas_detalle');
 
@@ -111,7 +111,7 @@ class controller extends OPF_myController {
 			
 		$admDetalleTablas = new admDetalleTablas($ess_master_tables_detail->master_tables_id, $id);
 
-		$this->modalWindow($admDetalleTablas->getFormAdmItemTable_register($id),OPF_ADMTABLAS_6,300,150,2);
+		$this->modalWindow($admDetalleTablas->getFormAdmItemTable_register($id),OPF_myLang::getPhrase('OPF_ADMTABLAS_6'),300,150,2);
 
 		return $this->response;
 	}
@@ -129,7 +129,7 @@ class controller extends OPF_myController {
 
 			if ($detail_id)
 
-			$ess_master_tables_detail->find($detail_id);
+				$ess_master_tables_detail->find($detail_id);
 
 			$ess_master_tables_detail->item_cod = $datForm['item_cod'];
 
@@ -143,7 +143,7 @@ class controller extends OPF_myController {
 
 			if ($ess_master_tables_detail->save()){
 					
-				$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,3,'ok');
+				$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),3,'ok');
 					
 				$this->closeModalWindow();
 					
@@ -155,10 +155,9 @@ class controller extends OPF_myController {
 					
 			}
 
-
 		}else{
 
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,3,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),3,'error');
 		}
 			
 		return $this->response;
@@ -172,7 +171,7 @@ class controller extends OPF_myController {
 			
 		$admDetalleTablas = new admDetalleTablas($id);
 			
-		$this->modalWindow($admDetalleTablas->getFormAdmItemTable_register(),OPF_ADMTABLAS_6,300,150,2);
+		$this->modalWindow($admDetalleTablas->getFormAdmItemTable_register(),OPF_myLang::getPhrase('OPF_ADMTABLAS_6'),300,150,2);
 			
 		return $this->response;
 	}
@@ -202,7 +201,7 @@ class controller extends OPF_myController {
 			
 		if ($ess_master_tables->delete($id)){
 
-			$this->notificationWindow(OPF_ADMTABLAS_4,3,'warning');
+			$this->notificationWindow(OPF_myLang::getPhrase('OPF_ADMTABLAS_4'),3,'warning');
 
 			$this->MYLIST_reload('lst_tablas');
 
@@ -223,7 +222,7 @@ class controller extends OPF_myController {
 			
 		$admTablas = new admTablas;
 			
-		$this->modalWindow($admTablas->getFormAdmTables_register($id),OPF_ADMTABLAS_7,300,200,2);
+		$this->modalWindow($admTablas->getFormAdmTables_register($id),OPF_myLang::getPhrase('OPF_ADMTABLAS_7'),300,200,2);
 			
 		return $this->response;
 	}
@@ -236,7 +235,7 @@ class controller extends OPF_myController {
 			
 		$admTablas = new admTablas;
 			
-		$this->modalWindow($admTablas->getFormAdmTables_register(),OPF_ADMTABLAS_7,300,200,2);
+		$this->modalWindow($admTablas->getFormAdmTables_register(),OPF_myLang::getPhrase('OPF_ADMTABLAS_7'),300,200,2);
 			
 		return $this->response;
 	}
@@ -255,7 +254,8 @@ class controller extends OPF_myController {
 			$ess_master_tables = new ess_master_tables;
 
 			if ($id)
-			$ess_master_tables->find($id);
+				
+				$ess_master_tables->find($id);
 
 			$ess_master_tables->name = $params['name'];
 
@@ -271,7 +271,7 @@ class controller extends OPF_myController {
 					
 				$this->MYLIST_reload('lst_tablas');
 					
-				$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,5,'ok');
+				$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),5,'ok');
 					
 				if (!$id)
 					
@@ -283,7 +283,7 @@ class controller extends OPF_myController {
 			}
 
 		}else
-		$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+		$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 			
 		return $this->response;
 	}

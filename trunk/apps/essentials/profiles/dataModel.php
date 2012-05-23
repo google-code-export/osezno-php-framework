@@ -103,9 +103,9 @@ class OPF_profiles {
 
 		}
 			
-		$myForm->addButton('btn_save_',LABEL_BTN_SAVE,'save.gif');
+		$myForm->addButton('btn_save_',OPF_myLang::getPhrase('LABEL_BTN_SAVE'),'save.gif');
 			
-		$myForm->addButton('btn_cancel_',LABEL_BTN_CANCEL,'cancel.gif');
+		$myForm->addButton('btn_cancel_',OPF_myLang::getPhrase('LABEL_BTN_CANCEL'),'cancel.gif');
 			
 		$myForm->addEvent('btn_cancel_', 'onclick', 'onClickCancelConfirm');
 			
@@ -115,7 +115,7 @@ class OPF_profiles {
 			
 		$myForm->width = ($this->maxCols+1)*(180);
 			
-		$myForm->addGroup('resources',OPF_PROFILES_4,$this->groups,$this->maxCols+1);
+		$myForm->addGroup('resources',OPF_myLang::getPhrase('OPF_PROFILES_4'),$this->groups,$this->maxCols+1);
 			
 		return $myForm->getForm(2);
 	}
@@ -124,7 +124,7 @@ class OPF_profiles {
 			
 		$myForm = new OPF_myForm('FormStartUp');
 			
-		$myForm->addButton('btn_up',LABEL_BTN_ADD,'add.gif');
+		$myForm->addButton('btn_up',OPF_myLang::getPhrase('LABEL_BTN_ADD'),'add.gif');
 			
 		$myForm->addEvent('btn_up', 'onclick', 'onClickAddRecord');
 			
@@ -138,15 +138,16 @@ class OPF_profiles {
 		$ess_profiles = new ess_profiles;
 			
 		if ($id)
-		$ess_profiles->find($id);
+			
+			$ess_profiles->find($id);
 			
 		$myForm->styleClassForm = '';
 			
-		$myForm->addText(OPF_PROFILES_5,'name',$ess_profiles->name,20,50);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_PROFILES_5'),'name',$ess_profiles->name,20,50);
 			
-		$myForm->addTextArea(OPF_PROFILES_6,'description',$ess_profiles->description,40,6);
+		$myForm->addTextArea(OPF_myLang::getPhrase('OPF_PROFILES_6'),'description',$ess_profiles->description,40,6);
 			
-		$myForm->addButton('btn_save',LABEL_BTN_SAVE,'save.gif');
+		$myForm->addButton('btn_save',OPF_myLang::getPhrase('LABEL_BTN_SAVE'),'save.gif');
 			
 		$myForm->addEvent('btn_save', 'onclick', 'onClickSave',$id);
 			
@@ -159,51 +160,51 @@ class OPF_profiles {
 			
 		$arrRpl = array (
 			
- 			'OPF_FIELD_MODIFICAR' => OPF_FIELD_MODIFICAR,
+ 			'OPF_FIELD_MODIFICAR' => 	OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'),
 
- 			'OPF_FIELD_ELIMINAR' => OPF_FIELD_ELIMINAR,
+ 			'OPF_FIELD_ELIMINAR' => 	OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'),
 
- 			'OPF_FIELD_PERFIL' => OPF_FIELD_PERFIL,
+ 			'OPF_FIELD_PERFIL' => 		OPF_myLang::getPhrase('OPF_FIELD_PERFIL'),
 
- 			'OPF_FIELD_DESCRIPCION' => OPF_FIELD_DESCRIPCION,
+ 			'OPF_FIELD_DESCRIPCION' => 	OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'),
 
- 			'OPF_FIELD_USUARIO' => OPF_FIELD_USUARIO,
+ 			'OPF_FIELD_USUARIO' => 		OPF_myLang::getPhrase('OPF_FIELD_USUARIO'),
 
- 			'OPF_FIELD_DATETIME' => OPF_FIELD_DATETIME,
+ 			'OPF_FIELD_DATETIME' => 	OPF_myLang::getPhrase('OPF_FIELD_DATETIME'),
 
- 			'OPF_FIELD_MENU' => OPF_FIELD_MENU
+ 			'OPF_FIELD_MENU' => 		OPF_myLang::getPhrase('OPF_FIELD_MENU')
 			
 		);
 			
 		$myList = new OPF_myList('lst_profiles',$sql = $myAct->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'lstProfiles.sql',$arrRpl));
 			
-		$myList->setEventOnColumn(OPF_FIELD_MODIFICAR, 'onClickAddRecord');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 'onClickAddRecord');
 			
-		$myList->setEventOnColumn(OPF_FIELD_ELIMINAR, 'onClickDeleteRecord',OPF_FIELD_CONFIRM_ELIMINAR);
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 'onClickDeleteRecord',OPF_myLang::getPhrase('OPF_FIELD_CONFIRM_ELIMINAR'));
 			
-		$myList->setEventOnColumn(OPF_FIELD_MENU, 'onClickEditMenu');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MENU'), 'onClickEditMenu');
 			
-		$myList->setWidthColumn(OPF_FIELD_MODIFICAR, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_ELIMINAR, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_USUARIO, 100);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 100);
 			
-		$myList->setWidthColumn(OPF_FIELD_MENU, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_MENU'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_PERFIL, 140);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_PERFIL'), 140);
 			
-		$myList->setWidthColumn(OPF_FIELD_DATETIME, 120);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_DATETIME'), 120);
 			
-		$myList->setWidthColumn(OPF_FIELD_DESCRIPCION, 400);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'), 400);
 			
-		$myList->setRealNameInQuery(OPF_FIELD_PERFIL, 'ess_profiles.name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_PERFIL'), 'ess_profiles.name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_DESCRIPCION, 'ess_profiles.description');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'), 'ess_profiles.description');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_USUARIO, 'ess_system_users.user_name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 'ess_system_users.user_name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_DATETIME, 'ess_profiles.datetime');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_DATETIME'), 'ess_profiles.datetime');
 			
 		$myList->setPagination(true,20);
 			

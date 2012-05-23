@@ -40,7 +40,7 @@ class controller extends OPF_myController {
 							
 						if ($OPF_passwd->setNewPasswd($datForm['user_name'],$datForm['passwd1'])){
 
-							$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,3,'ok');
+							$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),3,'ok');
 
 							$this->clear('user_name', 'value');
 
@@ -55,21 +55,21 @@ class controller extends OPF_myController {
 						$this->messageBox($ess_system_users->getErrorLog().$ess_system_users->getSqlLog(),'error');
 					}else
 						
-					$this->notificationWindow(OPF_PASSWD_1,3,'error');
+					$this->notificationWindow(OPF_myLang::getPhrase('OPF_PASSWD_1'),3,'error');
 				}else
 
-				$this->notificationWindow(OPF_PASSWD_2,3,'error');
+				$this->notificationWindow(OPF_myLang::getPhrase('OPF_PASSWD_2'),3,'error');
 					
 			}else{
 					
-				$this->notificationWindow(OPF_PASSWD_3,3,'error');
+				$this->notificationWindow(OPF_myLang::getPhrase('OPF_PASSWD_3'),3,'error');
 					
 				$this->redirect('../OPF_logout/');
 			}
 
 		}else{
 
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,3,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),3,'error');
 		}
 			
 		return $this->response;

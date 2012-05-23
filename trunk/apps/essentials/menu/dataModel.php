@@ -52,7 +52,7 @@ class OPF_menu {
 			
 		$myForm = new OPF_myForm('FormStarUp');
 			
-		$myForm->addButton('btn_starup',LABEL_BTN_ADD,'add.gif');
+		$myForm->addButton('btn_starup',OPF_myLang::getPhrase('LABEL_BTN_ADD'),'add.gif');
 			
 		$myForm->addEvent('btn_starup', 'onclick', 'onClickAddModRecord');
 			
@@ -91,7 +91,7 @@ class OPF_menu {
 			
 		$htmlInconsel = '<select name="icon" id="icon" class="'.$myForm->styleClassFields.'">';
 			
-		$htmlInconsel .= '<option>'.LABEL_FIRST_OPT_SELECT_FIELD.'</option>';
+		$htmlInconsel .= '<option>'.OPF_myLang::getPhrase('LABEL_FIRST_OPT_SELECT_FIELD').'</option>';
 			
 		foreach ($arrIcons as $icon){
 
@@ -110,21 +110,21 @@ class OPF_menu {
 			
 		$myForm->styleClassForm = '';
 			
-		$myForm->addText(OPF_MENU_4,'description:2',$ess_menu->description,15,50);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_MENU_4'),'description:2',$ess_menu->description,15,50);
 			
 		$myForm->selectStringFirstLabelOption = '/';
 			
-		$myForm->addSelect(OPF_MENU_5,'menu_id:2',$this->arrOpt,$ess_menu->menu_id);
+		$myForm->addSelect(OPF_myLang::getPhrase('OPF_MENU_5'),'menu_id:2',$this->arrOpt,$ess_menu->menu_id);
 			
-		$myForm->addText(OPF_MENU_6,'ord:2',$ess_menu->ord,2,3,true);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_MENU_6'),'ord:2',$ess_menu->ord,2,3,true);
 
 		$myForm->addFreeObject('fo1:2','Icono:',$htmlInconsel);
 			
-		$myForm->addTextArea(OPF_MENU_7,'url:2',$ess_menu->url,50,2);
+		$myForm->addTextArea(OPF_myLang::getPhrase('OPF_MENU_7'),'url:2',$ess_menu->url,50,2);
 			
-		$myForm->addButton('btn_dir',OPF_MENU_8,'find.gif');
+		$myForm->addButton('btn_dir',OPF_myLang::getPhrase('OPF_MENU_8'),'find.gif');
 			
-		$myForm->addButton('btn_save',LABEL_BTN_SAVE,'save.gif');
+		$myForm->addButton('btn_save',OPF_myLang::getPhrase('LABEL_BTN_SAVE'),'save.gif');
 			
 		$myForm->addEvent('btn_save', 'onclick', 'onClickSave',$id);
 			
@@ -139,25 +139,25 @@ class OPF_menu {
 			
 		$arRpl = array (
 			
- 			'OPF_FIELD_MODIFICAR' => OPF_FIELD_MODIFICAR,
+ 			'OPF_FIELD_MODIFICAR' => 	OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'),
 
- 			'OPF_FIELD_ELIMINAR' => OPF_FIELD_ELIMINAR,
+ 			'OPF_FIELD_ELIMINAR' => 	OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'),
 
- 			'OPF_FIELD_ID' => OPF_FIELD_ID,
+ 			'OPF_FIELD_ID' => 			OPF_myLang::getPhrase('OPF_FIELD_ID'),
 
- 			'OPF_FIELD_PADRE' => OPF_FIELD_PADRE,
+ 			'OPF_FIELD_PADRE' => 		OPF_myLang::getPhrase('OPF_FIELD_PADRE'),
 
- 			'OPF_FIELD_DESCRIPCION' => OPF_FIELD_DESCRIPCION,
+ 			'OPF_FIELD_DESCRIPCION' => 	OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'),
 
- 			'OPF_FIELD_ICON' => OPF_FIELD_ICON,
+ 			'OPF_FIELD_ICON' => 		OPF_myLang::getPhrase('OPF_FIELD_ICON'),
 
- 			'OPF_FIELD_URL' => OPF_FIELD_URL,
+ 			'OPF_FIELD_URL' => 			OPF_myLang::getPhrase('OPF_FIELD_URL'),
 
- 			'OPF_FIELD_ORDEN' => OPF_FIELD_ORDEN,
+ 			'OPF_FIELD_ORDEN' => 		OPF_myLang::getPhrase('OPF_FIELD_ORDEN'),
 
- 			'OPF_FIELD_USUARIO' => OPF_FIELD_USUARIO,
+ 			'OPF_FIELD_USUARIO' => 		OPF_myLang::getPhrase('OPF_FIELD_USUARIO'),
 
- 			'OPF_FIELD_DATETIME' => OPF_FIELD_DATETIME
+ 			'OPF_FIELD_DATETIME' => 	OPF_myLang::getPhrase('OPF_FIELD_DATETIME')
 
 		);
 			
@@ -165,47 +165,47 @@ class OPF_menu {
 			
 		$myList->width = 1100;
 			
-		$myList->setWidthColumn(OPF_FIELD_MODIFICAR, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_ELIMINAR, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_ID, 50);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ID'), 50);
 			
-		$myList->setWidthColumn(OPF_FIELD_PADRE, 125);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_PADRE'), 125);
 			
-		$myList->setWidthColumn(OPF_FIELD_DESCRIPCION, 125);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'), 125);
 			
-		$myList->setWidthColumn(OPF_FIELD_ICON, 60);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ICON'), 60);
 			
-		$myList->setWidthColumn(OPF_FIELD_ORDEN, 40);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ORDEN'), 40);
 			
-		$myList->setWidthColumn(OPF_FIELD_USUARIO, 100);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 100);
 			
-		$myList->setWidthColumn(OPF_FIELD_DATETIME, 120);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_DATETIME'), 120);
 			
-		$myList->setRealNameInQuery(OPF_FIELD_ID, 'ess_menu.id');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ID'), 'ess_menu.id');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_PADRE, 'same.description');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_PADRE'), 'same.description');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_DESCRIPCION, 'ess_menu.description');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'), 'ess_menu.description');
 
-		$myList->setRealNameInQuery(OPF_FIELD_ICON, 'ess_menu.icon');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ICON'), 'ess_menu.icon');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_URL, 'ess_menu.url');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_URL'), 'ess_menu.url');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_ORDEN, 'ess_menu.ord');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ORDEN'), 'ess_menu.ord');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_USUARIO, 'ess_system_users.user_name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 'ess_system_users.user_name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_DATETIME, 'ess_menu.datetime');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_DATETIME'), 'ess_menu.datetime');
 			
-		$myList->setUseOrderMethod(true,OPF_FIELD_DATETIME,'DESC');
+		$myList->setUseOrderMethod(true,OPF_myLang::getPhrase('OPF_FIELD_DATETIME'),'DESC');
 			
 		$myList->setExportData(true,true,true);
 			
-		$myList->setEventOnColumn(OPF_FIELD_MODIFICAR, 'onClickAddModRecord');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 'onClickAddModRecord');
 			
-		$myList->setEventOnColumn(OPF_FIELD_ELIMINAR, 'onClickDeleteRecord',OPF_FIELD_CONFIRM_ELIMINAR);
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 'onClickDeleteRecord',OPF_myLang::getPhrase('OPF_FIELD_CONFIRM_ELIMINAR'));
 			
 		$myList->setPagination(true,50);
 			

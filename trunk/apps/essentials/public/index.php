@@ -50,7 +50,7 @@ if ($OPF_login->existsDB()){
 	
 	if ($disabled){
 		
-		OPF_osezno::assign('content2','<div align="center" id="content2" class="error">'.OPF_LOGIN_32.'</div>');
+		OPF_osezno::assign('content2','<div align="center" id="content2" class="error">'.OPF_myLang::getPhrase('OPF_LOGIN_32').'</div>');
 	}
 
 	OPF_osezno::assign('content1',$OPF_login->getFormInstall('db',array(),$disabled));

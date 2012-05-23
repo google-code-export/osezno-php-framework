@@ -42,7 +42,7 @@ class controller extends OPF_myController {
 			
 		if ($ess_profiles_detail->endTransaction()){
 
-			$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,3,'ok');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),3,'ok');
 
 			$this->onClickCancel();
 
@@ -70,7 +70,7 @@ class controller extends OPF_myController {
 
 	public function onClickCancelConfirm (){
 
-		$this->messageBox(OPF_PROFILES_1,'help',array(YES=>'onClickCancel',NO));
+		$this->messageBox(OPF_PROFILES_1,'help',array(OPF_myLang::getPhrase('YES')=>'onClickCancel',OPF_myLang::getPhrase('NO')));
 
 		return $this->response;
 	}
@@ -92,7 +92,7 @@ class controller extends OPF_myController {
 			
 		if ($ess_profiles->delete($id)){
 
-			$this->notificationWindow(OPF_PROFILES_2,3,'ok');
+			$this->notificationWindow(OPF_myLang::getPhrase('OPF_PROFILES_2'),3,'ok');
 
 			$this->MYLIST_reload('lst_profiles');
 
@@ -114,7 +114,7 @@ class controller extends OPF_myController {
 			
 		$id = $idProfile;
 			
-		$this->modalWindow($OPF_profiles->getFormAddModProfile($id),OPF_PROFILES_3,300,250,2);
+		$this->modalWindow($OPF_profiles->getFormAddModProfile($id),OPF_myLang::getPhrase('OPF_PROFILES_3'),300,250,2);
 			
 		return $this->response;
 	}
@@ -126,7 +126,8 @@ class controller extends OPF_myController {
 			$ess_profiles = new ess_profiles;
 
 			if ($id)
-			$ess_profiles->find($id);
+			
+				$ess_profiles->find($id);
 
 			$ess_profiles->name = $datForm['name'];
 
@@ -138,7 +139,7 @@ class controller extends OPF_myController {
 
 			if ($ess_profiles->save()){
 					
-				$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,3,'ok');
+				$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),3,'ok');
 					
 				$this->closeModalWindow();
 					
@@ -151,7 +152,7 @@ class controller extends OPF_myController {
 
 		}else{
 
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,3,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),3,'error');
 		}
 			
 		return $this->response;

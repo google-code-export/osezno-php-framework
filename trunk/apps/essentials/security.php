@@ -28,7 +28,7 @@ function showErrorAccess ($error, $detalle){
 
 	$errorR = '<html><head><style type="text/css">'.OPF_osezno::$cssErrors.'</style></head><body>';
 
-	$errorR .= '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.htmlentities($error).'<br><div class="error_detail"><b>'.ERROR_DET_LABEL.'</b>:&nbsp;'.htmlentities($detalle).'</div></div>';
+	$errorR .= '<div class="error"><b>'.OPF_myLang::getPhrase('ERROR_LABEL').':</b>&nbsp;'.htmlentities($error).'<br><div class="error_detail"><b>'.OPF_myLang::getPhrase('ERROR_DET_LABEL').'</b>:&nbsp;'.htmlentities($detalle).'</div></div>';
 
 	$errorR .= '</body></html>';
 
@@ -64,12 +64,12 @@ function validateAccess ($executed, $openAccess, $urlRedirect, $ESS_essentials){
 					
 				if (!$ESS_essentials->isOwnerOnMod($ESS_essentials->unCrypNumbers($_GET['secure_opf_code']))){
 
-					die(showErrorAccess(OPF_ACCESS_NOT_PERMITED_ERROR, OPF_ACCESS_NOT_PERMITED_DETAIL));
+					die(showErrorAccess(OPF_myLang::getPhrase('OPF_ACCESS_NOT_PERMITED_ERROR'), OPF_myLang::getPhrase('OPF_ACCESS_NOT_PERMITED_DETAIL')));
 				}
 					
 			}else{
 					
-				die(showErrorAccess(OPF_ACCESS_NOT_VERIFY_ERROR, OPF_ACCESS_NOT_VERIFY_DETAIL));
+				die(showErrorAccess(OPF_myLang::getPhrase('OPF_ACCESS_NOT_VERIFY_ERROR'), OPF_myLang::getPhrase('OPF_ACCESS_NOT_VERIFY_DETAIL')));
 			}
 
 		}else{

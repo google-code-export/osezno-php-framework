@@ -68,7 +68,7 @@ class OPF_login {
 			
 		$myForm = new OPF_myForm('config_app');
 
-		$myForm->addComment('cmmt', OPF_LOGIN_26);
+		$myForm->addComment('cmmt', OPF_myLang::getPhrase('OPF_LOGIN_26'));
 			
 		return $myForm->getForm(1).'<br><div class="formulario">'.highlight_string($code,true).'</div>';
 	}
@@ -134,81 +134,81 @@ class OPF_login {
 			
 		if (isset($datForm['engine']))
 			
-		$engine = $datForm['engine'];
+			$engine = $datForm['engine'];
 			
 		if ($disabled)
 		
-		$myForm->addDisabled('engine');
+			$myForm->addDisabled('engine');
 		
-		$myForm->addSelect(OPF_LOGIN_8, 'engine', $arEngine, $engine);
+		$myForm->addSelect(OPF_myLang::getPhrase('OPF_LOGIN_8'), 'engine', $arEngine, $engine);
 			
 		$db = '';
 			
 		if (isset($datForm['db']))
 			
-		$db = $datForm['db'];
+			$db = $datForm['db'];
 
-		$myForm->addText(OPF_LOGIN_12,'db',$db);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_LOGIN_12'),'db',$db);
 
 		$encoding = 'UTF8';
 			
 		if (isset($datForm['encoding']))
 			
-		$encoding = $datForm['encoding'];
+			$encoding = $datForm['encoding'];
 
 		$myForm->addDisabled('encoding');
 		
-		$myForm->addText(OPF_LOGIN_12A,'encoding',$encoding);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_LOGIN_12A'),'encoding',$encoding);
 			
 		$user_db = '';
 
 		if (isset($datForm['user_db']))
 
-		$user_db = $datForm['user_db'];
+			$user_db = $datForm['user_db'];
 			
-		$myForm->addText(OPF_LOGIN_9,'user_db',$user_db);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_LOGIN_9'),'user_db',$user_db);
 			
 		$passwd_db = '';
 			
 		if (isset($datForm['passwd_db']))
 			
-		$passwd_db = $datForm['passwd_db'];
+			$passwd_db = $datForm['passwd_db'];
 			
-		$myForm->addPassword(OPF_LOGIN_10,'passwd_db',$passwd_db);
+		$myForm->addPassword(OPF_myLang::getPhrase('OPF_LOGIN_10'),'passwd_db',$passwd_db);
 			
 		$host_db = '';
 
 		if (isset($datForm['host_db']))
 
-		$host_db = $datForm['host_db'];
+			$host_db = $datForm['host_db'];
 			
-		$myForm->addText(OPF_LOGIN_11,'host_db',$host_db);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_LOGIN_11'),'host_db',$host_db);
 			
 		$host_port = '';
 			
 		if (isset($datForm['host_port']))
 			
-		$host_port = $datForm['host_port'];
+			$host_port = $datForm['host_port'];
 			
-		$myForm->addText(OPF_LOGIN_13,'host_port',$host_port, NULL, 5, true);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_LOGIN_13'),'host_port',$host_port, NULL, 5, true);
 
 		if ($type == 'tables'){
 				
-			$str = OPF_LOGIN_30;
+			$str = OPF_myLang::getPhrase('OPF_LOGIN_30');
 
-			$myForm->addButton('btn_install',OPF_LOGIN_14,'list.gif');
+			$myForm->addButton('btn_install',OPF_myLang::getPhrase('OPF_LOGIN_14'),'list.gif');
 				
 			$myForm->addEvent('btn_install', 'onclick', 'onClickInstall');
 				
 		}else{
 
-			$str = OPF_LOGIN_29;
+			$str = OPF_myLang::getPhrase('OPF_LOGIN_29');
 
 			if ($disabled)
 				
-			$myForm->addDisabled('btn_install');
+				$myForm->addDisabled('btn_install');
 			
-			$myForm->addButton('btn_install',OPF_LOGIN_17,'add.gif');
+			$myForm->addButton('btn_install',OPF_myLang::getPhrase('OPF_LOGIN_17'),'add.gif');
 				
 			$myForm->addEvent('btn_install', 'onclick', 'onClickCreateBD');
 			
@@ -248,7 +248,8 @@ class OPF_login {
 			}
 
 		}else
-		$this->errorLogIn = OPF_LOGIN_1;
+		
+			$this->errorLogIn = OPF_myLang::getPhrase('OPF_LOGIN_1');
 			
 		return $return;
 	}
@@ -270,13 +271,13 @@ class OPF_login {
 			$mark = true;
 		}
 			
-		$myForm->addText(OPF_LOGIN_2,'user_opf_ess',$user_opf_ess);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_LOGIN_2'),'user_opf_ess',$user_opf_ess);
 			
-		$myForm->addPassword(OPF_LOGIN_3,'passwd_opf_ess');
+		$myForm->addPassword(OPF_myLang::getPhrase('OPF_LOGIN_3'),'passwd_opf_ess');
 			
-		$myForm->addCheckBox(OPF_LOGIN_5,'rem_usr',$mark);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_LOGIN_5'),'rem_usr',$mark);
 			
-		$myForm->addButton('btn_log',OPF_LOGIN_4,'ok.gif');
+		$myForm->addButton('btn_log',OPF_myLang::getPhrase('OPF_LOGIN_4'),'ok.gif');
 			
 		$myForm->addEvent('btn_log', 'onclick', 'onClickLogIn');
 			

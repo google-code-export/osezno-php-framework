@@ -30,7 +30,7 @@ class controller extends OPF_myController {
 		
 			$OPF_login = new OPF_login;
 			
-			$cont = $OPF_login->readTemplate(APP_PATH.'essentials/public/templates/configApplication.tpl', array(
+			$cont = $OPF_login->readTemplate(APP_PATH.'essentials'.DS.'public'.DS.'templates'.DS.'configApplication.tpl', array(
 				
 			 	'{db_name}'=>$datForm['db'],
 				
@@ -61,7 +61,7 @@ class controller extends OPF_myController {
 		
 		if (!$writeError){
 			
-			$this->notificationWindow(OPF_LOGIN_34,5,'ok');
+			$this->notificationWindow(OPF_myLang::getPhrase('OPF_LOGIN_34'),5,'ok');
 			
 			$this->closeMessageBox();
 			
@@ -69,7 +69,7 @@ class controller extends OPF_myController {
 			
 		}else{
 			
-			$this->messageBox(OPF_LOGIN_33,'error');
+			$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_33'),'error');
 		}
 		
 		return $this->response;
@@ -77,7 +77,7 @@ class controller extends OPF_myController {
 	
 	public function onLoadShowWel (){
 			
-		$this->modalWindowFromUrl(BASE_URL_PATH.'resources/lang/firstTime/'.LANG.'.html',OPF_LOGIN_31,300,320,2);
+		$this->modalWindowFromUrl(BASE_URL_PATH.'resources'.DS.'lang'.DS.'firstTime'.DS.LANG.'.html',OPF_LOGIN_31,300,320,2);
 		
 		return $this->response;
 	}
@@ -90,7 +90,7 @@ class controller extends OPF_myController {
 				
 			if (!extension_loaded($ext)){
 
-				$this->messageBox('['.$ext.']&nbsp;'.OPF_LOGIN_28,'error');
+				$this->messageBox('['.$ext.']&nbsp;'.OPF_myLang::getPhrase('OPF_LOGIN_28'),'error');
 
 				$this->clear('engine', 'value');
 
@@ -104,11 +104,11 @@ class controller extends OPF_myController {
 			
 		$OPF_login = new OPF_login;
 
-		$this->notificationWindow(OPF_LOGIN_35,5,'warning');
+		$this->notificationWindow(OPF_myLang::getPhrase('OPF_LOGIN_35'),5,'warning');
 		
 		$this->closeMessageBox();
 			
-		$this->modalWindow($OPF_login->getFormConfigApp($datForm),OPF_LOGIN_25,300,400,2);
+		$this->modalWindow($OPF_login->getFormConfigApp($datForm),OPF_myLang::getPhrase('OPF_LOGIN_25'),300,400,2);
 			
 		$this->assign('content1', 'innerHTML', $OPF_login->getFormLogin());
 			
@@ -129,7 +129,7 @@ class controller extends OPF_myController {
 
 					if (!$link){
 
-						$this->messageBox(OPF_LOGIN_18,'error');
+						$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_18'),'error');
 
 					}else{
 
@@ -137,13 +137,13 @@ class controller extends OPF_myController {
 
 						if (@mysql_query($sql, $link)) {
 								
-							$this->messageBox(OPF_LOGIN_19,'info');
+							$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_19'),'info');
 								
 							$this->assign('content1', 'innerHTML', $OPF_login->getFormInstall('tables',$datForm));
 								
 						} else {
 
-							$this->messageBox(OPF_LOGIN_20.' '.mysql_error($link),'error');
+							$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_20').' '.mysql_error($link),'error');
 
 						}
 
@@ -157,7 +157,7 @@ class controller extends OPF_myController {
 
 					if (!$link){
 							
-						$this->messageBox(OPF_LOGIN_23,'error');
+						$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_23'),'error');
 							
 					}else{
 							
@@ -165,7 +165,7 @@ class controller extends OPF_myController {
 							
 						if (@pg_query($link, $sql)) {
 
-							$this->messageBox(OPF_LOGIN_19,'info');
+							$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_19'),'info');
 
 							$this->assign('content1', 'innerHTML', $OPF_login->getFormInstall('tables',$datForm));
 
@@ -175,11 +175,11 @@ class controller extends OPF_myController {
 
 							if (!$link){
 
-								$this->messageBox(OPF_LOGIN_20.' '.pg_errormessage(),'error');
+								$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_20').' '.pg_errormessage(),'error');
 									
 							}else{
 									
-								$this->messageBox(OPF_LOGIN_19,'info');
+								$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_19'),'info');
 									
 								$this->assign('content1', 'innerHTML', $OPF_login->getFormInstall('tables',$datForm));
 							}
@@ -194,7 +194,7 @@ class controller extends OPF_myController {
 
 		}else{
 
-			$this->messageBox(OPF_LOGIN_22.'', 'error');
+			$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_22').'', 'error');
 
 		}
 		
@@ -248,14 +248,13 @@ class controller extends OPF_myController {
 
 								@mysql_query('COMMIT;',$link);
 									
-								$this->messageBox(OPF_LOGIN_15,'info',array(YES=>'onClickCreateConfig',NO=>'onClickReload'),$datForm);
-									
+								$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_15'),'info',array(OPF_myLang::getPhrase('YES')=>'onClickCreateConfig',OPF_myLang::getPhrase('NO')=>'onClickReload'),$datForm);
 								
 							}
 								
 						}else{
 								
-							$this->messageBox(OPF_LOGIN_21,'error');
+							$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_21'),'error');
 						}
 
 					}
@@ -268,7 +267,7 @@ class controller extends OPF_myController {
 						
 					if (!$link){
 
-						$this->messageBox(OPF_LOGIN_6,'error');
+						$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_6'),'error');
 
 					}else{
 
@@ -301,7 +300,7 @@ class controller extends OPF_myController {
 
 							@pg_query($link, 'COMMIT;');
 
-							$this->messageBox(OPF_LOGIN_15,'info',array(YES=>'onClickCreateConfig',NO=>'onClickReload'),$datForm);
+							$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_15'),'info',array(OPF_myLang::getPhrase('YES')=>'onClickCreateConfig',OPF_myLang::getPhrase('NO')=>'onClickReload'),$datForm);
 						}
 
 					}
@@ -311,7 +310,7 @@ class controller extends OPF_myController {
 				
 		}else{
 
-			$this->messageBox(OPF_LOGIN_22, 'error');
+			$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_22'), 'error');
 		}
 			
 		return $this->response;
@@ -341,17 +340,17 @@ class controller extends OPF_myController {
 						
 				}else
 					
-					$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+					$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 
 			}else
 
-				$this->messageBox(OPF_LOGIN_27.$OPF_login->existsStruct().$OPF_login->errorSql,'error');
+				$this->messageBox(OPF_myLang::getPhrase('OPF_LOGIN_27').$OPF_login->existsStruct().$OPF_login->errorSql,'error');
 			
 		}else{
 			
 			$this->heightMessageBox = 290;
 			
-			$this->errorBox(OPF_LOGIN_23,$myAct->getErrorLog());
+			$this->errorBox(OPF_myLang::getPhrase('OPF_LOGIN_23')',$myAct->getErrorLog());
 		}
 			
 		return $this->response;

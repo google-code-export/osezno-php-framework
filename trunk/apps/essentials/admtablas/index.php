@@ -11,9 +11,9 @@
 /**
  * Asignar contenidos a areas de la plantilla
  */
-OPF_osezno::assign('nom_modulo',OPF_ADMTABLAS_TITLE);
+OPF_osezno::assign('nom_modulo',OPF_myLang::getPhrase('OPF_ADMTABLAS_TITLE'));
 
-OPF_osezno::assign('desc_modulo',OPF_ADMTABLAS_DESC);
+OPF_osezno::assign('desc_modulo',OPF_myLang::getPhrase('OPF_ADMTABLAS_DESC'));
 
 $admTablas = new admTablas;
 

@@ -13,7 +13,7 @@ session_destroy();
 /**
  * Asignar contenidos a areas de la plantilla
  */
-OPF_osezno::assign('msg_close_session',OPF_LOGOUT_1);
+OPF_osezno::assign('msg_close_session',OPF_myLang::getPhrase('OPF_LOGOUT_1'));
 
 /**
  * Mostrar la plantilla

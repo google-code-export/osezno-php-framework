@@ -16,7 +16,7 @@ class OPF_admUsr {
 			
 		$myForm = new OPF_myForm('getBtnAgrUsr');
 			
-		$myForm->addButton('btnagr',LABEL_BTN_ADD,'add.gif');
+		$myForm->addButton('btnagr',OPF_myLang::getPhrase('LABEL_BTN_ADD'),'add.gif');
 			
 		$myForm->addEvent('btnagr', 'onclick', 'onClickNewRecord');
 			
@@ -47,27 +47,27 @@ class OPF_admUsr {
 			
 		$myForm->styleClassForm = '';
 			
-		$myForm->addText(OPF_ADMUSR_1,'user_name',$ess_system_users->user_name,15);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_ADMUSR_1'),'user_name',$ess_system_users->user_name,15);
 			
-		$myForm->addText(OPF_ADMUSR_2,'name',$ess_system_users->name,15);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_ADMUSR_2'),'name',$ess_system_users->name,15);
 			
-		$myForm->addText(OPF_ADMUSR_3,'lastname',$ess_system_users->lastname,15);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_ADMUSR_3'),'lastname',$ess_system_users->lastname,15);
 			
-		$myForm->addPassword(OPF_ADMUSR_4,'passwd1',$ess_system_users->passwd,15);
+		$myForm->addPassword(OPF_myLang::getPhrase('OPF_ADMUSR_4'),'passwd1',$ess_system_users->passwd,15);
 			
-		$myForm->addPassword(OPF_ADMUSR_5,'passwd',$ess_system_users->passwd,15);
+		$myForm->addPassword(OPF_myLang::getPhrase('OPF_ADMUSR_5'),'passwd',$ess_system_users->passwd,15);
 			
-		$myForm->addSelect(OPF_ADMUSR_6,'profile_id',$profilesArray,$ess_system_users->profile_id);
+		$myForm->addSelect(OPF_myLang::getPhrase('OPF_ADMUSR_6'),'profile_id',$profilesArray,$ess_system_users->profile_id);
 			
 		$status = false;
 			
 		if ($ess_system_users->status == 1)
 			
-		$status = true;
+			$status = true;
 			
-		$myForm->addCheckBox(OPF_ADMUSR_7,'status', $status);
+		$myForm->addCheckBox(OPF_myLang::getPhrase('OPF_ADMUSR_7'),'status', $status);
 			
-		$myForm->addButton('btnsave',LABEL_BTN_SAVE,'save.gif');
+		$myForm->addButton('btnsave',OPF_myLang::getPhrase('LABEL_BTN_SAVE'),'save.gif');
 			
 		$myForm->addEvent('btnsave', 'onclick', 'onClickSaveRecord',$user_id);
 			
@@ -80,25 +80,25 @@ class OPF_admUsr {
 			
 		$arrReplace = array(
 			
- 			'OPF_FIELD_MODIFICAR' => OPF_FIELD_MODIFICAR,
+ 			'OPF_FIELD_MODIFICAR' => 	OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'),
 
- 			'OPF_FIELD_ELIMINAR' => OPF_FIELD_ELIMINAR, 
+ 			'OPF_FIELD_ELIMINAR' => 	OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 
 
- 			'OPF_FIELD_USUARIO' => OPF_FIELD_USUARIO, 
+ 			'OPF_FIELD_USUARIO' => 		OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 
 
- 			'OPF_FIELD_NOMBRE' => OPF_FIELD_NOMBRE,
+ 			'OPF_FIELD_NOMBRE' => 		OPF_myLang::getPhrase('OPF_FIELD_NOMBRE'),
 
- 			'OPF_FIELD_APELLIDO' => OPF_FIELD_APELLIDO,
+ 			'OPF_FIELD_APELLIDO' => 	OPF_myLang::getPhrase('OPF_FIELD_APELLIDO'),
 
- 			'OPF_FIELD_ACTUALIZADO' => OPF_FIELD_ACTUALIZADO, 
+ 			'OPF_FIELD_ACTUALIZADO' => 	OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 
 
- 			'OPF_FIELD_PERFIL' => OPF_FIELD_PERFIL, 
+ 			'OPF_FIELD_PERFIL' => 		OPF_myLang::getPhrase('OPF_FIELD_PERFIL'), 
 
- 			'OPF_ADMUSR_11' => OPF_ADMUSR_11,
+ 			'OPF_ADMUSR_11' => 			OPF_myLang::getPhrase('OPF_ADMUSR_11'),
 
- 			'OPF_ADMUSR_10' => OPF_ADMUSR_10,
+ 			'OPF_ADMUSR_10' => 			OPF_myLang::getPhrase('OPF_ADMUSR_10'),
 
- 			'OPF_FIELD_ESTADO' => OPF_FIELD_ESTADO
+ 			'OPF_FIELD_ESTADO' => 		OPF_myLang::getPhrase('OPF_FIELD_ESTADO')
 			
 		);
 			
@@ -106,43 +106,43 @@ class OPF_admUsr {
 			
 		$myList->width = 950;
 			
-		$myList->setWidthColumn(OPF_FIELD_MODIFICAR, 70);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 70);
 			
-		$myList->setWidthColumn(OPF_FIELD_ELIMINAR, 70);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 70);
 			
-		$myList->setWidthColumn(OPF_FIELD_USUARIO, 150);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 150);
 			
-		$myList->setWidthColumn(OPF_FIELD_NOMBRE, 150);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_NOMBRE'), 150);
 			
-		$myList->setWidthColumn(OPF_FIELD_APELLIDO, 150);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_APELLIDO'), 150);
 			
-		$myList->setWidthColumn(OPF_FIELD_PERFIL, 150);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_PERFIL'), 150);
 			
-		$myList->setWidthColumn(OPF_FIELD_ACTUALIZADO, 160);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 160);
 			
-		$myList->setRealNameInQuery(OPF_FIELD_USUARIO, 'ess_system_users.user_name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 'ess_system_users.user_name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_NOMBRE, 'ess_system_users.name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_NOMBRE'), 'ess_system_users.name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_APELLIDO, 'ess_system_users.lastname');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_APELLIDO'), 'ess_system_users.lastname');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_PERFIL, 'ess_profiles.name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_PERFIL'), 'ess_profiles.name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_ACTUALIZADO, 'ess_system_users.datetime');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 'ess_system_users.datetime');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_ESTADO, 'ess_system_users.status');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ESTADO'), 'ess_system_users.status');
 			
-		$myList->setEventOnColumn(OPF_FIELD_MODIFICAR, 'onClickNewRecord');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 'onClickNewRecord');
 			
-		$myList->setEventOnColumn(OPF_FIELD_ELIMINAR, 'onClickDeleteRecord',OPF_FIELD_CONFIRM_ELIMINAR);
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 'onClickDeleteRecord',OPF_myLang::getPhrase('OPF_FIELD_CONFIRM_ELIMINAR'));
 			
-		$myList->setUseOrderMethod(true,OPF_FIELD_ACTUALIZADO);
+		$myList->setUseOrderMethod(true,OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'));
 
 		$myList->setPagination(true,50);
 			
 		$myList->setExportData(true,true,true);
 
-		$myList->setGlobalEventOnColumn(OPF_FIELD_MODIFICAR,array(OPF_ADMUSR_8=>'habilitaUsuarios',OPF_ADMUSR_9=>'inhabilitaUsuarios'));
+		$myList->setGlobalEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'),array(OPF_myLang::getPhrase('OPF_ADMUSR_8')=>'habilitaUsuarios',OPF_myLang::getPhrase('OPF_ADMUSR_9')=>'inhabilitaUsuarios'));
 			
 		return $myList->getList(true,true);
 	}
