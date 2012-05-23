@@ -84,15 +84,15 @@ class OPF_passwd {
 			
 		$myForm = new OPF_myForm('ChngPasswd');
 			
-		$myForm->addText(OPF_PASSWD_4,'user_name');
+		$myForm->addText(OPF_myLang::getPhrase('OPF_PASSWD_4'),'user_name');
 			
-		$myForm->addPassword(OPF_PASSWD_5,'passwd');
+		$myForm->addPassword(OPF_myLang::getPhrase('OPF_PASSWD_5'),'passwd');
 			
-		$myForm->addPassword(OPF_PASSWD_6,'passwd1');
+		$myForm->addPassword(OPF_myLang::getPhrase('OPF_PASSWD_6'),'passwd1');
 			
-		$myForm->addPassword(OPF_PASSWD_7,'passwd2');
+		$myForm->addPassword(OPF_myLang::getPhrase('OPF_PASSWD_7'),'passwd2');
 			
-		$myForm->addButton('btn_save',LABEL_BTN_SAVE,'save.gif');
+		$myForm->addButton('btn_save',OPF_myLang::getPhrase('LABEL_BTN_SAVE'),'save.gif');
 			
 		$myForm->addEvent('btn_save', 'onclick', 'onClikSavePasswd');
 			

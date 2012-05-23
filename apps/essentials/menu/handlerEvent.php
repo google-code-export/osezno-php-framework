@@ -27,7 +27,7 @@ class controller extends OPF_myController {
 			
 		if ($ess_menu->delete($id)){
 
-			$this->notificationWindow(OPF_MENU_1,3,'warning');
+			$this->notificationWindow(OPF_myLang::getPhrase('OPF_MENU_1'),3,'warning');
 
 			$this->MYLIST_reload('lst_menu');
 
@@ -49,7 +49,7 @@ class controller extends OPF_myController {
 			
 		$idMenu = $id;
 			
-		$this->modalWindow($menuOPF->getFormAddModRecord($idMenu),OPF_MENU_2,400,270,2);
+		$this->modalWindow($menuOPF->getFormAddModRecord($idMenu),OPF_myLang::getPhrase('OPF_MENU_2'),400,270,2);
 			
 		return $this->response;
 	}
@@ -65,7 +65,8 @@ class controller extends OPF_myController {
 			$ess_menu = new ess_menu;
 
 			if ($id)
-			$ess_menu->find($id);
+			
+				$ess_menu->find($id);
 
 			$ess_menu->description = $datForm['description'];
 
@@ -92,7 +93,7 @@ class controller extends OPF_myController {
 
 				if ($ess_menu->save()){
 						
-					$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,3,'ok');
+					$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),3,'ok');
 						
 					$this->closeModalWindow();
 						
@@ -105,11 +106,11 @@ class controller extends OPF_myController {
 				}
 					
 			}else{
-				$this->messageBox(OPF_MENU_3,'error');
+				$this->messageBox(OPF_myLang::getPhrase('OPF_MENU_3'),'error');
 			}
 
 		}else{
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,3,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),3,'error');
 		}
 			
 		return $this->response;

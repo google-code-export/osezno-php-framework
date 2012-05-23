@@ -16,7 +16,7 @@ class controller extends OPF_myController {
 
 	public function onLoadShowWel (){
 			
-		$this->modalWindowFromUrl(BASE_URL_PATH.'resources/lang/firstTime/'.LANG.'.html',OPF_LOGIN_31,300,320,2);
+		$this->modalWindowFromUrl(BASE_URL_PATH.'resources/lang/firstTime/'.LANG.'.html',OPF_myLang::getPhrase('OPF_LOGIN_31')',300,320,2);
 			
 		return $this->response;
 	}

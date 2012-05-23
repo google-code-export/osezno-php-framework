@@ -93,57 +93,57 @@ class user_on_line {
 			
 		$arrRpl = array (
 			
- 			'OPF_FIELD_CERRAR' => OPF_FIELD_CERRAR,
+ 			'OPF_FIELD_CERRAR' => 		OPF_myLang::getPhrase('OPF_FIELD_CERRAR'),
 
- 			'OPF_FIELD_USUARIO' => OPF_FIELD_USUARIO,
+ 			'OPF_FIELD_USUARIO' => 		OPF_myLang::getPhrase('OPF_FIELD_USUARIO'),
 
- 			'OPF_FIELD_IP' => OPF_FIELD_IP,
+ 			'OPF_FIELD_IP' => 			OPF_myLang::getPhrase('OPF_FIELD_IP'),
 
- 			'OPF_FIELD_INGRESO' => OPF_FIELD_INGRESO,
+ 			'OPF_FIELD_INGRESO' => 		OPF_myLang::getPhrase('OPF_FIELD_INGRESO'),
 
- 			'OPF_FIELD_FILE' => OPF_FIELD_FILE,
+ 			'OPF_FIELD_FILE' => 		OPF_myLang::getPhrase('OPF_FIELD_FILE'),
 
- 			'OPF_FIELD_PESO' => OPF_FIELD_PESO,
+ 			'OPF_FIELD_PESO' => 		OPF_myLang::getPhrase('OPF_FIELD_PESO'),
 
- 			'OPF_FIELD_ACTUALIZADO' => OPF_FIELD_ACTUALIZADO
+ 			'OPF_FIELD_ACTUALIZADO' => 	OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO')
 			
 		);
 			
 		$myList = new OPF_myList('users_on_line',$actRecord->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'user_online.sql',$arrRpl));
 			
-		$myList->setWidthColumn(OPF_FIELD_CERRAR, 60);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_CERRAR'), 60);
 			
-		$myList->setWidthColumn(OPF_FIELD_USUARIO, 150);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 150);
 			
-		$myList->setWidthColumn(OPF_FIELD_IP, 150);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_IP'), 150);
 			
-		$myList->setWidthColumn(OPF_FIELD_INGRESO, 150);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_INGRESO'), 150);
 			
-		$myList->setWidthColumn(OPF_FIELD_FILE, 200);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_FILE'), 200);
 			
-		$myList->setWidthColumn(OPF_FIELD_PESO, 100);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_PESO'), 100);
 			
-		$myList->setWidthColumn(OPF_FIELD_ACTUALIZADO, 90);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 90);
 			
-		$myList->setRealNameInQuery(OPF_FIELD_USUARIO, 'ess_system_users.user_name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 'ess_system_users.user_name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_IP, 'ess_usronline.ip');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_IP'), 'ess_usronline.ip');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_INGRESO, 'ess_usronline.datetime');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_INGRESO'), 'ess_usronline.datetime');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_FILE, 'ess_usronline.sesname');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_FILE'), 'ess_usronline.sesname');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_PESO, 'ess_usronline.size');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_PESO'), 'ess_usronline.size');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_ACTUALIZADO, 'ess_usronline.filectime');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 'ess_usronline.filectime');
 			
 		$myList->width = 900;
 			
-		$myList->setEventOnColumn(OPF_FIELD_CERRAR, 'closeSessionOnUser',OPF_USRONLINE_3);
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_CERRAR'), 'closeSessionOnUser',OPF_myLang::getPhrase('OPF_USRONLINE_3'));
 			
 		$myList->setExportData(true,true,true);
 			
-		$myList->setUseOrderMethod(true,OPF_FIELD_INGRESO);
+		$myList->setUseOrderMethod(true,OPF_myLang::getPhrase('OPF_FIELD_INGRESO'));
 			
 		return $myList->getList(true,true);
 

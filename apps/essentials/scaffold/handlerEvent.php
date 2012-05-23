@@ -28,7 +28,7 @@ class controller extends OPF_myController {
 			
 		}else{
 			
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 		}
 		
 		return $this->response;
@@ -44,7 +44,7 @@ class controller extends OPF_myController {
 		
 			if (!$resSql){
 					
-				$this->messageBox(OPF_SCAFF_10,'warning');
+				$this->messageBox(OPF_myLang::getPhrase('OPF_SCAFF_10'),'warning');
 					
 			}else{
 					
@@ -52,12 +52,12 @@ class controller extends OPF_myController {
 				
 				$this->closeModalWindow();
 				
-				$this->modalWindow(relationTable::getFormIdValue($id, $datForm),OPF_SCAFF_49, 300, 260);
+				$this->modalWindow(relationTable::getFormIdValue($id, $datForm),OPF_myLang::getPhrase('OPF_SCAFF_49'), 300, 260);
 			}
 		
 		}else{
 		
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 		}
 		
 		return $this->response;
@@ -82,7 +82,7 @@ class controller extends OPF_myController {
 					
 				scaffold::formNewScaffStep1(),
 
-				OPF_SCAFF_1,580,400,2);
+				OPF_myLang::getPhrase('OPF_SCAFF_1'),580,400,2);
 					
 				break;
 
@@ -92,7 +92,7 @@ class controller extends OPF_myController {
 					
 				scaffold::formNewScaffStep2($datForm),
 
-				OPF_SCAFF_2,580,400,2);
+				OPF_myLang::getPhrase('OPF_SCAFF_2'),580,400,2);
 					
 				break;
 					
@@ -102,7 +102,7 @@ class controller extends OPF_myController {
 					
 				scaffold::formNewScaffStep3($datForm),
 
-				OPF_SCAFF_3,580,400,2);
+				OPF_myLang::getPhrase('OPF_SCAFF_3'),580,400,2);
 					
 				break;
 
@@ -112,7 +112,7 @@ class controller extends OPF_myController {
 					
 				scaffold::formNewScaffStep4($datForm),
 
-				OPF_SCAFF_4,580,400,2);
+				OPF_myLang::getPhrase('OPF_SCAFF_4'),580,400,2);
 					
 				$this->script('updateValsAnchos()');
 
@@ -120,13 +120,11 @@ class controller extends OPF_myController {
 
 			case 5:
 					
-					
-					
 				$this->modalWindow(
 					
 				scaffold::formNewScaffStep5($datForm),
 
-				OPF_SCAFF_5,580,400,2);
+				OPF_myLang::getPhrase('OPF_SCAFF_5'),580,400,2);
 					
 				break;
 		}
@@ -140,7 +138,7 @@ class controller extends OPF_myController {
 		
 			$this->closeModalWindow();
 		
-		$this->modalWindow(relationTable::getFormTable($object),OPF_SCAFF_49, 300, 260);
+		$this->modalWindow(relationTable::getFormTable($object),OPF_myLang::getPhrase('OPF_SCAFF_49'), 300, 260);
 		
 		return $this->response;
 	}
@@ -181,7 +179,7 @@ class controller extends OPF_myController {
 
 				if (!rmdir($folder))
 
-				$errorRewrite = true;
+					$errorRewrite = true;
 
 			}
 
@@ -292,30 +290,30 @@ class controller extends OPF_myController {
 
 							$this->closeModalWindow(2);
 
-							$this->messageBox(OPF_SCAFF_45.' <b>essentials'.DS.$datForm['namefolder'].DS.'</b> ','INFO');
+							$this->messageBox(OPF_myLang::getPhrase('OPF_SCAFF_45').' <b>essentials'.DS.$datForm['namefolder'].DS.'</b> ','INFO');
 
 						}else{
 
-							$this->messageBox(OPF_SCAFF_44.' "'.$folder.'"','error');
+							$this->messageBox(OPF_myLang::getPhrase('OPF_SCAFF_44').' "'.$folder.'"','error');
 							
 							unset($_SESSION['temp_scaff_info']);
 						}
 							
 					}else
 
-					$this->messageBox(OPF_SCAFF_6.' "'.$folder.'"','error');
+					$this->messageBox(OPF_myLang::getPhrase('OPF_SCAFF_6').' "'.$folder.'"','error');
 						
 				}else
 					
-				$this->messageBox(OPF_SCAFF_7_A.' <b>'.'essentials'.DS.$datForm['namefolder'].DS.'</b> '.OPF_SCAFF_7_B.' '.OPF_SCAFF_7_C,'help',array(YES=>'toScaffStep6',NO),$datForm,true);
+				$this->messageBox(OPF_myLang::getPhrase('OPF_SCAFF_7_A').' <b>'.'essentials'.DS.$datForm['namefolder'].DS.'</b> '.OPF_myLang::getPhrase('OPF_SCAFF_7_B').' '.OPF_myLang::getPhrase('OPF_SCAFF_7_C'),'help',array(OPF_myLang::getPhrase('YES')=>'toScaffStep6',OPF_myLang::getPhrase('NO')),$datForm,true);
 					
 			}else
 				
-			$this->messageBox(OPF_SCAFF_8_A.' <b>'.$folder.'</b> '.OPF_SCAFF_8_B,'error');
+			$this->messageBox(OPF_myLang::getPhrase('OPF_SCAFF_8_A').' <b>'.$folder.'</b> '.OPF_myLang::getPhrase('OPF_SCAFF_8_B'),'error');
 
 		}else
 
-		$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+		$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 			
 		return $this->response;
 	}
@@ -346,7 +344,7 @@ class controller extends OPF_myController {
 
 					if ($datForm['width_'.$realName])
 
-					$sumCampos += $datForm['width_'.$realName];
+						$sumCampos += $datForm['width_'.$realName];
 				}
 					
 			}else{
@@ -412,7 +410,7 @@ class controller extends OPF_myController {
 
 		}else{
 
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 		}
 			
 		return $this->response;
@@ -468,7 +466,7 @@ class controller extends OPF_myController {
 
 		}else{
 
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 		}
 			
 		return $this->response;
@@ -488,7 +486,7 @@ class controller extends OPF_myController {
 
 			if (!$resSql){
 					
-				$this->messageBox(OPF_SCAFF_10,'warning');
+				$this->messageBox(OPF_myLang::getPhrase('OPF_SCAFF_10'),'warning');
 					
 			}else{
 					
@@ -499,7 +497,7 @@ class controller extends OPF_myController {
 
 		}else{
 
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,5,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 		}
 			
 		return $this->response;

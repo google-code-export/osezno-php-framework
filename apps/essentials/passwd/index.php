@@ -13,9 +13,9 @@
  */
 $OPF_passwd = new OPF_passwd;
 
-OPF_osezno::assign('nom_modulo',OPF_PASSWD_TITLE);
+OPF_osezno::assign('nom_modulo',OPF_myLang::getPhrase('OPF_PASSWD_TITLE'));
 
-OPF_osezno::assign('desc_modulo',OPF_PASSWD_DESC);
+OPF_osezno::assign('desc_modulo',OPF_myLang::getPhrase('OPF_PASSWD_DESC'));
 
 OPF_osezno::assign('content1',$OPF_passwd->getFormChngPasswd());
 
@@ -23,6 +23,6 @@ OPF_osezno::assign('content1',$OPF_passwd->getFormChngPasswd());
 /**
  * Mostrar la plantilla
  */
-OPF_osezno::call_template('modulo/modulo.tpl');
+OPF_osezno::call_template('modulo'.DS.'modulo.tpl');
 
 ?>

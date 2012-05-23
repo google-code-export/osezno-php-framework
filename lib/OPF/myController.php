@@ -201,10 +201,11 @@ class OPF_myController extends OPF_myControllerExt {
 	 * @param object $objxAjax Objeto de xAjax
 	 */
 	public function __construct(){
-/*
+
 		global $dataViewFromCrtl;
 		
 		$GLOBALS['dataViewFromCrtl'] = array ();
+		/*
 		
 		global $MYCONTROLLER_REGISTERED_FUNCTIONS;
 

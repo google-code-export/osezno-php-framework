@@ -16,9 +16,9 @@ $user_on_line = new user_on_line;
 
 $user_on_line->buildFiles();
 
-OPF_osezno::assign('nom_modulo',OPF_USRONLINE_TITLE);
+OPF_osezno::assign('nom_modulo',OPF_myLang::getPhrase('OPF_USRONLINE_TITLE'));
 
-OPF_osezno::assign('desc_modulo',OPF_USRONLINE_DESC);
+OPF_osezno::assign('desc_modulo',OPF_myLang::getPhrase('OPF_USRONLINE_DESC'));
 
 OPF_osezno::assign('content1',$user_on_line->buildDinamicListUsersOnLine());
  

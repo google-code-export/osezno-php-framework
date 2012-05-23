@@ -25,13 +25,13 @@ $ess_system_users = new ess_system_users;
 
 $ess_system_users->find($_SESSION['user_id']);
 
-OPF_osezno::assign('user_login',OPF_LOGIN_31.'&nbsp;'.$ess_system_users->name);
+OPF_osezno::assign('user_login',OPF_myLang::getPhrase('OPF_LOGIN_31').'&nbsp;'.$ess_system_users->name);
 
-OPF_osezno::assign('open_all',OPF_OPTIONS_1);
+OPF_osezno::assign('open_all',OPF_myLang::getPhrase('OPF_OPTIONS_1'));
 
-OPF_osezno::assign('close_all',OPF_OPTIONS_2);
+OPF_osezno::assign('close_all',OPF_myLang::getPhrase('OPF_OPTIONS_2'));
 
-OPF_osezno::assign('home_etq','&nbsp;<b>'.APP_DESC.'</b>');
+OPF_osezno::assign('home_etq','&nbsp;<b>'.OPF_myLang::getPhrase('APP_DESC').'</b>');
 
 
 if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') === FALSE) {

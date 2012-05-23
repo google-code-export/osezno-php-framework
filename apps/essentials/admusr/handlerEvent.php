@@ -16,7 +16,7 @@ class controller extends OPF_myController {
 
 	public function inhabilitaUsuarios ($datArr){
 
-		$this->messageBox(OPF_ADMUSR_12,'warning',array(NO,YES=>'inhabilitaUsuariosConfirm'),$datArr);
+		$this->messageBox(OPF_myLang::getPhrase('OPF_ADMUSR_12'),'warning',array(OPF_myLang::getPhrase('NO'),OPF_myLang::getPhrase('YES')=>'inhabilitaUsuariosConfirm'),$datArr);
 
 		return $this->response;
 	}
@@ -40,14 +40,15 @@ class controller extends OPF_myController {
 
 		if ($ess_system_users->endTransaction()){
 
-			$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,3,'ok');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),3,'ok');
 
 			$this->MYLIST_reload('lst_users');
 
 			$this->closeMessageBox();
 
 		}else
-		$this->alert($ess_system_users->getErrorLog());
+		
+			$this->alert($ess_system_users->getErrorLog());
 
 		return $this->response;
 	}
@@ -55,7 +56,7 @@ class controller extends OPF_myController {
 
 	public function habilitaUsuarios ($datArr){
 			
-		$this->messageBox(OPF_ADMUSR_13,'warning',array(NO,YES=>'habilitaUsuariosConfirm'),$datArr);
+		$this->messageBox(OPF_myLang::getPhrase('OPF_ADMUSR_13'),'warning',array(OPF_myLang::getPhrase('NO'),OPF_myLang::getPhrase('YES')=>'habilitaUsuariosConfirm'),$datArr);
 			
 		return $this->response;
 	}
@@ -79,15 +80,15 @@ class controller extends OPF_myController {
 			
 		if ($ess_system_users->endTransaction()){
 
-			$this->notificationWindow(MSG_CAMBIOS_GUARDADOS,3,'ok');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS'),3,'ok');
 
 			$this->MYLIST_reload('lst_users');
 
 			$this->closeMessageBox();
 
 		}else
-		$this->alert($ess_system_users->getErrorLog());
-			
+		
+			$this->alert($ess_system_users->getErrorLog());
 			
 		return $this->response;
 	}
@@ -99,7 +100,7 @@ class controller extends OPF_myController {
 			
 		if ($ess_system_users->delete($user_id)){
 
-			$this->notificationWindow(OPF_ADMUSR_14,3,'ok');
+			$this->notificationWindow(OPF_myLang::getPhrase('OPF_ADMUSR_14'),3,'ok');
 
 			$this->MYLIST_reload('lst_users');
 
@@ -132,7 +133,7 @@ class controller extends OPF_myController {
 					
 				if ($ess_system_users->find('user_name = '.$datForm['user_name']) && !$user_id){
 
-					$this->notificationWindow(OPF_ADMUSR_15.' <b>'.$datForm['user_name'].'</b> '.OPF_ADMUSR_16,3,'error');
+					$this->notificationWindow(OPF_myLang::getPhrase('OPF_ADMUSR_15').' <b>'.$datForm['user_name'].'</b> '.OPF_myLang::getPhrase('OPF_ADMUSR_16'),3,'error');
 
 				}else{
 
@@ -144,11 +145,11 @@ class controller extends OPF_myController {
 								
 							$ess_system_users->passwd = md5($datForm['user_name'].$datForm['passwd']);
 
-							$txtChgPas = '. '.OPF_ADMUSR_17;
+							$txtChgPas = '. '.OPF_myLang::getPhrase('OPF_ADMUSR_17');
 
 						}else
 
-						$txtChgPas = '. '.OPF_ADMUSR_18;
+						$txtChgPas = '. '.OPF_myLang::getPhrase('OPF_ADMUSR_18');
 							
 					}else {
 
@@ -177,7 +178,7 @@ class controller extends OPF_myController {
 
 					if ($ess_system_users->endTransaction()){
 
-						$this->notificationWindow(MSG_CAMBIOS_GUARDADOS.' <b>'.$txtChgPas.'</b>',3,'ok');
+						$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMBIOS_GUARDADOS').' <b>'.$txtChgPas.'</b>',3,'ok');
 
 						$this->MYLIST_reload('lst_users');
 
@@ -192,12 +193,12 @@ class controller extends OPF_myController {
 					
 			}else{
 
-				$this->notificationWindow(OPF_ADMUSR_19,3,'error');
+				$this->notificationWindow(OPF_myLang::getPhrase('OPF_ADMUSR_19'),3,'error');
 			}
 
 		}else{
 
-			$this->notificationWindow(MSG_CAMPOS_REQUERIDOS,3,'error');
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),3,'error');
 		}
 
 		return $this->response;
@@ -217,7 +218,7 @@ class controller extends OPF_myController {
 			
 		$user_id = '';
 			
-		$this->modalWindow($OPF_admUsr->getFormAgrUsr($user_id),OPF_ADMUSR_1,260,290,2);
+		$this->modalWindow($OPF_admUsr->getFormAgrUsr($user_id),OPF_myLang::getPhrase('OPF_ADMUSR_1')',260,290,2);
 			
 		return $this->response;
 	}

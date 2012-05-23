@@ -11,9 +11,9 @@
 /**
  * Asignar contenidos a areas de la plantilla
  */
-OPF_osezno::assign('nom_modulo',OPF_SCAFF_TITLE);
+OPF_osezno::assign('nom_modulo',OPF_myLang::getPhrase('OPF_SCAFF_TITLE'));
 
-OPF_osezno::assign('desc_modulo',OPF_SCAFF_DESC);
+OPF_osezno::assign('desc_modulo',OPF_myLang::getPhrase('OPF_SCAFF_DESC'));
 
 OPF_osezno::assign('content1',scaffold::formStartUp());
 

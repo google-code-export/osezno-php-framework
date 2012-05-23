@@ -16,7 +16,7 @@ class admTablas {
 			
 		$code = '<?php'."\n\n";
 			
-		$code .= '#'.OPF_ADMTABLAS_10."\n";
+		$code .= '#'.OPF_myLang::getPhrase('OPF_ADMTABLAS_10')."\n";
 			
 		$code .= 'class ess_master_tables_detail extends OPF_myActiveRecord {'."\n\n";
 			
@@ -28,11 +28,11 @@ class admTablas {
 			
 		$code .= '}'."\n\n";
 			
-		$code .= '#'.OPF_ADMTABLAS_11."\n";
+		$code .= '#'.OPF_myLang::getPhrase('OPF_ADMTABLAS_11')."\n";
 			
 		$code .= '$ess_master_tables_detail = new ess_master_tables_detail;'."\n\n";
 
-		$code .= '#'.OPF_ADMTABLAS_12."\n";
+		$code .= '#'.OPF_myLang::getPhrase('OPF_ADMTABLAS_12')."\n";
 			
 		$code .= 'foreach ($ess_master_tables_detail->find(\'master_tables_id = '.$id.'\') as $row){'."\n\n";
 
@@ -55,7 +55,7 @@ class admTablas {
 
 		$myForm = new OPF_myForm('adm_tablas_add');
 
-		$myForm->addButton('btn_add_reg',LABEL_BTN_ADD,'add.gif');
+		$myForm->addButton('btn_add_reg',OPF_myLang::getPhrase('LABEL_BTN_ADD'),'add.gif');
 
 		$myForm->addEvent('btn_add_reg', 'onclick', 'onClickAddReg');
 
@@ -73,11 +73,11 @@ class admTablas {
 			
 		$myForm->styleClassForm = '';
 			
-		$myForm->addText(OPF_ADMTABLAS_1,'name',$ess_master_tables->name);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_ADMTABLAS_1'),'name',$ess_master_tables->name);
 			
-		$myForm->addTextArea(OPF_ADMTABLAS_2,'description',$ess_master_tables->description,30);
+		$myForm->addTextArea(OPF_myLang::getPhrase('OPF_ADMTABLAS_2'),'description',$ess_master_tables->description,30);
 			
-		$myForm->addButton('btn_add_save',LABEL_BTN_SAVE,'save.gif');
+		$myForm->addButton('btn_add_save',OPF_myLang::getPhrase('LABEL_BTN_SAVE'),'save.gif');
 			
 		$myForm->addEvent('btn_add_save', 'onclick', 'onClickSaveReg',$id);
 			
@@ -90,57 +90,57 @@ class admTablas {
 			
 		$arrReplace = array(
 			
- 			'OPF_FIELD_TABLA'=>OPF_FIELD_TABLA,
+ 			'OPF_FIELD_TABLA'=>OPF_myLang::getPhrase('OPF_FIELD_TABLA'),
 
- 			'OPF_FIELD_USUARIO'=>OPF_FIELD_USUARIO,
+ 			'OPF_FIELD_USUARIO'=>OPF_myLang::getPhrase('OPF_FIELD_USUARIO'),
 
- 			'OPF_FIELD_ACTUALIZADO'=>OPF_FIELD_ACTUALIZADO,
+ 			'OPF_FIELD_ACTUALIZADO'=>OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'),
 
- 			'OPF_FIELD_MODIFICAR'=>OPF_FIELD_MODIFICAR,
+ 			'OPF_FIELD_MODIFICAR'=>OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'),
 
- 			'OPF_FIELD_ELIMINAR'=>OPF_FIELD_ELIMINAR,
+ 			'OPF_FIELD_ELIMINAR'=>OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'),
 
- 			'OPF_FIELD_DETALLE'=>OPF_FIELD_DETALLE,
+ 			'OPF_FIELD_DETALLE'=>OPF_myLang::getPhrase('OPF_FIELD_DETALLE'),
 
- 			'OPF_ADMTABLAS_8'=>OPF_ADMTABLAS_8
+ 			'OPF_ADMTABLAS_8'=>OPF_myLang::getPhrase('OPF_ADMTABLAS_8')
 
 		);
 			
 		$myList = new OPF_myList('lst_tablas',$sql = $myAct->loadSqlFromFile(dirname(__FILE__).DS.'sql'.DS.'lst_tablas.sql',$arrReplace));
 			
-		$myList->setRealNameInQuery(OPF_FIELD_TABLA, 'ess_master_tables.name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_TABLA'), 'ess_master_tables.name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_USUARIO, 'ess_system_users.user_name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 'ess_system_users.user_name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_ACTUALIZADO, 'ess_master_tables.datetime');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 'ess_master_tables.datetime');
 			
 		$myList->width = 970;
 			
-		$myList->setWidthColumn(OPF_FIELD_MODIFICAR, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_ELIMINAR, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_DETALLE, 60);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_DETALLE'), 60);
 			
-		$myList->setWidthColumn(OPF_FIELD_ACTUALIZADO, 130);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 130);
 			
-		$myList->setWidthColumn(OPF_FIELD_USUARIO, 80);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 80);
 			
-		$myList->setWidthColumn(OPF_FIELD_TABLA, 420);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_TABLA'), 420);
 			
-		$myList->setWidthColumn(OPF_ADMTABLAS_8, 120);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_ADMTABLAS_8'), 120);
 			
 		$myList->setExportData(true,true,true);
 			
-		$myList->setEventOnColumn(OPF_FIELD_MODIFICAR, 'onClickUpdateTable');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 'onClickUpdateTable');
 			
-		$myList->setEventOnColumn(OPF_FIELD_ELIMINAR, 'onClickDeleteTable',OPF_FIELD_CONFIRM_ELIMINAR);
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 'onClickDeleteTable',OPF_myLang::getPhrase('OPF_FIELD_CONFIRM_ELIMINAR'));
 			
-		$myList->setEventOnColumn(OPF_FIELD_DETALLE, 'onClickGetDetList');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_DETALLE'), 'onClickGetDetList');
 			
-		$myList->setEventOnColumn(OPF_ADMTABLAS_8, 'onClickGetCodePHP');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_ADMTABLAS_8'), 'onClickGetCodePHP');
 			
-		$myList->setUseOrderMethod(true,OPF_FIELD_ACTUALIZADO);
+		$myList->setUseOrderMethod(true,OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'));
 			
 		return $myList->getList(true,true);
 	}
@@ -172,7 +172,7 @@ class admDetalleTablas {
 			
 		$myForm = new OPF_myForm('FormAdmItemTable_add');
 			
-		$myForm->addButton('btn_add_detail',LABEL_BTN_ADD,'add.gif');
+		$myForm->addButton('btn_add_detail',OPF_myLang::getPhrase('LABEL_BTN_ADD'),'add.gif');
 			
 		$myForm->addEvent('btn_add_detail', 'onclick', 'onClickGetFormAddItemTable',$this->table_id);
 			
@@ -190,11 +190,11 @@ class admDetalleTablas {
 
 		$myForm->styleClassForm = '';
 			
-		$myForm->addText(OPF_ADMTABLAS_3,'item_cod',$ess_master_tables_detail->item_cod);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_ADMTABLAS_3'),'item_cod',$ess_master_tables_detail->item_cod);
 			
-		$myForm->addText(OPF_ADMTABLAS_2,'item_desc',$ess_master_tables_detail->item_desc);
+		$myForm->addText(OPF_myLang::getPhrase('OPF_ADMTABLAS_2'),'item_desc',$ess_master_tables_detail->item_desc);
 			
-		$myForm->addButton('btn_save_detail',LABEL_BTN_SAVE,'save.gif');
+		$myForm->addButton('btn_save_detail',OPF_myLang::getPhrase('LABEL_BTN_SAVE'),'save.gif');
 
 		$myForm->addEvent('btn_save_detail', 'onclick', 'onClickSaveItemTable',$this->table_id, $detail_id);
 
@@ -207,17 +207,17 @@ class admDetalleTablas {
 			
 		$arrReplace = array(
 
- 			'OPF_FIELD_MODIFICAR' => OPF_FIELD_MODIFICAR,
+ 			'OPF_FIELD_MODIFICAR' => OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'),
 
- 			'OPF_FIELD_ELIMINAR' => OPF_FIELD_ELIMINAR,
+ 			'OPF_FIELD_ELIMINAR' => OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'),
 
- 			'OPF_FIELD_CODIGO' => OPF_FIELD_CODIGO,
+ 			'OPF_FIELD_CODIGO' => OPF_myLang::getPhrase('OPF_FIELD_CODIGO'),
 
- 			'OPF_FIELD_DESCRIPCION' => OPF_FIELD_DESCRIPCION,
+ 			'OPF_FIELD_DESCRIPCION' => OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'),
 
- 			'OPF_FIELD_USUARIO' => OPF_FIELD_USUARIO,
+ 			'OPF_FIELD_USUARIO' => OPF_myLang::getPhrase('OPF_FIELD_USUARIO'),
 
- 			'OPF_FIELD_ACTUALIZADO' => OPF_FIELD_ACTUALIZADO,
+ 			'OPF_FIELD_ACTUALIZADO' => OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'),
 			
  			'master_tables_id'=>$this->table_id
 			
@@ -227,37 +227,37 @@ class admDetalleTablas {
 			
 		$myList->width = 760;
 
-		$myList->setGlobalEventOnColumn(OPF_FIELD_MODIFICAR,array(OPF_FIELD_ELIMINAR=>'onClickDeleteItems'));
+		$myList->setGlobalEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'),array(OPF_FIELD_ELIMINAR=>'onClickDeleteItems'));
 			
-		$myList->setWidthColumn(OPF_FIELD_MODIFICAR, 70);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 70);
 			
-		$myList->setWidthColumn(OPF_FIELD_ELIMINAR, 60);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 60);
 			
-		$myList->setWidthColumn(OPF_FIELD_CODIGO, 100);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_CODIGO'), 100);
 			
-		$myList->setWidthColumn(OPF_FIELD_USUARIO, 90);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 90);
 			
-		$myList->setWidthColumn(OPF_FIELD_ACTUALIZADO, 130);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 130);
 			
-		$myList->setWidthColumn(OPF_FIELD_DESCRIPCION, 310);
+		$myList->setWidthColumn(OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'), 310);
 			
 		$myList->setPagination(true,10);
 			
-		$myList->setEventOnColumn(OPF_FIELD_MODIFICAR, 'onClickUpdateDetail');
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_MODIFICAR'), 'onClickUpdateDetail');
 			
-		$myList->setEventOnColumn(OPF_FIELD_ELIMINAR, 'onClickDeleteItems',OPF_FIELD_CONFIRM_ELIMINAR);
+		$myList->setEventOnColumn(OPF_myLang::getPhrase('OPF_FIELD_ELIMINAR'), 'onClickDeleteItems',OPF_myLang::getPhrase('OPF_FIELD_CONFIRM_ELIMINAR'));
 			
 		$myList->setExportData(true,true,true);
 			
-		$myList->setUseOrderMethod(true,OPF_FIELD_ACTUALIZADO);
+		$myList->setUseOrderMethod(true,OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'));
 			
-		$myList->setRealNameInQuery(OPF_FIELD_CODIGO, 'ess_master_tables_detail.item_cod');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_CODIGO'), 'ess_master_tables_detail.item_cod');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_DESCRIPCION, 'ess_master_tables_detail.item_desc');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_DESCRIPCION'), 'ess_master_tables_detail.item_desc');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_USUARIO, 'ess_system_users.user_name');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_USUARIO'), 'ess_system_users.user_name');
 			
-		$myList->setRealNameInQuery(OPF_FIELD_ACTUALIZADO, 'ess_master_tables_detail.datetime');
+		$myList->setRealNameInQuery(OPF_myLang::getPhrase('OPF_FIELD_ACTUALIZADO'), 'ess_master_tables_detail.datetime');
 			
 		return $myList->getList(true);
 	}

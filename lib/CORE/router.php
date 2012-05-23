@@ -43,7 +43,7 @@
 						
 							if ($event != 'default_event'){
 						
-								$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_METHOD_NOT_FOUND.'&nbsp;&quot;'.$event.'&quot;</div>';
+								$msgError = '<div class="error"><b>'.OPF_myLang::getPhrase('ERROR_LABEL').':</b>&nbsp;'.OPF_myLang::getPhrase('ROUTER_METHOD_NOT_FOUND').'&nbsp;&quot;'.$event.'&quot;</div>';
 							
 								die ($msgError);
 							}
@@ -54,7 +54,7 @@
 						
 					}else{
 					
-						$msgError = '<div class="error"><b>'.ERROR_LABEL.':</b>&nbsp;'.ROUTER_CLASS_NOT_FOUND.'&nbsp;&quot;'.'eventos'.'&quot;</div>';
+						$msgError = '<div class="error"><b>'.OPF_myLang::getPhrase('ERROR_LABEL').':</b>&nbsp;'.OPF_myLang::getPhrase('ROUTER_CLASS_NOT_FOUND').'&nbsp;&quot;'.'controller'.'&quot;</div>';
 					
 						die ($msgError);
 					}

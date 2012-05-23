@@ -25,7 +25,7 @@ class ESS_essentials {
 				
 			if (isset($_SESSION['user_id']))
 				
-			$user_id = $_SESSION['user_id'];
+				$user_id = $_SESSION['user_id'];
 				
 			$ess_bit->usuario_id = $user_id;
 				
@@ -98,7 +98,7 @@ class ESS_essentials {
 
 		for ($i=0;$i<$strlen;++$i)
 
-		$crypData .= $_SESSION['base_key_cryp_data'][substr($data,$i,1) + substr($base,$i,1)];
+			$crypData .= $_SESSION['base_key_cryp_data'][substr($data,$i,1) + substr($base,$i,1)];
 
 		return $crypData;
 	}
