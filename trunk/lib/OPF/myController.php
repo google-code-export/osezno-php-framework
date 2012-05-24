@@ -43,7 +43,7 @@ class OPF_myController extends OPF_myControllerExt {
 				
 			case 'xajax':
 		
-				//$GLOBALS['objAjax']->processRequest();
+				$GLOBALS['objAjax']->processRequest();
 		
 			break;
 		}
@@ -112,7 +112,8 @@ class OPF_myController extends OPF_myControllerExt {
 	   'waitForCSS', 'waitFor', 'sleep', 'setReturnValue', 'getContentType', 
 	   'getOutput', 'getCommandCount', 'loadCommands', 'closeWindow', 
 	   'window', 'closeMessageBox', 'messageBox','notificationWindow',
-	   'modalWindow','closeModalWindow','loadHtmlFromFile','modalWindowFromUrl','errorBox'
+	   'modalWindow','closeModalWindow','loadHtmlFromFile','modalWindowFromUrl','errorBox',
+	   'render_template','printNotification','processRequest'
 	);
 
 	/**
@@ -205,7 +206,6 @@ class OPF_myController extends OPF_myControllerExt {
 		global $dataViewFromCrtl;
 		
 		$GLOBALS['dataViewFromCrtl'] = array ();
-		/*
 		
 		global $MYCONTROLLER_REGISTERED_FUNCTIONS;
 
@@ -219,37 +219,30 @@ class OPF_myController extends OPF_myControllerExt {
 				
 				$this->xajaxObject = $GLOBALS['objAjax'];
 				
-			break;
-		}
-
-		if (!count($GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'])){
-					
-			$methods = get_class_methods( get_class($this) );
-
-			foreach ( $methods as $method ){
+				if (!count($GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'])){
+						
+					$methods = get_class_methods( get_class($this) );
 				
-				if (!in_array($method,$this->arrayInvalidMethods)){
-
-					if (!isset($GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'][$method])){
-					 
-						switch (AJAX_ENGINE){
-						
-							case 'xajax':
-
+					foreach ( $methods as $method ){
+				
+						if (!in_array($method,$this->arrayInvalidMethods)){
+				
+							if (!isset($GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'][$method])){
+				
 								$this->xajaxObject->registerFunction(array($method, $this, $method));
-							
-							break;
+								
+								$GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'][$method] = $method;
+							}
+				
 						}
-						
-						$GLOBALS['MYCONTROLLER_REGISTERED_FUNCTIONS'][$method] = $method;
+				
 					}
-
+				
 				}
 				
-			}
-		
+			break;
 		}
-*/
+		
 	}
 
 	/**

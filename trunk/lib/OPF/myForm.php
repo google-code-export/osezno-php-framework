@@ -472,7 +472,7 @@ class OPF_myForm {
 	 * Etiqueta de la primera opcion por select que se activa solo si $objMyForm->selectUseFirstValue es igual a 'true'.
 	 * @var string
 	 */
-	public $selectStringFirstLabelOption = LABEL_FIRST_OPT_SELECT_FIELD;
+	public $selectStringFirstLabelOption = 'LABEL_FIRST_OPT_SELECT_FIELD';
 
 	/**
 	 * Usar distincion de filas.
@@ -892,7 +892,7 @@ class OPF_myForm {
 			$buf  = '';
 			if (is_array ($value)){
 				if ($this->selectUseFirstValue)
-				$buf .= "".'<option value="">'.$this->selectStringFirstLabelOption.'</option>'."\n";
+				$buf .= "".'<option value="">'.OPF_myLang::getPhrase($this->selectStringFirstLabelOption).'</option>'."\n";
 					
 				$selectedIsArray = false;
 				if (is_array($selected)){
@@ -1333,7 +1333,7 @@ class OPF_myForm {
 			if (is_array ($value)){
 					
 				if ($this->selectUseFirstValue)
-				$buf .= "\t\t".'<option value="">'.$this->selectStringFirstLabelOption.'</option>'."\n";
+				$buf .= "\t\t".'<option value="">'.OPF_myLang::getPhrase($this->selectStringFirstLabelOption).'</option>'."\n";
 
 				$selectedIsArray = false;
 					

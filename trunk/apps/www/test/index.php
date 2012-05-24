@@ -11,19 +11,18 @@
 /**
  * Asignar contenidos a areas de la plantilla
  */
-//OPF_osezno::assign('name','');
+OPF_osezno::assign('name','');
 
-//OPF_osezno::assign('desc','');
+OPF_osezno::assign('desc','');
 
-//OPF_osezno::assign('main_area',$controller->saludo.' ');
+OPF_osezno::assign('main_area',$controller->formulario.' ');
 
-//OPF_osezno::assign('alt_area','');
+OPF_osezno::assign('alt_area','');
 
 
 /**
  * Mostrar la plantilla
  */
-//OPF_osezno::call_template('example'.DS.'example.tpl');
-echo $controller->saludo;
+OPF_osezno::call_template('example'.DS.'example.tpl');
 
 ?>
