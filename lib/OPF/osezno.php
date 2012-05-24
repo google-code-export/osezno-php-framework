@@ -11,6 +11,8 @@
  */
 class OPF_osezno {
 		
+	private static $config_file_name = '';
+	
 	/**
 	 * Areas definidas y asignadas dentro de la plantilla
 	 *
@@ -118,6 +120,11 @@ class OPF_osezno {
 	
 	}
 	
+	public static function setConfigFile ($config_file_name = 'configApplication.php'){
+
+		self::$config_file_name = $config_file_name;
+	}
+	
 	public static function configIndex ($dir_name){
 		
 		spl_autoload_register ('OPF_osezno::auto_carga');
@@ -141,9 +148,11 @@ class OPF_osezno {
 		define('PLUGINS_PATH', ROOT_PATH . DS.'plugin'.DS);
 		
 		# Ruta de Archivo de configuracion
-		define('CONF_PATH',  ROOT_PATH. DS.'conf'.DS.'configApplication.php');
+		define('CONF_PATH',  ROOT_PATH. DS.'conf'.DS.self::$config_file_name);
 		
 		require CONF_PATH;
+		
+		error_reporting($error_level);
 		
 		# Ruta del tema seleccionado
 		define('THEME_NAME',	$theme);
@@ -170,7 +179,7 @@ class OPF_osezno {
 		define('DEFAULT_MOD', $default_mod);
 		
 		# Osezno php framework versión
-		define ('FRAMEWORK_VERSION','1.6',true);
+		define ('FRAMEWORK_VERSION','1.7',true);
 		
 		# Arreglo de listas dinamicas
 		if (!isset($_SESSION['prdLst']))
@@ -214,34 +223,10 @@ class OPF_osezno {
 		# Idioma en uso
 		define('LANG',  $lang);
 		
-		global $objAjax;
-		
-		switch ($ajax_engine){
-		
-		case 'xajax':
-		
-		//require PLUGINS_PATH.'xajax/xajax_core/xajax.inc.php';
-			
-		# Agilizar el rendimiento
-		//$objxAjax = new xajax();
-		
-		//$objxAjax->setFlag("debug", $ajax_conf[$ajax_engine]['debug']);
-		
-		//$objxAjax->setFlag('decodeUTF8Input', $ajax_conf[$ajax_engine]['decodeUTF8Input']);
-			
-		//$objxAjax->setWrapperPrefix($ajax_conf[$ajax_engine]['wrapper_prefix']);
-		
-		//$GLOBALS['objAjax'] = $objxAjax;
-			
-		//define ('PATH_XAJAX_JS','plugin/xajax/');
-			
-		break;
-		
-		}
-		
 		date_default_timezone_set($timezone);
 		
 		ini_set('default_charset', $default_charset);
+		
 		$cad = $_SERVER['SERVER_NAME'];
 		
 		global $cuantas;
@@ -346,10 +331,10 @@ class OPF_osezno {
 				
 			case 'xajax':
 		
-				//self::$arrayAssignAreasHead['xajax_scripts'] = $objAjax->getJavascript(BASE_URL_PATH.PATH_XAJAX_JS);
+				self::$arrayAssignAreasHead['xajax_scripts'] = $objAjax->getJavascript(BASE_URL_PATH.PATH_XAJAX_JS);
 		
-				//self::$arrayAssignAreasHead['string_js_mw']
-				//= '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/myModalWindow.js" charset="utf-8"></script>';
+				self::$arrayAssignAreasHead['string_js_mw']
+				= '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/myModalWindow.js" charset="utf-8"></script>';
 		
 				break;
 		}

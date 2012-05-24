@@ -31,13 +31,40 @@
 					
 					if (class_exists('controller')){
 				
-						$eventos = new controller;
-					
-						if (method_exists($eventos, $event)){
+						global $objAjax;
+						
+						switch (AJAX_ENGINE){
+						
+							case 'xajax':
+						
+								require PLUGINS_PATH.'xajax/xajax_core/xajax.inc.php';
+									
+								# Agilizar el rendimiento
+								$objxAjax = new xajax();
+						
+								//$objxAjax->setFlag("debug", $ajax_conf[AJAX_ENGINE]['debug']);
+						
+								//$objxAjax->setFlag('decodeUTF8Input', $ajax_conf[AJAX_ENGINE]['decodeUTF8Input']);
+									
+								//$objxAjax->setWrapperPrefix($ajax_conf[AJAX_ENGINE]['wrapper_prefix']);
+								$objxAjax->setWrapperPrefix('');
+						
+								$GLOBALS['objAjax'] = $objxAjax;
+									
+								define ('PATH_XAJAX_JS','plugin/xajax/');
+									
+								break;
+						}
+						
+						$controller = new controller;
+												
+						$controller->processRequest();
+						
+						if (method_exists($controller, $event)){
 					
 							$reflectionMethod = new ReflectionMethod('controller', $event);
 						
-							$reflectionMethod->invokeArgs($eventos, $params);
+							$reflectionMethod->invokeArgs($controller, $params);
 					
 						}else{
 						

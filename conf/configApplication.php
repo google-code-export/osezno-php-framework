@@ -164,5 +164,12 @@ $sessionCacheExpire = 3600;
  * @var string 
  */
  $sessionPathFolder = 'sess';
+ 
+ /**
+  * Nivel de errores a manejar en OPF
+  * 
+  * @var string
+  */
+ $error_level = 'E_ERROR';
 
 ?>

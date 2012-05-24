@@ -14,14 +14,29 @@
  */
 class controller extends OPF_myController {
 	
-	public function saludar (){
-		
-		$this->saludo = 'Hola Mundo';
-	}
-	
 	public function default_event (){
 		
-		/* Default event */
+		$myForm = new OPF_myForm('new_form');
+		
+		$myForm->addText('Nombre:','nombre');
+		
+		$myForm->addButton('btn1','Enviar');
+		
+		$myForm->addEvent('btn1', 'onclick', 'getData');
+		
+		$this->formulario = $myForm->getForm(2);
+	}
+	
+	public function getData ($datForm){
+		
+		$this->alert($datForm['nombre']);
+		
+		return $this->response;
+	}
+	
+	public function perro(){
+		
+		echo 'perro';
 	}
 	
 }
