@@ -170,6 +170,6 @@ $sessionCacheExpire = 3600;
   * 
   * @var string
   */
- $error_level = 'E_ERROR';
+ //$error_level = 'E_ERROR';
 
 ?>

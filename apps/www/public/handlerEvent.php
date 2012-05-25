@@ -33,8 +33,5 @@ class controller extends OPF_myController {
 	
 }
 
-$controller = new controller();
-
-$controller->processRequest();
 
 ?>

@@ -2,7 +2,7 @@
 
 	class CORE_router {
 		
-		public static function router ($app, $module, $event, $params, $name_utility = ''){
+		public static function router ($app, $module, $event, $params, $ajax_conf = array(), $name_utility = ''){
 			
 			$security 		= APP_PATH.$app.DS.'security.php';
 
@@ -42,18 +42,17 @@
 								# Agilizar el rendimiento
 								$objxAjax = new xajax();
 						
-								//$objxAjax->setFlag("debug", $ajax_conf[AJAX_ENGINE]['debug']);
+								$objxAjax->setFlag("debug", $ajax_conf[AJAX_ENGINE]['debug']);
 						
-								//$objxAjax->setFlag('decodeUTF8Input', $ajax_conf[AJAX_ENGINE]['decodeUTF8Input']);
+								$objxAjax->setFlag('decodeUTF8Input', $ajax_conf[AJAX_ENGINE]['decodeUTF8Input']);
 									
-								//$objxAjax->setWrapperPrefix($ajax_conf[AJAX_ENGINE]['wrapper_prefix']);
-								$objxAjax->setWrapperPrefix('');
+								$objxAjax->setWrapperPrefix($ajax_conf[AJAX_ENGINE]['wrapper_prefix']);
 						
 								$GLOBALS['objAjax'] = $objxAjax;
 									
 								define ('PATH_XAJAX_JS','plugin/xajax/');
 									
-								break;
+							break;
 						}
 						
 						$controller = new controller;

@@ -1610,7 +1610,7 @@ class OPF_myActiveRecord {
 		$password = $this->myact_password;
 
 		try {
-				
+
 			$params = NULL;
 				
 			if ($this->persistentConnection)

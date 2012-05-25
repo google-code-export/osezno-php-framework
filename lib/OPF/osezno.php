@@ -152,7 +152,7 @@ class OPF_osezno {
 		
 		require CONF_PATH;
 		
-		error_reporting($error_level);
+		error_reporting(isset($error_level) ? $error_level : 'E_ERROR');
 		
 		# Ruta del tema seleccionado
 		define('THEME_NAME',	$theme);
@@ -265,7 +265,7 @@ class OPF_osezno {
 				
 		}
 		
-		$bootstrap = new CORE_bootstrap(ROOT_PATH,'dev',$default_app);
+		$bootstrap = new CORE_bootstrap(ROOT_PATH,'dev',$default_app, $ajax_conf);
 		
 	}
 	

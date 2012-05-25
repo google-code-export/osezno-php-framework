@@ -283,7 +283,8 @@ class controller extends OPF_myController {
 			}
 
 		}else
-		$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
+			
+			$this->notificationWindow(OPF_myLang::getPhrase('MSG_CAMPOS_REQUERIDOS'),5,'error');
 			
 		return $this->response;
 	}
@@ -291,7 +292,5 @@ class controller extends OPF_myController {
 
 }
 
-$objEventos = new controller();
-$objEventos->processRequest();
 
 ?>

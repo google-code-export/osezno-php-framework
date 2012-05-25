@@ -124,8 +124,4 @@
 	
  }
 
-$controller = new controller();
-
-$controller->processRequest();
- 
 ?>
