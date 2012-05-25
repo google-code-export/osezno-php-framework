@@ -359,8 +359,4 @@ class controller extends OPF_myController {
 
 }
 
-
-$objEventos = new controller();
-$objEventos->processRequest();
-
 ?>

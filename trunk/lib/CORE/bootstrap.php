@@ -10,7 +10,7 @@
 		
 		private $event = '';
 		
-		public function __construct($pathDir, $entorno = 'dev', $app = ''){
+		public function __construct($pathDir, $entorno = 'dev', $app = '', $ajax_conf = array()){
 			
 			$q_string = $_SERVER['REQUEST_URI'];
 			
@@ -49,7 +49,7 @@
 			
 			$this->event = CORE_dispatcher::getEvent();
 			
-			CORE_router::router($app, $this->module, $this->event, $this->params, $utilityFound);
+			CORE_router::router($app, $this->module, $this->event, $this->params, $ajax_conf, $utilityFound);
 		}
 		
 		public function getParams (){
