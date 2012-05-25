@@ -11,6 +11,10 @@
  */
 class OPF_osezno {
 		
+	private static $obj_time;
+	
+	private static $use_info_bar = false;
+	
 	private static $config_file_name = '';
 	
 	/**
@@ -52,7 +56,9 @@ class OPF_osezno {
 	 * Estilos usados para dar formato a los errores del sistema
 	 * @var string
 	 */
-	public static $cssErrors = '.error {
+	public static $cssErrors = 
+
+'.error {
 	border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	background-color:#FDCCCD;
@@ -153,6 +159,15 @@ class OPF_osezno {
 		require CONF_PATH;
 		
 		error_reporting(isset($error_level) ? $error_level : 'E_ERROR');
+		
+		self::$use_info_bar = isset($useInfoBar) ? $useInfoBar : false; 
+		
+		if (self::$use_info_bar){
+			
+			self::$obj_time = new OPF_myTime;
+			
+			self::$obj_time->timeStart();
+		}
 		
 		# Ruta del tema seleccionado
 		define('THEME_NAME',	$theme);
@@ -266,7 +281,6 @@ class OPF_osezno {
 		}
 		
 		$bootstrap = new CORE_bootstrap(ROOT_PATH,'dev',$default_app, $ajax_conf);
-		
 	}
 	
 	/**
@@ -356,6 +370,31 @@ class OPF_osezno {
 		
 		self::$arrayAssignAreasHead['string_js_mycalendar']
 		= '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/myCalendar.js" charset="utf-8"></script>';
+		
+		if (self::$use_info_bar){
+			
+			self::$arrayAssignAreasBody['string_js_barinfo'] = '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/info_bar.php?memory='.round((memory_get_peak_usage()/(1024*1024)),3).'&get_included_files='.count(get_included_files()).'&time_executed='.round(self::$obj_time->timeEnd(),3).'" charset="utf-8"></script>';
+			
+			self::$cssErrors .= 
+'
+#taskbar{
+	height:25px;
+	width:100%;
+    margin:auto;
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+	}
+	
+#taskbar #container{
+	background-color:#E5E5E5;
+    border:1px solid #B5B5B5;
+    display:block;
+    margin-left:15px;
+    margin-right:15px;
+    height:25px;
+}';
+		}
 		
 		self::$arrayAssignAreasBody['string_js_tooltip']
 		= '<script type="text/javascript" src="'.BASE_URL_PATH.'common/js/osezno/wz_tooltip.js" charset="utf-8"></script>';

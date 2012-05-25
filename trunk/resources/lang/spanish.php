@@ -2,15 +2,15 @@
 
 $lang_content = array (
 
-		'ROUTER_CLASS_NOT_FOUND'=>'Al intentar encontrar la clase: ',#OK
+		'ROUTER_CLASS_NOT_FOUND'=>'Al intentar encontrar la clase: ',
 
-		'ROUTER_METHOD_NOT_FOUND'=>'Al intentar acceder al evento: ',#OK
+		'ROUTER_METHOD_NOT_FOUND'=>'Al intentar acceder al evento: ',
 
-		'LABEL_BTN_SAVE', 'Guardar',#OK
+		'LABEL_BTN_SAVE', 'Guardar',
 		
-		'LABEL_BTN_ADD', 'Agregar',#OK
+		'LABEL_BTN_ADD', 'Agregar',
 		
-		'LABEL_BTN_CANCEL', 'Cancelar',#OK
+		'LABEL_BTN_CANCEL', 'Cancelar',
 		
 		'OPF_ACCESS_NOT_VERIFY_ERROR'=>'Codigo de seguridad.',
 		

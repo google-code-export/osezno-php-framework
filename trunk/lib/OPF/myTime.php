@@ -65,7 +65,7 @@ class OPF_myTime {
 
 	private function calcTimePassed (){
 
-		$this->microsegPassed = number_format($this->endTime - $this->startTime,$this->result_intDecimals,',','.');
+		$this->microsegPassed = round($this->endTime - $this->startTime,$this->result_intDecimals);
 
 		return $this->microsegPassed;
 	}

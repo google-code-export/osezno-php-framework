@@ -171,5 +171,12 @@ $sessionCacheExpire = 3600;
   * @var string
   */
  $error_level = 'E_ERROR';
+ 
+ /**
+  * Mostrar la barra de informacion de ejecucion. 
+  *
+  * @var boolean
+  */
+ $useInfoBar = false;
 
 ?>
