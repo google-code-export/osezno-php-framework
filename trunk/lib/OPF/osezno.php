@@ -228,6 +228,9 @@ class OPF_osezno {
 		
 		);
 		
+		global $useInfoBarGlobal;
+		
+		$GLOBALS['useInfoBarGlobal'] = self::$use_info_bar;
 		
 		# Ruta de archivos de idiomas
 		define('LANG_PATH',  ROOT_PATH. DS.'resources'.DS.'lang'.DS.$lang.'.php');
@@ -280,7 +283,7 @@ class OPF_osezno {
 				
 		}
 		
-		$bootstrap = new CORE_bootstrap(ROOT_PATH,'dev',$default_app, $ajax_conf);
+		$bootstrap = new CORE_bootstrap(ROOT_PATH, $default_app, $ajax_conf);
 	}
 	
 	/**
@@ -378,13 +381,13 @@ class OPF_osezno {
 			self::$cssErrors .= 
 '
 #taskbar{
-	height:25px;
+	height:30px;
 	width:100%;
     margin:auto;
     position: fixed;
     bottom: 0;
     z-index: 99;
-	}
+}
 	
 #taskbar #container{
 	background-color:#E5E5E5;
@@ -392,8 +395,25 @@ class OPF_osezno {
     display:block;
     margin-left:15px;
     margin-right:15px;
-    height:25px;
-}';
+    height:30px;
+}
+
+#taskbar #container th{
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #666666;
+	font-weight: bold;
+	text-align:right;
+}
+
+#taskbar #container td{
+	text-align: justify;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #666666;
+}
+';
 		}
 		
 		self::$arrayAssignAreasBody['string_js_tooltip']

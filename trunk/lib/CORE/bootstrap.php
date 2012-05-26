@@ -10,16 +10,9 @@
 		
 		private $event = '';
 		
-		public function __construct($pathDir, $entorno = 'dev', $app = '', $ajax_conf = array()){
+		public function __construct($pathDir, $app = '', $ajax_conf = array()){
 			
 			$q_string = $_SERVER['REQUEST_URI'];
-			
-			$entornos_validos = array(
-			        
-		        'dev'  => array('INDEX' => 'index.php'),
-			        
-		        'prod' => array('INDEX' => 'index.php')
-			);
 			
 			$is_utility = false;
 				
@@ -41,7 +34,7 @@
 			
 			CORE_dispatcher::defineUtility($utilityFound);
 			
-			CORE_dispatcher::dispath($q_string, $entorno, $entornos_validos, $is_utility);
+			CORE_dispatcher::dispath($q_string, $is_utility);
 						
 			$this->params = CORE_dispatcher::getParams();
 			

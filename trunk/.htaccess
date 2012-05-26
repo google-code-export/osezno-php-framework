@@ -1,23 +1,11 @@
 #<IfModule mod_rewrite.c>
 
-#AddDefaultCharset UTF-8
-
-#RewriteEngine on
-
-#RewriteBase /
-
-#RewriteCond %{SCRIPT_FILENAME} !-f
-#RewriteCond %{SCRIPT_FILENAME} !-d
- 
-#RewriteRule ^(.*)$ /index.php?/$1 [L,QSA]
-
-
-#</IfModule>
+AddDefaultCharset UTF-8
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
-RewriteRule ^.*$ index.php [NC,L]
+
 

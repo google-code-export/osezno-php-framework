@@ -15,7 +15,7 @@
 			self::$module = self::$name_utility;
 		}
 		
-		public static function dispath ($q_string, $entorno, $entornos_validos, $is_utility){
+		public static function dispath ($q_string, $is_utility){
 			
 			if ($is_utility){
 				
@@ -93,7 +93,7 @@
 						self::$event = $realComponents[2];
 					}
 				
-				}else if($realComponents[0]=='index.php'){
+				}else if(stripos($realComponents[0],'.php')!==false){
 					
 					unset($realComponents[0]);
 					

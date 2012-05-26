@@ -43,12 +43,23 @@ class OPF_myController extends OPF_myControllerExt {
 				
 			case 'xajax':
 		
+				if ($GLOBALS['useInfoBarGlobal']){
+					
+					$this->assign('time_executed', 'innerHTML', round(self::$obj_time->timeEnd(),3).' Seconds');
+					
+					$this->assign('get_included_files', 'innerHTML', count(get_included_files()).' Files');
+					
+					$this->assign('memory_usage', 'innerHTML', round((memory_get_peak_usage()/(1024*1024)),3).' Mb');
+				}
+				
 				$GLOBALS['objAjax']->processRequest();
 		
 			break;
 		}
 		
 	}
+	
+	private static $obj_time;
 	
 	/**
 	 * Objeto xajax
@@ -203,6 +214,13 @@ class OPF_myController extends OPF_myControllerExt {
 	 */
 	public function __construct(){
 
+		if ($GLOBALS['useInfoBarGlobal']){
+			
+			self::$obj_time = new OPF_myTime;
+				
+			self::$obj_time->timeStart();
+		}
+		
 		global $dataViewFromCrtl;
 		
 		$GLOBALS['dataViewFromCrtl'] = array ();
