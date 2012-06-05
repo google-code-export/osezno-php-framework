@@ -43,7 +43,7 @@
 			
 				if (stripos($from_path, '/') !== false){
 				
-					$folder = substr($from_path, 0, stripos($from_path,'/')); 
+					$folder = substr($from_path, 0, strripos($from_path,'/')+1);
 				
 				}
 			
