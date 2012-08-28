@@ -1054,7 +1054,7 @@ class OPF_myActiveRecord {
 
 		if (!$GLOBALS['OF_IN_TRANSACCTION']){
 				
-			$GLOBALS['OF_SQL_LOG'] .= 'BEGIN TRANSACTION;'."\n";
+			$this->query('COMMIT;');
 
 			$GLOBALS['OF_IN_TRANSACCTION'] = true;
 		}
@@ -1097,15 +1097,11 @@ class OPF_myActiveRecord {
 				
 			if (!$this->getErrorLog()){
 					
-				$GLOBALS['OF_SQL_LOG'] .='COMMIT;'."\n";
-
-				$this->myact_dbh->commit();
+				$this->query('COMMIT;');
 					
 			}else{
 					
-				$GLOBALS['OF_SQL_LOG'] .='ROLLBACK;'."\n";
-
-				$this->myact_dbh->rollBack();
+				$this->query('ROLLBACK;');
 
 				$sucsess = false;
 			}
