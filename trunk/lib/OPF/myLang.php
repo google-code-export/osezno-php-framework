@@ -30,7 +30,7 @@ class OPF_myLang {
 
 	public static function getLang (){
 		
-		return (isset($_SESSION['lang_in_use']) ? '':$_SESSION['lang_in_use']);
+     return (isset($_SESSION['lang_in_use']) ? $_SESSION['lang_in_use']:'');
 	}
 	
 	public static function getPhrase ($sPhrase){
