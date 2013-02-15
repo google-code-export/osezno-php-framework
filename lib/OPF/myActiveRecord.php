@@ -437,23 +437,28 @@ class OPF_myActiveRecord {
 	private function validateAtt ($field){
 
 		$valid = false;
-
+		
 		if (strcmp($field,$this->tablePk[$this->myact_table]))
-
-		if (!is_null($this->$field))
-			
-		if (!is_array($this->$field))
-			
-		if (!is_object($this->$field))
-
-		if (!is_bool($this->$field))
-			
-		if (!in_array($field,$this->arrayInvalidAtt))
-
-		if (strlen(trim($this->$field)))
-			
-		$valid = true;
-
+		
+			if (is_null($this->$field) && !in_array($field,$this->arrayInvalidAtt)){
+				
+			$valid = true;
+		
+		}else{
+				
+			if (!is_array($this->$field))
+					
+			if (!is_object($this->$field))
+		
+			if (!is_bool($this->$field))
+					
+			if (!in_array($field,$this->arrayInvalidAtt))
+					
+			if (strlen(trim($this->$field)))
+					
+				$valid = true;
+		}		
+	
 		return $valid;
 	}
 
@@ -500,7 +505,7 @@ class OPF_myActiveRecord {
 
 			$keyFinded .= $fCnd.$smblRel.' ?';
 
-			$this->arrayPrepare[$this->myact_table][] = trim($vCnd);
+			$this->arrayPrepare[$this->myact_table][] = (!is_null($vCnd)) ? trim($vCnd) : $vCnd;
 
 		}
 			
@@ -845,14 +850,18 @@ class OPF_myActiveRecord {
 
 				$type = PDO::PARAM_INT;
 
-				else if (is_null($param))
+				else if (is_null($param)){
 
 				$type = PDO::PARAM_NULL;
 
-				else if (is_bool($param))
+				$param = NULL;
+				
+				}else if (is_bool($param))
 
 				$type = PDO::PARAM_BOOL;
 
+				$param = ($this->autoQuoteOnFind)?trim($param,'\''):$param;
+				
 				$sth->bindValue($i, $param, $type);
 
 				++$i;
